@@ -1,12 +1,13 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { createPortal } from "react-dom";
-import { useRecoilValue, useResetRecoilState } from "recoil";
-import Modal from "@/components/ui/Modal";
+import { createPortal } from 'react-dom';
+import { useRecoilValue, useResetRecoilState } from 'recoil';
+import Modal from '@/components/ui/Modal';
 import { confirmModalState } from '@/store/CommonStateStore';
 
 function ConfirmModal() {
-  const { isOpen, title, content, onClickConfirmHandler } = useRecoilValue(confirmModalState);
+  const { isOpen, title, content, onClickConfirmHandler } =
+    useRecoilValue(confirmModalState);
   const resetModalState = useResetRecoilState(confirmModalState);
   const [portalElement, setPortalElement] = useState<Element | null>(null);
 
@@ -25,25 +26,21 @@ function ConfirmModal() {
 
   return (
     <>
-      {
-        isOpen && portalElement
-          ? createPortal((
+      {isOpen && portalElement
+        ? createPortal(
             <Modal
               isOpen={isOpen}
               close={resetModalState}
               title={title}
               onClickConfirmHandler={onClickConfirmHandler}
             >
-              <section className='my-4 text-lg'>
-                {content}
-              </section>
-            </Modal>
-          ), portalElement)
-          : null
-      }
+              <section className='my-4 text-lg'>{content}</section>
+            </Modal>,
+            portalElement,
+          )
+        : null}
     </>
   );
 }
-
 
 export default ConfirmModal;

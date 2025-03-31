@@ -1,9 +1,9 @@
 export const commonRequestHeaders = (requestInit: RequestInit) => {
-    const headers = new Headers(requestInit.headers);
+  const headers = new Headers(requestInit.headers);
 
-    if (!headers.get("Content-Type") && !(requestInit.body instanceof Blob)) {
-        headers.set("Content-Type", "application/json");
-    }
+  if (!headers.get('Content-Type') && !(requestInit.body instanceof Blob)) {
+    headers.set('Content-Type', 'application/json');
+  }
 
-    return headers;
-}
+  return headers;
+};

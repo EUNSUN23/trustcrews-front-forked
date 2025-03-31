@@ -29,7 +29,7 @@ export async function getTechStackCategoryList() {
  */
 export async function getTechStackListWithCategory() {
   const response = await fetch(
-    `${publicURL}/api/setting/tech-stack-with-category`
+    `${publicURL}/api/setting/tech-stack-with-category`,
   );
   return await response.json();
 }
@@ -40,4 +40,4 @@ export async function getTechStackListWithCategory() {
 export const getCrewAuthOptions = async () => {
   const response = await fetch(`${publicURL}/api/setting/crewAuth`);
   return await response.json();
-}
+};

@@ -1,4 +1,4 @@
 export type AlertModalState = {
-    isOpen: boolean;
-    title: string;
-}
+  isOpen: boolean;
+  title: string;
+};

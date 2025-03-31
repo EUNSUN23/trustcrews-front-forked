@@ -60,7 +60,7 @@ function CustomSwiper({ slideItems, initActiveSlideIndex }: CustomSwiperProps) {
         }}
         onSwiper={(swiper) => (swiperRef.current = swiper)}
       >
-        {slideItems.map(({ key, components }, index) => (
+        {slideItems.map(({ key, components }) => (
           <SwiperSlide key={key}>{components}</SwiperSlide>
         ))}
       </Swiper>

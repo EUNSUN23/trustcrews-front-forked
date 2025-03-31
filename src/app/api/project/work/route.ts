@@ -1,8 +1,7 @@
-import {NextRequest} from "next/server";
-import authApi from "@/app/api/_interceptor/authApi";
-import {JSONReplaceBigInt} from "@/utils/common";
-import {routeResponse} from "@/app/api/_interceptor/routeResponse";
-
+import { NextRequest } from 'next/server';
+import authApi from '@/app/api/_interceptor/authApi';
+import { JSONReplaceBigInt } from '@/utils/common';
+import { routeResponse } from '@/app/api/_interceptor/routeResponse';
 
 /**
  * 프로젝트 (특정 마일스톤 내) 업무 조회
@@ -10,17 +9,18 @@ import {routeResponse} from "@/app/api/_interceptor/routeResponse";
  * @constructor
  */
 export async function GET(req: NextRequest) {
-    const {searchParams} = new URL(req.url);
-    const projectId = searchParams.get('projectId');
-    const milestoneId = searchParams.get('milestoneId');
-    const pageIndex = searchParams.get('pageIndex');
-    const itemCount = searchParams.get('itemCount');
+  const { searchParams } = new URL(req.url);
+  const projectId = searchParams.get('projectId');
+  const milestoneId = searchParams.get('milestoneId');
+  const pageIndex = searchParams.get('pageIndex');
+  const itemCount = searchParams.get('itemCount');
 
-    const res = await authApi(
-        `/api/project/work?projectId=${projectId}&milestoneId=${milestoneId}&pageIndex=${pageIndex}&itemCount=${itemCount}`,
-        {method: 'GET'})
+  const res = await authApi(
+    `/api/project/work?projectId=${projectId}&milestoneId=${milestoneId}&pageIndex=${pageIndex}&itemCount=${itemCount}`,
+    { method: 'GET' },
+  );
 
-    return routeResponse(req, res);
+  return routeResponse(req, res);
 }
 
 /**
@@ -29,15 +29,13 @@ export async function GET(req: NextRequest) {
  * @constructor
  */
 export async function POST(req: NextRequest) {
-    const reqData = await req.json();
-    const res = await authApi(
-        `/api/project/work`,
-        {
-            method: 'POST',
-            body: JSONReplaceBigInt(reqData)
-        });
+  const reqData = await req.json();
+  const res = await authApi(`/api/project/work`, {
+    method: 'POST',
+    body: JSONReplaceBigInt(reqData),
+  });
 
-    return routeResponse(req, res);
+  return routeResponse(req, res);
 }
 
 /**
@@ -46,17 +44,14 @@ export async function POST(req: NextRequest) {
  * @constructor
  */
 export async function PATCH(req: NextRequest) {
-    const reqData = await req.json();
+  const reqData = await req.json();
 
-    const res = await authApi(
-        `/api/project/work`,
-        {
-            method: 'PATCH',
-            body: JSONReplaceBigInt(reqData)
-        }
-    );
+  const res = await authApi(`/api/project/work`, {
+    method: 'PATCH',
+    body: JSONReplaceBigInt(reqData),
+  });
 
-    return routeResponse(req, res);
+  return routeResponse(req, res);
 }
 
 /**
@@ -65,15 +60,12 @@ export async function PATCH(req: NextRequest) {
  * @constructor
  */
 export async function DELETE(req: NextRequest) {
-    const reqData = await req.json();
+  const reqData = await req.json();
 
-    const res = await authApi(
-        `/api/project/work`,
-        {
-            method: 'DELETE',
-            body: JSONReplaceBigInt(reqData)
-        }
-    )
+  const res = await authApi(`/api/project/work`, {
+    method: 'DELETE',
+    body: JSONReplaceBigInt(reqData),
+  });
 
-    return routeResponse(req, res);
+  return routeResponse(req, res);
 }

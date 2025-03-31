@@ -5,6 +5,7 @@ import { routeResponse } from '@/app/api/_interceptor/routeResponse';
 /**
  * 프로젝트 알림 목록 조회
  * @param req
+ * @param params
  * @constructor
  */
 export async function GET(

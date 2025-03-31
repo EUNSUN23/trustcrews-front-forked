@@ -1,12 +1,19 @@
-import {requestWithAuth} from "@/service/request";
-import {ProjectAuthMap, ProjectAuthMapCode} from "@/utils/type";
+import { requestWithAuth } from '@/service/request';
+import { ProjectAuthMapCode } from '@/utils/type';
 
 /**
  * 프로젝트 크루 목록 조회
  * @param projectId
  */
-export async function getProjectCrewList({projectId}: { projectId: string | bigint }) {
-    return await requestWithAuth('GET', `/api/project/crews/list?projectId=${projectId}`);
+export async function getProjectCrewList({
+  projectId,
+}: {
+  projectId: string | bigint;
+}) {
+  return await requestWithAuth(
+    'GET',
+    `/api/project/crews/list?projectId=${projectId}`,
+  );
 }
 
 /**
@@ -14,24 +21,33 @@ export async function getProjectCrewList({projectId}: { projectId: string | bigi
  * @param projectMemberId
  */
 export async function getCrewDetail(projectMemberId: string | bigint) {
-    return await requestWithAuth('GET', `/api/project/crews/detail?projectMemberId=${projectMemberId}`);
+  return await requestWithAuth(
+    'GET',
+    `/api/project/crews/detail?projectMemberId=${projectMemberId}`,
+  );
 }
 
 /**
- * 프로젝트 크루 업무 이력 조회
+ * 프로젝트 크루 업무이력 조회
  * @param projectMemberId
+ * @param pageIndex
+ * @param itemCount
  */
-export async function getCrewTaskHistory(projectMemberId: string | bigint, pageIndex: number, itemCount: number) {
-    return await requestWithAuth(
-        'GET',
-        `/api/project/crewTaskHistory?projectMemberId=${projectMemberId}&pageIndex=${pageIndex}&itemCount=${itemCount}`
-    );
+export async function getCrewTaskHistory(
+  projectMemberId: string | bigint,
+  pageIndex: number,
+  itemCount: number,
+) {
+  return await requestWithAuth(
+    'GET',
+    `/api/project/crewTaskHistory?projectMemberId=${projectMemberId}&pageIndex=${pageIndex}&itemCount=${itemCount}`,
+  );
 }
 
 export type WithdrawReqDto = {
-    projectId: bigint;
-    wMemberId: bigint;
-    wMemberAuth: ProjectAuthMapCode;
+  projectId: bigint;
+  wMemberId: bigint;
+  wMemberAuth: ProjectAuthMapCode;
 };
 
 /**
@@ -39,5 +55,5 @@ export type WithdrawReqDto = {
  * @param reqData
  */
 export async function withdrawProject(reqData: WithdrawReqDto) {
-    return await requestWithAuth('POST', `/api/project/crews/withdraw`, reqData);
+  return await requestWithAuth('POST', `/api/project/crews/withdraw`, reqData);
 }

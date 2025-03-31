@@ -1,18 +1,17 @@
-import {requestWithAuth} from "@/service/request";
-import {ProjectAuthMapCode} from "@/utils/type";
-
+import { requestWithAuth } from '@/service/request';
+import { ProjectAuthMapCode } from '@/utils/type';
 
 export type WorkCompleteRequestDto = {
-    workId: bigint;
-    authMap: ProjectAuthMapCode;
-}
+  workId: bigint;
+  authMap: ProjectAuthMapCode;
+};
 
 /**
  * 업무 알림 confirm
  * @param reqData
  */
 export async function workComplete(reqData: WorkCompleteRequestDto) {
-    return await requestWithAuth("POST", "/api/project/work/complete", reqData);
+  return await requestWithAuth('POST', '/api/project/work/complete', reqData);
 }
 
 /**
@@ -21,17 +20,25 @@ export async function workComplete(reqData: WorkCompleteRequestDto) {
  * @param alertId
  * @param confirmResult
  */
-export async function confirmRecruitNotice(projectId: string | bigint, alertId: string | bigint, confirmResult: boolean) {
-    const confirmRes = await requestWithAuth('POST', '/api/project/confirm/recruit', {
-        projectId,
-        alertId,
-        confirmResult
-    });
-    if (confirmRes.result === 'success') {
-        return await requestWithAuth('PATCH', '/api/project/notice', {alertId});
-    } else {
-        return confirmRes;
-    }
+export async function confirmRecruitNotice(
+  projectId: string | bigint,
+  alertId: string | bigint,
+  confirmResult: boolean,
+) {
+  const confirmRes = await requestWithAuth(
+    'POST',
+    '/api/project/confirm/recruit',
+    {
+      projectId,
+      alertId,
+      confirmResult,
+    },
+  );
+  if (confirmRes.result === 'success') {
+    return await requestWithAuth('PATCH', '/api/project/notice', { alertId });
+  } else {
+    return confirmRes;
+  }
 }
 
 /**
@@ -39,7 +46,7 @@ export async function confirmRecruitNotice(projectId: string | bigint, alertId: 
  * @param alertId
  */
 export async function confirmCrewAddNotice(alertId: string | bigint) {
-    return await requestWithAuth('PATCH', '/api/project/notice', {alertId});
+  return await requestWithAuth('PATCH', '/api/project/notice', { alertId });
 }
 
 /**
@@ -47,13 +54,20 @@ export async function confirmCrewAddNotice(alertId: string | bigint) {
  * @param alertId
  * @param withdrawConfirm
  */
-export async function confirmCrewWithdrawNotice(alertId: string | bigint, withdrawConfirm: boolean) {
-    const confirmRes = await requestWithAuth('POST', '/api/project/confirm/withdraw', {alertId, withdrawConfirm});
-    if (confirmRes.result === 'success') {
-        return await requestWithAuth('PATCH', '/api/project/notice', {alertId});
-    } else {
-        return confirmRes;
-    }
+export async function confirmCrewWithdrawNotice(
+  alertId: string | bigint,
+  withdrawConfirm: boolean,
+) {
+  const confirmRes = await requestWithAuth(
+    'POST',
+    '/api/project/confirm/withdraw',
+    { alertId, withdrawConfirm },
+  );
+  if (confirmRes.result === 'success') {
+    return await requestWithAuth('PATCH', '/api/project/notice', { alertId });
+  } else {
+    return confirmRes;
+  }
 }
 
 /**
@@ -62,14 +76,22 @@ export async function confirmCrewWithdrawNotice(alertId: string | bigint, withdr
  * @param targetUserId
  * @param alertId
  */
-export async function confirmCrewForceWithdrawNotice(projectId: string | bigint, targetUserId: string | bigint, alertId: string | bigint) {
-    const confirmRes = await requestWithAuth('POST', '/api/project/confirm/force-withdrawal', {
-        projectId,
-        targetUserId
-    });
-    if (confirmRes.result === 'success') {
-        return await requestWithAuth('PATCH', '/api/project/notice', {alertId});
-    } else {
-        return confirmRes;
-    }
+export async function confirmCrewForceWithdrawNotice(
+  projectId: string | bigint,
+  targetUserId: string | bigint,
+  alertId: string | bigint,
+) {
+  const confirmRes = await requestWithAuth(
+    'POST',
+    '/api/project/confirm/force-withdrawal',
+    {
+      projectId,
+      targetUserId,
+    },
+  );
+  if (confirmRes.result === 'success') {
+    return await requestWithAuth('PATCH', '/api/project/notice', { alertId });
+  } else {
+    return confirmRes;
+  }
 }

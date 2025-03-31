@@ -1,26 +1,34 @@
 import React from 'react';
 import {
-    projectSettingBoardInfoSelector,
-    ProjectSettingBoardInfoUpdField
-} from "@/store/project/setting/ProjectSettingFormStateStore";
-import {useRecoilState} from "recoil";
-import MultiPositionSelect from "@/components/postRegister/MultiPositionSelect";
+  projectSettingBoardInfoSelector,
+  ProjectSettingBoardInfoUpdField,
+} from '@/store/project/setting/ProjectSettingFormStateStore';
+import { useRecoilState } from 'recoil';
+import MultiPositionSelect from '@/components/postRegister/MultiPositionSelect';
 
-type ProjectSettingBoardInfoPositions = ProjectSettingBoardInfoUpdField<'positionIds'>;
+type ProjectSettingBoardInfoPositions =
+  ProjectSettingBoardInfoUpdField<'positionIds'>;
 
-function BoardPositions({initData}: { initData: ProjectSettingBoardInfoPositions }) {
-    const [positionsId, setPositionsId] = useRecoilState(projectSettingBoardInfoSelector('positionIds'));
+function BoardPositions({
+  initData,
+}: {
+  initData: ProjectSettingBoardInfoPositions;
+}) {
+  const [positionsId, setPositionsId] = useRecoilState(
+    projectSettingBoardInfoSelector('positionIds'),
+  );
 
-    const value = (positionsId as ProjectSettingBoardInfoPositions).length > 0
-        ? positionsId as ProjectSettingBoardInfoPositions
-        : initData;
+  const value =
+    (positionsId as ProjectSettingBoardInfoPositions).length > 0
+      ? (positionsId as ProjectSettingBoardInfoPositions)
+      : initData;
 
-    return (
-        <MultiPositionSelect
-            positions={value}
-            setPositions={(item) => setPositionsId(item)}
-        />
-    );
+  return (
+    <MultiPositionSelect
+      positions={value}
+      setPositions={(item) => setPositionsId(item)}
+    />
+  );
 }
 
 export default BoardPositions;
