@@ -1,3 +1,3 @@
-import Loader from "@/components/ui/Loader/Loader"; Loader
+import Loader from '@/components/ui/Loader/Loader';
 
 export default Loader;
