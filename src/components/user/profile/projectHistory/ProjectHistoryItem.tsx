@@ -1,4 +1,3 @@
-import React from 'react';
 import { classNames } from '@/utils/common';
 import { UserProjectHistoryData, UserProjectHistoryStatus } from '@/utils/type';
 import { AiFillRocket } from '@react-icons/all-files/ai/AiFillRocket';

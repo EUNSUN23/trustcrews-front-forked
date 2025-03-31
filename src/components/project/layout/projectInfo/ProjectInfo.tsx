@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { ProjectInfoSkeleton } from '@/components/ui/skeleton/project/task';
 import useProjectInfoSummary, {
   isQueryDataReady,

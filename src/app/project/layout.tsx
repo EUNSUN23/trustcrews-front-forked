@@ -1,15 +1,15 @@
-import React from 'react';
 import HomeNav from '@/components/ui/HomeNav';
 import ProjectNavTabContents from '@/components/project/layout/ProjectNavTabContents';
+import { ReactNode } from 'react';
 
 export const revalidate = 0;
 
 function ProjectLayout(props: {
-  children: React.ReactNode;
-  task: React.ReactNode;
-  crews: React.ReactNode;
-  notice: React.ReactNode;
-  setting: React.ReactNode;
+  children: ReactNode;
+  task: ReactNode;
+  crews: ReactNode;
+  notice: ReactNode;
+  setting: ReactNode;
 }) {
   return (
     <section className='flex flex-col justify-center mx-auto tablet:mt-[2rem] tablet:pt-[1.5rem] tablet:px-[1.5rem] pb-[5rem]'>

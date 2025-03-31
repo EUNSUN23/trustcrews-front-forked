@@ -1,4 +1,3 @@
-import React from 'react';
 import Skeleton from '@/components/ui/skeleton/Skeleton';
 import ButtonStyleSkeleton from '@/components/ui/skeleton/ButtonStyleSkeleton';
 import InputStyleSkeleton from '@/components/ui/skeleton/InputStyleSkeleton';

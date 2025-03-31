@@ -1,4 +1,3 @@
-import React from 'react';
 import TechStackSelect from '@/components/ui/form/TechStackSelect';
 import { useRecoilState } from 'recoil';
 import { projectFieldSelector } from '@/store/register/RegisterPostStateStore';

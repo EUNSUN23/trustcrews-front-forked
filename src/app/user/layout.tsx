@@ -1,5 +1,6 @@
 'use client';
-import React, { ReactNode } from 'react';
+
+import { ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import { IoMdArrowRoundBack } from '@react-icons/all-files/io/IoMdArrowRoundBack';
 

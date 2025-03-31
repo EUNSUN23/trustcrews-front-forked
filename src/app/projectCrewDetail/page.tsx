@@ -1,4 +1,3 @@
-import React from 'react';
 import CrewProfile from '@/components/project/crews/detail/crewProfile/CrewProfile';
 import { GrScorecard } from '@react-icons/all-files/gr/GrScorecard';
 import CrewTaskHistory from '@/components/project/crews/detail/CrewTaskHistory';

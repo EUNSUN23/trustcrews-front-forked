@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+
 import { BADGE_SIZE } from '@/utils/common';
 
 interface TechStackBadgeProps {

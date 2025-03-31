@@ -1,5 +1,6 @@
 'use client';
-import React, { useState } from 'react';
+
+import { useState } from 'react';
 import Image from 'next/image';
 import { useRecoilState } from 'recoil';
 import { postSearchValue } from '@/store/post/PostStateStore';

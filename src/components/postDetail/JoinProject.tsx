@@ -1,4 +1,3 @@
-import React from 'react';
 import { getCookie } from 'cookies-next';
 import { PostInfo } from '@/utils/type';
 import useJoinProject from '@/hooks/post/useJoinProject';

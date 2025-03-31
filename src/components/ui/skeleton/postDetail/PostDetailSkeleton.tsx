@@ -1,6 +1,5 @@
 import AvatarSkeleton from '@/components/ui/skeleton/AvatarSkeleton';
 import Skeleton from '@/components/ui/skeleton/Skeleton';
-import React from 'react';
 
 const PostDetailSkeleton = () => {
   return (

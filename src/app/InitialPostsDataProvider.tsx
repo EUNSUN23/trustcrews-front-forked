@@ -4,6 +4,7 @@ import {
   QueryClient,
 } from '@tanstack/react-query';
 import { getPostList, SearchPostParams } from '@/service/post/post';
+import { ReactNode } from 'react';
 
 export const DEFAULT_SEARCH_POST_PARAM: SearchPostParams = {
   techStacks: [],
@@ -12,11 +13,7 @@ export const DEFAULT_SEARCH_POST_PARAM: SearchPostParams = {
   page: 0,
 } as const;
 
-async function InitialPostsDataProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+async function InitialPostsDataProvider({ children }: { children: ReactNode }) {
   const queryClient = new QueryClient();
 
   const { techStacks, position, keyword, page } = DEFAULT_SEARCH_POST_PARAM;

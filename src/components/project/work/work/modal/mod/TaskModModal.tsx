@@ -1,4 +1,3 @@
-import React from 'react';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import {
   TaskModalType,

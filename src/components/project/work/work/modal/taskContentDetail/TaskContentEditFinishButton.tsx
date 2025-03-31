@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { MdModeEdit } from '@react-icons/all-files/md/MdModeEdit';
 import { FaCheck } from '@react-icons/all-files/fa/FaCheck';
 import { useMediaQuery } from 'react-responsive';

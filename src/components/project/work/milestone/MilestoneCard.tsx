@@ -1,5 +1,6 @@
 'use client';
-import React, { MouseEvent } from 'react';
+
+import { MouseEvent } from 'react';
 import { MilestoneInfo, ProjectAuthMap } from '@/utils/type';
 import MilestoneCardMenu from '@/components/project/work/milestone/MilestoneCardMenu';
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';

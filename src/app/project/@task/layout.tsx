@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 function ProjectTaskLayout({ children }: { children: ReactNode }) {
   return (

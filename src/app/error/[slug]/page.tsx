@@ -1,4 +1,3 @@
-import React from 'react';
 import Navigator from '@/components/ui/error/Navigator';
 import StyledLink from '@/components/ui/StyledLink';
 import ErrorPageContainer from '@/components/ui/error/ErrorPageContainer';

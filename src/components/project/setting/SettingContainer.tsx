@@ -1,8 +1,8 @@
-import React, { HTMLAttributes } from 'react';
 import { classNames } from '@/utils/common';
+import { HTMLAttributes, ReactNode } from 'react';
 
 interface SettingContainerProps extends HTMLAttributes<HTMLElement> {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 function SettingContainer({ children, ...props }: SettingContainerProps) {

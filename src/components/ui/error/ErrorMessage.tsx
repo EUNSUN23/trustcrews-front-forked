@@ -1,8 +1,8 @@
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import { classNames } from '@/utils/common';
 
 type ErrorMessageProps = HTMLAttributes<HTMLHeadingElement> & {
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 function ErrorMessage({ children, ...props }: ErrorMessageProps) {

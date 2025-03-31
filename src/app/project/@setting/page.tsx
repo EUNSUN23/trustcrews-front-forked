@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+
 import { numStrToBigInt } from '@/utils/common';
 import ProjectSettingInfo from '@/components/project/setting/info/ProjectSettingInfo';
 import ProjectSettingBoardInfo from '@/components/project/setting/board/ProjectSettingBoardInfo';

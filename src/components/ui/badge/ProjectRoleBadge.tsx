@@ -1,4 +1,3 @@
-import React from 'react';
 import { BADGE_SIZE } from '@/utils/common';
 import { BadgeProps } from '@/utils/type';
 

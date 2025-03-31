@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 import { BADGE_SIZE, classNames } from '@/utils/common';
 import { BadgeProps } from '@/utils/type';
 

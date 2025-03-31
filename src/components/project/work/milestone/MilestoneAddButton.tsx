@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import Button from '@/components/ui/Button';
 import { FaPlus } from '@react-icons/all-files/fa/FaPlus';
 import {

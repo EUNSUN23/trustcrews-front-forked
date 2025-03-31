@@ -1,4 +1,3 @@
-import React from 'react';
 import ProjectFinish from '@/components/project/setting/info/ProjectFinish';
 import { bigIntToString } from '@/utils/common';
 import SettingContainer from '@/components/project/setting/SettingContainer';

@@ -1,11 +1,11 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 function ProjectInfoItem({
   title,
   contents,
 }: {
   title: string;
-  contents: React.ReactNode;
+  contents: ReactNode;
 }) {
   return (
     <>

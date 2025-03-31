@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from '@/components/ui/Button';
 import { PostInfo } from '@/utils/type';
 import { getCookie } from 'cookies-next';

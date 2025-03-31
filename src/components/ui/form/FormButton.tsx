@@ -1,4 +1,3 @@
-import React from 'react';
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 interface FormButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

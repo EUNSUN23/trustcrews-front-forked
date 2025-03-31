@@ -1,4 +1,3 @@
-import React from 'react';
 import SettingContainer from '@/components/project/setting/SettingContainer';
 import SettingTitle from '@/components/project/setting/SettingTitle';
 import Skeleton from '@/components/ui/skeleton/Skeleton';

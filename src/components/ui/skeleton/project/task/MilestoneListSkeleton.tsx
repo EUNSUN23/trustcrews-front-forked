@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Skeleton from '@/components/ui/skeleton/Skeleton';
 import { useMediaQuery } from 'react-responsive';
 

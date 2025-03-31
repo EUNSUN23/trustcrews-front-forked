@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import MyProjectPosts from '@/components/main/myProjectPost/MyProjectPosts';
 import Posts from '@/components/main/posts/Posts';
 import { useRecoilValue, useSetRecoilState } from 'recoil';

@@ -1,4 +1,3 @@
-import React from 'react';
 import UserGuideNavLink from '@/components/main/userGuide/UserGuideNavLink';
 
 const UserGuide = () => {

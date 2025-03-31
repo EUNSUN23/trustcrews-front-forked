@@ -1,5 +1,4 @@
 import { makeImageSize } from '@/utils/common';
-import React from 'react';
 
 function AvatarSkeleton({
   size,

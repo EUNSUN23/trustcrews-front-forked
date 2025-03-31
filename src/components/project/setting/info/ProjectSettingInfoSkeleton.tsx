@@ -1,4 +1,3 @@
-import React from 'react';
 import InputStyleSkeleton from '@/components/ui/skeleton/InputStyleSkeleton';
 import SettingBody from '@/components/project/setting/SettingBody';
 

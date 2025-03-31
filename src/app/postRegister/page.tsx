@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import useCreatePost from '@/hooks/post/useCreatePost';
 import { useRecoilValue, useResetRecoilState } from 'recoil';

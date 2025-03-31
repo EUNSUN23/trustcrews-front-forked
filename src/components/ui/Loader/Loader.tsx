@@ -1,5 +1,3 @@
-import React from 'react';
-
 function Loader({ size }: { size: string }) {
   let sizeStyle: string;
   switch (size) {

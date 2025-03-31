@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { crewFWModalStateStore } from '@/store/project/alert/modal/CrewFWModalStateStore';
 import { createPortal } from 'react-dom';

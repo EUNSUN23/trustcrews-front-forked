@@ -1,4 +1,3 @@
-import React from 'react';
 import { VoteStatusCode, VoteStatusType } from '@/service/project/alert/type';
 import { NoticeBadge, BadgeColor } from '@/utils/common';
 import { VoteStatus } from '@/service/project/alert/constant';

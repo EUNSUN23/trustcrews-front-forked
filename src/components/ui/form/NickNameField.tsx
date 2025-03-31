@@ -1,4 +1,5 @@
 'use client';
+
 import { InputHTMLAttributes } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { checkNickname } from '@/service/user/user';

@@ -2,7 +2,6 @@ import { InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { AiTwotoneCalendar } from '@react-icons/all-files/ai/AiTwotoneCalendar';
 import { format } from 'date-fns';
-
 import 'react-datepicker/dist/react-datepicker.css';
 
 export interface CalenderProps extends InputHTMLAttributes<HTMLInputElement> {

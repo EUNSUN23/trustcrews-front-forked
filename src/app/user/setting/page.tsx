@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+
 import ProfileForm from '@/components/user/profile/ProfileForm';
 import ProfileFormSkeleton from '@/components/user/profile/ProfileFormSkeleton';
 import { useProfileInfo } from '@/hooks/user/useProfileInfo';

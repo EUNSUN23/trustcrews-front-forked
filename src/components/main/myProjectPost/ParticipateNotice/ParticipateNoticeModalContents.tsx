@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { PageResponseBody } from '@/utils/type';
 import ParticipateNotice from '@/components/main/myProjectPost/ParticipateNotice/ParticipateNotice';

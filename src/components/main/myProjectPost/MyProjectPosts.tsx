@@ -1,5 +1,6 @@
 'use client';
-import React, { useState } from 'react';
+
+import { useState } from 'react';
 import ProjectCard from '../projectCard/ProjectCard';
 import { useQuery } from '@tanstack/react-query';
 import { getMyProjectList } from '@/service/project/project';

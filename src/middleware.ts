@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import corsMiddleware from '@/corsMiddleware';
-
 import { isAuthorizedRequest } from '@/utils/isAuthorizedRequest';
 
 export default function middleware(request: NextRequest) {

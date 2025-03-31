@@ -1,4 +1,3 @@
-import React from 'react';
 import Avatar from '@/components/ui/Avatar';
 import { ResponseBody, TechStackItem } from '@/utils/type';
 import TechStackImage from '@/components/ui/TechStackImage';

@@ -1,6 +1,5 @@
 'use client';
 
-import React, { useEffect } from 'react';
 import Tasks from '@/components/project/work/work/Tasks';
 import TaskSectionHeader from '@/components/project/work/TaskSectionHeader';
 import { useMilestones } from '@/hooks/project/task/useMilestones';

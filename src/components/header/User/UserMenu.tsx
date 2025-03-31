@@ -1,5 +1,6 @@
 'use client';
-import React, { Fragment, useEffect } from 'react';
+
+import { Fragment, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { DropDownItem, ResponseBody, UserBasicInfo } from '@/utils/type';
 import Avatar from '@/components/ui/Avatar';

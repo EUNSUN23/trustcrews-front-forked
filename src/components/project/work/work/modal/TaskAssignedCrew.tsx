@@ -1,4 +1,3 @@
-import React from 'react';
 import ProjectCrewSelect from '@/components/project/ProjectCrewSelect';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import {

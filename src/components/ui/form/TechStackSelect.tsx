@@ -1,4 +1,3 @@
-import React from 'react';
 import MultiSelect from '@/components/ui/selector/MultiSelect';
 import { useTechStackList } from '@/hooks/common/useTechStackList';
 import {

@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+
 import Pagination from 'react-js-pagination';
 
 interface CommonPaginationProps {

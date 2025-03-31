@@ -1,4 +1,3 @@
-import React from 'react';
 import MultiPositionSelect from '@/components/postRegister/MultiPositionSelect';
 import { useRecoilState } from 'recoil';
 import { postFieldSelector } from '@/store/register/RegisterPostStateStore';

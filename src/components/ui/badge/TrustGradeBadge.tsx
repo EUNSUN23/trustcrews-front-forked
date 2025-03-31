@@ -1,5 +1,6 @@
 'use client';
-import React, { HTMLAttributes } from 'react';
+
+import { HTMLAttributes } from 'react';
 import { BadgeProps } from '@/utils/type';
 import { FaRegSmile } from '@react-icons/all-files/fa/FaRegSmile';
 import { TrustGradeNameType } from '@/app/project/@setting/_utils/type';

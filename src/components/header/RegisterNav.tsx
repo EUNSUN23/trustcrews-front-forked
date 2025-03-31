@@ -1,4 +1,3 @@
-import React from 'react';
 import { IoCreateOutline } from '@react-icons/all-files/io5/IoCreateOutline';
 import Link from 'next/link';
 

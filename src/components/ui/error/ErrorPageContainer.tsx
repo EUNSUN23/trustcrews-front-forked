@@ -1,8 +1,8 @@
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import { classNames } from '@/utils/common';
 
 type ErrorPageContainerProps = HTMLAttributes<HTMLDivElement> & {
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 function ErrorPageContainer({ children, ...props }: ErrorPageContainerProps) {

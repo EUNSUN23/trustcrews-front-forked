@@ -1,4 +1,5 @@
 'use client';
+
 import { useQuery } from '@tanstack/react-query';
 import { getUserIfo } from '@/service/user/user';
 import { ProfileInfo, ResponseBody } from '@/utils/type';

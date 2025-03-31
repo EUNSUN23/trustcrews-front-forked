@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { IoIosAddCircle } from '@react-icons/all-files/io/IoIosAddCircle';
 
 function TaskContentAddButton({

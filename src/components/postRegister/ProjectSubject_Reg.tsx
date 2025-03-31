@@ -1,4 +1,3 @@
-import React from 'react';
 import Input from '@/components/ui/form/Input';
 import { projectFieldSelector } from '@/store/register/RegisterPostStateStore';
 import { useRecoilState } from 'recoil';

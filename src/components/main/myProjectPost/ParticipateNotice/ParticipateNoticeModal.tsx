@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { userNoticeModalStateStore } from '@/store/UserNoticeModalStateStore';
 import { createPortal } from 'react-dom';

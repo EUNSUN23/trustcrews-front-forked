@@ -1,4 +1,3 @@
-import React from 'react';
 import { NOTICE_BADGE } from '@/utils/common';
 import { AlertMenu } from '@/service/project/alert/type';
 

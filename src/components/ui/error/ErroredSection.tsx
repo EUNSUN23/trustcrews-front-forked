@@ -1,8 +1,8 @@
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import { classNames } from '@/utils/common';
 
 interface ErroredSectionProps extends HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 function ErroredSection({ children, ...props }: ErroredSectionProps) {
   return (

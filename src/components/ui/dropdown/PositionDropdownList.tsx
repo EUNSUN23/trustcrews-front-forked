@@ -1,4 +1,3 @@
-import React from 'react';
 import { PositionItem } from '@/utils/type';
 import { classNames } from '@/utils/common';
 

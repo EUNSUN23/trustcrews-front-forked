@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import Skeleton from '@/components/ui/skeleton/Skeleton';
 import { PROJECT_MENU } from '@/app/project/_utils/constant';
 

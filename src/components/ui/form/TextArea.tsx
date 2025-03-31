@@ -1,4 +1,3 @@
-import React from 'react';
 import { TextareaHTMLAttributes } from 'react';
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {

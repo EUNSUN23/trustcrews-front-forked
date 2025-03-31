@@ -1,11 +1,11 @@
-import React from 'react';
 import Link from 'next/link';
+import { ReactNode } from 'react';
 
 function UserGuideNavLink({
   children,
   href,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   href: string;
 }) {
   return (

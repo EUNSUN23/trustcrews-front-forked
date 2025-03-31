@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import ProjectApplyStatusBadge from '@/components/ui/badge/ProjectApplyStatusBadge';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
 import { ProjectApplyDto } from '@/service/project/apply';

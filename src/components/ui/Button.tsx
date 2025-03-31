@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import { classNames, makeButtonColor, makeButtonSize } from '@/utils/common';
 import { ButtonSize, ButtonTheme } from '@/utils/type';
 

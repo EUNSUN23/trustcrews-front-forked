@@ -1,4 +1,3 @@
-import React from 'react';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
 import TechStackImage from '@/components/ui/TechStackImage';
 import { PostDetailPosition, ProjectInfoSummary } from '@/utils/type';

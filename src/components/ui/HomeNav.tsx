@@ -1,4 +1,3 @@
-import React from 'react';
 import Link from 'next/link';
 import { IoMdArrowRoundBack } from '@react-icons/all-files/io/IoMdArrowRoundBack';
 import { UrlObject } from 'url';

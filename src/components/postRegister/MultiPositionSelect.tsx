@@ -2,7 +2,6 @@ import MultiSelect from '@/components/ui/selector/MultiSelect';
 import { usePositionList } from '@/hooks/common/usePositionList';
 import { PositionId, SelectItem } from '@/utils/type';
 import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
-import React from 'react';
 
 interface MultiPositionSelectProps {
   positions: PositionId[];

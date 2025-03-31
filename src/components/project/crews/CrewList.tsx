@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+
 import Avatar from '@/components/ui/Avatar';
 import ProjectRoleBadge from '@/components/ui/badge/ProjectRoleBadge';
 import Link from 'next/link';

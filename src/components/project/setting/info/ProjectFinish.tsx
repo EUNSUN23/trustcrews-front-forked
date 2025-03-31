@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from '@/components/ui/Button';
 import { endProject as endProjectAPI } from '@/service/project/project';
 import { useSetRecoilState } from 'recoil';

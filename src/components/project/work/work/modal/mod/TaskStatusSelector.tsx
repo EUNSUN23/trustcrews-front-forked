@@ -1,4 +1,3 @@
-import React from 'react';
 import { useRecoilState } from 'recoil';
 import { Switch } from '@headlessui/react';
 import { taskProgressModFieldSelector } from '@/store/project/task/TaskStateStore';

@@ -1,4 +1,3 @@
-import React from 'react';
 import Link from 'next/link';
 import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
 import PositionBadge from '@/components/ui/badge/PositionBadge';

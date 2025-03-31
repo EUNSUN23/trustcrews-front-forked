@@ -1,5 +1,6 @@
 'use client';
-import React, { useState } from 'react';
+
+import { useState } from 'react';
 import Input from '@/components/ui/form/Input';
 import FormButton from '@/components/ui/form/FormButton';
 import { login } from '@/service/user/login';

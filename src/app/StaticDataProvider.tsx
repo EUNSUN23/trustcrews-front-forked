@@ -9,8 +9,9 @@ import {
   getTechStackList as getTechStackListAPI,
   getTechStackListWithCategory,
 } from '@/service/setting/setting';
+import { ReactNode } from 'react';
 
-async function StaticDataProvider({ children }: { children: React.ReactNode }) {
+async function StaticDataProvider({ children }: { children: ReactNode }) {
   const queryClient = new QueryClient();
 
   const positions = queryClient.prefetchQuery({

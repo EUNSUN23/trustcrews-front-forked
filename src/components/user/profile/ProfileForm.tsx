@@ -1,5 +1,6 @@
 'use client';
-import React, { ChangeEvent, useRef, useState } from 'react';
+
+import { ChangeEvent, useRef, useState } from 'react';
 import Avatar from '@/components/ui/Avatar';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/form/Input';

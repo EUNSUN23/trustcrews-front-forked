@@ -1,4 +1,3 @@
-import React from 'react';
 import TasksSkeleton from '@/components/ui/skeleton/project/task/TasksSkeleton';
 import TaskSectionHeaderSkeleton from '@/components/ui/skeleton/project/task/TaskSectionHeaderSkeleton';
 import { ITEM_COUNT } from '@/utils/constant';

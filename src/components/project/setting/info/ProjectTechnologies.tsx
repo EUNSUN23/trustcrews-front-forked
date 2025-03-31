@@ -1,4 +1,3 @@
-import React from 'react';
 import TechStackSelect from '@/components/ui/form/TechStackSelect';
 import { TechStackValueType } from '@/utils/type';
 import { ProjectSettingInfoData } from '@/service/project/setting/info';

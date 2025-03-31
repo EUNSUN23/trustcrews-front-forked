@@ -1,4 +1,6 @@
-function SettingsLayout({ children }: { children: React.ReactNode }) {
+import { ReactNode } from 'react';
+
+function SettingsLayout({ children }: { children: ReactNode }) {
   return <>{children}</>;
 }
 

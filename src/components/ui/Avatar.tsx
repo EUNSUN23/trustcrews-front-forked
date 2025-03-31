@@ -1,4 +1,5 @@
 'use client';
+
 import { classNames, makeImageSize } from '@/utils/common';
 import Image, { StaticImageData } from 'next/image';
 import { HTMLAttributes } from 'react';

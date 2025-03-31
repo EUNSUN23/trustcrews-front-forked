@@ -1,6 +1,6 @@
 'use client';
+
 import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
-import React from 'react';
 import { TrustGradeNameType } from '@/app/project/@setting/_utils/type';
 
 interface UserProjectInfoProps {

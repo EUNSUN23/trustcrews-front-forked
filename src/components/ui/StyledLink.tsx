@@ -1,13 +1,13 @@
-import React from 'react';
 import { ButtonSize, ButtonTheme } from '@/utils/type';
 import Link from 'next/link';
 import { classNames, makeButtonColor, makeButtonSize } from '@/utils/common';
 import { LinkProps } from 'next/dist/client/link';
+import { ReactNode } from 'react';
 
 export type StyledLinkProps = LinkProps & {
   size?: ButtonSize;
   theme?: ButtonTheme;
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
 };
 

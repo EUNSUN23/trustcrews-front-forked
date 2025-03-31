@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import ProjectInfo from '@/components/project/layout/projectInfo/ProjectInfo';
 import ProjectNavTab from '@/components/project/layout/ProjectNavTab';
 import useSetProjectIdState from '@/hooks/common/useSetProjectIdState';

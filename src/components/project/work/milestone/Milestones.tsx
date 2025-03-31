@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import MilestoneCard from '@/components/project/work/milestone/MilestoneCard';
 import CustomSwiper from '@/components/ui/CustomSwiper';
 import { useMilestones } from '@/hooks/project/task/useMilestones';

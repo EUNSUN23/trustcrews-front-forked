@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { ProjectAuthMap } from '@/utils/type';
 import ProjectName from '@/components/project/setting/info/ProjectName';
 import ProjectSubject from '@/components/project/setting/info/ProjectSubject';

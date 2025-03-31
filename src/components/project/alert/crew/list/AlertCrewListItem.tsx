@@ -1,4 +1,3 @@
-import React from 'react';
 import { AlertCrewData } from '@/service/project/alert/type';
 import NoticeBadge from '@/components/ui/badge/NoticeBadge';
 import { AlertType } from '@/service/project/alert/constant';

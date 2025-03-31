@@ -1,4 +1,3 @@
-import React from 'react';
 import TitleSearch from './TitleSearch';
 import TechStackDropdown from './TechStackDropdown';
 import PostList from './PostList';

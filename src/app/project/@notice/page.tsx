@@ -1,4 +1,5 @@
 'use client';
+
 import { useRecoilValue } from 'recoil';
 import { projectNoticeActiveMenuStateStore } from '@/store/project/alert/AlertNavTabStateStore';
 import VAlertRecruitList from '@/components/project/alert/vote/recruit/list/VAlertRecruitList';

@@ -1,11 +1,11 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 function CrewProfileItem({
   label,
   contents,
 }: {
   label: string;
-  contents: React.ReactNode;
+  contents: ReactNode;
 }) {
   return (
     <div className='pc:h-[50px] tablet:mx-8 flex items-center justify-around mobile:space-x-4'>

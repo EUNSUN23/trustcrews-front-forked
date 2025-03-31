@@ -1,4 +1,3 @@
-import React from 'react';
 import CalendarInput from '@/components/ui/form/CalendarInput';
 import { useRecoilState } from 'recoil';
 import { projectFieldSelector } from '@/store/register/RegisterPostStateStore';

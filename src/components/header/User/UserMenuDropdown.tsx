@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import DropDownWithIcon from '@/components/ui/DropDownWithIcon';
 import { FaChevronDown } from '@react-icons/all-files/fa/FaChevronDown';
 import { DropDownItem } from '@/utils/type';

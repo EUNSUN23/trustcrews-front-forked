@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
 import TechStackDropdownList from '../../ui/dropdown/TechStackDropdownList';

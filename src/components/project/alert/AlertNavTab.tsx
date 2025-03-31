@@ -1,6 +1,6 @@
 'use client';
+
 import { useRecoilState } from 'recoil';
-import React from 'react';
 import { projectNoticeActiveMenuStateStore } from '@/store/project/alert/AlertNavTabStateStore';
 import Select from '@/components/ui/selector/Select';
 import { classNames } from '@/utils/common';

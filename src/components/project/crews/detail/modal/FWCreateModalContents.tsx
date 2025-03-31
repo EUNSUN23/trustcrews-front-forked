@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
 import { FWReason } from '@/service/project/alert/constant';
 import { useSetRecoilState } from 'recoil';
 import { crewFWModalStateStore } from '@/store/project/alert/modal/CrewFWModalStateStore';

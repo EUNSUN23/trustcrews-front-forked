@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Button from '@/components/ui/Button';
 import { ProjectMemberProfile, ResponseBody } from '@/utils/type';
 import { useQueryClient } from '@tanstack/react-query';

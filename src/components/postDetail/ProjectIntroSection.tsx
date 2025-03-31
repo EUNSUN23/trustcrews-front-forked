@@ -1,5 +1,3 @@
-import React from 'react';
-
 const ProjectIntroSection = ({ content }: { content: string }) => {
   return (
     <section className='min-h-[250px] mobile:min-h-[150px] flex flex-col justify-center'>

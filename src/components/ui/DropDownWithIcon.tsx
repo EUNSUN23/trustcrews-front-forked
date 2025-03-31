@@ -1,5 +1,6 @@
 'use client';
-import React, { Fragment, ReactElement } from 'react';
+
+import { Fragment, ReactElement } from 'react';
 import {
   Menu,
   MenuButton,

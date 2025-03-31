@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { classNames } from '@/utils/common';
 import { Listbox } from '@headlessui/react';
 import { SelectItem } from '@/utils/type';

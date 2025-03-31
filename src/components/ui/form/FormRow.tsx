@@ -1,8 +1,8 @@
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 import { classNames } from '@/utils/common';
 
 interface FormRowProps extends HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 function FormRow({ children, ...props }: FormRowProps) {

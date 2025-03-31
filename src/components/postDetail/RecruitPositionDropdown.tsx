@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import useDropdownState from '@/hooks/common/useDropdownState';
 import { useRecoilState } from 'recoil';
 import { selectRecruitPositionState } from '@/store/postDetail/PostDetailStateStore';

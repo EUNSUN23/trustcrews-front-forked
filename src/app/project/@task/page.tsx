@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import Milestones from '@/components/project/work/milestone/Milestones';
 import MilestoneAddButton from '@/components/project/work/milestone/MilestoneAddButton';
 import TaskSection from '@/components/project/work/work/TaskSection';

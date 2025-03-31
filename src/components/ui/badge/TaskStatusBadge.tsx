@@ -1,4 +1,3 @@
-import React from 'react';
 import { BadgeProps } from '@/utils/type';
 import { BADGE_SIZE, getStatusBadgeColor } from '@/utils/common';
 

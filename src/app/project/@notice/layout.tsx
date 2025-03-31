@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import AlertNavTab from '@/components/project/alert/AlertNavTab';
 
 function NoticeLayout({ children }: { children: ReactNode }) {

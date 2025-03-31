@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+
 import { useRecoilState } from 'recoil';
 import { hasCookie } from 'cookies-next';
 import { activeTabState, PostTabs } from '@/store/post/PostStateStore';

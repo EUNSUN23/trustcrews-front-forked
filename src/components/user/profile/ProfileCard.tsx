@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+
 import { useRouter } from 'next/navigation';
 import Avatar from '@/components/ui/Avatar';
 import Button from '@/components/ui/Button';

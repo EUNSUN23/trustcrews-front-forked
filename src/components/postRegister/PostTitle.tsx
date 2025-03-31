@@ -1,4 +1,3 @@
-import React from 'react';
 import { useRecoilState } from 'recoil';
 import { postFieldSelector } from '@/store/register/RegisterPostStateStore';
 import FormRowWide from '@/components/ui/form/FormRowWide';

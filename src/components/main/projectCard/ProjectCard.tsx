@@ -1,4 +1,3 @@
-import React from 'react';
 import { ProjectInfoSummary } from '@/utils/type';
 import { format } from 'date-fns';
 import Link from 'next/link';

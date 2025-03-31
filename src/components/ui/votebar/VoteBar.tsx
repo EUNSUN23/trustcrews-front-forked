@@ -1,5 +1,6 @@
 'use client';
-import React, { ChangeEvent, useState } from 'react';
+
+import { ChangeEvent, useState } from 'react';
 import { VoteOption } from '@/service/project/vote/constant';
 
 type VoteBarProps = {

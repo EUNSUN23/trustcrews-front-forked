@@ -1,15 +1,16 @@
 'use client';
-import React from 'react';
+
 import { projectActiveNavState } from '@/store/project/ProjectNavTabStateStore';
 import { useRecoilValue } from 'recoil';
 import { PROJECT_MENU as PM } from '@/app/project/_utils/constant';
+import { ReactNode } from 'react';
 
 interface ProjectNavTabContentsProps {
   slots: {
-    task: React.ReactNode;
-    crews: React.ReactNode;
-    notice: React.ReactNode;
-    setting: React.ReactNode;
+    task: ReactNode;
+    crews: ReactNode;
+    notice: ReactNode;
+    setting: ReactNode;
   };
 }
 
@@ -18,7 +19,7 @@ function ProjectNavTabContents({
 }: ProjectNavTabContentsProps) {
   const activeNavTab = useRecoilValue(projectActiveNavState);
 
-  let contents: React.ReactNode;
+  let contents: ReactNode;
   switch (activeNavTab) {
     case PM.TASK.value:
       contents = task;

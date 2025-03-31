@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from '@/components/ui/Button';
 import { useResetRecoilState } from 'recoil';
 import { projectSettingInfoStateStore } from '@/store/project/setting/ProjectSettingFormStateStore';

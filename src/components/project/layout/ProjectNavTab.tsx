@@ -1,5 +1,6 @@
 'use client';
-import React, { useEffect } from 'react';
+
+import { useEffect } from 'react';
 import Link from 'next/link';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import { projectActiveNavState } from '@/store/project/ProjectNavTabStateStore';

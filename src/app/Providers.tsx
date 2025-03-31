@@ -1,5 +1,6 @@
 'use client';
-import React, { ReactNode } from 'react';
+
+import { ReactNode } from 'react';
 import { RecoilRoot } from 'recoil';
 import {
   isServer,

@@ -6,7 +6,6 @@ import {
   TrustGradeNameType as Name,
   TrustGradeValueType as Value,
 } from '@/app/project/@setting/_utils/type';
-import React from 'react';
 import useGradeListByUser from '@/hooks/user/useGradeListByUser';
 import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
 

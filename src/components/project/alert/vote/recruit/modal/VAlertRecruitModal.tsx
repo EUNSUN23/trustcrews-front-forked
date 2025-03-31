@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { vAlertRecruitModalState } from '@/store/project/alert/modal/VAlertModalStateStore';
 import { createPortal } from 'react-dom';

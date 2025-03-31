@@ -1,5 +1,6 @@
 'use client';
-import React, { ReactNode } from 'react';
+
+import { ReactNode } from 'react';
 import HomeNav from '@/components/ui/HomeNav';
 
 interface PostLayoutProps {
