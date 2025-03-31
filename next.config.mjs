@@ -20,6 +20,11 @@ export default (phase, {defaultConfig}) => {
                 }
             ]
         },
+        eslint:{
+            dirs:[
+                'src','types'
+            ]
+        }
     }
 
     return nextConfig;
