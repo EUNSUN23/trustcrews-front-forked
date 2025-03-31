@@ -1,6 +1,6 @@
 'use client';
 
-import React, { use } from 'react';
+import React from 'react';
 import Milestones from '@/components/project/work/milestone/Milestones';
 import MilestoneAddButton from '@/components/project/work/milestone/MilestoneAddButton';
 import TaskSection from '@/components/project/work/work/TaskSection';
@@ -10,11 +10,10 @@ import TaskAddModal from '@/components/project/work/work/modal/add/TaskAddModal'
 import TaskModModal from '@/components/project/work/work/modal/mod/TaskModModal';
 
 function TaskPage({
-  searchParams,
+  searchParams: { projectId, userId },
 }: {
-  searchParams: Promise<{ projectId: string; userId: string }>;
+  searchParams: { projectId: string; userId: string };
 }) {
-  const { projectId, userId } = use(searchParams);
   return (
     <>
       <section className='w-full flex flex-col items-start'>

@@ -4,12 +4,11 @@ import { routeResponse } from '@/app/api/_interceptor/routeResponse';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: { slug: string } },
 ) {
   let res: Response;
 
-  const { slug } = await params;
-  switch (slug) {
+  switch (params.slug) {
     case 'position':
       res = await publicApi('/api/position-list/public');
       break;

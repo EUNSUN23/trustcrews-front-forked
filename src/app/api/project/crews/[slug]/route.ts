@@ -10,17 +10,16 @@ import { routeResponse } from '@/app/api/_interceptor/routeResponse';
  */
 export async function GET(
   req: NextRequest,
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: { slug: string } },
 ) {
   const method = req.method;
   const { searchParams } = new URL(req.url);
 
   let res: Response;
-  const { slug } = await params;
-  if (slug === 'list') {
+  if (params.slug === 'list') {
     const projectId = searchParams.get('projectId');
     res = await authApi(`/api/projectmember/project/${projectId}`, { method });
-  } else if (slug === 'detail') {
+  } else if (params.slug === 'detail') {
     const projectMemberId = searchParams.get('projectMemberId');
     res = await authApi(`/api/projectmember/${projectMemberId}`, { method });
   } else {

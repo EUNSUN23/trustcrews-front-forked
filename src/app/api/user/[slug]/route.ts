@@ -5,14 +5,13 @@ import { routeResponse } from '@/app/api/_interceptor/routeResponse';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: { slug: string } },
 ) {
   const { searchParams } = new URL(req.url);
 
   let res: Response;
 
-  const { slug } = await params;
-  switch (slug) {
+  switch (params.slug) {
     case 'simple': {
       res = await authApi('/api/user/simple-me');
       break;

@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React from 'react';
 import CrewProfile from '@/components/project/crews/detail/crewProfile/CrewProfile';
 import { GrScorecard } from '@react-icons/all-files/gr/GrScorecard';
 import CrewTaskHistory from '@/components/project/crews/detail/CrewTaskHistory';
@@ -6,15 +6,10 @@ import HomeNav from '@/components/ui/HomeNav';
 import FwCreateModal from '@/components/project/crews/detail/modal/FWCreateModal';
 
 function CrewDetailPage({
-  searchParams,
+  searchParams: { projectMemberId, projectId, userId },
 }: {
-  searchParams: Promise<{
-    projectMemberId: string;
-    projectId: string;
-    userId: string;
-  }>;
+  searchParams: { projectMemberId: string; projectId: string; userId: string };
 }) {
-  const { projectMemberId, projectId, userId } = use(searchParams);
   return (
     <>
       <section className='w-fit tablet:translate-x-[-50%] mobile:translate-x-[-20%]'>

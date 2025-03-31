@@ -11,14 +11,14 @@ import { routeResponse } from '@/app/api/_interceptor/routeResponse';
  */
 export async function POST(
   req: NextRequest,
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: { slug: string } },
 ) {
   const reqData = await req.json();
 
   let res: Response;
   const method = req.method;
-  const { slug } = await params;
-  switch (slug) {
+
+  switch (params.slug) {
     case 'work':
       res = await authApi('/api/work/confirm', {
         method,
@@ -48,7 +48,7 @@ export async function POST(
       break;
     default:
       throw new Error(
-        `Unknown Notice Confirm Api: /api/project/confirm/${slug}`,
+        `Unknown Notice Confirm Api: /api/project/confirm/${params.slug}`,
       );
   }
 

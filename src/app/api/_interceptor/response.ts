@@ -63,13 +63,11 @@ export const createErrorResponse = async (error: Error) => {
   }
 
   if (errorCode === 'EAUTH') {
-    const userId = await getCookieValue(COOKIE.USER_ID);
+    deleteCookieValue(COOKIE.ACS_TOKEN);
+    deleteCookieValue(COOKIE.REF_TOKEN);
+    deleteCookieValue(COOKIE.USER_ID);
+    const userId = getCookieValue(COOKIE.USER_ID);
     deleteUserRefToken(userId);
-    await Promise.allSettled([
-      deleteCookieValue(COOKIE.ACS_TOKEN),
-      deleteCookieValue(COOKIE.REF_TOKEN),
-      deleteCookieValue(COOKIE.USER_ID),
-    ]);
   }
 
   return errorResponse(errorCode);

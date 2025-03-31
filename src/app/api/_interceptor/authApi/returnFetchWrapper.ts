@@ -19,7 +19,7 @@ export const returnFetchWrapper = (args?: ReturnFetchDefaultOptions) => {
     url: string | URL,
     requestInit?: RequestInit,
   ): Promise<CustomResponse> => {
-    const userId = await getCookieValue(COOKIE.USER_ID);
+    const userId = getCookieValue(COOKIE.USER_ID);
 
     if (!isRevalidatingUser(userId)) {
       if (requestInit) requestInit.headers = commonRequestHeaders(requestInit);

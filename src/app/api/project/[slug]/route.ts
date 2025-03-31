@@ -8,12 +8,11 @@ import { routeResponse } from '@/app/api/_interceptor/routeResponse';
  */
 export async function GET(
   req: NextRequest,
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: { slug: string } },
 ) {
   const method = req.method;
 
-  const { slug } = await params;
-  if (slug === 'list') {
+  if (params.slug === 'list') {
     const { searchParams } = new URL(req.url);
     const pageIndex = searchParams.get('pageIndex');
     const itemCount = searchParams.get('itemCount');
@@ -22,7 +21,7 @@ export async function GET(
       { method },
     );
     return routeResponse(req, res);
-  } else if (slug === 'detail') {
+  } else if (params.slug === 'detail') {
     const { searchParams } = new URL(req.url);
     const projectId = searchParams.get('projectId');
     const userId = searchParams.get('userId');

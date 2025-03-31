@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
     const accessToken = headers.get('Authorization');
     const setCookieHeader = headers.get('Set-Cookie');
 
-    const cookieStore = await cookies();
+    const cookieStore = cookies();
     if (accessToken && setCookieHeader) {
       const { token, options } = getRefreshToken(setCookieHeader);
       cookieStore.set(COOKIE.ACS_TOKEN, accessToken, {

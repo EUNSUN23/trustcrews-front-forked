@@ -1,6 +1,5 @@
 'use client';
-
-import React, { use } from 'react';
+import React from 'react';
 import { numStrToBigInt } from '@/utils/common';
 import ProjectSettingInfo from '@/components/project/setting/info/ProjectSettingInfo';
 import ProjectSettingBoardInfo from '@/components/project/setting/board/ProjectSettingBoardInfo';
@@ -15,11 +14,10 @@ import ErrorPageContainer from '@/components/ui/error/ErrorPageContainer';
 import useCurrentUserPMAuth from '@/hooks/project/useCurrentUserPMAuth';
 
 function SettingPage({
-  searchParams,
+  searchParams: { projectId },
 }: {
-  searchParams: Promise<{ projectId: string }>;
+  searchParams: { projectId: string };
 }) {
-  const { projectId } = use(searchParams);
   const { currentUserPMAuth, isFetchingCurrentUserPMAuth } =
     useCurrentUserPMAuth(projectId);
 

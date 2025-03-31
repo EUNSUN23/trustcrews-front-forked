@@ -17,11 +17,11 @@ export const deleteUserRefToken = (userId: string) =>
   userRefToken.delete(userId);
 
 export async function refreshToken(): Promise<void> {
-  const userId = await getCookieValue(COOKIE.USER_ID);
+  const userId = getCookieValue(COOKIE.USER_ID);
   let refreshToken = getUserRefToken(userId);
 
   if (refreshToken === undefined) {
-    refreshToken = await getCookieValue(COOKIE.REF_TOKEN);
+    refreshToken = getCookieValue(COOKIE.REF_TOKEN);
     setUserRefToken(userId, refreshToken);
   }
 
@@ -56,7 +56,7 @@ export async function refreshToken(): Promise<void> {
   if (accessToken && setCookieHeader) {
     // 액세스 & 리프레쉬 토큰 세팅
     const { token, options } = getRefreshToken(setCookieHeader);
-    const cookieStore = await cookies();
+    const cookieStore = cookies();
     cookieStore.set(COOKIE.ACS_TOKEN, accessToken, {
       ...options,
       sameSite: 'strict',

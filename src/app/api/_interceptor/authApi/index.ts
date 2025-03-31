@@ -24,7 +24,7 @@ const authApi = returnFetchWrapper({
     request: async (requestArgs) => {
       try {
         const requestInit = requestArgs[1];
-        const accessToken = await getCookieValue(COOKIE.ACS_TOKEN);
+        const accessToken = getCookieValue(COOKIE.ACS_TOKEN);
 
         // 액세스 토큰 세팅
         const headers = new Headers(requestInit.headers);
@@ -62,7 +62,7 @@ const authApi = returnFetchWrapper({
         return response;
       }
 
-      const userId = await getCookieValue(COOKIE.USER_ID);
+      const userId = getCookieValue(COOKIE.USER_ID);
       const retryOriginalRequest = new Promise<Response>((resolve, reject) => {
         addToRetryRequests(userId, async (error: Error | null) => {
           if (error) {
@@ -71,7 +71,7 @@ const authApi = returnFetchWrapper({
           } else {
             // 토큰 재발급 성공 - retry
             try {
-              const newAccessToken = await getCookieValue(COOKIE.ACS_TOKEN);
+              const newAccessToken = getCookieValue(COOKIE.ACS_TOKEN);
               const headers = new Headers(requestInit.headers);
               headers.set('Authorization', `Bearer ${newAccessToken}`);
 

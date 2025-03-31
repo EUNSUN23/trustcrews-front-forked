@@ -1,4 +1,3 @@
-import React, { use } from 'react';
 import PostDetail from '@/components/postDetail/PostDetail';
 import ConfirmModal from '@/components/ui/ConfirmModal';
 import { Metadata } from 'next';
@@ -7,11 +6,10 @@ import { getPost } from '@/service/post/post';
 import { PostInfo, ResponseBody } from '@/utils/type';
 
 export async function generateMetadata({
-  searchParams,
+  searchParams: { postId },
 }: {
-  searchParams: Promise<{ postId: string }>;
+  searchParams: { postId: string };
 }): Promise<Metadata> {
-  const { postId } = await searchParams;
   const postInfo: ResponseBody<PostInfo> = await getPost(
     numStrToBigInt(postId),
   );
@@ -23,11 +21,10 @@ export async function generateMetadata({
 }
 
 const PostDetailPage = ({
-  searchParams,
+  searchParams: { postId, projectId },
 }: {
-  searchParams: Promise<{ postId: string; projectId: string }>;
+  searchParams: { postId: string; projectId: string };
 }) => {
-  const { postId, projectId } = use(searchParams);
   return (
     <>
       <PostDetail postId={postId} projectId={projectId} />

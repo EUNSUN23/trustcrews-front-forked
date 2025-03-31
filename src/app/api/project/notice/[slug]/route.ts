@@ -9,7 +9,7 @@ import { routeResponse } from '@/app/api/_interceptor/routeResponse';
  */
 export async function GET(
   req: NextRequest,
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: { slug: string } },
 ) {
   const { searchParams } = new URL(req.url);
 
@@ -21,15 +21,14 @@ export async function GET(
 
   let res: Response;
   const requestNoticeUrl = `/api/alert/project/${projectId}`;
-  const { slug } = await params;
-  if (slug === 'all') {
+  if (params.slug === 'all') {
     res = await authApi(
       `${requestNoticeUrl}?pageIndex=${pageIndex}&itemCount=${itemCount}`,
       { method },
     );
   } else {
     res = await authApi(
-      `${requestNoticeUrl}/${slug}?pageIndex=${pageIndex}&itemCount=${itemCount}`,
+      `${requestNoticeUrl}/${params.slug}?pageIndex=${pageIndex}&itemCount=${itemCount}`,
       { method },
     );
   }
@@ -45,13 +44,12 @@ export async function GET(
  */
 export async function POST(
   req: NextRequest,
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: { slug: string } },
 ) {
   let res: Response;
   const method = req.method;
 
-  const { slug } = await params;
-  switch (slug) {
+  switch (params.slug) {
     case 'task': {
       const noticeCreateForm = await req.json();
       res = await authApi(`/api/alert`, {
@@ -76,7 +74,7 @@ export async function POST(
       break;
     }
     default:
-      throw new Error(`Unknown Notice API: /api/project/notice/${slug}`);
+      throw new Error(`Unknown Notice API: /api/project/notice/${params.slug}`);
   }
 
   return routeResponse(req, res);

@@ -10,11 +10,9 @@ export async function POST(req: NextRequest) {
   const res = await authApi('/api/user/logout', { method: 'POST' });
 
   if (res.ok) {
-    await Promise.allSettled([
-      deleteCookieValue(COOKIE.USER_ID),
-      deleteCookieValue(COOKIE.ACS_TOKEN),
-      deleteCookieValue(COOKIE.REF_TOKEN),
-    ]);
+    deleteCookieValue(COOKIE.USER_ID);
+    deleteCookieValue(COOKIE.ACS_TOKEN);
+    deleteCookieValue(COOKIE.REF_TOKEN);
   }
 
   return routeResponse(req, res);
