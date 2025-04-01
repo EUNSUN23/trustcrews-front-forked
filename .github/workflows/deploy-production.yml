@@ -8,7 +8,7 @@ env:
 on:
   push:
     branches:
-    - main
+      - main
 jobs:
   build-deploy-preview:
     if: github.repository == 'EUNSUN23/trustcrews-front-forked'
