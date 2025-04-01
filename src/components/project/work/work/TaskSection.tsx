@@ -6,6 +6,7 @@ import { useMilestones } from '@/hooks/project/task/useMilestones';
 import { TaskSectionSkeleton } from '@/components/ui/skeleton/project/task';
 import { milestoneActiveStateStore } from '@/store/project/task/MilestoneStateStore';
 import { useRecoilState } from 'recoil';
+import { useEffect } from 'react';
 
 function TaskSection({ projectId }: { projectId: string }) {
   const [activeMilestone, setActiveMilestone] = useRecoilState(

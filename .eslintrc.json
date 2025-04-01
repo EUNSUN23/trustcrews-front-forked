@@ -17,12 +17,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "jsx-a11y",
-    "@stylistic"
-  ],
+  "plugins": ["react", "@typescript-eslint", "jsx-a11y", "@stylistic"],
   "rules": {
     "@typescript-eslint/no-unused-vars": "off",
     "import/no-anonymous-default-export": "off",
