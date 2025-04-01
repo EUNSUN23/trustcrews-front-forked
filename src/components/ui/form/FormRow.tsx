@@ -1,5 +1,5 @@
-import { HTMLAttributes } from 'react';
-import { classNames } from '@/utils/common';
+import {HTMLAttributes, ReactNode} from 'react';
+import {classNames} from '@/utils/common';
 
 interface FormRowProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
