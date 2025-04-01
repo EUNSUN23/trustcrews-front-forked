@@ -7,7 +7,8 @@ env:
   NEXT_PUBLIC_BACKEND: ${{ secrets.NEXT_PUBLIC_BACKEND }}
 on:
   push:
-      - main
+    branches:
+    - main
 jobs:
   build-deploy-preview:
     if: github.repository == 'EUNSUN23/trustcrews-front-forked'
