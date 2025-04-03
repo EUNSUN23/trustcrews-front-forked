@@ -1,1 +1,1 @@
-export const baseURL = process.env.NEXT_PUBLIC_BACKEND as string;
+export const baseURL = process.env.BACKEND_HOST as string;

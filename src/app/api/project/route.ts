@@ -3,7 +3,7 @@ import authApi from '@/app/api/_interceptor/authApi';
 import { JSONReplaceBigInt } from '@/utils/common';
 import { routeResponse } from '@/app/api/_interceptor/routeResponse';
 
-const baseURL = process.env.NEXT_PUBLIC_BACKEND;
+const baseURL = process.env.BACKEND_HOST;
 
 /**
  * 프로젝트 정보 수정

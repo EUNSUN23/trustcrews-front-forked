@@ -295,15 +295,6 @@ export function throwErrorIfInvalid(flag: boolean, message: string) {
   if (flag) throw Error(message);
 }
 
-export function changeImageUrl(imgSrc: string | null = null) {
-  return imgSrc
-    ? imgSrc.replace(
-        'projectmatch-user-image.s3.ap-northeast-2.amazonaws.com',
-        'projectmatch-bucket.s3.ap-northeast-2.amazonaws.com',
-      )
-    : imgSrc;
-}
-
 export function makeButtonSize(size: ButtonSize) {
   let textSize;
   let px;

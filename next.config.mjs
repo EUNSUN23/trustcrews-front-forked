@@ -15,7 +15,8 @@ export default (phase, { defaultConfig }) => {
       remotePatterns: [
         {
           protocol: 'https',
-          hostname: 'project-match-bucket.s3.ap-northeast-2.amazonaws.com',
+          hostname: process.env.S3_HOST,
+          pathname: '/profile/**',
         },
       ],
     },
