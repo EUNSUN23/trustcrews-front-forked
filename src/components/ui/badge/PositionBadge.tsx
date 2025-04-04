@@ -1,8 +1,7 @@
-"use client";
-import React from "react";
-import {BADGE_SIZE} from "@/utils/common";
-import {BadgeProps} from "@/utils/type";
+'use client';
 
+import { BADGE_SIZE } from '@/utils/common';
+import { BadgeProps } from '@/utils/type';
 
 function PositionBadge({ size, text = '' }: BadgeProps) {
   return (

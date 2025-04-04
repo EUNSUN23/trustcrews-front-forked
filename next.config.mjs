@@ -1,26 +1,28 @@
-export default (phase, {defaultConfig}) => {
+export default (phase, { defaultConfig }) => {
+  /** @type {import('next').NextConfig} */
 
-    /** @type {import('next').NextConfig} */
+  const nextConfig = {
+    productionBrowserSourceMaps: true,
+    webpack: (config) => {
+      config.module.rules.push({
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      });
 
-    const nextConfig = {
-        productionBrowserSourceMaps: true,
-        webpack: (config) => {
-            config.module.rules.push({
-                test: /\.svg$/,
-                use: ["@svgr/webpack"]
-            });
-
-            return config;
+      return config;
+    },
+    images: {
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'project-match-bucket.s3.ap-northeast-2.amazonaws.com',
         },
-        images: {
-            remotePatterns: [
-                {
-                    protocol: 'https',
-                    hostname: 'project-match-bucket.s3.ap-northeast-2.amazonaws.com'
-                }
-            ]
-        },
-    }
+      ],
+    },
+    eslint: {
+      dirs: ['src', 'types'],
+    },
+  };
 
-    return nextConfig;
-}
+  return nextConfig;
+};

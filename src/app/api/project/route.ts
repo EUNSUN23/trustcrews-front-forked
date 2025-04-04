@@ -1,7 +1,7 @@
-import {NextRequest, NextResponse} from "next/server";
-import authApi from "@/app/api/_interceptor/authApi";
-import {JSONReplaceBigInt} from "@/utils/common";
-import {routeResponse} from "@/app/api/_interceptor/routeResponse";
+import { NextRequest } from 'next/server';
+import authApi from '@/app/api/_interceptor/authApi';
+import { JSONReplaceBigInt } from '@/utils/common';
+import { routeResponse } from '@/app/api/_interceptor/routeResponse';
 
 const baseURL = process.env.NEXT_PUBLIC_BACKEND;
 
@@ -11,14 +11,14 @@ const baseURL = process.env.NEXT_PUBLIC_BACKEND;
  * @constructor
  */
 export async function PUT(req: NextRequest) {
-    const {projectInfo} = await req.json();
+  const { projectInfo } = await req.json();
 
-    const res = await authApi(`${baseURL}/api/project`, {
-        method: 'PUT',
-        body: JSONReplaceBigInt(projectInfo)
-    })
+  const res = await authApi(`${baseURL}/api/project`, {
+    method: 'PUT',
+    body: JSONReplaceBigInt(projectInfo),
+  });
 
-    return routeResponse(req, res);
+  return routeResponse(req, res);
 }
 
 /**
@@ -26,10 +26,12 @@ export async function PUT(req: NextRequest) {
  * @param req
  * @constructor
  */
-export async function POST(req:NextRequest){
-    const {projectId} = await req.json();
+export async function POST(req: NextRequest) {
+  const { projectId } = await req.json();
 
-    const res = await authApi(`${baseURL}/api/project/${projectId}/end`,{method:'POST'});
+  const res = await authApi(`${baseURL}/api/project/${projectId}/end`, {
+    method: 'POST',
+  });
 
-    return routeResponse(req, res);
+  return routeResponse(req, res);
 }

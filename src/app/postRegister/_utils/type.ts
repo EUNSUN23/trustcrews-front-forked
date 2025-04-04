@@ -1,13 +1,12 @@
-import {ArrayValue, PositionId, TechStackValueType} from "@/utils/type";
-import {recruitmentCountList} from "@/app/postRegister/_utils/constant";
-
+import { ArrayValue, PositionId, TechStackValueType } from '@/utils/type';
+import { recruitmentCountList } from '@/app/postRegister/_utils/constant';
 
 export type CreatePost = {
-    title: string;
-    content: string;
-    contact: string;
-    positionIds: PositionId[];
-}
+  title: string;
+  content: string;
+  contact: string;
+  positionIds: PositionId[];
+};
 
 export type CreatePostKey = keyof CreatePost;
 
@@ -16,17 +15,16 @@ export type RecruitCountValue = RecruitCount['value'];
 export type RecruitCountName = RecruitCount['name'];
 
 export type CreateProject = {
-    name: string;
-    subject: string;
-    startDate: string;
-    endDate: string;
-    technologyIds: readonly TechStackValueType[];
-}
+  name: string;
+  subject: string;
+  startDate: string;
+  endDate: string;
+  technologyIds: readonly TechStackValueType[];
+};
 
 export type CreateProjectKey = keyof CreateProject;
 
 export type CreatePostForm = {
-    board: CreatePost;
-    project: CreateProject;
-}
-
+  board: CreatePost;
+  project: CreateProject;
+};

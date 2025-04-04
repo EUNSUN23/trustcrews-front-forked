@@ -1,53 +1,59 @@
-import {handleResponse, requestWithAuth} from "@/service/request";
-import {ResponseBody} from "@/utils/type";
+import { handleResponse, requestWithAuth } from '@/service/request';
 
 const publicURL = process.env.NEXT_PUBLIC_URL;
 
 export interface UpdateUserInfo {
-    nickname: string;
-    positionId: bigint;
-    techStackIds: bigint[];
-    intro: string;
+  nickname: string;
+  positionId: bigint;
+  techStackIds: bigint[];
+  intro: string;
 }
 
 export const checkNickname = async (nickname: string) => {
-    const response = await fetch(
-        `${publicURL}/api/user/nickname?nickname=${nickname}`
-    );
-    return response.json();
+  const response = await fetch(
+    `${publicURL}/api/user/nickname?nickname=${nickname}`,
+  );
+  return response.json();
 };
 
 export const getSimpleUser = async () => {
-    return await requestWithAuth('GET', '/api/user/simple');
+  return await requestWithAuth('GET', '/api/user/simple');
 };
 
 export const getUserIfo = async () => {
-    return await requestWithAuth('GET', `/api/user`);
+  return await requestWithAuth('GET', `/api/user`);
 };
 
 export const updateUser = async (
-    updateData: UpdateUserInfo,
-    file: File | null
+  updateData: UpdateUserInfo,
+  file: File | null,
 ) => {
-    const formData = new FormData();
-    formData.set(
-        "updateRequestDto",
-        new Blob([ JSON.stringify(updateData, (k, v) => (typeof v === 'bigint' ? Number(v) : v))], {
-            type: "application/json",
-        }),
-    );
+  const formData = new FormData();
+  formData.set(
+    'updateRequestDto',
+    new Blob(
+      [
+        JSON.stringify(updateData, (k, v) =>
+          typeof v === 'bigint' ? Number(v) : v,
+        ),
+      ],
+      {
+        type: 'application/json',
+      },
+    ),
+  );
 
-    if (file) {
-        formData.set("file", file);
-    }
+  if (file) {
+    formData.set('file', file);
+  }
 
-    const res = await fetch(`${publicURL}/api/user`, {
-        method:'PUT',
-        cache: 'no-cache',
-        body: formData
-    });
+  const res = await fetch(`${publicURL}/api/user`, {
+    method: 'PUT',
+    cache: 'no-cache',
+    body: formData,
+  });
 
-    return await handleResponse(res);
+  return await handleResponse(res);
 };
 
 /**
@@ -55,7 +61,10 @@ export const updateUser = async (
  * @param pageNumber
  */
 export const getUserMeProjectHistory = async (pageNumber: number) => {
-    return await requestWithAuth('GET', `/api/user/history-me?pageNumber=${pageNumber}`)
+  return await requestWithAuth(
+    'GET',
+    `/api/user/history-me?pageNumber=${pageNumber}`,
+  );
 };
 
 /**
@@ -63,19 +72,25 @@ export const getUserMeProjectHistory = async (pageNumber: number) => {
  * @param pageNumber
  * @param userId
  */
-export const getUserProjectHistory = async (pageNumber:number, userId: bigint) => {
-    return await requestWithAuth('GET', `/api/user/history?pageNumber=${pageNumber}&userId=${userId}`);
-}
+export const getUserProjectHistory = async (
+  pageNumber: number,
+  userId: bigint,
+) => {
+  return await requestWithAuth(
+    'GET',
+    `/api/user/history?pageNumber=${pageNumber}&userId=${userId}`,
+  );
+};
 
 /**
  *
  */
 export const getTrustGradeListByUser = async () => {
-    return await requestWithAuth('GET', '/api/user/trust-grade');
+  return await requestWithAuth('GET', '/api/user/trust-grade');
 };
 
 export const deleteProfileImage = async () => {
-    return await requestWithAuth('DELETE', '/api/user/profile-img');
+  return await requestWithAuth('DELETE', '/api/user/profile-img');
 };
 
 /**
@@ -83,5 +98,5 @@ export const deleteProfileImage = async () => {
  * @param userId
  */
 export const getUserInfoByUserId = async (userId: string | bigint) => {
-    return await requestWithAuth('GET', `/api/user/general?userId=${userId}`);
-}
+  return await requestWithAuth('GET', `/api/user/general?userId=${userId}`);
+};

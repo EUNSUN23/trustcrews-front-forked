@@ -1,6 +1,6 @@
-import {atom} from "recoil";
+import { atom } from 'recoil';
 
 export const selectRecruitPositionState = atom<string>({
-    key:'selectRecruitPositionState',
-    default: '0'
-})
+  key: 'selectRecruitPositionState',
+  default: '0',
+});

@@ -1,15 +1,15 @@
 'use client';
 
-import {useEffect, useState} from "react";
+import { useEffect, useState } from 'react';
 
-function useClientMount(){
-    const [mounted, setMounted] = useState(false);
+function useClientMount() {
+  const [mounted, setMounted] = useState(false);
 
-    useEffect(() => {
-        setMounted(true)
-    }, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-    return mounted;
+  return mounted;
 }
 
 export default useClientMount;

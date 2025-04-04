@@ -1,8 +1,8 @@
-import authApi from "@/app/api/_interceptor/authApi";
-import publicApi from "@/app/api/_interceptor/publicApi";
-import {NextRequest} from "next/server";
-import {routeResponse} from "@/app/api/_interceptor/routeResponse";
-import {JSONReplaceBigInt} from "@/utils/common";
+import authApi from '@/app/api/_interceptor/authApi';
+import publicApi from '@/app/api/_interceptor/publicApi';
+import { NextRequest } from 'next/server';
+import { routeResponse } from '@/app/api/_interceptor/routeResponse';
+import { JSONReplaceBigInt } from '@/utils/common';
 
 /**
  * 게시글 상세조회
@@ -11,7 +11,7 @@ import {JSONReplaceBigInt} from "@/utils/common";
  */
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const postId = searchParams.get("postId");
+  const postId = searchParams.get('postId');
 
   const res = await publicApi(`/api/board/${postId}/public`);
 
@@ -24,11 +24,11 @@ export async function GET(req: NextRequest) {
  * @constructor
  */
 export async function POST(req: NextRequest) {
-  const {board, project} = await req.json();
+  const { board, project } = await req.json();
 
-  const res = await authApi("/api/board", {
-    method: "POST",
-    body: JSONReplaceBigInt({board, project}),
+  const res = await authApi('/api/board', {
+    method: 'POST',
+    body: JSONReplaceBigInt({ board, project }),
   });
 
   return routeResponse(req, res);
