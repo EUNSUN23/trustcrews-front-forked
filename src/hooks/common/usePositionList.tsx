@@ -1,22 +1,14 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { getPositionList as getPositionListAPI } from '@/service/setting/setting';
-import { PositionItem, ResponseBody } from '@/utils/type';
 import { useSetRecoilState } from 'recoil';
 import { snackbarState } from '@/store/CommonStateStore';
+import { positionQueryOptions } from '@/utils/tanstackQueryOptions/settingsQuery';
 
 export function usePositionList() {
   const setSnackBar = useSetRecoilState(snackbarState);
 
-  const { data, isFetching, isError } = useQuery<
-    ResponseBody<PositionItem[]>,
-    Error
-  >({
-    queryKey: ['positions'],
-    queryFn: () => getPositionListAPI(),
-    staleTime: Infinity,
-  });
+  const { data, isFetching, isError } = useQuery(positionQueryOptions());
 
   if (isError)
     setSnackBar({

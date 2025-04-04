@@ -5,16 +5,12 @@ import { useRecoilValue } from 'recoil';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
 import TechStackDropdownList from '../../ui/dropdown/TechStackDropdownList';
 import { useQuery } from '@tanstack/react-query';
-import {
-  ResponseBody,
-  TechStackCategory,
-  TechStackWithCategory,
-} from '@/utils/type';
-import {
-  getTechStackCategoryList,
-  getTechStackListWithCategory,
-} from '@/service/setting/setting';
+import { TechStackWithCategory } from '@/utils/type';
 import { selectedTechStackState } from '@/store/post/PostStateStore';
+import {
+  techCategoryQueryOptions,
+  techMapQueryOptions,
+} from '@/utils/tanstackQueryOptions/settingsQuery';
 
 const getSelectedTechStackText = (
   selectedTechStacks: TechStackWithCategory[],
@@ -49,23 +45,13 @@ const TechStackDropdown = () => {
     return () => document.removeEventListener('click', handleDocumentClick);
   }, []);
 
-  const { data: categoryResponse, isFetching: isFetchingCategory } = useQuery<
-    ResponseBody<TechStackCategory[]>,
-    Error
-  >({
-    queryKey: ['techStackCategoryList'],
-    queryFn: () => getTechStackCategoryList(),
-    staleTime: Infinity,
-  });
+  const { data: categoryResponse, isFetching: isFetchingCategory } = useQuery(
+    techCategoryQueryOptions(),
+  );
 
-  const { data: techStackResponse, isFetching: isFetchingTechStack } = useQuery<
-    ResponseBody<TechStackWithCategory[]>,
-    Error
-  >({
-    queryKey: ['techStackListWithCategory'],
-    queryFn: () => getTechStackListWithCategory(),
-    staleTime: Infinity,
-  });
+  const { data: techStackResponse, isFetching: isFetchingTechStack } = useQuery(
+    techMapQueryOptions(),
+  );
 
   if (isFetchingTechStack || isFetchingCategory)
     return (
