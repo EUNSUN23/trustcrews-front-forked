@@ -8,7 +8,7 @@ import NicknameField from '@/components/ui/form/NickNameField';
 import TextArea from '@/components/ui/form/TextArea';
 import FormButton from '@/components/ui/form/FormButton';
 import { PositionId, ProfileInfo, TechStackValueType } from '@/utils/type';
-import { changeImageUrl, isValidNickname } from '@/utils/common';
+import { isValidNickname } from '@/utils/common';
 import {
   deleteProfileImage as deleteProfileImageAPI,
   updateUser as updateUserAPI,
@@ -31,8 +31,8 @@ function ProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
     email,
   } = profileInfo;
 
-  const [imageSrc, setImageSrc] = useState<string | null>(() =>
-    changeImageUrl(profileImgSrc),
+  const [imageSrc, setImageSrc] = useState<string | null>(
+    () => profileImgSrc ?? null,
   );
   const [nickname, setNickname] = useState(initNickname);
   const [positionId, setPositionId] = useState<PositionId | null>(
