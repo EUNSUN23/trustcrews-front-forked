@@ -8,7 +8,7 @@ import {
   PostTabs,
 } from '@/features/board/store/BoardActiveStateStore';
 
-const PostTabMenu = () => {
+const BoardTab = () => {
   const [activePostTab, setActivePostTab] = useRecoilState(activeTabState);
   const mounted = useClientMount();
 
@@ -51,4 +51,4 @@ const PostTabMenu = () => {
   );
 };
 
-export default PostTabMenu;
+export default BoardTab;

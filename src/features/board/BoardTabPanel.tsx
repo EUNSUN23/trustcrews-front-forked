@@ -13,7 +13,7 @@ const {
   recruits: { name: PROJECT_POSTS },
 } = PostTabs;
 
-function PostTabContents() {
+function BoardTabPanel() {
   const { name: activeTabName } = useRecoilValue(activeTabState);
 
   return (
@@ -38,4 +38,4 @@ function PostTabContents() {
   );
 }
 
-export default PostTabContents;
+export default BoardTabPanel;
