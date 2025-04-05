@@ -1,17 +1,17 @@
 'use client';
 
 import Button from '@/components/ui/Button';
-import {
-  activeTabState,
-  selectedPositionState,
-  selectedTechStackState,
-} from '@/store/post/PostStateStore';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useResetRecoilState } from 'recoil';
 import ErrorPageContainer from '@/components/ui/error/ErrorPageContainer';
 import ErrorMessage from '@/components/ui/error/ErrorMessage';
 import Navigator from '@/components/ui/error/Navigator';
+import {
+  selectedPositionState,
+  selectedTechStackState,
+} from '@/features/board/projectPosts/store/PostSearchStateStore';
+import { activeTabState } from '@/features/board/store/BoardActiveStateStore';
 
 export default function Error({
   error,

@@ -1,10 +1,10 @@
 import { useRouter } from 'next/navigation';
 import { useResetRecoilState } from 'recoil';
-import { activeTabState } from '@/store/post/PostStateStore';
 import { useMutation } from '@tanstack/react-query';
 import { logout as logoutAPI } from '@/service/user/logout';
 import { isEqual } from 'lodash';
 import useSnackbar from '@/hooks/common/useSnackbar';
+import { activeTabState } from '@/features/board/store/BoardActiveStateStore';
 
 export default function useLogout() {
   const router = useRouter();
