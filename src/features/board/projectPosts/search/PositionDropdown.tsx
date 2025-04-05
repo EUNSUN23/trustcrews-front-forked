@@ -3,7 +3,6 @@ import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
 import useDropdownState from '@/hooks/common/useDropdownState';
 import { usePositionList } from '@/hooks/common/usePositionList';
 import { useRecoilState } from 'recoil';
-import { selectedPositionState } from '@/store/post/PostStateStore';
 import { compareItems } from '@/app/_boardUtil/common';
 import {
   Listbox,
@@ -14,6 +13,7 @@ import {
 } from '@headlessui/react';
 import { bigIntToString, classNames } from '@/utils/common';
 import { defaultPositionSelectItem } from '@/app/_boardUtil/constant';
+import { selectedPositionState } from '@/features/board/projectPosts/store/PostSearchStateStore';
 
 function PositionDropdown() {
   const [selectedPosition, setSelectedPosition] = useRecoilState(

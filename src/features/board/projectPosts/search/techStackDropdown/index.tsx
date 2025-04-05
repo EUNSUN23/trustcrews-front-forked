@@ -3,14 +3,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
-import TechStackDropdownList from '../../ui/dropdown/TechStackDropdownList';
+import TechStackDropdownList from './TechStackDropdownList';
 import { useQuery } from '@tanstack/react-query';
 import { TechStackWithCategory } from '@/utils/type';
-import { selectedTechStackState } from '@/store/post/PostStateStore';
 import {
   techCategoryQueryOptions,
   techMapQueryOptions,
 } from '@/utils/tanstackQueryOptions/settingsQuery';
+import { selectedTechStackState } from '@/features/board/projectPosts/store/PostSearchStateStore';
 
 const getSelectedTechStackText = (
   selectedTechStacks: TechStackWithCategory[],
