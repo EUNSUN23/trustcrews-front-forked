@@ -1,21 +1,21 @@
 'use client';
 
 import CommonPagination from '@/components/ui/CommonPagination';
-import PostCard from '../postCard/PostCard';
+import PostCard from './PostCard';
 import { useRecoilValue } from 'recoil';
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { PageResponseBody, PostCardInfo } from '@/utils/type';
-import { getPostList } from '@/service/post/post';
-import {
-  postSearchValue,
-  selectedPositionState,
-  selectedTechStackState,
-} from '@/store/post/PostStateStore';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
 import PostListSkeleton from '@/components/main/PostListSkeleton';
 import { isQueryDataReady } from '@/hooks/common/useProjectInfoSummary';
 import ErroredSection from '@/components/ui/error/ErroredSection';
+import {
+  postSearchValue,
+  selectedPositionState,
+  selectedTechStackState,
+} from '@/features/board/projectPosts/store/PostSearchStateStore';
+import { getPostList } from '@/features/board/projectPosts/service';
 
 const PostList = () => {
   const selectedTechStacks = useRecoilValue(selectedTechStackState);
