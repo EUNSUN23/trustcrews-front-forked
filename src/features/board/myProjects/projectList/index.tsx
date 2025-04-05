@@ -1,15 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import ProjectCard from '../projectCard/ProjectCard';
+import ProjectCard from './ProjectCard';
 import { useQuery } from '@tanstack/react-query';
-import { getMyProjectList } from '@/service/project/project';
 import { PageResponseBody, ProjectInfoSummary } from '@/utils/type';
 import CommonPagination from '@/components/ui/CommonPagination';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
 import PostListSkeleton from '@/features/board/projectPosts/postList/PostListSkeleton';
+import { getMyProjectList } from '@/features/board/myProjects/projectList/service';
 
-function MyProjectPosts({ isActive }: { isActive: boolean }) {
+function ProjectList() {
   const [pageNumber, setPageNumber] = useState(0);
 
   function onChangePageHandler(pageNumber: number) {
@@ -24,7 +24,6 @@ function MyProjectPosts({ isActive }: { isActive: boolean }) {
     queryKey: ['myProjectList', pageNumber],
     queryFn: () => getMyProjectList(pageNumber, 8),
     staleTime: 0,
-    enabled: isActive,
   });
 
   if (isFetching || isError) return <PostListSkeleton itemCount={8} />;
@@ -65,4 +64,4 @@ function MyProjectPosts({ isActive }: { isActive: boolean }) {
   );
 }
 
-export default MyProjectPosts;
+export default ProjectList;

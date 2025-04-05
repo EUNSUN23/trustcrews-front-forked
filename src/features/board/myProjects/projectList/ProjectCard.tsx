@@ -90,15 +90,6 @@ const ProjectCard = ({ projectPost }: ProjectCardProps) => {
           </div>
         )}
       </div>
-      {/*<div className="flex my-5 text-base">*/}
-      {/*    <span className='basis-[30px] text-gray-500 font-semibold'>*/}
-      {/*        <Image src="/images/update.svg" alt="update date" width={20} height={20} className='mx-auto'/>*/}
-      {/*    </span>*/}
-      {/*    <span*/}
-      {/*        className="ml-5 inline-block font-bold text-grey800">*/}
-      {/*            {format(new Date(updateDate), 'yyyy-MM-dd')}*/}
-      {/*        </span>*/}
-      {/*</div>*/}
       <div className='flex justify-center mt-5 mb-3'>
         <Link
           href={`/project?projectId=${projectId}&userId=${userId}`}
