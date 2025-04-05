@@ -7,7 +7,7 @@ import { getMyProjectList } from '@/service/project/project';
 import { PageResponseBody, ProjectInfoSummary } from '@/utils/type';
 import CommonPagination from '@/components/ui/CommonPagination';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
-import PostListSkeleton from '@/components/main/PostListSkeleton';
+import PostListSkeleton from '@/features/board/projectPosts/postList/PostListSkeleton';
 
 function MyProjectPosts({ isActive }: { isActive: boolean }) {
   const [pageNumber, setPageNumber] = useState(0);

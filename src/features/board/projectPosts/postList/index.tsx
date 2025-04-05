@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { PageResponseBody, PostCardInfo } from '@/utils/type';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
-import PostListSkeleton from '@/components/main/PostListSkeleton';
+import PostListSkeleton from '@/features/board/projectPosts/postList/PostListSkeleton';
 import { isQueryDataReady } from '@/hooks/common/useProjectInfoSummary';
 import ErroredSection from '@/components/ui/error/ErroredSection';
 import {
