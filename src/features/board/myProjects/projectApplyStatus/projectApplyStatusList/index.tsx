@@ -3,13 +3,14 @@
 import { useRef } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { PageResponseBody } from '@/utils/type';
-import ParticipateNotice from '@/components/main/myProjectPost/ParticipateNotice/ParticipateNotice';
+import ProjectApplyStatusItem from '@/features/board/myProjects/projectApplyStatus/projectApplyStatusList/ProjectApplyStatusItem';
 import Loader from '@/components/ui/Loader';
 import useIntersectionObserver from '@/hooks/common/useIntersectionObserver';
 import { ITEM_COUNT } from '@/utils/constant';
-import { getMyProjectApplies, ProjectApplyDto } from '@/service/project/apply';
+import { getMyProjectApplies } from '../service';
+import { ProjectApplyStatusData } from '@/features/board/myProjects/projectApplyStatus/type';
 
-function ParticipateNoticeModalContents() {
+function ProjectApplyStatusList() {
   const bottomRef = useRef<HTMLLIElement | null>(null);
   const rootRef = useRef<HTMLUListElement | null>(null);
 
@@ -26,7 +27,7 @@ function ParticipateNoticeModalContents() {
   };
 
   const { data, fetchNextPage, isPending } = useInfiniteQuery<
-    PageResponseBody<ProjectApplyDto[]>
+    PageResponseBody<ProjectApplyStatusData[]>
   >({
     queryKey: ['userProjectNotice'],
     queryFn: ({ pageParam }) =>
@@ -63,7 +64,7 @@ function ParticipateNoticeModalContents() {
       </div>
     );
 
-  const noticeList: ProjectApplyDto[] = [];
+  const noticeList: ProjectApplyStatusData[] = [];
   data!.pages.forEach((v) => {
     if (v.data) {
       const itemsPerPage = v.data.content;
@@ -90,7 +91,7 @@ function ParticipateNoticeModalContents() {
               key={v.project_apply_id}
               className='flex items-center justify-between gap-x-6 w-full px-2 py-5'
             >
-              <ParticipateNotice participateNotice={v} />
+              <ProjectApplyStatusItem participateNotice={v} />
             </li>
           );
         })
@@ -118,4 +119,4 @@ function ParticipateNoticeModalContents() {
   );
 }
 
-export default ParticipateNoticeModalContents;
+export default ProjectApplyStatusList;

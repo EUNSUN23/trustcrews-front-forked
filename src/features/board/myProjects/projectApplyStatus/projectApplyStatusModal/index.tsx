@@ -2,15 +2,15 @@
 
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { userNoticeModalStateStore } from '@/store/UserNoticeModalStateStore';
+import { projectApplyStatusModalStore } from '@/features/board/myProjects/store/ProjectApplyStatusModalStore';
 import { createPortal } from 'react-dom';
 import Modal from '@/components/ui/Modal';
-import ParticipateNoticeModalContents from '@/components/main/myProjectPost/ParticipateNotice/ParticipateNoticeModalContents';
 import { useQueryClient } from '@tanstack/react-query';
+import ProjectApplyStatusList from '../projectApplyStatusList';
 
 function ParticipateNoticeModal() {
   const [portalElement, setPortalElement] = useState<Element | null>(null);
-  const [{ isOpen }, setIsOpen] = useRecoilState(userNoticeModalStateStore);
+  const [{ isOpen }, setIsOpen] = useRecoilState(projectApplyStatusModalStore);
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -41,7 +41,7 @@ function ParticipateNoticeModal() {
                 setIsOpen({ isOpen: false });
               }}
             >
-              <ParticipateNoticeModalContents />
+              <ProjectApplyStatusList />
             </Modal>,
             portalElement,
           )
