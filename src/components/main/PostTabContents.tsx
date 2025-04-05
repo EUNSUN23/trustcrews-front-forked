@@ -1,7 +1,7 @@
 'use client';
 
 import MyProjectPosts from '@/components/main/myProjectPost/MyProjectPosts';
-import Posts from '@/components/main/posts/Posts';
+import ProjectPosts from '@/features/board/projectPosts';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import ParticipateNoticeModal from '@/components/main/myProjectPost/ParticipateNotice/ParticipateNoticeModal';
 import Button from '@/components/ui/Button';
@@ -47,7 +47,7 @@ function PostTabContents() {
           activePostTab.name === PostTabs.recruits.name ? 'block' : 'hidden'
         }
       >
-        <Posts />
+        <ProjectPosts />
       </div>
     </section>
   );
