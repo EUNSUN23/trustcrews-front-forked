@@ -4,7 +4,7 @@ import { COOKIE } from '@/app/api/_interceptor/utils/cookieUtils';
 
 export const isAuthorizedRequest = (request: NextRequest) => {
   const authRouteMatcher = new RegExp(
-    /(\/api)*\/(((project|user)(\/(?!(login|signup))).*)|((project|user)\s))/,
+    /(\/api)*\/(((project|user)(\/(?!(login|signup|nickname))).*)|((project|user)\s))/,
     'i',
   );
   if (!authRouteMatcher.test(request.nextUrl.pathname)) return true;
