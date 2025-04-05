@@ -3,36 +3,24 @@ import {
   HydrationBoundary,
   QueryClient,
 } from '@tanstack/react-query';
-import {
-  getPositionList as getPositionListAPI,
-  getTechStackCategoryList,
-  getTechStackList as getTechStackListAPI,
-  getTechStackListWithCategory,
-} from '@/service/setting/setting';
 import { ReactNode } from 'react';
+import {
+  positionQueryOptions,
+  techCategoryQueryOptions,
+  techListQueryOptions,
+  techMapQueryOptions,
+} from '@/utils/tanstackQueryOptions/settingsQuery';
 
 async function StaticDataProvider({ children }: { children: ReactNode }) {
   const queryClient = new QueryClient();
 
-  const positions = queryClient.prefetchQuery({
-    queryKey: ['positions'],
-    queryFn: getPositionListAPI,
-  });
+  const positions = queryClient.prefetchQuery(positionQueryOptions());
 
-  const techs = queryClient.prefetchQuery({
-    queryKey: ['techStackCategoryList'],
-    queryFn: getTechStackCategoryList,
-  });
+  const techs = queryClient.prefetchQuery(techCategoryQueryOptions());
 
-  const techResponse = queryClient.prefetchQuery({
-    queryKey: ['techStackListWithCategory'],
-    queryFn: getTechStackListWithCategory,
-  });
+  const techResponse = queryClient.prefetchQuery(techMapQueryOptions());
 
-  const techStacks = queryClient.prefetchQuery({
-    queryKey: ['techStacks'],
-    queryFn: getTechStackListAPI,
-  });
+  const techStacks = queryClient.prefetchQuery(techListQueryOptions());
 
   await Promise.all([positions, techs, techResponse, techStacks]);
 
