@@ -3,10 +3,13 @@
 import MyProjectPosts from '@/components/main/myProjectPost/MyProjectPosts';
 import Posts from '@/components/main/posts/Posts';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { activeTabState, PostTabs } from '@/store/post/PostStateStore';
 import ParticipateNoticeModal from '@/components/main/myProjectPost/ParticipateNotice/ParticipateNoticeModal';
 import Button from '@/components/ui/Button';
 import { userNoticeModalStateStore } from '@/store/UserNoticeModalStateStore';
+import {
+  activeTabState,
+  PostTabs,
+} from '@/features/board/store/BoardActiveStateStore';
 
 function PostTabContents() {
   const activePostTab = useRecoilValue(activeTabState);

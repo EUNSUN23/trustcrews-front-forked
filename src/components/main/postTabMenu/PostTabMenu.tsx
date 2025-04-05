@@ -2,8 +2,11 @@
 
 import { useRecoilState } from 'recoil';
 import { hasCookie } from 'cookies-next';
-import { activeTabState, PostTabs } from '@/store/post/PostStateStore';
 import useClientMount from '@/hooks/common/useClientMount';
+import {
+  activeTabState,
+  PostTabs,
+} from '@/features/board/store/BoardActiveStateStore';
 
 const PostTabMenu = () => {
   const [activePostTab, setActivePostTab] = useRecoilState(activeTabState);
