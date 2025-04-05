@@ -42,7 +42,7 @@ const PostList = () => {
         keyword: searchValue,
         page: pageNumber,
       }),
-    staleTime: 1000 * 60 * 5,
+    staleTime: 0,
   });
 
   const isDataPreparing = isPending || isRefetching;
