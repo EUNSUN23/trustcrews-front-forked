@@ -1,5 +1,5 @@
 import { getCookie } from 'cookies-next';
-import { PostInfo } from '@/utils/type';
+import { ProjectPostDetailData } from '@/utils/type';
 import useApplyProject from '@/features/applyProject/hooks/useApplyProject';
 import Button from '@/components/ui/Button';
 import useSnackbar from '@/hooks/common/useSnackbar';
@@ -11,10 +11,10 @@ import { projectApplyPositionState } from '@/features/applyProject/store/ApplyPo
 
 function JoinProject({
   projectId,
-  boardInfo,
+  postInfo,
 }: {
   projectId: bigint;
-  boardInfo: PostInfo;
+  postInfo: ProjectPostDetailData['post'];
 }) {
   const { value: recruitPosition } = useRecoilValue(projectApplyPositionState);
   const currentUserId = getCookie('user_id');
@@ -48,13 +48,13 @@ function JoinProject({
 
   const isRecruiter = isEqual(
     currentUserId?.toString(),
-    boardInfo.user.userId.toString(),
+    postInfo.user.userId.toString(),
   );
   if (isRecruiter) return null;
 
   return (
     <section className='flex justify-center gap-5 mt-5'>
-      <RecruitPositionDropdown recruitPositions={boardInfo.boardPositions} />
+      <RecruitPositionDropdown recruitPositions={postInfo.boardPositions} />
       <Button
         type='button'
         size='lg'

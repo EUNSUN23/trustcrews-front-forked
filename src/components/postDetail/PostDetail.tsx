@@ -5,14 +5,12 @@ import TitleSection from './TitleSection';
 import ProjectInfoSection from './ProjectInfoSection';
 import ProjectIntroSection from './ProjectIntroSection';
 import { useQuery } from '@tanstack/react-query';
-import { PostInfo, ResponseBody } from '@/utils/type';
 import PostDetailSkeleton from '@/components/ui/skeleton/postDetail/PostDetailSkeleton';
 import JoinProject from '@/components/postDetail/JoinProject';
-import useProjectInfoSummary from '@/hooks/common/useProjectInfoSummary';
 import { numStrToBigInt } from '@/utils/common';
 import { useResetRecoilState } from 'recoil';
 import { projectApplyPositionState } from '@/features/applyProject/store/ApplyPositionStateStore';
-import { getPost } from '@/features/projectPost/service';
+import { getProjectPostDetail } from '@/features/projectPost/service';
 
 const PostDetail = ({
   postId,
@@ -21,8 +19,6 @@ const PostDetail = ({
   postId: string;
   projectId: string;
 }) => {
-  const { data: projectInfo, isPending: isFetchingProjectInfo } =
-    useProjectInfoSummary(projectId);
   const resetRecruitPositionState = useResetRecoilState(
     projectApplyPositionState,
   );
@@ -32,36 +28,27 @@ const PostDetail = ({
     return () => resetRecruitPositionState();
   }, [resetRecruitPositionState]);
 
-  const { data: postInfo, isFetching: isFetchingPostInfo } = useQuery<
-    ResponseBody<PostInfo>,
-    Error,
-    ResponseBody<PostInfo>
-  >({
+  const { data, isFetching } = useQuery({
     queryKey: ['postInfo', postId],
-    queryFn: () => getPost(numStrToBigInt(postId)),
+    queryFn: () => getProjectPostDetail(numStrToBigInt(postId)),
     staleTime: 0,
   });
 
-  if (isFetchingProjectInfo || isFetchingPostInfo)
-    return <PostDetailSkeleton />;
+  if (isFetching) return <PostDetailSkeleton />;
 
-  const projectInfoData = projectInfo!.data!;
-  const postInfoData = postInfo!.data!;
+  const { post, project } = data!.data!;
 
   return (
     <article className='p-5 mobile:p-1'>
-      <TitleSection boardInfo={postInfoData} />
+      <TitleSection postInfo={post} />
       <ProjectInfoSection
-        projectInfo={projectInfoData}
-        contact={postInfoData.contact}
-        boardPositions={postInfoData.boardPositions}
+        projectInfo={project}
+        contact={post.contact}
+        boardPositions={post.boardPositions}
       />
-      <ProjectIntroSection content={postInfoData.content} />
+      <ProjectIntroSection content={post.content} />
       <footer className='flex-col mb-5'>
-        <JoinProject
-          projectId={projectInfoData.projectId}
-          boardInfo={postInfoData}
-        />
+        <JoinProject projectId={project.projectId} postInfo={post} />
       </footer>
     </article>
   );

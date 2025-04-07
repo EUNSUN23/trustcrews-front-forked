@@ -249,15 +249,24 @@ export interface PostDetailPosition {
 /**
  * 프로젝트 모집 게시글 - 게시글 상세
  */
-export type PostInfo = ProjectSettingBoardData & {
-  pageView: number;
-  user: {
-    userId: bigint;
-    nickName: string;
-    userProfileImgSrc: string | null;
+export type ProjectPostDetailData = {
+  post: {
+    boardId: bigint;
+    title: string;
+    content: string;
+    pageView: number;
+    recruitmentStatus: boolean;
+    user: {
+      userId: bigint;
+      nickName: string;
+      userProfileImgSrc: string | null;
+    };
+    contact: string;
+    createDate: string;
+    updateDate: string;
+    boardPositions: BoardPosition[];
   };
-  createDate: string;
-  updateDate: string;
+  project: ProjectInfoSummary;
 };
 
 export type SnackbarType = 'INFO' | 'ERROR' | 'SUCCESS';

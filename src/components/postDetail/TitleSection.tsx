@@ -1,8 +1,12 @@
 import Avatar from '@/components/ui/Avatar';
-import { PostInfo } from '@/utils/type';
+import { ProjectPostDetailData } from '@/utils/type';
 
-const TitleSection = ({ boardInfo }: { boardInfo: PostInfo }) => {
-  const { title, createDate, user } = boardInfo;
+const TitleSection = ({
+  postInfo,
+}: {
+  postInfo: ProjectPostDetailData['post'];
+}) => {
+  const { title, createDate, user } = postInfo;
   return (
     <section className='h-[130px] mobile:h-[100px] flex flex-col justify-center mt-5 mb-5 mobile:mt-0 space-y-6 mobile:space-y-3 border-b-2'>
       <h1 className='text-black100 font-bold text-4xl mobile:text-2xl break-words'>

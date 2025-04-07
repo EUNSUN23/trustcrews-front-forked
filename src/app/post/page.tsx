@@ -2,21 +2,21 @@ import PostDetail from '@/components/postDetail/PostDetail';
 import ConfirmModal from '@/components/ui/ConfirmModal';
 import { Metadata } from 'next';
 import { numStrToBigInt } from '@/utils/common';
-import { PostInfo, ResponseBody } from '@/utils/type';
-import { getPost } from '@/features/projectPost/service';
+import { ProjectPostDetailData, ResponseBody } from '@/utils/type';
+import { getProjectPostDetail } from '@/features/projectPost/service';
 
 export async function generateMetadata({
   searchParams: { postId },
 }: {
   searchParams: { postId: string };
 }): Promise<Metadata> {
-  const postInfo: ResponseBody<PostInfo> = await getPost(
+  const data: ResponseBody<ProjectPostDetailData> = await getProjectPostDetail(
     numStrToBigInt(postId),
   );
 
   return {
-    title: `${postInfo.data!.title} - 팀프로젝트 | TRUSTCREWS`,
-    description: `${postInfo.data!.content}`,
+    title: `${data!.data!.post.title} - 팀프로젝트 | TRUSTCREWS`,
+    description: `${data!.data!.post.content}`,
   };
 }
 
