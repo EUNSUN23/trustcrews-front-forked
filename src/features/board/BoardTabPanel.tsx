@@ -3,36 +3,36 @@
 import ProjectPosts from '@/features/board/projectPosts';
 import { useRecoilValue } from 'recoil';
 import {
-  activeTabState,
-  PostTabs,
+  activeBoardTabStore,
+  BOARD_TABS,
 } from '@/features/board/store/BoardActiveStateStore';
 import { MyProjects } from '@/features/board/myProjects';
 
 const {
-  myProjects: { name: MY_PROJECTS },
-  recruits: { name: PROJECT_POSTS },
-} = PostTabs;
+  MY_PROJECTS: { name: MY_PROJECTS },
+  PROJECT_POSTS: { name: PROJECT_POSTS },
+} = BOARD_TABS;
 
 function BoardTabPanel() {
-  const { name: activeTabName } = useRecoilValue(activeTabState);
+  const activeBoardTab = useRecoilValue(activeBoardTabStore);
 
   return (
     <section>
       <div
         role='tabpanel'
+        id={`panel-${MY_PROJECTS}`}
         tabIndex={0}
-        aria-labelledby={`${MY_PROJECTS}-tab`}
-        id={`${MY_PROJECTS}-panel`}
+        aria-labelledby={`tab-${MY_PROJECTS}`}
       >
-        {activeTabName === MY_PROJECTS && <MyProjects />}
+        {activeBoardTab === MY_PROJECTS && <MyProjects />}
       </div>
       <div
-        id={`${PROJECT_POSTS}-panel`}
         role='tabpanel'
+        id={`panel-${PROJECT_POSTS}`}
         tabIndex={0}
-        aria-labelledby={`${PROJECT_POSTS}-tab`}
+        aria-labelledby={`tab-${PROJECT_POSTS}`}
       >
-        {activeTabName === PROJECT_POSTS && <ProjectPosts />}
+        {activeBoardTab === PROJECT_POSTS && <ProjectPosts />}
       </div>
     </section>
   );

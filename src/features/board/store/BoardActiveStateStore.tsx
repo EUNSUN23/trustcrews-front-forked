@@ -1,16 +1,13 @@
 import { atom } from 'recoil';
 
-export const PostTabs = {
-  myProjects: { label: '참여 프로젝트', name: 'myProjects' },
-  recruits: { label: '팀 프로젝트', name: 'recruits' },
+export const BOARD_TABS = {
+  MY_PROJECTS: { text: '참여 프로젝트', name: 'MY_PROJECTS' },
+  PROJECT_POSTS: { text: '팀 프로젝트', name: 'PROJECT_POSTS' },
 } as const;
 
-type PostTabType = (typeof PostTabs)[keyof typeof PostTabs];
+type activeBoardTabState = keyof typeof BOARD_TABS;
 
-export const activeTabState = atom<PostTabType>({
-  key: 'activeTabState',
-  default: {
-    label: '팀 프로젝트',
-    name: 'recruits',
-  },
+export const activeBoardTabStore = atom<activeBoardTabState>({
+  key: 'activeTabStateStore',
+  default: BOARD_TABS.PROJECT_POSTS.name,
 });

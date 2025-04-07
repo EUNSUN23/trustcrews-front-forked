@@ -4,49 +4,41 @@ import { useRecoilState } from 'recoil';
 import { hasCookie } from 'cookies-next';
 import useClientMount from '@/hooks/common/useClientMount';
 import {
-  activeTabState,
-  PostTabs,
+  activeBoardTabStore,
+  BOARD_TABS,
 } from '@/features/board/store/BoardActiveStateStore';
 
 const BoardTab = () => {
-  const [activePostTab, setActivePostTab] = useRecoilState(activeTabState);
+  const [activeBoardTab, setActiveBoardTab] =
+    useRecoilState(activeBoardTabStore);
   const mounted = useClientMount();
+
+  const tabList =
+    mounted && hasCookie('user_id')
+      ? Object.values(BOARD_TABS)
+      : [BOARD_TABS.PROJECT_POSTS];
 
   const selectedClass = 'border-b-2 border-black100 text-black100';
   const unselectedClass = 'text-greyUnselect';
 
   return (
     <div role='tablist' aria-label='게시판' className='flex border-b'>
-      {mounted && hasCookie('user_id') ? (
-        Object.values(PostTabs).map((tab) => (
-          <button
-            key={tab.name}
-            role='tab'
-            aria-selected={activePostTab.name === tab.name}
-            aria-controls={`${tab.name}-panel`}
-            id={`${tab.name}-tab`}
-            tabIndex={activePostTab.name === tab.name ? 0 : -1}
-            className={`p-5 font-bold text-2xl cursor-pointer mobile:text-xl ${
-              activePostTab.name === tab.name ? selectedClass : unselectedClass
-            }`}
-            onClick={() => setActivePostTab(tab)}
-          >
-            {tab.label}
-          </button>
-        ))
-      ) : (
-        <button
+      {tabList.map(({ text, name }) => (
+        <div
+          key={`tab-${name}`}
           role='tab'
-          aria-selected={true}
-          aria-controls={`${PostTabs.recruits.name}-panel`}
-          id={`${PostTabs.recruits.name}-tab`}
-          tabIndex={0}
-          className={`p-5 font-bold text-2xl cursor-pointer mobile:text-xl ${selectedClass}`}
-          onClick={() => setActivePostTab(PostTabs.recruits)}
+          id={`tab-${name}`}
+          aria-selected={activeBoardTab === name}
+          aria-controls={`panel-${name}`}
+          tabIndex={activeBoardTab === name ? 0 : -1}
+          className={`p-5 font-bold text-2xl cursor-pointer mobile:text-xl ${
+            activeBoardTab === name ? selectedClass : unselectedClass
+          }`}
+          onClick={() => setActiveBoardTab(name)}
         >
-          {PostTabs.recruits.label}
-        </button>
-      )}
+          {text}
+        </div>
+      ))}
     </div>
   );
 };
