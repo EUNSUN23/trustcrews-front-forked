@@ -1,4 +1,4 @@
-import UserGuideNavLink from '@/components/main/userGuide/UserGuideNavLink';
+import UserGuideNavLink from '@/features/userGuide/UserGuideNavLink';
 
 const UserGuide = () => {
   return (
