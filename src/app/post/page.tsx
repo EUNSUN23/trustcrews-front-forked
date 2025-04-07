@@ -21,13 +21,13 @@ export async function generateMetadata({
 }
 
 const PostDetailPage = ({
-  searchParams: { postId, projectId },
+  searchParams: { postId },
 }: {
-  searchParams: { postId: string; projectId: string };
+  searchParams: { postId: string };
 }) => {
   return (
     <>
-      <PostDetail postId={postId} projectId={projectId} />
+      <PostDetail postId={postId} />
       <ConfirmModal />
     </>
   );

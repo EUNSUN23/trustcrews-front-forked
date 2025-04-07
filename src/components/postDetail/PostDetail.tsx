@@ -12,13 +12,7 @@ import { useResetRecoilState } from 'recoil';
 import { projectApplyPositionState } from '@/features/applyProject/store/ApplyPositionStateStore';
 import { getProjectPostDetail } from '@/features/projectPost/service';
 
-const PostDetail = ({
-  postId,
-  projectId,
-}: {
-  postId: string;
-  projectId: string;
-}) => {
+const PostDetail = ({ postId }: { postId: string }) => {
   const resetRecruitPositionState = useResetRecoilState(
     projectApplyPositionState,
   );
