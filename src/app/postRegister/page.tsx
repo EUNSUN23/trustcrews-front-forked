@@ -1,14 +1,14 @@
 'use client';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import {useEffect} from 'react';
+import {useRouter} from 'next/navigation';
 import useCreatePost from '@/hooks/post/useCreatePost';
-import { useRecoilValue, useResetRecoilState } from 'recoil';
+import {useRecoilValue, useResetRecoilState} from 'recoil';
 import {
-  createPostStateStore,
-  createProjectStateStore,
-  registerPostFormState,
-} from '@/store/register/RegisterPostStateStore';
+  postFormStateStore,
+  projectFormStateStore,
+  projectPostFormState,
+} from '@/features/registerProjectPost/store/RegisterProjectPostStateStore';
 import PostTitle from '@/components/postRegister/PostTitle';
 import ProjectName_Reg from '@/components/postRegister/ProjectName_Reg';
 import ProjectSubject_Reg from '@/components/postRegister/ProjectSubject_Reg';
@@ -22,10 +22,13 @@ import FormRowWide from '@/components/ui/form/FormRowWide';
 
 function RegisterPage() {
   const router = useRouter();
+
   const { createPost, isCreating } = useCreatePost();
-  const resetPostFormState = useResetRecoilState(createPostStateStore);
-  const resetProjectFormState = useResetRecoilState(createProjectStateStore);
-  const registerForm = useRecoilValue(registerPostFormState);
+
+  const projectPostForm = useRecoilValue(projectPostFormState);
+
+  const resetPostFormState = useResetRecoilState(postFormStateStore);
+  const resetProjectFormState = useResetRecoilState(projectFormStateStore);
 
   useEffect(() => {
     return () => {
@@ -56,7 +59,7 @@ function RegisterPage() {
         </Button>
         <Button
           disabled={isCreating}
-          onClickHandler={() => createPost(registerForm)}
+          onClickHandler={() => createPost(projectPostForm)}
         >
           등록
         </Button>

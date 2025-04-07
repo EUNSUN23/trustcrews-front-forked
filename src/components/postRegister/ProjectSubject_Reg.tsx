@@ -1,6 +1,6 @@
 import Input from '@/components/ui/form/Input';
-import { projectFieldSelector } from '@/store/register/RegisterPostStateStore';
-import { useRecoilState } from 'recoil';
+import {projectFieldSelector} from '@/features/registerProjectPost/store/RegisterProjectPostStateStore';
+import {useRecoilState} from 'recoil';
 import FormRow from '@/components/ui/form/FormRow';
 
 function ProjectSubject_Reg() {

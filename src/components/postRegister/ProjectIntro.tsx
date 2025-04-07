@@ -1,6 +1,6 @@
 import TextArea from '@/components/ui/form/TextArea';
-import { useRecoilState } from 'recoil';
-import { postFieldSelector } from '@/store/register/RegisterPostStateStore';
+import {useRecoilState} from 'recoil';
+import {postFieldSelector} from '@/features/registerProjectPost/store/RegisterProjectPostStateStore';
 import FormRowWide from '@/components/ui/form/FormRowWide';
 
 function ProjectIntro() {

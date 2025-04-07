@@ -1,6 +1,6 @@
 import CalendarInput from '@/components/ui/form/CalendarInput';
-import { useRecoilState } from 'recoil';
-import { projectFieldSelector } from '@/store/register/RegisterPostStateStore';
+import {useRecoilState} from 'recoil';
+import {projectFieldSelector} from '@/features/registerProjectPost/store/RegisterProjectPostStateStore';
 import FormRow from '@/components/ui/form/FormRow';
 
 function ProjectDate_Reg() {

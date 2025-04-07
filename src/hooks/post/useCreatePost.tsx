@@ -1,19 +1,19 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { CreatePostForm } from '@/app/postRegister/_utils/type';
-import { createPost as createPostAPI } from '@/service/post/post';
-import { isEqual } from 'lodash';
-import { useRouter } from 'next/navigation';
-import { useResetRecoilState, useSetRecoilState } from 'recoil';
-import { snackbarState } from '@/store/CommonStateStore';
+import {useMutation, useQueryClient} from '@tanstack/react-query';
+import {CreatePostForm} from '@/app/postRegister/_utils/type';
+import {isEqual} from 'lodash';
+import {useRouter} from 'next/navigation';
+import {useResetRecoilState, useSetRecoilState} from 'recoil';
+import {snackbarState} from '@/store/CommonStateStore';
 import {
-  createPostStateStore,
-  createProjectStateStore,
-} from '@/store/register/RegisterPostStateStore';
-import { DEFAULT_SEARCH_POST_PARAM } from '@/app/InitialPostsDataProvider';
+  postFormStateStore,
+  projectFormStateStore,
+} from '@/features/registerProjectPost/store/RegisterProjectPostStateStore';
+import {DEFAULT_SEARCH_POST_PARAM} from '@/app/InitialPostsDataProvider';
+import {createPost as createPostAPI} from "@/features/registerProjectPost/service";
 
 export default function useCreatePost() {
-  const resetPostFields = useResetRecoilState(createPostStateStore);
-  const resetProjectFields = useResetRecoilState(createProjectStateStore);
+  const resetPostFields = useResetRecoilState(postFormStateStore);
+  const resetProjectFields = useResetRecoilState(projectFormStateStore);
   const queryClient = useQueryClient();
   const setSnackbar = useSetRecoilState(snackbarState);
 

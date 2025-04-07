@@ -1,7 +1,7 @@
 import TechStackSelect from '@/components/ui/form/TechStackSelect';
-import { useRecoilState } from 'recoil';
-import { projectFieldSelector } from '@/store/register/RegisterPostStateStore';
-import { TechStackValueType } from '@/utils/type';
+import {useRecoilState} from 'recoil';
+import {projectFieldSelector} from '@/features/registerProjectPost/store/RegisterProjectPostStateStore';
+import {TechStackValueType} from '@/utils/type';
 import FormRow from '@/components/ui/form/FormRow';
 
 function ProjectTech() {

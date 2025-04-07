@@ -1,6 +1,6 @@
 import MultiPositionSelect from '@/components/postRegister/MultiPositionSelect';
-import { useRecoilState } from 'recoil';
-import { postFieldSelector } from '@/store/register/RegisterPostStateStore';
+import {useRecoilState} from 'recoil';
+import {postFieldSelector} from '@/features/registerProjectPost/store/RegisterProjectPostStateStore';
 import FormRow from '@/components/ui/form/FormRow';
 
 function ProjectRecruitPosition() {
