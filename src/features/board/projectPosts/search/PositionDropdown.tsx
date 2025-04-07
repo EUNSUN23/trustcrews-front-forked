@@ -11,9 +11,9 @@ import {
   ListboxOptions,
   Transition,
 } from '@headlessui/react';
-import { bigIntToString, classNames } from '@/utils/common';
-import { defaultPositionSelectItem } from '@/app/_boardUtil/constant';
+import { bigIntToString, classNames, numStrToBigInt } from '@/utils/common';
 import { selectedPositionState } from '@/features/board/projectPosts/store/PostSearchStateStore';
+import { DEFAULT_POSITION_OPTION } from '@/utils/constant';
 
 function PositionDropdown() {
   const [selectedPosition, setSelectedPosition] = useRecoilState(
@@ -36,7 +36,10 @@ function PositionDropdown() {
     );
 
   const positionItems = [
-    defaultPositionSelectItem,
+    {
+      ...DEFAULT_POSITION_OPTION,
+      value: bigIntToString(DEFAULT_POSITION_OPTION.value),
+    },
     ...positions!.data!.map(({ positionId, positionName }) => ({
       name: positionName,
       value: bigIntToString(positionId),
@@ -44,14 +47,16 @@ function PositionDropdown() {
   ];
 
   const selected = positionItems.find(
-    (item) => item.value === selectedPosition,
+    (item) => item.value === bigIntToString(selectedPosition.value),
   )!;
 
   return (
     <Listbox
       aria-label='모집 포지션'
       value={selected}
-      onChange={({ value }) => setSelectedPosition(value)}
+      onChange={(item) =>
+        setSelectedPosition({ ...item, value: numStrToBigInt(item.value) })
+      }
       by={compareItems}
     >
       <div

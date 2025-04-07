@@ -16,10 +16,11 @@ import {
   selectedTechStackState,
 } from '@/features/board/projectPosts/store/PostSearchStateStore';
 import { getPostList } from '@/features/board/projectPosts/service';
+import { bigIntToString } from '@/utils/common';
 
 const PostList = () => {
   const selectedTechStacks = useRecoilValue(selectedTechStackState);
-  const selectedPosition = useRecoilValue(selectedPositionState);
+  const { value: selectedPosition } = useRecoilValue(selectedPositionState);
   const searchValue = useRecoilValue(postSearchValue);
   const [pageNumber, setPageNumber] = useState(0);
 
@@ -31,14 +32,14 @@ const PostList = () => {
     queryKey: [
       'postList',
       selectedTechStacks,
-      selectedPosition,
+      bigIntToString(selectedPosition),
       searchValue,
       pageNumber,
     ],
     queryFn: () =>
       getPostList({
         techStacks: selectedTechStacks,
-        position: selectedPosition,
+        position: bigIntToString(selectedPosition),
         keyword: searchValue,
         page: pageNumber,
       }),
