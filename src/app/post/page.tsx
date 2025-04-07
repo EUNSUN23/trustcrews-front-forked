@@ -2,8 +2,8 @@ import PostDetail from '@/components/postDetail/PostDetail';
 import ConfirmModal from '@/components/ui/ConfirmModal';
 import { Metadata } from 'next';
 import { numStrToBigInt } from '@/utils/common';
-import { getPost } from '@/service/post/post';
 import { PostInfo, ResponseBody } from '@/utils/type';
+import { getPost } from '@/features/projectPost/service';
 
 export async function generateMetadata({
   searchParams: { postId },

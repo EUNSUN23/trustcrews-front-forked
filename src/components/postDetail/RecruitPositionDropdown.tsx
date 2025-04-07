@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import useDropdownState from '@/hooks/common/useDropdownState';
 import { useRecoilState } from 'recoil';
-import { selectRecruitPositionState } from '@/store/postDetail/PostDetailStateStore';
+import { projectApplyPositionState } from '@/features/applyProject/store/ApplyPositionStateStore';
 import { PostDetailPosition } from '@/utils/type';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
 import {
@@ -21,8 +21,8 @@ function RecruitPositionDropdown({
   recruitPositions: PostDetailPosition[];
 }) {
   const { dropdownRef, openDropdown, setOpenDropdown } = useDropdownState();
-  const [recruitPosition, setRecruitPosition] = useRecoilState(
-    selectRecruitPositionState,
+  const [projectApplyPosition, setProjectApplyPosition] = useRecoilState(
+    projectApplyPositionState,
   );
 
   const positionItems = [
@@ -37,7 +37,7 @@ function RecruitPositionDropdown({
   ];
 
   const selectedPosition = positionItems.find(
-    (item) => item.value === bigIntToString(recruitPosition.value),
+    (item) => item.value === bigIntToString(projectApplyPosition.value),
   )!;
 
   return (
@@ -45,7 +45,7 @@ function RecruitPositionDropdown({
       aria-label='모집 포지션'
       value={selectedPosition}
       onChange={(item) =>
-        setRecruitPosition({ ...item, value: numStrToBigInt(item.value) })
+        setProjectApplyPosition({ ...item, value: numStrToBigInt(item.value) })
       }
       by={compareItems}
     >

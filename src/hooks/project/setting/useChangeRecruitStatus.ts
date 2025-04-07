@@ -1,11 +1,11 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { changeRecruitmentStatus as changeRecruitmentStatusAPI } from '@/service/post/post';
 import { isEqual } from 'lodash';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { useResetRecoilState } from 'recoil';
 import { confirmModalState } from '@/store/CommonStateStore';
+import { changeRecruitmentStatus as changeRecruitmentStatusAPI } from '@/features/postDetail/service';
 
 export default function useChangeRecruitStatus(postId: bigint) {
   const queryClient = useQueryClient();

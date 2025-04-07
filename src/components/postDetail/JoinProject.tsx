@@ -1,13 +1,13 @@
 import { getCookie } from 'cookies-next';
 import { PostInfo } from '@/utils/type';
-import useJoinProject from '@/hooks/post/useJoinProject';
+import useApplyProject from '@/features/applyProject/hooks/useApplyProject';
 import Button from '@/components/ui/Button';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { confirmModalState } from '@/store/CommonStateStore';
-import { selectRecruitPositionState } from '@/store/postDetail/PostDetailStateStore';
 import RecruitPositionDropdown from '@/components/postDetail/RecruitPositionDropdown';
 import { isEqual } from 'lodash';
+import { projectApplyPositionState } from '@/features/applyProject/store/ApplyPositionStateStore';
 
 function JoinProject({
   projectId,
@@ -16,10 +16,10 @@ function JoinProject({
   projectId: bigint;
   boardInfo: PostInfo;
 }) {
-  const { value: recruitPosition } = useRecoilValue(selectRecruitPositionState);
+  const { value: recruitPosition } = useRecoilValue(projectApplyPositionState);
   const currentUserId = getCookie('user_id');
 
-  const { joinProject, isUpdating } = useJoinProject();
+  const { joinProject, isUpdating } = useApplyProject();
 
   const setModalState = useSetRecoilState(confirmModalState);
   const { setInfoSnackbar } = useSnackbar();

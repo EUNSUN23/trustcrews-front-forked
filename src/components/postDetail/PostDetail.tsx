@@ -6,13 +6,13 @@ import ProjectInfoSection from './ProjectInfoSection';
 import ProjectIntroSection from './ProjectIntroSection';
 import { useQuery } from '@tanstack/react-query';
 import { PostInfo, ResponseBody } from '@/utils/type';
-import { getPost } from '@/service/post/post';
 import PostDetailSkeleton from '@/components/ui/skeleton/postDetail/PostDetailSkeleton';
 import JoinProject from '@/components/postDetail/JoinProject';
 import useProjectInfoSummary from '@/hooks/common/useProjectInfoSummary';
 import { numStrToBigInt } from '@/utils/common';
 import { useResetRecoilState } from 'recoil';
-import { selectRecruitPositionState } from '@/store/postDetail/PostDetailStateStore';
+import { projectApplyPositionState } from '@/features/applyProject/store/ApplyPositionStateStore';
+import { getPost } from '@/features/projectPost/service';
 
 const PostDetail = ({
   postId,
@@ -24,7 +24,7 @@ const PostDetail = ({
   const { data: projectInfo, isPending: isFetchingProjectInfo } =
     useProjectInfoSummary(projectId);
   const resetRecruitPositionState = useResetRecoilState(
-    selectRecruitPositionState,
+    projectApplyPositionState,
   );
 
   // unmount시 모집포지션 select state 초기화

@@ -1,18 +1,7 @@
-import { PostInfo, ResponseBody } from '@/utils/type';
 import _ from 'lodash';
-import { request, requestWithAuth } from '@/service/request';
+import { requestWithAuth } from '@/service/request';
 import { CreatePostForm } from '@/app/postRegister/_utils/type';
 import { throwErrorIfInvalid } from '@/utils/common';
-
-/**
- * 게시글 상세조회
- * @param postId
- */
-export const getPost = async (
-  postId: bigint,
-): Promise<ResponseBody<PostInfo>> => {
-  return await request('GET', `/api/post?postId=${postId}`);
-};
 
 /**
  * 게시글 생성
@@ -35,11 +24,4 @@ export const createPost = async (createData: CreatePostForm) => {
   throwErrorIfInvalid(_.isEmpty(technologyIds), '관심 스택을 선택해주세요.');
 
   return await requestWithAuth('POST', `/api/post`, createData);
-};
-
-export const changeRecruitmentStatus = async (boardId: bigint) => {
-  return await requestWithAuth(
-    'PATCH',
-    `/api/post/recruitment-status?boardId=${boardId}`,
-  );
 };
