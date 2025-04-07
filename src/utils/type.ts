@@ -5,10 +5,7 @@ import {
   TrustGradeValueType,
 } from '@/app/project/@setting/_utils/type';
 import { VoteStatusCode } from '@/service/project/alert/type';
-import {
-  BoardPosition,
-  ProjectSettingBoardData,
-} from '@/service/project/setting/board';
+import { BoardPosition } from '@/service/project/setting/board';
 import { UserProjectHistoryStatus } from '@/service/user/constant';
 import { BadgeSize } from '@/utils/common';
 
@@ -134,15 +131,12 @@ export interface UserProjectHistoryData {
   updateDate: string;
 }
 
-export type PostInfoSummary = {
+export type PostCardInfo = {
+  project: ProjectInfoSummary;
   boardId: bigint;
   title: string;
   recruitmentStatus: boolean;
   boardPositions: BoardPosition[];
-};
-
-export interface PostCardInfo extends PostInfoSummary {
-  project: ProjectInfoSummary;
   boardPageView: number;
   user: {
     email: string;
@@ -152,7 +146,7 @@ export interface PostCardInfo extends PostInfoSummary {
   };
   createDate: string;
   updateDate: string;
-}
+};
 
 export type ResponseResult = 'success' | 'fail';
 

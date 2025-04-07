@@ -1,15 +1,19 @@
 import { requestWithAuth } from '@/service/request';
-import { Position, PostInfoSummary, ProjectAuthMapCode } from '@/utils/type';
+import { Position, ProjectAuthMapCode } from '@/utils/type';
 
 export type BoardPosition = {
   boardPositionId: bigint;
   position: Position;
 };
 
-export interface ProjectSettingBoardData extends PostInfoSummary {
+export type ProjectSettingBoardData = {
+  boardId: bigint;
+  title: string;
+  recruitmentStatus: boolean;
+  boardPositions: BoardPosition[];
   content: string;
   contact: string;
-}
+};
 
 /**
  * 프로젝트 세팅 - 프로젝트 게시글 정보 조회
