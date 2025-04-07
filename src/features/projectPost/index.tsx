@@ -4,31 +4,29 @@ import { useEffect } from 'react';
 import TitleSection from './TitleSection';
 import ProjectInfoSection from './ProjectInfoSection';
 import ProjectIntroSection from './ProjectIntroSection';
-import { useQuery } from '@tanstack/react-query';
-import PostDetailSkeleton from '@/components/ui/skeleton/postDetail/PostDetailSkeleton';
-import JoinProject from '@/components/postDetail/JoinProject';
-import { numStrToBigInt } from '@/utils/common';
 import { useResetRecoilState } from 'recoil';
-import { projectApplyPositionState } from '@/features/applyProject/store/ApplyPositionStateStore';
+import { projectApplyPositionState } from '@/features/projectPost/applyProject/store/ApplyPositionStateStore';
+import ApplyProject from '@/features/projectPost/applyProject';
+import { useQuery } from '@tanstack/react-query';
 import { getProjectPostDetail } from '@/features/projectPost/service';
+import { numStrToBigInt } from '@/utils/common';
+import ProjectPostSkeleton from '@/features/projectPost/ProjectPostSkeleton';
 
-const PostDetail = ({ postId }: { postId: string }) => {
+const ProjectPost = ({ postId }: { postId: string }) => {
   const resetRecruitPositionState = useResetRecoilState(
     projectApplyPositionState,
   );
 
-  // unmount시 모집포지션 select state 초기화
   useEffect(() => {
     return () => resetRecruitPositionState();
   }, [resetRecruitPositionState]);
 
   const { data, isFetching } = useQuery({
-    queryKey: ['postInfo', postId],
+    queryKey: ['projectPostDetail', postId],
     queryFn: () => getProjectPostDetail(numStrToBigInt(postId)),
-    staleTime: 0,
   });
 
-  if (isFetching) return <PostDetailSkeleton />;
+  if (isFetching) return <ProjectPostSkeleton />;
 
   const { post, project } = data!.data!;
 
@@ -41,11 +39,9 @@ const PostDetail = ({ postId }: { postId: string }) => {
         boardPositions={post.boardPositions}
       />
       <ProjectIntroSection content={post.content} />
-      <footer className='flex-col mb-5'>
-        <JoinProject projectId={project.projectId} postInfo={post} />
-      </footer>
+      <ApplyProject projectId={project.projectId} postInfo={post} />
     </article>
   );
 };
 
-export default PostDetail;
+export default ProjectPost;

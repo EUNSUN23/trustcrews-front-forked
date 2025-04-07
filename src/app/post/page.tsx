@@ -1,9 +1,9 @@
-import PostDetail from '@/components/postDetail/PostDetail';
 import ConfirmModal from '@/components/ui/ConfirmModal';
 import { Metadata } from 'next';
 import { numStrToBigInt } from '@/utils/common';
 import { ProjectPostDetailData, ResponseBody } from '@/utils/type';
 import { getProjectPostDetail } from '@/features/projectPost/service';
+import ProjectPost from '@/features/projectPost';
 
 export async function generateMetadata({
   searchParams: { postId },
@@ -27,7 +27,7 @@ const PostDetailPage = ({
 }) => {
   return (
     <>
-      <PostDetail postId={postId} />
+      <ProjectPost postId={postId} />
       <ConfirmModal />
     </>
   );

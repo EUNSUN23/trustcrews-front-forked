@@ -5,8 +5,7 @@ import { isEqual } from 'lodash';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { useResetRecoilState } from 'recoil';
 import { confirmModalState } from '@/store/CommonStateStore';
-
-import { applyProject } from '@/features/applyProject/service';
+import { applyProject } from '@/features/projectPost/applyProject/service';
 
 export default function useApplyProject() {
   const resetModalState = useResetRecoilState(confirmModalState);

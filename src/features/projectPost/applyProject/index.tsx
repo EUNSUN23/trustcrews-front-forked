@@ -1,15 +1,15 @@
 import { getCookie } from 'cookies-next';
 import { ProjectPostDetailData } from '@/utils/type';
-import useApplyProject from '@/features/applyProject/hooks/useApplyProject';
+import useApplyProject from '@/features/projectPost/applyProject/hooks/useApplyProject';
 import Button from '@/components/ui/Button';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { confirmModalState } from '@/store/CommonStateStore';
-import RecruitPositionDropdown from '@/components/postDetail/RecruitPositionDropdown';
 import { isEqual } from 'lodash';
-import { projectApplyPositionState } from '@/features/applyProject/store/ApplyPositionStateStore';
+import { projectApplyPositionState } from '@/features/projectPost/applyProject/store/ApplyPositionStateStore';
+import ApplyPositionDropdown from '@/features/projectPost/applyProject/ApplyPositionDropdown';
 
-function JoinProject({
+function ApplyProject({
   projectId,
   postInfo,
 }: {
@@ -53,8 +53,8 @@ function JoinProject({
   if (isRecruiter) return null;
 
   return (
-    <section className='flex justify-center gap-5 mt-5'>
-      <RecruitPositionDropdown recruitPositions={postInfo.boardPositions} />
+    <footer className='flex flex-col justify-center gap-5 my-5'>
+      <ApplyPositionDropdown recruitPositions={postInfo.boardPositions} />
       <Button
         type='button'
         size='lg'
@@ -63,8 +63,8 @@ function JoinProject({
       >
         참여하기
       </Button>
-    </section>
+    </footer>
   );
 }
 
-export default JoinProject;
+export default ApplyProject;

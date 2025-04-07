@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import useDropdownState from '@/hooks/common/useDropdownState';
 import { useRecoilState } from 'recoil';
-import { projectApplyPositionState } from '@/features/applyProject/store/ApplyPositionStateStore';
+import { projectApplyPositionState } from '@/features/projectPost/applyProject/store/ApplyPositionStateStore';
 import { PostDetailPosition } from '@/utils/type';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
 import {

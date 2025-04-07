@@ -1,7 +1,7 @@
 import AvatarSkeleton from '@/components/ui/skeleton/AvatarSkeleton';
 import Skeleton from '@/components/ui/skeleton/Skeleton';
 
-const PostDetailSkeleton = () => {
+const ProjectPostSkeleton = () => {
   return (
     <div className='p-5 mobile:p-1'>
       <div className='h-[130px] mobile:h-[100px] flex flex-col justify-center mt-5 mb-5 mobile:mt-0 space-y-6 mobile:space-y-3 border-b-2'>
@@ -79,4 +79,4 @@ const PostDetailSkeleton = () => {
   );
 };
 
-export default PostDetailSkeleton;
+export default ProjectPostSkeleton;
