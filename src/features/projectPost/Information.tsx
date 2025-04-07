@@ -8,11 +8,7 @@ interface InfoProps {
   boardPositions: PostDetailPosition[];
 }
 
-const ProjectInfoSection = ({
-  projectInfo,
-  contact,
-  boardPositions,
-}: InfoProps) => {
+const Information = ({ projectInfo, contact, boardPositions }: InfoProps) => {
   const { projectName, projectSubject, startDate, endDate, technologyStacks } =
     projectInfo;
 
@@ -116,4 +112,4 @@ const ProjectInfoSection = ({
   );
 };
 
-export default ProjectInfoSection;
+export default Information;

@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect } from 'react';
-import TitleSection from './TitleSection';
-import ProjectInfoSection from './ProjectInfoSection';
-import ProjectIntroSection from './ProjectIntroSection';
+import Title from './Title';
+import Information from './Information';
+import Introduction from './Introduction';
 import { useResetRecoilState } from 'recoil';
 import { projectApplyPositionState } from '@/features/projectPost/applyProject/store/ApplyPositionStateStore';
 import ApplyProject from '@/features/projectPost/applyProject';
@@ -32,13 +32,13 @@ const ProjectPost = ({ postId }: { postId: string }) => {
 
   return (
     <article className='p-5 mobile:p-1'>
-      <TitleSection postInfo={post} />
-      <ProjectInfoSection
+      <Title postInfo={post} />
+      <Information
         projectInfo={project}
         contact={post.contact}
         boardPositions={post.boardPositions}
       />
-      <ProjectIntroSection content={post.content} />
+      <Introduction content={post.content} />
       <ApplyProject projectId={project.projectId} postInfo={post} />
     </article>
   );

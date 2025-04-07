@@ -1,11 +1,7 @@
 import Avatar from '@/components/ui/Avatar';
 import { ProjectPostDetailData } from '@/utils/type';
 
-const TitleSection = ({
-  postInfo,
-}: {
-  postInfo: ProjectPostDetailData['post'];
-}) => {
+const Title = ({ postInfo }: { postInfo: ProjectPostDetailData['post'] }) => {
   const { title, createDate, user } = postInfo;
   return (
     <section className='h-[130px] mobile:h-[100px] flex flex-col justify-center mt-5 mb-5 mobile:mt-0 space-y-6 mobile:space-y-3 border-b-2'>
@@ -30,4 +26,4 @@ const TitleSection = ({
   );
 };
 
-export default TitleSection;
+export default Title;
