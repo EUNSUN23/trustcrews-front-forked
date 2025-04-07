@@ -1,14 +1,14 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { projectApplyStatusModalStore } from '@/features/board/myProjects/store/ProjectApplyStatusModalStore';
-import { createPortal } from 'react-dom';
+import {useEffect, useState} from 'react';
+import {useRecoilState} from 'recoil';
+import {projectApplyStatusModalStore} from '@/features/board/projectApplyStatus/store/ProjectApplyStatusModalStore';
+import {createPortal} from 'react-dom';
 import Modal from '@/components/ui/Modal';
-import { useQueryClient } from '@tanstack/react-query';
-import ProjectApplyStatusList from '../projectApplyStatusList';
+import {useQueryClient} from '@tanstack/react-query';
+import ProjectApplyStatusList from './ProjectApplyStatus';
 
-function ParticipateNoticeModal() {
+function ProjectApplyStatusModal() {
   const [portalElement, setPortalElement] = useState<Element | null>(null);
   const [{ isOpen }, setIsOpen] = useRecoilState(projectApplyStatusModalStore);
   const queryClient = useQueryClient();
@@ -50,4 +50,4 @@ function ParticipateNoticeModal() {
   );
 }
 
-export default ParticipateNoticeModal;
+export default ProjectApplyStatusModal;
