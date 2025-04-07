@@ -1,4 +1,4 @@
-import MultiPositionSelect from '@/components/postRegister/MultiPositionSelect';
+import MultiPositionSelect from '@/components/ui/selector/MultiPositionSelect';
 import {useRecoilState} from 'recoil';
 import {postFieldSelector} from '@/features/registerProjectPost/store/RegisterProjectPostStateStore';
 import FormRow from '@/components/ui/form/FormRow';

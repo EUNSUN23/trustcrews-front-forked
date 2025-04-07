@@ -2,8 +2,8 @@ import {
   projectSettingBoardInfoSelector,
   ProjectSettingBoardInfoUpdField,
 } from '@/store/project/setting/ProjectSettingFormStateStore';
-import { useRecoilState } from 'recoil';
-import MultiPositionSelect from '@/components/postRegister/MultiPositionSelect';
+import {useRecoilState} from 'recoil';
+import MultiPositionSelect from '@/components/ui/selector/MultiPositionSelect';
 
 type ProjectSettingBoardInfoPositions =
   ProjectSettingBoardInfoUpdField<'positionIds'>;
