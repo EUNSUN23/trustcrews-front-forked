@@ -3,7 +3,7 @@ import {useRecoilState} from 'recoil';
 import {projectFieldSelector} from '@/features/registerProjectPost/store/RegisterProjectPostStateStore';
 import FormRow from '@/components/ui/form/FormRow';
 
-function ProjectDate_Reg() {
+function DateField() {
   const [{ startDate }, setStartDate] = useRecoilState(
     projectFieldSelector('startDate'),
   );
@@ -31,4 +31,4 @@ function ProjectDate_Reg() {
   );
 }
 
-export default ProjectDate_Reg;
+export default DateField;

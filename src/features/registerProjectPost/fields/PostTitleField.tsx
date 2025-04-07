@@ -2,7 +2,7 @@ import {useRecoilState} from 'recoil';
 import {postFieldSelector} from '@/features/registerProjectPost/store/RegisterProjectPostStateStore';
 import FormRowWide from '@/components/ui/form/FormRowWide';
 
-function PostTitle() {
+function PostTitleField() {
   const [{ title }, setTitle] = useRecoilState(postFieldSelector('title'));
 
   return (
@@ -27,4 +27,4 @@ function PostTitle() {
   );
 }
 
-export default PostTitle;
+export default PostTitleField;

@@ -3,7 +3,7 @@ import {useRecoilState} from 'recoil';
 import {postFieldSelector} from '@/features/registerProjectPost/store/RegisterProjectPostStateStore';
 import FormRow from '@/components/ui/form/FormRow';
 
-function ProjectRecruitPosition() {
+function PositionField() {
   const [{ positionIds }, setPositionIds] = useRecoilState(
     postFieldSelector('positionIds'),
   );
@@ -18,4 +18,4 @@ function ProjectRecruitPosition() {
   );
 }
 
-export default ProjectRecruitPosition;
+export default PositionField;

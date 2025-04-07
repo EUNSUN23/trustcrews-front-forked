@@ -4,7 +4,7 @@ import {projectFieldSelector} from '@/features/registerProjectPost/store/Registe
 import {TechStackValueType} from '@/utils/type';
 import FormRow from '@/components/ui/form/FormRow';
 
-function ProjectTech() {
+function TechStackField() {
   const [{ technologyIds }, setTechIds] = useRecoilState(
     projectFieldSelector('technologyIds'),
   );
@@ -22,4 +22,4 @@ function ProjectTech() {
   );
 }
 
-export default ProjectTech;
+export default TechStackField;

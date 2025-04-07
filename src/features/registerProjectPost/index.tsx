@@ -9,14 +9,14 @@ import {
     projectPostFormState
 } from "@/features/registerProjectPost/store/RegisterProjectPostStateStore";
 import {useEffect} from "react";
-import PostTitle from "@/features/registerProjectPost/PostTitle";
-import ProjectName_Reg from "@/features/registerProjectPost/ProjectName_Reg";
-import ProjectSubject_Reg from "@/features/registerProjectPost/ProjectSubject_Reg";
-import ProjectRecruitPosition from "@/features/registerProjectPost/ProjectRecruitPosition";
-import ProjectDate_Reg from "@/features/registerProjectPost/ProjectDate_Reg";
-import ProjectTech from "@/features/registerProjectPost/ProjectTech";
-import ProjectOwnerContact from "@/features/registerProjectPost/ProjectOwnerContact";
-import ProjectIntro from "@/features/registerProjectPost/ProjectIntro";
+import PostTitleField from "@/features/registerProjectPost/fields/PostTitleField";
+import NameField from "@/features/registerProjectPost/fields/NameField";
+import SubjectField from "@/features/registerProjectPost/fields/SubjectField";
+import PositionField from "@/features/registerProjectPost/fields/PositionField";
+import DateField from "@/features/registerProjectPost/fields/DateField";
+import TechStackField from "@/features/registerProjectPost/fields/TechStackField";
+import ContactField from "@/features/registerProjectPost/fields/ContactField";
+import IntroField from "@/features/registerProjectPost/fields/IntroField";
 
 export function RegisterProjectPost() {
     const router = useRouter();
@@ -41,16 +41,16 @@ export function RegisterProjectPost() {
             aria-label='게시글 및 프로젝트 생성'
             className='p-5 mobile:p-1 mb-8'
         >
-            <PostTitle />
+            <PostTitleField />
             <div className='grid pc:grid-cols-2 tablet:grid-cols-1 gap-y-10 place-content-between mobile:place-content-center'>
-                <ProjectName_Reg />
-                <ProjectSubject_Reg />
-                <ProjectRecruitPosition />
-                <ProjectDate_Reg />
-                <ProjectTech />
-                <ProjectOwnerContact />
+                <NameField />
+                <SubjectField />
+                <PositionField />
+                <DateField />
+                <TechStackField />
+                <ContactField />
             </div>
-            <ProjectIntro />
+            <IntroField />
             <FormRowWide className='space-x-2 text-center mt-10'>
                 <Button theme='primary-hollow' onClickHandler={() => router.push('/')}>
                     취소
