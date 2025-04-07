@@ -53,7 +53,7 @@ function ApplyProject({
   if (isRecruiter) return null;
 
   return (
-    <footer className='flex flex-col justify-center gap-5 my-5'>
+    <footer className='flex justify-center gap-5 my-5'>
       <ApplyPositionDropdown recruitPositions={postInfo.boardPositions} />
       <Button
         type='button'
