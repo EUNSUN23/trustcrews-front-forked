@@ -11,8 +11,9 @@ import { signUp, SignUpRequest } from '@/service/user/signup';
 import { useSetRecoilState } from 'recoil';
 import { snackbarState } from '@/store/CommonStateStore';
 import TechStackSelect from '@/components/ui/form/TechStackSelect';
-import PositionSelect from '@/components/user/signup/PositionSelect';
+import PositionSelect from '@/components/ui/selector/PositionSelect';
 
+// todo - 코드스타일 정리
 function SignUpForm() {
   const router = useRouter();
   const setSnackbar = useSetRecoilState(snackbarState);
