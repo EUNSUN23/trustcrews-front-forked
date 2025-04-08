@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import LoginForm from '@/components/user/login/LoginForm';
+import Login from '@/features/login';
 
 function LoginPage() {
   return (
@@ -7,7 +7,7 @@ function LoginPage() {
       <h1 className='text-3xl mobile:text-2xl font-semibold w-full text-center mb-10'>
         로그인
       </h1>
-      <LoginForm />
+      <Login />
       <div className='text-center text-sm mobile:text-xs mt-3'>
         회원이 아니신가요?
         <Link href='/signup'>
