@@ -10,7 +10,7 @@ import { PositionId, TechStackValueType } from '@/utils/type';
 import { signUp, SignUpRequest } from '@/service/user/signup';
 import { useSetRecoilState } from 'recoil';
 import { snackbarState } from '@/store/CommonStateStore';
-import TechStackSelect from '@/components/ui/form/TechStackSelect';
+import TechStackSelect from '@/components/ui/selector/TechStackSelect';
 import PositionSelect from '@/components/ui/selector/PositionSelect';
 
 // todo - 코드스타일 정리

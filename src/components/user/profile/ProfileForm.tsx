@@ -19,7 +19,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { isEqual } from 'lodash';
 import { snackbarState } from '@/store/CommonStateStore';
 import PositionSelect from '@/components/ui/selector/PositionSelect';
-import TechStackSelect from '@/components/ui/form/TechStackSelect';
+import TechStackSelect from '@/components/ui/selector/TechStackSelect';
 
 function ProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
   const {
