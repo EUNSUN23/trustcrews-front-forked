@@ -14,7 +14,7 @@ import TechStackSelect from '@/components/ui/form/TechStackSelect';
 import PositionSelect from '@/components/ui/selector/PositionSelect';
 
 // todo - 코드스타일 정리
-function SignUpForm() {
+function SignUp() {
   const router = useRouter();
   const setSnackbar = useSetRecoilState(snackbarState);
 
@@ -125,4 +125,4 @@ function SignUpForm() {
   );
 }
 
-export default SignUpForm;
+export default SignUp;
