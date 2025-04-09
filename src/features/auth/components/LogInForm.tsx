@@ -4,16 +4,15 @@ import { useState } from 'react';
 import Input from '@/components/ui/form/Input';
 import FormButton from '@/components/ui/form/FormButton';
 import { useRouter } from 'next/navigation';
-import { useSetRecoilState } from 'recoil';
-import { snackbarState } from '@/store/CommonStateStore';
 import { useQueryClient } from '@tanstack/react-query';
 import { isEqual } from 'lodash';
 import { ZodError } from 'zod';
 import { loginInputSchema, useLogin } from '@/lib/auth/logIn';
+import useSnackbar from '@/hooks/common/useSnackbar';
 
 function LoginForm() {
   const router = useRouter();
-  const setSnackbar = useSetRecoilState(snackbarState);
+  const { setErrorSnackbar, setInfoSnackbar } = useSnackbar();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -41,9 +40,9 @@ function LoginForm() {
         router.replace('/');
         router.refresh();
 
-        setSnackbar({ show: true, type: 'INFO', content: message });
+        setInfoSnackbar(message);
       } else {
-        setSnackbar({ show: true, type: 'ERROR', content: message });
+        setErrorSnackbar(message);
       }
     },
   });
@@ -53,11 +52,7 @@ function LoginForm() {
     try {
       loginInputSchema.parse(param);
     } catch (e) {
-      setSnackbar({
-        type: 'ERROR',
-        content: (e as ZodError).errors[0].message,
-        show: true,
-      });
+      setErrorSnackbar((e as ZodError).errors[0].message);
       return;
     }
     login(param);
