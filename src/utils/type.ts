@@ -341,3 +341,9 @@ export type ConstantDto<T> = {
 
 export type ProjectApplyStatusCode = 'PAS1001' | 'PAS1002' | 'PAS1003';
 export type StatusCode = ProjectApplyStatusCode | VoteStatusCode | string;
+
+export type ApiResult<T extends (...args: any) => Promise<any>> = Awaited<
+  ReturnType<T>
+>;
+
+export type ArrayElement<T> = T extends (infer U)[] ? U : never;
