@@ -25,6 +25,7 @@ import { useResetRecoilState } from 'recoil';
 import { activeBoardTabStore } from '@/features/board/store/BoardActiveStateStore';
 import useSnackbar from '@/hooks/common/useSnackbar';
 
+// todo - components/layouts로 이동
 function UserMenu() {
   const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
 
