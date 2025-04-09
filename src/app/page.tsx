@@ -1,4 +1,4 @@
-import UserGuide from '@/components/main/userGuide/UserGuide';
+import UserGuide from '@/features/userGuide';
 import { Board } from '@/features/board';
 
 function HomePage() {
