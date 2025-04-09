@@ -1,6 +1,6 @@
-import {PageResponseBody} from '@/utils/type';
-import {requestWithAuth} from '@/service/request';
-import {ProjectApplyStatusData} from '@/features/board/projectApplyStatus/type';
+import { PageResponseBody } from '@/utils/type';
+import { request } from '@/lib/clientApi/request';
+import { ProjectApplyStatusData } from '@/features/board/projectApplyStatus/type';
 
 /**
  * 프로젝트 지원 목록 조회
@@ -11,7 +11,7 @@ export async function getMyProjectApplies(
   pageIndex: number,
   itemCount: number,
 ): Promise<PageResponseBody<ProjectApplyStatusData[]>> {
-  return await requestWithAuth(
+  return await request(
     'GET',
     `/api/project/apply?pageIndex=${pageIndex}&itemCount=${itemCount}`,
   );

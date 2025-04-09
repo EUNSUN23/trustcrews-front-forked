@@ -1,4 +1,4 @@
-import { requestWithAuth } from '@/service/request';
+import { request } from '@/lib/clientApi/request';
 import { ProjectAuthMapCode } from '@/utils/type';
 import { isEqual } from 'lodash';
 import { throwErrorIfInvalid } from '@/utils/common';
@@ -22,5 +22,5 @@ export const updateProjectSettingCrewAuth = async (
     '크루 권한을 선택해 주세요.',
   );
 
-  return requestWithAuth('PUT', '/api/project/setting/crewAuth', reqData);
+  return request('PUT', '/api/project/setting/crewAuth', reqData);
 };

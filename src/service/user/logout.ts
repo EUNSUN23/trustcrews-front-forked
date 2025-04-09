@@ -1,5 +1,5 @@
-import { requestWithAuth } from '@/service/request';
+import { request } from '@/lib/clientApi/request';
 
 export const logout = async () => {
-  return await requestWithAuth('POST', '/api/user/logout');
+  return await request('POST', '/api/user/logout');
 };

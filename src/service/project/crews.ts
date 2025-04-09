@@ -1,4 +1,4 @@
-import { requestWithAuth } from '@/service/request';
+import { request } from '@/lib/clientApi/request';
 import { ProjectAuthMapCode } from '@/utils/type';
 
 /**
@@ -10,10 +10,7 @@ export async function getProjectCrewList({
 }: {
   projectId: string | bigint;
 }) {
-  return await requestWithAuth(
-    'GET',
-    `/api/project/crews/list?projectId=${projectId}`,
-  );
+  return await request('GET', `/api/project/crews/list?projectId=${projectId}`);
 }
 
 /**
@@ -21,7 +18,7 @@ export async function getProjectCrewList({
  * @param projectMemberId
  */
 export async function getCrewDetail(projectMemberId: string | bigint) {
-  return await requestWithAuth(
+  return await request(
     'GET',
     `/api/project/crews/detail?projectMemberId=${projectMemberId}`,
   );
@@ -38,7 +35,7 @@ export async function getCrewTaskHistory(
   pageIndex: number,
   itemCount: number,
 ) {
-  return await requestWithAuth(
+  return await request(
     'GET',
     `/api/project/crewTaskHistory?projectMemberId=${projectMemberId}&pageIndex=${pageIndex}&itemCount=${itemCount}`,
   );
@@ -55,5 +52,5 @@ export type WithdrawReqDto = {
  * @param reqData
  */
 export async function withdrawProject(reqData: WithdrawReqDto) {
-  return await requestWithAuth('POST', `/api/project/crews/withdraw`, reqData);
+  return await request('POST', `/api/project/crews/withdraw`, reqData);
 }

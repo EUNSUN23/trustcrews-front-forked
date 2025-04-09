@@ -1,5 +1,6 @@
 import { ProjectPostDetailData, ResponseBody } from '@/utils/type';
-import { request } from '@/service/request';
+
+import { request } from '@/lib/clientApi/request';
 
 /**
  * 게시글 상세조회

@@ -6,7 +6,8 @@ import {
 } from '@/utils/common';
 import { PositionId, TechStackValueType } from '@/utils/type';
 import _ from 'lodash';
-import { request } from '@/service/request';
+
+import { request } from '@/lib/clientApi/request';
 
 export type SignUpRequest = {
   email: string;

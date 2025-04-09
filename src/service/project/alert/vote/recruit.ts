@@ -1,4 +1,4 @@
-import { requestWithAuth } from '@/service/request';
+import { request } from '@/lib/clientApi/request';
 import {
   AlertMenu,
   VAlertRecruitDetailData,
@@ -17,7 +17,7 @@ export const getVAlertRecruitDetail = async (
   voteId: bigint,
 ): Promise<ResponseBody<VAlertRecruitDetailData>> => {
   const reqUrl = `/api/project/alert/vote/recruit/detail?alertId=${alertId}&applyId=${applyId}&voteId=${voteId}`;
-  return await requestWithAuth('GET', reqUrl);
+  return await request('GET', reqUrl);
 };
 
 /**
@@ -37,19 +37,16 @@ export async function getProjectNoticeByMenu(
   const method = 'GET';
   switch (noticeMenu.name) {
     case '모집':
-      return await requestWithAuth(
+      return await request(
         method,
         '/api/project/alert/vote/recruit' + reqParam,
       );
     case '강제탈퇴':
-      return await requestWithAuth(
+      return await request(
         method,
         '/api/project/alert/vote/fwithdraw' + reqParam,
       );
     case '크루':
-      return await requestWithAuth(
-        method,
-        '/api/project/alert/crew' + reqParam,
-      );
+      return await request(method, '/api/project/alert/crew' + reqParam);
   }
 }

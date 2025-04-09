@@ -1,11 +1,11 @@
-import { requestWithAuth } from '@/service/request';
+import { request } from '@/lib/clientApi/request';
 import { sortByStartDate } from '@/utils/common';
 
 /**
  * 참여 프로젝트 목록 조회
  */
 export async function getMyProjectList(pageIndex: number, itemCount: number) {
-  const resBody = await requestWithAuth(
+  const resBody = await request(
     'GET',
     `/api/project/list?pageIndex=${pageIndex}&itemCount=${itemCount}`,
   );

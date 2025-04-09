@@ -1,4 +1,4 @@
-import { request } from '@/service/request';
+import { request } from '@/lib/clientApi/request';
 
 export const login = async (email: string, password: string) => {
   const loginRequest = { email, password };

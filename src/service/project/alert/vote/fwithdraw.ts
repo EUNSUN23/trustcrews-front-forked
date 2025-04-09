@@ -1,4 +1,3 @@
-import { requestWithAuth } from '@/service/request';
 import {
   VAlertFWCreateData,
   VAlertFWDetailData,
@@ -15,7 +14,7 @@ export const getVAlertFWDetail = async (
   fwMemberId: bigint,
 ): Promise<ResponseBody<VAlertFWDetailData>> => {
   const reqUrl = `/api/project/alert/vote/fwithdraw/detail?voteId=${voteId}&fwMemberId=${fwMemberId}`;
-  return await requestWithAuth('GET', reqUrl);
+  return await request('GET', reqUrl);
 };
 
 /**
@@ -23,9 +22,5 @@ export const getVAlertFWDetail = async (
  * @param reqData
  */
 export async function createFWAlert(reqData: VAlertFWCreateData) {
-  return await requestWithAuth(
-    'POST',
-    `/api/project/alert/vote/fwithdraw`,
-    reqData,
-  );
+  return await request('POST', `/api/project/alert/vote/fwithdraw`, reqData);
 }
