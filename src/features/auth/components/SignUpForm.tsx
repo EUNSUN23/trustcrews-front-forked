@@ -7,16 +7,16 @@ import TextArea from '@/components/ui/form/TextArea';
 import FormButton from '@/components/ui/form/FormButton';
 import NicknameField from '@/components/ui/form/NickNameField';
 import { PositionId, TechStackValueType } from '@/utils/type';
-import { signUp, SignUpRequest } from '@/service/user/signup';
-import { useSetRecoilState } from 'recoil';
-import { snackbarState } from '@/store/CommonStateStore';
 import TechStackSelect from '@/components/ui/selector/TechStackSelect';
 import PositionSelect from '@/components/ui/selector/PositionSelect';
+import { signUpInputScheme, useSignUp } from '@/lib/auth';
+import { ZodError } from 'zod';
+import useSnackbar from '@/hooks/common/useSnackbar';
 
 // todo - 코드스타일 정리
 function SignUpForm() {
   const router = useRouter();
-  const setSnackbar = useSetRecoilState(snackbarState);
+  const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
 
   const [email, setEmail] = useState('');
   const [nickname, setNickname] = useState('');
@@ -27,39 +27,44 @@ function SignUpForm() {
   const [intro, setIntro] = useState('');
   const [isCheckedNickname, setIsCheckedNickname] = useState(false);
 
-  const userSignUp = async () => {
-    const signUpRequest: SignUpRequest = {
-      email,
-      password,
-      passwordConfirmation,
-      nickname,
-      positionId,
-      techStackIds,
-      isCheckedNickname,
-      intro,
-    };
-
-    try {
-      const res = await signUp(signUpRequest);
-      const { result, message } = res;
-      if (result === 'success') {
-        setSnackbar({ show: true, type: 'INFO', content: message });
+  const { mutate: signup } = useSignUp({
+    onSuccess: (res) => {
+      if (res.result === 'success') {
+        setSuccessSnackbar(res.message);
         router.push('/');
       } else {
-        setSnackbar({
-          show: true,
-          type: 'ERROR',
-          content: '프로세스 수행중 오류가 발생했습니다',
-        });
+        setErrorSnackbar(res.message);
       }
-    } catch (e: unknown) {
-      setSnackbar({ show: true, type: 'ERROR', content: (e as Error).message });
-    }
-  };
+    },
+  });
 
   const onChangeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNickname(e.target.value);
     setIsCheckedNickname(false);
+  };
+
+  const signUpWithValidation = () => {
+    const formData = {
+      email,
+      nickname,
+      password: {
+        init: password,
+        confirm: passwordConfirmation,
+      },
+      positionId,
+      techStackIds,
+      intro,
+      isCheckedNickname,
+    };
+
+    try {
+      signUpInputScheme.parse(formData);
+    } catch (e: unknown) {
+      setErrorSnackbar((e as ZodError).errors[0].message);
+      return;
+    }
+
+    signup(formData);
   };
 
   return (
@@ -120,7 +125,7 @@ function SignUpForm() {
         value={intro}
         onChange={(e) => setIntro(e.target.value)}
       />
-      <FormButton onClick={() => userSignUp()}>가입</FormButton>
+      <FormButton onClick={signUpWithValidation}>가입</FormButton>
     </div>
   );
 }
