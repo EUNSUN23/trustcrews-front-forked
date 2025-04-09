@@ -1,9 +1,9 @@
 import Input from '@/components/ui/form/Input';
-import { useRecoilState } from 'recoil';
-import { postFieldSelector } from '@/store/register/RegisterPostStateStore';
+import {useRecoilState} from 'recoil';
+import {postFieldSelector} from '@/features/registerProjectPost/store/RegisterProjectPostStateStore';
 import FormRow from '@/components/ui/form/FormRow';
 
-function ProjectOwnerContact() {
+function ContactField() {
   const [{ contact }, setContact] = useRecoilState(
     postFieldSelector('contact'),
   );
@@ -20,4 +20,4 @@ function ProjectOwnerContact() {
   );
 }
 
-export default ProjectOwnerContact;
+export default ContactField;

@@ -1,9 +1,9 @@
 import TextArea from '@/components/ui/form/TextArea';
-import { useRecoilState } from 'recoil';
-import { postFieldSelector } from '@/store/register/RegisterPostStateStore';
+import {useRecoilState} from 'recoil';
+import {postFieldSelector} from '@/features/registerProjectPost/store/RegisterProjectPostStateStore';
 import FormRowWide from '@/components/ui/form/FormRowWide';
 
-function ProjectIntro() {
+function IntroField() {
   const [{ content }, setContent] = useRecoilState(
     postFieldSelector('content'),
   );
@@ -22,4 +22,4 @@ function ProjectIntro() {
   );
 }
 
-export default ProjectIntro;
+export default IntroField;

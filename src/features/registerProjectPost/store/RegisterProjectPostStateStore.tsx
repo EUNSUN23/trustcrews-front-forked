@@ -1,4 +1,4 @@
-import { atom, selector, selectorFamily } from 'recoil';
+import {atom, selector, selectorFamily} from 'recoil';
 import {
   CreatePost,
   CreatePostForm,
@@ -7,8 +7,8 @@ import {
   CreateProjectKey,
 } from '@/app/postRegister/_utils/type';
 
-export const createPostStateStore = atom<CreatePost>({
-  key: 'createPostStateStore',
+export const postFormStateStore = atom<CreatePost>({
+  key: 'postFormStateStore',
   default: {
     title: '',
     content: '',
@@ -25,19 +25,19 @@ export const postFieldSelector = selectorFamily<
   get:
     (param: CreatePostKey) =>
     ({ get }) => {
-      const value = get(createPostStateStore)[param];
+      const value = get(postFormStateStore)[param];
       return { [param]: value };
     },
   set:
     (param: CreatePostKey) =>
     ({ get, set }, newValue) => {
-      const data = get(createPostStateStore);
-      set(createPostStateStore, { ...data, ...newValue });
+      const data = get(postFormStateStore);
+      set(postFormStateStore, { ...data, ...newValue });
     },
 });
 
-export const createProjectStateStore = atom<CreateProject>({
-  key: 'createProjectStateStore',
+export const projectFormStateStore = atom<CreateProject>({
+  key: 'projectFormStateStore',
   default: {
     name: '',
     subject: '',
@@ -55,22 +55,22 @@ export const projectFieldSelector = selectorFamily<
   get:
     (param: CreateProjectKey) =>
     ({ get }) => {
-      const value = get(createProjectStateStore)[param];
+      const value = get(projectFormStateStore)[param];
       return { [param]: value };
     },
   set:
     (param: CreateProjectKey) =>
     ({ get, set }, newValue) => {
-      const data = get(createProjectStateStore);
-      set(createProjectStateStore, { ...data, ...newValue });
+      const data = get(projectFormStateStore);
+      set(projectFormStateStore, { ...data, ...newValue });
     },
 });
 
-export const registerPostFormState = selector<CreatePostForm>({
-  key: 'registerPostFormState',
+export const projectPostFormState = selector<CreatePostForm>({
+  key: 'projectPostFormState',
   get: ({ get }) => {
-    const board = get(createPostStateStore);
-    const project = get(createProjectStateStore);
+    const board = get(postFormStateStore);
+    const project = get(projectFormStateStore);
     return { board, project };
   },
 });

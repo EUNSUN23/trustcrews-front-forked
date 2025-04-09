@@ -1,9 +1,9 @@
 import Input from '@/components/ui/form/Input';
-import { projectFieldSelector } from '@/store/register/RegisterPostStateStore';
-import { useRecoilState } from 'recoil';
+import {projectFieldSelector} from '@/features/registerProjectPost/store/RegisterProjectPostStateStore';
+import {useRecoilState} from 'recoil';
 import FormRow from '@/components/ui/form/FormRow';
 
-function ProjectSubject_Reg() {
+function SubjectField() {
   const [{ subject }, setSubject] = useRecoilState(
     projectFieldSelector('subject'),
   );
@@ -19,4 +19,4 @@ function ProjectSubject_Reg() {
   );
 }
 
-export default ProjectSubject_Reg;
+export default SubjectField;

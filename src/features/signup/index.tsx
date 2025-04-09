@@ -10,10 +10,11 @@ import { PositionId, TechStackValueType } from '@/utils/type';
 import { signUp, SignUpRequest } from '@/service/user/signup';
 import { useSetRecoilState } from 'recoil';
 import { snackbarState } from '@/store/CommonStateStore';
-import TechStackSelect from '@/components/ui/form/TechStackSelect';
-import PositionSelect from '@/components/user/signup/PositionSelect';
+import TechStackSelect from '@/components/ui/selector/TechStackSelect';
+import PositionSelect from '@/components/ui/selector/PositionSelect';
 
-function SignUpForm() {
+// todo - 코드스타일 정리
+function SignUp() {
   const router = useRouter();
   const setSnackbar = useSetRecoilState(snackbarState);
 
@@ -124,4 +125,4 @@ function SignUpForm() {
   );
 }
 
-export default SignUpForm;
+export default SignUp;

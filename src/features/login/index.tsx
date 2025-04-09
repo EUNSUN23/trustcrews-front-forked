@@ -1,17 +1,17 @@
 'use client';
 
-import { useState } from 'react';
+import {useState} from 'react';
 import Input from '@/components/ui/form/Input';
 import FormButton from '@/components/ui/form/FormButton';
-import { login } from '@/service/user/login';
-import { useRouter } from 'next/navigation';
-import { useSetRecoilState } from 'recoil';
-import { isValidEmail } from '@/utils/common';
-import { isEqual } from 'lodash';
-import { snackbarState } from '@/store/CommonStateStore';
-import { useQueryClient } from '@tanstack/react-query';
+import {login} from '@/service/user/login';
+import {useRouter} from 'next/navigation';
+import {useSetRecoilState} from 'recoil';
+import {isValidEmail} from '@/utils/common';
+import {isEqual} from 'lodash';
+import {snackbarState} from '@/store/CommonStateStore';
+import {useQueryClient} from '@tanstack/react-query';
 
-function LoginForm() {
+function Login() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -120,4 +120,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default Login;

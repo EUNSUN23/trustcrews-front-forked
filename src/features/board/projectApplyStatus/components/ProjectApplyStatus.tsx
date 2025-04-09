@@ -1,14 +1,14 @@
 'use client';
 
-import { useRef } from 'react';
-import { useInfiniteQuery } from '@tanstack/react-query';
-import { PageResponseBody } from '@/utils/type';
-import ProjectApplyStatusItem from '@/features/board/myProjects/projectApplyStatus/projectApplyStatusList/ProjectApplyStatusItem';
+import {useRef} from 'react';
+import {useInfiniteQuery} from '@tanstack/react-query';
+import {PageResponseBody} from '@/utils/type';
+import ProjectApplyStatusItem from '@/features/board/projectApplyStatus/components/ProjectApplyStatusItem';
 import Loader from '@/components/ui/Loader';
 import useIntersectionObserver from '@/hooks/common/useIntersectionObserver';
-import { ITEM_COUNT } from '@/utils/constant';
-import { getMyProjectApplies } from '../service';
-import { ProjectApplyStatusData } from '@/features/board/myProjects/projectApplyStatus/type';
+import {ITEM_COUNT} from '@/utils/constant';
+import {getMyProjectApplies} from '../service';
+import {ProjectApplyStatusData} from '@/features/board/projectApplyStatus/type';
 
 function ProjectApplyStatusList() {
   const bottomRef = useRef<HTMLLIElement | null>(null);

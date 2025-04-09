@@ -1,8 +1,8 @@
 'use client';
 
 import PositionBadge from '@/components/ui/badge/PositionBadge';
-import { BADGE_SIZE, getStatusBadgeColor } from '@/utils/common';
-import { ProjectApplyStatusData } from '@/features/board/myProjects/projectApplyStatus/type';
+import {BADGE_SIZE, getStatusBadgeColor} from '@/utils/common';
+import {ProjectApplyStatusData} from '@/features/board/projectApplyStatus/type';
 
 interface ProjectApplyStatusProps {
   participateNotice: ProjectApplyStatusData;

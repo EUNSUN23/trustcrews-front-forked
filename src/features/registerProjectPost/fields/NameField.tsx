@@ -1,9 +1,9 @@
 import Input from '@/components/ui/form/Input';
-import { useRecoilState } from 'recoil';
-import { projectFieldSelector } from '@/store/register/RegisterPostStateStore';
+import {useRecoilState} from 'recoil';
+import {projectFieldSelector} from '@/features/registerProjectPost/store/RegisterProjectPostStateStore';
 import FormRow from '@/components/ui/form/FormRow';
 
-function ProjectName_Reg() {
+function NameField() {
   const [{ name }, setProjectName] = useRecoilState(
     projectFieldSelector('name'),
   );
@@ -20,4 +20,4 @@ function ProjectName_Reg() {
   );
 }
 
-export default ProjectName_Reg;
+export default NameField;
