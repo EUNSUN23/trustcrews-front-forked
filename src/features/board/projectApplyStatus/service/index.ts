@@ -1,6 +1,6 @@
-import { PageResponseBody } from '@/utils/type';
-import { requestWithAuth } from '@/service/request';
-import { ProjectApplyStatusData } from '@/features/board/myProjects/projectApplyStatus/type';
+import {PageResponseBody} from '@/utils/type';
+import {requestWithAuth} from '@/service/request';
+import {ProjectApplyStatusData} from '@/features/board/projectApplyStatus/type';
 
 /**
  * 프로젝트 지원 목록 조회
