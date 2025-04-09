@@ -1,5 +1,4 @@
 import { ProjectPostDetailData, ResponseBody } from '@/utils/type';
-
 import { request } from '@/lib/clientApi/request';
 
 /**
