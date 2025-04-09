@@ -1,4 +1,4 @@
-import TechStackSelect from '@/components/ui/form/TechStackSelect';
+import TechStackSelect from '@/components/ui/selector/TechStackSelect';
 import { TechStackValueType } from '@/utils/type';
 import { ProjectSettingInfoData } from '@/service/project/setting/info';
 import { useRecoilState } from 'recoil';

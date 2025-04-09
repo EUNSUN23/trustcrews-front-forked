@@ -3,6 +3,7 @@ import { usePositionList } from '@/hooks/common/usePositionList';
 import { PositionId, SelectItem } from '@/utils/type';
 import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
 
+// todo 코드스타일 정리
 interface PositionSelectProps {
   positionId: PositionId | null;
   setPosition: (item: PositionId | null) => void;
