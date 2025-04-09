@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const allowedOrigins = [
-  'www.trustcrews.com, trustcrews-front-forked-kim-eun-seons-projects.vercel.app, trustcrews-front-forked-eunsun23-kim-eun-seons-projects.vercel.app',
-];
+const allowedOrigins = [process.env.NEXT_PUBLIC_URL];
 
 const corsOptions = {
   'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT',

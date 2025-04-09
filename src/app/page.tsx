@@ -1,7 +1,5 @@
-import PostTabMenu from '@/components/main/postTabMenu/PostTabMenu';
-import PostTabContents from '@/components/main/PostTabContents';
 import UserGuide from '@/components/main/userGuide/UserGuide';
-import InitialPostsDataProvider from '@/app/InitialPostsDataProvider';
+import { Board } from '@/features/board';
 
 function HomePage() {
   return (
@@ -10,10 +8,7 @@ function HomePage() {
         <UserGuide />
       </aside>
       <main className='mt-10 mobile:mt-2'>
-        <PostTabMenu />
-        <InitialPostsDataProvider>
-          <PostTabContents />
-        </InitialPostsDataProvider>
+        <Board />
       </main>
     </>
   );
