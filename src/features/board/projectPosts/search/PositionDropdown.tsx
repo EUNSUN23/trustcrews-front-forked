@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
-import useDropdownState from '@/hooks/common/useDropdownState';
-import { useRecoilState } from 'recoil';
-import { selectRecruitPositionState } from '@/store/postDetail/PostDetailStateStore';
-import { PostDetailPosition } from '@/utils/type';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
+import useDropdownState from '@/hooks/common/useDropdownState';
+import { usePositionList } from '@/hooks/common/usePositionList';
+import { useRecoilState } from 'recoil';
+import { compareItems } from '@/app/_boardUtil/common';
 import {
   Listbox,
   ListboxButton,
@@ -12,40 +12,50 @@ import {
   Transition,
 } from '@headlessui/react';
 import { bigIntToString, classNames, numStrToBigInt } from '@/utils/common';
-import { compareItems } from '@/app/_boardUtil/common';
+import { selectedPositionState } from '@/features/board/projectPosts/store/PostSearchStateStore';
 import { DEFAULT_POSITION_OPTION } from '@/utils/constant';
 
-function RecruitPositionDropdown({
-  recruitPositions,
-}: {
-  recruitPositions: PostDetailPosition[];
-}) {
-  const { dropdownRef, openDropdown, setOpenDropdown } = useDropdownState();
-  const [recruitPosition, setRecruitPosition] = useRecoilState(
-    selectRecruitPositionState,
+function PositionDropdown() {
+  const [selectedPosition, setSelectedPosition] = useRecoilState(
+    selectedPositionState,
   );
+  const { dropdownRef, openDropdown, setOpenDropdown } = useDropdownState();
+
+  const { data: positions, isFetching } = usePositionList();
+
+  if (isFetching)
+    return (
+      <div className='relative z-10 self-center'>
+        <div className='px-4 flex justify-between w-[150px] h-[40px] mobile:w-[130px] mobile:h-[35px] items-center border-2 rounded-3xl cursor-pointer bg-gray-300 animate-pulse'>
+          <div className='text-base text-grey800 mobile:text-sm'>
+            {'포지션'}
+          </div>
+          <BsChevronDown className='w-4 h-4 text-grey800' />
+        </div>
+      </div>
+    );
 
   const positionItems = [
     {
       ...DEFAULT_POSITION_OPTION,
       value: bigIntToString(DEFAULT_POSITION_OPTION.value),
     },
-    ...recruitPositions.map(({ position: { name, positionId } }) => ({
-      name,
+    ...positions!.data!.map(({ positionId, positionName }) => ({
+      name: positionName,
       value: bigIntToString(positionId),
     })),
   ];
 
-  const selectedPosition = positionItems.find(
-    (item) => item.value === bigIntToString(recruitPosition.value),
+  const selected = positionItems.find(
+    (item) => item.value === bigIntToString(selectedPosition.value),
   )!;
 
   return (
     <Listbox
       aria-label='모집 포지션'
-      value={selectedPosition}
+      value={selected}
       onChange={(item) =>
-        setRecruitPosition({ ...item, value: numStrToBigInt(item.value) })
+        setSelectedPosition({ ...item, value: numStrToBigInt(item.value) })
       }
       by={compareItems}
     >
@@ -56,7 +66,7 @@ function RecruitPositionDropdown({
       >
         <ListboxButton className='px-4 flex justify-between w-[150px] h-[40px] mobile:w-[130px] mobile:h-[35px] items-center border-2 rounded-3xl cursor-pointer'>
           <span className='text-base text-grey800 mobile:text-sm'>
-            {selectedPosition.name}
+            {selected.name}
           </span>
           <span className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2'>
             <BsChevronDown
@@ -72,7 +82,7 @@ function RecruitPositionDropdown({
           leaveFrom='opacity-100'
           leaveTo='opacity-0'
         >
-          <ListboxOptions className='absolute bottom-12 p-2 flex flex-col w-[150px] h-[auto] mobile:w-[130px] mobile:h-[auto]  border-2 rounded-3xl bg-white'>
+          <ListboxOptions className='absolute top-12 p-2 flex flex-col w-[150px] h-[auto] mobile:w-[130px] mobile:h-[auto]  border-2 rounded-3xl bg-white'>
             {positionItems.map(({ name, value }) => (
               <ListboxOption
                 key={`position-${value}`}
@@ -98,4 +108,4 @@ function RecruitPositionDropdown({
   );
 }
 
-export default RecruitPositionDropdown;
+export default PositionDropdown;

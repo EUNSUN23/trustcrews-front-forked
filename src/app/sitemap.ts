@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
-import { getPostList } from '@/service/post/post';
 import { DEFAULT_SEARCH_POST_PARAM } from '@/app/InitialPostsDataProvider';
 import { PageResponseBody, PostCardInfo } from '@/utils/type';
+import { getPostList } from '@/features/board/projectPosts/service';
 
 const DOMAIN = process.env.NEXT_PUBLIC_URL;
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

@@ -4,7 +4,6 @@ import {
   TrustGradeNameType,
   TrustGradeValueType,
 } from '@/app/project/@setting/_utils/type';
-import { ProjectApplyStatusCode } from '@/service/project/apply';
 import { VoteStatusCode } from '@/service/project/alert/type';
 import {
   BoardPosition,
@@ -337,4 +336,5 @@ export type ConstantDto<T> = {
   name: string;
 };
 
+export type ProjectApplyStatusCode = 'PAS1001' | 'PAS1002' | 'PAS1003';
 export type StatusCode = ProjectApplyStatusCode | VoteStatusCode | string;

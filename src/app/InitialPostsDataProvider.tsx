@@ -3,8 +3,11 @@ import {
   HydrationBoundary,
   QueryClient,
 } from '@tanstack/react-query';
-import { getPostList, SearchPostParams } from '@/service/post/post';
 import { ReactNode } from 'react';
+import {
+  getPostList,
+  SearchPostParams,
+} from '@/features/board/projectPosts/service';
 
 export const DEFAULT_SEARCH_POST_PARAM: SearchPostParams = {
   techStacks: [],
