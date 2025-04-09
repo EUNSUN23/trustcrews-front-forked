@@ -1,4 +1,4 @@
-import SignUp from '@/features/signup';
+import SignUpForm from '@/features/auth/components/SignUpForm';
 import Link from 'next/link';
 
 function SignUpPage() {
@@ -7,7 +7,7 @@ function SignUpPage() {
       <h1 className='text-3xl mobile:text-2xl font-semibold w-full text-center mb-4 mobile:mb-2 mt-6 mobile:mt-4'>
         회원가입
       </h1>
-      <SignUp />
+      <SignUpForm />
       <div className='text-center text-sm mobile:text-xs mt-2 mb-6 mobile:mb-4'>
         이미 회원이신가요?
         <Link href='/login'>
