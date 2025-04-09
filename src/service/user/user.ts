@@ -1,4 +1,4 @@
-import { handleResponse, requestWithAuth } from '@/service/request';
+import {handleResponse, requestWithAuth} from '@/service/request';
 
 const publicURL = process.env.NEXT_PUBLIC_URL;
 
@@ -80,13 +80,6 @@ export const getUserProjectHistory = async (
     'GET',
     `/api/user/history?pageNumber=${pageNumber}&userId=${userId}`,
   );
-};
-
-/**
- *
- */
-export const getTrustGradeListByUser = async () => {
-  return await requestWithAuth('GET', '/api/user/trust-grade');
 };
 
 export const deleteProfileImage = async () => {

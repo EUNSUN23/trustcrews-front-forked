@@ -12,7 +12,6 @@ const PostCard = ({ postInfo }: { postInfo: PostCardInfo }) => {
     boardId,
     title,
     project: {
-      projectId,
       projectName,
       startDate,
       endDate,
@@ -25,10 +24,7 @@ const PostCard = ({ postInfo }: { postInfo: PostCardInfo }) => {
 
   return (
     <div className='p-4'>
-      <Link
-        aria-label={`${title}로 가기`}
-        href={`/post?postId=${boardId}&projectId=${projectId}`}
-      >
+      <Link aria-label={`${title}로 가기`} href={`/post?postId=${boardId}`}>
         <article>
           <h3 className='text-xl font-bold  truncate mb-1'>{title}</h3>
           <section className='mt-4 mb-2 flex items-center text-base text-gray-600 font-medium'>

@@ -5,10 +5,7 @@ import {
   TrustGradeValueType,
 } from '@/app/project/@setting/_utils/type';
 import { VoteStatusCode } from '@/service/project/alert/type';
-import {
-  BoardPosition,
-  ProjectSettingBoardData,
-} from '@/service/project/setting/board';
+import { BoardPosition } from '@/service/project/setting/board';
 import { UserProjectHistoryStatus } from '@/service/user/constant';
 import { BadgeSize } from '@/utils/common';
 
@@ -134,15 +131,12 @@ export interface UserProjectHistoryData {
   updateDate: string;
 }
 
-export type PostInfoSummary = {
+export type PostCardInfo = {
+  project: ProjectInfoSummary;
   boardId: bigint;
   title: string;
   recruitmentStatus: boolean;
   boardPositions: BoardPosition[];
-};
-
-export interface PostCardInfo extends PostInfoSummary {
-  project: ProjectInfoSummary;
   boardPageView: number;
   user: {
     email: string;
@@ -152,7 +146,7 @@ export interface PostCardInfo extends PostInfoSummary {
   };
   createDate: string;
   updateDate: string;
-}
+};
 
 export type ResponseResult = 'success' | 'fail';
 
@@ -249,15 +243,24 @@ export interface PostDetailPosition {
 /**
  * 프로젝트 모집 게시글 - 게시글 상세
  */
-export type PostInfo = ProjectSettingBoardData & {
-  pageView: number;
-  user: {
-    userId: bigint;
-    nickName: string;
-    userProfileImgSrc: string | null;
+export type ProjectPostDetailData = {
+  post: {
+    boardId: bigint;
+    title: string;
+    content: string;
+    pageView: number;
+    recruitmentStatus: boolean;
+    user: {
+      userId: bigint;
+      nickName: string;
+      userProfileImgSrc: string | null;
+    };
+    contact: string;
+    createDate: string;
+    updateDate: string;
+    boardPositions: BoardPosition[];
   };
-  createDate: string;
-  updateDate: string;
+  project: ProjectInfoSummary;
 };
 
 export type SnackbarType = 'INFO' | 'ERROR' | 'SUCCESS';
