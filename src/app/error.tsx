@@ -11,7 +11,7 @@ import {
   selectedPositionState,
   selectedTechStackState,
 } from '@/features/board/projectPosts/store/PostSearchStateStore';
-import { activeTabState } from '@/features/board/store/BoardActiveStateStore';
+import { activeBoardTabStore } from '@/features/board/store/BoardActiveStateStore';
 
 export default function Error({
   error,
@@ -21,12 +21,12 @@ export default function Error({
   reset: () => void;
 }) {
   const router = useRouter();
-  const resetActiveTab = useResetRecoilState(activeTabState);
+  const resetActiveBoardTab = useResetRecoilState(activeBoardTabStore);
   const resetSelectedTechStacks = useResetRecoilState(selectedTechStackState);
   const resetSelectedPosition = useResetRecoilState(selectedPositionState);
 
   const goHome = () => {
-    resetActiveTab();
+    resetActiveBoardTab();
     resetSelectedTechStacks();
     resetSelectedPosition();
 

@@ -8,7 +8,6 @@ import { confirmModalState } from '@/store/CommonStateStore';
 import { selectRecruitPositionState } from '@/store/postDetail/PostDetailStateStore';
 import RecruitPositionDropdown from '@/components/postDetail/RecruitPositionDropdown';
 import { isEqual } from 'lodash';
-import { numStrToBigInt } from '@/utils/common';
 
 function JoinProject({
   projectId,
@@ -17,7 +16,7 @@ function JoinProject({
   projectId: bigint;
   boardInfo: PostInfo;
 }) {
-  const recruitPosition = useRecoilValue(selectRecruitPositionState);
+  const { value: recruitPosition } = useRecoilValue(selectRecruitPositionState);
   const currentUserId = getCookie('user_id');
 
   const { joinProject, isUpdating } = useJoinProject();
@@ -30,7 +29,7 @@ function JoinProject({
       return;
     }
 
-    if (recruitPosition === '0') {
+    if (recruitPosition === 0n) {
       setInfoSnackbar('포지션을 선택해 주세요.');
       return;
     }
@@ -43,7 +42,7 @@ function JoinProject({
       title,
       content,
       onClickConfirmHandler: () =>
-        joinProject({ projectId, positionId: numStrToBigInt(recruitPosition) }),
+        joinProject({ projectId, positionId: recruitPosition }),
     });
   };
 

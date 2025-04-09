@@ -1,6 +1,10 @@
 import { atom } from 'recoil';
+import { DEFAULT_POSITION_OPTION } from '@/utils/constant';
+import { PositionId, PositionName, SelectItem } from '@/utils/type';
 
-export const selectRecruitPositionState = atom<string>({
+export const selectRecruitPositionState = atom<
+  SelectItem<PositionName, PositionId>
+>({
   key: 'selectRecruitPositionState',
-  default: '0',
+  default: DEFAULT_POSITION_OPTION,
 });

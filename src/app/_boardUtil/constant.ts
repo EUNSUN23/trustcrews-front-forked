@@ -4,5 +4,3 @@ export const PROJECT_APPLY_STATUS = {
   PERMITTED: { code: 'PAS1002', name: '수락' },
   REJECTED: { code: 'PAS1003', name: '거절' },
 } as const;
-
-export const defaultPositionSelectItem = { name: '포지션', value: '0' };
