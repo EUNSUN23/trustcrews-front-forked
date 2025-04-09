@@ -1,5 +1,5 @@
 import Login from '@/features/login';
-import { SignUpButton } from '@/features/signup/SignUpButton';
+import Link from 'next/link';
 
 function LoginPage() {
   return (
@@ -10,7 +10,9 @@ function LoginPage() {
       <Login />
       <div className='text-center text-sm mobile:text-xs mt-3'>
         회원이 아니신가요?
-        <SignUpButton />
+        <Link href='/signup'>
+          <span className='ml-1 underline text-blue-600'>회원가입</span>
+        </Link>
       </div>
     </div>
   );
