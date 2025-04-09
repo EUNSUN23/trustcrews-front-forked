@@ -9,9 +9,9 @@ import NicknameField from '@/components/ui/form/NickNameField';
 import { PositionId, TechStackValueType } from '@/utils/type';
 import TechStackSelect from '@/components/ui/selector/TechStackSelect';
 import PositionSelect from '@/components/ui/selector/PositionSelect';
-import { signUpInputScheme, useSignUp } from '@/lib/auth';
 import { ZodError } from 'zod';
 import useSnackbar from '@/hooks/common/useSnackbar';
+import { signUpInputScheme, useSignUp } from '@/lib/auth/signUp';
 
 // todo - 코드스타일 정리
 function SignUpForm() {

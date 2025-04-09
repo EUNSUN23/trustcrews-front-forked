@@ -7,9 +7,9 @@ import { useRouter } from 'next/navigation';
 import { useSetRecoilState } from 'recoil';
 import { snackbarState } from '@/store/CommonStateStore';
 import { useQueryClient } from '@tanstack/react-query';
-import { loginInputSchema, useLogin } from '@/lib/auth';
 import { isEqual } from 'lodash';
 import { ZodError } from 'zod';
+import { loginInputSchema, useLogin } from '@/lib/auth/logIn';
 
 function LoginForm() {
   const router = useRouter();
