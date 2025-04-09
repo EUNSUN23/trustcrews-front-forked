@@ -11,7 +11,7 @@ const PostListSkeleton = ({ itemCount = 8 }: { itemCount: number }) => {
               key={idx}
               className='flex-col w-[280px] rounded-xl mobile:w-full mobile:mt-2'
             >
-              <Skeleton key={idx} sizeClassName='w-full h-[310px]' />
+              <Skeleton sizeClassName='w-full h-[310px]' />
             </li>
           ))}
       </ul>

@@ -11,9 +11,9 @@ import {
   ListboxOptions,
   Transition,
 } from '@headlessui/react';
-import { bigIntToString, classNames } from '@/utils/common';
+import { bigIntToString, classNames, numStrToBigInt } from '@/utils/common';
 import { compareItems } from '@/app/_boardUtil/common';
-import { defaultPositionSelectItem } from '@/app/_boardUtil/constant';
+import { DEFAULT_POSITION_OPTION } from '@/utils/constant';
 
 function RecruitPositionDropdown({
   recruitPositions,
@@ -26,22 +26,27 @@ function RecruitPositionDropdown({
   );
 
   const positionItems = [
-    defaultPositionSelectItem,
-    ...recruitPositions.map(({ position: { positionId, name } }) => ({
+    {
+      ...DEFAULT_POSITION_OPTION,
+      value: bigIntToString(DEFAULT_POSITION_OPTION.value),
+    },
+    ...recruitPositions.map(({ position: { name, positionId } }) => ({
       name,
       value: bigIntToString(positionId),
     })),
   ];
 
   const selectedPosition = positionItems.find(
-    (item) => item.value === recruitPosition,
+    (item) => item.value === bigIntToString(recruitPosition.value),
   )!;
 
   return (
     <Listbox
       aria-label='모집 포지션'
       value={selectedPosition}
-      onChange={({ value }) => setRecruitPosition(value)}
+      onChange={(item) =>
+        setRecruitPosition({ ...item, value: numStrToBigInt(item.value) })
+      }
       by={compareItems}
     >
       <div
