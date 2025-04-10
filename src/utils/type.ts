@@ -322,18 +322,6 @@ export type ArrayValue<T> = T extends () => IterableIterator<infer U>
   ? U
   : never;
 
-export type ButtonTheme =
-  | 'primary'
-  | 'primaryHollow'
-  | 'disabled'
-  | 'disabled-hollow'
-  | 'cancel'
-  | 'black'
-  | 'black-hollow'
-  | 'danger';
-
-export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
-
 export type ConstantDto<T> = {
   code: T;
   name: string;

@@ -75,31 +75,6 @@ export const NOTICE_BADGE: Record<AlertMenuCode, _NoticeBadge> = {
   PRA1003: new _NoticeBadge('red', '강제탈퇴'),
 } as const;
 
-export function makeImageSize(size: string) {
-  let imageSize;
-  switch (size) {
-    case '2xs':
-      imageSize = 'h-[24px] w-[24px]';
-      break;
-    case 'xs':
-      imageSize = 'pc:h-[40px] pc:w-[40px] h-[32px] w-[32px]';
-      break;
-    case 'sm':
-      imageSize = 'pc:h-[64px] pc:w-[64px] h-[40px] w-[40px]';
-      break;
-    case 'md':
-      imageSize = 'pc:h-[96px] pc:w-[96px] h-[64px] w-[64px]';
-      break;
-    case 'lg':
-      imageSize = 'pc:h-[160px] pc:w-[160px] h-[112px] w-[112px]';
-      break;
-    default:
-      imageSize = size;
-  }
-
-  return imageSize;
-}
-
 export function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
