@@ -1,45 +1,44 @@
 'use client';
 
 import { HTMLAttributes } from 'react';
-import { BadgeProps } from '@/utils/type';
 import { FaRegSmile } from '@react-icons/all-files/fa/FaRegSmile';
 import { TrustGradeNameType } from '@/app/project/@setting/_utils/type';
-import { classNames } from '@/utils/common';
+import { clsx } from 'clsx';
+import { BadgeVariants } from '@/utils/badge';
+import { VariantProps } from 'class-variance-authority';
+import cn from '@/utils/cn';
 
-interface TrustBradeBadgeProps extends BadgeProps, HTMLAttributes<SVGElement> {
-  text: TrustGradeNameType;
+const trustGradeBadgeColorClass = (trustGrade: TrustGradeNameType) =>
+  clsx({
+    'text-level1': trustGrade === 'level1',
+    'text-level2': trustGrade === 'level2',
+    'text-level3': trustGrade === 'level3',
+    'text-level4': trustGrade === 'level4',
+  });
+
+const TrustGradeBadgeVariants = (trustGrade: TrustGradeNameType) =>
+  BadgeVariants(`font-semibold`, trustGradeBadgeColorClass(trustGrade));
+
+interface TrustBradeBadgeProps
+  extends HTMLAttributes<HTMLElement>,
+    VariantProps<ReturnType<typeof TrustGradeBadgeVariants>> {
+  trustGrade: TrustGradeNameType;
   badgeStyle?: 'emo' | 'text';
 }
 
 function TrustGradeBadge({
-  text,
+  trustGrade,
+  size,
   badgeStyle = 'emo',
   ...props
 }: TrustBradeBadgeProps) {
-  let textColor = '';
-
-  switch (text) {
-    case 'level1':
-      textColor = 'text-level1';
-      break;
-    case 'level2':
-      textColor = 'text-level2';
-      break;
-    case 'level3':
-      textColor = 'text-level3';
-      break;
-    case 'level4':
-      textColor = 'text-level4';
-      break;
-  }
-
-  let badgeSize = 16;
-  switch (props.size) {
+  let emoBadgeSize = 16;
+  switch (size) {
     case 'md':
-      badgeSize = 20;
+      emoBadgeSize = 20;
       break;
     case 'lg':
-      badgeSize = 24;
+      emoBadgeSize = 24;
       break;
     default:
       break;
@@ -47,24 +46,22 @@ function TrustGradeBadge({
 
   return (
     <>
-      <span className='sr-only'>{`신뢰등급: ${text}`}</span>
+      <span className='sr-only'>{`신뢰등급: ${trustGrade}`}</span>
       {badgeStyle === 'text' ? (
         <span
-          className={classNames(
-            `font-semibold ${textColor}`,
-            props.className ? props.className : '',
+          {...props}
+          className={cn(
+            TrustGradeBadgeVariants(trustGrade)({ size }),
+            props.className,
           )}
         >
-          {text}
+          {trustGrade}
         </span>
       ) : (
         <FaRegSmile
           aria-hidden={true}
-          className={classNames(
-            `${textColor}`,
-            props.className ? props.className : '',
-          )}
-          size={badgeSize}
+          className={cn(trustGradeBadgeColorClass(trustGrade), props.className)}
+          size={emoBadgeSize}
         />
       )}
     </>

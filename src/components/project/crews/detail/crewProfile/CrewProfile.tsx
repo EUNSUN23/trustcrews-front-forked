@@ -43,7 +43,7 @@ function CrewProfile({ projectMemberId }: { projectMemberId: string }) {
         <ul className='my-3 flex flex-col items-center'>
           <li className='flex items-center space-x-1 pc:text-2xl tablet:text-[1.3rem] mobile:text-lg font-medium text-greyDarkBlue'>
             <span className='leading-loose'>{user.nickname}</span>
-            <TrustGradeBadge text={user.trustGrade.name} size='md' />
+            <TrustGradeBadge trustGrade={user.trustGrade.name} size='md' />
           </li>
         </ul>
         {isMemberCurrentUser ? (

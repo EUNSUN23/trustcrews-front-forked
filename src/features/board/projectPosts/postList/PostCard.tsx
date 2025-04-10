@@ -158,7 +158,7 @@ const PostCard = ({ postInfo }: { postInfo: PostCardInfo }) => {
                   <p className='leading-none self-end'>{nickname}</p>
                   <TrustGradeBadge
                     size='xs'
-                    text={trustGrade.name}
+                    trustGrade={trustGrade.name}
                     className='ml-1'
                   />
                 </div>
