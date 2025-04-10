@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import Avatar from '@/components/ui/Avatar';
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/button';
 import TechStackBadge from '@/components/ui/badge/TechStackBadge';
 import UserProjectInfo from './UserProjectInfo';
 import { useProfileInfo } from '@/hooks/user/useProfileInfo';
@@ -53,7 +53,7 @@ function ProfileCard() {
         <div className='pt-3 mobile:pt-2'>
           <Button
             size='md'
-            theme='primary-hollow'
+            theme='primaryHollow'
             onClickHandler={() => router.push('/user/setting')}
           >
             프로필 수정

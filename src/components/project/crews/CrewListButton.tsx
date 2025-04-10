@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/button';
 import { useRecoilValue } from 'recoil';
 import { projectIdState } from '@/store/project/ProjectInfoStateStore';
 
@@ -14,7 +14,7 @@ function CrewListButton() {
         query: { projectId },
       }}
     >
-      <Button size='xl' theme='primary-hollow'>
+      <Button size='xl' theme='primaryHollow'>
         크루 목록
       </Button>
     </Link>

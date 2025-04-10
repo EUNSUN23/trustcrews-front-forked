@@ -324,7 +324,7 @@ export type ArrayValue<T> = T extends () => IterableIterator<infer U>
 
 export type ButtonTheme =
   | 'primary'
-  | 'primary-hollow'
+  | 'primaryHollow'
   | 'disabled'
   | 'disabled-hollow'
   | 'cancel'

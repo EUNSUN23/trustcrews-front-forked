@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Avatar from '@/components/ui/Avatar';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/button';
 import { ProjectAuthMap, ProjectMember } from '@/utils/type';
 import { useMutation } from '@tanstack/react-query';
 import {
