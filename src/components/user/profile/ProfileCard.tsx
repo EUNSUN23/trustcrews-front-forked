@@ -40,6 +40,7 @@ function ProfileCard() {
             techStacks.map((stack) => (
               <TechStackBadge
                 key={stack.techStackId}
+                size='xs'
                 text={stack.techStackName}
                 className='mx-0.5 w-[70px] mobile:w-[50px] justify-center'
               />

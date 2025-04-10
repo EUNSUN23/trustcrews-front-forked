@@ -7,7 +7,6 @@ import {
 } from './type';
 import { camelCase } from 'lodash';
 import { ReactNode } from 'react';
-import { AlertMenuCode, AlertMenuName } from '@/service/project/alert/type';
 
 export const BADGE_COLOR = {
   red: 'bg-red-50 text-red-700 ring-red-600/10',
@@ -31,48 +30,6 @@ export const BADGE_SIZE = {
 } as const;
 
 export type BadgeSize = keyof typeof BADGE_SIZE;
-export type BadgeSizeValue = (typeof BADGE_SIZE)[BadgeSize];
-
-export interface BadgeInterface {
-  color?(): BadgeColorValue;
-  size(): BadgeSizeValue;
-}
-
-export class NoticeBadge implements BadgeInterface {
-  private readonly _color: BadgeColor;
-  private readonly _size: BadgeSize;
-  private _text: string;
-
-  constructor(color: BadgeColor, size: BadgeSize, text: string) {
-    this._color = color;
-    this._size = size;
-    this._text = text;
-  }
-
-  color(): BadgeColorValue {
-    return BADGE_COLOR[this._color];
-  }
-
-  size(): BadgeSizeValue {
-    return BADGE_SIZE[this._size];
-  }
-
-  text(): string {
-    return this._text;
-  }
-}
-
-export class _NoticeBadge extends NoticeBadge {
-  constructor(color: BadgeColor, text: AlertMenuName) {
-    super(color, 'sm', text);
-  }
-}
-
-export const NOTICE_BADGE: Record<AlertMenuCode, _NoticeBadge> = {
-  PRA2001: new _NoticeBadge('blue', '크루'),
-  PRA1002: new _NoticeBadge('yellow', '모집'),
-  PRA1003: new _NoticeBadge('red', '강제탈퇴'),
-} as const;
 
 export function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');

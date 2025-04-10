@@ -1,31 +1,45 @@
-import { VoteStatusCode, VoteStatusType } from '@/service/project/alert/type';
-import { NoticeBadge, BadgeColor } from '@/utils/common';
-import { VoteStatus } from '@/service/project/alert/constant';
+import { VoteStatusType } from '@/service/project/alert/type';
+import { clsx } from 'clsx';
+import { BadgeVariants } from '@/utils/badge';
+import { HTMLAttributes } from 'react';
+import { VariantProps } from 'class-variance-authority';
+import cn from '@/utils/cn';
 
-type VoteStatusBadgeProps = {
+const VOTE_STATUS_COLOR = {
+  PROCESSING: 'bg-green-50 text-green-700 ring-green-600/20',
+  FINISHED: 'bg-slate-50 text-slate-600 ring-slate-700/20',
+} as const;
+const { PROCESSING, FINISHED } = VOTE_STATUS_COLOR;
+
+const voteStatusBadgeColorClass = (voteStatus: VoteStatusType) =>
+  clsx({
+    [PROCESSING]: voteStatus.code === 'VSTAT1001',
+    [FINISHED]: voteStatus.code === 'VSTAT1002',
+  });
+
+const VoteStatusBadgeVariants = (voteStatus: VoteStatusType) =>
+  BadgeVariants(
+    `inline-flex items-center rounded-full transparent font-medium  ring-1 ring-inset `,
+    voteStatusBadgeColorClass(voteStatus),
+  );
+
+interface VoteStatusBadgeProps
+  extends HTMLAttributes<HTMLSpanElement>,
+    VariantProps<ReturnType<typeof VoteStatusBadgeVariants>> {
   voteStatus: VoteStatusType;
-};
-
-class _VoteStatusBadge extends NoticeBadge {
-  constructor(color: BadgeColor, text: VoteStatusType['name']) {
-    super(color, 'sm', text);
-  }
 }
 
-const VOTE_STATUS_BADGE: Record<VoteStatusCode, _VoteStatusBadge> = {
-  VSTAT1001: new _VoteStatusBadge('green', VoteStatus.VSTAT1001.name),
-  VSTAT1002: new _VoteStatusBadge('slate', VoteStatus.VSTAT1002.name),
-} as const;
-
-function VoteStatusBadge({ voteStatus }: VoteStatusBadgeProps) {
-  const badge = VOTE_STATUS_BADGE[voteStatus.code];
-
+function VoteStatusBadge({ voteStatus, size, ...props }: VoteStatusBadgeProps) {
   return (
     <>
       <span
-        className={`inline-flex items-center ${badge.size()} rounded-full transparent font-medium  ring-1 ring-inset ${badge.color()}`}
+        {...props}
+        className={cn(
+          VoteStatusBadgeVariants(voteStatus)({ size }),
+          props.className,
+        )}
       >
-        {badge.text()}
+        {voteStatus.name}
       </span>
     </>
   );
