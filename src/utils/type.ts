@@ -7,7 +7,6 @@ import {
 import { VoteStatusCode } from '@/service/project/alert/type';
 import { BoardPosition } from '@/service/project/setting/board';
 import { UserProjectHistoryStatus } from '@/service/user/constant';
-import { BadgeSize } from '@/utils/common';
 
 export type DropDownItem = {
   name: string;
@@ -17,12 +16,6 @@ export type DropDownItem = {
 
 export interface DropDownProps {
   items: DropDownItem[];
-}
-
-export interface BadgeProps {
-  color?: string;
-  size?: BadgeSize;
-  text?: string;
 }
 
 export type SelectItem<T, V> = {

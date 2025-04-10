@@ -8,29 +8,6 @@ import {
 import { camelCase } from 'lodash';
 import { ReactNode } from 'react';
 
-export const BADGE_COLOR = {
-  red: 'bg-red-50 text-red-700 ring-red-600/10',
-  yellow: 'bg-yellow-50 text-yellow-800 ring-yellow-600/20',
-  green: 'bg-green-50 text-green-700 ring-green-600/20',
-  blue: 'bg-blue-50 text-blue-700 ring-blue-700/10',
-  purple: 'bg-purple-50 text-purple-700 ring-purple-700/10',
-  slate: 'bg-slate-50 text-slate-600 ring-slate-700/20',
-  fullRed: 'bg-[#FF513A] text-[#FFFFFF]',
-  fullYellow: 'text-[#FFFFFF] text[#7B5C03]',
-} as const;
-
-export type BadgeColor = keyof typeof BADGE_COLOR;
-export type BadgeColorValue = (typeof BADGE_COLOR)[BadgeColor];
-
-export const BADGE_SIZE = {
-  xs: 'text-[11px] mobile:text-[9px] px-2 mobile:px-1 py-0.5 mobile:py-0',
-  sm: 'tablet:text-sm mobile:text-xs px-2 py-1',
-  md: 'tablet:text-lg mobile:text-base tablet:px-8 mobile:px-4 tablet:py-4 mobile:py-2',
-  lg: 'text-lg px-8 py-4',
-} as const;
-
-export type BadgeSize = keyof typeof BADGE_SIZE;
-
 export function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
