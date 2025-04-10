@@ -86,7 +86,7 @@ function VAlertFwModalContents({
           {fwUserNickname}
         </h3>
         <div className='mx-auto flex justify-center space-x-2'>
-          <ProjectRoleBadge text={fwMemberAuth.name} />
+          <ProjectRoleBadge projectAuth={fwMemberAuth} />
           <PositionBadge text={fwMemberPositionName} />
         </div>
       </section>
