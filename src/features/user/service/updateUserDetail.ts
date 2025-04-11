@@ -1,0 +1,110 @@
+import { handleResponse } from '@/lib/clientApi/handleResponse';
+import { publicURL } from '@/lib/clientApi/request';
+import { ApiResult, ResponseBody } from '@/utils/type';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { getSimpleUserInfoQueryOptions } from '@/lib/user/getSimpleUserInfo';
+import { z } from 'zod';
+
+const nicknameRegex: RegExp = /^[a-zA-Z0-9]{6,10}$/;
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
+
+export const updateUserDetailSchema = z.object({
+  nickname: z
+    .string()
+    .min(1, { message: '닉네임을 입력해주세요.' })
+    .regex(nicknameRegex, {
+      message: '닉네임은 6~10자로, 영문과 숫자를 포함해야합니다.',
+    }),
+  isCheckedNickname: z.boolean().refine((val) => val, {
+    message: '닉네임 중복확인을 해주세요.',
+  }),
+  positionId: z
+    .bigint()
+    .or(z.number())
+    .nullable()
+    .refine((val) => val, { message: '직무를 선택해주세요.' }),
+  techStackIds: z
+    .array(z.bigint().or(z.number()))
+    .min(1, { message: '관심스택을 선택해주세요.' })
+    .readonly(),
+  intro: z.string().nullable().optional(),
+  profileImgFile: z
+    .instanceof(File)
+    .refine((file) => file.size <= MAX_FILE_SIZE, {
+      message: '이미지 파일 용량은 5MB 이하만 가능합니다.',
+    })
+    .nullable(),
+});
+
+type UpdateUserDetailForm = z.infer<typeof updateUserDetailSchema>;
+
+export const updateUserDetail = async (
+  updateUserDetailForm: UpdateUserDetailForm,
+): Promise<ResponseBody<null>> => {
+  const { nickname, positionId, techStackIds, intro, profileImgFile } =
+    updateUserDetailForm;
+
+  const formData = new FormData();
+  formData.set(
+    'updateRequestDto',
+    new Blob(
+      [
+        JSON.stringify({ nickname, positionId, techStackIds, intro }, (k, v) =>
+          typeof v === 'bigint' ? Number(v) : v,
+        ),
+      ],
+      {
+        type: 'application/json',
+      },
+    ),
+  );
+
+  if (profileImgFile) {
+    formData.set('file', profileImgFile);
+  }
+
+  const res = await fetch(`${publicURL}/api/user`, {
+    method: 'PUT',
+    cache: 'no-cache',
+    body: formData,
+  });
+
+  return await handleResponse(res);
+};
+
+export const useUpdateUserDetail = ({
+  onSuccess,
+  onError,
+}: {
+  onSuccess?: (res: ApiResult<typeof updateUserDetail>) => void;
+  onError?: (res: ApiResult<typeof updateUserDetail>) => void;
+}) => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (data: UpdateUserDetailForm) => updateUserDetail(data),
+    onSuccess: async (res) => {
+      if (res.result === 'success') {
+        const invalidateUserDetail = queryClient.invalidateQueries({
+          queryKey: ['profileInfo'],
+        });
+        const invalidateSimpleUser = queryClient.invalidateQueries({
+          queryKey: getSimpleUserInfoQueryOptions().queryKey,
+        });
+        const invalidatePostList = queryClient.invalidateQueries({
+          queryKey: ['postList'],
+        });
+
+        await Promise.all([
+          invalidateUserDetail,
+          invalidateSimpleUser,
+          invalidatePostList,
+        ]);
+
+        onSuccess?.(res);
+      } else {
+        onError?.(res);
+      }
+    },
+  });
+};

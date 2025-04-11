@@ -1,7 +1,7 @@
 import AvatarSkeleton from '@/components/ui/skeleton/AvatarSkeleton';
 import Skeleton from '@/components/ui/skeleton/Skeleton';
 
-const ProfileFormSkeleton = () => {
+const UserProfileFormSkeleton = () => {
   return (
     <div className='w-[380px] mobile:w-[300px] space-y-5 mobile:space-y-3'>
       <div className='w-full h-fit text-center'>
@@ -20,4 +20,4 @@ const ProfileFormSkeleton = () => {
   );
 };
 
-export default ProfileFormSkeleton;
+export default UserProfileFormSkeleton;

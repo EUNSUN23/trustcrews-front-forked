@@ -8,21 +8,19 @@ import NicknameField from '@/components/ui/form/NickNameField';
 import TextArea from '@/components/ui/form/TextArea';
 import FormButton from '@/components/ui/form/FormButton';
 import { PositionId, ProfileInfo, TechStackValueType } from '@/utils/type';
-import { isValidNickname } from '@/utils/common';
-import {
-  deleteProfileImage as deleteProfileImageAPI,
-  updateUser as updateUserAPI,
-  UpdateUserInfo,
-} from '@/service/user/user';
-import { useSetRecoilState } from 'recoil';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { deleteProfileImage as deleteProfileImageAPI } from '@/service/user/user';
+import { useMutation } from '@tanstack/react-query';
 import { isEqual } from 'lodash';
-import { snackbarState } from '@/store/CommonStateStore';
 import PositionSelect from '@/components/ui/selector/PositionSelect';
 import TechStackSelect from '@/components/ui/selector/TechStackSelect';
-import { getSimpleUserInfoQueryOptions } from '@/lib/user/getSimpleUserInfo';
+import {
+  updateUserDetailSchema,
+  useUpdateUserDetail,
+} from '@/features/user/service/updateUserDetail';
+import useSnackbar from '@/hooks/common/useSnackbar';
+import { ZodError } from 'zod';
 
-function ProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
+function UserProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
   const {
     position,
     profileImgSrc,
@@ -48,38 +46,11 @@ function ProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
   const fileRef = useRef<HTMLInputElement>(null);
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [isCheckedNickname, setIsCheckedNickname] = useState(true);
-  const setSnackbar = useSetRecoilState(snackbarState);
+  const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
 
-  const queryClient = useQueryClient();
-
-  const { mutate: updateUser } = useMutation({
-    mutationFn: (updateData: UpdateUserInfo) =>
-      updateUserAPI(updateData, selectedImage),
-    onSuccess: (data) => {
-      const { message, result } = data;
-      if (isEqual(result, 'success')) {
-        setSnackbar({ show: true, type: 'SUCCESS', content: message });
-        queryClient.invalidateQueries({ queryKey: ['profileInfo'] });
-        queryClient.invalidateQueries({
-          queryKey: getSimpleUserInfoQueryOptions().queryKey,
-        });
-        queryClient.invalidateQueries({ queryKey: ['postList'] });
-      } else {
-        setSnackbar({
-          show: true,
-          type: 'ERROR',
-          content: '프로세스 수행중 에러가 발생했습니다.',
-        });
-      }
-    },
-    onError: (err) => {
-      console.log('err', err);
-      setSnackbar({
-        show: true,
-        type: 'ERROR',
-        content: '프로세스 수행중 에러가 발생했습니다.',
-      });
-    },
+  const { mutate: updateUser } = useUpdateUserDetail({
+    onSuccess: (res) => setSuccessSnackbar(res.message),
+    onError: (res) => setErrorSnackbar(res.message),
   });
 
   const { mutate: deleteProfileImage } = useMutation({
@@ -92,76 +63,30 @@ function ProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
     },
   });
 
-  const isValid = () => {
-    if (nickname === '') {
-      setSnackbar({
-        show: true,
-        type: 'ERROR',
-        content: '닉네임을 입력해주세요.',
-      });
-      return false;
-    }
-
-    // 닉네임 형식이 맞지 않는 경우
-    if (!isValidNickname(nickname)) {
-      setSnackbar({
-        show: true,
-        type: 'ERROR',
-        content: '닉네임은 영어 숫자 포함 6~10 자리만 가능합니다.',
-      });
-      return false;
-    }
-
-    // 닉네임 중복 확인 하지 않았을 경우
-    if (!isCheckedNickname) {
-      setSnackbar({
-        show: true,
-        type: 'ERROR',
-        content: '닉네임 중복확인을 해주세요.',
-      });
-      return false;
-    }
-
-    if (!position) {
-      setSnackbar({
-        show: true,
-        type: 'ERROR',
-        content: '직무를 선택해주세요.',
-      });
-      return false;
-    }
-
-    if (techStackIds.length === 0) {
-      setSnackbar({
-        show: true,
-        type: 'ERROR',
-        content: '관심 스택을 선택해주세요.',
-      });
-      return false;
-    }
-
-    return true;
-  };
-
   const updateUserInfo = () => {
     if (position) {
-      const updateData = {
+      const data = {
         nickname,
         positionId,
         techStackIds,
         intro: selfIntroduction,
-      } as UpdateUserInfo;
-      updateUser(updateData);
+        profileImgFile: selectedImage,
+        isCheckedNickname,
+      };
+
+      try {
+        updateUserDetailSchema.parse(data);
+      } catch (e: unknown) {
+        setErrorSnackbar((e as ZodError).errors[0].message);
+        return;
+      }
+
+      updateUser(data);
     }
   };
 
   const saveProfile = () => {
-    if (!isValid()) {
-      return;
-    }
-
     if (profileImgSrc && imageSrc === null) {
-      // 기존 프로필 이미지 삭제 시, s3 에서 삭제 후 사용자 정보 업데이트
       deleteProfileImage();
     } else {
       updateUserInfo();
@@ -195,7 +120,6 @@ function ProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
 
   const onChangeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newName = e.target.value;
-
     setNickname(newName);
     if (isEqual(newName, nickname)) {
       setIsCheckedNickname(true);
@@ -261,4 +185,4 @@ function ProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
   );
 }
 
-export default ProfileForm;
+export default UserProfileForm;

@@ -1,52 +1,12 @@
 import { request } from '@/lib/clientApi/request';
-import { handleResponse } from '@/lib/clientApi/handleResponse';
 
 const publicURL = process.env.NEXT_PUBLIC_URL;
-
-export interface UpdateUserInfo {
-  nickname: string;
-  positionId: bigint;
-  techStackIds: bigint[];
-  intro: string;
-}
 
 export const checkNickname = async (nickname: string) => {
   const response = await fetch(
     `${publicURL}/api/user/nickname?nickname=${nickname}`,
   );
   return response.json();
-};
-
-export const updateUser = async (
-  updateData: UpdateUserInfo,
-  file: File | null,
-) => {
-  const formData = new FormData();
-  formData.set(
-    'updateRequestDto',
-    new Blob(
-      [
-        JSON.stringify(updateData, (k, v) =>
-          typeof v === 'bigint' ? Number(v) : v,
-        ),
-      ],
-      {
-        type: 'application/json',
-      },
-    ),
-  );
-
-  if (file) {
-    formData.set('file', file);
-  }
-
-  const res = await fetch(`${publicURL}/api/user`, {
-    method: 'PUT',
-    cache: 'no-cache',
-    body: formData,
-  });
-
-  return await handleResponse(res);
 };
 
 /**
