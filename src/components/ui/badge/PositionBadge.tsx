@@ -1,12 +1,25 @@
 'use client';
 
-import { BADGE_SIZE } from '@/utils/common';
-import { BadgeProps } from '@/utils/type';
+import { BadgeVariants } from '@/utils/badge';
+import { HTMLAttributes } from 'react';
+import { VariantProps } from 'class-variance-authority';
+import cn from '@/utils/cn';
 
-function PositionBadge({ size, text = '' }: BadgeProps) {
+const PositionBadgeVariants = BadgeVariants(
+  `inline-flex min-w-fit items-center rounded-full bg-[#F2F4F8] text-[#4A5E75] font-medium`,
+);
+
+interface PositionBadgeProps
+  extends HTMLAttributes<HTMLSpanElement>,
+    VariantProps<typeof PositionBadgeVariants> {
+  text: string;
+}
+
+function PositionBadge({ size, text = '', ...props }: PositionBadgeProps) {
   return (
     <span
-      className={`inline-flex min-w-fit items-center ${BADGE_SIZE[size!]} rounded-full bg-[#F2F4F8] text-[#4A5E75] font-medium`}
+      {...props}
+      className={cn(PositionBadgeVariants({ size }), props.className)}
     >
       {text}
     </span>

@@ -1,13 +1,13 @@
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/button';
 import { useRecoilState } from 'recoil';
 import {
   CrewFWModalState,
   crewFWModalStateStore,
 } from '@/store/project/alert/modal/CrewFWModalStateStore';
 import { ProjectMemberProfile } from '@/utils/type';
-import ButtonStyleSkeleton from '@/components/ui/skeleton/ButtonStyleSkeleton';
 import { bigIntToString } from '@/utils/common';
 import useCurrentUserPMAuth from '@/hooks/project/useCurrentUserPMAuth';
+import ButtonSkeleton from '@/components/ui/skeleton/ButtonSkeleton';
 
 function CrewFwButton({
   projectMemberInfo,
@@ -24,9 +24,7 @@ function CrewFwButton({
     useCurrentUserPMAuth(bigIntToString(projectId));
 
   if (isFetchingCurrentUserPMAuth)
-    return (
-      <ButtonStyleSkeleton size='md' className='w-[80px] h-[30px] my-3 ' />
-    );
+    return <ButtonSkeleton size='md' className='w-[80px] h-[30px] my-3 ' />;
 
   const onClickCrewFWButtonHandler = () => {
     const updateModalState: CrewFWModalState = {

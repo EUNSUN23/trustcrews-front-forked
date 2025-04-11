@@ -7,7 +7,6 @@ import Avatar from '@/components/ui/Avatar';
 import { useQuery } from '@tanstack/react-query';
 import { getSimpleUser } from '@/service/user/user';
 import UserMenuSkeleton from '@/components/ui/skeleton/header/UserMenuSkeleton';
-import useLogout from '@/hooks/user/useLogout';
 import { FaChevronDown } from '@react-icons/all-files/fa/FaChevronDown';
 import {
   Menu,
@@ -21,11 +20,31 @@ import { classNames } from '@/utils/common';
 import { isQueryDataReady } from '@/hooks/common/useProjectInfoSummary';
 import { hasCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
+import { useLogout } from '@/lib/auth/logout';
+import { useResetRecoilState } from 'recoil';
+import { activeBoardTabStore } from '@/features/board/store/BoardActiveStateStore';
+import useSnackbar from '@/hooks/common/useSnackbar';
 
+// todo - components/layouts로 이동
 function UserMenu() {
-  const router = useRouter();
   const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
-  const { logout } = useLogout();
+
+  const router = useRouter();
+  const resetActiveBoardTab = useResetRecoilState(activeBoardTabStore);
+  const { setInfoSnackbar, setErrorSnackbar } = useSnackbar();
+
+  const { mutate: logout } = useLogout({
+    onSuccess: ({ result, message }) => {
+      if (result === 'success') {
+        resetActiveBoardTab();
+        router.push('/');
+        router.refresh();
+        setInfoSnackbar(message);
+      } else {
+        setErrorSnackbar(message);
+      }
+    },
+  });
 
   const { data, isPending, isRefetching, isError, isRefetchError } = useQuery<
     ResponseBody<UserBasicInfo>,
@@ -67,7 +86,7 @@ function UserMenu() {
     return (
       <div className='flex items-center mx-2 space-x-2'>
         <div aria-hidden='true' className='flex items-stretch space-x-2'>
-          <Avatar size='2xs' alt='사용자 이미지' src={profileImgSrc} />
+          <Avatar size='xxs' alt='사용자 이미지' src={profileImgSrc} />
           {isDesktop && (
             <span className='text-grey90 leading-loose'>{nickname}</span>
           )}

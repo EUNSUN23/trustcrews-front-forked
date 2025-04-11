@@ -1,4 +1,4 @@
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/button';
 import { useQueryClient } from '@tanstack/react-query';
 import { useResetRecoilState } from 'recoil';
 import { projectSettingBoardInfoStateStore } from '@/store/project/setting/ProjectSettingFormStateStore';
@@ -11,7 +11,7 @@ function ProjectSettingBoardInfoResetBtn() {
 
   return (
     <Button
-      theme='primary-hollow'
+      theme='primaryHollow'
       size='md'
       onClickHandler={() => {
         resetProjectSettingBoardInfo();

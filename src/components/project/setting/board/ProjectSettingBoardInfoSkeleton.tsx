@@ -1,9 +1,9 @@
 import Skeleton from '@/components/ui/skeleton/Skeleton';
-import ButtonStyleSkeleton from '@/components/ui/skeleton/ButtonStyleSkeleton';
 import InputStyleSkeleton from '@/components/ui/skeleton/InputStyleSkeleton';
 import SettingContainer from '@/components/project/setting/SettingContainer';
 import SettingTitle from '@/components/project/setting/SettingTitle';
 import SettingBody from '@/components/project/setting/SettingBody';
+import ButtonSkeleton from '@/components/ui/skeleton/ButtonSkeleton';
 
 function ProjectSettingBoardInfoSkeleton() {
   return (
@@ -27,8 +27,8 @@ function ProjectSettingBoardInfoSkeleton() {
         </div>
       </SettingBody>
       <div className='pc:w-full my-4 flex items-center justify-center space-x-2'>
-        <ButtonStyleSkeleton>초기화</ButtonStyleSkeleton>
-        <ButtonStyleSkeleton>저장</ButtonStyleSkeleton>
+        <ButtonSkeleton>초기화</ButtonSkeleton>
+        <ButtonSkeleton>저장</ButtonSkeleton>
       </div>
     </SettingContainer>
   );

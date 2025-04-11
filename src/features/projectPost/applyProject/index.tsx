@@ -1,7 +1,7 @@
 import { getCookie } from 'cookies-next';
 import { ProjectPostDetailData } from '@/utils/type';
 import useApplyProject from '@/features/projectPost/applyProject/hooks/useApplyProject';
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/button';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { confirmModalState } from '@/store/CommonStateStore';

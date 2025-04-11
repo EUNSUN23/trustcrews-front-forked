@@ -1,21 +1,36 @@
 'use client';
 
-import { classNames, makeImageSize } from '@/utils/common';
 import Image, { StaticImageData } from 'next/image';
 import { HTMLAttributes } from 'react';
+import { cva, VariantProps } from 'class-variance-authority';
+import cn from '@/utils/cn';
 
-interface ImageProps extends HTMLAttributes<HTMLImageElement> {
+const AvatarVariants = cva(
+  `relative inline-block rounded-full ring-2 ring-white`,
+  {
+    variants: {
+      size: {
+        xxs: 'h-[24px] w-[24px]',
+        xs: 'pc:h-[40px] pc:w-[40px] h-[32px] w-[32px]',
+        sm: 'pc:h-[64px] pc:w-[64px] h-[40px] w-[40px]',
+        md: 'pc:h-[96px] pc:w-[96px] h-[64px] w-[64px]',
+        lg: 'pc:h-[160px] pc:w-[160px] h-[112px] w-[112px]',
+      },
+    },
+  },
+);
+
+interface ImageProps
+  extends HTMLAttributes<HTMLImageElement>,
+    VariantProps<typeof AvatarVariants> {
   src?: StaticImageData | string | null;
-  size: string;
   alt: string;
 }
 
 function Avatar({ src, size, alt, ...props }: ImageProps) {
-  const imageSize = makeImageSize(size);
-
   let expectedSize;
   switch (size) {
-    case '2xs':
+    case 'xxs':
       expectedSize = '24px';
       break;
     case 'xs':
@@ -39,10 +54,7 @@ function Avatar({ src, size, alt, ...props }: ImageProps) {
       {src ? (
         <div
           aria-hidden='true'
-          className={classNames(
-            ` relative inline-block ${imageSize} rounded-full ring-2 ring-white`,
-            props.className ? props.className : '',
-          )}
+          className={cn(AvatarVariants({ size }), props.className)}
         >
           <Image
             aria-hidden={true}
@@ -57,7 +69,11 @@ function Avatar({ src, size, alt, ...props }: ImageProps) {
       ) : (
         <div
           aria-hidden='true'
-          className={`${imageSize} relative inline-block rounded-full bg-gray-100 ring-2 ring-white`}
+          className={cn(
+            AvatarVariants({ size }),
+            props.className,
+            'bg-gray-100',
+          )}
         >
           <svg
             role='img'

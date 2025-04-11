@@ -1,37 +1,20 @@
-import { ButtonSize, ButtonTheme } from '@/utils/type';
 import Link from 'next/link';
-import { classNames, makeButtonColor, makeButtonSize } from '@/utils/common';
 import { LinkProps } from 'next/dist/client/link';
 import { ReactNode } from 'react';
+import cn from '@/utils/cn';
 
 export type StyledLinkProps = LinkProps & {
-  size?: ButtonSize;
-  theme?: ButtonTheme;
   children?: ReactNode;
   className?: string;
 };
 
-function StyledLink({
-  size = 'md',
-  theme = 'primary',
-  children,
-  ...props
-}: StyledLinkProps) {
-  const { textSize, px, py } = makeButtonSize(size);
-  const { bgColor, textColor, ring } = makeButtonColor(theme);
-
+function StyledLink({ children, ...props }: StyledLinkProps) {
   return (
     <Link
       {...props}
-      className={classNames(
-        props.className ? props.className : '',
-        textSize,
-        px,
-        py,
-        bgColor,
-        textColor,
-        ring,
-        `rounded-full font-semibold ${textColor} shadow-sm`,
+      className={cn(
+        'mobile:text-sm tablet:text-base mobile:px-3 tablet:px-3.5 mobile:py-1 tablet:py-1.5 bg-primary text-white',
+        props.className,
       )}
     >
       {children}

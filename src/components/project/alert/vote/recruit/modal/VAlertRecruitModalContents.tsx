@@ -118,7 +118,7 @@ function VAlertRecruitModalContents({
             <span className='text-grey900'>
               <TrustGradeBadge
                 size='xs'
-                text={trustGradeName}
+                trustGrade={trustGradeName}
                 badgeStyle='text'
               />
             </span>

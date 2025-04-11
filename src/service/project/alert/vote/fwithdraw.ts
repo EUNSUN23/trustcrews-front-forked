@@ -3,6 +3,7 @@ import {
   VAlertFWDetailData,
 } from '@/service/project/alert/type';
 import { ResponseBody } from '@/utils/type';
+import { request } from '@/lib/clientApi/request';
 
 /**
  * 프로젝트 투표 알림 상세 조회 - “강제탈퇴”

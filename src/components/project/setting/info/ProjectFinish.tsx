@@ -1,4 +1,4 @@
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/button';
 import { endProject as endProjectAPI } from '@/service/project/project';
 import { useSetRecoilState } from 'recoil';
 import { snackbarState } from '@/store/CommonStateStore';

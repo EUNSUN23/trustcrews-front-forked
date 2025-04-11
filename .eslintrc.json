@@ -39,6 +39,7 @@
         "prev": "import",
         "next": "import"
       }
-    ]
+    ],
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }
