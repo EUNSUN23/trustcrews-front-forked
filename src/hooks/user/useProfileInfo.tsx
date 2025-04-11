@@ -1,13 +1,13 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { getUserIfo } from '@/service/user/user';
 import { ProfileInfo, ResponseBody } from '@/utils/type';
+import { getUserDetailInfo } from '@/features/user/service/getUserDetailInfo';
 
 export function useProfileInfo() {
   const { data, isFetching } = useQuery<ResponseBody<ProfileInfo>, Error>({
     queryKey: ['profileInfo'],
-    queryFn: getUserIfo,
+    queryFn: getUserDetailInfo,
   });
 
   return { data, isFetching };

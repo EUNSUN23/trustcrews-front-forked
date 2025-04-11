@@ -1,12 +1,12 @@
 'use client';
 
-import ProfileCard from '@/components/user/profile/ProfileCard';
+import UserProfile from '@/features/user/components/UserProfile';
 import ProjectHistory from '@/components/user/profile/projectHistory/ProjectHistory';
 
 function ProfilePage() {
   return (
     <>
-      <ProfileCard />
+      <UserProfile />
       <ProjectHistory />
     </>
   );

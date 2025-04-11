@@ -17,10 +17,6 @@ export const checkNickname = async (nickname: string) => {
   return response.json();
 };
 
-export const getUserIfo = async () => {
-  return await request('GET', `/api/user`);
-};
-
 export const updateUser = async (
   updateData: UpdateUserInfo,
   file: File | null,

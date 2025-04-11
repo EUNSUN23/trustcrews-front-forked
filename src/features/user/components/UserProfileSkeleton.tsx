@@ -1,7 +1,7 @@
 import AvatarSkeleton from '@/components/ui/skeleton/AvatarSkeleton';
 import Skeleton from '@/components/ui/skeleton/Skeleton';
 
-const ProfileCardSkeleton = () => {
+const UserProfileSkeleton = () => {
   return (
     <div className='rounded-lg border-2 border-gray-200 bg-white mt-3 mobile:mt-2 px-2'>
       <div className='space-y-2 mobile:space-y-1 w-full h-fit text-center my-6 mobile:my-4'>
@@ -17,4 +17,4 @@ const ProfileCardSkeleton = () => {
   );
 };
 
-export default ProfileCardSkeleton;
+export default UserProfileSkeleton;

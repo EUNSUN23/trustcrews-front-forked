@@ -4,15 +4,15 @@ import { useRouter } from 'next/navigation';
 import Avatar from '@/components/ui/Avatar';
 import Button from '@/components/ui/button';
 import TechStackBadge from '@/components/ui/badge/TechStackBadge';
-import UserProjectInfo from './UserProjectInfo';
-import { useProfileInfo } from '@/hooks/user/useProfileInfo';
-import ProfileCardSkeleton from '@/components/user/profile/ProfileCardSkeleton';
+import UserProfileSkeleton from '@/features/user/components/UserProfileSkeleton';
+import { useUserDetailInfo } from '@/features/user/service/getUserDetailInfo';
+import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
 
-function ProfileCard() {
+function UserProfile() {
   const router = useRouter();
-  const { data, isFetching } = useProfileInfo();
+  const { data, isFetching } = useUserDetailInfo();
 
-  if (isFetching) return <ProfileCardSkeleton />;
+  if (isFetching) return <UserProfileSkeleton />;
   const {
     nickname,
     profileImgSrc,
@@ -46,11 +46,25 @@ function ProfileCard() {
               />
             ))}
         </div>
-        <UserProjectInfo
-          count={projectHistoryTotalCount}
-          grade={trustGrade.trustGradeName}
-          score={trustScore}
-        />
+        <div className='flex space-x-3 text-center justify-center pt-2 mobile:pt-1'>
+          <div className='flex flex-col space-y-1 border-r-2 pr-2 text-sm mobile:text-xs'>
+            <p className='text-grey500'>프로젝트</p>
+            <p>{projectHistoryTotalCount}</p>
+          </div>
+          <div className='flex flex-col text-sm mobile:text-xs'>
+            <p className='text-grey500'>신뢰등급</p>
+            <TrustGradeBadge
+              badgeStyle='text'
+              trustGrade={trustGrade.trustGradeName}
+              size='sm'
+              className=''
+            />
+          </div>
+          <div className='flex flex-col space-y-1 border-l-2 pl-2 text-sm mobile:text-xs'>
+            <p className='text-grey500 '>신뢰점수</p>
+            <p>{trustScore}</p>
+          </div>
+        </div>
         <div className='pt-3 mobile:pt-2'>
           <Button
             size='md'
@@ -65,4 +79,4 @@ function ProfileCard() {
   );
 }
 
-export default ProfileCard;
+export default UserProfile;
