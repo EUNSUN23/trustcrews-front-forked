@@ -86,7 +86,7 @@ function UserMenu() {
     return (
       <div className='flex items-center mx-2 space-x-2'>
         <div aria-hidden='true' className='flex items-stretch space-x-2'>
-          <Avatar size='2xs' alt='사용자 이미지' src={profileImgSrc} />
+          <Avatar size='xxs' alt='사용자 이미지' src={profileImgSrc} />
           {isDesktop && (
             <span className='text-grey90 leading-loose'>{nickname}</span>
           )}

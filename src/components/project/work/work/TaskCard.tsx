@@ -50,7 +50,11 @@ function TaskCard({ item, authMap }: TaskCardProps) {
             진행 상태
           </div>
           <div className='flex-1'>
-            <TaskStatusBadge size='sm' text={progressStatus.name} />
+            <TaskStatusBadge
+              size='sm'
+              statusName={progressStatus.name}
+              statusCode={progressStatus.code}
+            />
           </div>
         </div>
         <div className='flex items-center'>
@@ -93,7 +97,11 @@ function TaskCard({ item, authMap }: TaskCardProps) {
           <span className='mx-1'>{assignedUser?.nickname}</span>
         </div>
         <div className='flex items-center space-x-2'>
-          <TaskStatusBadge text={progressStatus.name} size='xs' />
+          <TaskStatusBadge
+            statusName={progressStatus.name}
+            statusCode={progressStatus.code}
+            size='xs'
+          />
         </div>
       </div>
       <div className='text-sm my-1'>

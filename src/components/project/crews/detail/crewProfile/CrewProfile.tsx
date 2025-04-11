@@ -43,7 +43,7 @@ function CrewProfile({ projectMemberId }: { projectMemberId: string }) {
         <ul className='my-3 flex flex-col items-center'>
           <li className='flex items-center space-x-1 pc:text-2xl tablet:text-[1.3rem] mobile:text-lg font-medium text-greyDarkBlue'>
             <span className='leading-loose'>{user.nickname}</span>
-            <TrustGradeBadge text={user.trustGrade.name} size='md' />
+            <TrustGradeBadge trustGrade={user.trustGrade.name} size='md' />
           </li>
         </ul>
         {isMemberCurrentUser ? (
@@ -55,7 +55,7 @@ function CrewProfile({ projectMemberId }: { projectMemberId: string }) {
       <section className='mobile:w-full tablet:h-[200px] mobile:h-[180px] flex flex-col flex-wrap justify-between p-6 mobile:p-4 bg-ground100 rounded-lg'>
         <CrewProfileItem
           label='프로젝트 권한'
-          contents={<ProjectRoleBadge text={projectMemberAuth.name} />}
+          contents={<ProjectRoleBadge projectAuth={projectMemberAuth} />}
         />
         <CrewProfileItem
           label='프로젝트 포지션'

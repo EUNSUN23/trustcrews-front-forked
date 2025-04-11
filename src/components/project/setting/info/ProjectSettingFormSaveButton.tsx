@@ -1,6 +1,6 @@
 'use client';
 
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/button';
 import { useRecoilValue } from 'recoil';
 import { projectSettingInfoStateStore } from '@/store/project/setting/ProjectSettingFormStateStore';
 import useSnackbar from '@/hooks/common/useSnackbar';
