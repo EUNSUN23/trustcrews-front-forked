@@ -1,11 +1,11 @@
-import ButtonStyleSkeleton from '@/components/ui/skeleton/ButtonStyleSkeleton';
 import SquareSkeleton from '@/components/ui/skeleton/SquareSkeleton';
 import BadgeStyleSkeleton from '@/components/ui/skeleton/BadgeStyleSkeleton';
+import ButtonSkeleton from '@/components/ui/skeleton/ButtonSkeleton';
 
 function TaskSectionHeaderSkeleton() {
   return (
     <div className='w-full flex items-center justify-start mb-4'>
-      <ButtonStyleSkeleton>+ 업무 추가</ButtonStyleSkeleton>
+      <ButtonSkeleton>+ 업무 추가</ButtonSkeleton>
       <div className='ml-4 mr-auto flex items-center space-x-3'>
         <SquareSkeleton className='my-2 tablet:text-3xl text-transparent'>
           마일스톤제목

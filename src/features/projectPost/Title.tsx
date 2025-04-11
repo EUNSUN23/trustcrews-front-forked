@@ -10,7 +10,7 @@ const Title = ({ postInfo }: { postInfo: ProjectPostDetailData['post'] }) => {
       </h1>
       <article className='flex gap-3 items-center'>
         <div className='flex items-center gap-2'>
-          <Avatar size='2xs' alt={user.nickName} src={user.userProfileImgSrc} />
+          <Avatar size='xxs' alt={user.nickName} src={user.userProfileImgSrc} />
           <div className='text-lg mobile:text-base'>
             <span className='sr-only'>작성자: </span>
             {user.nickName}

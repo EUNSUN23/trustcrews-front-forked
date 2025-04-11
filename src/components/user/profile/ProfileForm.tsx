@@ -2,7 +2,7 @@
 
 import { ChangeEvent, useRef, useState } from 'react';
 import Avatar from '@/components/ui/Avatar';
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/button';
 import Input from '@/components/ui/form/Input';
 import NicknameField from '@/components/ui/form/NickNameField';
 import TextArea from '@/components/ui/form/TextArea';
@@ -216,7 +216,7 @@ function ProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
         />
         <Button
           size='md'
-          theme='primary-hollow'
+          theme='primaryHollow'
           onClickHandler={handleFileButtonClick}
         >
           {imageSrc === null ? '이미지 변경' : '변경'}

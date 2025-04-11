@@ -1,4 +1,4 @@
-import { requestWithAuth } from '@/service/request';
+import { request } from '@/lib/clientApi/request';
 
 /**
  * 프로젝트 지원
@@ -6,9 +6,9 @@ import { requestWithAuth } from '@/service/request';
  * @param positionId
  */
 export async function applyProject(projectId: bigint, positionId: bigint) {
-  return await requestWithAuth(
-    'POST',
-    `/api/project/apply?projectId=${projectId}`,
-    { positionId, projectId, apply_message: '기본 메세지' },
-  );
+  return await request('POST', `/api/project/apply?projectId=${projectId}`, {
+    positionId,
+    projectId,
+    apply_message: '기본 메세지',
+  });
 }

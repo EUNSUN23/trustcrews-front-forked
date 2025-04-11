@@ -1,4 +1,4 @@
-import { requestWithAuth } from '@/service/request';
+import { request } from '@/lib/clientApi/request';
 import { ProjectAuthMapCode } from '@/utils/type';
 
 export type WorkCompleteRequestDto = {
@@ -11,7 +11,7 @@ export type WorkCompleteRequestDto = {
  * @param reqData
  */
 export async function workComplete(reqData: WorkCompleteRequestDto) {
-  return await requestWithAuth('POST', '/api/project/work/complete', reqData);
+  return await request('POST', '/api/project/work/complete', reqData);
 }
 
 /**
@@ -25,17 +25,13 @@ export async function confirmRecruitNotice(
   alertId: string | bigint,
   confirmResult: boolean,
 ) {
-  const confirmRes = await requestWithAuth(
-    'POST',
-    '/api/project/confirm/recruit',
-    {
-      projectId,
-      alertId,
-      confirmResult,
-    },
-  );
+  const confirmRes = await request('POST', '/api/project/confirm/recruit', {
+    projectId,
+    alertId,
+    confirmResult,
+  });
   if (confirmRes.result === 'success') {
-    return await requestWithAuth('PATCH', '/api/project/notice', { alertId });
+    return await request('PATCH', '/api/project/notice', { alertId });
   } else {
     return confirmRes;
   }
@@ -46,7 +42,7 @@ export async function confirmRecruitNotice(
  * @param alertId
  */
 export async function confirmCrewAddNotice(alertId: string | bigint) {
-  return await requestWithAuth('PATCH', '/api/project/notice', { alertId });
+  return await request('PATCH', '/api/project/notice', { alertId });
 }
 
 /**
@@ -58,13 +54,12 @@ export async function confirmCrewWithdrawNotice(
   alertId: string | bigint,
   withdrawConfirm: boolean,
 ) {
-  const confirmRes = await requestWithAuth(
-    'POST',
-    '/api/project/confirm/withdraw',
-    { alertId, withdrawConfirm },
-  );
+  const confirmRes = await request('POST', '/api/project/confirm/withdraw', {
+    alertId,
+    withdrawConfirm,
+  });
   if (confirmRes.result === 'success') {
-    return await requestWithAuth('PATCH', '/api/project/notice', { alertId });
+    return await request('PATCH', '/api/project/notice', { alertId });
   } else {
     return confirmRes;
   }
@@ -81,7 +76,7 @@ export async function confirmCrewForceWithdrawNotice(
   targetUserId: string | bigint,
   alertId: string | bigint,
 ) {
-  const confirmRes = await requestWithAuth(
+  const confirmRes = await request(
     'POST',
     '/api/project/confirm/force-withdrawal',
     {
@@ -90,7 +85,7 @@ export async function confirmCrewForceWithdrawNotice(
     },
   );
   if (confirmRes.result === 'success') {
-    return await requestWithAuth('PATCH', '/api/project/notice', { alertId });
+    return await request('PATCH', '/api/project/notice', { alertId });
   } else {
     return confirmRes;
   }

@@ -3,7 +3,7 @@ import {
   ProjectSettingBoardUpdReqData,
   updateProjectSettingBoard as updateProjectSettingBoardAPI,
 } from '@/service/project/setting/board';
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/button';
 import { useQueryClient } from '@tanstack/react-query';
 import { projectSettingBoardInfoStateStore } from '@/store/project/setting/ProjectSettingFormStateStore';
 import { useRecoilValue } from 'recoil';

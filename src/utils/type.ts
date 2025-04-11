@@ -7,7 +7,6 @@ import {
 import { VoteStatusCode } from '@/service/project/alert/type';
 import { BoardPosition } from '@/service/project/setting/board';
 import { UserProjectHistoryStatus } from '@/service/user/constant';
-import { BadgeSize } from '@/utils/common';
 
 export type DropDownItem = {
   name: string;
@@ -17,12 +16,6 @@ export type DropDownItem = {
 
 export interface DropDownProps {
   items: DropDownItem[];
-}
-
-export interface BadgeProps {
-  color?: string;
-  size?: BadgeSize;
-  text?: string;
 }
 
 export type SelectItem<T, V> = {
@@ -322,18 +315,6 @@ export type ArrayValue<T> = T extends () => IterableIterator<infer U>
   ? U
   : never;
 
-export type ButtonTheme =
-  | 'primary'
-  | 'primary-hollow'
-  | 'disabled'
-  | 'disabled-hollow'
-  | 'cancel'
-  | 'black'
-  | 'black-hollow'
-  | 'danger';
-
-export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
-
 export type ConstantDto<T> = {
   code: T;
   name: string;
@@ -341,3 +322,9 @@ export type ConstantDto<T> = {
 
 export type ProjectApplyStatusCode = 'PAS1001' | 'PAS1002' | 'PAS1003';
 export type StatusCode = ProjectApplyStatusCode | VoteStatusCode | string;
+
+export type ApiResult<T extends (...args: any) => Promise<any>> = Awaited<
+  ReturnType<T>
+>;
+
+export type ArrayElement<T> = T extends (infer U)[] ? U : never;

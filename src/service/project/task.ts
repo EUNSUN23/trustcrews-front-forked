@@ -1,4 +1,4 @@
-import { requestWithAuth } from '@/service/request';
+import { request } from '@/lib/clientApi/request';
 import { PageResponseBody, ProjectAuthMapCode } from '@/utils/type';
 import { TasksReqParam } from '@/hooks/project/task/useTasks';
 import { TaskItem, TaskStatusValueType } from '@/app/project/@task/_utils/type';
@@ -17,7 +17,7 @@ export async function getTaskList(tasksReqParam: TasksReqParam) {
     itemsPerPage: itemCount,
   } = tasksReqParam;
 
-  const res: PageResponseBody<TaskItem[]> = await requestWithAuth(
+  const res: PageResponseBody<TaskItem[]> = await request(
     'GET',
     `/api/project/work?milestoneId=${milestoneId}&projectId=${projectId}&pageIndex=${pageIndex}&itemCount=${itemCount}`,
   );
@@ -70,7 +70,7 @@ export async function createTask(task: TaskCreateReqData) {
   if (!task.endDate) throw Error('시작 날짜를 입력해주세요');
   if (!task.contentDetail) throw Error('할 일을 입력해주세요.');
 
-  return await requestWithAuth('POST', '/api/project/work', task);
+  return await request('POST', '/api/project/work', task);
 }
 
 export type TaskModifyReqData = TaskCreateReqData & {
@@ -91,7 +91,7 @@ export async function updateTask(task: TaskModifyReqData) {
   if (!task.contentDetail) throw Error('할 일을 입력해주세요.');
   if (!task.progressStatus) throw Error('업무 진행상태를 선택 해주세요');
 
-  return await requestWithAuth('PATCH', '/api/project/work', task);
+  return await request('PATCH', '/api/project/work', task);
 }
 
 export type TaskDeleteReqData = {
@@ -104,5 +104,5 @@ export type TaskDeleteReqData = {
  * @param reqData
  */
 export async function deleteTask(reqData: TaskDeleteReqData) {
-  return await requestWithAuth('DELETE', '/api/project/work', reqData);
+  return await request('DELETE', '/api/project/work', reqData);
 }

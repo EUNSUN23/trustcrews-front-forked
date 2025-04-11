@@ -1,67 +1,28 @@
 'use client';
 
-import {useState} from 'react';
+import { useState } from 'react';
 import Input from '@/components/ui/form/Input';
 import FormButton from '@/components/ui/form/FormButton';
-import {login} from '@/service/user/login';
-import {useRouter} from 'next/navigation';
-import {useSetRecoilState} from 'recoil';
-import {isValidEmail} from '@/utils/common';
-import {isEqual} from 'lodash';
-import {snackbarState} from '@/store/CommonStateStore';
-import {useQueryClient} from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
+import { useQueryClient } from '@tanstack/react-query';
+import { isEqual } from 'lodash';
+import { ZodError } from 'zod';
+import { loginInputSchema, useLogin } from '@/lib/auth/logIn';
+import useSnackbar from '@/hooks/common/useSnackbar';
 
-function Login() {
+function LoginForm() {
   const router = useRouter();
+  const { setErrorSnackbar, setInfoSnackbar } = useSnackbar();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const setSnackbar = useSetRecoilState(snackbarState);
-
   const queryClient = useQueryClient();
-
-  const isValid = () => {
-    if (email === '') {
-      setSnackbar({
-        show: true,
-        type: 'ERROR',
-        content: '이메일을 입력해주세요.',
-      });
-      return false;
-    }
-
-    // 이메일 형식 아닐 경우
-    if (!isValidEmail(email)) {
-      setSnackbar({
-        show: true,
-        type: 'ERROR',
-        content: '이메일 형식이 아닙니다.',
-      });
-      return false;
-    }
-
-    if (password === '') {
-      setSnackbar({
-        show: true,
-        type: 'ERROR',
-        content: '비밀번호를 입력해주세요.',
-      });
-      return false;
-    }
-
-    return true;
-  };
-
-  const userLogin = () => {
-    if (!isValid()) {
-      return;
-    }
-
-    login(email, password).then(async (response) => {
-      const { data, result, message } = response;
+  const { mutate: login } = useLogin({
+    onSuccess: async (res) => {
+      const { result, message } = res;
 
       if (isEqual(result, 'success')) {
-        // setUserIdState(userId);
         const invalidateUserInfo = queryClient.invalidateQueries({
           queryKey: ['simpleUserInfo'],
         });
@@ -79,17 +40,26 @@ function Login() {
         router.replace('/');
         router.refresh();
 
-        setSnackbar({ show: true, type: 'INFO', content: message });
+        setInfoSnackbar(message);
       } else {
-        setSnackbar({ show: true, type: 'ERROR', content: message });
+        setErrorSnackbar(message);
       }
-    });
+    },
+  });
+
+  const loginWithValidation = () => {
+    const param = { email, password };
+    try {
+      loginInputSchema.parse(param);
+    } catch (e) {
+      setErrorSnackbar((e as ZodError).errors[0].message);
+      return;
+    }
+    login(param);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      userLogin();
-    }
+    if (event.key === 'Enter') loginWithValidation();
   };
 
   return (
@@ -113,11 +83,11 @@ function Login() {
         onKeyUp={handleKeyDown}
       />
       <br />
-      <FormButton aria-label='로그인 버튼' onClick={userLogin}>
+      <FormButton aria-label='로그인 버튼' onClick={loginWithValidation}>
         로그인
       </FormButton>
     </div>
   );
 }
 
-export default Login;
+export default LoginForm;

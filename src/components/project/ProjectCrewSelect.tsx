@@ -118,7 +118,7 @@ function ProjectCrewSelect({
                               )!.profileImgSrc
                             }
                             alt={`${name}의 프로필 이미지`}
-                            size='2xs'
+                            size='xxs'
                           />
                         )}
                         <span>{name}</span>

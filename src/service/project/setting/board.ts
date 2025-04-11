@@ -1,4 +1,4 @@
-import { requestWithAuth } from '@/service/request';
+import { request } from '@/lib/clientApi/request';
 import { Position, ProjectAuthMapCode } from '@/utils/type';
 
 export type BoardPosition = {
@@ -20,7 +20,7 @@ export type ProjectSettingBoardData = {
  * @param projectId
  */
 export const getProjectSettingBoardInfo = async (projectId: bigint) => {
-  return await requestWithAuth(
+  return await request(
     'GET',
     `/api/project/setting/board?projectId=${projectId}`,
   );
@@ -44,5 +44,5 @@ export type ProjectSettingBoardUpdReqData = {
 export const updateProjectSettingBoard = async (
   reqData: ProjectSettingBoardUpdReqData,
 ) => {
-  return await requestWithAuth('PUT', '/api/project/setting/board', reqData);
+  return await request('PUT', '/api/project/setting/board', reqData);
 };

@@ -1,4 +1,4 @@
-import { request, requestWithAuth } from '@/service/request';
+import { request } from '@/lib/clientApi/request';
 import { ProjectAuthMapCode, TechStackItem } from '@/utils/type';
 import { isEqual } from 'lodash';
 import { throwErrorIfInvalid } from '@/utils/common';
@@ -60,5 +60,5 @@ export const updateProjectSettingInfo = async (
     '프로젝트 기술스택을 선택해주세요.',
   );
 
-  return await requestWithAuth('PUT', '/api/project/setting/info', reqData);
+  return await request('PUT', '/api/project/setting/info', reqData);
 };

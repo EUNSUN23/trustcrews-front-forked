@@ -1,5 +1,5 @@
 import { ProjectAuthMapCode } from '@/utils/type';
-import { requestWithAuth } from '@/service/request';
+import { request } from '@/lib/clientApi/request';
 import { sortByStartDate, throwErrorIfInvalid } from '@/utils/common';
 
 /**
@@ -7,7 +7,7 @@ import { sortByStartDate, throwErrorIfInvalid } from '@/utils/common';
  * @param projectId
  */
 export async function getProjectMilestones(projectId: string) {
-  const resBody = await requestWithAuth(
+  const resBody = await request(
     'GET',
     `/api/project/milestone?projectId=${projectId}`,
   );
@@ -28,7 +28,7 @@ export async function getProjectMilestones(projectId: string) {
  * @param milestoneId
  */
 export async function getMilestone(milestoneId: string) {
-  return await requestWithAuth('GET', `/api/project/milestone/${milestoneId}`);
+  return await request('GET', `/api/project/milestone/${milestoneId}`);
 }
 
 export type MilestoneAddReqData = {
@@ -48,7 +48,7 @@ export async function createMilestone(reqData: MilestoneAddReqData) {
   throwErrorIfInvalid(!reqData.startDate, '시작날짜를 선택해 주세요');
   throwErrorIfInvalid(!reqData.endDate, '종료날짜를 선택해 주세요');
 
-  return await requestWithAuth('POST', `/api/project/milestone`, reqData);
+  return await request('POST', `/api/project/milestone`, reqData);
 }
 
 export type MilestoneModReqData = {
@@ -68,7 +68,7 @@ export async function updateMilestone(reqData: MilestoneModReqData) {
   throwErrorIfInvalid(!reqData.startDate, '시작날짜를 선택해 주세요');
   throwErrorIfInvalid(!reqData.endDate, '종료날짜를 선택해 주세요');
 
-  return await requestWithAuth('PATCH', `/api/project/milestone`, reqData);
+  return await request('PATCH', `/api/project/milestone`, reqData);
 }
 
 export type DeleteMilestoneReqData = {
@@ -82,5 +82,5 @@ export type DeleteMilestoneReqData = {
  * @param reqData
  */
 export async function deleteMilestone(reqData: DeleteMilestoneReqData) {
-  return await requestWithAuth('DELETE', `/api/project/milestone`, reqData);
+  return await request('DELETE', `/api/project/milestone`, reqData);
 }

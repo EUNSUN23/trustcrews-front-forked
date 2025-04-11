@@ -1,6 +1,6 @@
 import { isEqual } from 'lodash';
-import { request } from '@/service/request';
 import { TechStackWithCategory } from '@/utils/type';
+import { request } from '@/lib/clientApi/request';
 
 export interface SearchPostParams {
   techStacks: TechStackWithCategory[];

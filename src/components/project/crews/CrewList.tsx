@@ -24,7 +24,7 @@ export default function CrewList({
       {crewList.map(
         ({
           position: { name },
-          projectMemberAuth: { name: projectMemberAuthName },
+          projectMemberAuth,
           user: { userId: projectMemberUseId, nickname, profileImgSrc },
           projectMemberId,
         }: ProjectMember) => {
@@ -58,7 +58,7 @@ export default function CrewList({
                       <PositionBadge text={name} />
                     </li>
                     <li>
-                      <ProjectRoleBadge text={projectMemberAuthName} />
+                      <ProjectRoleBadge projectAuth={projectMemberAuth} />
                     </li>
                   </ul>
                 </div>

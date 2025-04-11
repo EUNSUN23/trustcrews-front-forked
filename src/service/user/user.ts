@@ -1,4 +1,5 @@
-import {handleResponse, requestWithAuth} from '@/service/request';
+import { request } from '@/lib/clientApi/request';
+import { handleResponse } from '@/lib/clientApi/handleResponse';
 
 const publicURL = process.env.NEXT_PUBLIC_URL;
 
@@ -17,11 +18,11 @@ export const checkNickname = async (nickname: string) => {
 };
 
 export const getSimpleUser = async () => {
-  return await requestWithAuth('GET', '/api/user/simple');
+  return await request('GET', '/api/user/simple');
 };
 
 export const getUserIfo = async () => {
-  return await requestWithAuth('GET', `/api/user`);
+  return await request('GET', `/api/user`);
 };
 
 export const updateUser = async (
@@ -61,10 +62,7 @@ export const updateUser = async (
  * @param pageNumber
  */
 export const getUserMeProjectHistory = async (pageNumber: number) => {
-  return await requestWithAuth(
-    'GET',
-    `/api/user/history-me?pageNumber=${pageNumber}`,
-  );
+  return await request('GET', `/api/user/history-me?pageNumber=${pageNumber}`);
 };
 
 /**
@@ -76,14 +74,14 @@ export const getUserProjectHistory = async (
   pageNumber: number,
   userId: bigint,
 ) => {
-  return await requestWithAuth(
+  return await request(
     'GET',
     `/api/user/history?pageNumber=${pageNumber}&userId=${userId}`,
   );
 };
 
 export const deleteProfileImage = async () => {
-  return await requestWithAuth('DELETE', '/api/user/profile-img');
+  return await request('DELETE', '/api/user/profile-img');
 };
 
 /**
@@ -91,5 +89,5 @@ export const deleteProfileImage = async () => {
  * @param userId
  */
 export const getUserInfoByUserId = async (userId: string | bigint) => {
-  return await requestWithAuth('GET', `/api/user/general?userId=${userId}`);
+  return await request('GET', `/api/user/general?userId=${userId}`);
 };

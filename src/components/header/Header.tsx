@@ -9,6 +9,7 @@ import LoginNav from '@/components/header/User/LoginNav';
 import { UserMenu } from '@/components/header/User';
 import useClientMount from '@/hooks/common/useClientMount';
 
+// todo - components/layouts로 이동
 function Header() {
   const mounted = useClientMount();
 

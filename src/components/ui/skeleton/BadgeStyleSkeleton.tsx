@@ -1,10 +1,15 @@
 import { HTMLAttributes } from 'react';
-import { BADGE_SIZE, classNames } from '@/utils/common';
-import { BadgeProps } from '@/utils/type';
+import { BadgeVariants } from '@/utils/badge';
+import { VariantProps } from 'class-variance-authority';
+import cn from '@/utils/cn';
+
+const BadgeSkeletonVariants = BadgeVariants(
+  'bg-gray-200 rounded-full animate-pulse text-transparent',
+);
 
 interface BadgeStyleSkeletonProps
   extends HTMLAttributes<HTMLDivElement>,
-    BadgeProps {
+    VariantProps<typeof BadgeSkeletonVariants> {
   text?: string;
 }
 
@@ -14,12 +19,7 @@ function BadgeStyleSkeleton({
   ...props
 }: BadgeStyleSkeletonProps) {
   return (
-    <div
-      className={classNames(
-        props.className || '',
-        `${BADGE_SIZE[size!]} bg-gray-200 rounded-full animate-pulse text-transparent`,
-      )}
-    >
+    <div className={cn(BadgeSkeletonVariants({ size }), props.className)}>
       {text}
     </div>
   );
