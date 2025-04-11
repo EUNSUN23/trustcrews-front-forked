@@ -20,6 +20,7 @@ import { isEqual } from 'lodash';
 import { snackbarState } from '@/store/CommonStateStore';
 import PositionSelect from '@/components/ui/selector/PositionSelect';
 import TechStackSelect from '@/components/ui/selector/TechStackSelect';
+import { getSimpleUserInfoQueryOptions } from '@/lib/user/getSimpleUserInfo';
 
 function ProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
   const {
@@ -59,7 +60,9 @@ function ProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
       if (isEqual(result, 'success')) {
         setSnackbar({ show: true, type: 'SUCCESS', content: message });
         queryClient.invalidateQueries({ queryKey: ['profileInfo'] });
-        queryClient.invalidateQueries({ queryKey: ['simpleUserInfo'] });
+        queryClient.invalidateQueries({
+          queryKey: getSimpleUserInfoQueryOptions().queryKey,
+        });
         queryClient.invalidateQueries({ queryKey: ['postList'] });
       } else {
         setSnackbar({
