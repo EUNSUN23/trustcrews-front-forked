@@ -4,7 +4,7 @@ import PostTitle from '@/features/post/public/components/PostTitle';
 import PostInformation from '@/features/post/public/components/PostInformation';
 import { ProjectPublicInfo } from '@/features/project/public/components/ProjectPublicInfo';
 import PostIntroduction from '@/features/post/public/components/PostIntroduction';
-import ApplyProject from '@/features/projectPost/applyProject';
+import ApplyProject from '@/features/projectApply/auth/components/ApplyProject';
 import { usePostPublicInfo } from '@/features/post/public/service/getPostPublicInfo';
 import { numStrToBigInt } from '@/utils/common';
 import { useProjectPublicInfo } from '@/features/project/public/service/getProjectPublicInfo';

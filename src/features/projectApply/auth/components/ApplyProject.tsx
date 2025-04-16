@@ -2,17 +2,20 @@
 
 import { getCookie } from 'cookies-next';
 import { PostPublicInfoData } from '@/utils/type';
-import useApplyProject from '@/features/projectPost/applyProject/hooks/useApplyProject';
 import Button from '@/components/ui/button';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
 import { confirmModalState } from '@/store/CommonStateStore';
 import { isEqual } from 'lodash';
-import { projectApplyPositionState } from '@/features/projectPost/applyProject/store/ApplyPositionStateStore';
-import ApplyPositionDropdown from '@/features/projectPost/applyProject/ApplyPositionDropdown';
+import { projectApplyPositionState } from '@/features/projectApply/auth/store/ApplyPositionStateStore';
+import ApplyPositionDropdown from '@/features/projectApply/auth/components/ApplyPositionDropdown';
 import { useEffect } from 'react';
+import { useApplyProject } from '@/features/projectApply/auth/service/applyProject';
 
 function ApplyProject({ postInfo }: { postInfo: PostPublicInfoData }) {
+  const resetModalState = useResetRecoilState(confirmModalState);
+  const { setSuccessSnackbar, setErrorSnackbar, setInfoSnackbar } =
+    useSnackbar();
   const resetRecruitPositionState = useResetRecoilState(
     projectApplyPositionState,
   );
@@ -24,10 +27,19 @@ function ApplyProject({ postInfo }: { postInfo: PostPublicInfoData }) {
   const { value: recruitPosition } = useRecoilValue(projectApplyPositionState);
   const currentUserId = getCookie('user_id');
 
-  const { joinProject, isUpdating } = useApplyProject();
+  const { mutate: joinProject, isPending: isUpdating } = useApplyProject({
+    onSuccess: (res) => {
+      resetRecruitPositionState();
+      setSuccessSnackbar(res.message);
+      resetModalState();
+    },
+    onError: (res) => {
+      setErrorSnackbar(res.message);
+    },
+  });
 
   const setModalState = useSetRecoilState(confirmModalState);
-  const { setInfoSnackbar } = useSnackbar();
+
   const onConfirmHandler = () => {
     if (!currentUserId) {
       setInfoSnackbar('로그인 후 이용 가능합니다.');
@@ -39,13 +51,10 @@ function ApplyProject({ postInfo }: { postInfo: PostPublicInfoData }) {
       return;
     }
 
-    const title = '확인';
-    const content = <span>선택하신 포지션으로 참여요청 하시겠습니까?</span>;
-
     setModalState({
       isOpen: true,
-      title,
-      content,
+      title: '확인',
+      content: <span>선택하신 포지션으로 참여요청 하시겠습니까?</span>,
       onClickConfirmHandler: () =>
         joinProject({
           projectId: postInfo.projectId,
