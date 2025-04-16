@@ -1,16 +1,16 @@
 'use client';
 
 import { useEffect } from 'react';
-import Title from './Title';
-import Information from './Information';
-import Introduction from './Introduction';
+import PostTitle from '../post/components/PostTitle';
+import PostInformation from '../post/components/PostInformation';
+import PostIntroduction from '../post/components/PostIntroduction';
 import { useResetRecoilState } from 'recoil';
 import { projectApplyPositionState } from '@/features/projectPost/applyProject/store/ApplyPositionStateStore';
 import ApplyProject from '@/features/projectPost/applyProject';
-import { useQuery } from '@tanstack/react-query';
-import { getProjectPostDetail } from '@/features/projectPost/service';
 import { numStrToBigInt } from '@/utils/common';
-import ProjectPostSkeleton from '@/features/projectPost/ProjectPostSkeleton';
+import PostPageSkeleton from '@/features/projectPost/PostPageSkeleton';
+import { usePostPublicInfo } from '@/features/post/service/getPostPublicInfo';
+import { ProjectPublicInfo } from '@/features/project/public/components/ProjectPublicInfo';
 
 const ProjectPost = ({ postId }: { postId: string }) => {
   const resetRecruitPositionState = useResetRecoilState(
@@ -21,25 +21,26 @@ const ProjectPost = ({ postId }: { postId: string }) => {
     return () => resetRecruitPositionState();
   }, [resetRecruitPositionState]);
 
-  const { data, isFetching } = useQuery({
-    queryKey: ['projectPostDetail', postId],
-    queryFn: () => getProjectPostDetail(numStrToBigInt(postId)),
-  });
+  const { data: postData, isFetching: isPostDataFetching } = usePostPublicInfo(
+    numStrToBigInt(postId),
+  );
 
-  if (isFetching) return <ProjectPostSkeleton />;
+  if (isPostDataFetching) return <PostPageSkeleton />;
 
-  const { post, project } = data!.data!;
+  const post = postData?.data;
+
+  // todo - suspense로 전환하면서 삭제 예정
+  if (!post) return null;
 
   return (
     <article className='p-5 mobile:p-1'>
-      <Title postInfo={post} />
-      <Information
-        projectInfo={project}
-        contact={post.contact}
-        boardPositions={post.boardPositions}
-      />
-      <Introduction content={post.content} />
-      <ApplyProject projectId={project.projectId} postInfo={post} />
+      <PostTitle postInfo={post} />
+      <article className='pc:w-[90%] w-full min-h-[350px] mobile:min-h-[300px] flex flex-col justify-center space-y-8 mobile:space-y-0'>
+        <PostInformation postInfo={post} />
+        <ProjectPublicInfo projectId={post.projectId} />
+      </article>
+      <PostIntroduction content={post.content} />
+      <ApplyProject postInfo={post} />
     </article>
   );
 };

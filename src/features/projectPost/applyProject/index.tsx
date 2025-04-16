@@ -1,21 +1,26 @@
+'use client';
+
 import { getCookie } from 'cookies-next';
-import { ProjectPostDetailData } from '@/utils/type';
+import { PostPublicInfoData } from '@/utils/type';
 import useApplyProject from '@/features/projectPost/applyProject/hooks/useApplyProject';
 import Button from '@/components/ui/button';
 import useSnackbar from '@/hooks/common/useSnackbar';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
 import { confirmModalState } from '@/store/CommonStateStore';
 import { isEqual } from 'lodash';
 import { projectApplyPositionState } from '@/features/projectPost/applyProject/store/ApplyPositionStateStore';
 import ApplyPositionDropdown from '@/features/projectPost/applyProject/ApplyPositionDropdown';
+import { useEffect } from 'react';
 
-function ApplyProject({
-  projectId,
-  postInfo,
-}: {
-  projectId: bigint;
-  postInfo: ProjectPostDetailData['post'];
-}) {
+function ApplyProject({ postInfo }: { postInfo: PostPublicInfoData }) {
+  const resetRecruitPositionState = useResetRecoilState(
+    projectApplyPositionState,
+  );
+
+  useEffect(() => {
+    return () => resetRecruitPositionState();
+  }, [resetRecruitPositionState]);
+
   const { value: recruitPosition } = useRecoilValue(projectApplyPositionState);
   const currentUserId = getCookie('user_id');
 
@@ -42,7 +47,10 @@ function ApplyProject({
       title,
       content,
       onClickConfirmHandler: () =>
-        joinProject({ projectId, positionId: recruitPosition }),
+        joinProject({
+          projectId: postInfo.projectId,
+          positionId: recruitPosition,
+        }),
     });
   };
 

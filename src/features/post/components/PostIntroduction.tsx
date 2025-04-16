@@ -1,4 +1,4 @@
-const Introduction = ({ content }: { content: string }) => {
+const PostIntroduction = ({ content }: { content: string }) => {
   return (
     <section className='min-h-[250px] mobile:min-h-[150px] flex flex-col justify-center'>
       <h2 className='text-2xl font-bold text-black100 mobile:text-xl'>
@@ -11,4 +11,4 @@ const Introduction = ({ content }: { content: string }) => {
   );
 };
 
-export default Introduction;
+export default PostIntroduction;
