@@ -1,6 +1,5 @@
 import { NextRequest } from 'next/server';
 import authApi from '@/app/api/_interceptor/authApi';
-import publicApi from '@/app/api/_interceptor/publicApi';
 import { routeResponse } from '@/app/api/_interceptor/routeResponse';
 
 export async function GET(
@@ -32,12 +31,6 @@ export async function GET(
     case 'trust-grade':
       res = await authApi('/api/trust-grade/me');
       break;
-    case 'nickname': {
-      res = await publicApi(
-        `/api/user/check-nickname/${searchParams.get('nickname')}/public`,
-      );
-      break;
-    }
     case 'general':
       res = await authApi(`/api/user/${searchParams.get('userId')}`);
       break;

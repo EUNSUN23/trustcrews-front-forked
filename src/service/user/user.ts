@@ -4,7 +4,7 @@ const publicURL = process.env.NEXT_PUBLIC_URL;
 
 export const checkNickname = async (nickname: string) => {
   const response = await fetch(
-    `${publicURL}/api/user/nickname?nickname=${nickname}`,
+    `${publicURL}/api/checkNickname?nickname=${nickname}`,
   );
   return response.json();
 };

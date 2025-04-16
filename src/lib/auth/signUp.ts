@@ -60,7 +60,7 @@ export const signUp = async (
     intro,
   } = param;
 
-  return await request('POST', '/api/user/signup', {
+  return await request('POST', '/api/signup', {
     email,
     password: init,
     passwordConfirmation: confirm,
