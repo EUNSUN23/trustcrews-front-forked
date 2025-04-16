@@ -7,7 +7,7 @@ import { PostCardInfo } from '@/utils/type';
 import { format } from 'date-fns';
 import { FaPlusCircle } from '@react-icons/all-files/fa/FaPlusCircle';
 
-const PostCard = ({ postInfo }: { postInfo: PostCardInfo }) => {
+function PostCard({ postInfo }: { postInfo: PostCardInfo }) {
   const {
     boardId,
     title,
@@ -24,7 +24,7 @@ const PostCard = ({ postInfo }: { postInfo: PostCardInfo }) => {
 
   return (
     <div className='p-4'>
-      <Link aria-label={`${title}로 가기`} href={`/post?postId=${boardId}`}>
+      <Link aria-label={`${title}로 가기`} href={`/post/${boardId}`}>
         <article>
           <h3 className='text-xl font-bold  truncate mb-1'>{title}</h3>
           <section className='mt-4 mb-2 flex items-center text-base text-gray-600 font-medium'>
@@ -164,18 +164,11 @@ const PostCard = ({ postInfo }: { postInfo: PostCardInfo }) => {
                 </div>
               </article>
             </section>
-            {/*<section>*/}
-            {/*    <h4 className='sr-only'>게시글 조회수</h4>*/}
-            {/*    <article className='flex'>*/}
-            {/*        <BsEyeFill aria-hidden={true} className="w-4 h-4 self-center text-grey500"/>*/}
-            {/*        <p className="ml-2 text-base text-grey800">{boardPageView}</p>*/}
-            {/*    </article>*/}
-            {/*</section>*/}
           </footer>
         </article>
       </Link>
     </div>
   );
-};
+}
 
 export default PostCard;
