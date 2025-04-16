@@ -1,19 +1,15 @@
 'use client';
 
 import TechStackImage from '@/components/ui/TechStackImage';
-import { ProjectInfoSkeleton } from '@/features/projectPost/ProjectInfoSkeleton';
-import { useProjectPublicInfo } from '@/features/project/public/service/getProjectPublicInfo';
+import { ProjectPublicInfoData } from '@/utils/type';
 
 type ProjectPublicInfoProps = {
-  projectId: bigint;
+  projectInfo: ProjectPublicInfoData;
 };
 
-export function ProjectPublicInfo({ projectId }: ProjectPublicInfoProps) {
-  const { data, isFetching, isPending } = useProjectPublicInfo(projectId);
-  if (isFetching || isPending) return <ProjectInfoSkeleton />;
-
+export function ProjectPublicInfo({ projectInfo }: ProjectPublicInfoProps) {
   const { projectName, projectSubject, startDate, endDate, technologyStacks } =
-    data!.data!;
+    projectInfo;
   return (
     <article className='grid grid-cols-2 gap-y-8 mobile:grid-cols-1 mobile:gap-y-0 mobile:text-sm'>
       <h2 className='sr-only'>프로젝트 정보</h2>
