@@ -1,6 +1,6 @@
 import { request } from '@/lib/clientApi/request';
 import { ProjectPublicInfoData, ResponseBody } from '@/utils/type';
-import { queryOptions, useQuery } from '@tanstack/react-query';
+import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
 import { bigIntToString } from '@/utils/common';
 
 export const getProjectPublicInfo = async (
@@ -17,5 +17,5 @@ export const getProjectPublicInfoQueryOptions = (projectId: bigint) => {
 };
 
 export const useProjectPublicInfo = (projectId: bigint) => {
-  return useQuery(getProjectPublicInfoQueryOptions(projectId));
+  return useSuspenseQuery(getProjectPublicInfoQueryOptions(projectId));
 };

@@ -1,6 +1,6 @@
 import { request } from '@/lib/clientApi/request';
 import { PostPublicInfoData, ResponseBody } from '@/utils/type';
-import { queryOptions, useQuery } from '@tanstack/react-query';
+import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
 import { bigIntToString } from '@/utils/common';
 
 export const getPostPublicInfo = async (
@@ -17,5 +17,5 @@ export const getPostPublicInfoQueryOptions = (postId: bigint) => {
 };
 
 export const usePostPublicInfo = (postId: bigint) => {
-  return useQuery(getPostPublicInfoQueryOptions(postId));
+  return useSuspenseQuery(getPostPublicInfoQueryOptions(postId));
 };
