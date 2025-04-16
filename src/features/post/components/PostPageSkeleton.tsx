@@ -15,12 +15,12 @@ const fields = [
 function PostPageSkeleton() {
   return (
     <div className='p-5 mobile:p-1'>
-      <div className='h-[130px] mobile:h-[100px] flex flex-col justify-center mt-5 mb-5 mobile:mt-0 space-y-6 mobile:space-y-3 border-b-2'>
-        <Skeleton sizeClassName='w-[300px] h-10 mobile:h-8' />
-        <div className='flex gap-3 items-center'>
+      <div className=' flex flex-col justify-center mt-5 mb-5 mobile:mt-0 space-y-6 mobile:space-y-3 border-b-2'>
+        <Skeleton sizeClassName='w-[300px] h-14 mobile:h-8' />
+        <div className='flex gap-3 items-center py-3'>
           <div className='flex items-center gap-2'>
             <AvatarSkeleton
-              size='md'
+              size='xs'
               className='relative inline-block h-8 w-8 mobile:h-7 mobile:w-7'
             />
             <Skeleton sizeClassName='w-20 h-6 mobile:h-5' />
