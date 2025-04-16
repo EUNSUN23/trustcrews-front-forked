@@ -6,11 +6,15 @@ export const applyProject = async (
   projectId: bigint,
   positionId: bigint,
 ): Promise<ResponseBody<null>> => {
-  return await request('POST', `/api/project/apply?projectId=${projectId}`, {
-    positionId,
-    projectId,
-    apply_message: '기본 메세지',
-  });
+  return await request(
+    'POST',
+    `/api/projectApply/auth?projectId=${projectId}`,
+    {
+      positionId,
+      projectId,
+      apply_message: '기본 메세지',
+    },
+  );
 };
 
 type ApplyProjectRes = ApiResult<typeof applyProject>;

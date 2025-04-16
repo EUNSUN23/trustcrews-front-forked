@@ -1,12 +1,10 @@
 'use client';
 
-import { getCookie } from 'cookies-next';
 import { PostPublicInfoData } from '@/utils/type';
 import Button from '@/components/ui/button';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
 import { confirmModalState } from '@/store/CommonStateStore';
-import { isEqual } from 'lodash';
 import { projectApplyPositionState } from '@/features/projectApply/auth/store/ApplyPositionStateStore';
 import ApplyPositionDropdown from '@/features/projectApply/auth/components/ApplyPositionDropdown';
 import { useEffect } from 'react';
@@ -25,7 +23,6 @@ function ApplyProject({ postInfo }: { postInfo: PostPublicInfoData }) {
   }, [resetRecruitPositionState]);
 
   const { value: recruitPosition } = useRecoilValue(projectApplyPositionState);
-  const currentUserId = getCookie('user_id');
 
   const { mutate: joinProject, isPending: isUpdating } = useApplyProject({
     onSuccess: (res) => {
@@ -41,11 +38,6 @@ function ApplyProject({ postInfo }: { postInfo: PostPublicInfoData }) {
   const setModalState = useSetRecoilState(confirmModalState);
 
   const onConfirmHandler = () => {
-    if (!currentUserId) {
-      setInfoSnackbar('로그인 후 이용 가능합니다.');
-      return;
-    }
-
     if (recruitPosition === 0n) {
       setInfoSnackbar('포지션을 선택해 주세요.');
       return;
@@ -62,12 +54,6 @@ function ApplyProject({ postInfo }: { postInfo: PostPublicInfoData }) {
         }),
     });
   };
-
-  const isRecruiter = isEqual(
-    currentUserId?.toString(),
-    postInfo.user.userId.toString(),
-  );
-  if (isRecruiter) return null;
 
   return (
     <footer className='flex justify-center gap-5 my-5'>
