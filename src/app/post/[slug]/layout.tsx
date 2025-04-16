@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { PostPublicInfoData, ResponseBody } from '@/utils/type';
-import { getPostPublicInfo } from '@/features/post/service/getPostPublicInfo';
+import { getPostPublicInfo } from '@/features/post/public/service/getPostPublicInfo';
 import { numStrToBigInt } from '@/utils/common';
 import ConfirmModal from '@/components/ui/ConfirmModal';
 import { ReactNode } from 'react';

@@ -1,11 +1,11 @@
 'use client';
 
-import PostTitle from '@/features/post/components/PostTitle';
-import PostInformation from '@/features/post/components/PostInformation';
+import PostTitle from '@/features/post/public/components/PostTitle';
+import PostInformation from '@/features/post/public/components/PostInformation';
 import { ProjectPublicInfo } from '@/features/project/public/components/ProjectPublicInfo';
-import PostIntroduction from '@/features/post/components/PostIntroduction';
+import PostIntroduction from '@/features/post/public/components/PostIntroduction';
 import ApplyProject from '@/features/projectPost/applyProject';
-import { usePostPublicInfo } from '@/features/post/service/getPostPublicInfo';
+import { usePostPublicInfo } from '@/features/post/public/service/getPostPublicInfo';
 import { numStrToBigInt } from '@/utils/common';
 import { useProjectPublicInfo } from '@/features/project/public/service/getProjectPublicInfo';
 
