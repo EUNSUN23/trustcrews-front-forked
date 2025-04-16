@@ -146,7 +146,7 @@ export type ResponseResult = 'success' | 'fail';
 export type ResponseBody<T> = {
   result: ResponseResult;
   message: string;
-  data: T | null;
+  data: T;
 };
 
 export type Paged<T> = {
