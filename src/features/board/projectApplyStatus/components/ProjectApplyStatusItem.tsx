@@ -5,11 +5,11 @@ import { ProjectApplyStatusData } from '@/features/projectApply/auth/type';
 import { ProjectApplyStatusBadge } from '@/components/ui/badge/ProjectApplyStatusBadge';
 
 interface ProjectApplyStatusProps {
-  participateNotice: ProjectApplyStatusData;
+  myProjectApply: ProjectApplyStatusData;
 }
 
 function ProjectApplyStatusItem({
-  participateNotice: { project_name, position_name, status },
+  myProjectApply: { project_name, position_name, status },
 }: ProjectApplyStatusProps) {
   return (
     <div className='mobile:w-[320px] tablet:w-[450px] flex items-center justify-between'>
