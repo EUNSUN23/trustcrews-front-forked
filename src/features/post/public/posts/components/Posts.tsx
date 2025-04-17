@@ -3,7 +3,7 @@ import TechStackDropdown from '@/features/post/public/posts/components/filter/Te
 import PositionDropdown from '@/features/post/public/posts/components/filter/PositionDropdown';
 import TitleSearch from '@/features/post/public/posts/components/filter/TitleSearch';
 import PostList from '@/features/post/public/posts/components/postList';
-import PostListSkeleton from '@/features/post/public/posts/components/postList/PostListSkeleton';
+import CardListSkeleton from '@/components/ui/skeleton/CardListSkeleton';
 
 function Posts() {
   return (
@@ -19,7 +19,7 @@ function Posts() {
         </div>
         <TitleSearch />
       </section>
-      <Suspense fallback={<PostListSkeleton itemCount={8} />}>
+      <Suspense fallback={<CardListSkeleton itemCount={8} />}>
         <PostList />
       </Suspense>
     </section>

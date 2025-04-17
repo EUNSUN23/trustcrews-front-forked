@@ -1,6 +1,6 @@
 import Skeleton from '@/components/ui/skeleton/Skeleton';
 
-const PostListSkeleton = ({ itemCount = 8 }: { itemCount: number }) => {
+const CardListSkeleton = ({ itemCount = 8 }: { itemCount: number }) => {
   const items = new Array(itemCount).fill(null);
   return (
     <section className='mt-6 mobile:mt-2'>
@@ -19,4 +19,4 @@ const PostListSkeleton = ({ itemCount = 8 }: { itemCount: number }) => {
   );
 };
 
-export default PostListSkeleton;
+export default CardListSkeleton;

@@ -1,13 +1,13 @@
 'use client';
 
-import {useState} from 'react';
+import { useState } from 'react';
 import ProjectCard from './ProjectCard';
-import {useQuery} from '@tanstack/react-query';
-import {PageResponseBody, ProjectInfoSummary} from '@/utils/type';
+import { useQuery } from '@tanstack/react-query';
+import { PageResponseBody, ProjectInfoSummary } from '@/utils/type';
 import CommonPagination from '@/components/ui/CommonPagination';
-import {ITEM_COUNT, PAGE_RANGE} from '@/utils/constant';
-import PostListSkeleton from '@/features/board/projectPosts/postList/PostListSkeleton';
-import {getMyProjectList} from './service';
+import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
+import { getMyProjectList } from './service';
+import CardListSkeleton from '@/components/ui/skeleton/CardListSkeleton';
 
 function MyProjects() {
   const [pageNumber, setPageNumber] = useState(0);
@@ -26,7 +26,7 @@ function MyProjects() {
     staleTime: 0,
   });
 
-  if (isFetching || isError) return <PostListSkeleton itemCount={8} />;
+  if (isFetching || isError) return <CardListSkeleton itemCount={8} />;
 
   if (!data?.data || data.data.content.length < 1)
     return (
