@@ -1,16 +1,16 @@
 'use client';
 
 import UserProfile from '@/features/user/components/UserProfile';
-import ProjectHistory from '@/components/user/profile/projectHistory/ProjectHistory';
 import { Suspense } from 'react';
-import ProjectHistorySkeleton from '@/components/user/profile/projectHistory/ProjectHistorySkeleton';
+import MyProjectHistorySkeleton from '@/features/project/auth/myProjectHistory/components/MyProjectHistorySkeleton';
+import MyProjectHistory from '@/features/project/auth/myProjectHistory/components/MyProjectHistory';
 
 function ProfilePage() {
   return (
     <>
       <UserProfile />
-      <Suspense fallback={<ProjectHistorySkeleton />}>
-        <ProjectHistory />
+      <Suspense fallback={<MyProjectHistorySkeleton />}>
+        <MyProjectHistory />
       </Suspense>
     </>
   );

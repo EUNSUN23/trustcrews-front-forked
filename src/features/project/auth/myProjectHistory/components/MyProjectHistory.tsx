@@ -7,7 +7,7 @@ import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
 import ProjectHistoryItem from '@/components/user/profile/projectHistory/ProjectHistoryItem';
 import { useMyProjectHistory } from '@/features/project/auth/myProjectHistory/service/getMyProjectHistory';
 
-function ProjectHistory() {
+function MyProjectHistory() {
   const [pageNumber, setPageNumber] = useState(0);
   const {
     data: {
@@ -57,4 +57,4 @@ function ProjectHistory() {
   );
 }
 
-export default ProjectHistory;
+export default MyProjectHistory;
