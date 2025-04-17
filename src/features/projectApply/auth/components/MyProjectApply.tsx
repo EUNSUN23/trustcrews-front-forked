@@ -1,9 +1,9 @@
 import Button from '@/components/ui/button';
-import ProjectApplyStatusModal from '@/features/board/projectApplyStatus/components/ProjectApplyStatusModal';
+import MyProjectApplyModal from '@/features/projectApply/auth/components/MyProjectApplyModal';
 import { useSetRecoilState } from 'recoil';
 import { myProjectAppliesModalStateStore } from '@/features/projectApply/auth/store/MyProjectAppliesModalStateStore';
 
-export function ProjectApplyStatus() {
+export function MyProjectApply() {
   const setUserNoticeModal = useSetRecoilState(myProjectAppliesModalStateStore);
   return (
     <>
@@ -14,7 +14,7 @@ export function ProjectApplyStatus() {
       >
         프로젝트 지원 현황
       </Button>
-      <ProjectApplyStatusModal />
+      <MyProjectApplyModal />
     </>
   );
 }

@@ -6,12 +6,12 @@ import { myProjectAppliesModalStateStore } from '@/features/projectApply/auth/st
 import { createPortal } from 'react-dom';
 import Modal from '@/components/ui/Modal';
 import { useQueryClient } from '@tanstack/react-query';
-import ProjectApplyStatusList from './ProjectApplyStatus';
+import ProjectApplyStatusList from './MyProjectApplyList';
 import { ITEM_COUNT } from '@/utils/constant';
 import Skeleton from '@/components/ui/skeleton/Skeleton';
 import { getMyProjectAppliesQueryKey } from '@/features/projectApply/auth/service/getMyProjectApplies';
 
-function ProjectApplyStatusModal() {
+function MyProjectApplyModal() {
   const [portalElement, setPortalElement] = useState<Element | null>(null);
   const [{ isOpen }, setIsOpen] = useRecoilState(
     myProjectAppliesModalStateStore,
@@ -70,4 +70,4 @@ function ProjectApplyStatusModal() {
   );
 }
 
-export default ProjectApplyStatusModal;
+export default MyProjectApplyModal;

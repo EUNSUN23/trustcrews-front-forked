@@ -8,7 +8,7 @@ interface ProjectApplyStatusProps {
   myProjectApply: ProjectApplyStatusData;
 }
 
-function ProjectApplyStatusItem({
+function MyProjectApplyItem({
   myProjectApply: { project_name, position_name, status },
 }: ProjectApplyStatusProps) {
   return (
@@ -28,4 +28,4 @@ function ProjectApplyStatusItem({
   );
 }
 
-export default ProjectApplyStatusItem;
+export default MyProjectApplyItem;

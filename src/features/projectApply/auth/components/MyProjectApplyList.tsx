@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import ProjectApplyStatusItem from '@/features/board/projectApplyStatus/components/ProjectApplyStatusItem';
+import MyProjectApplyItem from '@/features/projectApply/auth/components/MyProjectApplyItem';
 import Loader from '@/components/ui/Loader';
 import useIntersectionObserver from '@/hooks/common/useIntersectionObserver';
 import { useMyProjectApplies } from '@/features/projectApply/auth/service/getMyProjectApplies';
@@ -40,7 +40,7 @@ function ProjectApplyStatusList() {
               key={`projectApply-${item.project_apply_id}`}
               className='flex items-center justify-between gap-x-6 w-full px-2 py-5'
             >
-              <ProjectApplyStatusItem myProjectApply={item} />
+              <MyProjectApplyItem myProjectApply={item} />
             </li>
           ));
         })
