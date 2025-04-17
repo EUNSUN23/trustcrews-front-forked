@@ -7,7 +7,7 @@ import { ReactNode } from 'react';
 import {
   getPostList,
   SearchPostParams,
-} from '@/features/board/projectPosts/service';
+} from '@/features/post/public/postList/service/getPostList';
 
 export const DEFAULT_SEARCH_POST_PARAM: SearchPostParams = {
   techStacks: [],

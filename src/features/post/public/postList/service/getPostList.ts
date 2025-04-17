@@ -1,6 +1,11 @@
+import {
+  PageResponseBody,
+  PostCardInfo,
+  TechStackWithCategory,
+} from '@/utils/type';
 import { isEqual } from 'lodash';
-import { TechStackWithCategory } from '@/utils/type';
 import { request } from '@/lib/clientApi/request';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 export interface SearchPostParams {
   techStacks: TechStackWithCategory[];
@@ -27,10 +32,6 @@ export const createQueryParams = (params: SearchPostParams) => {
   return decodeURI(queryParams.toString());
 };
 
-/**
- * 게시글 목록 조회
- * @param params
- */
 export const getPostList = async (
   params: SearchPostParams = {
     techStacks: [],
@@ -38,7 +39,21 @@ export const getPostList = async (
     page: 0,
     keyword: '',
   },
-) => {
+): Promise<PageResponseBody<PostCardInfo[]>> => {
   const queryParams = createQueryParams(params);
   return await request('GET', `/api/post/search?${queryParams}`);
+};
+
+export const usePostList = (params: SearchPostParams) => {
+  return useSuspenseQuery({
+    queryKey: [
+      'postList',
+      params.techStacks,
+      params.position,
+      params.page,
+      params.keyword,
+    ],
+    queryFn: () => getPostList(params),
+    staleTime: 0,
+  });
 };

@@ -4,7 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useRecoilState } from 'recoil';
 import TechStackImage from '@/components/ui/TechStackImage';
 import { TechStackCategory, TechStackWithCategory } from '@/utils/type';
-import { selectedTechStackState } from '@/features/board/projectPosts/store/PostSearchStateStore';
+import { selectedTechStackState } from '@/features/post/public/postList/store/PostSearchStateStore';
 
 interface TechStackDropdownListProps {
   categories: TechStackCategory[];

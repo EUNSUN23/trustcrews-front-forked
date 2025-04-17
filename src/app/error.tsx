@@ -10,7 +10,7 @@ import Navigator from '@/components/ui/error/Navigator';
 import {
   selectedPositionState,
   selectedTechStackState,
-} from '@/features/board/projectPosts/store/PostSearchStateStore';
+} from '@/features/post/public/postList/store/PostSearchStateStore';
 import { activeBoardTabStore } from '@/features/board/store/BoardActiveStateStore';
 
 export default function Error({

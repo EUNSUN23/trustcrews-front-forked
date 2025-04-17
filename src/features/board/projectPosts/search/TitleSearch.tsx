@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { useRecoilState } from 'recoil';
-import { postSearchValue } from '@/features/board/projectPosts/store/PostSearchStateStore';
+import { postSearchValue } from '@/features/post/public/postList/store/PostSearchStateStore';
 
 const TitleSearch = () => {
   const [searchValue, setSearchValue] = useRecoilState(postSearchValue);

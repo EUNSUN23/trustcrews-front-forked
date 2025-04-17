@@ -10,7 +10,7 @@ import {
   techCategoryQueryOptions,
   techMapQueryOptions,
 } from '@/utils/tanstackQueryOptions/settingsQuery';
-import { selectedTechStackState } from '@/features/board/projectPosts/store/PostSearchStateStore';
+import { selectedTechStackState } from '@/features/post/public/postList/store/PostSearchStateStore';
 
 const getSelectedTechStackText = (
   selectedTechStacks: TechStackWithCategory[],

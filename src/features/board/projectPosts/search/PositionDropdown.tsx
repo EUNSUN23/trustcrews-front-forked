@@ -12,7 +12,7 @@ import {
   Transition,
 } from '@headlessui/react';
 import { bigIntToString, classNames, numStrToBigInt } from '@/utils/common';
-import { selectedPositionState } from '@/features/board/projectPosts/store/PostSearchStateStore';
+import { selectedPositionState } from '@/features/post/public/postList/store/PostSearchStateStore';
 import { DEFAULT_POSITION_OPTION } from '@/utils/constant';
 
 function PositionDropdown() {
