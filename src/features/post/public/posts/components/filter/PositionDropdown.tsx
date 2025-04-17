@@ -12,8 +12,8 @@ import {
   Transition,
 } from '@headlessui/react';
 import { bigIntToString, classNames, numStrToBigInt } from '@/utils/common';
-import { selectedPositionState } from '@/features/post/public/postList/store/PostSearchStateStore';
 import { DEFAULT_POSITION_OPTION } from '@/utils/constant';
+import { selectedPositionState } from '@/features/post/public/posts/store/PostSearchStateStore';
 
 function PositionDropdown() {
   const [selectedPosition, setSelectedPosition] = useRecoilState(

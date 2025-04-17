@@ -1,6 +1,5 @@
 'use client';
 
-import ProjectPosts from '@/features/board/projectPosts';
 import { useRecoilValue } from 'recoil';
 import {
   activeBoardTabStore,
@@ -8,6 +7,7 @@ import {
 } from '@/features/board/store/BoardActiveStateStore';
 import { MyProjectApply } from '@/features/projectApply/auth/components/MyProjectApply';
 import MyProjects from '@/features/board/myProjects';
+import Posts from '@/features/post/public/posts/components/Posts';
 
 const {
   MANAGE_PROJECT: { name: MANAGE_PROJECT },
@@ -34,7 +34,7 @@ function BoardTabPanel() {
         tabIndex={0}
         aria-labelledby={`tab-${PROJECT_POSTS}`}
       >
-        {activeBoardTab === PROJECT_POSTS && <ProjectPosts />}
+        {activeBoardTab === PROJECT_POSTS && <Posts />}
       </div>
     </section>
   );

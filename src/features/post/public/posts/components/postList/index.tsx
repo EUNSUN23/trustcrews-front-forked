@@ -10,10 +10,10 @@ import {
   postSearchValue,
   selectedPositionState,
   selectedTechStackState,
-} from '@/features/post/public/postList/store/PostSearchStateStore';
-import { usePostList } from '@/features/post/public/postList/service/getPostList';
+} from '@/features/post/public/posts/store/PostSearchStateStore';
+import { usePostList } from '@/features/post/public/posts/service/getPostList';
 
-const PostList = () => {
+function PostList() {
   const selectedTechStacks = useRecoilValue(selectedTechStackState);
   const { value: selectedPosition } = useRecoilValue(selectedPositionState);
   const searchValue = useRecoilValue(postSearchValue);
@@ -64,6 +64,6 @@ const PostList = () => {
       />
     </section>
   );
-};
+}
 
 export default PostList;

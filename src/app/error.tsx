@@ -7,11 +7,11 @@ import { useResetRecoilState } from 'recoil';
 import ErrorPageContainer from '@/components/ui/error/ErrorPageContainer';
 import ErrorMessage from '@/components/ui/error/ErrorMessage';
 import Navigator from '@/components/ui/error/Navigator';
+import { activeBoardTabStore } from '@/features/board/store/BoardActiveStateStore';
 import {
   selectedPositionState,
   selectedTechStackState,
-} from '@/features/post/public/postList/store/PostSearchStateStore';
-import { activeBoardTabStore } from '@/features/board/store/BoardActiveStateStore';
+} from '@/features/post/public/posts/store/PostSearchStateStore';
 
 export default function Error({
   error,
