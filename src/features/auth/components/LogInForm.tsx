@@ -10,6 +10,7 @@ import { ZodError } from 'zod';
 import { loginInputSchema, useLogin } from '@/lib/auth/logIn';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { getSimpleUserInfoQueryOptions } from '@/lib/user/getSimpleUserInfo';
+import { getMyProjectAppliesQueryKey } from '@/features/projectApply/auth/service/getMyProjectApplies';
 
 function LoginForm() {
   const router = useRouter();
@@ -31,7 +32,7 @@ function LoginForm() {
           queryKey: ['myProjectList'],
         });
         const invalidateProjectNotice = queryClient.invalidateQueries({
-          queryKey: ['userProjectNotice'],
+          queryKey: getMyProjectAppliesQueryKey,
         });
         await Promise.all([
           invalidateMyProjectList,

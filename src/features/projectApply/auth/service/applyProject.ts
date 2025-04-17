@@ -1,6 +1,7 @@
 import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { ApiResult, ResponseBody } from '@/utils/type';
+import { getMyProjectAppliesQueryKey } from '@/features/projectApply/auth/service/getMyProjectApplies';
 
 export const applyProject = async (
   projectId: bigint,
@@ -39,7 +40,7 @@ export const useApplyProject = ({
     onSuccess: async (res) => {
       if (res.result === 'success') {
         await queryClient.invalidateQueries({
-          queryKey: ['userProjectNotice'],
+          queryKey: getMyProjectAppliesQueryKey,
         });
         onSuccess?.(res);
       } else {

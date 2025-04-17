@@ -1,7 +1,7 @@
 'use client';
 
 import PositionBadge from '@/components/ui/badge/PositionBadge';
-import { ProjectApplyStatusData } from '@/features/board/projectApplyStatus/type';
+import { ProjectApplyStatusData } from '@/features/projectApply/auth/type';
 import { ProjectApplyStatusBadge } from '@/components/ui/badge/ProjectApplyStatusBadge';
 
 interface ProjectApplyStatusProps {

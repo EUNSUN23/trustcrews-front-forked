@@ -1,10 +1,10 @@
 import Button from '@/components/ui/button';
 import ProjectApplyStatusModal from '@/features/board/projectApplyStatus/components/ProjectApplyStatusModal';
 import { useSetRecoilState } from 'recoil';
-import { projectApplyStatusModalStore } from '@/features/board/projectApplyStatus/store/ProjectApplyStatusModalStore';
+import { myProjectAppliesModalStateStore } from '@/features/projectApply/auth/store/MyProjectAppliesModalStateStore';
 
 export function ProjectApplyStatus() {
-  const setUserNoticeModal = useSetRecoilState(projectApplyStatusModalStore);
+  const setUserNoticeModal = useSetRecoilState(myProjectAppliesModalStateStore);
   return (
     <>
       <Button
