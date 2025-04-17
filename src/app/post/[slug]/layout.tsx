@@ -16,8 +16,8 @@ export async function generateMetadata({
   );
 
   return {
-    title: `${data!.data!.title} - 팀프로젝트 | TRUSTCREWS`,
-    description: `${data!.data!.content}`,
+    title: `${data.data.title} - 팀프로젝트 | TRUSTCREWS`,
+    description: `${data.data.content}`,
   };
 }
 
