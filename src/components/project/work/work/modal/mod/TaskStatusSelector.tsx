@@ -1,7 +1,7 @@
 import { useRecoilState } from 'recoil';
 import { Switch } from '@headlessui/react';
-import { taskProgressModFieldSelector } from '@/store/project/task/TaskStateStore';
 import { TASK_STATUS } from '@/app/project/@task/_utils/constant';
+import { taskProgressModFieldSelector } from '@/features/project/auth/task/store/TaskModalStateStore';
 
 function TaskStatusSelector() {
   const [progressStatusCode, setProgressStatus] = useRecoilState(

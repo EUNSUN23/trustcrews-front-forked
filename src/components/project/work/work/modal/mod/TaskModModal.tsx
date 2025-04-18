@@ -1,11 +1,5 @@
 import { useRecoilValue, useResetRecoilState } from 'recoil';
-import {
-  TaskModalType,
-  taskModModalDataStateStore,
-  taskModModalStateStore,
-} from '@/store/project/task/TaskStateStore';
 import useModalPortalElement from '@/hooks/common/useModalPortalElement';
-import useUpdateTask from '@/hooks/project/task/useUpdateTask';
 import { createPortal } from 'react-dom';
 import Modal from '@/components/ui/Modal';
 import TaskContent from '@/components/project/work/work/modal/TaskContent';
@@ -13,12 +7,24 @@ import TaskDate from '@/components/project/work/work/modal/TaskDate';
 import TaskAssignedCrew from '@/components/project/work/work/modal/TaskAssignedCrew';
 import TaskContentDetail from '../taskContentDetail/TaskContentDetail';
 import TaskProgressStatus from '@/components/project/work/work/modal/mod/TaskProgressStatus';
-import useCompleteTask from '@/hooks/project/task/useCompleteTask';
 import { TASK_STATUS } from '@/app/project/@task/_utils/constant';
+import {
+  TaskModalType,
+  taskModModalDataStateStore,
+  taskModModalStateStore,
+} from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
+import useUpdateTask, {
+  UpdateTaskInput,
+  updateTaskInputSchema,
+} from '@/features/project/auth/myProject/jobs/service/task/updateTask';
+import { useCompleteTask } from '@/features/project/auth/myProject/jobs/service/task/completeTask';
+import useSnackbar from '@/hooks/common/useSnackbar';
+import { ZodError } from 'zod';
 
 const modalType: TaskModalType = 'mod';
 
 function TaskModModal() {
+  const { setErrorSnackbar } = useSnackbar();
   const { isOpen, title } = useRecoilValue(taskModModalStateStore);
   const [portalElement] = useModalPortalElement(isOpen);
 
@@ -26,7 +32,7 @@ function TaskModModal() {
   const resetModModalState = useResetRecoilState(taskModModalStateStore);
   const resetModModalData = useResetRecoilState(taskModModalDataStateStore);
 
-  const { updateTask, isUpdating } = useUpdateTask();
+  const { mutate: updateTask, isPending: isUpdating } = useUpdateTask();
 
   const { completeTask, isUpdating: isCompleting } = useCompleteTask();
 
@@ -48,6 +54,15 @@ function TaskModModal() {
         });
       }
     } else {
+      const data: UpdateTaskInput = modModalData;
+
+      try {
+        updateTaskInputSchema.parse(data);
+      } catch (e: unknown) {
+        setErrorSnackbar((e as ZodError).errors[0].message);
+        return;
+      }
+
       updateTask(modModalData);
     }
   }

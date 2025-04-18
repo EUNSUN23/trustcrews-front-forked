@@ -4,23 +4,27 @@ import { useState } from 'react';
 import TaskCard from '@/components/project/work/work/TaskCard';
 import { DataId } from '@/utils/type';
 import CommonPagination from '@/components/ui/CommonPagination';
-import useTasks from '@/hooks/project/task/useTasks';
-import TasksSkeleton from '@/components/ui/skeleton/project/task/TasksSkeleton';
 import { ITEM_COUNT } from '@/utils/constant';
-import useCurrentUserPMAuth from '@/hooks/project/useCurrentUserPMAuth';
+import { useProjectManageAuth } from '@/lib/getProjectManageAuth';
+import useTasks from '@/features/project/auth/myProject/jobs/service/task/getTaskList';
 
-function Tasks({
+const Tasks = ({
   projectId,
   milestoneId,
 }: {
   projectId: DataId;
   milestoneId: bigint;
-}) {
-  const { currentUserPMAuth, isFetchingCurrentUserPMAuth } =
-    useCurrentUserPMAuth(projectId);
+}) => {
+  const {
+    data: { data: currentUserPMAuth },
+  } = useProjectManageAuth(projectId);
   const [pageNumber, setPageNumber] = useState(0);
 
-  const { taskList, totalPages, isTasksLoading } = useTasks({
+  const {
+    data: {
+      data: { content: taskList, totalPages },
+    },
+  } = useTasks({
     projectId,
     milestoneId,
     pageNumber,
@@ -31,9 +35,10 @@ function Tasks({
     setPageNumber(pageNumber - 1);
   }
 
-  return isTasksLoading || isFetchingCurrentUserPMAuth ? (
-    <TasksSkeleton itemCount={ITEM_COUNT.CARDS_SM} />
-  ) : (
+  // if(isTasksLoading) return
+  //     <TasksSkeleton itemCount={ITEM_COUNT.CARDS_SM} />;
+
+  return (
     <div className='w-full mt-4 flex flex-col items-center'>
       {taskList.length > 0 ? (
         <ul className='w-full grid pc:grid-cols-3 tablet:grid-cols-2 mobile:grid-cols-1 grid-rows-2 mobile:grid-rows-1 place-items-center gap-4 tablet:gap-8'>
@@ -59,6 +64,6 @@ function Tasks({
       />
     </div>
   );
-}
+};
 
 export default Tasks;

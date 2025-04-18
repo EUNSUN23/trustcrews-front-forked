@@ -2,12 +2,12 @@
 
 import { Dispatch, SetStateAction, useRef, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
+import TaskContentAddButton from '@/components/project/work/work/modal/taskContentDetail/TaskContentAddButton';
+import { v4 } from 'uuid';
 import {
   taskContentDetailFieldSelector,
   TaskModalType,
-} from '@/store/project/task/TaskStateStore';
-import TaskContentAddButton from '@/components/project/work/work/modal/taskContentDetail/TaskContentAddButton';
-import { v4 } from 'uuid';
+} from '@/features/project/auth/task/store/TaskModalStateStore';
 
 function TaskContentDetailAddInput({
   setIsOpen,

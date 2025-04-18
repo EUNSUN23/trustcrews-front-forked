@@ -2,12 +2,12 @@
 
 import TaskContentDetailInput from '@/components/project/work/work/modal/taskContentDetail/TaskContentDetailInput';
 import { useRecoilValue } from 'recoil';
+import _ from 'lodash';
+import ToggleTaskContentDetailAddInput from '@/components/project/work/work/modal/taskContentDetail/ToggleTaskContentDetailAddInput';
 import {
   taskModalContentDetailSelector,
   TaskModalType,
-} from '@/store/project/task/TaskStateStore';
-import _ from 'lodash';
-import ToggleTaskContentDetailAddInput from '@/components/project/work/work/modal/taskContentDetail/ToggleTaskContentDetailAddInput';
+} from '@/features/project/auth/task/store/TaskModalStateStore';
 
 function TaskContentDetail({ modalType }: { modalType: TaskModalType }) {
   const taskContentDetailMap = useRecoilValue(

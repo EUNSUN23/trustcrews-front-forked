@@ -2,50 +2,17 @@ import { DataId, PageResponseBody } from '@/utils/type';
 import { TaskItem } from '@/app/project/@task/_utils/type';
 import { request } from '@/lib/clientApi/request';
 import { TASK_STATUS } from '@/app/project/@task/_utils/constant';
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { ITEM_COUNT } from '@/utils/constant';
 
 export type TasksReqParam = {
   projectId: DataId;
   milestoneId: DataId;
   itemsPerPage: number;
-  pageNumber?: number;
+  pageNumber: number;
 };
 
-export function useTasks({
-  projectId,
-  milestoneId,
-  itemsPerPage,
-  pageNumber = 0,
-}: TasksReqParam) {
-  const { data: res, isLoading } = useQuery<
-    Promise<PageResponseBody<TaskItem[]>>,
-    Error,
-    PageResponseBody<TaskItem[]>
-  >({
-    queryKey: ['taskList', milestoneId, projectId, pageNumber, itemsPerPage],
-    queryFn: () =>
-      getTaskList({
-        milestoneId,
-        projectId,
-        pageNumber,
-        itemsPerPage,
-      }),
-    staleTime: 0,
-    // retry: false
-  });
-
-  return {
-    taskList: res?.data.content || [],
-    totalPages: res?.data.totalPages || 0,
-    isTasksLoading: isLoading,
-  };
-}
-
-/**
- * 업무 목록 조회
- * @param tasksReqParam
- */
-export async function getTaskList(tasksReqParam: TasksReqParam) {
+export const getTaskList = async (tasksReqParam: TasksReqParam) => {
   const {
     milestoneId,
     projectId,
@@ -80,8 +47,34 @@ export async function getTaskList(tasksReqParam: TasksReqParam) {
 
   return {
     ...res,
-    content: updated,
+    data: {
+      content: updated,
+      totalPages: res.data.totalPages,
+    },
   };
-}
+};
+
+export const getTaskListQueryKey = ['taskList'];
+
+export const useTasks = ({
+  projectId,
+  milestoneId,
+  pageNumber = 0,
+}: {
+  projectId: bigint;
+  milestoneId: bigint;
+  pageNumber?: number;
+}) => {
+  return useSuspenseQuery({
+    queryKey: [...getTaskListQueryKey, milestoneId, projectId, pageNumber],
+    queryFn: () =>
+      getTaskList({
+        milestoneId,
+        projectId,
+        pageNumber,
+        itemsPerPage: ITEM_COUNT.CARDS_SM,
+      }),
+  });
+};
 
 export default useTasks;

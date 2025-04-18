@@ -9,9 +9,9 @@ import {
   milestoneAddModalStateStore,
   milestoneModDataStateStore,
 } from '@/store/project/task/MilestoneStateStore';
-import useCreateMilestone from '@/hooks/project/task/useCreateMilestone';
 import MilestoneAddDate from '@/components/project/work/milestone/modal/add/MilestoneAddDate';
 import MilestoneAddContent from '@/components/project/work/milestone/modal/add/MilestoneAddContent';
+import { useCreateMilestone } from '@/features/project/auth/myProject/jobs/service/milestone/createMilestone';
 
 function MilestoneAddModal() {
   const { isOpen, title } = useRecoilValue(milestoneAddModalStateStore);
@@ -23,7 +23,8 @@ function MilestoneAddModal() {
   const resetMilestoneModData = useResetRecoilState(milestoneModDataStateStore);
   const milestoneAddData = useRecoilValue(milestoneAddDataStateStore);
 
-  const { createMilestone, isCreating } = useCreateMilestone();
+  const { mutate: createMilestone, isPending: isCreating } =
+    useCreateMilestone();
 
   useEffect(() => {
     setPortalElement(document.getElementById('modal'));

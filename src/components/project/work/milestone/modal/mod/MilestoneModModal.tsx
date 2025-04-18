@@ -9,14 +9,19 @@ import {
   milestoneModDataStateStore,
   milestoneModModalStateStore,
 } from '@/store/project/task/MilestoneStateStore';
-import useUpdateMilestone from '@/hooks/project/task/useUpdateMilestone';
 import MilestoneModContent from '@/components/project/work/milestone/modal/mod/MilestoneModContent';
 import MilestoneModDate from '@/components/project/work/milestone/modal/mod/MilestoneModDate';
-import useMilestone from '@/hooks/project/task/useMilestone';
 import { bigIntToString } from '@/utils/common';
-import { MilestoneModReqData } from '@/service/project/milestone';
+import { useMilestoneDetail } from '@/features/project/auth/myProject/jobs/service/milestone/getMilestoneDetail';
+import {
+  updateMilestoneSchema,
+  useUpdateMilestone,
+} from '@/features/project/auth/myProject/jobs/service/milestone/updateMilestone';
+import useSnackbar from '@/hooks/common/useSnackbar';
+import { ZodError } from 'zod';
 
 function MilestoneModModal() {
+  const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
   const { isOpen, title } = useRecoilValue(milestoneModModalStateStore);
   const resetMilestoneModModalState = useResetRecoilState(
     milestoneModModalStateStore,
@@ -25,14 +30,17 @@ function MilestoneModModal() {
   const milestoneModData = useRecoilValue(milestoneModDataStateStore);
   const [portalElement, setPortalElement] = useState<Element | null>(null);
 
-  const { milestoneInfo, isFetching } = useMilestone(
+  const {
+    data: { data: milestoneInfo },
+  } = useMilestoneDetail(
     bigIntToString(
       milestoneModData.milestoneId as MilestoneModDataField<'milestoneId'>,
     ),
     isOpen,
   );
 
-  const { updateMilestone, isUpdating } = useUpdateMilestone();
+  const { mutate: updateMilestone, isPending: isUpdating } =
+    useUpdateMilestone();
 
   useEffect(() => {
     setPortalElement(document.getElementById('modal'));
@@ -47,7 +55,7 @@ function MilestoneModModal() {
     }
   }, [isOpen]);
 
-  if (isFetching || !milestoneInfo) return null;
+  // if (isFetching || !milestoneInfo) return null;
 
   const {
     content: initContent,
@@ -58,16 +66,22 @@ function MilestoneModModal() {
 
   // 마일스톤 수정
   const onClickConfirmHandler = () => {
-    const { milestoneId, authMap, content, startDate, endDate } =
-      milestoneModData;
-    const reqData: MilestoneModReqData = {
-      milestoneId,
-      authMap,
+    const { content, startDate, endDate } = milestoneModData;
+
+    const data = {
       content: content ? content : initContent,
       startDate: startDate ? startDate : initStartDate,
       endDate: endDate ? endDate : initEndDate,
     };
-    updateMilestone(reqData);
+
+    try {
+      updateMilestoneSchema.parse(data);
+    } catch (e: unknown) {
+      setErrorSnackbar((e as ZodError).errors[0].message);
+      return;
+    }
+
+    updateMilestone(data);
   };
 
   // 모달 close

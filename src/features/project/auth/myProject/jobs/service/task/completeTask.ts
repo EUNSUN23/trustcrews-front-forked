@@ -1,6 +1,7 @@
 import { ApiResult, ProjectAuthMapCode, ResponseBody } from '@/utils/type';
 import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { getTaskListQueryKey } from '@/features/project/auth/myProject/jobs/service/task/getTaskList';
 
 export type WorkCompleteRequestDto = {
   workId: bigint;
@@ -35,7 +36,7 @@ export const useCompleteTask = (
     mutationFn: (reqData: WorkCompleteRequestDto) => workComplete(reqData),
     onSuccess: async (res) => {
       if (res.result === 'success') {
-        await queryClient.invalidateQueries({ queryKey: ['taskList'] });
+        await queryClient.invalidateQueries({ queryKey: getTaskListQueryKey });
         onSuccess?.(res);
         // resetModModalState();
         // resetModModalData();

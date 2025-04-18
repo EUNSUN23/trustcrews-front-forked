@@ -2,13 +2,14 @@
 
 import Input from '@/components/ui/form/Input';
 import { useRecoilState, useRecoilValue } from 'recoil';
+
 import {
   TaskAddModalField,
   taskModalDataFieldSelector,
   taskModalEditDisabledSelector,
   TaskModalType,
   TaskModModalField,
-} from '@/store/project/task/TaskStateStore';
+} from '@/features/project/auth/task/store/TaskModalStateStore';
 
 type TaskContentProps = {
   modalType: TaskModalType;

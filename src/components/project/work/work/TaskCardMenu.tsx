@@ -12,14 +12,15 @@ import { IoEllipsisVertical } from '@react-icons/all-files/io5/IoEllipsisVertica
 import { classNames } from '@/utils/common';
 import { TaskItem } from '@/app/project/@task/_utils/type';
 import { useSetRecoilState } from 'recoil';
+import { TASK_STATUS } from '@/app/project/@task/_utils/constant';
+import { ProjectAuthMap } from '@/utils/type';
+import useSnackbar from '@/hooks/common/useSnackbar';
+import { useDeleteTask } from '@/features/project/auth/myProject/jobs/service/task/deleteTask';
 import {
   taskModModalDataStateStore,
   taskModModalStateStore,
-} from '@/store/project/task/TaskStateStore';
-import useDeleteTask from '@/hooks/project/task/useDeleteTask';
-import { TaskModifyReqData } from '@/service/project/task';
-import { TASK_STATUS } from '@/app/project/@task/_utils/constant';
-import { ProjectAuthMap } from '@/utils/type';
+} from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
+import { TaskModifyReqData } from '@/features/project/auth/myProject/jobs/service/task/updateTask';
 
 function TaskCardMenu({
   taskItem,
@@ -28,6 +29,7 @@ function TaskCardMenu({
   taskItem: TaskItem;
   authMap: ProjectAuthMap;
 }) {
+  const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
   const {
     content,
     workId,
@@ -39,22 +41,26 @@ function TaskCardMenu({
     assignedUser,
     contentDetail,
   } = taskItem;
-  const { deleteTask } = useDeleteTask();
+  const { mutate: deleteTask } = useDeleteTask({
+    onSuccess: (res) => setSuccessSnackbar(res.message),
+    onError: (res) => setErrorSnackbar(res.message),
+  });
+
   const setTaskModalState = useSetRecoilState(taskModModalStateStore);
   const setTaskModalData = useSetRecoilState(taskModModalDataStateStore);
 
   function onClickUpdateHandler() {
     const updateForm: TaskModifyReqData = {
-      projectId,
-      milestoneId,
+      // projectId,
+      // milestoneId,
       content,
       progressStatus: progressStatus.code,
       startDate,
       endDate,
       assignedUserId: assignedUser!.projectMemberId,
       contentDetail,
-      workId,
-      authMap: authMap.code,
+      // workId,
+      // authMap: authMap.code,
     };
 
     setTaskModalState((prev) => ({ ...prev, isOpen: true }));

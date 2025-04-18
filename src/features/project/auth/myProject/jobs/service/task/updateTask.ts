@@ -1,9 +1,10 @@
 import { request } from '@/lib/clientApi/request';
-import { CreateTaskInput } from '@/features/project/auth/task/service/createTask';
 import { TaskStatusValueType } from '@/app/project/@task/_utils/type';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
 import { ApiResult, ResponseBody } from '@/utils/type';
+import { getTaskListQueryKey } from '@/features/project/auth/myProject/jobs/service/task/getTaskList';
+import { CreateTaskInput } from '@/features/project/auth/myProject/jobs/service/task/createTask';
 
 export type TaskModifyReqData = CreateTaskInput & {
   // workId: bigint;
@@ -24,8 +25,10 @@ export const updateTaskInputSchema = z.object({
   progressStatus: z.string().min(1, { message: '진행 상황을 입력해주세요.' }),
 });
 
+export type UpdateTaskInput = z.infer<typeof updateTaskInputSchema>;
+
 export const updateTask = async (
-  data: TaskModifyReqData,
+  data: UpdateTaskInput,
   workId: bigint,
 ): Promise<ResponseBody<null>> => {
   return await request('PATCH', '/api/project/work', { ...data, workId });
@@ -51,10 +54,10 @@ export const useUpdateTask = (
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: TaskModifyReqData) => updateTask(data, workId),
+    mutationFn: (data: UpdateTaskInput) => updateTask(data, workId),
     onSuccess: async (res) => {
       if (res.result === 'success') {
-        await queryClient.invalidateQueries({ queryKey: ['taskList'] });
+        await queryClient.invalidateQueries({ queryKey: getTaskListQueryKey });
         onSuccess?.(res);
         // resetTaskModModalState();
         // resetTaskModModalData();

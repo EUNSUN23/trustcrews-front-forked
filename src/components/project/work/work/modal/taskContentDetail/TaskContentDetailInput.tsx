@@ -2,14 +2,14 @@
 
 import { useRef, useState } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import TaskContentCancelDeleteButton from '@/components/project/work/work/modal/taskContentDetail/TaskContentCancelDeleteButton';
+import TaskContentEditFinishButton from '@/components/project/work/work/modal/taskContentDetail/TaskContentEditFinishButton';
+import { TaskContentDetails } from '@/app/project/@task/_utils/type';
 import {
   taskContentDetailFieldSelector,
   taskModalContentDetailSelector,
   taskModalEditDisabledSelector,
-} from '@/store/project/task/TaskStateStore';
-import TaskContentCancelDeleteButton from '@/components/project/work/work/modal/taskContentDetail/TaskContentCancelDeleteButton';
-import TaskContentEditFinishButton from '@/components/project/work/work/modal/taskContentDetail/TaskContentEditFinishButton';
-import { TaskContentDetails } from '@/app/project/@task/_utils/type';
+} from '@/features/project/auth/task/store/TaskModalStateStore';
 
 function TaskContentDetailInput({
   idForEdit,
