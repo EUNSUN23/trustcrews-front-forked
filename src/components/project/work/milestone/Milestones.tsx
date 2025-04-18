@@ -4,11 +4,12 @@ import MilestoneCard from '@/components/project/work/milestone/MilestoneCard';
 import CustomSwiper from '@/components/ui/CustomSwiper';
 import { useMilestones } from '@/hooks/project/task/useMilestones';
 import { MilestoneListSkeleton } from '@/components/ui/skeleton/project/task';
-import useCurrentUserPMAuth from '@/hooks/project/useCurrentUserPMAuth';
+import { useProjectManageAuth } from '@/lib/getProjectManageAuth';
 
 function Milestones({ projectId }: { projectId: string }) {
-  const { currentUserPMAuth, isFetchingCurrentUserPMAuth } =
-    useCurrentUserPMAuth(projectId);
+  const {
+    data: { data: currentUserPMAuth },
+  } = useProjectManageAuth(projectId);
   const {
     milestoneList,
     activeMilestoneIndex: initActiveMilestoneIndex,
@@ -16,8 +17,7 @@ function Milestones({ projectId }: { projectId: string }) {
     isMilestoneFetching,
   } = useMilestones(projectId);
 
-  if (isMilestoneFetching || isFetchingCurrentUserPMAuth)
-    return <MilestoneListSkeleton />;
+  if (isMilestoneFetching) return <MilestoneListSkeleton />;
 
   return milestoneList!.length < 1 ? (
     <div className='w-full h-[12rem] flex items-center justify-center bg-ground200 rounded-lg'>

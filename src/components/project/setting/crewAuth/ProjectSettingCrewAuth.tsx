@@ -3,15 +3,15 @@ import SettingTitle from '@/components/project/setting/SettingTitle';
 import useProjectCrewList from '@/hooks/project/crew/useProjectCrewList';
 import ProjectSettingCrewAuthSkeleton from '@/components/project/setting/crewAuth/ProjectSettingCrewAuthSkeleton';
 import CrewAuthRow from '@/components/project/setting/crewAuth/CrewAuthRow';
-import useCurrentUserPMAuth from '@/hooks/project/useCurrentUserPMAuth';
+import { useProjectManageAuth } from '@/lib/getProjectManageAuth';
 
 function ProjectSettingCrewAuth({ projectId }: { projectId: string }) {
   const { crewList, isFetching } = useProjectCrewList(projectId);
-  const { currentUserPMAuth, isFetchingCurrentUserPMAuth } =
-    useCurrentUserPMAuth(projectId);
+  const {
+    data: { data: currentUserPMAuth },
+  } = useProjectManageAuth(projectId);
 
-  if (isFetching || isFetchingCurrentUserPMAuth)
-    return <ProjectSettingCrewAuthSkeleton />;
+  if (isFetching) return <ProjectSettingCrewAuthSkeleton />;
 
   return (
     <SettingContainer>

@@ -7,8 +7,7 @@ import {
   milestoneAddModalStateStore,
 } from '@/store/project/task/MilestoneStateStore';
 import { useSetRecoilState } from 'recoil';
-import { MilestoneAddButtonSkeleton } from '@/components/ui/skeleton/project/task';
-import useCurrentUserPMAuth from '@/hooks/project/useCurrentUserPMAuth';
+import { useProjectManageAuth } from '@/lib/getProjectManageAuth';
 
 function MilestoneAddButton({
   projectId,
@@ -16,8 +15,9 @@ function MilestoneAddButton({
   projectId: string;
   userId: string;
 }) {
-  const { currentUserPMAuth, isFetchingCurrentUserPMAuth } =
-    useCurrentUserPMAuth(projectId);
+  const {
+    data: { data: currentUserPMAuth },
+  } = useProjectManageAuth(projectId);
   const setMilestoneAddModalState = useSetRecoilState(
     milestoneAddModalStateStore,
   );
@@ -28,12 +28,12 @@ function MilestoneAddButton({
     milestoneAddDataStateSelector('authMap'),
   );
 
-  if (isFetchingCurrentUserPMAuth) return <MilestoneAddButtonSkeleton />;
+  // if (isFetchingCurrentUserPMAuth) return <MilestoneAddButtonSkeleton />;
 
   const onClickHandler = () => {
     setMilestoneAddModalState((prev) => ({ ...prev, isOpen: true }));
     setMilestoneAddDataProjectId(projectId);
-    setMilestoneAddDataAuthMap(currentUserPMAuth!.code);
+    setMilestoneAddDataAuthMap(currentUserPMAuth.code);
   };
 
   return (

@@ -15,9 +15,9 @@ import {
 import { VoteOption } from '@/service/project/vote/constant';
 import { projectIdState } from '@/store/project/ProjectInfoStateStore';
 import { useRecoilValue } from 'recoil';
-import useCurrentUserPMAuth from '@/hooks/project/useCurrentUserPMAuth';
 import ApplicantProjectHistory from '@/components/project/alert/vote/recruit/modal/ApplicantProjectHisotry';
 import VoteBar from '@/components/ui/votebar/VoteBar';
+import { useProjectManageAuth } from '@/lib/getProjectManageAuth';
 
 type VAlertRecruitModalContentsProps = {
   voteId: bigint;
@@ -31,8 +31,9 @@ function VAlertRecruitModalContents({
   alertId,
 }: VAlertRecruitModalContentsProps) {
   const projectId = useRecoilValue(projectIdState);
-  const { currentUserPMAuth, isFetchingCurrentUserPMAuth } =
-    useCurrentUserPMAuth(projectId);
+  const {
+    data: { data: currentUserPMAuth },
+  } = useProjectManageAuth(projectId);
 
   const { voteForProjectRecruit, isUpdating } = useVoteRecruit();
 
@@ -45,8 +46,7 @@ function VAlertRecruitModalContents({
     staleTime: 0,
   });
 
-  if (isPending || isUpdating || isFetchingCurrentUserPMAuth)
-    return <VAlertRecruitModalSkeleton />;
+  if (isPending || isUpdating) return <VAlertRecruitModalSkeleton />;
 
   if (isError || !data.data || !currentUserPMAuth)
     return (
