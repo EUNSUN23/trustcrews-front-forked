@@ -13,8 +13,8 @@ import { projectIdState } from '@/store/project/ProjectInfoStateStore';
 import { numStrToBigInt } from '@/utils/common';
 import useVoteFwithdraw from '@/hooks/project/useVoteFwithdraw';
 import VAlertFwModalSkeleton from '@/components/ui/skeleton/project/alert/VAlertFWModalSkeleton';
-import useCurrentUserPMAuth from '@/hooks/project/useCurrentUserPMAuth';
 import VoteBar from '@/components/ui/votebar/VoteBar';
+import { useProjectManageAuth } from '@/lib/getProjectManageAuth';
 
 type VAlertFWModalContentsProps = {
   voteId: bigint;
@@ -26,8 +26,9 @@ function VAlertFwModalContents({
   fwMemberId,
 }: VAlertFWModalContentsProps) {
   const projectId = useRecoilValue(projectIdState);
-  const { currentUserPMAuth, isFetchingCurrentUserPMAuth } =
-    useCurrentUserPMAuth(projectId);
+  const {
+    data: { data: currentUserPMAuth },
+  } = useProjectManageAuth(projectId);
 
   const { voteForProjectFWithdraw, isUpdating } = useVoteFwithdraw();
 
@@ -40,8 +41,7 @@ function VAlertFwModalContents({
     staleTime: 0,
   });
 
-  if (isPending || isFetchingCurrentUserPMAuth || isUpdating)
-    return <VAlertFwModalSkeleton />;
+  if (isPending || isUpdating) return <VAlertFwModalSkeleton />;
 
   if (isError || !data.data || !currentUserPMAuth)
     return (
