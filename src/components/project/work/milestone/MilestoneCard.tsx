@@ -9,10 +9,10 @@ import {
   milestoneModDataStateSelector,
   milestoneModModalStateStore,
 } from '@/store/project/task/MilestoneStateStore';
-import { deleteMilestone as deleteMilestoneAPI } from '@/service/project/milestone';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { snackbarState } from '@/store/CommonStateStore';
 import { bigIntToString } from '@/utils/common';
+import { deleteMilestone as deleteMilestoneAPI } from '@/features/project/auth/myProject/jobs/service/milestone/deleteMilestone';
 
 type MilestoneCardProps = {
   milestoneInfo: MilestoneInfo;

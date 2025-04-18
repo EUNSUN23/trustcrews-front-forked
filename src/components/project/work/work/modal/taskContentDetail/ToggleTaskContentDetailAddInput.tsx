@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { RiAddLine } from '@react-icons/all-files/ri/RiAddLine';
 import TaskContentDetailAddInput from '@/components/project/work/work/modal/taskContentDetail/TaskContentDetailAddInput';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { MAX_TASK_CONTENT_DETAIL } from '@/app/project/@task/_utils/constant';
+import { snackbarState } from '@/store/CommonStateStore';
 import {
   taskModalContentDetailSelector,
   taskModalEditDisabledSelector,
   TaskModalType,
-} from '@/store/project/task/TaskStateStore';
-import { MAX_TASK_CONTENT_DETAIL } from '@/app/project/@task/_utils/constant';
-import { snackbarState } from '@/store/CommonStateStore';
+} from '@/features/project/auth/task/store/TaskModalStateStore';
 
 function ToggleTaskContentDetailAddInput({
   modalType,

@@ -1,8 +1,8 @@
 import TaskStatusSelector from '@/components/project/work/work/modal/mod/TaskStatusSelector';
 import { useRecoilValue } from 'recoil';
-import { taskProgressModFieldSelector } from '@/store/project/task/TaskStateStore';
 import { TASK_STATUS } from '@/app/project/@task/_utils/constant';
 import TaskStatusBadge from '@/components/ui/badge/TaskStatusBadge';
+import { taskProgressModFieldSelector } from '@/features/project/auth/task/store/TaskModalStateStore';
 
 const { PS001: TASK_PS001 } = TASK_STATUS;
 

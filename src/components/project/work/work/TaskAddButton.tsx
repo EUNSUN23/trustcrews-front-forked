@@ -1,12 +1,12 @@
 'use client';
 
 import Button from '@/components/ui/button';
+import { FaPlus } from '@react-icons/all-files/fa/FaPlus';
+import { useSetRecoilState } from 'recoil';
 import {
   taskAddModalStateStore,
   taskModalDataFieldSelector,
-} from '@/store/project/task/TaskStateStore';
-import { FaPlus } from '@react-icons/all-files/fa/FaPlus';
-import { useSetRecoilState } from 'recoil';
+} from '@/features/project/auth/task/store/TaskModalStateStore';
 
 type TaskAddButtonProps = {
   milestoneId: string | bigint;

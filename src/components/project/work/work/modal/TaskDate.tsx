@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import DateRangePicker from '@/components/ui/datepicker/DateRangePicker';
+import { addDays, format, subDays } from 'date-fns';
+import { milestoneActiveStateStore } from '@/store/project/task/MilestoneStateStore';
 import {
   taskModalDataFieldSelector,
   taskModalEditDisabledSelector,
   TaskModalType,
-} from '@/store/project/task/TaskStateStore';
-import DateRangePicker from '@/components/ui/datepicker/DateRangePicker';
-import { addDays, format, subDays } from 'date-fns';
-import { milestoneActiveStateStore } from '@/store/project/task/MilestoneStateStore';
+} from '@/features/project/auth/task/store/TaskModalStateStore';
 
 function TaskDate({ modalType }: { modalType: TaskModalType }) {
   const disabled = useRecoilValue(taskModalEditDisabledSelector(modalType));

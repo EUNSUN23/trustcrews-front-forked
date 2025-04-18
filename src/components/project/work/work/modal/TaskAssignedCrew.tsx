@@ -1,12 +1,13 @@
 import ProjectCrewSelect from '@/components/project/ProjectCrewSelect';
 import { useRecoilState, useRecoilValue } from 'recoil';
+
 import {
   TaskAddModalField,
   taskModalDataFieldSelector,
   taskModalEditDisabledSelector,
   TaskModalType,
   TaskModModalField,
-} from '@/store/project/task/TaskStateStore';
+} from '@/features/project/auth/task/store/TaskModalStateStore';
 
 function TaskAssignedCrew({ modalType }: { modalType: TaskModalType }) {
   const disabled = useRecoilValue(taskModalEditDisabledSelector(modalType));
