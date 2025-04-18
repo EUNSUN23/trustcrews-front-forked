@@ -1,10 +1,4 @@
 import { useRecoilValue, useResetRecoilState } from 'recoil';
-import {
-  taskAddModalDataStateStore,
-  taskAddModalStateStore,
-  TaskModalType,
-} from '@/store/project/task/TaskStateStore';
-import useCreateTask from '@/hooks/project/task/useCreateTask';
 import useModalPortalElement from '@/hooks/common/useModalPortalElement';
 import { createPortal } from 'react-dom';
 import Modal from '@/components/ui/Modal';
@@ -12,9 +6,21 @@ import TaskDate from '@/components/project/work/work/modal/TaskDate';
 import TaskAssignedCrew from '@/components/project/work/work/modal/TaskAssignedCrew';
 import TaskContentDetail from '../taskContentDetail/TaskContentDetail';
 import TaskContent from '@/components/project/work/work/modal/TaskContent';
+import useSnackbar from '@/hooks/common/useSnackbar';
+import { ZodError } from 'zod';
+import useCreateTask, {
+  createTaskInputSchema,
+} from '@/features/project/auth/myProject/jobs/service/task/createTask';
+import {
+  taskAddModalDataStateStore,
+  taskAddModalStateStore,
+  TaskModalType,
+} from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
 
 const modalType: TaskModalType = 'add';
-function TaskAddModal() {
+
+const TaskAddModal = () => {
+  const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
   const { isOpen, title } = useRecoilValue(taskAddModalStateStore);
   const [portalElement] = useModalPortalElement(isOpen);
 
@@ -22,12 +28,43 @@ function TaskAddModal() {
   const resetAddModalData = useResetRecoilState(taskAddModalDataStateStore);
   const resetAddModalState = useResetRecoilState(taskAddModalStateStore);
 
-  const { createTask, isCreating } = useCreateTask();
+  const { mutate: createTask, isPending: isCreating } = useCreateTask(
+    addModalData.projectId,
+    addModalData.milestoneId,
+    {
+      onSuccess: (res) => {
+        setSuccessSnackbar(res.message);
+        resetAddModalData();
+        resetAddModalState();
+      },
+      onError: (res) => {
+        setErrorSnackbar(res.message);
+      },
+    },
+  );
 
-  function onCloseHandler() {
+  const handleCloseModal = () => {
     resetAddModalData();
     resetAddModalState();
-  }
+  };
+
+  const handleClickConfirm = () => {
+    const data = {
+      content: addModalData.content,
+      startDate: addModalData.startDate,
+      endDate: addModalData.endDate,
+      contentDetail: addModalData.contentDetail,
+      assignedUserId: addModalData.assignedUserId,
+    };
+
+    try {
+      createTaskInputSchema.parse(data);
+    } catch (e: unknown) {
+      setErrorSnackbar((e as ZodError).errors[0].message);
+      return;
+    }
+    createTask(data);
+  };
 
   return (
     <>
@@ -35,9 +72,9 @@ function TaskAddModal() {
         ? createPortal(
             <Modal
               isOpen={isOpen}
-              close={() => onCloseHandler()}
+              close={handleCloseModal}
               title={title}
-              onClickConfirmHandler={() => createTask(addModalData)}
+              onClickConfirmHandler={handleClickConfirm}
               isUpdating={isCreating}
             >
               <section className='tablet:w-[450px] mobile:w-[280px] max-h-[500px] mb-10 flex-col mt-5'>
@@ -54,6 +91,6 @@ function TaskAddModal() {
         : null}
     </>
   );
-}
+};
 
 export default TaskAddModal;

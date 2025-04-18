@@ -1,6 +1,7 @@
 import { request } from '@/lib/clientApi/request';
 import { ApiResult, ProjectAuthMapCode, ResponseBody } from '@/utils/type';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { getTaskListQueryKey } from '@/features/project/auth/myProject/jobs/service/task/getTaskList';
 
 export type TaskDeleteReqData = {
   workId: bigint;
@@ -32,7 +33,7 @@ export const useDeleteTask = ({
     mutationFn: (reqData: TaskDeleteReqData) => deleteTask(reqData),
     onSuccess: async (res) => {
       if (res.result === 'success') {
-        await queryClient.invalidateQueries({ queryKey: ['taskList'] });
+        await queryClient.invalidateQueries({ queryKey: getTaskListQueryKey });
         onSuccess?.(res);
       } else {
         onError?.(res);

@@ -3,8 +3,8 @@ import { ModalState } from '@/utils/type';
 import { TASK_STATUS } from '@/app/project/@task/_utils/constant';
 import _ from 'lodash';
 import { v4 } from 'uuid';
-import { TaskModifyReqData } from '@/features/project/auth/task/service/updateTask';
-import { CreateTaskInput } from '@/features/project/auth/task/service/createTask';
+import { CreateTaskInput } from '@/features/project/auth/myProject/jobs/service/task/createTask';
+import { UpdateTaskInput } from '@/features/project/auth/myProject/jobs/service/task/updateTask';
 
 export const taskAddModalStateStore = atom<ModalState>({
   key: 'taskAddModalStateStore',
@@ -35,7 +35,7 @@ export const taskModModalStateStore = atom<ModalState>({
     title: '업무 수정',
   },
 });
-export const taskModModalDataStateStore = atom<TaskModifyReqData>({
+export const taskModModalDataStateStore = atom<UpdateTaskInput>({
   key: 'taskModModalDataStateStore',
   default: {
     // workId: 0n,
@@ -48,8 +48,8 @@ export const taskModModalDataStateStore = atom<TaskModifyReqData>({
     // authMap: '',
   },
 });
-export type TaskModModalFieldKey = keyof TaskModifyReqData;
-export type TaskModModalField<T> = TaskModifyReqData[Extract<
+export type TaskModModalFieldKey = keyof UpdateTaskInput;
+export type TaskModModalField<T> = UpdateTaskInput[Extract<
   TaskModModalFieldKey,
   T
 >];
@@ -157,7 +157,7 @@ export const taskModalContentDetailSelector = selectorFamily({
       if (param === 'add') {
         set(taskAddModalDataStateStore, updated);
       } else if (param === 'mod') {
-        set(taskModModalDataStateStore, updated as TaskModifyReqData);
+        set(taskModModalDataStateStore, updated as UpdateTaskInput);
       }
     },
 });

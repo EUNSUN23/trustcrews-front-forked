@@ -2,11 +2,11 @@
 
 import Tasks from '@/components/project/work/work/Tasks';
 import TaskSectionHeader from '@/components/project/work/TaskSectionHeader';
-import { useMilestones } from '@/hooks/project/task/useMilestones';
 import { TaskSectionSkeleton } from '@/components/ui/skeleton/project/task';
 import { milestoneActiveStateStore } from '@/store/project/task/MilestoneStateStore';
 import { useRecoilState } from 'recoil';
 import { useEffect } from 'react';
+import { useMilestones } from '@/features/project/auth/myProject/jobs/service/milestone/getMilestones';
 
 function TaskSection({ projectId }: { projectId: string }) {
   const [activeMilestone, setActiveMilestone] = useRecoilState(
@@ -16,7 +16,6 @@ function TaskSection({ projectId }: { projectId: string }) {
   const {
     activeMilestone: initActiveMilestone,
     activeMilestoneId: initActiveMilestoneId,
-    isMilestoneFetching,
     milestoneList,
   } = useMilestones(projectId);
 
@@ -36,7 +35,7 @@ function TaskSection({ projectId }: { projectId: string }) {
     initActiveMilestoneId,
   ]);
 
-  if (isMilestoneFetching) return <TaskSectionSkeleton />;
+  // if (isMilestoneFetching) return <TaskSectionSkeleton />;
   if (milestoneList.length > 0 && activeMilestone.activeMilestoneIndex === null)
     return <TaskSectionSkeleton />;
 

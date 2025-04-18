@@ -1,9 +1,7 @@
 import { atom, DefaultValue, selectorFamily } from 'recoil';
 import { MilestoneInfo, ModalState } from '@/utils/type';
-import {
-  MilestoneAddReqData,
-  MilestoneModReqData,
-} from '@/service/project/milestone';
+import { MilestoneAddReqData } from '@/features/project/auth/myProject/jobs/service/milestone/createMilestone';
+import { MilestoneModReqData } from '@/features/project/auth/myProject/jobs/service/milestone/updateMilestone';
 
 type MilestoneActiveState = {
   activeMilestone: MilestoneInfo | null;

@@ -2,6 +2,7 @@ import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
 import { ApiResult, ResponseBody } from '@/utils/type';
+import { getTaskListQueryKey } from '@/features/project/auth/myProject/jobs/service/task/getTaskList';
 
 export const createTaskInputSchema = z.object({
   content: z.string().min(1, { message: '업무 제목을 입력해주세요' }),
@@ -49,7 +50,7 @@ export const useCreateTask = (
       createTask(projectId, milestoneId, data),
     onSuccess: async (res) => {
       if (res.result === 'success') {
-        await queryClient.invalidateQueries({ queryKey: ['taskList'] });
+        await queryClient.invalidateQueries({ queryKey: getTaskListQueryKey });
         onSuccess?.(res);
       } else {
         onError?.(res);
