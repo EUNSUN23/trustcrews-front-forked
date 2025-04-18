@@ -1,19 +1,16 @@
 import {
-  defaultShouldDehydrateQuery,
   dehydrate,
   HydrationBoundary,
-  useQueryClient,
+  QueryClient,
 } from '@tanstack/react-query';
 import { ReactNode } from 'react';
-import {
-  positionQueryOptions,
-  techCategoryQueryOptions,
-  techListQueryOptions,
-  techMapQueryOptions,
-} from '@/utils/tanstackQueryOptions/settingsQuery';
+import { positionQueryOptions } from '@/lib/static/getPositionList';
+import { techListQueryOptions } from '@/lib/static/getTechStackList';
+import { techCategoryQueryOptions } from '@/lib/static/getTechCategories';
+import { techMapQueryOptions } from '@/lib/static/getTechMaps';
 
 function StaticDataProvider({ children }: { children: ReactNode }) {
-  const queryClient = useQueryClient();
+  const queryClient = new QueryClient();
 
   queryClient.prefetchQuery(positionQueryOptions());
 
@@ -25,8 +22,11 @@ function StaticDataProvider({ children }: { children: ReactNode }) {
 
   const dehydratedState = dehydrate(queryClient, {
     shouldDehydrateQuery: (query) =>
-      defaultShouldDehydrateQuery(query) || query.state.status === 'pending',
-    shouldRedactErrors: (error) => {
+      query.queryKey[0] === positionQueryOptions().queryKey ||
+      query.queryKey[0] === techCategoryQueryOptions().queryKey ||
+      query.queryKey[0] === techMapQueryOptions().queryKey ||
+      query.queryKey[0] === techListQueryOptions().queryKey,
+    shouldRedactErrors: () => {
       return false;
     },
   });

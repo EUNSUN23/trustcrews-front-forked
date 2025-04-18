@@ -4,8 +4,8 @@ import { useState } from 'react';
 import CommonPagination from '@/components/ui/CommonPagination';
 import { GrScorecard } from '@react-icons/all-files/gr/GrScorecard';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
-import ProjectHistoryItem from '@/components/user/profile/projectHistory/ProjectHistoryItem';
 import { useMyProjectHistory } from '@/features/project/auth/myProjectHistory/service/getMyProjectHistory';
+import ProjectHistoryItem from '@/components/ui/ProjectHistoryItem';
 
 function MyProjectHistory() {
   const [pageNumber, setPageNumber] = useState(0);
