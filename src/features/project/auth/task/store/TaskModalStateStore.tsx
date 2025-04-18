@@ -1,9 +1,10 @@
 import { atom, DefaultValue, selector, selectorFamily } from 'recoil';
+import { ModalState } from '@/utils/type';
+import { TASK_STATUS } from '@/app/project/@task/_utils/constant';
 import _ from 'lodash';
 import { v4 } from 'uuid';
-import { ModalState } from '@/utils/type';
-import { TaskCreateReqData, TaskModifyReqData } from '@/service/project/task';
-import { TASK_STATUS } from '@/app/project/@task/_utils/constant';
+import { TaskModifyReqData } from '@/features/project/auth/task/service/updateTask';
+import { CreateTaskInput } from '@/features/project/auth/task/service/createTask';
 
 export const taskAddModalStateStore = atom<ModalState>({
   key: 'taskAddModalStateStore',
@@ -12,12 +13,9 @@ export const taskAddModalStateStore = atom<ModalState>({
     title: '업무 추가',
   },
 });
-
-export const taskAddModalDataStateStore = atom<TaskCreateReqData>({
+export const taskAddModalDataStateStore = atom<CreateTaskInput>({
   key: 'taskAddModalDataStateStore',
   default: {
-    projectId: 0n,
-    milestoneId: 0n,
     content: '',
     startDate: '',
     endDate: '',
@@ -25,13 +23,11 @@ export const taskAddModalDataStateStore = atom<TaskCreateReqData>({
     contentDetail: '',
   },
 });
-
-export type TaskAddModalFieldKey = keyof TaskCreateReqData;
-export type TaskAddModalField<T> = TaskCreateReqData[Extract<
+export type TaskAddModalFieldKey = keyof CreateTaskInput;
+export type TaskAddModalField<T> = CreateTaskInput[Extract<
   TaskAddModalFieldKey,
   T
 >];
-
 export const taskModModalStateStore = atom<ModalState>({
   key: 'taskModModalStateStore',
   default: {
@@ -39,29 +35,24 @@ export const taskModModalStateStore = atom<ModalState>({
     title: '업무 수정',
   },
 });
-
 export const taskModModalDataStateStore = atom<TaskModifyReqData>({
   key: 'taskModModalDataStateStore',
   default: {
-    projectId: 0n,
-    milestoneId: 0n,
-    workId: 0n,
+    // workId: 0n,
     content: '',
     startDate: '',
     endDate: '',
     assignedUserId: 0n,
     contentDetail: '',
     progressStatus: TASK_STATUS.PS002.code,
-    authMap: '',
+    // authMap: '',
   },
 });
-
 export type TaskModModalFieldKey = keyof TaskModifyReqData;
 export type TaskModModalField<T> = TaskModifyReqData[Extract<
   TaskModModalFieldKey,
   T
 >];
-
 export type TaskModalType = 'add' | 'mod';
 
 export function isTaskAddModalFieldKey(
@@ -111,7 +102,6 @@ export const taskModalDataFieldSelector = selectorFamily({
       }
     },
 });
-
 /**
  * 업무 생성/수정 modal '할일목록' 필드 상태관리 :
  * (조회) contentDetail 필드(문자열) get
@@ -171,7 +161,6 @@ export const taskModalContentDetailSelector = selectorFamily({
       }
     },
 });
-
 /**
  * 업무 생성/수정 modal '할일목록' 각 아이템 상태관리 :
  * (조회) TaskContentDetails get -> id를 파라미터로 특정 할일 data 조회
@@ -211,7 +200,6 @@ export const taskContentDetailFieldSelector = selectorFamily({
       );
     },
 });
-
 /**
  * 업무 수정 modal '진행 상태' 필드 상태관리
  * : 수정/생성 form 모두 관리하는 selectorFamily로 관리할 수 없어서 분리
@@ -230,7 +218,6 @@ export const taskProgressModFieldSelector = selector({
     set(taskModModalDataStateStore, { ...modalData, progressStatus: newValue });
   },
 });
-
 export const taskModalEditDisabledSelector = selectorFamily({
   key: 'taskModalEditDisabledSelector',
   get:

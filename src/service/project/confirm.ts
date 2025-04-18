@@ -1,18 +1,4 @@
 import { request } from '@/lib/clientApi/request';
-import { ProjectAuthMapCode } from '@/utils/type';
-
-export type WorkCompleteRequestDto = {
-  workId: bigint;
-  authMap: ProjectAuthMapCode;
-};
-
-/**
- * 업무 알림 confirm
- * @param reqData
- */
-export async function workComplete(reqData: WorkCompleteRequestDto) {
-  return await request('POST', '/api/project/work/complete', reqData);
-}
 
 /**
  * 모집 알림 confirm (참가 수락/거절)
