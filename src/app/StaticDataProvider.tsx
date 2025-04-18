@@ -1,7 +1,8 @@
 import {
+  defaultShouldDehydrateQuery,
   dehydrate,
   HydrationBoundary,
-  QueryClient,
+  useQueryClient,
 } from '@tanstack/react-query';
 import { ReactNode } from 'react';
 import {
@@ -11,20 +12,24 @@ import {
   techMapQueryOptions,
 } from '@/utils/tanstackQueryOptions/settingsQuery';
 
-async function StaticDataProvider({ children }: { children: ReactNode }) {
-  const queryClient = new QueryClient();
+function StaticDataProvider({ children }: { children: ReactNode }) {
+  const queryClient = useQueryClient();
 
-  const positions = queryClient.prefetchQuery(positionQueryOptions());
+  queryClient.prefetchQuery(positionQueryOptions());
 
-  const techs = queryClient.prefetchQuery(techCategoryQueryOptions());
+  queryClient.prefetchQuery(techCategoryQueryOptions());
 
-  const techResponse = queryClient.prefetchQuery(techMapQueryOptions());
+  queryClient.prefetchQuery(techMapQueryOptions());
 
-  const techStacks = queryClient.prefetchQuery(techListQueryOptions());
+  queryClient.prefetchQuery(techListQueryOptions());
 
-  await Promise.all([positions, techs, techResponse, techStacks]);
-
-  const dehydratedState = dehydrate(queryClient);
+  const dehydratedState = dehydrate(queryClient, {
+    shouldDehydrateQuery: (query) =>
+      defaultShouldDehydrateQuery(query) || query.state.status === 'pending',
+    shouldRedactErrors: (error) => {
+      return false;
+    },
+  });
 
   return (
     <HydrationBoundary state={dehydratedState}>{children}</HydrationBoundary>

@@ -4,13 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
 import TechStackDropdownList from './TechStackDropdownList';
-import { useQuery } from '@tanstack/react-query';
 import { TechStackWithCategory } from '@/utils/type';
-import {
-  techCategoryQueryOptions,
-  techMapQueryOptions,
-} from '@/utils/tanstackQueryOptions/settingsQuery';
 import { selectedTechStackState } from '@/features/post/public/posts/store/PostSearchStateStore';
+import { useTechCategories } from '@/lib/static/getTechCategories';
+import { useTechMaps } from '@/lib/static/getTechMaps';
 
 const getSelectedTechStackText = (
   selectedTechStacks: TechStackWithCategory[],
@@ -45,25 +42,8 @@ const TechStackDropdown = () => {
     return () => document.removeEventListener('click', handleDocumentClick);
   }, []);
 
-  const { data: categoryResponse, isFetching: isFetchingCategory } = useQuery(
-    techCategoryQueryOptions(),
-  );
-
-  const { data: techStackResponse, isFetching: isFetchingTechStack } = useQuery(
-    techMapQueryOptions(),
-  );
-
-  if (isFetchingTechStack || isFetchingCategory)
-    return (
-      <div className='relative z-10'>
-        <div className='px-4 flex justify-between w-[150px] h-[40px] mobile:w-[130px] mobile:h-[35px] items-center border-2 rounded-3xl cursor-pointer bg-gray-300 animate-pulse'>
-          <div className='text-base text-grey800 mobile:text-sm block truncate'>
-            {'기술스택'}
-          </div>
-          <BsChevronDown className='w-4 h-4 text-grey800' />
-        </div>
-      </div>
-    );
+  const { data: categoryResponse } = useTechCategories();
+  const { data: techStackResponse } = useTechMaps();
 
   return (
     <button
@@ -85,8 +65,8 @@ const TechStackDropdown = () => {
       </div>
       {openDropdown && (
         <TechStackDropdownList
-          categories={categoryResponse!.data!}
-          items={techStackResponse!.data!}
+          categories={categoryResponse.data}
+          items={techStackResponse.data}
         />
       )}
     </button>

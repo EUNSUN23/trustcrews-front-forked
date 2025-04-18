@@ -4,6 +4,8 @@ import PositionDropdown from '@/features/post/public/posts/components/filter/Pos
 import TitleSearch from '@/features/post/public/posts/components/filter/TitleSearch';
 import PostList from '@/features/post/public/posts/components/postList';
 import CardListSkeleton from '@/components/ui/skeleton/CardListSkeleton';
+import TechStackDropdownSkeleton from '@/features/post/public/posts/components/skeleton/TeckStackDropdownSkeleton';
+import { PositionDropdownSkeleton } from '@/features/post/public/posts/components/skeleton/PositionDropdownSkeleton';
 
 function Posts() {
   return (
@@ -14,8 +16,12 @@ function Posts() {
         className='mt-6 flex justify-between mobile:block mobile:space-y-5'
       >
         <div className='flex space-x-5'>
-          <TechStackDropdown />
-          <PositionDropdown />
+          <Suspense fallback={<TechStackDropdownSkeleton />}>
+            <TechStackDropdown />
+          </Suspense>
+          <Suspense fallback={<PositionDropdownSkeleton />}>
+            <PositionDropdown />
+          </Suspense>
         </div>
         <TitleSearch />
       </section>
