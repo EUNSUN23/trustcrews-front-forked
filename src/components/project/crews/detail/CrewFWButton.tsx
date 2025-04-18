@@ -6,8 +6,7 @@ import {
 } from '@/store/project/alert/modal/CrewFWModalStateStore';
 import { ProjectMemberProfile } from '@/utils/type';
 import { bigIntToString } from '@/utils/common';
-import useCurrentUserPMAuth from '@/hooks/project/useCurrentUserPMAuth';
-import ButtonSkeleton from '@/components/ui/skeleton/ButtonSkeleton';
+import { useProjectManageAuth } from '@/lib/getProjectManageAuth';
 
 function CrewFwButton({
   projectMemberInfo,
@@ -20,11 +19,12 @@ function CrewFwButton({
 
   const { projectMemberId, projectId, projectMemberAuth } = projectMemberInfo;
 
-  const { currentUserPMAuth, isFetchingCurrentUserPMAuth } =
-    useCurrentUserPMAuth(bigIntToString(projectId));
+  const {
+    data: { data: currentUserPMAuth },
+  } = useProjectManageAuth(bigIntToString(projectId));
 
-  if (isFetchingCurrentUserPMAuth)
-    return <ButtonSkeleton size='md' className='w-[80px] h-[30px] my-3 ' />;
+  // if (isFetchingCurrentUserPMAuth)
+  //   return <ButtonSkeleton size='md' className='w-[80px] h-[30px] my-3 ' />;
 
   const onClickCrewFWButtonHandler = () => {
     const updateModalState: CrewFWModalState = {
