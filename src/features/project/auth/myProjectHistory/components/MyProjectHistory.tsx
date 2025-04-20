@@ -2,29 +2,18 @@
 
 import { useState } from 'react';
 import CommonPagination from '@/components/ui/CommonPagination';
-import { getUserMeProjectHistory } from '@/service/user/user';
-import { PageResponseBody, UserProjectHistoryData } from '@/utils/type';
-import { useQuery } from '@tanstack/react-query';
 import { GrScorecard } from '@react-icons/all-files/gr/GrScorecard';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
-import ProjectHistorySkeleton from '@/components/user/profile/projectHistory/ProjectHistorySkeleton';
-import ProjectHistoryItem from '@/components/user/profile/projectHistory/ProjectHistoryItem';
+import { useMyProjectHistory } from '@/features/project/auth/myProjectHistory/service/getMyProjectHistory';
+import ProjectHistoryItem from '@/components/ui/ProjectHistoryItem';
 
-function ProjectHistory() {
+function MyProjectHistory() {
   const [pageNumber, setPageNumber] = useState(0);
-  const { data, isFetching } = useQuery<
-    PageResponseBody<UserProjectHistoryData[]>,
-    Error
-  >({
-    queryKey: ['userHistory', pageNumber],
-    queryFn: () => getUserMeProjectHistory(pageNumber),
-    staleTime: 0,
-    // retry: false
-  });
-
-  if (isFetching) return <ProjectHistorySkeleton />;
-
-  const { content: histories, totalPages } = data!.data;
+  const {
+    data: {
+      data: { content, totalPages },
+    },
+  } = useMyProjectHistory(pageNumber);
 
   return (
     <div className='p-3 mobile:p-0 mobile:pt-3 space-y-5'>
@@ -33,17 +22,17 @@ function ProjectHistory() {
         <h3 className='ml-2'>프로젝트 이력</h3>
       </div>
       <div className='flow-root mx-2'>
-        {histories.length > 0 ? (
+        {totalPages > 0 ? (
           <>
             <ul role='list' className='-mb-8'>
-              {histories.map((history, idx) => (
+              {content.map((history, idx) => (
                 <li
                   key={history.userProjectHistoryId}
                   className='relative pb-8'
                 >
                   <ProjectHistoryItem
                     history={history}
-                    isLast={idx === histories.length - 1}
+                    isLast={idx === content.length - 1}
                   />
                 </li>
               ))}
@@ -68,4 +57,4 @@ function ProjectHistory() {
   );
 }
 
-export default ProjectHistory;
+export default MyProjectHistory;

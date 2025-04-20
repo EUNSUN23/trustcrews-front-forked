@@ -1,42 +1,44 @@
-import { classNames } from '@/utils/common';
 import { UserProjectHistoryData, UserProjectHistoryStatus } from '@/utils/type';
 import { AiFillRocket } from '@react-icons/all-files/ai/AiFillRocket';
 import { BiUser } from '@react-icons/all-files/bi/BiUser';
 import { BiCheck } from '@react-icons/all-files/bi/BiCheck';
 import { BiUndo } from '@react-icons/all-files/bi/BiUndo';
 import { BiX } from '@react-icons/all-files/bi/BiX';
+import { clsx } from 'clsx';
+import cn from '@/utils/cn';
 
-const getIconColorByStatus = (status: UserProjectHistoryStatus) => {
-  switch (status.code) {
-    case 'PHIST_STAT_001':
-      return 'bg-orange-400';
-    case 'PHIST_STAT_002':
-      return 'bg-blue-500';
-    case 'PHIST_STAT_003':
-      return 'bg-green-500';
-    case 'PHIST_STAT_004':
-      return 'bg-gray-400';
-    case 'PHIST_STAT_005':
-      return 'bg-red-400';
-    default:
-      return '';
-  }
-};
+const HISTORY_COLOR = {
+  LAUNCH: 'bg-orange-400',
+  JOIN: 'bg-blue-500',
+  FINISH: 'bg-green-500',
+  WITHDRAW: 'bg-gray-400',
+  FWITHDRAW: 'bg-red-400',
+} as const;
+const { LAUNCH, JOIN, FINISH, FWITHDRAW, WITHDRAW } = HISTORY_COLOR;
+
+const iconColorClassName = (status: UserProjectHistoryStatus) =>
+  clsx({
+    [LAUNCH]: status.code === 'PHIST_STAT_001',
+    [JOIN]: status.code === 'PHIST_STAT_002',
+    [FINISH]: status.code === 'PHIST_STAT_003',
+    [WITHDRAW]: status.code === 'PHIST_STAT_004',
+    [FWITHDRAW]: status.code === 'PHIST_STAT_005',
+  });
 
 const getIconByStatus = (status: UserProjectHistoryStatus) => {
   const iconClassName = 'h-5 w-5 text-white';
 
   switch (status.code) {
     case 'PHIST_STAT_001':
-      return <AiFillRocket className={iconClassName} aria-hidden='true' />;
+      return <AiFillRocket className={iconClassName} aria-hidden={true} />;
     case 'PHIST_STAT_002':
       return <BiUser className={iconClassName} aria-hidden={true} />;
     case 'PHIST_STAT_003':
-      return <BiCheck className={iconClassName} aria-hidden='true' />;
+      return <BiCheck className={iconClassName} aria-hidden={true} />;
     case 'PHIST_STAT_004':
-      return <BiUndo className={iconClassName} aria-hidden='true' />;
+      return <BiUndo className={iconClassName} aria-hidden={true} />;
     case 'PHIST_STAT_005':
-      return <BiX className={iconClassName} aria-hidden='true' />;
+      return <BiX className={iconClassName} aria-hidden={true} />;
     default:
       return <></>;
   }
@@ -60,11 +62,12 @@ function ProjectHistoryItem({
       <ul className='relative grid grid-cols-12 grid-rows-1'>
         <li className='mobile:col-span-2' aria-hidden={true}>
           <div
-            className={classNames(
-              getIconColorByStatus(history.status),
+            className={cn(
+              iconColorClassName(history.status),
               'h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white',
             )}
           >
+            <span className='sr-only'>{history.status.name}</span>
             {getIconByStatus(history.status)}
           </div>
         </li>

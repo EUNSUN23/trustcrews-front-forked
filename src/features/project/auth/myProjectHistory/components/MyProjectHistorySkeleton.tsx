@@ -1,6 +1,6 @@
 import Skeleton from '@/components/ui/skeleton/Skeleton';
 
-const ProjectHistorySkeleton = () => {
+const MyProjectHistorySkeleton = () => {
   return (
     <div className='p-3 mobile:p-0 mobile:pt-3 space-y-5'>
       <div className='flex items-center my-8 mobile:my-4'>
@@ -17,4 +17,4 @@ const ProjectHistorySkeleton = () => {
   );
 };
 
-export default ProjectHistorySkeleton;
+export default MyProjectHistorySkeleton;
