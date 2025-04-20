@@ -11,7 +11,7 @@ export const loginInputSchema = z.object({
 export type LoginInput = z.infer<typeof loginInputSchema>;
 
 export const login = async (param: LoginInput): Promise<ResponseBody<null>> => {
-  return await request('POST', '/api/user/login', param);
+  return await request('POST', '/api/login', param);
 };
 
 type LoginRes = ApiResult<typeof login>;

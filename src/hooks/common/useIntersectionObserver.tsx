@@ -11,11 +11,11 @@ interface IntersectObserverProps {
 }
 
 export default function useIntersectionObserver({
-  target, // 감지할 대상
-  root, // 교차할 부모 요소
-  onIntersectHandler, // target 감지시 실행할 callback 함수. entries: IntersectionObserverEntry[], observer: IntersectionObserver
-  rootMargin = '0px', // root와 target이 감지하는 여백의 거리
-  threshold = 1.0, // 임계점으로, 1.0이면 root내에서 target이 100% 보여질 때 callback이 실행디ㅗㄴ다.
+  target,
+  root,
+  onIntersectHandler,
+  rootMargin = '0px',
+  threshold = 0.8,
 }: IntersectObserverProps) {
   useEffect(() => {
     let observer: IntersectionObserver;

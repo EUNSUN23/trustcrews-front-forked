@@ -4,17 +4,9 @@ const publicURL = process.env.NEXT_PUBLIC_URL;
 
 export const checkNickname = async (nickname: string) => {
   const response = await fetch(
-    `${publicURL}/api/user/nickname?nickname=${nickname}`,
+    `${publicURL}/api/checkNickname?nickname=${nickname}`,
   );
   return response.json();
-};
-
-/**
- * 현재 사용자 프로젝트 이력 조회
- * @param pageNumber
- */
-export const getUserMeProjectHistory = async (pageNumber: number) => {
-  return await request('GET', `/api/user/history-me?pageNumber=${pageNumber}`);
 };
 
 /**
