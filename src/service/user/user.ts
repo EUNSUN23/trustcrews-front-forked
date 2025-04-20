@@ -10,14 +10,6 @@ export const checkNickname = async (nickname: string) => {
 };
 
 /**
- * 현재 사용자 프로젝트 이력 조회
- * @param pageNumber
- */
-export const getUserMeProjectHistory = async (pageNumber: number) => {
-  return await request('GET', `/api/user/history-me?pageNumber=${pageNumber}`);
-};
-
-/**
  * 특정 사용자 프로젝트 이력 조회
  * @param pageNumber
  * @param userId

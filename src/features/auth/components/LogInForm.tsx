@@ -11,6 +11,7 @@ import { loginInputSchema, useLogin } from '@/lib/auth/logIn';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { getSimpleUserInfoQueryOptions } from '@/lib/user/getSimpleUserInfo';
 import { getMyProjectAppliesQueryKey } from '@/features/projectApply/auth/service/getMyProjectApplies';
+import { getMyProjectsQueryKey } from '@/features/project/auth/myProjects/service/getMyProjects';
 
 function LoginForm() {
   const router = useRouter();
@@ -29,7 +30,7 @@ function LoginForm() {
           queryKey: getSimpleUserInfoQueryOptions().queryKey,
         });
         const invalidateMyProjectList = queryClient.invalidateQueries({
-          queryKey: ['myProjectList'],
+          queryKey: getMyProjectsQueryKey,
         });
         const invalidateProjectNotice = queryClient.invalidateQueries({
           queryKey: getMyProjectAppliesQueryKey,

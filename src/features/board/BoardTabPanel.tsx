@@ -1,13 +1,16 @@
 'use client';
 
-import ProjectPosts from '@/features/board/projectPosts';
 import { useRecoilValue } from 'recoil';
 import {
   activeBoardTabStore,
   BOARD_TABS,
 } from '@/features/board/store/BoardActiveStateStore';
 import { MyProjectApply } from '@/features/projectApply/auth/components/MyProjectApply';
-import MyProjects from '@/features/board/myProjects';
+import Posts from '@/features/post/public/posts/components/Posts';
+import { Suspense } from 'react';
+import CardListSkeleton from '@/components/ui/skeleton/CardListSkeleton';
+import { ITEM_COUNT } from '@/utils/constant';
+import MyProjects from '@/features/project/auth/myProjects/components/MyProjects';
 
 const {
   MANAGE_PROJECT: { name: MANAGE_PROJECT },
@@ -26,7 +29,13 @@ function BoardTabPanel() {
         aria-labelledby={`tab-${MANAGE_PROJECT}`}
       >
         {activeBoardTab === MANAGE_PROJECT && <MyProjectApply />}
-        {activeBoardTab === MANAGE_PROJECT && <MyProjects />}
+        {activeBoardTab === MANAGE_PROJECT && (
+          <Suspense
+            fallback={<CardListSkeleton itemCount={ITEM_COUNT.CARDS} />}
+          >
+            <MyProjects />
+          </Suspense>
+        )}
       </div>
       <div
         role='tabpanel'
@@ -34,7 +43,7 @@ function BoardTabPanel() {
         tabIndex={0}
         aria-labelledby={`tab-${PROJECT_POSTS}`}
       >
-        {activeBoardTab === PROJECT_POSTS && <ProjectPosts />}
+        {activeBoardTab === PROJECT_POSTS && <Posts />}
       </div>
     </section>
   );
