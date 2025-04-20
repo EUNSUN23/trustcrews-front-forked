@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import ProjectHistoryItem from '@/components/user/profile/projectHistory/ProjectHistoryItem';
 import CommonPagination from '@/components/ui/CommonPagination';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
 import { PageResponseBody, UserProjectHistoryData } from '@/utils/type';
 import { useQuery } from '@tanstack/react-query';
 import { getUserProjectHistory } from '@/service/user/user';
 import Loader from '@/components/ui/Loader';
+import ProjectHistoryItem from '@/components/ui/ProjectHistoryItem';
 
 function ApplicantProjectHistoryList({
   isOpen,

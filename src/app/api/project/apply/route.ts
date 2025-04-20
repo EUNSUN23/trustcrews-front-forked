@@ -14,15 +14,3 @@ export async function GET(req: NextRequest) {
 
   return routeResponse(req, res);
 }
-
-export async function POST(req: NextRequest) {
-  const method = req.method;
-  const requestData = await req.json();
-
-  const res = await authApi(`/api/projectApply`, {
-    method,
-    body: JSON.stringify(requestData),
-  });
-
-  return routeResponse(req, res);
-}

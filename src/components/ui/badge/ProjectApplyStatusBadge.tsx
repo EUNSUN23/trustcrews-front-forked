@@ -1,5 +1,5 @@
 import cn from '@/utils/cn';
-import { ProjectApplyStatusData } from '@/features/board/projectApplyStatus/type';
+import { ProjectApplyStatusData } from '@/features/projectApply/auth/type';
 import { clsx } from 'clsx';
 import { HTMLAttributes } from 'react';
 import { BadgeVariants } from '@/utils/badge';

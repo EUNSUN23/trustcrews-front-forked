@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { PostPublicInfoData, ResponseBody } from '@/utils/type';
-import { getPostPublicInfo } from '@/features/post/public/service/getPostPublicInfo';
+import { getPostPublicInfo } from '@/features/post/public/postDetail/service/getPostPublicInfo';
 import { numStrToBigInt } from '@/utils/common';
 import ConfirmModal from '@/components/ui/ConfirmModal';
 import { ReactNode } from 'react';
@@ -16,8 +16,8 @@ export async function generateMetadata({
   );
 
   return {
-    title: `${data!.data!.title} - 팀프로젝트 | TRUSTCREWS`,
-    description: `${data!.data!.content}`,
+    title: `${data.data.title} - 팀프로젝트 | TRUSTCREWS`,
+    description: `${data.data.content}`,
   };
 }
 
