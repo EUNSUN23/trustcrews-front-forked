@@ -1,7 +1,11 @@
 import { HTTP_METHOD } from 'next/dist/server/web/http';
 import { JSONReplaceBigInt } from '@/utils/common';
 import { handleResponse } from '@/lib/clientApi/handleResponse';
-import { headers, publicURL } from '@/service/request';
+
+export const publicURL = process.env.NEXT_PUBLIC_URL;
+export const headers: HeadersInit = {
+  'Content-Type': 'application/json',
+};
 
 export async function request(
   method: HTTP_METHOD,

@@ -1,11 +1,9 @@
 'use client';
 
-import { Fragment, useEffect } from 'react';
+import { Fragment } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { DropDownItem, ResponseBody, UserBasicInfo } from '@/utils/type';
+import { DropDownItem } from '@/utils/type';
 import Avatar from '@/components/ui/Avatar';
-import { useQuery } from '@tanstack/react-query';
-import { getSimpleUser } from '@/service/user/user';
 import UserMenuSkeleton from '@/components/ui/skeleton/header/UserMenuSkeleton';
 import { FaChevronDown } from '@react-icons/all-files/fa/FaChevronDown';
 import {
@@ -18,14 +16,14 @@ import {
 import Link from 'next/link';
 import { classNames } from '@/utils/common';
 import { isQueryDataReady } from '@/hooks/common/useProjectInfoSummary';
-import { hasCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import { useLogout } from '@/lib/auth/logout';
 import { useResetRecoilState } from 'recoil';
 import { activeBoardTabStore } from '@/features/board/store/BoardActiveStateStore';
 import useSnackbar from '@/hooks/common/useSnackbar';
+import { useSimpleUserInfo } from '@/lib/user/getSimpleUserInfo';
 
-// todo - components/layouts로 이동
+// todo - suspense 적용
 function UserMenu() {
   const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
 
@@ -46,30 +44,9 @@ function UserMenu() {
     },
   });
 
-  const { data, isPending, isRefetching, isError, isRefetchError } = useQuery<
-    ResponseBody<UserBasicInfo>,
-    Error,
-    ResponseBody<UserBasicInfo>
-  >({
-    queryKey: ['simpleUserInfo'],
-    queryFn: getSimpleUser,
-    staleTime: 0,
-    enabled: hasCookie('user_id') as boolean,
-  });
+  const { data, isPreparing, isError } = useSimpleUserInfo();
 
-  const isUserDataPreparing = isPending || isRefetching;
-  const isUserDataError = isError || isRefetchError;
-  const isUserDataReady = isQueryDataReady(
-    isUserDataPreparing,
-    isUserDataError,
-    data,
-  );
-
-  useEffect(() => {
-    if (isUserDataError) {
-      router.replace('/login');
-    }
-  }, [isUserDataError, router]);
+  const isUserDataReady = isQueryDataReady(isPreparing, isError, data);
 
   if (isUserDataReady) {
     const { nickname, profileImgSrc } = data.data!;
@@ -148,7 +125,7 @@ function UserMenu() {
     );
   }
 
-  if (isUserDataPreparing) return <UserMenuSkeleton />;
+  if (isPreparing) return <UserMenuSkeleton />;
 }
 
 export default UserMenu;

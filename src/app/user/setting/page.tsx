@@ -1,18 +1,18 @@
 'use client';
 
-import ProfileForm from '@/components/user/profile/ProfileForm';
-import ProfileFormSkeleton from '@/components/user/profile/ProfileFormSkeleton';
-import { useProfileInfo } from '@/hooks/user/useProfileInfo';
+import UserProfileForm from '@/features/user/components/UserProfileForm';
+import UserProfileFormSkeleton from '@/features/user/components/UserProfileFormSkeleton';
+import { useUserDetailInfo } from '@/features/user/service/getUserDetailInfo';
 
 function UserSettingPage() {
-  const { data, isFetching } = useProfileInfo();
+  const { data, isFetching } = useUserDetailInfo();
 
   return (
     <div className='flex flex-col items-center justify-center min-h-[calc(100vh-200px)]'>
       {isFetching || (!isFetching && data!.data === null) ? (
-        <ProfileFormSkeleton />
+        <UserProfileFormSkeleton />
       ) : (
-        <ProfileForm profileInfo={data!.data!} />
+        <UserProfileForm profileInfo={data!.data!} />
       )}
     </div>
   );
