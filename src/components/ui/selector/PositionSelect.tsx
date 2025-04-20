@@ -1,7 +1,7 @@
 import Select from '@/components/ui/selector/Select';
-import { usePositionList } from '@/hooks/common/usePositionList';
 import { PositionId, SelectItem } from '@/utils/type';
 import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
+import { usePositionList } from '@/lib/static/getPositionList';
 
 // todo 코드스타일 정리
 interface PositionSelectProps {
