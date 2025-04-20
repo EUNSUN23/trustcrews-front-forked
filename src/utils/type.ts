@@ -146,7 +146,7 @@ export type ResponseResult = 'success' | 'fail';
 export type ResponseBody<T> = {
   result: ResponseResult;
   message: string;
-  data: T | null;
+  data: T;
 };
 
 export type Paged<T> = {
@@ -232,6 +232,33 @@ export interface PostDetailPosition {
   boardPositionId: bigint;
   position: Position;
 }
+
+export type PostPublicInfoData = {
+  boardId: bigint;
+  projectId: bigint;
+  title: string;
+  content: string;
+  pageView: number;
+  recruitmentStatus: boolean;
+  user: {
+    userId: bigint;
+    nickName: string;
+    userProfileImgSrc: string | null;
+  };
+  contact: string;
+  createDate: string;
+  updateDate: string;
+  boardPositions: BoardPosition[];
+};
+
+export type ProjectPublicInfoData = {
+  projectId: bigint;
+  projectName: string;
+  projectSubject: string;
+  startDate: string;
+  endDate: string;
+  technologyStacks: TechStackItem[];
+};
 
 /**
  * 프로젝트 모집 게시글 - 게시글 상세
