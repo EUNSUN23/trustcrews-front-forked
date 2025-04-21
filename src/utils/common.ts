@@ -1,10 +1,4 @@
-import {
-  MilestoneInfo,
-  PositionItem,
-  ProjectInfoSummary,
-  SelectItem,
-  TechStackItem,
-} from './type';
+import { PositionItem, SelectItem, TechStackItem } from './type';
 import { camelCase } from 'lodash';
 import { ReactNode } from 'react';
 
@@ -99,21 +93,16 @@ export function getRandomBigInt() {
   return randomBigInt;
 }
 
-/**
- * startDate 기준 데이터 배열 정렬
- * @param dataList
- * @param sortBy desc : 내림차순(늦은날짜 -> 빠른날짜), asc : 오름차순(빠른날짜 -> 늦은날짜)
- */
-export function sortByStartDate<T extends ProjectInfoSummary | MilestoneInfo>(
+export const sortByStartDate = <T extends Record<'startDate', string>>(
   dataList: T[],
   sortBy: 'asc' | 'desc',
-): T[] {
+): T[] => {
   const sorted = dataList.sort(function (a, b) {
     return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
   });
 
   return sortBy === 'desc' ? sorted.reverse() : sorted;
-}
+};
 
 export function getRefreshToken(setCookieHeader: string) {
   let refreshTokenValue = '';

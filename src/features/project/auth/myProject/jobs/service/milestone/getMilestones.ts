@@ -1,7 +1,8 @@
 import { request } from '@/lib/clientApi/request';
 import { sortByStartDate } from '@/utils/common';
-import { MilestoneInfo, ResponseBody } from '@/utils/type';
+import { ResponseBody } from '@/utils/type';
 import { useSuspenseQuery } from '@tanstack/react-query';
+import { MilestoneInfo } from '@/features/project/auth/myProject/jobs/types/milestone';
 
 export const getMilestones = async (
   projectId: string,

@@ -1,24 +1,13 @@
+import { CreateMilestoneInput } from '@/features/project/auth/myProject/jobs/service/milestone/createMilestone';
 import { atom, DefaultValue, selectorFamily } from 'recoil';
-import { MilestoneInfo, ModalState } from '@/utils/type';
-import { MilestoneAddReqData } from '@/features/project/auth/myProject/jobs/service/milestone/createMilestone';
-import { MilestoneModReqData } from '@/features/project/auth/myProject/jobs/service/milestone/updateMilestone';
+import { ModalState } from '@/utils/type';
+import { UpdateMilestoneInput } from '@/features/project/auth/myProject/jobs/service/milestone/updateMilestone';
 
-type MilestoneActiveState = {
-  activeMilestone: MilestoneInfo | null;
-  activeMilestoneId: bigint | null;
-  activeMilestoneIndex: number | null;
-};
-
-export const milestoneActiveStateStore = atom<MilestoneActiveState>({
-  key: 'milestoneActiveState',
-  default: {
-    activeMilestone: null,
-    activeMilestoneId: null,
-    activeMilestoneIndex: null,
-  },
-});
-
-// * ============= Milestone Add ============= *
+export type MilestoneAddDataKey = keyof CreateMilestoneInput;
+export type MilestoneAddDataField<T> = CreateMilestoneInput[Extract<
+  MilestoneAddDataKey,
+  T
+>];
 
 export const milestoneAddModalStateStore = atom<ModalState>({
   key: 'milestoneAddModalStateStore',
@@ -28,22 +17,16 @@ export const milestoneAddModalStateStore = atom<ModalState>({
   },
 });
 
-export const milestoneAddDataStateStore = atom<MilestoneAddReqData>({
-  key: 'milestoneAddDataStateStore',
-  default: {
-    projectId: 0n,
-    startDate: '',
-    endDate: '',
-    content: '',
-    authMap: '',
-  },
-});
+const DEFAULT_ADD_MILESTONE_DATA = {
+  startDate: '',
+  endDate: '',
+  content: '',
+} as const;
 
-export type MilestoneAddDataKey = keyof MilestoneAddReqData;
-export type MilestoneAddDataField<T> = MilestoneAddReqData[Extract<
-  MilestoneAddDataKey,
-  T
->];
+export const milestoneAddDataStateStore = atom<CreateMilestoneInput>({
+  key: 'milestoneAddDataStateStore',
+  default: DEFAULT_ADD_MILESTONE_DATA,
+});
 
 export const milestoneAddDataStateSelector = selectorFamily({
   key: 'milestoneAddDataStateSelector',
@@ -64,7 +47,15 @@ export const milestoneAddDataStateSelector = selectorFamily({
     },
 });
 
-// * ============= Milestone Mod ============= *
+export type MilestoneModData = UpdateMilestoneInput & {
+  milestoneId: bigint;
+  updateDate: string;
+};
+export type MilestoneModDataKey = keyof MilestoneModData;
+export type MilestoneModDataField<T> = MilestoneModData[Extract<
+  MilestoneModDataKey,
+  T
+>];
 
 export const milestoneModModalStateStore = atom<ModalState>({
   key: 'milestoneModModalStateStore',
@@ -74,22 +65,18 @@ export const milestoneModModalStateStore = atom<ModalState>({
   },
 });
 
-export const milestoneModDataStateStore = atom<MilestoneModReqData>({
-  key: 'milestoneModDataStateStore',
-  default: {
-    milestoneId: 0n,
-    startDate: '',
-    endDate: '',
-    content: '',
-    authMap: '',
-  },
-});
+const DEFAULT_MOD_MILESTONE_DATA = {
+  milestoneId: 0n,
+  startDate: '',
+  endDate: '',
+  updateDate: '',
+  content: '',
+};
 
-export type MilestoneModDataKey = keyof MilestoneModReqData;
-export type MilestoneModDataField<T> = MilestoneModReqData[Extract<
-  MilestoneModDataKey,
-  T
->];
+export const milestoneModDataStateStore = atom<MilestoneModData>({
+  key: 'milestoneModDataStateStore',
+  default: DEFAULT_MOD_MILESTONE_DATA,
+});
 
 export const milestoneModDataStateSelector = selectorFamily({
   key: 'milestoneModDataStateSelector',
