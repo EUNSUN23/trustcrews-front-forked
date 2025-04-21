@@ -53,18 +53,6 @@ export interface ConfirmModalState extends ModalState {
   onClickConfirmHandler: () => void;
 }
 
-export interface MilestoneInfo {
-  milestoneId: bigint;
-  projectId: bigint | string;
-  content: string;
-  createDate: string;
-  startDate: string;
-  endDate: string;
-  updateDate: string;
-  index?: number;
-  authMap?: ProjectAuthMap;
-}
-
 export interface TrustGradeItem {
   trustGradeId: TrustGradeValueType;
   trustGradeName: TrustGradeNameType;

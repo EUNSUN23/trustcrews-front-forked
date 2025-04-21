@@ -1,9 +1,9 @@
 import { DataId, PageResponseBody } from '@/utils/type';
-import { TaskItem } from '@/app/project/@task/_utils/type';
 import { request } from '@/lib/clientApi/request';
-import { TASK_STATUS } from '@/app/project/@task/_utils/constant';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ITEM_COUNT } from '@/utils/constant';
+import { TaskItem } from '@/features/project/auth/myProject/jobs/types/task';
+import { TASK_STATUS } from '@/features/project/auth/myProject/jobs/constants/task/taskStatus';
 
 export type TasksReqParam = {
   projectId: DataId;
@@ -11,6 +11,8 @@ export type TasksReqParam = {
   itemsPerPage: number;
   pageNumber: number;
 };
+
+const { PS001: TASK_WAIT, PS002: TASK_PROCESSING } = TASK_STATUS;
 
 export const getTaskList = async (tasksReqParam: TasksReqParam) => {
   const {
@@ -38,9 +40,9 @@ export const getTaskList = async (tasksReqParam: TasksReqParam) => {
       const date = new Date(y, m, d);
 
       if (date.getTime > today.getTime) {
-        return { ...v, progressStatus: TASK_STATUS.PS001 };
+        return { ...v, progressStatus: TASK_WAIT };
       } else {
-        return { ...v, progressStatus: TASK_STATUS.PS002 };
+        return { ...v, progressStatus: TASK_PROCESSING };
       }
     }
   });

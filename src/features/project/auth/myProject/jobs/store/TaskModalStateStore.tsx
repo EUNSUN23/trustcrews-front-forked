@@ -1,10 +1,16 @@
 import { atom, DefaultValue, selector, selectorFamily } from 'recoil';
 import { ModalState } from '@/utils/type';
-import { TASK_STATUS } from '@/app/project/@task/_utils/constant';
 import _ from 'lodash';
 import { v4 } from 'uuid';
 import { CreateTaskInput } from '@/features/project/auth/myProject/jobs/service/task/createTask';
 import { UpdateTaskInput } from '@/features/project/auth/myProject/jobs/service/task/updateTask';
+
+import { TASK_STATUS } from '@/features/project/auth/myProject/jobs/constants/task/taskStatus';
+
+const {
+  PS002: { code: TASK_PROCESSING },
+  PS003: { code: TASK_COMPLETE },
+} = TASK_STATUS;
 
 export const taskAddModalStateStore = atom<ModalState>({
   key: 'taskAddModalStateStore',
@@ -35,6 +41,7 @@ export const taskModModalStateStore = atom<ModalState>({
     title: '업무 수정',
   },
 });
+
 export const taskModModalDataStateStore = atom<UpdateTaskInput>({
   key: 'taskModModalDataStateStore',
   default: {
@@ -44,7 +51,7 @@ export const taskModModalDataStateStore = atom<UpdateTaskInput>({
     endDate: '',
     assignedUserId: 0n,
     contentDetail: '',
-    progressStatus: TASK_STATUS.PS002.code,
+    progressStatus: TASK_PROCESSING,
     // authMap: '',
   },
 });
@@ -200,6 +207,7 @@ export const taskContentDetailFieldSelector = selectorFamily({
       );
     },
 });
+
 /**
  * 업무 수정 modal '진행 상태' 필드 상태관리
  * : 수정/생성 form 모두 관리하는 selectorFamily로 관리할 수 없어서 분리
@@ -218,6 +226,7 @@ export const taskProgressModFieldSelector = selector({
     set(taskModModalDataStateStore, { ...modalData, progressStatus: newValue });
   },
 });
+
 export const taskModalEditDisabledSelector = selectorFamily({
   key: 'taskModalEditDisabledSelector',
   get:
@@ -227,6 +236,6 @@ export const taskModalEditDisabledSelector = selectorFamily({
 
       const modalData = get(taskModModalDataStateStore);
       const progressStatusCode = modalData.progressStatus;
-      return progressStatusCode === TASK_STATUS.PS003.code;
+      return progressStatusCode === TASK_COMPLETE;
     },
 });
