@@ -12,5 +12,3 @@ export const TASK_STATUS = {
     name: '완료',
   },
 } as const;
-
-export const MAX_TASK_CONTENT_DETAIL = 5;

@@ -1,14 +1,14 @@
 import { request } from '@/lib/clientApi/request';
-import { TaskStatusValueType } from '@/app/project/@task/_utils/type';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
 import { ApiResult, ResponseBody } from '@/utils/type';
 import { getTaskListQueryKey } from '@/features/project/auth/myProject/jobs/service/task/getTaskList';
 import { CreateTaskInput } from '@/features/project/auth/myProject/jobs/service/task/createTask';
+import { TaskStatusCode } from '@/features/project/auth/myProject/jobs/types/task';
 
 export type TaskModifyReqData = CreateTaskInput & {
   // workId: bigint;
-  progressStatus: TaskStatusValueType;
+  progressStatus: TaskStatusCode;
   // authMap: ProjectAuthMapCode;
 };
 
