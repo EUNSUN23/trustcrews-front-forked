@@ -41,20 +41,9 @@ export const useDeleteMilestone = (
         await queryClient.invalidateQueries({
           queryKey: getMilestonesQueryKey,
         });
-        // resetActiveMilestone();
-        // setSnackBar({
-        //   show: true,
-        //   content: '마일스톤을 삭제했습니다.',
-        //   type: 'INFO',
-        // });
         onSuccess?.(res);
       } else {
         onError?.(res);
-        // setSnackBar({
-        //   show: true,
-        //   content: '프로세스 수행중 에러가 발생했습니다.',
-        //   type: 'ERROR',
-        // });
       }
     },
     onError: (error) => {
@@ -64,11 +53,6 @@ export const useDeleteMilestone = (
         data: null,
         message: '마일스톤 삭제중 오류가 발생했습니다.',
       });
-      // setSnackBar({
-      //   show: true,
-      //   content: '프로세스 수행중 에러가 발생했습니다.',
-      //   type: 'ERROR',
-      // });
     },
   });
 };
