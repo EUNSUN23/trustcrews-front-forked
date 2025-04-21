@@ -9,14 +9,14 @@ import TaskAddModal from '@/components/project/work/work/modal/add/TaskAddModal'
 import TaskModModal from '@/components/project/work/work/modal/mod/TaskModModal';
 
 function TaskPage({
-  searchParams: { projectId, userId },
+  searchParams: { projectId },
 }: {
-  searchParams: { projectId: string; userId: string };
+  searchParams: { projectId: string };
 }) {
   return (
     <>
       <section className='w-full flex flex-col items-start'>
-        <MilestoneAddButton projectId={projectId} userId={userId} />
+        <MilestoneAddButton projectId={projectId} />
         <Milestones projectId={projectId} />
         <TaskSection projectId={projectId} />
       </section>
