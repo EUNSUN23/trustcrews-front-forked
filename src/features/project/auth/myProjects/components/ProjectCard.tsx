@@ -1,7 +1,6 @@
 import { ProjectInfoSummary } from '@/utils/type';
 import { format } from 'date-fns';
 import Link from 'next/link';
-import { getCookie } from 'cookies-next';
 import TechStackImage from '@/components/ui/TechStackImage';
 import { FaPlusCircle } from '@react-icons/all-files/fa/FaPlusCircle';
 
@@ -10,7 +9,6 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ projectPost }: ProjectCardProps) => {
-  const userId = getCookie('user_id');
   const {
     projectId,
     projectName,
@@ -92,7 +90,7 @@ const ProjectCard = ({ projectPost }: ProjectCardProps) => {
       </div>
       <div className='flex justify-center mt-5 mb-3'>
         <Link
-          href={`/project?projectId=${projectId}&userId=${userId}`}
+          href={`/project/${projectId}/task`}
           className='mobile:py-1 tablet:py-1.5 mobile:px-3 tablet:px-3.5 mobile:text-sm tablet:text-base text-white rounded-full font-semibold shadow-sm bg-primary'
           aria-label={`${projectName} 페이지로 이동`}
         >
