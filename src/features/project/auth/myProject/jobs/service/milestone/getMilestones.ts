@@ -26,22 +26,8 @@ export const getMilestones = async (
 export const getMilestonesQueryKey = ['milestoneList'];
 
 export const useMilestones = (projectId: string) => {
-  const {
-    data: { data: milestoneList },
-  } = useSuspenseQuery({
+  return useSuspenseQuery({
     queryKey: [...getMilestonesQueryKey, projectId],
     queryFn: () => getMilestones(projectId),
-    staleTime: 0,
   });
-
-  const activeMilestone = milestoneList[0];
-  const activeMilestoneId = activeMilestone.milestoneId;
-  const activeMilestoneIndex = activeMilestone.index;
-
-  return {
-    milestoneList,
-    activeMilestone,
-    activeMilestoneId,
-    activeMilestoneIndex,
-  };
 };
