@@ -9,39 +9,57 @@ import {
   Transition,
 } from '@headlessui/react';
 import { IoEllipsisVertical } from '@react-icons/all-files/io5/IoEllipsisVertical';
-import { classNames } from '@/utils/common';
-import { useSetRecoilState } from 'recoil';
-import { ProjectAuthMap } from '@/utils/type';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { useDeleteTask } from '@/features/project/auth/myProject/jobs/service/task/deleteTask';
 import {
   taskModModalDataStateStore,
   taskModModalStateStore,
 } from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
-import { TaskModifyReqData } from '@/features/project/auth/myProject/jobs/service/task/updateTask';
+import { UpdateTaskInput } from '@/features/project/auth/myProject/jobs/service/task/updateTask';
 import { TaskItem } from '@/features/project/auth/myProject/jobs/types/task';
 import { TASK_STATUS } from '@/features/project/auth/myProject/jobs/constants/task/taskStatus';
+import { projectManageAuthStateStore } from '@/features/project/auth/myProject/global/store/ProjectManageAuthStateStore';
+import { cva, VariantProps } from 'class-variance-authority';
+import { clsx } from 'clsx';
+
+const CardMenuButtonVariants = cva({
+  variants: {
+    variant: {
+      default: 'text-gray-700',
+      focus: 'bg-gray-100 text-gray-900',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+});
+
+type CardMenuButtonVariantProps = VariantProps<typeof CardMenuButtonVariants>;
+
+const cardMenuButtonClass = (focus: boolean): CardMenuButtonVariantProps =>
+  clsx('block px-4 py-2 tablet:text-[16px] mobile:text-sm', {
+    default: focus,
+    focus: !focus,
+  });
 
 const {
   PS003: { code: TASK_COMPLETE },
 } = TASK_STATUS;
 
-const TaskCardMenu = ({
-  taskItem,
-  authMap,
-}: {
+type TaskCardMenuProps = {
   taskItem: TaskItem;
-  authMap: ProjectAuthMap;
-}) => {
+};
+
+const TaskCardMenu = ({ taskItem }: TaskCardMenuProps) => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
+  const { code: auth } = useRecoilValue(projectManageAuthStateStore);
   const {
     content,
     workId,
     startDate,
     endDate,
     progressStatus,
-    milestoneId,
-    projectId,
     assignedUser,
     contentDetail,
   } = taskItem;
@@ -55,27 +73,23 @@ const TaskCardMenu = ({
 
   const handleClickUpdateButton = (e: React.MouseEvent) => {
     e.preventDefault();
-    const updateForm: TaskModifyReqData = {
-      // projectId,
-      // milestoneId,
+    const updateForm: UpdateTaskInput = {
       content,
       progressStatus: progressStatus.code,
       startDate,
       endDate,
       assignedUserId: assignedUser!.projectMemberId,
       contentDetail,
-      // workId,
-      // authMap: authMap.code,
     };
 
-    setTaskModalState((prev) => ({ ...prev, isOpen: true }));
+    setTaskModalState((prev) => ({ ...prev, isOpen: true, workId, auth }));
     setTaskModalData(updateForm);
   };
 
   const handleClickDeleteButton = (e: React.MouseEvent) => {
     e.preventDefault();
     if (confirm('업무를 삭제하시겠습니까?')) {
-      deleteTask({ workId, authMap: authMap.code });
+      deleteTask({ workId, auth });
     }
   };
 
@@ -99,14 +113,13 @@ const TaskCardMenu = ({
         <MenuItems className='absolute right-2 z-10 mt-1 tablet:min-w-[60px] origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
           <div className='py-1 '>
             {progressStatus.code !== TASK_COMPLETE && (
-              <MenuItem key='modify'>
+              <MenuItem>
                 {({ focus }) => (
                   <a
                     href='#'
                     onClick={handleClickUpdateButton}
-                    className={classNames(
-                      focus ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                      'block px-4 py-2 tablet:text-[16px] mobile:text-sm',
+                    className={CardMenuButtonVariants(
+                      cardMenuButtonClass(focus),
                     )}
                   >
                     수정
@@ -114,15 +127,12 @@ const TaskCardMenu = ({
                 )}
               </MenuItem>
             )}
-            <MenuItem key='delete'>
+            <MenuItem>
               {({ focus }) => (
                 <a
                   href='#'
                   onClick={handleClickDeleteButton}
-                  className={classNames(
-                    focus ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 tablet:text-[16px] mobile:text-sm',
-                  )}
+                  className={CardMenuButtonVariants(cardMenuButtonClass(focus))}
                 >
                   삭제
                 </a>

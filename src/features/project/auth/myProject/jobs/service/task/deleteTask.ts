@@ -5,17 +5,16 @@ import { getTaskListQueryKey } from '@/features/project/auth/myProject/jobs/serv
 
 export type TaskDeleteReqData = {
   workId: bigint;
-  authMap: ProjectAuthMapCode;
+  auth: ProjectAuthMapCode;
 };
 
-/**
- * 업무 삭제
- * @param reqData
- */
 export const deleteTask = async (
   reqData: TaskDeleteReqData,
 ): Promise<ResponseBody<null>> => {
-  return await request('DELETE', '/api/project/work', reqData);
+  return await request('DELETE', '/api/project/work', {
+    ...reqData,
+    authMap: reqData.auth,
+  });
 };
 
 type DeleteTaskRes = ApiResult<typeof deleteTask>;
