@@ -2,8 +2,8 @@ import cn from '@/utils/cn';
 import { ProjectApplyStatusData } from '@/features/projectApply/auth/type';
 import { clsx } from 'clsx';
 import { HTMLAttributes } from 'react';
-import { BadgeVariants } from '@/utils/badge';
-import { VariantProps } from 'class-variance-authority';
+import { baseBadgeVariants } from '@/utils/badge';
+import { cva, VariantProps } from 'class-variance-authority';
 
 const STATUS_COLOR = {
   WAIT: 'bg-gray-50 ring-gray-500/10 text-gray-600',
@@ -21,32 +21,39 @@ const projectApplyStatusBadgeClass = (
     [REJECT]: status.code === 'PAS1003',
   });
 
-const ProjectApplyStatusBadgeVariants = (
-  status: ProjectApplyStatusData['status'],
-) =>
-  BadgeVariants(
-    'mr-2 inline-flex items-center rounded-md font-medium ring-1 ring-inset',
-    projectApplyStatusBadgeClass(status),
-  );
+const ProjectApplyStatusBadgeVariants = cva(
+  'mr-2 inline-flex items-center rounded-md font-medium ring-1 ring-inset',
+  {
+    variants: {
+      applyStatus: {
+        PAS1001: 'bg-gray-50 ring-gray-500/10 text-gray-600',
+        PAS1002: 'bg-green-50 ring-green-600/20 text-green-700',
+        PAS1003: 'bg-yellow-50 ring-yellow-600/20 text-yellow-800',
+      },
+      size: baseBadgeVariants.size,
+    },
+    defaultVariants: {
+      size: 'sm',
+    },
+  },
+);
 
 interface ProjectApplyStatusBadgeProps
   extends HTMLAttributes<HTMLSpanElement>,
-    VariantProps<ReturnType<typeof ProjectApplyStatusBadgeVariants>> {
-  status: ProjectApplyStatusData['status'];
-}
+    VariantProps<typeof ProjectApplyStatusBadgeVariants> {}
 
-export function ProjectApplyStatusBadge({
-  status,
+export const ProjectApplyStatusBadge = ({
+  applyStatus,
   size,
   ...props
-}: ProjectApplyStatusBadgeProps) {
+}: ProjectApplyStatusBadgeProps) => {
   return (
     <span
       {...props}
-      className={cn(ProjectApplyStatusBadgeVariants(status)({ size }))}
+      className={cn(ProjectApplyStatusBadgeVariants({ applyStatus, size }))}
       aria-hidden={true}
     >
-      {status.name}
+      {props.children}
     </span>
   );
-}
+};

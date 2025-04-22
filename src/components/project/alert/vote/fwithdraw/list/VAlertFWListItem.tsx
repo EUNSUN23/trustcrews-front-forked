@@ -30,8 +30,12 @@ function VAlertFwListItem({ data }: VAlertFwListItemProps) {
       onClick={onClickAlertItemHandler}
     >
       <div className='flex items-center gap-x-4'>
-        <NoticeBadge noticeType={AlertType.PRA1003} />
-        <VoteStatusBadge voteStatus={voteStatus} />
+        <NoticeBadge noticeType={AlertType.PRA1003.code}>
+          {AlertType.PRA1003.name}
+        </NoticeBadge>
+        <VoteStatusBadge voteStatus={voteStatus.code}>
+          {voteStatus.name}
+        </VoteStatusBadge>
         {contents}
       </div>
       <div className='ml-auto text-grey600'>{createDate}</div>

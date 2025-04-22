@@ -1,10 +1,18 @@
 import { HTMLAttributes } from 'react';
-import { BadgeVariants } from '@/utils/badge';
-import { VariantProps } from 'class-variance-authority';
+import { baseBadgeVariants } from '@/utils/badge';
+import { cva, VariantProps } from 'class-variance-authority';
 import cn from '@/utils/cn';
 
-const BadgeSkeletonVariants = BadgeVariants(
+const BadgeSkeletonVariants = cva(
   'bg-gray-200 rounded-full animate-pulse text-transparent',
+  {
+    variants: {
+      size: baseBadgeVariants.size,
+    },
+    defaultVariants: {
+      size: 'sm',
+    },
+  },
 );
 
 interface BadgeStyleSkeletonProps
@@ -13,16 +21,16 @@ interface BadgeStyleSkeletonProps
   text?: string;
 }
 
-function BadgeStyleSkeleton({
+const BadgeStyleSkeleton = ({
   size,
   text = '시작전',
   ...props
-}: BadgeStyleSkeletonProps) {
+}: BadgeStyleSkeletonProps) => {
   return (
     <div className={cn(BadgeSkeletonVariants({ size }), props.className)}>
       {text}
     </div>
   );
-}
+};
 
 export default BadgeStyleSkeleton;

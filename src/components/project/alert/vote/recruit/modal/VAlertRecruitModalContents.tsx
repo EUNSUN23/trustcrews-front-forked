@@ -135,7 +135,9 @@ function VAlertRecruitModalContents({
       <section className='tablet:max-w-[400px] h-[250px] mx-auto flex flex-col justify-center space-y-5'>
         <div className='flex justify-center items-center space-x-1 text-2xl text-greyDarkblue font-medium'>
           <span>투표</span>
-          <VoteStatusBadge voteStatus={voteStatus} />
+          <VoteStatusBadge voteStatus={voteStatus.code}>
+            {voteStatus.name}
+          </VoteStatusBadge>
         </div>
         {isVoteEnded && (
           <p className='pb-2 text-[18px] text-lg text-secondary font-semibold'>
