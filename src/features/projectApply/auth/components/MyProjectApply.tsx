@@ -10,7 +10,7 @@ export function MyProjectApply() {
       <Button
         className='mt-10'
         type='button'
-        onClickHandler={() => setUserNoticeModal({ isOpen: true })}
+        onClick={() => setUserNoticeModal({ isOpen: true })}
       >
         프로젝트 지원 현황
       </Button>

@@ -6,7 +6,7 @@ import { TASK_STATUS } from '@/features/project/auth/myProject/jobs/constants/ta
 
 const { PS001: TASK_PS001 } = TASK_STATUS;
 
-function TaskProgressStatus() {
+const TaskProgressStatus = () => {
   const progressStatus = useRecoilValue(taskProgressModFieldSelector);
 
   return (
@@ -25,6 +25,6 @@ function TaskProgressStatus() {
       </div>
     </div>
   );
-}
+};
 
 export default TaskProgressStatus;

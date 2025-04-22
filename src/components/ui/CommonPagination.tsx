@@ -2,21 +2,21 @@
 
 import Pagination from 'react-js-pagination';
 
-interface CommonPaginationProps {
+type CommonPaginationProps = {
   activePage: number;
   itemsCountPerPage: number;
   totalItemsCount: number;
   pageRangeDisplayed: number;
-  onChangePageHandler: (pageNumber: number) => void;
-}
+  onChange: (pageNumber: number) => void;
+};
 
-function CommonPagination({
+const CommonPagination = ({
   activePage,
   itemsCountPerPage,
   totalItemsCount,
   pageRangeDisplayed,
-  onChangePageHandler,
-}: CommonPaginationProps) {
+  onChange,
+}: CommonPaginationProps) => {
   return (
     totalItemsCount > 0 && (
       <div className='mt-12 mb-10 mobile:max-w-[100px] mobile:mx-auto'>
@@ -26,12 +26,12 @@ function CommonPagination({
             itemsCountPerPage={itemsCountPerPage}
             totalItemsCount={totalItemsCount}
             pageRangeDisplayed={pageRangeDisplayed}
-            onChange={onChangePageHandler}
+            onChange={onChange}
           />
         </div>
       </div>
     )
   );
-}
+};
 
 export default CommonPagination;

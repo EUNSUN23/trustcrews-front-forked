@@ -38,7 +38,7 @@ function AlertCrewList() {
         itemsCountPerPage={ITEM_COUNT.LIST_SM}
         totalItemsCount={totalItemsCount}
         pageRangeDisplayed={PAGE_RANGE.DEFAULT}
-        onChangePageHandler={(pageIndex: number) => setPageIndex(pageIndex - 1)}
+        onChange={(pageIndex: number) => setPageIndex(pageIndex - 1)}
       />
     </>
   );

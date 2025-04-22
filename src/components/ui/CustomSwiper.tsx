@@ -10,41 +10,35 @@ import { Grid, Navigation, Pagination } from 'swiper/modules';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useRecoilValue } from 'recoil';
-import { milestoneActiveStateStore } from '@/store/project/task/MilestoneStateStore';
+import { activeMilestoneStateStore } from '@/features/project/auth/myProject/jobs/store/ActiveMilestoneStateStore';
 
-interface SlideItem {
+type SlideItem = {
   key: string;
   components: ReactNode;
-}
+};
 
-interface CustomSwiperProps {
+type CustomSwiperProps = {
   slideItems: SlideItem[];
-  initActiveSlideIndex: number;
-}
+};
 
-function CustomSwiper({ slideItems, initActiveSlideIndex }: CustomSwiperProps) {
-  const swiperRef = useRef<SwiperCore | null>(null);
-
-  const { activeMilestoneIndex: updateActiveSlideIndex } = useRecoilValue(
-    milestoneActiveStateStore,
+const CustomSwiper = ({ slideItems }: CustomSwiperProps) => {
+  const { index: activeMilestoneIndex } = useRecoilValue(
+    activeMilestoneStateStore,
   );
-  const activeSlideIndex =
-    updateActiveSlideIndex !== null
-      ? updateActiveSlideIndex
-      : initActiveSlideIndex;
 
+  const swiperRef = useRef<SwiperCore | null>(null);
   const [slidePerView, setSlidePerView] = useState(() =>
     slideItems.length <= 4 ? slideItems.length - 1 : 3,
   );
-  const mobile = useMediaQuery({ maxWidth: 700 });
 
+  useEffect(() => {
+    swiperRef.current?.slideToLoop(activeMilestoneIndex);
+  }, [activeMilestoneIndex]);
+
+  const mobile = useMediaQuery({ maxWidth: 700 });
   useEffect(() => {
     if (mobile) setSlidePerView(1);
   }, [mobile]);
-
-  useEffect(() => {
-    swiperRef.current?.slideToLoop(activeSlideIndex);
-  }, [activeSlideIndex, updateActiveSlideIndex, initActiveSlideIndex]);
 
   return (
     <div className='pc:w-[1200px] tablet:w-[680px] mobile:w-full flex bg-white overflow-hidden z-0'>
@@ -67,6 +61,6 @@ function CustomSwiper({ slideItems, initActiveSlideIndex }: CustomSwiperProps) {
       </Swiper>
     </div>
   );
-}
+};
 
 export default CustomSwiper;

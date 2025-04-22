@@ -13,7 +13,7 @@ function ProjectSettingFormResetButton() {
     <Button
       theme='primaryHollow'
       size='md'
-      onClickHandler={() => {
+      onClick={() => {
         resetProjectSettingInfo();
         queryClient.invalidateQueries({ queryKey: ['projectInfoSummary'] });
       }}

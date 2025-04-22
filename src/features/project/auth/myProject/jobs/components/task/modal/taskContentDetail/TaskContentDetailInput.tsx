@@ -11,13 +11,15 @@ import {
 } from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
 import { TaskContentDetails } from '@/features/project/auth/myProject/jobs/types/task';
 
+type TaskContentDetailInputProps = {
+  idForEdit: string;
+  modalType: 'add' | 'mod';
+};
+
 const TaskContentDetailInput = ({
   idForEdit,
   modalType,
-}: {
-  idForEdit: string;
-  modalType: 'add' | 'mod';
-}) => {
+}: TaskContentDetailInputProps) => {
   const disabled = useRecoilValue(taskModalEditDisabledSelector(modalType));
   const [isReadOnly, setIsReadOnly] = useState(true);
   const [placeholder, setPlaceholder] = useState('할 일 입력');
@@ -93,7 +95,7 @@ const TaskContentDetailInput = ({
         <TaskContentEditFinishButton
           disabled={disabled}
           mode={isReadOnly ? 'edit' : 'finish'}
-          onClickHandler={
+          onClick={
             isReadOnly ? handleClickEditButton : handleClickEditFinishButton
           }
         />

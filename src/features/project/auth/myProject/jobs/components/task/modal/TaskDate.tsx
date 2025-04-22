@@ -9,7 +9,11 @@ import {
   TaskModalType,
 } from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
 
-function TaskDate({ modalType }: { modalType: TaskModalType }) {
+type TaskDateProps = {
+  modalType: TaskModalType;
+};
+
+const TaskDate = ({ modalType }: TaskDateProps) => {
   const disabled = useRecoilValue(taskModalEditDisabledSelector(modalType));
   const { activeMilestone } = useRecoilValue(activeMilestoneStateStore);
   const { startDate: milestoneStartDate, endDate: milestoneEndDate } =
@@ -64,6 +68,6 @@ function TaskDate({ modalType }: { modalType: TaskModalType }) {
       />
     </div>
   );
-}
+};
 
 export default TaskDate;
