@@ -80,10 +80,7 @@ function CrewAuthRow({
       </td>
       <td className='max-w-[30%] relative whitespace-nowrap py-5 pl-3 pr-4 tablet:text-right text-sm font-medium sm:pr-0'>
         <div className='w-[100px] mobile:w-[80px]'>
-          <Button
-            theme='primary'
-            onClickHandler={onClickSaveCrewAuthButtonHandler}
-          >
+          <Button theme='primary' onClick={onClickSaveCrewAuthButtonHandler}>
             저장
             <span className='sr-only'>, 이름</span>
           </Button>

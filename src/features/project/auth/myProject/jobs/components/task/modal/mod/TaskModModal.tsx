@@ -40,12 +40,12 @@ const TaskModModal = () => {
 
   const { completeTask, isUpdating: isCompleting } = useCompleteTask();
 
-  function onCloseHandler() {
+  const handleClickCloseButton = () => {
     resetModModalData();
     resetModModalState();
-  }
+  };
 
-  function onConfirmHandler() {
+  const handleClickConfirmButton = () => {
     if (modModalData.progressStatus === TASK_COMPLETE) {
       if (
         confirm(
@@ -69,7 +69,7 @@ const TaskModModal = () => {
 
       updateTask(modModalData);
     }
-  }
+  };
 
   return (
     <>
@@ -77,9 +77,9 @@ const TaskModModal = () => {
         ? createPortal(
             <Modal
               isOpen={isOpen}
-              close={() => onCloseHandler()}
+              close={handleClickCloseButton}
               title={title}
-              onClickConfirmHandler={() => onConfirmHandler()}
+              onClickConfirmHandler={handleClickConfirmButton}
               isUpdating={isUpdating || isCompleting}
             >
               <section className='tablet:w-[450px] mobile:w-[280px] max-h-[500px] mb-10 flex-col mt-5'>

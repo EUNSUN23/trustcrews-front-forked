@@ -46,7 +46,7 @@ function CrewFwButton({
       type='button'
       theme='danger'
       size='md'
-      onClickHandler={onClickCrewFWButtonHandler}
+      onClick={onClickCrewFWButtonHandler}
     >
       강제탈퇴 투표
     </Button>

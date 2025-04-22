@@ -51,7 +51,7 @@ function CrewOutButton({
       type='button'
       theme='black'
       size='md'
-      onClickHandler={onClickCrewOutHandler}
+      onClick={onClickCrewOutHandler}
       disabled={isPending}
     >
       프로젝트 탈퇴

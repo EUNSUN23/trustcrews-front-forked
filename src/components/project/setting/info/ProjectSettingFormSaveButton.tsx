@@ -78,7 +78,7 @@ function ProjectSettingFormSaveButton({
   return (
     <Button
       size='md'
-      onClickHandler={onClickSettingSaveButtonHandler}
+      onClick={onClickSettingSaveButtonHandler}
       disabled={isPending}
       className={`${isPending && '!bg-gray-400 !text-white'}`}
     >

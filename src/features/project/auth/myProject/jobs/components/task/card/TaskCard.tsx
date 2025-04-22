@@ -6,12 +6,12 @@ import { useMediaQuery } from 'react-responsive';
 import { TaskItem } from '@/app/project/@task/_utils/type';
 import { ProjectAuthMap } from '@/utils/type';
 
-interface TaskCardProps {
+type TaskCardProps = {
   item: TaskItem;
   authMap: ProjectAuthMap;
-}
+};
 
-function TaskCard({ item, authMap }: TaskCardProps) {
+const TaskCard = ({ item, authMap }: TaskCardProps) => {
   const {
     startDate,
     endDate,
@@ -123,6 +123,6 @@ function TaskCard({ item, authMap }: TaskCardProps) {
       </div>
     </div>
   );
-}
+};
 
 export default TaskCard;

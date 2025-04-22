@@ -41,8 +41,8 @@ export default function Error({
     <ErrorPageContainer>
       <ErrorMessage>에러가 발생했습니다.</ErrorMessage>
       <Navigator>
-        <Button onClickHandler={() => reset()}>재시도</Button>
-        <Button onClickHandler={goHome}>홈으로</Button>
+        <Button onClick={() => reset()}>재시도</Button>
+        <Button onClick={goHome}>홈으로</Button>
       </Navigator>
     </ErrorPageContainer>
   );

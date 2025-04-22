@@ -141,17 +141,13 @@ function UserProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
           hidden
           onChange={handleImageChange}
         />
-        <Button
-          size='md'
-          theme='primaryHollow'
-          onClickHandler={handleFileButtonClick}
-        >
+        <Button size='md' theme='primaryHollow' onClick={handleFileButtonClick}>
           {imageSrc === null ? '이미지 변경' : '변경'}
         </Button>
         <Button
           size='md'
           theme='primary'
-          onClickHandler={deleteImage}
+          onClick={deleteImage}
           hidden={imageSrc === null}
         >
           삭제

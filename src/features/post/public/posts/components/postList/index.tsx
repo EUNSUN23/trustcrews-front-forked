@@ -60,7 +60,7 @@ function PostList() {
         itemsCountPerPage={ITEM_COUNT.CARDS}
         totalItemsCount={totalPages}
         pageRangeDisplayed={PAGE_RANGE.DEFAULT}
-        onChangePageHandler={(page) => setPageNumber(page - 1)}
+        onChange={(page) => setPageNumber(page - 1)}
       />
     </section>
   );
