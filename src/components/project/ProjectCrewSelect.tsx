@@ -8,8 +8,8 @@ import { bigIntToString, classNames, numStrToBigInt } from '@/utils/common';
 import { AiFillCaretDown } from '@react-icons/all-files/ai/AiFillCaretDown';
 import Avatar from '@/components/ui/Avatar';
 import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
-import { projectIdState } from '@/store/project/ProjectInfoStateStore';
 import { compareItems } from '@/app/_boardUtil/common';
+import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
 
 export const DEFAULT_CREW_OPTION = { name: '멤버 선택', value: '0' } as const;
 

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Button from '@/components/ui/button';
 import { useRecoilValue } from 'recoil';
-import { projectIdState } from '@/store/project/ProjectInfoStateStore';
+import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
 
 function CrewListButton() {
   const projectId = useRecoilValue(projectIdState)!;
