@@ -1,13 +1,13 @@
 'use client';
 
-import { Dispatch, SetStateAction, useRef, useState } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
-import TaskContentAddButton from '@/features/project/auth/myProject/jobs/components/task/modal/taskContentDetail/TaskContentAddButton';
 import { v4 } from 'uuid';
 import {
   taskContentDetailFieldSelector,
   TaskModalType,
 } from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
+import { IoIosAddCircle } from '@react-icons/all-files/io/IoIosAddCircle';
 
 type TaskContentDetailAddInputProps = {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -29,10 +29,15 @@ const TaskContentDetailAddInput = ({
     }),
   );
 
-  const handleClickAddButton = () => {
+  const handleClickAddTaskDetailButton = () => {
     setTaskContentDetailField(value);
     setValue('');
     setIsOpen(false);
+  };
+
+  const handleChangeTaskInput = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value === '') setPlaceholder('할 일 입력');
+    setValue(e.target.value);
   };
 
   return (
@@ -51,10 +56,7 @@ const TaskContentDetailAddInput = ({
             placeholder={placeholder}
             className='h-full w-[320px] mobile:w-full absolute top-0 left-0 z-10 text-greyBlue hoverColorChange-ground200
                          appearance-none border-none focus:outline-none focus:border-none focus:ring-0'
-            onChange={(e) => {
-              if (e.target.value === '') setPlaceholder('할 일 입력');
-              setValue(e.target.value);
-            }}
+            onChange={handleChangeTaskInput}
             spellCheck={false}
             value={value}
             maxLength={30}
@@ -63,7 +65,13 @@ const TaskContentDetailAddInput = ({
         </div>
       </div>
       <div className={`w-full opacity-100 flex space-x-1 mx-1`}>
-        <TaskContentAddButton onClickAddButton={handleClickAddButton} />
+        <button
+          type='button'
+          onClick={handleClickAddTaskDetailButton}
+          className='text-primary'
+        >
+          <IoIosAddCircle size={23} />
+        </button>
       </div>
     </div>
   );

@@ -4,23 +4,23 @@ import { RiDeleteBin6Line } from '@react-icons/all-files/ri/RiDeleteBin6Line';
 import { ImCancelCircle } from '@react-icons/all-files/im/ImCancelCircle';
 import { useMediaQuery } from 'react-responsive';
 
-interface Props {
-  onClickHandler: () => void;
+type TaskContentCancelDeleteButtonProps = {
+  onClick: () => void;
   mode: 'cancel' | 'delete';
   disabled: boolean;
-}
+};
 
-function TaskContentCancelDeleteButton({
-  onClickHandler,
+const TaskContentCancelDeleteButton = ({
+  onClick,
   mode,
   disabled,
-}: Props) {
+}: TaskContentCancelDeleteButtonProps) => {
   const isMobile = useMediaQuery({ maxWidth: 700 });
   const iconSize = isMobile ? 18 : 23;
   return (
     <button
       type='button'
-      onClick={onClickHandler}
+      onClick={onClick}
       disabled={disabled}
       className='disabled:text-gray-600/70'
     >
@@ -31,6 +31,6 @@ function TaskContentCancelDeleteButton({
       )}
     </button>
   );
-}
+};
 
 export default TaskContentCancelDeleteButton;

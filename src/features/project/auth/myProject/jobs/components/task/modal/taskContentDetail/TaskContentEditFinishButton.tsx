@@ -21,7 +21,7 @@ const TaskContentEditFinishButton = ({
   return (
     <button
       type='button'
-      onClick={() => onClick()}
+      onClick={onClick}
       disabled={disabled}
       className='disabled:text-gray-600/70'
     >
