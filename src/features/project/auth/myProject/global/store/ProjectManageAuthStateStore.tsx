@@ -1,9 +1,9 @@
-import { ProjectAuthMap } from '@/utils/type';
 import { atom } from 'recoil';
+import { ProjectAuthMap } from '@/features/project/auth/myProject/global/types/projectAuth';
 
 const DEFAULT_PM_AUTH = {
-  code: '',
-  name: '',
+  code: 'PAUTH_2001',
+  name: '크루',
   workChangeYN: false,
   milestoneChangeYN: false,
   configYn: false,

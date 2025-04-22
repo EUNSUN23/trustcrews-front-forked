@@ -1,13 +1,13 @@
 import { request } from '@/lib/clientApi/request';
-import { ProjectAuthMapCode } from '@/utils/type';
 import { isEqual } from 'lodash';
 import { throwErrorIfInvalid } from '@/utils/common';
+import { ProjectAuthCode } from '@/features/project/auth/myProject/global/types/projectAuth';
 
 export type ProjectSettingCrewAuthUpdData = {
-  authMap: ProjectAuthMapCode;
+  authMap: ProjectAuthCode;
   projectId: bigint;
   projectMemberId: bigint;
-  projectMemberAuth: ProjectAuthMapCode;
+  projectMemberAuth: ProjectAuthCode;
 };
 
 /**

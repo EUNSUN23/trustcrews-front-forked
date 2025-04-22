@@ -1,5 +1,6 @@
 import { request } from '@/lib/clientApi/request';
-import { Position, ProjectAuthMapCode } from '@/utils/type';
+import { Position } from '@/utils/type';
+import { ProjectAuthCode } from '@/features/project/auth/myProject/global/types/projectAuth';
 
 export type BoardPosition = {
   boardPositionId: bigint;
@@ -29,7 +30,7 @@ export const getProjectSettingBoardInfo = async (projectId: bigint) => {
 export type ProjectSettingBoardUpdReqData = {
   projectId: bigint;
   boardId: bigint;
-  authMap: ProjectAuthMapCode;
+  authMap: ProjectAuthCode;
   title: string;
   content: string;
   recruitmentStatus: boolean | null;
