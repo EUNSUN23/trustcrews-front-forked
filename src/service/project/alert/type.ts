@@ -4,7 +4,11 @@ import {
   VoteStatus,
 } from '@/service/project/alert/constant';
 import { Notice } from '@/app/project/@notice/_utils/type';
-import { ProfileInfo, ProjectAuthMap, ProjectAuthMapCode } from '@/utils/type';
+import { ProfileInfo } from '@/utils/type';
+import {
+  ProjectAuthCode,
+  ProjectAuthMap,
+} from '@/features/project/auth/myProject/global/types/projectAuth';
 
 export type VoteStatusCode = keyof typeof VoteStatus;
 export type VoteStatusType =
@@ -41,8 +45,8 @@ export type VAlertRecruitDetailData = {
 export type VAlertFWCreateData = {
   project_id: bigint;
   fw_member_id: bigint;
-  fw_member_auth: ProjectAuthMapCode;
-  authMap: ProjectAuthMapCode;
+  fw_member_auth: ProjectAuthCode;
+  authMap: ProjectAuthCode;
   reason: FWReasonCode;
 };
 

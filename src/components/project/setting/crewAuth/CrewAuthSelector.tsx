@@ -1,7 +1,7 @@
-import { ProjectAuthMap } from '@/utils/type';
 import useCrewOptionList from '@/hooks/project/setting/useCrewOptionList';
 import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
 import Select from '@/components/ui/selector/Select';
+import { ProjectAuthMap } from '@/features/project/auth/myProject/global/types/projectAuth';
 
 type CrewAuthSelectItem = {
   name: ProjectAuthMap['name'];

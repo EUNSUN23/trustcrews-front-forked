@@ -1,7 +1,8 @@
 import { request } from '@/lib/clientApi/request';
-import { ProjectAuthMapCode, TechStackItem } from '@/utils/type';
+import { TechStackItem } from '@/utils/type';
 import { isEqual } from 'lodash';
 import { throwErrorIfInvalid } from '@/utils/common';
+import { ProjectAuthCode } from '@/features/project/auth/myProject/global/types/projectAuth';
 
 export type ProjectSettingInfoData = {
   projectId: bigint;
@@ -24,7 +25,7 @@ export const getProjectSettingInfo = async (projectId: bigint) => {
 
 export type ProjectSettingInfoUpdReqData = {
   projectId: bigint;
-  authMap: ProjectAuthMapCode;
+  authMap: ProjectAuthCode;
   projectName: string;
   projectSubject: string;
   startDate: string;
