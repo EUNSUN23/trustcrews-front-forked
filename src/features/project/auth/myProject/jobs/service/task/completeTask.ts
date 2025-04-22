@@ -36,7 +36,9 @@ export const useCompleteTask = (
     mutationFn: () => workComplete({ workId, auth }),
     onSuccess: async (res) => {
       if (res.result === 'success') {
-        await queryClient.invalidateQueries({ queryKey: getTaskListQueryKey });
+        await queryClient.invalidateQueries({
+          queryKey: [getTaskListQueryKey],
+        });
         onSuccess?.(res);
       } else {
         onError?.(res);

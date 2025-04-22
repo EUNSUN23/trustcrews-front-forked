@@ -90,7 +90,7 @@ const ProjectCard = ({ projectPost }: ProjectCardProps) => {
       </div>
       <div className='flex justify-center mt-5 mb-3'>
         <Link
-          href={`/project/${projectId}/task`}
+          href={`/project/${projectId}`}
           className='mobile:py-1 tablet:py-1.5 mobile:px-3 tablet:px-3.5 mobile:text-sm tablet:text-base text-white rounded-full font-semibold shadow-sm bg-primary'
           aria-label={`${projectName} 페이지로 이동`}
         >

@@ -15,15 +15,15 @@ export const DEFAULT_CREW_OPTION = { name: '멤버 선택', value: '0' } as cons
 
 type ProejctCrewSelectProps = {
   disabled: boolean;
-  assignedUserId: bigint;
-  setAssignedUserId: (id: bigint) => void;
+  assignedUserId: bigint | number;
+  setAssignedUserId: (id: bigint | number) => void;
 };
 
-function ProjectCrewSelect({
+const ProjectCrewSelect = ({
   disabled,
   assignedUserId,
   setAssignedUserId,
-}: ProejctCrewSelectProps) {
+}: ProejctCrewSelectProps) => {
   const projectId = useRecoilValue(projectIdState)!;
   const { crewList, isFetching } = useProjectCrewList(projectId);
 
@@ -141,6 +141,6 @@ function ProjectCrewSelect({
       )}
     </Listbox>
   );
-}
+};
 
 export default ProjectCrewSelect;

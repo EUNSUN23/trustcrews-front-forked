@@ -15,9 +15,8 @@ type TaskDateProps = {
 
 const TaskDate = ({ modalType }: TaskDateProps) => {
   const disabled = useRecoilValue(taskModalEditDisabledSelector(modalType));
-  const { activeMilestone } = useRecoilValue(activeMilestoneStateStore);
   const { startDate: milestoneStartDate, endDate: milestoneEndDate } =
-    activeMilestone!;
+    useRecoilValue(activeMilestoneStateStore);
 
   const [startDate, setStartDate] = useRecoilState(
     taskModalDataFieldSelector({ modalType, fieldKey: 'startDate' }),
