@@ -1,8 +1,9 @@
 import { z } from 'zod';
-import { ApiResult, ProjectAuthMapCode, ResponseBody } from '@/utils/type';
+import { ApiResult, ResponseBody } from '@/utils/type';
 import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { getMilestonesQueryKey } from '@/features/project/auth/myProject/jobs/service/milestone/getMilestones';
+import { ProjectAuthCode } from '@/features/project/auth/myProject/global/types/projectAuth';
 
 export const updateMilestoneSchema = z.object({
   content: z.string().nonempty('마일스톤 내용을 입력해 주세요'),
@@ -14,7 +15,7 @@ export type UpdateMilestoneInput = z.infer<typeof updateMilestoneSchema>;
 
 export const updateMilestone = async (
   milestoneId: bigint,
-  authMap: ProjectAuthMapCode,
+  authMap: ProjectAuthCode,
   data: UpdateMilestoneInput,
 ): Promise<ResponseBody<null>> => {
   return await request('PATCH', `/api/project/milestone`, {
@@ -28,7 +29,7 @@ type UpdateMilestoneRes = ApiResult<typeof updateMilestone>;
 
 export const useUpdateMilestone = (
   milestoneId: bigint,
-  authMap: ProjectAuthMapCode,
+  authMap: ProjectAuthCode,
   {
     onSuccess,
     onError,

@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { ProjectAuthMap } from '@/utils/type';
 import ProjectName from '@/components/project/setting/info/ProjectName';
 import ProjectSubject from '@/components/project/setting/info/ProjectSubject';
 import ProjectDate from '@/components/project/setting/info/ProjectDate';
@@ -19,6 +18,7 @@ import SettingContainer from '@/components/project/setting/SettingContainer';
 import SettingTitle from '@/components/project/setting/SettingTitle';
 import SettingBody from '@/components/project/setting/SettingBody';
 import { bigIntToString } from '@/utils/common';
+import { ProjectAuthMap } from '@/features/project/auth/myProject/global/types/projectAuth';
 
 function ProjectSettingInfo({
   projectId,
