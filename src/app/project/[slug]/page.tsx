@@ -1,13 +1,13 @@
 'use client';
 
 import { Suspense, useEffect } from 'react';
-import ProjectInfo from '@/components/project/layout/projectInfo/ProjectInfo';
-import ProjectNavTab from '@/components/project/layout/ProjectNavTab';
+import ProjectInfo from '@/features/project/auth/myProject/global/components/ProjectInfo';
+import ProjectNavTab from '@/features/project/auth/myProject/global/components/ProjectNavTab';
 import { useRecoilState, useResetRecoilState } from 'recoil';
-import { projectIdState } from '@/store/project/ProjectInfoStateStore';
-import ProjectNavTabContents from '@/components/project/layout/ProjectNavTabContents';
-import JobPageSkeleton from '@/features/project/auth/myProject/jobs/components/JobPageSkeleton';
+import ProjectNavTabContents from '@/features/project/auth/myProject/global/components/ProjectNavTabContents';
+import JobSkeleton from '@/features/project/auth/myProject/jobs/components/JobSkeleton';
 import { ProjectInfoSkeleton } from '@/components/ui/skeleton/project/task';
+import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
 
 const ProjectPage = ({
   params: { slug: projectId },
@@ -23,7 +23,7 @@ const ProjectPage = ({
     return () => resetCurrentProjectId();
   }, [currentProjectId, setCurrentProjectId, projectId, resetCurrentProjectId]);
 
-  if (!currentProjectId) return <JobPageSkeleton />;
+  if (!currentProjectId) return <JobSkeleton />;
 
   return (
     <>
