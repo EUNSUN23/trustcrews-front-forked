@@ -2,36 +2,37 @@
 
 import { HTMLAttributes } from 'react';
 import { FaRegSmile } from '@react-icons/all-files/fa/FaRegSmile';
-import { TrustGradeNameType } from '@/app/project/@setting/_utils/type';
-import { clsx } from 'clsx';
-import { BadgeVariants } from '@/utils/badge';
-import { VariantProps } from 'class-variance-authority';
+import { baseBadgeVariants } from '@/utils/badge';
+import { cva, VariantProps } from 'class-variance-authority';
 import cn from '@/utils/cn';
 
-const trustGradeBadgeColorClass = (trustGrade: TrustGradeNameType) =>
-  clsx({
-    'text-level1': trustGrade === 'level1',
-    'text-level2': trustGrade === 'level2',
-    'text-level3': trustGrade === 'level3',
-    'text-level4': trustGrade === 'level4',
-  });
-
-const TrustGradeBadgeVariants = (trustGrade: TrustGradeNameType) =>
-  BadgeVariants(`font-semibold`, trustGradeBadgeColorClass(trustGrade));
+const TrustGradeBadgeVariants = cva('font-semibold', {
+  variants: {
+    trustGrade: {
+      level1: 'text-level1',
+      level2: 'text-level2',
+      level3: 'text-level3',
+      level4: 'text-level4',
+    },
+    size: baseBadgeVariants.size,
+  },
+  defaultVariants: {
+    size: 'sm',
+  },
+});
 
 interface TrustBradeBadgeProps
   extends HTMLAttributes<HTMLElement>,
-    VariantProps<ReturnType<typeof TrustGradeBadgeVariants>> {
-  trustGrade: TrustGradeNameType;
+    VariantProps<typeof TrustGradeBadgeVariants> {
   badgeStyle?: 'emo' | 'text';
 }
 
-function TrustGradeBadge({
+const TrustGradeBadge = ({
   trustGrade,
   size,
   badgeStyle = 'emo',
   ...props
-}: TrustBradeBadgeProps) {
+}: TrustBradeBadgeProps) => {
   let emoBadgeSize = 16;
   switch (size) {
     case 'md':
@@ -51,7 +52,7 @@ function TrustGradeBadge({
         <span
           {...props}
           className={cn(
-            TrustGradeBadgeVariants(trustGrade)({ size }),
+            TrustGradeBadgeVariants({ trustGrade, size }),
             props.className,
           )}
         >
@@ -60,12 +61,15 @@ function TrustGradeBadge({
       ) : (
         <FaRegSmile
           aria-hidden={true}
-          className={cn(trustGradeBadgeColorClass(trustGrade), props.className)}
+          className={cn(
+            TrustGradeBadgeVariants({ trustGrade, size }),
+            props.className,
+          )}
           size={emoBadgeSize}
         />
       )}
     </>
   );
-}
+};
 
 export default TrustGradeBadge;

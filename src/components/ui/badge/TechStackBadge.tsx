@@ -1,12 +1,20 @@
 'use client';
 
-import { BadgeVariants } from '@/utils/badge';
+import { baseBadgeVariants } from '@/utils/badge';
 import { HTMLAttributes } from 'react';
-import { VariantProps } from 'class-variance-authority';
+import { cva, VariantProps } from 'class-variance-authority';
 import cn from '@/utils/cn';
 
-const TechStackBadgeVariants = BadgeVariants(
+const TechStackBadgeVariants = cva(
   'inline-flex items-center rounded-full bg-primary text-white font-medium',
+  {
+    variants: {
+      size: baseBadgeVariants.size,
+    },
+    defaultVariants: {
+      size: 'sm',
+    },
+  },
 );
 
 interface TechStackBadgeProps
@@ -15,7 +23,7 @@ interface TechStackBadgeProps
   text: string;
 }
 
-function TechStackBadge({ text, size, ...props }: TechStackBadgeProps) {
+const TechStackBadge = ({ text, size, ...props }: TechStackBadgeProps) => {
   return (
     <span
       {...props}
@@ -24,6 +32,6 @@ function TechStackBadge({ text, size, ...props }: TechStackBadgeProps) {
       {text}
     </span>
   );
-}
+};
 
 export default TechStackBadge;
