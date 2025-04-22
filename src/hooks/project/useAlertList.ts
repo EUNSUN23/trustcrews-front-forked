@@ -1,12 +1,12 @@
 'use client';
 
 import { useRecoilValue } from 'recoil';
-import { projectIdState } from '@/store/project/ProjectInfoStateStore';
 import { AlertData, AlertMenu } from '@/service/project/alert/type';
 import { useQuery } from '@tanstack/react-query';
 import { PageResponseBody } from '@/utils/type';
 import { ITEM_COUNT } from '@/utils/constant';
 import { getProjectNoticeByMenu } from '@/service/project/alert/vote/recruit';
+import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
 
 function useAlertList(pageIndex: number, alertMenu: AlertMenu) {
   const projectId = useRecoilValue(projectIdState);

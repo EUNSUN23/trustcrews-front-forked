@@ -7,7 +7,7 @@ import ProjectSettingCrewAuth from '@/components/project/setting/crewAuth/Projec
 import ProjectSettingEndProject from '@/components/project/setting/endProject/ProjectSettingEndProject';
 import ErrorMessage from '@/components/ui/error/ErrorMessage';
 import ErrorPageContainer from '@/components/ui/error/ErrorPageContainer';
-import { useProjectManageAuth } from '@/lib/getProjectManageAuth';
+import { useProjectManageAuth } from '@/features/project/auth/myProject/global/service/getProjectManageAuth';
 
 function SettingPage({
   searchParams: { projectId },

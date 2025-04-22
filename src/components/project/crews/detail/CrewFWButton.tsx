@@ -6,7 +6,7 @@ import {
 } from '@/store/project/alert/modal/CrewFWModalStateStore';
 import { ProjectMemberProfile } from '@/utils/type';
 import { bigIntToString } from '@/utils/common';
-import { useProjectManageAuth } from '@/lib/getProjectManageAuth';
+import { useProjectManageAuth } from '@/features/project/auth/myProject/global/service/getProjectManageAuth';
 
 function CrewFwButton({
   projectMemberInfo,

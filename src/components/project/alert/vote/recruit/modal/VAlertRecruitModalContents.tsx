@@ -13,11 +13,11 @@ import {
   VoteRecruitReqData,
 } from '@/service/project/vote/type';
 import { VoteOption } from '@/service/project/vote/constant';
-import { projectIdState } from '@/store/project/ProjectInfoStateStore';
 import { useRecoilValue } from 'recoil';
 import ApplicantProjectHistory from '@/components/project/alert/vote/recruit/modal/ApplicantProjectHisotry';
 import VoteBar from '@/components/ui/votebar/VoteBar';
-import { useProjectManageAuth } from '@/lib/getProjectManageAuth';
+import { useProjectManageAuth } from '@/features/project/auth/myProject/global/service/getProjectManageAuth';
+import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
 
 type VAlertRecruitModalContentsProps = {
   voteId: bigint;
