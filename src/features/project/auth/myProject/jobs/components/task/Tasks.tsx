@@ -1,34 +1,27 @@
 'use client';
 
-import { useState } from 'react';
-import { DataId } from '@/utils/type';
 import CommonPagination from '@/components/ui/CommonPagination';
 import { ITEM_COUNT } from '@/utils/constant';
 import useTasks from '@/features/project/auth/myProject/jobs/service/task/getTaskList';
-import { useProjectManageAuth } from '@/features/project/auth/myProject/global/service/getProjectManageAuth';
 import TaskCard from '@/features/project/auth/myProject/jobs/components/task/card/TaskCard';
+import { useRecoilValue } from 'recoil';
+import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
+import { activeMilestoneStateStore } from '@/features/project/auth/myProject/jobs/store/ActiveMilestoneStateStore';
+import { numStrToBigInt } from '@/utils/common';
+import { useState } from 'react';
 
-const Tasks = ({
-  projectId,
-  milestoneId,
-}: {
-  projectId: DataId;
-  milestoneId: bigint;
-}) => {
-  const {
-    data: { data: currentUserPMAuth },
-  } = useProjectManageAuth(projectId);
+const Tasks = () => {
   const [pageNumber, setPageNumber] = useState(0);
-
+  const projectId = useRecoilValue(projectIdState);
+  const { milestoneId } = useRecoilValue(activeMilestoneStateStore);
   const {
     data: {
       data: { content: taskList, totalPages },
     },
   } = useTasks({
-    projectId,
+    projectId: numStrToBigInt(projectId),
     milestoneId,
     pageNumber,
-    itemsPerPage: ITEM_COUNT.CARDS_SM,
   });
 
   const handleChangePage = (pageNumber: number) => {
@@ -44,7 +37,7 @@ const Tasks = ({
         <ul className='w-full grid pc:grid-cols-3 tablet:grid-cols-2 mobile:grid-cols-1 grid-rows-2 mobile:grid-rows-1 place-items-center gap-4 tablet:gap-8'>
           {taskList.map((v) => (
             <li key={v.workId}>
-              <TaskCard item={v} authMap={currentUserPMAuth!} />
+              <TaskCard item={v} />
             </li>
           ))}
         </ul>

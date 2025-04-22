@@ -49,13 +49,19 @@ const TaskContentDetailInput = ({
       updatedContentDetails.delete(idForEdit);
       return updatedContentDetails;
     });
-
     setIsReadOnly(true);
   };
 
   const handleClickEditCancelButton = () => {
     setValue(taskContentDetailField);
     setIsReadOnly(true);
+  };
+
+  const handleChangeTaskDetailInput = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value === '') {
+      setPlaceholder('할 일 입력');
+    }
+    setValue(e.target.value);
   };
 
   return (

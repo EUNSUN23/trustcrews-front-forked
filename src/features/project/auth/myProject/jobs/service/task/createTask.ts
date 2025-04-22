@@ -12,7 +12,6 @@ export const createTaskInputSchema = z.object({
   assignedUserId: z
     .bigint()
     .or(z.number())
-    .nullable()
     .refine((val) => val, { message: '업무 담당자를 선택해 주세요' }),
 });
 
@@ -50,7 +49,9 @@ export const useCreateTask = (
       createTask(projectId, milestoneId, data),
     onSuccess: async (res) => {
       if (res.result === 'success') {
-        await queryClient.invalidateQueries({ queryKey: getTaskListQueryKey });
+        await queryClient.invalidateQueries({
+          queryKey: [getTaskListQueryKey],
+        });
         onSuccess?.(res);
       } else {
         onError?.(res);

@@ -2,12 +2,21 @@
 
 import { Suspense, useEffect } from 'react';
 import ProjectInfo from '@/features/project/auth/myProject/global/components/ProjectInfo';
-import ProjectNavTab from '@/features/project/auth/myProject/global/components/ProjectNavTab';
-import { useRecoilState, useResetRecoilState } from 'recoil';
-import ProjectNavTabContents from '@/features/project/auth/myProject/global/components/ProjectNavTabContents';
-import JobSkeleton from '@/features/project/auth/myProject/jobs/components/JobSkeleton';
+import { useRecoilState } from 'recoil';
 import { ProjectInfoSkeleton } from '@/components/ui/skeleton/project/task';
 import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
+import ProjectPageSkeleton from '@/features/project/auth/myProject/global/components/ProjectPageSkeleton';
+import dynamic from 'next/dynamic';
+import ProjectNavTabContentsSkeleton from '@/features/project/auth/myProject/global/components/ProjectNavTabContentsSkeleton';
+import ProjectNavTab from '@/features/project/auth/myProject/global/components/ProjectNavTab';
+
+const ProjectNavTabContents = dynamic(
+  () =>
+    import(
+      '@/features/project/auth/myProject/global/components/ProjectNavTabContents'
+    ),
+  { ssr: false, loading: () => <ProjectNavTabContentsSkeleton /> },
+);
 
 const ProjectPage = ({
   params: { slug: projectId },
@@ -16,14 +25,12 @@ const ProjectPage = ({
 }) => {
   const [currentProjectId, setCurrentProjectId] =
     useRecoilState(projectIdState);
-  const resetCurrentProjectId = useResetRecoilState(projectIdState);
 
   useEffect(() => {
-    if (!currentProjectId) setCurrentProjectId(projectId);
-    return () => resetCurrentProjectId();
-  }, [currentProjectId, setCurrentProjectId, projectId, resetCurrentProjectId]);
+    setCurrentProjectId(projectId);
+  }, [setCurrentProjectId, projectId]);
 
-  if (!currentProjectId) return <JobSkeleton />;
+  if (!currentProjectId) return <ProjectPageSkeleton />;
 
   return (
     <>

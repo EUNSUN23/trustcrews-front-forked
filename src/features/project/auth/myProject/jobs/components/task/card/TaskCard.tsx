@@ -2,16 +2,14 @@
 
 import TaskStatusBadge from '@/components/ui/badge/TaskStatusBadge';
 import { useMediaQuery } from 'react-responsive';
-import { ProjectAuthMap } from '@/utils/type';
 import TaskCardMenu from '@/features/project/auth/myProject/jobs/components/task/card/TaskCardMenu';
 import { TaskItem } from '@/features/project/auth/myProject/jobs/types/task';
 
 type TaskCardProps = {
   item: TaskItem;
-  authMap: ProjectAuthMap;
 };
 
-const TaskCard = ({ item, authMap }: TaskCardProps) => {
+const TaskCard = ({ item }: TaskCardProps) => {
   const {
     startDate,
     endDate,
@@ -33,7 +31,7 @@ const TaskCard = ({ item, authMap }: TaskCardProps) => {
           {content}
         </div>
         <div className='ml-auto self-border border-black'>
-          <TaskCardMenu taskItem={item} authMap={authMap} />
+          <TaskCardMenu taskItem={item} />
         </div>
       </div>
       <div className='w-[330px] flex flex-col space-y-5 px-4 py-5 mobile:p-6'>
@@ -119,7 +117,7 @@ const TaskCard = ({ item, authMap }: TaskCardProps) => {
         )}
       </div>
       <div className='absolute right-3 self-border border-black'>
-        <TaskCardMenu taskItem={item} authMap={authMap} />
+        <TaskCardMenu taskItem={item} />
       </div>
     </div>
   );
