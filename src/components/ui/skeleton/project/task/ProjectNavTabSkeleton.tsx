@@ -1,7 +1,8 @@
 'use client';
 
 import Skeleton from '@/components/ui/skeleton/Skeleton';
-import { PROJECT_MENU } from '@/app/project/_utils/constant';
+
+import { PROJECT_MENU } from '@/features/project/auth/myProject/global/constants/projectMenu';
 
 function ProjectNavTabSkeleton() {
   return (
