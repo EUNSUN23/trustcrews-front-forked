@@ -7,9 +7,12 @@ import ToggleTaskContentDetailAddInput from '@/features/project/auth/myProject/j
 import {
   taskModalContentDetailSelector,
   TaskModalType,
-} from '@/features/project/auth/task/store/TaskModalStateStore';
+} from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
 
-function TaskContentDetail({ modalType }: { modalType: TaskModalType }) {
+type TaskContentDetailProps = {
+  modalType: TaskModalType;
+};
+const TaskContentDetail = ({ modalType }: TaskContentDetailProps) => {
   const taskContentDetailMap = useRecoilValue(
     taskModalContentDetailSelector(modalType),
   );
@@ -36,6 +39,6 @@ function TaskContentDetail({ modalType }: { modalType: TaskModalType }) {
       </div>
     </div>
   );
-}
+};
 
 export default TaskContentDetail;
