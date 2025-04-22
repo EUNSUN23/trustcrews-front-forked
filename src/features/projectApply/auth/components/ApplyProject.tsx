@@ -61,7 +61,7 @@ function ApplyProject({ postInfo }: { postInfo: PostPublicInfoData }) {
       <Button
         type='button'
         size='lg'
-        onClickHandler={onConfirmHandler}
+        onClick={onConfirmHandler}
         disabled={isUpdating}
       >
         참여하기

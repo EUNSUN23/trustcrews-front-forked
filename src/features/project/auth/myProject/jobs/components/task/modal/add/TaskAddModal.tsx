@@ -43,12 +43,12 @@ const TaskAddModal = () => {
     },
   );
 
-  const handleCloseModal = () => {
+  const handleClickCloseButton = () => {
     resetAddModalData();
     resetAddModalState();
   };
 
-  const handleClickConfirm = () => {
+  const handleClickConfirmButton = () => {
     const data = {
       content: addModalData.content,
       startDate: addModalData.startDate,
@@ -72,9 +72,9 @@ const TaskAddModal = () => {
         ? createPortal(
             <Modal
               isOpen={isOpen}
-              close={handleCloseModal}
+              close={handleClickCloseButton}
               title={title}
-              onClickConfirmHandler={handleClickConfirm}
+              onClickConfirmHandler={handleClickConfirmButton}
               isUpdating={isCreating}
             >
               <section className='tablet:w-[450px] mobile:w-[280px] max-h-[500px] mb-10 flex-col mt-5'>

@@ -8,7 +8,11 @@ import {
   TaskModModalField,
 } from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
 
-function TaskAssignedCrew({ modalType }: { modalType: TaskModalType }) {
+type TaskAssignedCrewProps = {
+  modalType: TaskModalType;
+};
+
+const TaskAssignedCrew = ({ modalType }: TaskAssignedCrewProps) => {
   const disabled = useRecoilValue(taskModalEditDisabledSelector(modalType));
   const [assignedUserId, setAssignedUserId] = useRecoilState(
     taskModalDataFieldSelector({
@@ -39,6 +43,6 @@ function TaskAssignedCrew({ modalType }: { modalType: TaskModalType }) {
       </div>
     </div>
   );
-}
+};
 
 export default TaskAssignedCrew;

@@ -4,11 +4,10 @@ import {
   updateProjectSettingBoard as updateProjectSettingBoardAPI,
 } from '@/service/project/setting/board';
 import Button from '@/components/ui/button';
-import { useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { projectSettingBoardInfoStateStore } from '@/store/project/setting/ProjectSettingFormStateStore';
 import { useRecoilValue } from 'recoil';
 import useSnackbar from '@/hooks/common/useSnackbar';
-import { useMutation } from '@tanstack/react-query';
 
 function ProjectSettingBoardInfoSaveBtn({
   initData,
@@ -86,7 +85,7 @@ function ProjectSettingBoardInfoSaveBtn({
   return (
     <Button
       size='md'
-      onClickHandler={onClickSaveButtonHandler}
+      onClick={onClickSaveButtonHandler}
       disabled={isPending}
       className={`${isPending && '!bg-gray-400 !text-white'}`}
     >

@@ -1,41 +1,41 @@
 import { useState } from 'react';
 import { RiAddLine } from '@react-icons/all-files/ri/RiAddLine';
 import TaskContentDetailAddInput from '@/features/project/auth/myProject/jobs/components/task/modal/taskContentDetail/TaskContentDetailAddInput';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { snackbarState } from '@/store/CommonStateStore';
+import { useRecoilValue } from 'recoil';
 import {
   taskModalContentDetailSelector,
   taskModalEditDisabledSelector,
   TaskModalType,
 } from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
 import { MAX_TASK_CONTENT_DETAIL } from '@/features/project/auth/myProject/jobs/constants/task/maxTaskContentDetail';
+import useSnackbar from '@/hooks/common/useSnackbar';
 
-function ToggleTaskContentDetailAddInput({
-  modalType,
-}: {
+type ToggleTaskContentDetailAddInputProps = {
   modalType: TaskModalType;
-}) {
-  const disabled = useRecoilValue(taskModalEditDisabledSelector(modalType));
-  const setSnackbar = useSetRecoilState(snackbarState);
+};
+
+const ToggleTaskContentDetailAddInput = ({
+  modalType,
+}: ToggleTaskContentDetailAddInputProps) => {
+  const { setInfoSnackbar } = useSnackbar();
   const [showAddElement, setShowAddElement] = useState(false);
+  const disabled = useRecoilValue(taskModalEditDisabledSelector(modalType));
   const taskContentDetailMap = useRecoilValue(
     taskModalContentDetailSelector(modalType),
   );
 
+  const handleClickAddButton = () => {
+    if (taskContentDetailMap.size >= MAX_TASK_CONTENT_DETAIL) {
+      setInfoSnackbar('할 일은 업무당 최대 5개 추가할 수 있습니다.');
+      return;
+    }
+    setShowAddElement((prev) => !prev);
+  };
+
   return (
     <>
       <button
-        onClick={() => {
-          if (taskContentDetailMap.size >= MAX_TASK_CONTENT_DETAIL) {
-            setSnackbar({
-              show: true,
-              type: 'INFO',
-              content: '할 일은 업무당 최대 5개 추가할 수 있습니다.',
-            });
-            return;
-          }
-          setShowAddElement((prev) => !prev);
-        }}
+        onClick={handleClickAddButton}
         className={`group w-full flex items-center space-x-1 py-2 px-1 text-lg mobile:text-base text-gray-600 leading-[2.15rem] font-semibold ${showAddElement && 'bg-gray-50'} disabled:text-gray-600/70`}
         disabled={disabled}
       >
@@ -53,6 +53,6 @@ function ToggleTaskContentDetailAddInput({
       )}
     </>
   );
-}
+};
 
 export default ToggleTaskContentDetailAddInput;

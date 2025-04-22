@@ -14,7 +14,7 @@ function ApplicantProjectHistory({
       <Button
         theme='black'
         tabIndex={0}
-        onClickHandler={() => setIsOpen((prevState) => !prevState)}
+        onClick={() => setIsOpen((prevState) => !prevState)}
       >
         프로젝트 이력 보기
       </Button>

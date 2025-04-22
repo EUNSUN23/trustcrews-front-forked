@@ -69,7 +69,7 @@ function UserProfile() {
           <Button
             size='md'
             theme='primaryHollow'
-            onClickHandler={() => router.push('/user/setting')}
+            onClick={() => router.push('/user/setting')}
           >
             프로필 수정
           </Button>

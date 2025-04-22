@@ -38,28 +38,22 @@ export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof ButtonVariants> {
   children?: ReactNode;
-  onClickHandler?: () => void;
+  onClick?: () => void;
   addClassName?: string;
 }
 
-function Button({
-  size,
-  theme,
-  children,
-  onClickHandler,
-  ...props
-}: ButtonProps) {
+const Button = ({ size, theme, children, onClick, ...props }: ButtonProps) => {
   return (
     <button
       {...props}
       className={cn(ButtonVariants({ theme, size }), props.className)}
       onClick={() => {
-        if (typeof onClickHandler === 'function') onClickHandler();
+        if (typeof onClick === 'function') onClick();
       }}
     >
       {children}
     </button>
   );
-}
+};
 
 export default Button;

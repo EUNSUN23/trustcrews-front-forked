@@ -52,12 +52,12 @@ export function RegisterProjectPost() {
       </div>
       <IntroField />
       <FormRowWide className='space-x-2 text-center mt-10'>
-        <Button theme='primaryHollow' onClickHandler={() => router.push('/')}>
+        <Button theme='primaryHollow' onClick={() => router.push('/')}>
           취소
         </Button>
         <Button
           disabled={isCreating}
-          onClickHandler={() => createPost(projectPostForm)}
+          onClick={() => createPost(projectPostForm)}
         >
           등록
         </Button>

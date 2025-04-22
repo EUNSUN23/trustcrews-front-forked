@@ -20,20 +20,19 @@ import {
 } from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
 import { TaskModifyReqData } from '@/features/project/auth/myProject/jobs/service/task/updateTask';
 import { TaskItem } from '@/features/project/auth/myProject/jobs/types/task';
-
 import { TASK_STATUS } from '@/features/project/auth/myProject/jobs/constants/task/taskStatus';
 
 const {
   PS003: { code: TASK_COMPLETE },
 } = TASK_STATUS;
 
-function TaskCardMenu({
+const TaskCardMenu = ({
   taskItem,
   authMap,
 }: {
   taskItem: TaskItem;
   authMap: ProjectAuthMap;
-}) {
+}) => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
   const {
     content,
@@ -54,7 +53,8 @@ function TaskCardMenu({
   const setTaskModalState = useSetRecoilState(taskModModalStateStore);
   const setTaskModalData = useSetRecoilState(taskModModalDataStateStore);
 
-  function onClickUpdateHandler() {
+  const handleClickUpdateButton = (e: React.MouseEvent) => {
+    e.preventDefault();
     const updateForm: TaskModifyReqData = {
       // projectId,
       // milestoneId,
@@ -70,16 +70,14 @@ function TaskCardMenu({
 
     setTaskModalState((prev) => ({ ...prev, isOpen: true }));
     setTaskModalData(updateForm);
-  }
+  };
 
-  /**
-   * 업무 삭제 click
-   */
-  function onClickDeleteCardHandler() {
+  const handleClickDeleteButton = (e: React.MouseEvent) => {
+    e.preventDefault();
     if (confirm('업무를 삭제하시겠습니까?')) {
       deleteTask({ workId, authMap: authMap.code });
     }
-  }
+  };
 
   return (
     <Menu as='div' className='relative flex-shrink-0 text-center'>
@@ -105,10 +103,7 @@ function TaskCardMenu({
                 {({ focus }) => (
                   <a
                     href='#'
-                    onClick={(e) => {
-                      e.preventDefault();
-                      onClickUpdateHandler();
-                    }}
+                    onClick={handleClickUpdateButton}
                     className={classNames(
                       focus ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                       'block px-4 py-2 tablet:text-[16px] mobile:text-sm',
@@ -123,10 +118,7 @@ function TaskCardMenu({
               {({ focus }) => (
                 <a
                   href='#'
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onClickDeleteCardHandler();
-                  }}
+                  onClick={handleClickDeleteButton}
                   className={classNames(
                     focus ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 tablet:text-[16px] mobile:text-sm',
@@ -141,6 +133,6 @@ function TaskCardMenu({
       </Transition>
     </Menu>
   );
-}
+};
 
 export default TaskCardMenu;

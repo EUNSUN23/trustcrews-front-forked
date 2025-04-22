@@ -46,7 +46,7 @@ function MyProjects() {
         itemsCountPerPage={ITEM_COUNT.CARDS}
         totalItemsCount={totalPages}
         pageRangeDisplayed={PAGE_RANGE.DEFAULT}
-        onChangePageHandler={handleChangePage}
+        onChange={handleChangePage}
       />
     </section>
   );
