@@ -97,7 +97,7 @@ function CrewTaskHistory({ projectMemberId }: { projectMemberId: string }) {
         pageRangeDisplayed={PAGE_RANGE.DEFAULT}
         itemsCountPerPage={ITEM_COUNT.LIST_SM}
         totalItemsCount={totalCount}
-        onChangePageHandler={(pageIndex: number) => setPageIndex(pageIndex - 1)}
+        onChange={(pageIndex: number) => setPageIndex(pageIndex - 1)}
       />
     </>
   );

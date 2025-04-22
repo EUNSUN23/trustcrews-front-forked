@@ -7,18 +7,21 @@ import { v4 } from 'uuid';
 import {
   taskContentDetailFieldSelector,
   TaskModalType,
-} from '@/features/project/auth/task/store/TaskModalStateStore';
+} from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
 
-function TaskContentDetailAddInput({
-  setIsOpen,
-  modalType,
-}: {
+type TaskContentDetailAddInputProps = {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   modalType: TaskModalType;
-}) {
+};
+
+const TaskContentDetailAddInput = ({
+  setIsOpen,
+  modalType,
+}: TaskContentDetailAddInputProps) => {
   const [value, setValue] = useState('');
   const [placeholder, setPlaceholder] = useState('할 일 입력');
   const idForEdit = useRef(v4());
+
   const setTaskContentDetailField = useSetRecoilState(
     taskContentDetailFieldSelector({
       modalType,
@@ -26,11 +29,11 @@ function TaskContentDetailAddInput({
     }),
   );
 
-  function onClickAddButtonHandler() {
+  const handleClickAddButton = () => {
     setTaskContentDetailField(value);
     setValue('');
     setIsOpen(false);
-  }
+  };
 
   return (
     <div className='my-2 flex items-center'>
@@ -60,12 +63,10 @@ function TaskContentDetailAddInput({
         </div>
       </div>
       <div className={`w-full opacity-100 flex space-x-1 mx-1`}>
-        <TaskContentAddButton
-          onClickAddButtonHandler={onClickAddButtonHandler}
-        />
+        <TaskContentAddButton onClickAddButton={handleClickAddButton} />
       </div>
     </div>
   );
-}
+};
 
 export default TaskContentDetailAddInput;

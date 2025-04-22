@@ -13,7 +13,7 @@ type TaskAddButtonProps = {
   projectId: string | bigint;
 };
 
-function TaskAddButton({ milestoneId, projectId }: TaskAddButtonProps) {
+const TaskAddButton = ({ milestoneId, projectId }: TaskAddButtonProps) => {
   const setTaskModalState = useSetRecoilState(taskAddModalStateStore);
   const setTaskAddModalMilestoneId = useSetRecoilState(
     taskModalDataFieldSelector({
@@ -28,20 +28,20 @@ function TaskAddButton({ milestoneId, projectId }: TaskAddButtonProps) {
     }),
   );
 
-  function onClickHandler() {
+  const handleClickAddButton = () => {
     setTaskAddModalProjectId(projectId);
     setTaskAddModalMilestoneId(milestoneId);
     setTaskModalState((prev) => ({ ...prev, isOpen: true }));
-  }
+  };
 
   return (
-    <Button size='md' onClickHandler={() => onClickHandler()}>
+    <Button size='md' onClick={handleClickAddButton}>
       <span className='flex items-center'>
         <FaPlus className='tablet:w-3 tablet:h-3 mr-2' />
         업무 추가
       </span>
     </Button>
   );
-}
+};
 
 export default TaskAddButton;

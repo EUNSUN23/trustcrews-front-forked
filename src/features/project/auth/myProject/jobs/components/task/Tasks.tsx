@@ -1,12 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import TaskCard from '@/features/project/auth/myProject/jobs/components/task/taskList/TaskCard';
 import { DataId } from '@/utils/type';
 import CommonPagination from '@/components/ui/CommonPagination';
 import { ITEM_COUNT } from '@/utils/constant';
 import useTasks from '@/features/project/auth/myProject/jobs/service/task/getTaskList';
 import { useProjectManageAuth } from '@/features/project/auth/myProject/global/service/getProjectManageAuth';
+import TaskCard from '@/features/project/auth/myProject/jobs/components/task/card/TaskCard';
 
 const Tasks = ({
   projectId,
@@ -31,9 +31,9 @@ const Tasks = ({
     itemsPerPage: ITEM_COUNT.CARDS_SM,
   });
 
-  function onChangePageHandler(pageNumber: number) {
+  const handleChangePage = (pageNumber: number) => {
     setPageNumber(pageNumber - 1);
-  }
+  };
 
   // if(isTasksLoading) return
   //     <TasksSkeleton itemCount={ITEM_COUNT.CARDS_SM} />;
@@ -60,7 +60,7 @@ const Tasks = ({
         totalItemsCount={totalPages}
         pageRangeDisplayed={5}
         itemsCountPerPage={ITEM_COUNT.CARDS_SM}
-        onChangePageHandler={onChangePageHandler}
+        onChange={handleChangePage}
       />
     </div>
   );

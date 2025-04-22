@@ -42,7 +42,7 @@ function MyProjectHistory() {
               itemsCountPerPage={ITEM_COUNT.LIST_SM}
               totalItemsCount={totalPages}
               pageRangeDisplayed={PAGE_RANGE.DEFAULT}
-              onChangePageHandler={(page) => setPageNumber(page - 1)}
+              onChange={(page) => setPageNumber(page - 1)}
             />
           </>
         ) : (

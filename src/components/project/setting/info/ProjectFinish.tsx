@@ -31,7 +31,7 @@ function ProjectFinish({ projectId }: { projectId: string }) {
   };
 
   return (
-    <Button theme='danger' size='md' onClickHandler={endProject}>
+    <Button theme='danger' size='md' onClick={endProject}>
       프로젝트 종료
     </Button>
   );

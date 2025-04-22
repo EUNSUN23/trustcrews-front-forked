@@ -106,7 +106,7 @@ function Modal({
                     size='md'
                     disabled={isUpdating}
                     className={`${isUpdating && '!bg-gray-400 !text-white'}`}
-                    onClickHandler={() => {
+                    onClick={() => {
                       if (typeof onClickConfirmHandler === 'function')
                         onClickConfirmHandler();
                       else close();
@@ -114,11 +114,7 @@ function Modal({
                   >
                     확인
                   </Button>
-                  <Button
-                    size='md'
-                    theme='cancel'
-                    onClickHandler={() => close()}
-                  >
+                  <Button size='md' theme='cancel' onClick={() => close()}>
                     닫기
                   </Button>
                 </div>

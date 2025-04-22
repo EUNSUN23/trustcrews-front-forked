@@ -4,7 +4,6 @@ import _ from 'lodash';
 import { v4 } from 'uuid';
 import { CreateTaskInput } from '@/features/project/auth/myProject/jobs/service/task/createTask';
 import { UpdateTaskInput } from '@/features/project/auth/myProject/jobs/service/task/updateTask';
-
 import { TASK_STATUS } from '@/features/project/auth/myProject/jobs/constants/task/taskStatus';
 
 const {
@@ -62,19 +61,19 @@ export type TaskModModalField<T> = UpdateTaskInput[Extract<
 >];
 export type TaskModalType = 'add' | 'mod';
 
-export function isTaskAddModalFieldKey(
+export const isTaskAddModalFieldKey = (
   modalType: TaskModalType,
   key: string,
-): key is TaskAddModalFieldKey {
+): key is TaskAddModalFieldKey => {
   return modalType === 'add';
-}
+};
 
-export function isTaskModModalFieldKey(
+export const isTaskModModalFieldKey = (
   modalType: TaskModalType,
   key: string,
-): key is TaskModModalFieldKey {
+): key is TaskModModalFieldKey => {
   return modalType === 'mod';
-}
+};
 
 export const taskModalDataFieldSelector = selectorFamily({
   key: 'taskModalDataFieldSelector',

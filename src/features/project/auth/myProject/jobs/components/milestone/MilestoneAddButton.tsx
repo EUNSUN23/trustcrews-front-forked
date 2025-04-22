@@ -10,7 +10,7 @@ const MilestoneAddButton = () => {
     milestoneAddModalStateStore,
   );
 
-  const onClickHandler = () => {
+  const handleClickAddButton = () => {
     setMilestoneAddModalState((prev) => ({ ...prev, isOpen: true }));
   };
 
@@ -18,7 +18,7 @@ const MilestoneAddButton = () => {
     <Button
       size='md'
       className='mb-4'
-      onClickHandler={onClickHandler}
+      onClick={handleClickAddButton}
       aria-label='마일스톤 추가'
     >
       <span className='flex items-center'>

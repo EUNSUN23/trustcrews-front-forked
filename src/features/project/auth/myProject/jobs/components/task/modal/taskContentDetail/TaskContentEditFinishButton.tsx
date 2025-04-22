@@ -4,24 +4,24 @@ import { MdModeEdit } from '@react-icons/all-files/md/MdModeEdit';
 import { FaCheck } from '@react-icons/all-files/fa/FaCheck';
 import { useMediaQuery } from 'react-responsive';
 
-interface Props {
-  onClickHandler: () => void;
+type TaskContentEditFinishButtonProps = {
+  onClick: () => void;
   mode: 'edit' | 'finish';
   disabled: boolean;
-}
+};
 
-function TaskContentEditFinishButton({
-  onClickHandler,
+const TaskContentEditFinishButton = ({
+  onClick,
   mode,
   disabled,
-}: Props) {
+}: TaskContentEditFinishButtonProps) => {
   const isMobile = useMediaQuery({ maxWidth: 700 });
   const iconSize = isMobile ? 18 : 23;
 
   return (
     <button
       type='button'
-      onClick={() => onClickHandler()}
+      onClick={() => onClick()}
       disabled={disabled}
       className='disabled:text-gray-600/70'
     >
@@ -32,6 +32,6 @@ function TaskContentEditFinishButton({
       )}
     </button>
   );
-}
+};
 
 export default TaskContentEditFinishButton;
