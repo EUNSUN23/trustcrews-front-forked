@@ -1,10 +1,10 @@
 'use client';
 
 import TaskStatusBadge from '@/components/ui/badge/TaskStatusBadge';
-import TaskCardMenu from '@/features/project/auth/myProject/jobs/components/task/taskList/TaskCardMenu';
 import { useMediaQuery } from 'react-responsive';
-import { TaskItem } from '@/app/project/@task/_utils/type';
 import { ProjectAuthMap } from '@/utils/type';
+import TaskCardMenu from '@/features/project/auth/myProject/jobs/components/task/card/TaskCardMenu';
+import { TaskItem } from '@/features/project/auth/myProject/jobs/types/task';
 
 type TaskCardProps = {
   item: TaskItem;

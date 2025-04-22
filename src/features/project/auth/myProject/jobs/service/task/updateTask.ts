@@ -1,16 +1,8 @@
 import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
-import { ApiResult, ResponseBody } from '@/utils/type';
+import { ApiResult, ProjectAuthMapCode, ResponseBody } from '@/utils/type';
 import { getTaskListQueryKey } from '@/features/project/auth/myProject/jobs/service/task/getTaskList';
-import { CreateTaskInput } from '@/features/project/auth/myProject/jobs/service/task/createTask';
-import { TaskStatusCode } from '@/features/project/auth/myProject/jobs/types/task';
-
-export type TaskModifyReqData = CreateTaskInput & {
-  // workId: bigint;
-  progressStatus: TaskStatusCode;
-  // authMap: ProjectAuthMapCode;
-};
 
 export const updateTaskInputSchema = z.object({
   content: z.string().min(1, { message: '업무 제목을 입력해주세요' }),
@@ -30,14 +22,20 @@ export type UpdateTaskInput = z.infer<typeof updateTaskInputSchema>;
 export const updateTask = async (
   data: UpdateTaskInput,
   workId: bigint,
+  auth: ProjectAuthMapCode,
 ): Promise<ResponseBody<null>> => {
-  return await request('PATCH', '/api/project/work', { ...data, workId });
+  return await request('PATCH', '/api/project/work', {
+    ...data,
+    workId,
+    authMap: auth,
+  });
 };
 
 type UpdateTaskRes = ApiResult<typeof updateTask>;
 
 export const useUpdateTask = (
   workId: bigint,
+  auth: ProjectAuthMapCode,
   {
     onSuccess,
     onError,
@@ -46,25 +44,16 @@ export const useUpdateTask = (
     onError?: (res: UpdateTaskRes) => void;
   },
 ) => {
-  // const setSnackbar = useSetRecoilState(snackbarState);
-  // const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
-  // const resetTaskModModalState = useResetRecoilState(taskModModalStateStore);
-  // const resetTaskModModalData = useResetRecoilState(taskModModalDataStateStore);
-
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: UpdateTaskInput) => updateTask(data, workId),
+    mutationFn: (data: UpdateTaskInput) => updateTask(data, workId, auth),
     onSuccess: async (res) => {
       if (res.result === 'success') {
         await queryClient.invalidateQueries({ queryKey: getTaskListQueryKey });
         onSuccess?.(res);
-        // resetTaskModModalState();
-        // resetTaskModModalData();
-        // setSuccessSnackbar('업무를 수정했습니다.');
       } else {
         onError?.(res);
-        // setErrorSnackbar(res.message);
       }
     },
     onError: (error) => {
@@ -74,7 +63,6 @@ export const useUpdateTask = (
         data: null,
         message: '업무삭제 중 오류가 발생했습니다.',
       });
-      // setSnackbar({ show: true, type: 'ERROR', content: error.message });
     },
   });
 };
