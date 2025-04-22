@@ -1,5 +1,3 @@
-import { CREW_STATUS } from '@/utils/constant';
-import { PointTypeKey } from '@/app/project/@notice/_utils/type';
 import {
   TrustGradeNameType,
   TrustGradeValueType,
@@ -171,38 +169,10 @@ export interface ProjectUser extends User {
   technologyStacks: TechStackItem[];
 }
 
-export interface ProjectMemberProfile {
-  projectMemberId: bigint;
-  projectId: bigint;
-  projectCount: number;
-  user: ProjectUser;
-  projectMemberAuth: ProjectAuthMap;
-  position: Position;
-  status: CrewStatusKeys;
-}
-
-export interface ProjectMember {
-  projectMemberId: bigint;
-  user: User;
-  projectMemberAuth: ProjectAuthMap;
-  position: Position;
-  lastWorkDate: string;
-}
-
 export interface Position {
   positionId: bigint;
   name: string;
 }
-
-export type ProjectAuthMap = {
-  code: string;
-  name: string;
-  workChangeYN: boolean;
-  milestoneChangeYN: boolean;
-  configYn: boolean;
-};
-
-export type ProjectAuthMapCode = ProjectAuthMap['code'];
 
 export type ProjectInfoSummary = {
   projectId: bigint;
@@ -289,24 +259,6 @@ export interface NoticeCreateForm {
   positionId?: bigint | null;
   type: string;
   content: string;
-}
-
-/**
- * CREW_STATUS enum의 키값 타입
- */
-export type CrewStatusKeys = keyof typeof CREW_STATUS;
-
-/**
- * 프로젝트 크루 업무 이력
- */
-export interface CrewTaskHistory {
-  workId: bigint;
-  trustScoreHistoryId: bigint;
-  workContent: string;
-  createDate: string;
-  progressStatus: CrewStatusKeys;
-  point: number | null;
-  point_type: PointTypeKey | null;
 }
 
 export interface UserBasicInfo {
