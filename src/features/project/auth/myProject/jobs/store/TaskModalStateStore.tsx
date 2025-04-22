@@ -1,5 +1,5 @@
 import { atom, DefaultValue, selector, selectorFamily } from 'recoil';
-import { ModalState } from '@/utils/type';
+import { ModalState, ProjectAuthMapCode } from '@/utils/type';
 import _ from 'lodash';
 import { v4 } from 'uuid';
 import { CreateTaskInput } from '@/features/project/auth/myProject/jobs/service/task/createTask';
@@ -11,11 +11,33 @@ const {
   PS003: { code: TASK_COMPLETE },
 } = TASK_STATUS;
 
-export const taskAddModalStateStore = atom<ModalState>({
+export type TaskModalType = 'add' | 'mod';
+
+export type TaskAddModalFieldKey = keyof CreateTaskInput;
+export type TaskAddModalField<T> = CreateTaskInput[Extract<
+  TaskAddModalFieldKey,
+  T
+>];
+
+export const isTaskAddModalFieldKey = (
+  modalType: TaskModalType,
+  key: string,
+): key is TaskAddModalFieldKey => {
+  return modalType === 'add';
+};
+
+interface TaskAddModalState extends ModalState {
+  projectId: bigint;
+  milestoneId: bigint;
+}
+
+export const taskAddModalStateStore = atom<TaskAddModalState>({
   key: 'taskAddModalStateStore',
   default: {
     isOpen: false,
     title: '업무 추가',
+    projectId: 0n,
+    milestoneId: 0n,
   },
 });
 export const taskAddModalDataStateStore = atom<CreateTaskInput>({
@@ -28,45 +50,12 @@ export const taskAddModalDataStateStore = atom<CreateTaskInput>({
     contentDetail: '',
   },
 });
-export type TaskAddModalFieldKey = keyof CreateTaskInput;
-export type TaskAddModalField<T> = CreateTaskInput[Extract<
-  TaskAddModalFieldKey,
-  T
->];
-export const taskModModalStateStore = atom<ModalState>({
-  key: 'taskModModalStateStore',
-  default: {
-    isOpen: false,
-    title: '업무 수정',
-  },
-});
 
-export const taskModModalDataStateStore = atom<UpdateTaskInput>({
-  key: 'taskModModalDataStateStore',
-  default: {
-    // workId: 0n,
-    content: '',
-    startDate: '',
-    endDate: '',
-    assignedUserId: 0n,
-    contentDetail: '',
-    progressStatus: TASK_PROCESSING,
-    // authMap: '',
-  },
-});
 export type TaskModModalFieldKey = keyof UpdateTaskInput;
 export type TaskModModalField<T> = UpdateTaskInput[Extract<
   TaskModModalFieldKey,
   T
 >];
-export type TaskModalType = 'add' | 'mod';
-
-export const isTaskAddModalFieldKey = (
-  modalType: TaskModalType,
-  key: string,
-): key is TaskAddModalFieldKey => {
-  return modalType === 'add';
-};
 
 export const isTaskModModalFieldKey = (
   modalType: TaskModalType,
@@ -74,6 +63,33 @@ export const isTaskModModalFieldKey = (
 ): key is TaskModModalFieldKey => {
   return modalType === 'mod';
 };
+
+interface TaskModModalState extends ModalState {
+  workId: bigint;
+  auth: ProjectAuthMapCode;
+}
+
+export const taskModModalStateStore = atom<TaskModModalState>({
+  key: 'taskModModalStateStore',
+  default: {
+    isOpen: false,
+    title: '업무 수정',
+    workId: 0n,
+    auth: '',
+  },
+});
+
+export const taskModModalDataStateStore = atom<UpdateTaskInput>({
+  key: 'taskModModalDataStateStore',
+  default: {
+    content: '',
+    startDate: '',
+    endDate: '',
+    assignedUserId: 0n,
+    contentDetail: '',
+    progressStatus: TASK_PROCESSING,
+  },
+});
 
 export const taskModalDataFieldSelector = selectorFamily({
   key: 'taskModalDataFieldSelector',

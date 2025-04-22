@@ -21,7 +21,9 @@ const modalType: TaskModalType = 'add';
 
 const TaskAddModal = () => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
-  const { isOpen, title } = useRecoilValue(taskAddModalStateStore);
+  const { isOpen, title, projectId, milestoneId } = useRecoilValue(
+    taskAddModalStateStore,
+  );
   const [portalElement] = useModalPortalElement(isOpen);
 
   const addModalData = useRecoilValue(taskAddModalDataStateStore);
@@ -29,8 +31,8 @@ const TaskAddModal = () => {
   const resetAddModalState = useResetRecoilState(taskAddModalStateStore);
 
   const { mutate: createTask, isPending: isCreating } = useCreateTask(
-    addModalData.projectId,
-    addModalData.milestoneId,
+    projectId,
+    milestoneId,
     {
       onSuccess: (res) => {
         setSuccessSnackbar(res.message);

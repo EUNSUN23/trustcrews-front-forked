@@ -2,36 +2,24 @@
 
 import Button from '@/components/ui/button';
 import { FaPlus } from '@react-icons/all-files/fa/FaPlus';
-import { useSetRecoilState } from 'recoil';
-import {
-  taskAddModalStateStore,
-  taskModalDataFieldSelector,
-} from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { taskAddModalStateStore } from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
+import { activeMilestoneStateStore } from '@/features/project/auth/myProject/jobs/store/ActiveMilestoneStateStore';
+import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
+import { numStrToBigInt } from '@/utils/common';
 
-type TaskAddButtonProps = {
-  milestoneId: string | bigint;
-  projectId: string | bigint;
-};
-
-const TaskAddButton = ({ milestoneId, projectId }: TaskAddButtonProps) => {
+const TaskAddButton = () => {
+  const projectId = useRecoilValue(projectIdState);
+  const { milestoneId } = useRecoilValue(activeMilestoneStateStore);
   const setTaskModalState = useSetRecoilState(taskAddModalStateStore);
-  const setTaskAddModalMilestoneId = useSetRecoilState(
-    taskModalDataFieldSelector({
-      modalType: 'add',
-      fieldKey: 'milestoneId',
-    }),
-  );
-  const setTaskAddModalProjectId = useSetRecoilState(
-    taskModalDataFieldSelector({
-      modalType: 'add',
-      fieldKey: 'projectId',
-    }),
-  );
 
   const handleClickAddButton = () => {
-    setTaskAddModalProjectId(projectId);
-    setTaskAddModalMilestoneId(milestoneId);
-    setTaskModalState((prev) => ({ ...prev, isOpen: true }));
+    setTaskModalState((prev) => ({
+      ...prev,
+      isOpen: true,
+      projectId: numStrToBigInt(projectId),
+      milestoneId,
+    }));
   };
 
   return (

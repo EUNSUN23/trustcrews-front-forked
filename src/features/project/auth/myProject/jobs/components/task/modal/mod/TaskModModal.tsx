@@ -28,21 +28,45 @@ const {
 } = TASK_STATUS;
 
 const TaskModModal = () => {
-  const { setErrorSnackbar } = useSnackbar();
-  const { isOpen, title } = useRecoilValue(taskModModalStateStore);
+  const resetTaskModModalState = useResetRecoilState(taskModModalStateStore);
+  const resetTaskModModalData = useResetRecoilState(taskModModalDataStateStore);
+  const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
+  const { isOpen, title, workId, auth } = useRecoilValue(
+    taskModModalStateStore,
+  );
   const [portalElement] = useModalPortalElement(isOpen);
 
   const modModalData = useRecoilValue(taskModModalDataStateStore);
-  const resetModModalState = useResetRecoilState(taskModModalStateStore);
-  const resetModModalData = useResetRecoilState(taskModModalDataStateStore);
 
-  const { mutate: updateTask, isPending: isUpdating } = useUpdateTask();
+  const { mutate: updateTask, isPending: isUpdating } = useUpdateTask(
+    workId,
+    auth,
+    {
+      onSuccess: (res) => {
+        resetTaskModModalState();
+        resetTaskModModalData();
+        setSuccessSnackbar(res.message);
+      },
+      onError: (res) => setErrorSnackbar(res.message),
+    },
+  );
 
-  const { completeTask, isUpdating: isCompleting } = useCompleteTask();
+  const { completeTask, isUpdating: isCompleting } = useCompleteTask(
+    workId,
+    auth,
+    {
+      onSuccess: (res) => {
+        resetTaskModModalState();
+        resetTaskModModalData();
+        setSuccessSnackbar(res.message);
+      },
+      onError: (res) => setErrorSnackbar(res.message),
+    },
+  );
 
   const handleClickCloseButton = () => {
-    resetModModalData();
-    resetModModalState();
+    resetTaskModModalState();
+    resetTaskModModalData();
   };
 
   const handleClickConfirmButton = () => {
@@ -52,10 +76,7 @@ const TaskModModal = () => {
           '업무 완료시 다른 수정사항은 반영되지 않습니다. 업무를 완료하시겠습니까?',
         )
       ) {
-        completeTask({
-          workId: modModalData.workId,
-          authMap: modModalData.authMap,
-        });
+        completeTask();
       }
     } else {
       const data: UpdateTaskInput = modModalData;
@@ -66,7 +87,6 @@ const TaskModModal = () => {
         setErrorSnackbar((e as ZodError).errors[0].message);
         return;
       }
-
       updateTask(modModalData);
     }
   };
