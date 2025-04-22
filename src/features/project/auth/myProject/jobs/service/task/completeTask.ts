@@ -5,20 +5,23 @@ import { getTaskListQueryKey } from '@/features/project/auth/myProject/jobs/serv
 
 export type WorkCompleteRequestDto = {
   workId: bigint;
-  authMap: ProjectAuthMapCode;
+  auth: ProjectAuthMapCode;
 };
 
 export const workComplete = async (
   reqData: WorkCompleteRequestDto,
 ): Promise<ResponseBody<null>> => {
-  return await request('POST', '/api/project/work/complete', reqData);
+  return await request('POST', '/api/project/work/complete', {
+    ...reqData,
+    authMap: reqData.auth,
+  });
 };
 
 type CompleteTaskRes = ApiResult<typeof workComplete>;
 
 export const useCompleteTask = (
   workId: bigint,
-  authMap: ProjectAuthMapCode,
+  auth: ProjectAuthMapCode,
   {
     onSuccess,
     onError,
@@ -27,23 +30,16 @@ export const useCompleteTask = (
     onError: (res: CompleteTaskRes) => void;
   },
 ) => {
-  // const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
-  // const resetModModalState = useResetRecoilState(taskModModalStateStore);
-  // const resetModModalData = useResetRecoilState(taskModModalDataStateStore);
   const queryClient = useQueryClient();
 
   const { mutate: completeTask, isPending: isUpdating } = useMutation({
-    mutationFn: (reqData: WorkCompleteRequestDto) => workComplete(reqData),
+    mutationFn: () => workComplete({ workId, auth }),
     onSuccess: async (res) => {
       if (res.result === 'success') {
         await queryClient.invalidateQueries({ queryKey: getTaskListQueryKey });
         onSuccess?.(res);
-        // resetModModalState();
-        // resetModModalData();
-        // setSuccessSnackbar('업무를 완료했습니다.');
       } else {
         onError?.(res);
-        // setErrorSnackbar(res.message);
       }
     },
     onError: (error) => {
@@ -53,7 +49,6 @@ export const useCompleteTask = (
         data: null,
         message: '프로세스 수행중 오류가 발생했습니다.',
       });
-      // setErrorSnackbar(error.message);
     },
   });
 
