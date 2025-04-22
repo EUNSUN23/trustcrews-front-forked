@@ -32,7 +32,9 @@ export const useDeleteTask = ({
     mutationFn: (reqData: TaskDeleteReqData) => deleteTask(reqData),
     onSuccess: async (res) => {
       if (res.result === 'success') {
-        await queryClient.invalidateQueries({ queryKey: getTaskListQueryKey });
+        await queryClient.invalidateQueries({
+          queryKey: [getTaskListQueryKey],
+        });
         onSuccess?.(res);
       } else {
         onError?.(res);
