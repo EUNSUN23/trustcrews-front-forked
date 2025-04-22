@@ -58,7 +58,9 @@ export default function CrewList({
                       <PositionBadge text={name} />
                     </li>
                     <li>
-                      <ProjectRoleBadge projectAuth={projectMemberAuth} />
+                      <ProjectRoleBadge auth={projectMemberAuth.code}>
+                        {projectMemberAuth.name}
+                      </ProjectRoleBadge>
                     </li>
                   </ul>
                 </div>

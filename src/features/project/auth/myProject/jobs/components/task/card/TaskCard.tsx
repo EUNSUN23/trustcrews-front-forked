@@ -48,11 +48,9 @@ const TaskCard = ({ item }: TaskCardProps) => {
             진행 상태
           </div>
           <div className='flex-1'>
-            <TaskStatusBadge
-              size='sm'
-              statusName={progressStatus.name}
-              statusCode={progressStatus.code}
-            />
+            <TaskStatusBadge taskStatus={progressStatus.code}>
+              {progressStatus.name}
+            </TaskStatusBadge>
           </div>
         </div>
         <div className='flex items-center'>
@@ -95,11 +93,9 @@ const TaskCard = ({ item }: TaskCardProps) => {
           <span className='mx-1'>{assignedUser?.nickname}</span>
         </div>
         <div className='flex items-center space-x-2'>
-          <TaskStatusBadge
-            statusName={progressStatus.name}
-            statusCode={progressStatus.code}
-            size='xs'
-          />
+          <TaskStatusBadge taskStatus={progressStatus.code} size='xs'>
+            {progressStatus.name}
+          </TaskStatusBadge>
         </div>
       </div>
       <div className='text-sm my-1'>

@@ -4,13 +4,13 @@ import PositionBadge from '@/components/ui/badge/PositionBadge';
 import { ProjectApplyStatusData } from '@/features/projectApply/auth/type';
 import { ProjectApplyStatusBadge } from '@/components/ui/badge/ProjectApplyStatusBadge';
 
-interface ProjectApplyStatusProps {
+type ProjectApplyStatusProps = {
   myProjectApply: ProjectApplyStatusData;
-}
+};
 
-function MyProjectApplyItem({
+const MyProjectApplyItem = ({
   myProjectApply: { project_name, position_name, status },
-}: ProjectApplyStatusProps) {
+}: ProjectApplyStatusProps) => {
   return (
     <div className='mobile:w-[320px] tablet:w-[450px] flex items-center justify-between'>
       <div className='min-w-0'>
@@ -22,10 +22,12 @@ function MyProjectApplyItem({
         </div>
       </div>
       <div className='flex flex-none items-center'>
-        <ProjectApplyStatusBadge status={status} />
+        <ProjectApplyStatusBadge applyStatus={status.code}>
+          {status.name}
+        </ProjectApplyStatusBadge>
       </div>
     </div>
   );
-}
+};
 
 export default MyProjectApplyItem;
