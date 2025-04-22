@@ -1,0 +1,71 @@
+'use client';
+
+import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
+import { ReactNode, useEffect } from 'react';
+import MilestoneModModal from '@/features/project/auth/myProject/jobs/components/milestone/modal/mod/MilestoneModModal';
+import MilestoneAddModal from '@/features/project/auth/myProject/jobs/components/milestone/modal/add/MilestoneAddModal';
+import TaskAddModal from '@/features/project/auth/myProject/jobs/components/task/modal/add/TaskAddModal';
+import TaskModModal from '@/features/project/auth/myProject/jobs/components/task/modal/mod/TaskModModal';
+import Job from '@/features/project/auth/myProject/jobs/components/Job';
+import JobSkeleton from '@/features/project/auth/myProject/jobs/components/JobSkeleton';
+import { PROJECT_MENU } from '@/features/project/auth/myProject/global/constants/projectMenu';
+import { useProjectManageAuth } from '@/features/project/auth/myProject/global/service/getProjectManageAuth';
+import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
+import { projectManageAuthStateStore } from '@/features/project/auth/myProject/global/store/ProjectManageAuthStateStore';
+import { projectActiveNavState } from '@/features/project/auth/myProject/global/store/ProjectNavTabStateStore';
+
+const {
+  TASK: { value: PROJECT_TASK },
+  CREWS: { value: PROJECT_CREWS },
+  NOTICE: { value: PROJECT_NOTICE },
+  SETTING: { value: PROJECT_SETTING },
+} = PROJECT_MENU;
+
+const ProjectNavTabContents = () => {
+  const projectId = useRecoilValue(projectIdState);
+  const [pmAuth, setPMAuth] = useRecoilState(projectManageAuthStateStore);
+  const resetPMAuth = useResetRecoilState(projectManageAuthStateStore);
+
+  const {
+    data: { data: pmAuthData },
+  } = useProjectManageAuth(projectId);
+
+  useEffect(() => {
+    if (!pmAuth) setPMAuth(pmAuthData);
+    return () => resetPMAuth();
+  }, [pmAuth, setPMAuth, pmAuthData, resetPMAuth]);
+
+  const activeNavTab = useRecoilValue(projectActiveNavState);
+
+  if (!pmAuth) return <JobSkeleton />;
+
+  let contents: ReactNode;
+  switch (activeNavTab) {
+    case PROJECT_TASK:
+      contents = <Job />;
+      break;
+    // case PM.CREWS.code:
+    //   contents = crews;
+    //   break;
+    // case PM.NOTICE.code:
+    //   contents = notice;
+    //   break;
+    // case PM.SETTING.code:
+    //   contents = setting;
+    //   break;
+    default:
+      contents = <Job />;
+  }
+
+  return (
+    <>
+      {contents}
+      <MilestoneModModal />
+      <MilestoneAddModal />
+      <TaskAddModal />
+      <TaskModModal />
+    </>
+  );
+};
+
+export default ProjectNavTabContents;
