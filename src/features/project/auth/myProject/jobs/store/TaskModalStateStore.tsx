@@ -1,10 +1,11 @@
 import { atom, DefaultValue, selector, selectorFamily } from 'recoil';
-import { ModalState, ProjectAuthMapCode } from '@/utils/type';
+import { ModalState } from '@/utils/type';
 import _ from 'lodash';
 import { v4 } from 'uuid';
 import { CreateTaskInput } from '@/features/project/auth/myProject/jobs/service/task/createTask';
 import { UpdateTaskInput } from '@/features/project/auth/myProject/jobs/service/task/updateTask';
 import { TASK_STATUS } from '@/features/project/auth/myProject/jobs/constants/task/taskStatus';
+import { ProjectAuthCode } from '@/features/project/auth/myProject/global/types/projectAuth';
 
 const {
   PS002: { code: TASK_PROCESSING },
@@ -66,7 +67,7 @@ export const isTaskModModalFieldKey = (
 
 interface TaskModModalState extends ModalState {
   workId: bigint;
-  auth: ProjectAuthMapCode;
+  auth: ProjectAuthCode;
 }
 
 export const taskModModalStateStore = atom<TaskModModalState>({

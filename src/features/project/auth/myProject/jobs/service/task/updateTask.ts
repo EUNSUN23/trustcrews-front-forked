@@ -1,8 +1,9 @@
 import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
-import { ApiResult, ProjectAuthMapCode, ResponseBody } from '@/utils/type';
+import { ApiResult, ResponseBody } from '@/utils/type';
 import { getTaskListQueryKey } from '@/features/project/auth/myProject/jobs/service/task/getTaskList';
+import { ProjectAuthCode } from '@/features/project/auth/myProject/global/types/projectAuth';
 
 export const updateTaskInputSchema = z.object({
   content: z.string().min(1, { message: '업무 제목을 입력해주세요' }),
@@ -21,7 +22,7 @@ export type UpdateTaskInput = z.infer<typeof updateTaskInputSchema>;
 export const updateTask = async (
   data: UpdateTaskInput,
   workId: bigint,
-  auth: ProjectAuthMapCode,
+  auth: ProjectAuthCode,
 ): Promise<ResponseBody<null>> => {
   return await request('PATCH', '/api/project/work', {
     ...data,
@@ -34,7 +35,7 @@ type UpdateTaskRes = ApiResult<typeof updateTask>;
 
 export const useUpdateTask = (
   workId: bigint,
-  auth: ProjectAuthMapCode,
+  auth: ProjectAuthCode,
   {
     onSuccess,
     onError,
