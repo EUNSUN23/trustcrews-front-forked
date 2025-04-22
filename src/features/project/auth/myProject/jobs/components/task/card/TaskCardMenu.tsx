@@ -20,28 +20,22 @@ import { UpdateTaskInput } from '@/features/project/auth/myProject/jobs/service/
 import { TaskItem } from '@/features/project/auth/myProject/jobs/types/task';
 import { TASK_STATUS } from '@/features/project/auth/myProject/jobs/constants/task/taskStatus';
 import { projectManageAuthStateStore } from '@/features/project/auth/myProject/global/store/ProjectManageAuthStateStore';
-import { cva, VariantProps } from 'class-variance-authority';
-import { clsx } from 'clsx';
+import { cva } from 'class-variance-authority';
 
-const CardMenuButtonVariants = cva({
-  variants: {
-    variant: {
-      default: 'text-gray-700',
-      focus: 'bg-gray-100 text-gray-900',
+const CardMenuButtonVariants = cva(
+  'block px-4 py-2 tablet:text-[16px] mobile:text-sm',
+  {
+    variants: {
+      variant: {
+        default: 'text-gray-700',
+        focus: 'bg-gray-100 text-gray-900',
+      },
     },
   },
-  defaultVariants: {
-    variant: 'default',
-  },
-});
+);
 
-type CardMenuButtonVariantProps = VariantProps<typeof CardMenuButtonVariants>;
-
-const cardMenuButtonClass = (focus: boolean): CardMenuButtonVariantProps =>
-  clsx('block px-4 py-2 tablet:text-[16px] mobile:text-sm', {
-    default: focus,
-    focus: !focus,
-  });
+const cardMenuButtonClass = (focus: boolean) =>
+  CardMenuButtonVariants({ variant: focus ? 'focus' : 'default' });
 
 const {
   PS003: { code: TASK_COMPLETE },
@@ -118,9 +112,7 @@ const TaskCardMenu = ({ taskItem }: TaskCardMenuProps) => {
                   <a
                     href='#'
                     onClick={handleClickUpdateButton}
-                    className={CardMenuButtonVariants(
-                      cardMenuButtonClass(focus),
-                    )}
+                    className={cardMenuButtonClass(focus)}
                   >
                     수정
                   </a>
@@ -132,7 +124,7 @@ const TaskCardMenu = ({ taskItem }: TaskCardMenuProps) => {
                 <a
                   href='#'
                   onClick={handleClickDeleteButton}
-                  className={CardMenuButtonVariants(cardMenuButtonClass(focus))}
+                  className={cardMenuButtonClass(focus)}
                 >
                   삭제
                 </a>

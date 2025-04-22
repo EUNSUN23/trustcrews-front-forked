@@ -18,8 +18,7 @@ import {
   milestoneModDataStateStore,
   milestoneModModalStateStore,
 } from '@/features/project/auth/myProject/jobs/store/MilestoneModalStateStore';
-import { cva, VariantProps } from 'class-variance-authority';
-import { clsx } from 'clsx';
+import { cva } from 'class-variance-authority';
 import { projectManageAuthStateStore } from '@/features/project/auth/myProject/global/store/ProjectManageAuthStateStore';
 import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
 import { MilestoneInfo } from '@/features/project/auth/myProject/jobs/types/milestone';
@@ -28,25 +27,20 @@ type MilestoneCardMenuProps = {
   milestoneInfo: MilestoneInfo;
 };
 
-const CardMenuButtonVariants = cva({
-  variants: {
-    variant: {
-      default: 'text-gray-700',
-      focus: 'bg-gray-100 text-gray-900',
+const CardMenuButtonVariants = cva(
+  'block px-4 py-2 tablet:text-[16px] mobile:text-sm',
+  {
+    variants: {
+      variant: {
+        default: 'text-gray-700',
+        focus: 'bg-gray-100 text-gray-900',
+      },
     },
   },
-  defaultVariants: {
-    variant: 'default',
-  },
-});
+);
 
-type CardMenuButtonVariantProps = VariantProps<typeof CardMenuButtonVariants>;
-
-const cardMenuButtonClass = (focus: boolean): CardMenuButtonVariantProps =>
-  clsx('block px-4 py-2 tablet:text-[16px] mobile:text-sm', {
-    default: focus,
-    focus: !focus,
-  });
+const cardMenuButtonClass = (focus: boolean) =>
+  CardMenuButtonVariants({ variant: focus ? 'focus' : 'default' });
 
 const MilestoneCardMenu = ({ milestoneInfo }: MilestoneCardMenuProps) => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
@@ -125,7 +119,7 @@ const MilestoneCardMenu = ({ milestoneInfo }: MilestoneCardMenuProps) => {
                 <a
                   href='#'
                   onClick={handleClickModButton}
-                  className={CardMenuButtonVariants(cardMenuButtonClass(focus))}
+                  className={cardMenuButtonClass(focus)}
                 >
                   수정
                 </a>
@@ -136,7 +130,7 @@ const MilestoneCardMenu = ({ milestoneInfo }: MilestoneCardMenuProps) => {
                 <a
                   href='#'
                   onClick={handleClickDeleteButton}
-                  className={CardMenuButtonVariants(cardMenuButtonClass(focus))}
+                  className={cardMenuButtonClass(focus)}
                 >
                   삭제
                 </a>
