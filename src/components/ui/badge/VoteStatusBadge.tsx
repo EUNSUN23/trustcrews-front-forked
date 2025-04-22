@@ -1,48 +1,46 @@
-import { VoteStatusType } from '@/service/project/alert/type';
-import { clsx } from 'clsx';
-import { BadgeVariants } from '@/utils/badge';
 import { HTMLAttributes } from 'react';
-import { VariantProps } from 'class-variance-authority';
+import { cva, VariantProps } from 'class-variance-authority';
 import cn from '@/utils/cn';
+import { baseBadgeVariants } from '@/utils/badge';
 
-const VOTE_STATUS_COLOR = {
-  PROCESSING: 'bg-green-50 text-green-700 ring-green-600/20',
-  FINISHED: 'bg-slate-50 text-slate-600 ring-slate-700/20',
-} as const;
-const { PROCESSING, FINISHED } = VOTE_STATUS_COLOR;
-
-const voteStatusBadgeColorClass = (voteStatus: VoteStatusType) =>
-  clsx({
-    [PROCESSING]: voteStatus.code === 'VSTAT1001',
-    [FINISHED]: voteStatus.code === 'VSTAT1002',
-  });
-
-const VoteStatusBadgeVariants = (voteStatus: VoteStatusType) =>
-  BadgeVariants(
-    `inline-flex items-center rounded-full transparent font-medium  ring-1 ring-inset `,
-    voteStatusBadgeColorClass(voteStatus),
-  );
+const VoteStatusBadgeVariants = cva(
+  'inline-flex items-center rounded-full transparent font-medium  ring-1 ring-inset ',
+  {
+    variants: {
+      voteStatus: {
+        VSTAT1001: 'bg-green-50 text-green-700 ring-green-600/20',
+        VSTAT1002: 'bg-slate-50 text-slate-600 ring-slate-700/20',
+      },
+      size: baseBadgeVariants.size,
+    },
+    defaultVariants: {
+      size: 'sm',
+    },
+  },
+);
 
 interface VoteStatusBadgeProps
   extends HTMLAttributes<HTMLSpanElement>,
-    VariantProps<ReturnType<typeof VoteStatusBadgeVariants>> {
-  voteStatus: VoteStatusType;
-}
+    VariantProps<typeof VoteStatusBadgeVariants> {}
 
-function VoteStatusBadge({ voteStatus, size, ...props }: VoteStatusBadgeProps) {
+const VoteStatusBadge = ({
+  voteStatus,
+  size,
+  ...props
+}: VoteStatusBadgeProps) => {
   return (
     <>
       <span
         {...props}
         className={cn(
-          VoteStatusBadgeVariants(voteStatus)({ size }),
+          VoteStatusBadgeVariants({ size, voteStatus }),
           props.className,
         )}
       >
-        {voteStatus.name}
+        {props.children}
       </span>
     </>
   );
-}
+};
 
 export default VoteStatusBadge;

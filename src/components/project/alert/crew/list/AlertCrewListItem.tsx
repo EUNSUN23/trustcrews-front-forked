@@ -7,7 +7,9 @@ function AlertCrewListItem({ data }: { data: AlertCrewData }) {
   return (
     <li className='flex items-center gap-x-10 px-3 py-5 pc:text-lg mobile:text-sm text-grey900'>
       <div className='flex items-center gap-x-4'>
-        <NoticeBadge noticeType={AlertType.PRA2001} />
+        <NoticeBadge noticeType={AlertType.PRA2001.code}>
+          {AlertType.PRA2001.name}
+        </NoticeBadge>
         {contents}
       </div>
       <div className='ml-auto text-grey600'>{createDate}</div>
