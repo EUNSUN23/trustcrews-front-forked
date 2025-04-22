@@ -9,12 +9,12 @@ import VoteStatusBadge from '@/components/ui/badge/VoteStatusBadge';
 import { VoteOption } from '@/service/project/vote/constant';
 import { VoteFWReqData, VoteOptionCode } from '@/service/project/vote/type';
 import { useRecoilValue } from 'recoil';
-import { projectIdState } from '@/store/project/ProjectInfoStateStore';
 import { numStrToBigInt } from '@/utils/common';
 import useVoteFwithdraw from '@/hooks/project/useVoteFwithdraw';
 import VAlertFwModalSkeleton from '@/components/ui/skeleton/project/alert/VAlertFWModalSkeleton';
 import VoteBar from '@/components/ui/votebar/VoteBar';
-import { useProjectManageAuth } from '@/lib/getProjectManageAuth';
+import { useProjectManageAuth } from '@/features/project/auth/myProject/global/service/getProjectManageAuth';
+import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
 
 type VAlertFWModalContentsProps = {
   voteId: bigint;
