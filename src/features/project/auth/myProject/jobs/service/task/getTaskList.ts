@@ -4,6 +4,7 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 import { ITEM_COUNT } from '@/utils/constant';
 import { TaskItem } from '@/features/project/auth/myProject/jobs/types/task';
 import { TASK_STATUS } from '@/features/project/auth/myProject/jobs/constants/task/taskStatus';
+import { bigIntToString } from '@/utils/common';
 
 export type TasksReqParam = {
   projectId: DataId;
@@ -56,7 +57,7 @@ export const getTaskList = async (tasksReqParam: TasksReqParam) => {
   };
 };
 
-export const getTaskListQueryKey = ['taskList'];
+export const getTaskListQueryKey = 'taskList';
 
 export const useTasks = ({
   projectId,
@@ -68,7 +69,12 @@ export const useTasks = ({
   pageNumber?: number;
 }) => {
   return useSuspenseQuery({
-    queryKey: [...getTaskListQueryKey, milestoneId, projectId, pageNumber],
+    queryKey: [
+      getTaskListQueryKey,
+      bigIntToString(milestoneId),
+      bigIntToString(projectId),
+      pageNumber,
+    ],
     queryFn: () =>
       getTaskList({
         milestoneId,

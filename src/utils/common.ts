@@ -136,7 +136,7 @@ export function checkExpiration(endDate: string) {
  * bigint 데이터 string으로 변환
  * @param data
  */
-export function bigIntToString(data: bigint | string) {
+export function bigIntToString(data: bigint | number | string) {
   return typeof data === 'string' ? data : Number(data).toString();
 }
 

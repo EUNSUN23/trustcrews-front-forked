@@ -2,10 +2,6 @@
 
 import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
 import { ReactNode, useEffect } from 'react';
-import MilestoneModModal from '@/features/project/auth/myProject/jobs/components/milestone/modal/mod/MilestoneModModal';
-import MilestoneAddModal from '@/features/project/auth/myProject/jobs/components/milestone/modal/add/MilestoneAddModal';
-import TaskAddModal from '@/features/project/auth/myProject/jobs/components/task/modal/add/TaskAddModal';
-import TaskModModal from '@/features/project/auth/myProject/jobs/components/task/modal/mod/TaskModModal';
 import Job from '@/features/project/auth/myProject/jobs/components/Job';
 import JobSkeleton from '@/features/project/auth/myProject/jobs/components/JobSkeleton';
 import { PROJECT_MENU } from '@/features/project/auth/myProject/global/constants/projectMenu';
@@ -54,18 +50,10 @@ const ProjectNavTabContents = () => {
     //   contents = setting;
     //   break;
     default:
-      contents = <Job />;
+      throw Error(`Unknown Project NavTab: ${activeNavTab}`);
   }
 
-  return (
-    <>
-      {contents}
-      <MilestoneModModal />
-      <MilestoneAddModal />
-      <TaskAddModal />
-      <TaskModModal />
-    </>
-  );
+  return <>{contents}</>;
 };
 
 export default ProjectNavTabContents;

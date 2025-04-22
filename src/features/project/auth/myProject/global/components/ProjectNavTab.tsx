@@ -6,6 +6,7 @@ import { cva, VariantProps } from 'class-variance-authority';
 import { clsx } from 'clsx';
 import { PROJECT_MENU } from '@/features/project/auth/myProject/global/constants/projectMenu';
 import { projectActiveNavState } from '@/features/project/auth/myProject/global/store/ProjectNavTabStateStore';
+import { ProjectMenuKey } from '@/features/project/auth/myProject/global/types/projectMenu';
 
 const ProjectNavLinkVariants = cva({
   variants: {
@@ -37,6 +38,10 @@ const ProjectNavTab = () => {
     return () => resetActiveTabName();
   }, [resetActiveTabName]);
 
+  const handleClickNavTab = (param: ProjectMenuKey) => {
+    setActiveTab(param);
+  };
+
   return (
     <div className='tablet:my-[3.9rem] mobile:mt-[1.5rem] mobile:mb-[3rem]'>
       <div className='border-b-[3px] border-grey300'>
@@ -49,7 +54,7 @@ const ProjectNavTab = () => {
                     projectNavLinkClass(value === activeTab),
                   )}
                   aria-current={value === activeTab}
-                  onClick={(e) => setActiveTab(value)}
+                  onClick={() => handleClickNavTab(value)}
                 >
                   {name}
                 </div>
