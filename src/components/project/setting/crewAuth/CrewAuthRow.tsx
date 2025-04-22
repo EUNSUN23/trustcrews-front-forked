@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Avatar from '@/components/ui/Avatar';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
 import Button from '@/components/ui/button';
-import { ProjectAuthMap, ProjectMember } from '@/utils/type';
 import { useMutation } from '@tanstack/react-query';
 import {
   ProjectSettingCrewAuthUpdData,
@@ -11,13 +10,15 @@ import {
 import { numStrToBigInt } from '@/utils/common';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import CrewAuthSelector from '@/components/project/setting/crewAuth/CrewAuthSelector';
+import { ProjectAuthMap } from '@/features/project/auth/myProject/global/types/projectAuth';
+import { ProjectCrew } from '@/features/project/auth/myProject/crews/types';
 
 function CrewAuthRow({
   crew,
   projectId,
   authMap,
 }: {
-  crew: ProjectMember;
+  crew: ProjectCrew;
   projectId: string;
   authMap: ProjectAuthMap;
 }) {
