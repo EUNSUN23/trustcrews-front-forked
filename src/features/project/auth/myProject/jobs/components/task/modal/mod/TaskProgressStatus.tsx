@@ -14,11 +14,9 @@ const TaskProgressStatus = () => {
       <label className='text-gray-700 font-semibold self-center'>진행</label>
       <div className='flex w-[350px] mobile:w-[220px] h-[42px] mobile:h-[38px] space-x-3 ml-auto items-center'>
         {progressStatus === TASK_PS001.code ? (
-          <TaskStatusBadge
-            size='sm'
-            statusName={TASK_PS001.name}
-            statusCode={TASK_PS001.code}
-          />
+          <TaskStatusBadge taskStatus={TASK_PS001.code}>
+            {TASK_PS001.name}
+          </TaskStatusBadge>
         ) : (
           <TaskStatusSelector />
         )}
