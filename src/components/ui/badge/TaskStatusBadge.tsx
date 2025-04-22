@@ -1,12 +1,12 @@
 import { clsx } from 'clsx';
-import {
-  TaskStatusNameType,
-  TaskStatusValueType,
-} from '@/app/project/@task/_utils/type';
 import cn from '@/utils/cn';
 import { HTMLAttributes } from 'react';
 import { BadgeVariants } from '@/utils/badge';
 import { VariantProps } from 'class-variance-authority';
+import {
+  TaskStatusCode,
+  TaskStatusName,
+} from '@/features/project/auth/myProject/jobs/types/task';
 
 const STATUS_COLOR = {
   STANDBY: 'bg-grey900 text-grey000',
@@ -15,21 +15,21 @@ const STATUS_COLOR = {
 } as const;
 const { STANDBY, COMPLETE, PROCESSING } = STATUS_COLOR;
 
-const taskStatusBadgeClass = (statusCode: TaskStatusValueType) =>
+const taskStatusBadgeClass = (statusCode: TaskStatusCode) =>
   clsx(`inline-flex items-center rounded-full font-medium`, {
     [STANDBY]: statusCode === 'PS001',
     [PROCESSING]: statusCode === 'PS002',
     [COMPLETE]: statusCode === 'PS003',
   });
 
-const TaskStatusBadgeVariants = (statusCode: TaskStatusValueType) =>
+const TaskStatusBadgeVariants = (statusCode: TaskStatusCode) =>
   BadgeVariants(taskStatusBadgeClass(statusCode));
 
 interface TaskStatusBadgeProps
   extends HTMLAttributes<HTMLSpanElement>,
     VariantProps<ReturnType<typeof TaskStatusBadgeVariants>> {
-  statusName: TaskStatusNameType;
-  statusCode: TaskStatusValueType;
+  statusName: TaskStatusName;
+  statusCode: TaskStatusCode;
 }
 
 function TaskStatusBadge({
