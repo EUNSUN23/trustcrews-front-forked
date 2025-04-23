@@ -29,6 +29,6 @@ export interface CrewTaskHistory {
   workContent: string;
   createDate: string;
   progressStatus: CrewStatusKey;
-  point: number | null;
-  point_type: PointTypeKey | null;
+  point: number;
+  point_type: PointTypeKey;
 }
