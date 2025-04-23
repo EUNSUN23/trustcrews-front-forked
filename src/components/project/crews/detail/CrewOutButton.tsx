@@ -1,48 +1,39 @@
 'use client';
 
-import { useState } from 'react';
 import Button from '@/components/ui/button';
-import { ProjectMemberProfile, ResponseBody } from '@/utils/type';
-import { useQueryClient } from '@tanstack/react-query';
-import { withdrawProject, WithdrawReqDto } from '@/service/project/crews';
 import { useRouter } from 'next/navigation';
 import useSnackbar from '@/hooks/common/useSnackbar';
+import { ProjectCrewProfile } from '@/features/project/auth/myProject/crews/types';
+import {
+  LeaveProjectInput,
+  useLeaveProject,
+} from '@/features/project/auth/myProject/leaveProject/service/leaveProject';
 
-function CrewOutButton({
+const CrewOutButton = ({
   projectMemberInfo,
 }: {
-  projectMemberInfo: ProjectMemberProfile;
-}) {
+  projectMemberInfo: ProjectCrewProfile;
+}) => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
   const { projectMemberAuth, projectMemberId, projectId } = projectMemberInfo;
-  const [isPending, setIsPending] = useState(false);
   const router = useRouter();
-  const queryClient = useQueryClient();
 
-  const onClickCrewOutHandler = async () => {
+  const { mutate: leaveProject, isPending } = useLeaveProject({
+    onSuccess: (res) => {
+      setSuccessSnackbar(res.message);
+      router.replace('/');
+    },
+    onError: (res) => setErrorSnackbar(res.message),
+  });
+
+  const handleClickLeaveButton = () => {
     if (confirm('프로젝트를 탈퇴하시겠습니까?')) {
-      const reqData: WithdrawReqDto = {
+      const reqData: LeaveProjectInput = {
         projectId,
         wMemberId: projectMemberId,
         wMemberAuth: projectMemberAuth.code,
       };
-
-      setIsPending(true);
-      let res: ResponseBody<null>;
-      try {
-        res = await withdrawProject(reqData);
-        if (res.result === 'success') {
-          await queryClient.invalidateQueries({ queryKey: ['noticeList'] });
-          setSuccessSnackbar('프로젝트를 탈퇴했습니다.');
-          router.replace('/');
-        } else {
-          setErrorSnackbar(res.message);
-        }
-      } catch (e: unknown) {
-        setErrorSnackbar((e as Error).message);
-      } finally {
-        setIsPending(false);
-      }
+      leaveProject(reqData);
     }
   };
 
@@ -51,12 +42,12 @@ function CrewOutButton({
       type='button'
       theme='black'
       size='md'
-      onClick={onClickCrewOutHandler}
+      onClick={handleClickLeaveButton}
       disabled={isPending}
     >
       프로젝트 탈퇴
     </Button>
   );
-}
+};
 
 export default CrewOutButton;

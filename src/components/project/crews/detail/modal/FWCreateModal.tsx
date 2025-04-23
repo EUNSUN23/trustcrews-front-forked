@@ -9,7 +9,7 @@ import FWCreateModalContents from '@/components/project/crews/detail/modal/FWCre
 import { createFWAlert } from '@/service/project/alert/vote/fwithdraw';
 import useSnackbar from '@/hooks/common/useSnackbar';
 
-function FwCreateModal() {
+const FwCreateModal = () => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
   const { isOpen, title, createData } = useRecoilValue(crewFWModalStateStore);
   const resetModalState = useResetRecoilState(crewFWModalStateStore);
@@ -29,7 +29,7 @@ function FwCreateModal() {
     }
   }, [isOpen]);
 
-  const onClickConfirmHandler = async () => {
+  const handleClickConfirmButton = async () => {
     const res = await createFWAlert(createData);
     if (res.result === 'success') {
       setSuccessSnackbar('강제탈퇴 투표를 생성했습니다.');
@@ -46,7 +46,7 @@ function FwCreateModal() {
               isOpen={isOpen}
               close={() => resetModalState()}
               title={title}
-              onClickConfirmHandler={onClickConfirmHandler}
+              onClickConfirmHandler={handleClickConfirmButton}
             >
               <FWCreateModalContents />
             </Modal>,
@@ -55,6 +55,6 @@ function FwCreateModal() {
         : null}
     </>
   );
-}
+};
 
 export default FwCreateModal;
