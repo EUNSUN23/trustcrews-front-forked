@@ -5,7 +5,7 @@ import { useRecoilState, useResetRecoilState } from 'recoil';
 import { cva } from 'class-variance-authority';
 import { PROJECT_MENU } from '@/features/project/auth/myProject/global/constants/projectMenu';
 import { projectActiveNavState } from '@/features/project/auth/myProject/global/store/ProjectNavTabStateStore';
-import { ProjectMenuKey } from '@/features/project/auth/myProject/global/types/projectMenu';
+import { ProjectMenu } from '@/features/project/auth/myProject/global/types/projectMenu';
 
 const ProjectNavLinkVariants = cva(
   'flex whitespace-nowrap border-b-[3px] -mb-[1.8px] py-4 px-1 mobile:px-4 pc:text-[2rem] tablet:text-[1.5rem] mobile:text-lg font-semibold',
@@ -31,7 +31,7 @@ const ProjectNavTab = () => {
     return () => resetActiveTabName();
   }, [resetActiveTabName]);
 
-  const handleClickNavTab = (param: ProjectMenuKey) => {
+  const handleClickNavTab = (param: ProjectMenu) => {
     setActiveTab(param);
   };
 
