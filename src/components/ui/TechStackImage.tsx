@@ -6,7 +6,7 @@ interface TechStackImageProps {
   height?: number;
 }
 
-function TechStackImage({ stackName }: TechStackImageProps) {
+const TechStackImage = ({ stackName }: TechStackImageProps) => {
   const fileName = stackName.toLowerCase().replace('.', '');
 
   return (
@@ -20,6 +20,6 @@ function TechStackImage({ stackName }: TechStackImageProps) {
       />
     </div>
   );
-}
+};
 
 export default TechStackImage;

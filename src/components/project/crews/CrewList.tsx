@@ -4,20 +4,23 @@ import Avatar from '@/components/ui/Avatar';
 import ProjectRoleBadge from '@/components/ui/badge/ProjectRoleBadge';
 import Link from 'next/link';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
-import useProjectCrewList from '@/hooks/project/crew/useProjectCrewList';
-import { ProjectMember } from '@/utils/type';
-import CrewListSkeleton from '@/components/ui/skeleton/project/crews/CrewListSkeleton';
+import { ProjectCrew } from '@/features/project/auth/myProject/crews/types';
+import { useProjectCrewList } from '@/features/project/auth/myProject/crews/service/getProjectCrewList';
 
-export default function CrewList({
+const CrewList = ({
   projectId,
   userId,
 }: {
   projectId: string;
   userId: string;
-}) {
-  const { crewList, isFetching } = useProjectCrewList(projectId);
+}) => {
+  const {
+    data: {
+      data: { projectMembers: crewList },
+    },
+  } = useProjectCrewList(projectId);
 
-  if (isFetching) return <CrewListSkeleton />;
+  // if (isFetching) return <CrewListSkeleton />;
 
   return (
     <ul role='list' className='min-h-[350px]'>
@@ -27,7 +30,7 @@ export default function CrewList({
           projectMemberAuth,
           user: { userId: projectMemberUseId, nickname, profileImgSrc },
           projectMemberId,
-        }: ProjectMember) => {
+        }: ProjectCrew) => {
           return (
             <li
               key={projectMemberUseId}
@@ -71,4 +74,6 @@ export default function CrewList({
       )}
     </ul>
   );
-}
+};
+
+export default CrewList;

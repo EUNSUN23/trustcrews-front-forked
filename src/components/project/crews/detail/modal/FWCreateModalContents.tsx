@@ -4,10 +4,10 @@ import { useSetRecoilState } from 'recoil';
 import { crewFWModalStateStore } from '@/store/project/alert/modal/CrewFWModalStateStore';
 import { FWReasonCode } from '@/service/project/alert/type';
 
-function FwCreateModalContents() {
+const FwCreateModalContents = () => {
   const setCrewFWModalState = useSetRecoilState(crewFWModalStateStore);
 
-  const onChangeFWReasonHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeFWReason = (e: ChangeEvent<HTMLInputElement>) => {
     setCrewFWModalState((prev) => ({
       ...prev,
       createData: {
@@ -68,7 +68,7 @@ function FwCreateModalContents() {
               value={FWReason.FWR1001.code}
               id='fwr1001'
               className='border-gray-400 text-indigo-600 focus:ring-none'
-              onChange={onChangeFWReasonHandler}
+              onChange={handleChangeFWReason}
             />
             <label htmlFor='fwr1001' className='ml-2'>
               {FWReason.FWR1001.name}
@@ -81,7 +81,7 @@ function FwCreateModalContents() {
               value={FWReason.FWR1002.code}
               id='fwr1002'
               className='border-gray-400 text-indigo-600 focus:ring-none'
-              onChange={onChangeFWReasonHandler}
+              onChange={handleChangeFWReason}
             />
             <label htmlFor='fwr1002' className='ml-2'>
               {FWReason.FWR1002.name}
@@ -94,7 +94,7 @@ function FwCreateModalContents() {
               value={FWReason.FWR1003.code}
               id='fwr1003'
               className='border-gray-400 text-indigo-600 focus:ring-none'
-              onChange={onChangeFWReasonHandler}
+              onChange={handleChangeFWReason}
             />
             <label htmlFor='fwr1002' className='ml-2'>
               {FWReason.FWR1003.name}
@@ -107,7 +107,7 @@ function FwCreateModalContents() {
               value={FWReason.FWR1004.code}
               id='fwr1004'
               className='border-gray-400 text-indigo-600 focus:ring-none'
-              onChange={onChangeFWReasonHandler}
+              onChange={handleChangeFWReason}
             />
             <label htmlFor='fwr1002' className='ml-2'>
               {FWReason.FWR1004.name}
@@ -117,6 +117,6 @@ function FwCreateModalContents() {
       </section>
     </section>
   );
-}
+};
 
 export default FwCreateModalContents;
