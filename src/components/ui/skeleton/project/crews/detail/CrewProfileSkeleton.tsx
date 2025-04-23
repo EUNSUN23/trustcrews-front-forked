@@ -2,7 +2,7 @@ import AvatarSkeleton from '@/components/ui/skeleton/AvatarSkeleton';
 import BadgeStyleSkeleton from '@/components/ui/skeleton/BadgeStyleSkeleton';
 import ButtonSkeleton from '@/components/ui/skeleton/ButtonSkeleton';
 
-function ProfileSectionSkeleton() {
+const CrewProfileSkeleton = () => {
   return (
     <div className='flex mobile:flex-col mobile:space-y-6 mobile:mt-4 px-1 py-4 mx-auto items-center justify-center'>
       <section className='mobile:w-full pc:w-[200px] tablet:w-[150px] tablet:mr-10 flex flex-col items-center'>
@@ -37,6 +37,6 @@ function ProfileSectionSkeleton() {
       </section>
     </div>
   );
-}
+};
 
-export default ProfileSectionSkeleton;
+export default CrewProfileSkeleton;

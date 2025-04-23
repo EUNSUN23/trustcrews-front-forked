@@ -27,7 +27,7 @@ interface ImageProps
   alt: string;
 }
 
-function Avatar({ src, size, alt, ...props }: ImageProps) {
+const Avatar = ({ src, size, alt, ...props }: ImageProps) => {
   let expectedSize;
   switch (size) {
     case 'xxs':
@@ -87,6 +87,6 @@ function Avatar({ src, size, alt, ...props }: ImageProps) {
       )}
     </>
   );
-}
+};
 
 export default Avatar;

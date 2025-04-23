@@ -1,6 +1,6 @@
 import { DataId, Position } from '@/utils/type';
-import { TaskPointOptions } from '@/app/project/@notice/_utils/constant';
 import { AlertMenu } from '@/service/project/alert/type';
+import { TaskPointOptions } from '@/app/project/[slug]/notice/_utils/constant';
 
 /**
  * 프로젝트 알림 기본데이터
