@@ -3,51 +3,25 @@
 import { useState } from 'react';
 import { FaMinus } from '@react-icons/all-files/fa/FaMinus';
 import { FaPlus } from '@react-icons/all-files/fa/FaPlus';
-import { useQuery } from '@tanstack/react-query';
-import { getCrewTaskHistory } from '@/service/project/crews';
 import CommonPagination from '@/components/ui/CommonPagination';
-import { type CrewTaskHistory, PageResponseBody } from '@/utils/type';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
-import CrewTaskHistorySkeleton from '@/components/ui/skeleton/project/crews/detail/CrewTaskHistorySkeleton';
+import { useCrewTaskHistory } from '@/features/project/auth/myProject/crews/service/getCrewTaskHistory';
 
-function getIconByPointType(pointType: string) {
-  if (pointType === 'minus')
-    return (
-      <FaMinus className='h-4 w-4 text-white bg-danger' aria-hidden='true' />
-    );
-  else
-    return (
-      <FaPlus className='h-4 w-4 text-white bg-primary' aria-hidden='true' />
-    );
-}
-
-function CrewTaskHistory({ projectMemberId }: { projectMemberId: string }) {
+const CrewTaskHistory = ({ projectMemberId }: { projectMemberId: string }) => {
   const [pageIndex, setPageIndex] = useState(0);
 
-  const { data, isFetching } = useQuery<
-    PageResponseBody<CrewTaskHistory[]>,
-    Error
-  >({
-    queryKey: [
-      'crewTaskHistory',
-      projectMemberId,
-      pageIndex,
-      ITEM_COUNT.LIST_SM,
-    ],
-    queryFn: () =>
-      getCrewTaskHistory(projectMemberId, pageIndex, PAGE_RANGE.DEFAULT),
-    staleTime: 0,
-  });
+  const {
+    data: {
+      data: { content: taskHistory, totalPages },
+    },
+  } = useCrewTaskHistory(projectMemberId, pageIndex);
 
-  if (isFetching) return <CrewTaskHistorySkeleton />;
-
-  const taskHistory = data!.data.content;
-  const totalCount = data!.data.totalPages;
+  // if (isFetching) return <CrewTaskHistorySkeleton />;
 
   return (
     <>
       <div className='max-h-[280px] flow-root tablet:mt-10 mobile:mt-8 mb-8 mx-2'>
-        {taskHistory.length > 0 ? (
+        {totalPages > 0 ? (
           <ul role='list' className='-mb-8'>
             {taskHistory.map((event, eventIdx) => (
               <li key={event.trustScoreHistoryId}>
@@ -67,7 +41,17 @@ function CrewTaskHistory({ projectMemberId }: { projectMemberId: string }) {
                         <span
                           className={`${event.point_type === 'minus' ? 'bg-danger' : 'bg-primary'} ml-4 mr-2 h-6 w-6 rounded-full flex items-center justify-center ring-8 ring-white`}
                         >
-                          {getIconByPointType(event.point_type)}
+                          {event.point_type === 'minus' ? (
+                            <FaMinus
+                              className='h-4 w-4 text-white bg-danger'
+                              aria-hidden='true'
+                            />
+                          ) : (
+                            <FaPlus
+                              className='h-4 w-4 text-white bg-primary'
+                              aria-hidden='true'
+                            />
+                          )}
                         </span>
                         <span
                           className={`tablet:min-w-[40px] mobile:min-w-[30px] ${event.point_type === 'minus' ? 'text-danger' : 'text-primary'} leading-none tablet:text-xl mobile:text-lg font-semibold`}
@@ -96,11 +80,11 @@ function CrewTaskHistory({ projectMemberId }: { projectMemberId: string }) {
         activePage={pageIndex + 1}
         pageRangeDisplayed={PAGE_RANGE.DEFAULT}
         itemsCountPerPage={ITEM_COUNT.LIST_SM}
-        totalItemsCount={totalCount}
+        totalItemsCount={totalPages}
         onChange={(pageIndex: number) => setPageIndex(pageIndex - 1)}
       />
     </>
   );
-}
+};
 
 export default CrewTaskHistory;
