@@ -6,6 +6,12 @@ export const PROJECT_MENU = {
   CREWS: {
     name: '크루',
     value: 'CREWS',
+    child: {
+      CREW_DETAIL: {
+        name: '크루 상세',
+        value: 'CREW_DETAIL',
+      },
+    },
   },
   NOTICE: {
     name: '알림',
