@@ -6,21 +6,16 @@ import Link from 'next/link';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
 import { ProjectCrew } from '@/features/project/auth/myProject/crews/types';
 import { useProjectCrewList } from '@/features/project/auth/myProject/crews/service/getProjectCrewList';
+import { useRecoilValue } from 'recoil';
+import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
 
-const CrewList = ({
-  projectId,
-  userId,
-}: {
-  projectId: string;
-  userId: string;
-}) => {
+const CrewList = () => {
+  const projectId = useRecoilValue(projectIdState);
   const {
     data: {
       data: { projectMembers: crewList },
     },
   } = useProjectCrewList(projectId);
-
-  // if (isFetching) return <CrewListSkeleton />;
 
   return (
     <ul role='list' className='min-h-[350px]'>
@@ -42,7 +37,6 @@ const CrewList = ({
                   query: {
                     projectId,
                     projectMemberId: projectMemberId.toString(),
-                    userId,
                   },
                 }}
                 className='w-full min-w-0 flex mobile:flex-col items-center mobile:items-start mobile:space-y-3 tablet:px-6 mobile:pl-4'
