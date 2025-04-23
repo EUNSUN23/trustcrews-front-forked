@@ -9,6 +9,7 @@ import { useProjectManageAuth } from '@/features/project/auth/myProject/global/s
 import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
 import { projectManageAuthStateStore } from '@/features/project/auth/myProject/global/store/ProjectManageAuthStateStore';
 import { projectActiveNavState } from '@/features/project/auth/myProject/global/store/ProjectNavTabStateStore';
+import Crews from '@/features/project/auth/myProject/crews/components/Crews';
 
 const {
   TASK: { value: PROJECT_TASK },
@@ -40,8 +41,9 @@ const ProjectNavTabContents = () => {
     case PROJECT_TASK:
       contents = <Job />;
       break;
-    // case PM.CREWS.code:
-    //   contents = crews;
+    case PROJECT_CREWS:
+      contents = <Crews />;
+      break;
     //   break;
     // case PM.NOTICE.code:
     //   contents = notice;
