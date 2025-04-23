@@ -1,7 +1,4 @@
-import {
-  VAlertFWCreateData,
-  VAlertFWDetailData,
-} from '@/service/project/alert/type';
+import { VAlertFWDetailData } from '@/service/project/alert/type';
 import { ResponseBody } from '@/utils/type';
 import { request } from '@/lib/clientApi/request';
 
@@ -17,11 +14,3 @@ export const getVAlertFWDetail = async (
   const reqUrl = `/api/project/alert/vote/fwithdraw/detail?voteId=${voteId}&fwMemberId=${fwMemberId}`;
   return await request('GET', reqUrl);
 };
-
-/**
- * 프로젝트 투표 알림 생성 - "강제탈퇴"
- * @param reqData
- */
-export async function createFWAlert(reqData: VAlertFWCreateData) {
-  return await request('POST', `/api/project/alert/vote/fwithdraw`, reqData);
-}
