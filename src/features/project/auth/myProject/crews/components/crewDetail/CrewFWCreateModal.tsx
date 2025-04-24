@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent } from 'react';
 import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
 import {
   crewFWModalDataStateStore,
@@ -15,6 +15,7 @@ import {
 } from '@/features/project/auth/myProject/vote/service/createCrewFWVote';
 import { ZodError } from 'zod';
 import { FWReason } from '@/features/project/auth/myProject/vote/constants';
+import useModalPortalElement from '@/hooks/common/useModalPortalElement';
 
 const {
   FWR1001: REASON_CORP,
@@ -26,20 +27,8 @@ const {
 const CrewFWCreateModal = () => {
   const { isOpen, title, projectId, crewId, crewPMAuth, userPMAuth } =
     useRecoilValue(crewFWModalStateStore);
-  const [portalElement, setPortalElement] = useState<Element | null>(null);
 
-  useEffect(() => {
-    setPortalElement(document.getElementById('modal'));
-
-    if (!isOpen) {
-      const scrollY = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.overflowY = 'auto';
-
-      window.scrollTo(0, parseInt(scrollY || '0') * -1);
-    }
-  }, [isOpen]);
+  const [portalElement] = useModalPortalElement(isOpen);
 
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
   const resetModalState = useResetRecoilState(crewFWModalStateStore);
@@ -141,7 +130,7 @@ const CrewFWCreateModal = () => {
                 </section>
               </section>
             </Modal>,
-            portalElement,
+            portalElement as Element,
           )
         : null}
     </>

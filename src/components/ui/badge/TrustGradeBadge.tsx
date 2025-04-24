@@ -59,14 +59,14 @@ const TrustGradeBadge = ({
           {trustGrade}
         </span>
       ) : (
-        <FaRegSmile
-          aria-hidden={true}
+        <div
           className={cn(
             TrustGradeBadgeVariants({ trustGrade, size }),
             props.className,
           )}
-          size={emoBadgeSize}
-        />
+        >
+          <FaRegSmile aria-hidden={true} size={emoBadgeSize} />
+        </div>
       )}
     </>
   );
