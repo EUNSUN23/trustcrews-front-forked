@@ -9,13 +9,13 @@ import {
   useLeaveProject,
 } from '@/features/project/auth/myProject/leaveProject/service/leaveProject';
 
-const CrewOutButton = ({
-  projectMemberInfo,
-}: {
-  projectMemberInfo: ProjectCrewProfile;
-}) => {
+type CrewOutButtonProps = {
+  crewInfo: ProjectCrewProfile;
+};
+
+const CrewOutButton = ({ crewInfo }: CrewOutButtonProps) => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
-  const { projectMemberAuth, projectMemberId, projectId } = projectMemberInfo;
+  const { projectMemberAuth, projectMemberId, projectId } = crewInfo;
   const router = useRouter();
 
   const { mutate: leaveProject, isPending } = useLeaveProject({
@@ -41,7 +41,7 @@ const CrewOutButton = ({
     <Button
       type='button'
       theme='black'
-      size='md'
+      size='lg'
       onClick={handleClickLeaveButton}
       disabled={isPending}
     >
