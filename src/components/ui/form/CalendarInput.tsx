@@ -52,10 +52,10 @@ function CalendarInput({
   };
 
   useEffect(() => {
-    document.addEventListener('click', handleDocumentClick);
+    document.addEventListener('click', (e) => handleDocumentClick(e));
 
     return () => {
-      document.removeEventListener('click', handleDocumentClick);
+      document.removeEventListener('click', (e) => handleDocumentClick(e));
     };
   }, []);
 
