@@ -36,6 +36,8 @@ const Job = () => {
       setActiveMilestone({
         milestoneId: initActiveMilestone.milestoneId,
         index: initActiveMilestone.index,
+        startDate: initActiveMilestone.startDate,
+        endDate: initActiveMilestone.endDate,
       });
     }
 
