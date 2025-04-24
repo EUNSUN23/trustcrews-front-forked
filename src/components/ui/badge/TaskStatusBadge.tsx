@@ -33,7 +33,12 @@ const TaskStatusBadge = ({
   ...props
 }: TaskStatusBadgeProps) => {
   return (
-    <span className={cn(TaskStatusBadgeVariants({ size }), props.className)}>
+    <span
+      className={cn(
+        TaskStatusBadgeVariants({ size, taskStatus }),
+        props.className,
+      )}
+    >
       {props.children}
     </span>
   );
