@@ -23,6 +23,15 @@ const ProjectNavLinkVariants = cva(
 const projectNavLinkClass = (isActive: boolean) =>
   ProjectNavLinkVariants({ variant: isActive ? 'active' : 'default' });
 
+const {
+  CREWS: {
+    value: PROJECT_CREWS,
+    child: {
+      CREW_DETAIL: { value: PROJECT_CREW_DETAIL },
+    },
+  },
+} = PROJECT_MENU;
+
 const ProjectNavTab = () => {
   const [activeTab, setActiveTab] = useRecoilState(projectActiveNavState);
   const resetActiveTabName = useResetRecoilState(projectActiveNavState);
@@ -43,7 +52,11 @@ const ProjectNavTab = () => {
             {Object.values(PROJECT_MENU).map(({ name, value }) => (
               <li key={`tab-${value}`} className='cursor-pointer'>
                 <div
-                  className={projectNavLinkClass(value === activeTab)}
+                  className={projectNavLinkClass(
+                    value === activeTab ||
+                      (activeTab === PROJECT_CREW_DETAIL &&
+                        value === PROJECT_CREWS),
+                  )}
                   aria-current={value === activeTab}
                   onClick={() => handleClickNavTab(value)}
                 >
