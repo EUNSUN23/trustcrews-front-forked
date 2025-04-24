@@ -1,4 +1,4 @@
-import ProjectCrewSelect from '@/components/project/ProjectCrewSelect';
+import ProjectCrewSelect from '@/features/project/auth/myProject/jobs/components/ProjectCrewSelect';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import {
   TaskAddModalField,
