@@ -5,18 +5,28 @@ import { Suspense } from 'react';
 import CrewProfileSkeleton from '@/components/ui/skeleton/project/crews/detail/CrewProfileSkeleton';
 import CrewTaskHistorySkeleton from '@/components/ui/skeleton/project/crews/detail/CrewTaskHistorySkeleton';
 import CrewProfile from '@/features/project/auth/myProject/crews/components/crewDetail/CrewProfile';
+import Button from '@/components/ui/button';
+import { useSetRecoilState } from 'recoil';
+import { projectActiveNavState } from '@/features/project/auth/myProject/global/store/ProjectNavTabStateStore';
+import { PROJECT_MENU } from '@/features/project/auth/myProject/global/constants/projectMenu';
 
+const {
+  CREWS: { value: PROJECT_CREWS },
+} = PROJECT_MENU;
 export const CrewDetail = () => {
+  const setProjectActiveNav = useSetRecoilState(projectActiveNavState);
+
   return (
     <section className='w-full flex flex-col items-center px-1 '>
-      {/*<section className='w-fit tablet:translate-x-[-50%] mobile:translate-x-[-20%]'>*/}
-      {/*    <HomeNav*/}
-      {/*        to={{*/}
-      {/*            pathname: '/project',*/}
-      {/*            query: { projectId, userId },*/}
-      {/*        }}*/}
-      {/*    />*/}
-      {/*</section>*/}
+      <section className='w-full flex items-center justify-start mb-12 mobile:mb-8'>
+        <Button
+          theme='primary'
+          size='xl'
+          onClick={() => setProjectActiveNav(PROJECT_CREWS)}
+        >
+          크루 목록
+        </Button>
+      </section>
       <section className='pc:min-h-[300px] tablet:py-3 border-b-2 border-gray-200'>
         <Suspense fallback={<CrewProfileSkeleton />}>
           <CrewProfile />
