@@ -39,7 +39,7 @@ const CrewProfile = () => {
   return (
     <div className='flex mobile:flex-col mobile:space-y-6 mobile:mt-4 px-1 py-4 mx-auto items-center justify-center'>
       <section className='mobile:w-full pc:w-[200px] tablet:w-[150px] tablet:mr-10 flex flex-col items-center'>
-        <Avatar size='md' src={profileImgSrc} alt='크루 프로필 이미지' />
+        <Avatar size='md' src={profileImgSrc} alt='프로필 이미지' />
         <ul className='my-3 flex flex-col items-center'>
           <li className='flex items-center pc:text-2xl tablet:text-[1.3rem] mobile:text-[1.3rem] font-medium text-greyDarkBlue'>
             <span className='leading-relaxed'>{nickname}</span>
