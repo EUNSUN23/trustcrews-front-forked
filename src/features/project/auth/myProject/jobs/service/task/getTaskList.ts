@@ -34,13 +34,13 @@ export const getTaskList = async (tasksReqParam: TasksReqParam) => {
     if (v.progressStatus.name === '완료') {
       return v;
     } else {
-      const startDate = v.startDate;
+      const startDate = v.startDate.replaceAll('-', '');
       const y = parseInt(startDate.substring(0, 4), 10);
-      const m = parseInt(startDate.substring(4, 6), 10) - 1;
+      const m = parseInt(startDate.substring(5, 6), 10) - 1;
       const d = parseInt(startDate.substring(6, 8), 10);
       const date = new Date(y, m, d);
 
-      if (date.getTime > today.getTime) {
+      if (date > today) {
         return { ...v, progressStatus: TASK_WAIT };
       } else {
         return { ...v, progressStatus: TASK_PROCESSING };
