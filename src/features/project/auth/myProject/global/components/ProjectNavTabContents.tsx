@@ -7,16 +7,27 @@ import JobSkeleton from '@/features/project/auth/myProject/jobs/components/JobSk
 import { PROJECT_MENU } from '@/features/project/auth/myProject/global/constants/projectMenu';
 import { useProjectManageAuth } from '@/features/project/auth/myProject/global/service/getProjectManageAuth';
 import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
-import { projectManageAuthStateStore } from '@/features/project/auth/myProject/global/store/ProjectManageAuthStateStore';
+import {
+  DEFAULT_PM_AUTH,
+  projectManageAuthStateStore,
+} from '@/features/project/auth/myProject/global/store/ProjectManageAuthStateStore';
 import { projectActiveNavState } from '@/features/project/auth/myProject/global/store/ProjectNavTabStateStore';
 import Crews from '@/features/project/auth/myProject/crews/components/Crews';
+import { CrewDetail } from '@/features/project/auth/myProject/crews/components/CrewDetail';
 
 const {
   TASK: { value: PROJECT_TASK },
-  CREWS: { value: PROJECT_CREWS },
+  CREWS: {
+    value: PROJECT_CREWS,
+    child: {
+      CREW_DETAIL: { value: PROJECT_CREW_DETAIL },
+    },
+  },
   NOTICE: { value: PROJECT_NOTICE },
   SETTING: { value: PROJECT_SETTING },
 } = PROJECT_MENU;
+
+const { code: DEFAULT_AUTH } = DEFAULT_PM_AUTH;
 
 const ProjectNavTabContents = () => {
   const projectId = useRecoilValue(projectIdState);
@@ -28,13 +39,16 @@ const ProjectNavTabContents = () => {
   } = useProjectManageAuth(projectId);
 
   useEffect(() => {
-    if (!pmAuth) setPMAuth(pmAuthData);
-    return () => resetPMAuth();
-  }, [pmAuth, setPMAuth, pmAuthData, resetPMAuth]);
+    setPMAuth(pmAuthData);
+
+    return () => {
+      resetPMAuth();
+    };
+  }, [setPMAuth, pmAuthData, resetPMAuth]);
 
   const activeNavTab = useRecoilValue(projectActiveNavState);
 
-  if (!pmAuth) return <JobSkeleton />;
+  if (pmAuth.code === DEFAULT_AUTH) return <JobSkeleton />;
 
   let contents: ReactNode;
   switch (activeNavTab) {
@@ -43,6 +57,9 @@ const ProjectNavTabContents = () => {
       break;
     case PROJECT_CREWS:
       contents = <Crews />;
+      break;
+    case PROJECT_CREW_DETAIL:
+      contents = <CrewDetail />;
       break;
     //   break;
     // case PM.NOTICE.code:
