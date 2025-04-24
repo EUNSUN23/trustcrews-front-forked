@@ -3,72 +3,85 @@
 import Avatar from '@/components/ui/Avatar';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
 import ProjectRoleBadge from '@/components/ui/badge/ProjectRoleBadge';
-import CrewOutButton from '@/components/project/crews/detail/CrewOutButton';
+import CrewOutButton from '@/features/project/auth/myProject/crews/components/crewDetail/CrewOutButton';
 import { getCookie } from 'cookies-next';
-import CrewFwButton from '@/components/project/crews/detail/CrewFWButton';
+import CrewFwButton from '@/features/project/auth/myProject/crews/components/crewDetail/CrewFWButton';
 import TechStackImage from '@/components/ui/TechStackImage';
 import { TechStackItem } from '@/utils/type';
 import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
 import { useCrewDetail } from '@/features/project/auth/myProject/crews/service/getCrewDetail';
+import { crewIdState } from '@/features/project/auth/myProject/crews/store/CrewIdStateStore';
+import { useRecoilValue } from 'recoil';
+import { bigIntToString } from '@/utils/common';
 
-type CrewProfileProps = {
-  projectMemberId: string;
-};
-
-const CrewProfile = ({ projectMemberId }: CrewProfileProps) => {
+const CrewProfile = () => {
+  const crewId = useRecoilValue(crewIdState);
   const {
-    data: { data: projectMemberInfo },
-  } = useCrewDetail(projectMemberId);
+    data: { data: crewInfo },
+  } = useCrewDetail(crewId);
 
-  // if (isFetching) return <ProfileSectionSkeleton />;
-
-  const { user, position, projectMemberAuth } = projectMemberInfo;
+  const {
+    user: {
+      userId: crewUserId,
+      trustGrade: { name: trustGradeName },
+      trustScore,
+      nickname,
+      profileImgSrc,
+      technologyStacks: crewTechnologyStacks,
+    },
+    position,
+    projectMemberAuth,
+  } = crewInfo;
 
   const currentUserId = getCookie('user_id');
-  const isMemberCurrentUser = currentUserId === user.userId.toString();
+  const isCrewCurrentUser = currentUserId === bigIntToString(crewUserId);
 
   return (
     <div className='flex mobile:flex-col mobile:space-y-6 mobile:mt-4 px-1 py-4 mx-auto items-center justify-center'>
       <section className='mobile:w-full pc:w-[200px] tablet:w-[150px] tablet:mr-10 flex flex-col items-center'>
-        <Avatar size='md' src={user.profileImgSrc} alt='크루 프로필' />
+        <Avatar size='md' src={profileImgSrc} alt='크루 프로필 이미지' />
         <ul className='my-3 flex flex-col items-center'>
-          <li className='flex items-center space-x-1 pc:text-2xl tablet:text-[1.3rem] mobile:text-lg font-medium text-greyDarkBlue'>
-            <span className='leading-loose'>{user.nickname}</span>
-            <TrustGradeBadge trustGrade={user.trustGrade.name} size='md' />
+          <li className='flex items-center pc:text-2xl tablet:text-[1.3rem] mobile:text-[1.3rem] font-medium text-greyDarkBlue'>
+            <span className='leading-relaxed'>{nickname}</span>
+            <TrustGradeBadge
+              trustGrade={trustGradeName}
+              size='lg'
+              className='px-2 tablet:px-2 mobile:px-2 py-1 tablet:py-1 mobile:py-2 self-stretch'
+            />
           </li>
         </ul>
-        {isMemberCurrentUser ? (
-          <CrewOutButton projectMemberInfo={projectMemberInfo!} />
+        {isCrewCurrentUser ? (
+          <CrewOutButton crewInfo={crewInfo} />
         ) : (
-          <CrewFwButton projectMemberInfo={projectMemberInfo!} />
+          <CrewFwButton crewInfo={crewInfo} />
         )}
       </section>
-      <section className='mobile:w-full tablet:h-[200px] mobile:h-[180px] flex flex-col flex-wrap justify-between p-6 mobile:p-4 bg-ground100 rounded-lg'>
+      <section className='mobile:w-full tablet:h-[220px] mobile:h-[180px] flex flex-col flex-wrap justify-between p-6 mobile:p-4 bg-ground100 rounded-lg'>
         <div className='pc:h-[50px] tablet:mx-8 flex items-center justify-around mobile:space-x-4'>
-          <span className='tablet:w-[200px] tablet:text-[1.2rem] font-medium text-geryDarkBlue'>
+          <span className='tablet:w-[200px] pc:text-2xl tablet:text-[1.2rem] font-medium text-geryDarkBlue'>
             프로젝트 권한
           </span>
           <div className='min-w-[100px] flex justify-center grow-0 mx-auto'>
-            <ProjectRoleBadge auth={projectMemberAuth.code}>
+            <ProjectRoleBadge auth={projectMemberAuth.code} size='md'>
               {projectMemberAuth.name}
             </ProjectRoleBadge>
           </div>
         </div>
         <div className='pc:h-[50px] tablet:mx-8 flex items-center justify-around mobile:space-x-4'>
-          <span className='tablet:w-[200px] tablet:text-[1.2rem] font-medium text-geryDarkBlue'>
+          <span className='tablet:w-[200px] pc:text-2xl tablet:text-[1.2rem] font-medium text-geryDarkBlue'>
             프로젝트 포지션
           </span>
           <div className='min-w-[100px] flex justify-center grow-0 mx-auto'>
-            <PositionBadge text={position.name} size='sm' />
+            <PositionBadge text={position.name} size='md' />
           </div>
         </div>
         <div className='pc:h-[50px] tablet:mx-8 flex items-center justify-around mobile:space-x-4'>
-          <span className='tablet:w-[200px] tablet:text-[1.2rem] font-medium text-geryDarkBlue'>
+          <span className='tablet:w-[200px] pc:text-2xl tablet:text-[1.2rem] font-medium text-geryDarkBlue'>
             기술스택
           </span>
           <div className='min-w-[100px] flex justify-center grow-0 mx-auto'>
             <ul className='flex items-center space-x-1'>
-              {user.technologyStacks.map((stack: TechStackItem) => (
+              {crewTechnologyStacks.map((stack: TechStackItem) => (
                 <li key={stack.techStackId}>
                   <TechStackImage
                     stackName={stack.techStackName}
@@ -81,12 +94,12 @@ const CrewProfile = ({ projectMemberId }: CrewProfileProps) => {
           </div>
         </div>
         <div className='pc:h-[50px] tablet:mx-8 flex items-center justify-around mobile:space-x-4'>
-          <span className='tablet:w-[200px] tablet:text-[1.2rem] font-medium text-geryDarkBlue'>
+          <span className='tablet:w-[200px] pc:text-2xl tablet:text-[1.2rem] font-medium text-geryDarkBlue'>
             신뢰점수
           </span>
           <div className='min-w-[100px] flex justify-center grow-0 mx-auto'>
-            <span className='pc:text-lg tablet:text-base mobile:text-sm font-semibold'>
-              {user.trustScore} 점
+            <span className='pc:text-[22px] tablet:text-base mobile:text-sm font-semibold'>
+              {trustScore} 점
             </span>
           </div>
         </div>
