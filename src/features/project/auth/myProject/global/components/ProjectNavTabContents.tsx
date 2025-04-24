@@ -13,7 +13,7 @@ import {
 } from '@/features/project/auth/myProject/global/store/ProjectManageAuthStateStore';
 import { projectActiveNavState } from '@/features/project/auth/myProject/global/store/ProjectNavTabStateStore';
 import Crews from '@/features/project/auth/myProject/crews/components/Crews';
-import { CrewDetail } from '@/features/project/auth/myProject/crews/components/CrewDetail';
+import { CrewDetail } from '@/features/project/auth/myProject/crews/components/crewDetail/CrewDetail';
 
 const {
   TASK: { value: PROJECT_TASK },
