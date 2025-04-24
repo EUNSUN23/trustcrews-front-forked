@@ -24,21 +24,21 @@ const TaskStatusSelector = () => {
     <Switch
       checked={progressStatusCode === TASK_COMPLETE}
       onChange={handleToggleSwitch}
-      className='group relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-amber-200/50 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-none  data-[headlessui-state=checked]:bg-gray-200'
+      className='group relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-amber-200/50 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-none  data-[checked]:bg-gray-200'
     >
       <span className='sr-only'>
         {TASK_STATUS[progressStatusCode as TaskStatusCode].name}
       </span>
-      <span className='pointer-events-none relative inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out group-data-[headlessui-state=checked]:translate-x-5'>
+      <span className='pointer-events-none relative inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out group-data-[checked]:translate-x-5'>
         <span
           aria-hidden='true'
-          className='absolute left-[50px] flex h-full w-[60px] items-center justify-center transition-opacity duration-50 ease-in leading-none text-[#785C03] group-data-[headlessui-state=checked]:opacity-0 group-data-[headlessui-state=checked]:duration-50 group-data-[headlessui-state=checked]:ease-out'
+          className='absolute left-[50px] flex h-full w-[60px] items-center justify-center transition-opacity duration-50 ease-in leading-none text-[#785C03] group-data-[checked]:opacity-0 group-data-[checked]:duration-50 group-data-[checked]:ease-out'
         >
           진행중
         </span>
         <span
           aria-hidden='true'
-          className='absolute left-[25px] flex h-full w-[60px] items-center justify-center opacity-0 transition-opacity duration-50 ease-out leading-none text-greyDarkblue group-data-[headlessui-state=checked]:opacity-100 group-data-[headlessui-state=checked]:duration-50 group-data-[headlessui-state=checked]:ease-in'
+          className='absolute left-[25px] flex h-full w-[60px] items-center justify-center opacity-0 transition-opacity duration-50 ease-out leading-none text-greyDarkblue group-data-[checked]:opacity-100 group-data-[checked]:duration-50 group-data-[checked]:ease-in'
         >
           완료
         </span>
