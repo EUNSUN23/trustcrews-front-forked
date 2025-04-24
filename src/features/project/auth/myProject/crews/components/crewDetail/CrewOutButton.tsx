@@ -40,7 +40,7 @@ const CrewOutButton = ({ crewInfo }: CrewOutButtonProps) => {
   return (
     <Button
       type='button'
-      theme='black'
+      theme='primaryHollow'
       size='lg'
       onClick={handleClickLeaveButton}
       disabled={isPending}
