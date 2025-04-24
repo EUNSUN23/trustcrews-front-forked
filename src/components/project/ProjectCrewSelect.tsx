@@ -1,15 +1,14 @@
 'use client';
 
 import { Fragment } from 'react';
-import useProjectCrewList from '@/hooks/project/crew/useProjectCrewList';
 import { useRecoilValue } from 'recoil';
 import { Listbox, Transition } from '@headlessui/react';
 import { bigIntToString, classNames, numStrToBigInt } from '@/utils/common';
 import { AiFillCaretDown } from '@react-icons/all-files/ai/AiFillCaretDown';
 import Avatar from '@/components/ui/Avatar';
-import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
 import { compareItems } from '@/app/_boardUtil/common';
 import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
+import { useProjectCrewList } from '@/features/project/auth/myProject/crews/service/getProjectCrewList';
 
 export const DEFAULT_CREW_OPTION = { name: '멤버 선택', value: '0' } as const;
 
@@ -25,16 +24,11 @@ const ProjectCrewSelect = ({
   setAssignedUserId,
 }: ProejctCrewSelectProps) => {
   const projectId = useRecoilValue(projectIdState)!;
-  const { crewList, isFetching } = useProjectCrewList(projectId);
-
-  if (isFetching)
-    return (
-      <SelectSkeleton
-        label=''
-        placeholder='담당 멤버'
-        className='max-w-[150px]'
-      />
-    );
+  const {
+    data: {
+      data: { projectMembers: crewList },
+    },
+  } = useProjectCrewList(projectId);
 
   const crewProfileImgSrcList = crewList.map((crew) => ({
     profileImgSrc: crew.user.profileImgSrc,
