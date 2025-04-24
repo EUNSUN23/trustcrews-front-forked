@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import Modal from '@/components/ui/Modal';
 import { createPortal } from 'react-dom';
@@ -18,23 +17,11 @@ import {
 } from '@/features/project/auth/myProject/jobs/store/MilestoneModalStateStore';
 import { activeMilestoneStateStore } from '@/features/project/auth/myProject/jobs/store/ActiveMilestoneStateStore';
 import { projectManageAuthStateStore } from '@/features/project/auth/myProject/global/store/ProjectManageAuthStateStore';
+import useModalPortalElement from '@/hooks/common/useModalPortalElement';
 
 const MilestoneModModal = () => {
   const { isOpen, title } = useRecoilValue(milestoneModModalStateStore);
-  const [portalElement, setPortalElement] = useState<Element | null>(null);
-
-  useEffect(() => {
-    setPortalElement(document.getElementById('modal'));
-
-    if (!isOpen) {
-      const scrollY = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.overflowY = 'auto';
-
-      window.scrollTo(0, parseInt(scrollY || '0') * -1);
-    }
-  }, [isOpen]);
+  const [portalElement] = useModalPortalElement(isOpen);
 
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
 
@@ -106,7 +93,7 @@ const MilestoneModModal = () => {
                 </div>
               </section>
             </Modal>,
-            portalElement,
+            portalElement as Element,
           )
         : null}
     </>
