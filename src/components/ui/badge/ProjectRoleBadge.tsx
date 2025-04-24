@@ -3,14 +3,17 @@ import { HTMLAttributes } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 import cn from '@/utils/cn';
 import { ProjectAuthCode } from '@/features/project/auth/myProject/global/types/projectAuth';
+import { PROJECT_AUTH_CODE } from '@/features/project/auth/myProject/global/constants/projectAuthCode';
+
+const { MANAGER: MANAGER_AUTH, CREW: CREW_AUTH } = PROJECT_AUTH_CODE;
 
 const ProjectRoleBadgeVariants = cva(
   'inline-flex items-center rounded-full font-medium',
   {
     variants: {
       auth: {
-        PAUTH_1001: 'bg-[#FF513A] text-[#FFFFFF]',
-        PAUTH_2001: 'bg-[#FFF9CF] text[#7B5C03]',
+        [MANAGER_AUTH]: 'bg-[#FF513A] text-[#FFFFFF]',
+        [CREW_AUTH]: 'bg-[#FFF9CF] text[#7B5C03]',
       },
       size: baseBadgeVariants.size,
     },
