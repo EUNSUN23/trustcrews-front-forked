@@ -15,7 +15,7 @@ export type CreateMilestoneInput = z.infer<typeof createMilestoneInputSchema>;
 
 export const createMilestone = async (
   projectId: bigint,
-  authMap: ProjectAuthCode,
+  authMap: string,
   reqData: CreateMilestoneInput,
 ): Promise<ResponseBody<null>> => {
   return await request('POST', `/api/project/milestone`, {
@@ -29,7 +29,7 @@ type CreateMilestoneRes = ApiResult<typeof createMilestone>;
 
 export const useCreateMilestone = (
   projectId: bigint,
-  authMap: ProjectAuthCode,
+  authMap: string,
   {
     onSuccess,
     onError,
