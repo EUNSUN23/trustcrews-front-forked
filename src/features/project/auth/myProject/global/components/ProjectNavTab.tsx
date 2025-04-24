@@ -41,7 +41,7 @@ const ProjectNavTab = () => {
         <nav className='-mb-px' aria-label='Tabs'>
           <ul className='flex tablet:space-x-10 mobile:justify-between'>
             {Object.values(PROJECT_MENU).map(({ name, value }) => (
-              <li key={`tab-${value}`}>
+              <li key={`tab-${value}`} className='cursor-pointer'>
                 <div
                   className={projectNavLinkClass(value === activeTab)}
                   aria-current={value === activeTab}
