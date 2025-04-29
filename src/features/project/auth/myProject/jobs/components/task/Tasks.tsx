@@ -20,7 +20,7 @@ const Tasks = () => {
     },
   } = useTasks({
     projectId: numStrToBigInt(projectId),
-    milestoneId,
+    milestoneId: numStrToBigInt(milestoneId),
     pageNumber,
   });
 

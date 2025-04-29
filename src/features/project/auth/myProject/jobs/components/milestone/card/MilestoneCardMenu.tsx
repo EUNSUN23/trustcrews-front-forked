@@ -9,7 +9,7 @@ import {
   MenuItems,
   Transition,
 } from '@headlessui/react';
-import { numStrToBigInt } from '@/utils/common';
+import { bigIntToString, numStrToBigInt } from '@/utils/common';
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
 import { useDeleteMilestone } from '@/features/project/auth/myProject/jobs/service/milestone/deleteMilestone';
 import useSnackbar from '@/hooks/common/useSnackbar';
@@ -60,7 +60,7 @@ const MilestoneCardMenu = ({ milestoneInfo }: MilestoneCardMenuProps) => {
   const handleClickModButton = () => {
     setMilestoneModModalState((prev) => ({ ...prev, isOpen: true }));
     setMilestoneModDataState({
-      milestoneId,
+      milestoneId: bigIntToString(milestoneId),
       content,
       startDate,
       endDate,

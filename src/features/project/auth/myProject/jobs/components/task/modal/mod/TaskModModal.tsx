@@ -9,17 +9,18 @@ import TaskContentDetail from '@/features/project/auth/myProject/jobs/components
 import TaskProgressStatus from '@/features/project/auth/myProject/jobs/components/task/modal/mod/TaskProgressStatus';
 import {
   TaskModalType,
+  TaskModModalData,
   taskModModalDataStateStore,
   taskModModalStateStore,
 } from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
 import useUpdateTask, {
-  UpdateTaskInput,
   updateTaskInputSchema,
 } from '@/features/project/auth/myProject/jobs/service/task/updateTask';
 import { useCompleteTask } from '@/features/project/auth/myProject/jobs/service/task/completeTask';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { ZodError } from 'zod';
 import { TASK_STATUS } from '@/features/project/auth/myProject/jobs/constants/task/taskStatus';
+import { numStrToBigInt } from '@/utils/common';
 
 const modalType: TaskModalType = 'mod';
 
@@ -39,7 +40,7 @@ const TaskModModal = () => {
   const modModalData = useRecoilValue(taskModModalDataStateStore);
 
   const { mutate: updateTask, isPending: isUpdating } = useUpdateTask(
-    workId,
+    numStrToBigInt(workId),
     auth,
     {
       onSuccess: (res) => {
@@ -52,7 +53,7 @@ const TaskModModal = () => {
   );
 
   const { completeTask, isUpdating: isCompleting } = useCompleteTask(
-    workId,
+    numStrToBigInt(workId),
     auth,
     {
       onSuccess: (res) => {
@@ -79,7 +80,7 @@ const TaskModModal = () => {
         completeTask();
       }
     } else {
-      const data: UpdateTaskInput = modModalData;
+      const data: TaskModModalData = modModalData;
 
       try {
         updateTaskInputSchema.parse(data);
@@ -87,7 +88,10 @@ const TaskModModal = () => {
         setErrorSnackbar((e as ZodError).errors[0].message);
         return;
       }
-      updateTask(modModalData);
+      updateTask({
+        ...modModalData,
+        assignedUserId: numStrToBigInt(modModalData.assignedUserId),
+      });
     }
   };
 

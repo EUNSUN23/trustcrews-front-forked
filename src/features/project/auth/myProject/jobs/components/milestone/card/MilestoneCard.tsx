@@ -5,6 +5,7 @@ import MilestoneCardMenu from '@/features/project/auth/myProject/jobs/components
 import { useRecoilState } from 'recoil';
 import { activeMilestoneStateStore } from '@/features/project/auth/myProject/jobs/store/ActiveMilestoneStateStore';
 import { MilestoneInfo } from '@/features/project/auth/myProject/jobs/types/milestone';
+import { bigIntToString, numStrToBigInt } from '@/utils/common';
 
 type MilestoneCardProps = {
   milestoneInfo: MilestoneInfo;
@@ -18,13 +19,20 @@ const MilestoneCard = ({ milestoneInfo }: MilestoneCardProps) => {
 
   const onClickContentHandler = (e: MouseEvent<HTMLElement>) => {
     if ((e.target as HTMLElement).dataset.role === 'milestone-menu') return;
-    setActiveMilestone(milestoneInfo);
+    setActiveMilestone({
+      ...milestoneInfo,
+      milestoneId: bigIntToString(milestoneId),
+    });
   };
 
   const activeClass =
-    activeMilestoneId === milestoneId ? 'ring-2 ring-primary' : 'shadow-md';
+    numStrToBigInt(activeMilestoneId) === milestoneId
+      ? 'ring-2 ring-primary'
+      : 'shadow-md';
   const textClass =
-    activeMilestoneId === milestoneId ? 'text-secondary' : 'text-gray-900';
+    numStrToBigInt(activeMilestoneId) === milestoneId
+      ? 'text-secondary'
+      : 'text-gray-900';
 
   return (
     <div
