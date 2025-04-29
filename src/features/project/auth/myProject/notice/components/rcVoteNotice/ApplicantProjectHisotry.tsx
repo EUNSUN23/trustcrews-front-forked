@@ -3,10 +3,7 @@ import Button from '@/components/ui/button';
 import ProjectHistoryItem from '@/components/ui/ProjectHistoryItem';
 import CommonPagination from '@/components/ui/CommonPagination';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
-import { useQuery } from '@tanstack/react-query';
-import { PageResponseBody, UserProjectHistoryData } from '@/utils/type';
-import { getUserProjectHistory } from '@/service/user/user';
-import Loader from '@/components/ui/Loader';
+import { useApplicantProjectHistory } from '@/features/project/auth/myProject/applicantProjectHistory/service/getApplicantProjectHistory';
 
 type ApplicantProjectHistoryProps = {
   applicantUserId: bigint;
@@ -18,18 +15,22 @@ const ApplicantProjectHistory = ({
   const [pageNumber, setPageNumber] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
-  const { data, isFetching } = useQuery<
-    PageResponseBody<UserProjectHistoryData[]>,
-    Error
-  >({
-    queryKey: ['userHistory', pageNumber, applicantUserId],
-    queryFn: () => getUserProjectHistory(pageNumber, applicantUserId),
-    enabled: isOpen,
-  });
+  const {
+    data: {
+      data: { content: histories, totalPages: totalItemsCount },
+    },
+  } = useApplicantProjectHistory(applicantUserId, pageNumber);
 
-  if (isFetching) return <Loader size='md' />;
+  // if (isFetching) return <Loader size='md' />;
 
-  const { content: histories, totalPages } = data!.data;
+  if (totalItemsCount === 0)
+    return (
+      <div className='w-full bg-ground100 text-center rounded-md mb-10 mobile:mb-4'>
+        <p className='py-10 text-2xl font-medium text-grey900'>
+          이력이 존재하지 않습니다.
+        </p>
+      </div>
+    );
 
   return (
     <div className='my-8 flex flex-col items-center space-y-10'>
@@ -42,7 +43,7 @@ const ApplicantProjectHistory = ({
       </Button>
       {isOpen && (
         <div className='flow-root mx-2'>
-          {histories.length > 0 ? (
+          {
             <>
               <ul role='list' className='-mb-8 overflow-auto'>
                 {histories.map((history, idx) => (
@@ -60,18 +61,12 @@ const ApplicantProjectHistory = ({
               <CommonPagination
                 activePage={pageNumber + 1}
                 itemsCountPerPage={ITEM_COUNT.LIST_SM}
-                totalItemsCount={totalPages}
+                totalItemsCount={totalItemsCount}
                 pageRangeDisplayed={PAGE_RANGE.DEFAULT}
                 onChange={(page) => setPageNumber(page - 1)}
               />
             </>
-          ) : (
-            <div className='w-full bg-ground100 text-center rounded-md mb-10 mobile:mb-4'>
-              <p className='py-10 text-2xl font-medium text-grey900'>
-                이력이 존재하지 않습니다.
-              </p>
-            </div>
-          )}
+          }
         </div>
       )}
     </div>

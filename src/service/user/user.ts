@@ -9,21 +9,6 @@ export const checkNickname = async (nickname: string) => {
   return response.json();
 };
 
-/**
- * 특정 사용자 프로젝트 이력 조회
- * @param pageNumber
- * @param userId
- */
-export const getUserProjectHistory = async (
-  pageNumber: number,
-  userId: bigint,
-) => {
-  return await request(
-    'GET',
-    `/api/user/history?pageNumber=${pageNumber}&userId=${userId}`,
-  );
-};
-
 export const deleteProfileImage = async () => {
   return await request('DELETE', '/api/user/profile-img');
 };
