@@ -1,9 +1,6 @@
 import DateRangePicker from '@/components/ui/datepicker/DateRangePicker';
 import { useRecoilState } from 'recoil';
-import {
-  MilestoneModDataField,
-  milestoneModDataStateSelector,
-} from '@/features/project/auth/myProject/jobs/store/MilestoneModalStateStore';
+import { milestoneModDataStateSelector } from '@/features/project/auth/myProject/jobs/store/MilestoneModalStateStore';
 
 const MilestoneModDate = () => {
   const [startDate, setStartDate] = useRecoilState(
@@ -17,8 +14,8 @@ const MilestoneModDate = () => {
     <div className='flex'>
       <label className='text-gray-700 font-semibold self-center'>기간</label>
       <DateRangePicker
-        startDate={startDate as MilestoneModDataField<'startDate'>}
-        endDate={endDate as MilestoneModDataField<'endDate'>}
+        startDate={startDate}
+        endDate={endDate}
         setStartDate={(date) => setStartDate(date)}
         setEndDate={(date) => setEndDate(date)}
       />
