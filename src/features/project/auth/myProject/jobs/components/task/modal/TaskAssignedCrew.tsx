@@ -7,10 +7,13 @@ import {
 } from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
 import { Suspense } from 'react';
 import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
+import { Field, Label } from '@headlessui/react';
 
 type TaskAssignedCrewProps = {
   modalType: TaskModalType;
 };
+
+const LABEL_ID = 'taskAssignedCrew-label';
 
 const TaskAssignedCrew = ({ modalType }: TaskAssignedCrewProps) => {
   const disabled = useRecoilValue(taskModalEditDisabledSelector(modalType));
@@ -22,13 +25,8 @@ const TaskAssignedCrew = ({ modalType }: TaskAssignedCrewProps) => {
   );
 
   return (
-    <div className='flex mobile:space-x-6'>
-      <label
-        htmlFor='content'
-        className='text-gray-700 font-semibold self-center'
-      >
-        담당
-      </label>
+    <Field className='flex mobile:space-x-6'>
+      <Label className='text-gray-700 font-semibold self-center'>담당</Label>
       <div className='w-[350px] mobile:w-[220px] ml-auto text-left'>
         <Suspense
           fallback={
@@ -46,7 +44,7 @@ const TaskAssignedCrew = ({ modalType }: TaskAssignedCrewProps) => {
           />
         </Suspense>
       </div>
-    </div>
+    </Field>
   );
 };
 
