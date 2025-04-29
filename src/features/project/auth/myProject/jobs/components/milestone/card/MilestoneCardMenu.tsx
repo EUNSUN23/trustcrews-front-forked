@@ -58,13 +58,16 @@ const MilestoneCardMenu = ({ milestoneInfo }: MilestoneCardMenuProps) => {
   const { code: authCode } = useRecoilValue(projectManageAuthStateStore);
 
   const handleClickModButton = () => {
-    setMilestoneModModalState((prev) => ({ ...prev, isOpen: true }));
-    setMilestoneModDataState({
+    setMilestoneModModalState((prev) => ({
+      ...prev,
+      isOpen: true,
       milestoneId: bigIntToString(milestoneId),
+      updateDate,
+    }));
+    setMilestoneModDataState({
       content,
       startDate,
       endDate,
-      updateDate,
     });
   };
 
