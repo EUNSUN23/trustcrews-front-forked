@@ -7,7 +7,7 @@ import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
 import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
 import TaskAddButton from '@/features/project/auth/myProject/jobs/components/task/TaskAddButton';
 import Tasks from '@/features/project/auth/myProject/jobs/components/task/Tasks';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import {
   activeMilestoneStateStore,
   DEFAULT_ACTIVE_MILESTONE,
@@ -18,6 +18,8 @@ import MilestoneAddModal from '@/features/project/auth/myProject/jobs/components
 import TaskAddModal from '@/features/project/auth/myProject/jobs/components/task/modal/add/TaskAddModal';
 import TaskModModal from '@/features/project/auth/myProject/jobs/components/task/modal/mod/TaskModModal';
 import { bigIntToString } from '@/utils/common';
+import TasksSkeleton from '@/components/ui/skeleton/project/task/TasksSkeleton';
+import { ITEM_COUNT } from '@/utils/constant';
 
 const { milestoneId: DEFAULT_MILESTONE_ID } = DEFAULT_ACTIVE_MILESTONE;
 
@@ -71,7 +73,11 @@ const Job = () => {
               </div>
             )}
           </div>
-          <Tasks />
+          <Suspense
+            fallback={<TasksSkeleton itemCount={ITEM_COUNT.CARDS_SM} />}
+          >
+            <Tasks />
+          </Suspense>
         </section>
       </section>
       <MilestoneModModal />
