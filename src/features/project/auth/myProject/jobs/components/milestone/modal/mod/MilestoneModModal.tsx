@@ -21,7 +21,9 @@ import useModalPortalElement from '@/hooks/common/useModalPortalElement';
 import { numStrToBigInt } from '@/utils/common';
 
 const MilestoneModModal = () => {
-  const { isOpen, title } = useRecoilValue(milestoneModModalStateStore);
+  const { isOpen, title, milestoneId, updateDate } = useRecoilValue(
+    milestoneModModalStateStore,
+  );
   const [portalElement] = useModalPortalElement(isOpen);
 
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
@@ -32,8 +34,9 @@ const MilestoneModModal = () => {
   const resetMilestoneModData = useResetRecoilState(milestoneModDataStateStore);
   const resetActiveMilestone = useResetRecoilState(activeMilestoneStateStore);
 
-  const { milestoneId, content, startDate, endDate, updateDate } =
-    useRecoilValue(milestoneModDataStateStore);
+  const { content, startDate, endDate } = useRecoilValue(
+    milestoneModDataStateStore,
+  );
   const { code: authCode } = useRecoilValue(projectManageAuthStateStore);
 
   const { mutate: updateMilestone, isPending: isUpdating } = useUpdateMilestone(
