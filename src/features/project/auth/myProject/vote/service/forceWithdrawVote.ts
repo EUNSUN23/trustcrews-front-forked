@@ -4,6 +4,7 @@ import { ProjectAuthCode } from '@/features/project/auth/myProject/global/types/
 import { VoteOptionCode } from '@/features/project/auth/myProject/vote/types';
 import { z } from 'zod';
 import { ApiResult } from '@/utils/type';
+import { FW_VOTE_NOTICE_QUERY_KEY } from '@/features/project/auth/myProject/notice/service/getFWVoteNotice';
 
 export type VoteFWReqData = {
   projectId: bigint;
@@ -53,7 +54,7 @@ export const useForceWithdrawVote = (
     onSuccess: async (res) => {
       if (res.result === 'success') {
         await queryClient.invalidateQueries({
-          queryKey: ['vAlertFWDetailData'],
+          queryKey: [FW_VOTE_NOTICE_QUERY_KEY],
         });
         onSuccess?.(res);
       } else {
