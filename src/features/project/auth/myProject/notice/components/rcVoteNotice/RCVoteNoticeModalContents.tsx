@@ -1,68 +1,55 @@
 import Avatar from '@/components/ui/Avatar';
-import { ResponseBody, TechStackItem } from '@/utils/type';
+import { TechStackItem } from '@/utils/type';
 import TechStackImage from '@/components/ui/TechStackImage';
 import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
-import { VAlertRecruitDetailData } from '@/service/project/alert/type';
-import { useQuery } from '@tanstack/react-query';
-import { getVAlertRecruitDetail } from '@/service/project/alert/vote/recruit';
 import VAlertRecruitModalSkeleton from '@/components/ui/skeleton/project/alert/VAlertRecruitModalSkeleton';
 import VoteStatusBadge from '@/components/ui/badge/VoteStatusBadge';
-import { useRecoilValue } from 'recoil';
-import ApplicantProjectHistory from '@/components/project/alert/vote/recruit/modal/ApplicantProjectHisotry';
+import ApplicantProjectHistory from '@/features/project/auth/myProject/notice/components/rcVoteNotice/ApplicantProjectHisotry';
 import VoteBar from '@/components/ui/votebar/VoteBar';
-import { useProjectManageAuth } from '@/features/project/auth/myProject/global/service/getProjectManageAuth';
-import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
 import { VOTE_OPTIONS } from '@/features/project/auth/myProject/vote/constants/voteOptions';
-import { VoteOptionCode } from '@/features/project/auth/myProject/vote/types';
 import {
+  recruitVoteAnswerInputSchema,
   useRecruitVote,
-  VoteRecruitReqData,
 } from '@/features/project/auth/myProject/vote/service/recruitVote';
 import useSnackbar from '@/hooks/common/useSnackbar';
+import { useRecruitNotice } from '@/features/project/auth/myProject/notice/service/getRCVoteNotice';
+import { useRecoilValue } from 'recoil';
+import { rcVoteNoticeModalState } from '@/features/project/auth/myProject/notice/store/RCVoteNoticeModalStateStore';
+import { numStrToBigInt } from '@/utils/common';
+import { ZodError } from 'zod';
 
-type VAlertRecruitModalContentsProps = {
-  voteId: bigint;
-  applyId: bigint;
-  alertId: bigint;
-};
+const {
+  VODA1001: { code: VOTE_AGREE },
+  VODA1002: { code: VOTE_DISAGREE },
+} = VOTE_OPTIONS;
 
-function VAlertRecruitModalContents({
-  voteId,
-  applyId,
-  alertId,
-}: VAlertRecruitModalContentsProps) {
+const RCVoteNoticeModalContents = () => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
-  const projectId = useRecoilValue(projectIdState);
+  const { alertId, voteId, applyId, userAuth } = useRecoilValue(
+    rcVoteNoticeModalState,
+  );
+
+  const { mutate: recruitVote, isPending: isUpdating } = useRecruitVote(
+    {
+      voteId: numStrToBigInt(voteId),
+      applyId: numStrToBigInt(applyId),
+      userAuth,
+    },
+    {
+      onSuccess: (res) => setSuccessSnackbar(res.message),
+      onError: (res) => setErrorSnackbar(res.message),
+    },
+  );
+
   const {
-    data: { data: currentUserPMAuth },
-  } = useProjectManageAuth(projectId);
+    data: { data: noticeDetail },
+  } = useRecruitNotice(
+    numStrToBigInt(voteId),
+    numStrToBigInt(applyId),
+    numStrToBigInt(alertId),
+  );
 
-  const { mutate: voteForProjectRecruit, isPending: isUpdating } =
-    useRecruitVote(
-      {},
-      {
-        onSuccess: (res) => setSuccessSnackbar(res.message),
-        onError: (res) => setErrorSnackbar(res.message),
-      },
-    );
-
-  const { data, isPending, isError } = useQuery<
-    ResponseBody<VAlertRecruitDetailData>,
-    Error
-  >({
-    queryKey: ['vAlertRecruitDetailData', voteId, applyId, alertId],
-    queryFn: () => getVAlertRecruitDetail(alertId, applyId, voteId),
-    staleTime: 0,
-  });
-
-  if (isPending || isUpdating) return <VAlertRecruitModalSkeleton />;
-
-  if (isError || !data.data || !currentUserPMAuth)
-    return (
-      <div className='alertModal_contents text-3xl text-gray-600/90 text-center'>
-        ⚠️데이터를 불러올 수 없습니다
-      </div>
-    );
+  if (isUpdating) return <VAlertRecruitModalSkeleton />;
 
   const {
     applicantInfo: {
@@ -76,19 +63,26 @@ function VAlertRecruitModalContents({
       trustScore,
       userId,
     },
-    voteInfo: { voteStatus, agrees, disagrees, maxVoteCount },
-  } = data.data;
+    voteInfo: {
+      voteStatus: { code: voteStatusCode, name: voteStatusName },
+      agrees,
+      disagrees,
+      maxVoteCount,
+    },
+  } = noticeDetail;
 
-  const isVoteEnded = voteStatus.name === '투표종료';
+  const isVoteEnded = voteStatusName === '투표종료';
 
-  const onChangeVoteOptionHandler = (value: string) => {
-    const reqData: VoteRecruitReqData = {
-      voteId,
-      applyId,
-      authMap: currentUserPMAuth.code,
-      answer: value as VoteOptionCode,
-    };
-    voteForProjectRecruit(reqData);
+  const handleChangeVoteOption = (value: string) => {
+    try {
+      recruitVoteAnswerInputSchema.parse({ answer: value });
+    } catch (e: unknown) {
+      if (e instanceof ZodError) {
+        setErrorSnackbar(e.errors[0].message);
+        return;
+      }
+    }
+    recruitVote({ answer: value });
   };
 
   return (
@@ -139,13 +133,13 @@ function VAlertRecruitModalContents({
             <span className='text-md text-grey900'>{trustScore}점</span>
           </div>
         </div>
-        <ApplicantProjectHistory applicantUserId={userId!} />
+        <ApplicantProjectHistory applicantUserId={userId} />
       </section>
       <section className='tablet:max-w-[400px] h-[250px] mx-auto flex flex-col justify-center space-y-5'>
         <div className='flex justify-center items-center space-x-1 text-2xl text-greyDarkblue font-medium'>
           <span>투표</span>
-          <VoteStatusBadge voteStatus={voteStatus.code}>
-            {voteStatus.name}
+          <VoteStatusBadge voteStatus={voteStatusCode}>
+            {voteStatusName}
           </VoteStatusBadge>
         </div>
         {isVoteEnded && (
@@ -158,8 +152,8 @@ function VAlertRecruitModalContents({
         <VoteBar
           group='recruitVote'
           label='찬성'
-          value={VOTE_OPTIONS.VODA1001.code}
-          onChangeVoteHandler={onChangeVoteOptionHandler}
+          value={VOTE_AGREE}
+          onChangeVoteHandler={handleChangeVoteOption}
           counts={agrees}
           maxCounts={maxVoteCount}
           disabled={isVoteEnded}
@@ -167,8 +161,8 @@ function VAlertRecruitModalContents({
         <VoteBar
           group='recruitVote'
           label='반대'
-          value={VOTE_OPTIONS.VODA1002.code}
-          onChangeVoteHandler={onChangeVoteOptionHandler}
+          value={VOTE_DISAGREE}
+          onChangeVoteHandler={handleChangeVoteOption}
           counts={disagrees}
           maxCounts={maxVoteCount}
           disabled={isVoteEnded}
@@ -176,6 +170,6 @@ function VAlertRecruitModalContents({
       </section>
     </section>
   );
-}
+};
 
-export default VAlertRecruitModalContents;
+export default RCVoteNoticeModalContents;

@@ -1,8 +1,8 @@
-import { AlertMenu } from '@/service/project/alert/type';
 import { cva, VariantProps } from 'class-variance-authority';
 import cn from '@/utils/cn';
 import { HTMLAttributes } from 'react';
 import { baseBadgeVariants } from '@/utils/badge';
+import { NoticeType } from '@/features/project/auth/myProject/notice/types';
 
 const NoticeBadgeVariants = cva(
   'inline-flex items-center rounded-full font-medium ring-1 ring-inset',
@@ -24,7 +24,7 @@ const NoticeBadgeVariants = cva(
 interface NoticeBadgeProps
   extends HTMLAttributes<HTMLSpanElement>,
     VariantProps<typeof NoticeBadgeVariants> {
-  noticeType: AlertMenu['code'];
+  noticeType: NoticeType['code'];
 }
 
 const NoticeBadge = ({ noticeType, size, ...props }: NoticeBadgeProps) => {
