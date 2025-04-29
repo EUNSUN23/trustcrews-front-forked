@@ -5,11 +5,13 @@ import { ITEM_COUNT } from '@/utils/constant';
 import { NOTICE_TYPES } from '@/features/project/auth/myProject/notice/constants/noticeTypes';
 import { VoteStatusType } from '@/features/project/auth/myProject/vote/types';
 import { PageResponseBody } from '@/utils/type';
+import { ProjectAuthMap } from '@/features/project/auth/myProject/global/types/projectAuth';
 
 export type FWVoteNoticeData = {
   alertId: bigint;
   voteId: bigint;
-  fwMemberId: bigint;
+  crewId: bigint;
+  crewAuth: ProjectAuthMap;
   alertType: typeof NOTICE_TYPES.PRA1003;
   contents: string;
   voteStatus: VoteStatusType;
