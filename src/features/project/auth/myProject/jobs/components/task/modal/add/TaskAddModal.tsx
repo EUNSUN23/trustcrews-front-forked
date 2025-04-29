@@ -16,6 +16,7 @@ import {
   taskAddModalStateStore,
   TaskModalType,
 } from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
+import { numStrToBigInt } from '@/utils/common';
 
 const modalType: TaskModalType = 'add';
 
@@ -31,8 +32,8 @@ const TaskAddModal = () => {
   const resetAddModalState = useResetRecoilState(taskAddModalStateStore);
 
   const { mutate: createTask, isPending: isCreating } = useCreateTask(
-    projectId,
-    milestoneId,
+    numStrToBigInt(projectId),
+    numStrToBigInt(milestoneId),
     {
       onSuccess: (res) => {
         setSuccessSnackbar(res.message);
@@ -56,7 +57,7 @@ const TaskAddModal = () => {
       startDate: addModalData.startDate,
       endDate: addModalData.endDate,
       contentDetail: addModalData.contentDetail,
-      assignedUserId: addModalData.assignedUserId,
+      assignedUserId: numStrToBigInt(addModalData.assignedUserId),
     };
 
     try {

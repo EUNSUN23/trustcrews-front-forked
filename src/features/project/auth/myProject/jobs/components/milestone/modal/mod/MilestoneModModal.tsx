@@ -18,6 +18,7 @@ import {
 import { activeMilestoneStateStore } from '@/features/project/auth/myProject/jobs/store/ActiveMilestoneStateStore';
 import { projectManageAuthStateStore } from '@/features/project/auth/myProject/global/store/ProjectManageAuthStateStore';
 import useModalPortalElement from '@/hooks/common/useModalPortalElement';
+import { numStrToBigInt } from '@/utils/common';
 
 const MilestoneModModal = () => {
   const { isOpen, title } = useRecoilValue(milestoneModModalStateStore);
@@ -36,7 +37,7 @@ const MilestoneModModal = () => {
   const { code: authCode } = useRecoilValue(projectManageAuthStateStore);
 
   const { mutate: updateMilestone, isPending: isUpdating } = useUpdateMilestone(
-    milestoneId,
+    numStrToBigInt(milestoneId),
     authCode,
     {
       onSuccess: (res) => {

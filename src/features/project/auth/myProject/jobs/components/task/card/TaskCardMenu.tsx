@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment } from 'react';
+import { Fragment, MouseEvent } from 'react';
 import {
   Menu,
   MenuButton,
@@ -13,14 +13,15 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { useDeleteTask } from '@/features/project/auth/myProject/jobs/service/task/deleteTask';
 import {
+  TaskModModalData,
   taskModModalDataStateStore,
   taskModModalStateStore,
 } from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
-import { UpdateTaskInput } from '@/features/project/auth/myProject/jobs/service/task/updateTask';
 import { TaskItem } from '@/features/project/auth/myProject/jobs/types/task';
 import { TASK_STATUS } from '@/features/project/auth/myProject/jobs/constants/task/taskStatus';
 import { projectManageAuthStateStore } from '@/features/project/auth/myProject/global/store/ProjectManageAuthStateStore';
 import { cva } from 'class-variance-authority';
+import { bigIntToString } from '@/utils/common';
 
 const CardMenuButtonVariants = cva(
   'block px-4 py-2 tablet:text-[16px] mobile:text-sm',
@@ -65,22 +66,27 @@ const TaskCardMenu = ({ taskItem }: TaskCardMenuProps) => {
   const setTaskModalState = useSetRecoilState(taskModModalStateStore);
   const setTaskModalData = useSetRecoilState(taskModModalDataStateStore);
 
-  const handleClickUpdateButton = (e: React.MouseEvent) => {
+  const handleClickUpdateButton = (e: MouseEvent) => {
     e.preventDefault();
-    const updateForm: UpdateTaskInput = {
+    const updateForm: TaskModModalData = {
       content,
       progressStatus: progressStatus.code,
       startDate,
       endDate,
-      assignedUserId: assignedUser!.projectMemberId,
+      assignedUserId: bigIntToString(assignedUser?.projectMemberId),
       contentDetail,
     };
 
-    setTaskModalState((prev) => ({ ...prev, isOpen: true, workId, auth }));
+    setTaskModalState((prev) => ({
+      ...prev,
+      isOpen: true,
+      workId: bigIntToString(workId),
+      auth,
+    }));
     setTaskModalData(updateForm);
   };
 
-  const handleClickDeleteButton = (e: React.MouseEvent) => {
+  const handleClickDeleteButton = (e: MouseEvent) => {
     e.preventDefault();
     if (confirm('업무를 삭제하시겠습니까?')) {
       deleteTask({ workId, auth });
