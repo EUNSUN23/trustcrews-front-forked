@@ -2,9 +2,9 @@ import {
   TrustGradeNameType,
   TrustGradeValueType,
 } from '@/app/project/@setting/_utils/type';
-import { VoteStatusCode } from '@/service/project/alert/type';
 import { BoardPosition } from '@/service/project/setting/board';
 import { UserProjectHistoryStatus } from '@/service/user/constant';
+import { VoteStatusCode } from '@/features/project/auth/myProject/vote/types';
 
 export type DropDownItem = {
   name: string;
