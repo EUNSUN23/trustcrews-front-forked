@@ -2,10 +2,7 @@ import { useEffect } from 'react';
 import DateRangePicker from '@/components/ui/datepicker/DateRangePicker';
 import { useRecoilState } from 'recoil';
 import { addDays, format } from 'date-fns';
-import {
-  MilestoneAddDataField,
-  milestoneAddDataStateSelector,
-} from '@/features/project/auth/myProject/jobs/store/MilestoneModalStateStore';
+import { milestoneAddDataStateSelector } from '@/features/project/auth/myProject/jobs/store/MilestoneModalStateStore';
 
 const MilestoneAddDate = () => {
   const [startDate, setStartDate] = useRecoilState(
@@ -15,7 +12,6 @@ const MilestoneAddDate = () => {
     milestoneAddDataStateSelector('endDate'),
   );
 
-  // 시작/종료날짜 초기화
   useEffect(() => {
     if (!startDate) {
       setStartDate(format(new Date(), 'yyyy-MM-dd'));
@@ -30,8 +26,8 @@ const MilestoneAddDate = () => {
     <div className='flex'>
       <label className='text-gray-700 font-semibold self-center'>기간</label>
       <DateRangePicker
-        startDate={startDate as MilestoneAddDataField<'startDate'>}
-        endDate={endDate as MilestoneAddDataField<'endDate'>}
+        startDate={startDate}
+        endDate={endDate}
         setStartDate={(date) => setStartDate(date)}
         setEndDate={(date) => setEndDate(date)}
       />
