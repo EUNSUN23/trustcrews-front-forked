@@ -1,26 +1,15 @@
 import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { ProjectAuthCode } from '@/features/project/auth/myProject/global/types/projectAuth';
-import { VoteOptionCode } from '@/features/project/auth/myProject/vote/types';
 import { z } from 'zod';
 import { ApiResult } from '@/utils/type';
 import { FW_VOTE_NOTICE_QUERY_KEY } from '@/features/project/auth/myProject/notice/service/getFWVoteNotice';
 
-export type VoteFWReqData = {
-  projectId: bigint;
-  voteId: bigint;
-  fw_member_id: bigint;
-  fw_member_auth: ProjectAuthCode;
-  authMap: ProjectAuthCode;
-  answer: VoteOptionCode;
-};
-
 export type FWVoteBaseParams = {
   projectId: bigint;
   voteId: bigint;
-  fw_member_id: bigint;
-  fw_member_auth: ProjectAuthCode;
-  authMap: ProjectAuthCode;
+  crewId: bigint;
+  crewAuth: string;
+  userAuth: string;
 };
 
 export const fWVoteAnswerInputSchema = z.object({
@@ -32,7 +21,12 @@ export type FWVoteAnswerInput = z.infer<typeof fWVoteAnswerInputSchema>;
 type FWVoteReqParams = FWVoteBaseParams & FWVoteAnswerInput;
 
 export const voteForProjectFWithdraw = async (data: FWVoteReqParams) => {
-  return await request('POST', '/api/project/vote/fwithdraw', data);
+  return await request('POST', '/api/project/vote/fwithdraw', {
+    ...data,
+    fw_member_id: data.crewId,
+    fw_member_auth: data.crewAuth,
+    authMap: data.userAuth,
+  });
 };
 
 type VoteFWRes = ApiResult<typeof voteForProjectFWithdraw>;
