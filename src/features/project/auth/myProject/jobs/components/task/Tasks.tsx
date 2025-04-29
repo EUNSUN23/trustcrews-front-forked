@@ -28,9 +28,6 @@ const Tasks = () => {
     setPageNumber(pageNumber - 1);
   };
 
-  // if(isTasksLoading) return
-  //     <TasksSkeleton itemCount={ITEM_COUNT.CARDS_SM} />;
-
   return (
     <div className='w-full mt-4 flex flex-col items-center'>
       {taskList.length > 0 ? (
