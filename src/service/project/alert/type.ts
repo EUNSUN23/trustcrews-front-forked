@@ -1,21 +1,12 @@
-import { AlertType, VoteStatus } from '@/service/project/alert/constant';
-import { Notice } from '@/app/project/@notice/_utils/type';
+import { AlertType } from '@/service/project/alert/constant';
 import { ProfileInfo } from '@/utils/type';
 import { ProjectAuthMap } from '@/features/project/auth/myProject/global/types/projectAuth';
-import { FWReasonType } from '@/features/project/auth/myProject/vote/types';
-
-export type VoteStatusCode = keyof typeof VoteStatus;
-export type VoteStatusType =
-  | typeof VoteStatus.VSTAT1001
-  | typeof VoteStatus.VSTAT1002;
-
-export type VoteData = {
-  voteId: bigint;
-  voteStatus: VoteStatusType;
-  agrees: number;
-  disagrees: number;
-  maxVoteCount: number;
-};
+import {
+  FWVoteReason,
+  VoteData,
+  VoteStatusType,
+} from '@/features/project/auth/myProject/vote/types';
+import { Notice } from '@/app/project/[slug]/notice/_utils/type';
 
 export type VAlertRecruitData = {
   alertId: bigint;
@@ -53,7 +44,7 @@ export type AlertCrewData = {
 };
 
 export type VAlertFWDetailData = VoteData & {
-  reason: FWReasonType;
+  reason: FWVoteReason;
   fwMemberAuth: ProjectAuthMap;
   fwMemberPosition: {
     id: bigint;
