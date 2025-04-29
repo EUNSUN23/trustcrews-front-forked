@@ -15,7 +15,7 @@ export interface CalenderProps extends InputHTMLAttributes<HTMLInputElement> {
   openToDate?: Date | undefined;
 }
 
-function CalendarInput({
+const CalendarInput = ({
   id,
   label,
   required = false,
@@ -26,7 +26,7 @@ function CalendarInput({
   includeDateIntervals,
   openToDate,
   ...props
-}: CalenderProps) {
+}: CalenderProps) => {
   const datePickerRef = useRef<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -113,6 +113,6 @@ function CalendarInput({
       )}
     </div>
   );
-}
+};
 
 export default CalendarInput;

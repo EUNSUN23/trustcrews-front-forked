@@ -9,6 +9,13 @@ import {
 } from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
 import { MAX_TASK_CONTENT_DETAIL } from '@/features/project/auth/myProject/jobs/constants/task/maxTaskContentDetail';
 import useSnackbar from '@/hooks/common/useSnackbar';
+import clsx from 'clsx';
+
+const openAddInputButtonClass = (isInputOpen: boolean) =>
+  clsx(
+    'group w-full flex items-center space-x-1 py-2 px-1 text-lg mobile:text-base text-gray-600 leading-[2.15rem] font-semibold disabled:text-gray-600/70',
+    isInputOpen && 'bg-gray-50',
+  );
 
 type ToggleTaskContentDetailAddInputProps = {
   modalType: TaskModalType;
@@ -18,25 +25,25 @@ const ToggleTaskContentDetailAddInput = ({
   modalType,
 }: ToggleTaskContentDetailAddInputProps) => {
   const { setInfoSnackbar } = useSnackbar();
-  const [showAddElement, setShowAddElement] = useState(false);
+  const [isOpenAddInput, setIsOpenAddInput] = useState(false);
   const disabled = useRecoilValue(taskModalEditDisabledSelector(modalType));
   const taskContentDetailMap = useRecoilValue(
     taskModalContentDetailSelector(modalType),
   );
 
-  const handleClickAddButton = () => {
+  const handleClickOpenInputButton = () => {
     if (taskContentDetailMap.size >= MAX_TASK_CONTENT_DETAIL) {
       setInfoSnackbar('할 일은 업무당 최대 5개 추가할 수 있습니다.');
       return;
     }
-    setShowAddElement((prev) => !prev);
+    setIsOpenAddInput((prev) => !prev);
   };
 
   return (
     <>
       <button
-        onClick={handleClickAddButton}
-        className={`group w-full flex items-center space-x-1 py-2 px-1 text-lg mobile:text-base text-gray-600 leading-[2.15rem] font-semibold ${showAddElement && 'bg-gray-50'} disabled:text-gray-600/70`}
+        onClick={handleClickOpenInputButton}
+        className={openAddInputButtonClass(isOpenAddInput)}
         disabled={disabled}
       >
         <RiAddLine />
@@ -45,9 +52,9 @@ const ToggleTaskContentDetailAddInput = ({
           (최대 5개)
         </span>
       </button>
-      {showAddElement && (
+      {isOpenAddInput && (
         <TaskContentDetailAddInput
-          setIsOpen={setShowAddElement}
+          setIsOpen={setIsOpenAddInput}
           modalType={modalType}
         />
       )}

@@ -13,6 +13,9 @@ type TaskDateProps = {
   modalType: TaskModalType;
 };
 
+const START_DATE_INPUT_ID = 'taskStartDate';
+const END_DATE_INPUT_ID = 'taskEndDate';
+
 const TaskDate = ({ modalType }: TaskDateProps) => {
   const disabled = useRecoilValue(taskModalEditDisabledSelector(modalType));
   const { startDate: milestoneStartDate, endDate: milestoneEndDate } =
@@ -25,7 +28,6 @@ const TaskDate = ({ modalType }: TaskDateProps) => {
     taskModalDataFieldSelector({ modalType, fieldKey: 'endDate' }),
   );
 
-  // 시작/종료날짜 초기화
   useEffect(() => {
     if (milestoneStartDate && milestoneEndDate) {
       if (!startDate) {
@@ -55,10 +57,17 @@ const TaskDate = ({ modalType }: TaskDateProps) => {
 
   return (
     <div className='flex mobile:space-x-6'>
-      <label className='text-gray-700 font-semibold self-center'>기간</label>
+      <label
+        htmlFor={START_DATE_INPUT_ID}
+        className='text-gray-700 font-semibold self-center'
+      >
+        기간
+      </label>
       <DateRangePicker
-        startDate={startDate as string}
-        endDate={endDate as string}
+        startDateId={START_DATE_INPUT_ID}
+        endDateId={END_DATE_INPUT_ID}
+        startDate={startDate}
+        endDate={endDate}
         setStartDate={(date) => setStartDate(date)}
         setEndDate={(date) => setEndDate(date)}
         includeDateIntervals={includeDateIntervals}
