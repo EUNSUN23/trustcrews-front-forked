@@ -11,18 +11,18 @@ import Modal from '@/components/ui/Modal';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import {
   createCrewFWVoteInputSchema,
-  useCreateCrewFWVote,
-} from '@/features/project/auth/myProject/vote/service/createCrewFWVote';
+  useCreateFWVote,
+} from '@/features/project/auth/myProject/vote/service/createFWVote';
 import { ZodError } from 'zod';
-import { FWReason } from '@/features/project/auth/myProject/vote/constants';
 import useModalPortalElement from '@/hooks/common/useModalPortalElement';
+import { FW_VOTE_REASONS } from '@/features/project/auth/myProject/vote/constants/fwVoteReasons';
 
 const {
   FWR1001: REASON_CORP,
   FWR1002: REASON_ATT,
   FWR1003: REASON_TECH,
   FWR1004: REASON_ETC,
-} = FWReason;
+} = FW_VOTE_REASONS;
 
 const CrewFWCreateModal = () => {
   const { isOpen, title, projectId, crewId, crewPMAuth, userPMAuth } =
@@ -34,7 +34,7 @@ const CrewFWCreateModal = () => {
   const resetModalState = useResetRecoilState(crewFWModalStateStore);
   const [reason, setReason] = useRecoilState(crewFWModalDataStateStore);
 
-  const { mutate: createCrewFWVote } = useCreateCrewFWVote(
+  const { mutate: createCrewFWVote } = useCreateFWVote(
     { projectId, crewId, crewPMAuth, userPMAuth },
     {
       onSuccess: (res) => setSuccessSnackbar(res.message),
@@ -83,7 +83,7 @@ const CrewFWCreateModal = () => {
                         className='border-gray-400 text-indigo-600 focus:ring-none'
                         onChange={handleChangeFWReason}
                       />
-                      <label htmlFor='fwr1001' className='ml-2'>
+                      <label htmlFor={REASON_CORP.code} className='ml-2'>
                         {REASON_CORP.desc}
                       </label>
                     </li>
@@ -92,11 +92,11 @@ const CrewFWCreateModal = () => {
                         type='radio'
                         name='fwReason'
                         value={REASON_ATT.code}
-                        id='fwr1002'
+                        id={REASON_ATT.code}
                         className='border-gray-400 text-indigo-600 focus:ring-none'
                         onChange={handleChangeFWReason}
                       />
-                      <label htmlFor='fwr1002' className='ml-2'>
+                      <label htmlFor={REASON_ATT.code} className='ml-2'>
                         {REASON_ATT.desc}
                       </label>
                     </li>
@@ -105,11 +105,11 @@ const CrewFWCreateModal = () => {
                         type='radio'
                         name='fwReason'
                         value={REASON_TECH.code}
-                        id='fwr1003'
+                        id={REASON_TECH.code}
                         className='border-gray-400 text-indigo-600 focus:ring-none'
                         onChange={handleChangeFWReason}
                       />
-                      <label htmlFor='fwr1003' className='ml-2'>
+                      <label htmlFor={REASON_TECH.code} className='ml-2'>
                         {REASON_TECH.desc}
                       </label>
                     </li>
@@ -118,11 +118,11 @@ const CrewFWCreateModal = () => {
                         type='radio'
                         name='fwReason'
                         value={REASON_ETC.code}
-                        id='fwr1004'
+                        id={REASON_ETC.code}
                         className='border-gray-400 text-indigo-600 focus:ring-none'
                         onChange={handleChangeFWReason}
                       />
-                      <label htmlFor='fwr1004' className='ml-2'>
+                      <label htmlFor={REASON_ETC.code} className='ml-2'>
                         {REASON_ETC.desc}
                       </label>
                     </li>
