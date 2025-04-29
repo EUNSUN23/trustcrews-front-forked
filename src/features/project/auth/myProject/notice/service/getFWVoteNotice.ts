@@ -10,13 +10,13 @@ import { ProjectAuthMap } from '@/features/project/auth/myProject/global/types/p
 
 export type FWVoteNoticeDetailData = VoteData & {
   reason: FWVoteReason;
-  fwMemberAuth: ProjectAuthMap;
-  fwMemberPosition: {
+  crewAuth: ProjectAuthMap;
+  crewPosition: {
     id: bigint;
     name: string;
   };
-  fwUserProfile: string;
-  fwUserNickname: string;
+  crewProfileImgSrc: string;
+  crewNickname: string;
 };
 
 export const getFWVoteNotice = async (

@@ -5,7 +5,7 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 import { VoteData } from '@/features/project/auth/myProject/vote/types';
 
 export type RCVoteNoticeDetailData = {
-  applicantInfo: ProfileInfo;
+  applicantInfo: Omit<ProfileInfo, 'userId'> & { userId: bigint };
   voteInfo: VoteData & {
     applicant_id: bigint;
   };
