@@ -2,7 +2,7 @@ import AvatarSkeleton from '@/components/ui/skeleton/AvatarSkeleton';
 import Skeleton from '@/components/ui/skeleton/Skeleton';
 import BadgeStyleSkeleton from '@/components/ui/skeleton/BadgeStyleSkeleton';
 
-function VAlertFwModalSkeleton() {
+const FWVoteNoticeModalSkeleton = () => {
   return (
     <section className='alertModal_contents'>
       <section className='tablet:max-w-[400px] mx-auto pt-5 flex-col items-center'>
@@ -21,6 +21,6 @@ function VAlertFwModalSkeleton() {
       </section>
     </section>
   );
-}
+};
 
-export default VAlertFwModalSkeleton;
+export default FWVoteNoticeModalSkeleton;

@@ -1,10 +1,10 @@
 import { atom } from 'recoil';
-import { NoticeType } from '@/features/project/auth/myProject/notice/types';
-import { NOTICE_TYPES } from '@/features/project/auth/myProject/notice/constants/noticeTypes';
+import { NoticeTab } from '@/features/project/auth/myProject/notice/types';
+import { NOTICE_TABS } from '@/features/project/auth/myProject/notice/constants/noticeTabs';
 
-const { PRA2001: CREW_NOTICE } = NOTICE_TYPES;
+const { NTAB003: CREW_NOTICE_TAB } = NOTICE_TABS;
 
-export const activeNoticeTabStateStore = atom<NoticeType>({
+export const activeNoticeTabStateStore = atom<NoticeTab>({
   key: 'activeNoticeTabStateStore',
-  default: CREW_NOTICE,
+  default: CREW_NOTICE_TAB,
 });
