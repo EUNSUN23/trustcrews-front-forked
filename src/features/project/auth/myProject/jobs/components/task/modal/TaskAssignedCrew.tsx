@@ -1,11 +1,9 @@
 import ProjectCrewSelect from '@/features/project/auth/myProject/jobs/components/ProjectCrewSelect';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import {
-  TaskAddModalField,
   taskModalDataFieldSelector,
   taskModalEditDisabledSelector,
   TaskModalType,
-  TaskModModalField,
 } from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
 import { Suspense } from 'react';
 import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
@@ -22,11 +20,6 @@ const TaskAssignedCrew = ({ modalType }: TaskAssignedCrewProps) => {
       fieldKey: 'assignedUserId',
     }),
   );
-
-  const selectedAssignedUserId =
-    modalType === 'add'
-      ? (assignedUserId as TaskAddModalField<'assignedUserId'>)
-      : (assignedUserId as TaskModModalField<'assignedUserId'>);
 
   return (
     <div className='flex mobile:space-x-6'>
@@ -48,7 +41,7 @@ const TaskAssignedCrew = ({ modalType }: TaskAssignedCrewProps) => {
         >
           <ProjectCrewSelect
             disabled={disabled}
-            assignedUserId={selectedAssignedUserId}
+            assignedUserId={assignedUserId}
             setAssignedUserId={setAssignedUserId}
           />
         </Suspense>
