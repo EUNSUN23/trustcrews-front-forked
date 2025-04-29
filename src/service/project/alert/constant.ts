@@ -1,8 +1,3 @@
-export const VoteStatus = {
-  VSTAT1001: { code: 'VSTAT1001', name: '투표중' },
-  VSTAT1002: { code: 'VSTAT1002', name: '투표종료' },
-} as const;
-
 export const AlertType = {
   PRA1001: { code: 'PRA1001', name: '투표', parent: null },
   PRA1002: { code: 'PRA1002', name: '모집', parent: 'PRA1001' },

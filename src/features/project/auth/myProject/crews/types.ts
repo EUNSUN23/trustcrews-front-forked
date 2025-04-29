@@ -1,7 +1,7 @@
 import { ProjectAuthMap } from '@/features/project/auth/myProject/global/types/projectAuth';
 import { Position, ProjectUser, User } from '@/utils/type';
-import { PointTypeKey } from '@/app/project/[slug]/notice/_utils/type';
 import { CREW_STATUS } from '@/features/project/auth/myProject/crews/constants/crewStatus';
+import { TaskPointType } from '@/features/project/auth/myProject/global/types/TaskPointType';
 
 export type CrewStatusKey = keyof typeof CREW_STATUS;
 
@@ -30,5 +30,5 @@ export interface CrewTaskHistory {
   createDate: string;
   progressStatus: CrewStatusKey;
   point: number;
-  point_type: PointTypeKey;
+  point_type: TaskPointType;
 }
