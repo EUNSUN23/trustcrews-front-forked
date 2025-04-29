@@ -1,4 +1,3 @@
-import { UserProjectHistoryData, UserProjectHistoryStatus } from '@/utils/type';
 import { AiFillRocket } from '@react-icons/all-files/ai/AiFillRocket';
 import { BiUser } from '@react-icons/all-files/bi/BiUser';
 import { BiCheck } from '@react-icons/all-files/bi/BiCheck';
@@ -6,6 +5,10 @@ import { BiUndo } from '@react-icons/all-files/bi/BiUndo';
 import { BiX } from '@react-icons/all-files/bi/BiX';
 import { clsx } from 'clsx';
 import cn from '@/utils/cn';
+import {
+  ProjectHistoryData,
+  ProjectHistoryStatus,
+} from '@/lib/projectHistory/types';
 
 const HISTORY_COLOR = {
   LAUNCH: 'bg-orange-400',
@@ -16,7 +19,7 @@ const HISTORY_COLOR = {
 } as const;
 const { LAUNCH, JOIN, FINISH, FWITHDRAW, WITHDRAW } = HISTORY_COLOR;
 
-const iconColorClassName = (status: UserProjectHistoryStatus) =>
+const iconColorClassName = (status: ProjectHistoryStatus) =>
   clsx({
     [LAUNCH]: status.code === 'PHIST_STAT_001',
     [JOIN]: status.code === 'PHIST_STAT_002',
@@ -25,7 +28,7 @@ const iconColorClassName = (status: UserProjectHistoryStatus) =>
     [FWITHDRAW]: status.code === 'PHIST_STAT_005',
   });
 
-const getIconByStatus = (status: UserProjectHistoryStatus) => {
+const getIconByStatus = (status: ProjectHistoryStatus) => {
   const iconClassName = 'h-5 w-5 text-white';
 
   switch (status.code) {
@@ -48,7 +51,7 @@ function ProjectHistoryItem({
   history,
   isLast,
 }: {
-  history: UserProjectHistoryData;
+  history: ProjectHistoryData;
   isLast: boolean;
 }) {
   return (
