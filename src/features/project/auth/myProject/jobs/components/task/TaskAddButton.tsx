@@ -6,7 +6,6 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { taskAddModalStateStore } from '@/features/project/auth/myProject/jobs/store/TaskModalStateStore';
 import { activeMilestoneStateStore } from '@/features/project/auth/myProject/jobs/store/ActiveMilestoneStateStore';
 import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
-import { numStrToBigInt } from '@/utils/common';
 
 const TaskAddButton = () => {
   const projectId = useRecoilValue(projectIdState);
@@ -17,7 +16,7 @@ const TaskAddButton = () => {
     setTaskModalState((prev) => ({
       ...prev,
       isOpen: true,
-      projectId: numStrToBigInt(projectId),
+      projectId,
       milestoneId,
     }));
   };
