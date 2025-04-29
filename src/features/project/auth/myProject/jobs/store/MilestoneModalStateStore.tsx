@@ -48,7 +48,7 @@ export const milestoneAddDataStateSelector = selectorFamily({
 });
 
 export type MilestoneModData = UpdateMilestoneInput & {
-  milestoneId: bigint;
+  milestoneId: string;
   updateDate: string;
 };
 export type MilestoneModDataKey = keyof MilestoneModData;
@@ -66,7 +66,7 @@ export const milestoneModModalStateStore = atom<ModalState>({
 });
 
 const DEFAULT_MOD_MILESTONE_DATA = {
-  milestoneId: 0n,
+  milestoneId: '0',
   startDate: '',
   endDate: '',
   updateDate: '',
@@ -84,7 +84,7 @@ export const milestoneModDataStateSelector = selectorFamily({
     (param: MilestoneModDataKey) =>
     ({ get }) => {
       const state = get(milestoneModDataStateStore);
-      return state[param] as MilestoneModDataField<typeof param>;
+      return state[param];
     },
   set:
     (param: MilestoneModDataKey) =>

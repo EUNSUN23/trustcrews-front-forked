@@ -17,22 +17,9 @@ const { CREW: CREW_AUTH } = PROJECT_AUTH_CODE;
 
 export type TaskModalType = 'add' | 'mod';
 
-export type TaskAddModalFieldKey = keyof CreateTaskInput;
-export type TaskAddModalField<T> = CreateTaskInput[Extract<
-  TaskAddModalFieldKey,
-  T
->];
-
-export const isTaskAddModalFieldKey = (
-  modalType: TaskModalType,
-  key: string,
-): key is TaskAddModalFieldKey => {
-  return modalType === 'add';
-};
-
 interface TaskAddModalState extends ModalState {
-  projectId: bigint;
-  milestoneId: bigint;
+  projectId: string;
+  milestoneId: string;
 }
 
 export const taskAddModalStateStore = atom<TaskAddModalState>({
@@ -40,36 +27,37 @@ export const taskAddModalStateStore = atom<TaskAddModalState>({
   default: {
     isOpen: false,
     title: '업무 추가',
-    projectId: 0n,
-    milestoneId: 0n,
+    projectId: '0',
+    milestoneId: '0',
   },
 });
-export const taskAddModalDataStateStore = atom<CreateTaskInput>({
+
+export type TaskAddModalFieldKey = keyof TaskAddModalData;
+
+export const isTaskAddModalFieldKey = (
+  modalType: TaskModalType,
+  _: string,
+): _ is TaskAddModalFieldKey => {
+  return modalType === 'add';
+};
+
+export type TaskAddModalData = Omit<CreateTaskInput, 'assignedUserId'> & {
+  assignedUserId: string;
+};
+
+export const taskAddModalDataStateStore = atom<TaskAddModalData>({
   key: 'taskAddModalDataStateStore',
   default: {
     content: '',
     startDate: '',
     endDate: '',
-    assignedUserId: 0n,
+    assignedUserId: '0',
     contentDetail: '',
   },
 });
 
-export type TaskModModalFieldKey = keyof UpdateTaskInput;
-export type TaskModModalField<T> = UpdateTaskInput[Extract<
-  TaskModModalFieldKey,
-  T
->];
-
-export const isTaskModModalFieldKey = (
-  modalType: TaskModalType,
-  key: string,
-): key is TaskModModalFieldKey => {
-  return modalType === 'mod';
-};
-
-interface TaskModModalState extends ModalState {
-  workId: bigint;
+export interface TaskModModalState extends ModalState {
+  workId: string;
   auth: ProjectAuthCode;
 }
 
@@ -78,18 +66,31 @@ export const taskModModalStateStore = atom<TaskModModalState>({
   default: {
     isOpen: false,
     title: '업무 수정',
-    workId: 0n,
+    workId: '0',
     auth: CREW_AUTH,
   },
 });
 
-export const taskModModalDataStateStore = atom<UpdateTaskInput>({
+export type TaskModModalFieldKey = keyof TaskModModalData;
+
+export const isTaskModModalFieldKey = (
+  modalType: TaskModalType,
+  _: string,
+): _ is TaskModModalFieldKey => {
+  return modalType === 'mod';
+};
+
+export type TaskModModalData = Omit<UpdateTaskInput, 'assignedUserId'> & {
+  assignedUserId: string;
+};
+
+export const taskModModalDataStateStore = atom<TaskModModalData>({
   key: 'taskModModalDataStateStore',
   default: {
     content: '',
     startDate: '',
     endDate: '',
-    assignedUserId: 0n,
+    assignedUserId: '0',
     contentDetail: '',
     progressStatus: TASK_PROCESSING,
   },
@@ -100,13 +101,10 @@ export const taskModalDataFieldSelector = selectorFamily({
   get:
     (param: { modalType: TaskModalType; fieldKey: TaskAddModalFieldKey }) =>
     ({ get }) => {
-      if (isTaskAddModalFieldKey(param.modalType, param.fieldKey)) {
-        const data = get(taskAddModalDataStateStore);
-        return data[param.fieldKey] as TaskAddModalField<typeof param.fieldKey>;
-      } else if (isTaskModModalFieldKey(param.modalType, param.fieldKey)) {
-        const data = get(taskModModalDataStateStore);
-        return data[param.fieldKey] as TaskModModalField<typeof param.fieldKey>;
-      }
+      const data = isTaskAddModalFieldKey(param.modalType, param.fieldKey)
+        ? get(taskAddModalDataStateStore)
+        : get(taskModModalDataStateStore);
+      return data[param.fieldKey];
     },
   set:
     (param: { modalType: TaskModalType; fieldKey: TaskAddModalFieldKey }) =>
@@ -169,7 +167,7 @@ export const taskModalContentDetailSelector = selectorFamily({
 
       const updatedContentDetailArr = [];
       if (!_.isEmpty(newValue)) {
-        for (const [key, value] of newValue) {
+        for (const [_, value] of newValue) {
           updatedContentDetailArr.push(value);
         }
       }
@@ -183,7 +181,7 @@ export const taskModalContentDetailSelector = selectorFamily({
       if (param === 'add') {
         set(taskAddModalDataStateStore, updated);
       } else if (param === 'mod') {
-        set(taskModModalDataStateStore, updated as UpdateTaskInput);
+        set(taskModModalDataStateStore, updated as TaskModModalData);
       }
     },
 });

@@ -3,7 +3,7 @@
 import { Fragment } from 'react';
 import { useRecoilValue } from 'recoil';
 import { Listbox, Transition } from '@headlessui/react';
-import { bigIntToString, classNames, numStrToBigInt } from '@/utils/common';
+import { bigIntToString, classNames } from '@/utils/common';
 import { AiFillCaretDown } from '@react-icons/all-files/ai/AiFillCaretDown';
 import Avatar from '@/components/ui/Avatar';
 import { compareItems } from '@/app/_boardUtil/common';
@@ -14,8 +14,8 @@ export const DEFAULT_CREW_OPTION = { name: '멤버 선택', value: '0' } as cons
 
 type ProejctCrewSelectProps = {
   disabled: boolean;
-  assignedUserId: bigint | number;
-  setAssignedUserId: (id: bigint | number) => void;
+  assignedUserId: string;
+  setAssignedUserId: (id: string) => void;
 };
 
 const ProjectCrewSelect = ({
@@ -44,14 +44,14 @@ const ProjectCrewSelect = ({
   ];
 
   const selectedCrew = crewSelectItems.find(
-    (item) => item.value === bigIntToString(assignedUserId),
+    (item) => item.value === assignedUserId,
   )!;
 
   return (
     <Listbox
       value={selectedCrew}
       onChange={({ value }) => {
-        setAssignedUserId(numStrToBigInt(value));
+        setAssignedUserId(value);
       }}
       by={compareItems}
       disabled={disabled}
@@ -101,7 +101,7 @@ const ProjectCrewSelect = ({
                       <span
                         className={classNames(
                           selected ? 'font-bold' : 'font-normal',
-                          'flex items-center space-x-2 block truncate',
+                          'block items-center space-x-2 truncate',
                         )}
                       >
                         {value !== '0' && (
