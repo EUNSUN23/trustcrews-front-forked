@@ -1,17 +1,26 @@
 import { atom } from 'recoil';
 import { ModalState } from '@/utils/type';
+import { FWVoteBaseParams } from '@/features/project/auth/myProject/vote/service/forceWithdrawVote';
 
-export type FWNoticeModalState = ModalState & {
+export interface FWNoticeModalState
+  extends ModalState,
+    Omit<FWVoteBaseParams, 'projectId' | 'voteId' | 'crewId'> {
+  projectId: string;
   voteId: string;
-  fwMemberId: string;
+  crewId: string;
+}
+
+const DEFAULT_FW_NOTICE_MODAL_STATE: FWNoticeModalState = {
+  isOpen: false,
+  title: '',
+  projectId: '0',
+  voteId: '0',
+  crewId: '0',
+  crewAuth: '',
+  userAuth: '',
 };
 
 export const fwNoticeModalState = atom<FWNoticeModalState>({
   key: 'fwNoticeModalState',
-  default: {
-    isOpen: false,
-    title: '',
-    voteId: '0',
-    fwMemberId: '0',
-  },
+  default: DEFAULT_FW_NOTICE_MODAL_STATE,
 });
