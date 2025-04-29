@@ -6,15 +6,19 @@ import Avatar from '@/components/ui/Avatar';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
 import ProjectRoleBadge from '@/components/ui/badge/ProjectRoleBadge';
 import VoteStatusBadge from '@/components/ui/badge/VoteStatusBadge';
-import { VoteOption } from '@/service/project/vote/constant';
-import { VoteFWReqData, VoteOptionCode } from '@/service/project/vote/type';
 import { useRecoilValue } from 'recoil';
 import { numStrToBigInt } from '@/utils/common';
-import useVoteFwithdraw from '@/hooks/project/useVoteFwithdraw';
 import VAlertFwModalSkeleton from '@/components/ui/skeleton/project/alert/VAlertFWModalSkeleton';
 import VoteBar from '@/components/ui/votebar/VoteBar';
 import { useProjectManageAuth } from '@/features/project/auth/myProject/global/service/getProjectManageAuth';
 import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
+import { VOTE_OPTIONS } from '@/features/project/auth/myProject/vote/constants/voteOptions';
+import { VoteOptionCode } from '@/features/project/auth/myProject/vote/types';
+import {
+  useForceWithdrawVote,
+  VoteFWReqData,
+} from '@/features/project/auth/myProject/vote/service/forceWithdrawVote';
+import useSnackbar from '@/hooks/common/useSnackbar';
 
 type VAlertFWModalContentsProps = {
   voteId: bigint;
@@ -25,12 +29,20 @@ function VAlertFwModalContents({
   voteId,
   fwMemberId,
 }: VAlertFWModalContentsProps) {
+  const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
   const projectId = useRecoilValue(projectIdState);
   const {
     data: { data: currentUserPMAuth },
   } = useProjectManageAuth(projectId);
 
-  const { voteForProjectFWithdraw, isUpdating } = useVoteFwithdraw();
+  const { mutate: voteForProjectFWithdraw, isPending: isUpdating } =
+    useForceWithdrawVote(
+      {},
+      {
+        onSuccess: (res) => setSuccessSnackbar(res.message),
+        onError: (res) => setErrorSnackbar(res.message),
+      },
+    );
 
   const { data, isPending, isError } = useQuery<
     ResponseBody<VAlertFWDetailData>,
@@ -117,7 +129,7 @@ function VAlertFwModalContents({
         <VoteBar
           group='fwVote'
           label='찬성'
-          value={VoteOption.VODA1001.code}
+          value={VOTE_OPTIONS.VODA1001.code}
           counts={agrees}
           maxCounts={maxVoteCount}
           disabled={isVoteEnded}
@@ -126,7 +138,7 @@ function VAlertFwModalContents({
         <VoteBar
           group='fwVote'
           label='반대'
-          value={VoteOption.VODA1002.code}
+          value={VOTE_OPTIONS.VODA1002.code}
           counts={disagrees}
           maxCounts={maxVoteCount}
           disabled={isVoteEnded}
