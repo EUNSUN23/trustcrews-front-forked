@@ -4,7 +4,10 @@ import { Suspense, useEffect } from 'react';
 import ProjectInfo from '@/features/project/auth/myProject/global/components/ProjectInfo';
 import { useRecoilState } from 'recoil';
 import { ProjectInfoSkeleton } from '@/components/ui/skeleton/project/task';
-import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
+import {
+  DEFAULT_PROJECT_ID,
+  projectIdState,
+} from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
 import ProjectPageSkeleton from '@/features/project/auth/myProject/global/components/ProjectPageSkeleton';
 import dynamic from 'next/dynamic';
 import ProjectNavTabContentsSkeleton from '@/features/project/auth/myProject/global/components/ProjectNavTabContentsSkeleton';
@@ -30,7 +33,7 @@ const ProjectPage = ({
     setCurrentProjectId(projectId);
   }, [setCurrentProjectId, projectId]);
 
-  if (!currentProjectId) return <ProjectPageSkeleton />;
+  if (currentProjectId === DEFAULT_PROJECT_ID) return <ProjectPageSkeleton />;
 
   return (
     <>
