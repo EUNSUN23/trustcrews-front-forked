@@ -3,7 +3,6 @@ import {
   TrustGradeValueType,
 } from '@/app/project/@setting/_utils/type';
 import { BoardPosition } from '@/service/project/setting/board';
-import { UserProjectHistoryStatus } from '@/service/user/constant';
 import { VoteStatusCode } from '@/features/project/auth/myProject/vote/types';
 
 export type DropDownItem = {
@@ -93,20 +92,6 @@ export interface ProfileInfo {
   intro?: string;
   projectHistoryTotalCount: number;
   createDate: string;
-  updateDate: string;
-}
-
-// 사용자 프로젝트 이력 status 데이터 타입
-export type UserProjectHistoryStatusCode =
-  keyof typeof UserProjectHistoryStatus;
-export type UserProjectHistoryStatus =
-  (typeof UserProjectHistoryStatus)[UserProjectHistoryStatusCode];
-
-export interface UserProjectHistoryData {
-  userProjectHistoryId: bigint;
-  projectId: bigint;
-  status: UserProjectHistoryStatus;
-  projectName: string;
   updateDate: string;
 }
 
