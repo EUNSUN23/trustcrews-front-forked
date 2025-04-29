@@ -3,6 +3,8 @@ import CalendarInput from '@/components/ui/form/CalendarInput';
 import { addDays, format } from 'date-fns';
 
 export type CustomDateRangePickerProps = {
+  startDateId: string;
+  endDateId: string;
   startDate: string | null;
   endDate: string | null;
   setStartDate: (value: string) => void;
@@ -13,7 +15,9 @@ export type CustomDateRangePickerProps = {
   disabled?: boolean | undefined;
 };
 
-function DateRangePicker({
+const DateRangePicker = ({
+  startDateId,
+  endDateId,
   startDate,
   endDate,
   setStartDate,
@@ -22,7 +26,7 @@ function DateRangePicker({
   startOpenToDate,
   endOpenToDate,
   disabled = false,
-}: CustomDateRangePickerProps) {
+}: CustomDateRangePickerProps) => {
   const [endMinDate, setEndMinDate] = useState<Date>(() =>
     addDays(startDate ? new Date(startDate) : new Date(), 1),
   );
@@ -45,7 +49,7 @@ function DateRangePicker({
   return (
     <div className='w-[350px] mobile:w-[220px] ml-auto flex space-x-1'>
       <CalendarInput
-        id='startDate'
+        id={startDateId}
         placeholder='시작 날짜 선택'
         date={startDate}
         setDate={(value) => setStartDate(value)}
@@ -55,7 +59,7 @@ function DateRangePicker({
       />
       <div className='text-gray-700 w-[20px] text-center self-center'>~</div>
       <CalendarInput
-        id='endDate'
+        id={endDateId}
         placeholder='종료 날짜 선택'
         date={endDate}
         setDate={(value) => setEndDate(value)}
@@ -66,6 +70,6 @@ function DateRangePicker({
       />
     </div>
   );
-}
+};
 
 export default DateRangePicker;
