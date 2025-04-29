@@ -19,7 +19,7 @@ type CreateCrewFWVoteBaseParam = {
   userPMAuth: ProjectAuthCode;
 };
 
-export const createCrewFWVote = async (
+export const createFWVote = async (
   baseParam: CreateCrewFWVoteBaseParam,
   reason: CreateCrewFWVoteReason,
 ): Promise<ResponseBody<null>> => {
@@ -29,9 +29,9 @@ export const createCrewFWVote = async (
   });
 };
 
-type CreateCrewFWVoteRes = ApiResult<typeof createCrewFWVote>;
+type CreateCrewFWVoteRes = ApiResult<typeof createFWVote>;
 
-export const useCreateCrewFWVote = (
+export const useCreateFWVote = (
   baseParam: CreateCrewFWVoteBaseParam,
   {
     onSuccess,
@@ -43,7 +43,7 @@ export const useCreateCrewFWVote = (
 ) => {
   return useMutation({
     mutationFn: (reason: CreateCrewFWVoteReason) =>
-      createCrewFWVote(baseParam, reason),
+      createFWVote(baseParam, reason),
     onSuccess: (res) => {
       if (res.result === 'success') {
         onSuccess?.(res);

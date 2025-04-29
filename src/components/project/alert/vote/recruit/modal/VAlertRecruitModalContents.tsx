@@ -7,17 +7,18 @@ import { useQuery } from '@tanstack/react-query';
 import { getVAlertRecruitDetail } from '@/service/project/alert/vote/recruit';
 import VAlertRecruitModalSkeleton from '@/components/ui/skeleton/project/alert/VAlertRecruitModalSkeleton';
 import VoteStatusBadge from '@/components/ui/badge/VoteStatusBadge';
-import useVoteRecruit from '@/hooks/project/useVoteRecruit';
-import {
-  VoteOptionCode,
-  VoteRecruitReqData,
-} from '@/service/project/vote/type';
-import { VoteOption } from '@/service/project/vote/constant';
 import { useRecoilValue } from 'recoil';
 import ApplicantProjectHistory from '@/components/project/alert/vote/recruit/modal/ApplicantProjectHisotry';
 import VoteBar from '@/components/ui/votebar/VoteBar';
 import { useProjectManageAuth } from '@/features/project/auth/myProject/global/service/getProjectManageAuth';
 import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
+import { VOTE_OPTIONS } from '@/features/project/auth/myProject/vote/constants/voteOptions';
+import { VoteOptionCode } from '@/features/project/auth/myProject/vote/types';
+import {
+  useRecruitVote,
+  VoteRecruitReqData,
+} from '@/features/project/auth/myProject/vote/service/recruitVote';
+import useSnackbar from '@/hooks/common/useSnackbar';
 
 type VAlertRecruitModalContentsProps = {
   voteId: bigint;
@@ -30,12 +31,20 @@ function VAlertRecruitModalContents({
   applyId,
   alertId,
 }: VAlertRecruitModalContentsProps) {
+  const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
   const projectId = useRecoilValue(projectIdState);
   const {
     data: { data: currentUserPMAuth },
   } = useProjectManageAuth(projectId);
 
-  const { voteForProjectRecruit, isUpdating } = useVoteRecruit();
+  const { mutate: voteForProjectRecruit, isPending: isUpdating } =
+    useRecruitVote(
+      {},
+      {
+        onSuccess: (res) => setSuccessSnackbar(res.message),
+        onError: (res) => setErrorSnackbar(res.message),
+      },
+    );
 
   const { data, isPending, isError } = useQuery<
     ResponseBody<VAlertRecruitDetailData>,
@@ -149,7 +158,7 @@ function VAlertRecruitModalContents({
         <VoteBar
           group='recruitVote'
           label='찬성'
-          value={VoteOption.VODA1001.code}
+          value={VOTE_OPTIONS.VODA1001.code}
           onChangeVoteHandler={onChangeVoteOptionHandler}
           counts={agrees}
           maxCounts={maxVoteCount}
@@ -158,7 +167,7 @@ function VAlertRecruitModalContents({
         <VoteBar
           group='recruitVote'
           label='반대'
-          value={VoteOption.VODA1002.code}
+          value={VOTE_OPTIONS.VODA1002.code}
           onChangeVoteHandler={onChangeVoteOptionHandler}
           counts={disagrees}
           maxCounts={maxVoteCount}
