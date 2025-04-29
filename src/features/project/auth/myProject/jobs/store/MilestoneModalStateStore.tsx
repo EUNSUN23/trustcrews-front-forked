@@ -47,33 +47,34 @@ export const milestoneAddDataStateSelector = selectorFamily({
     },
 });
 
-export type MilestoneModData = UpdateMilestoneInput & {
+interface MilestoneModModalState extends ModalState {
   milestoneId: string;
   updateDate: string;
-};
-export type MilestoneModDataKey = keyof MilestoneModData;
-export type MilestoneModDataField<T> = MilestoneModData[Extract<
-  MilestoneModDataKey,
-  T
->];
+}
 
-export const milestoneModModalStateStore = atom<ModalState>({
+export const milestoneModModalStateStore = atom<MilestoneModModalState>({
   key: 'milestoneModModalStateStore',
   default: {
     isOpen: false,
     title: '마일스톤 수정',
+    milestoneId: '0',
+    updateDate: '',
   },
 });
 
-const DEFAULT_MOD_MILESTONE_DATA = {
-  milestoneId: '0',
+export type MilestoneModDataKey = keyof UpdateMilestoneInput;
+export type MilestoneModDataField<T> = UpdateMilestoneInput[Extract<
+  MilestoneModDataKey,
+  T
+>];
+
+const DEFAULT_MOD_MILESTONE_DATA: UpdateMilestoneInput = {
   startDate: '',
   endDate: '',
-  updateDate: '',
   content: '',
 };
 
-export const milestoneModDataStateStore = atom<MilestoneModData>({
+export const milestoneModDataStateStore = atom<UpdateMilestoneInput>({
   key: 'milestoneModDataStateStore',
   default: DEFAULT_MOD_MILESTONE_DATA,
 });
