@@ -12,7 +12,7 @@ import { useProjectCrewList } from '@/features/project/auth/myProject/crews/serv
 
 export const DEFAULT_CREW_OPTION = { name: '멤버 선택', value: '0' } as const;
 
-type ProejctCrewSelectProps = {
+type ProjectCrewSelectProps = {
   disabled: boolean;
   assignedUserId: string;
   setAssignedUserId: (id: string) => void;
@@ -22,7 +22,7 @@ const ProjectCrewSelect = ({
   disabled,
   assignedUserId,
   setAssignedUserId,
-}: ProejctCrewSelectProps) => {
+}: ProjectCrewSelectProps) => {
   const projectId = useRecoilValue(projectIdState)!;
   const {
     data: {

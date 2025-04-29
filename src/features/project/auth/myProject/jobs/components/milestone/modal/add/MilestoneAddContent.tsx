@@ -5,6 +5,8 @@ import {
   milestoneAddDataStateSelector,
 } from '@/features/project/auth/myProject/jobs/store/MilestoneModalStateStore';
 
+const INPUT_ID = 'milestoneAddContent';
+
 const MilestoneAddContent = () => {
   const [content, setContent] = useRecoilState(
     milestoneAddDataStateSelector('content'),
@@ -13,14 +15,14 @@ const MilestoneAddContent = () => {
   return (
     <div className='flex'>
       <label
-        htmlFor='milestoneAddContent'
+        htmlFor={INPUT_ID}
         className='text-gray-700 font-semibold self-center'
       >
         내용
       </label>
       <div className='w-[350px] mobile:w-[220px] ml-auto'>
         <Input
-          id='milestoneAddContent'
+          id={INPUT_ID}
           placeholder='내용을 입력해주세요.'
           value={content as MilestoneAddDataField<'content'>}
           onChange={(e) => setContent(e.target.value)}
