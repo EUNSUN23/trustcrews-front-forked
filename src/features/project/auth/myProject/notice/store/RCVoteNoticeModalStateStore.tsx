@@ -5,6 +5,7 @@ type RCVoteNoticeModalState = ModalState & {
   voteId: string;
   alertId: string;
   applyId: string;
+  userAuth: string;
 };
 
 export const rcVoteNoticeModalState = atom<RCVoteNoticeModalState>({
@@ -15,5 +16,6 @@ export const rcVoteNoticeModalState = atom<RCVoteNoticeModalState>({
     voteId: '0',
     alertId: '0',
     applyId: '0',
+    userAuth: '',
   },
 });

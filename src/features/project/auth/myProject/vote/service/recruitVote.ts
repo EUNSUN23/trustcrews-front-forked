@@ -1,25 +1,16 @@
 import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { ProjectAuthCode } from '@/features/project/auth/myProject/global/types/projectAuth';
-import { VoteOptionCode } from '@/features/project/auth/myProject/vote/types';
 import { z } from 'zod';
 import { ApiResult } from '@/utils/type';
 import { RECRUIT_NOTICE_QUERY_KEY } from '@/features/project/auth/myProject/notice/service/getRCVoteNotice';
 
-export type VoteRecruitReqData = {
-  voteId: bigint;
-  applyId: bigint;
-  authMap: ProjectAuthCode;
-  answer: VoteOptionCode;
-};
-
 export type RecruitVoteBaseParams = {
   voteId: bigint;
   applyId: bigint;
-  authMap: ProjectAuthCode;
+  userAuth: string;
 };
 
-const recruitVoteAnswerInputSchema = z.object({
+export const recruitVoteAnswerInputSchema = z.object({
   answer: z.string().nonempty({ message: '찬성 혹은 반대를 선택해주세요.' }),
 });
 
@@ -27,8 +18,11 @@ type RecruitVoteAnswerInput = z.infer<typeof recruitVoteAnswerInputSchema>;
 
 type VoteRecruitReqParams = RecruitVoteBaseParams & RecruitVoteAnswerInput;
 
-export const recruitVote = async (reqData: VoteRecruitReqParams) => {
-  return await request('POST', '/api/project/vote/recruit', reqData);
+export const recruitVote = async (data: VoteRecruitReqParams) => {
+  return await request('POST', '/api/project/vote/recruit', {
+    ...data,
+    authMap: data.userAuth,
+  });
 };
 
 type VoteRecruitRes = ApiResult<typeof recruitVote>;
