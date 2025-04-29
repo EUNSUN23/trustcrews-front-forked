@@ -17,6 +17,7 @@ import MilestoneModModal from '@/features/project/auth/myProject/jobs/components
 import MilestoneAddModal from '@/features/project/auth/myProject/jobs/components/milestone/modal/add/MilestoneAddModal';
 import TaskAddModal from '@/features/project/auth/myProject/jobs/components/task/modal/add/TaskAddModal';
 import TaskModModal from '@/features/project/auth/myProject/jobs/components/task/modal/mod/TaskModModal';
+import { bigIntToString } from '@/utils/common';
 
 const { milestoneId: DEFAULT_MILESTONE_ID } = DEFAULT_ACTIVE_MILESTONE;
 
@@ -34,7 +35,7 @@ const Job = () => {
   useEffect(() => {
     if (initActiveMilestone) {
       setActiveMilestone({
-        milestoneId: initActiveMilestone.milestoneId,
+        milestoneId: bigIntToString(initActiveMilestone.milestoneId),
         index: initActiveMilestone.index,
         startDate: initActiveMilestone.startDate,
         endDate: initActiveMilestone.endDate,

@@ -1,14 +1,14 @@
 import { atom } from 'recoil';
 
 type ActiveMilestoneState = {
-  milestoneId: bigint;
+  milestoneId: string;
   index: number;
   startDate: string;
   endDate: string;
 };
 
 export const DEFAULT_ACTIVE_MILESTONE = {
-  milestoneId: 0n,
+  milestoneId: '0',
   index: 0,
   startDate: '',
   endDate: '',
