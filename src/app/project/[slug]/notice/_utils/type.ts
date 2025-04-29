@@ -1,6 +1,5 @@
 import { DataId, Position } from '@/utils/type';
 import { AlertMenu } from '@/service/project/alert/type';
-import { TaskPointOptions } from '@/app/project/[slug]/notice/_utils/constant';
 
 /**
  * 프로젝트 알림 기본데이터
@@ -18,18 +17,4 @@ export type Notice = {
   content: string;
   position: Position | null;
   checkedStatus: boolean;
-};
-
-export type PointTypeKey = keyof typeof TaskPointOptions;
-export type PointTypeName = (typeof TaskPointOptions)[PointTypeKey]['name'];
-export type PointTypeValue = (typeof TaskPointOptions)[PointTypeKey]['value'];
-
-// 업무 알림 > 신뢰점수
-export type TaskScore = {
-  scoreTypeId: PointTypeValue;
-};
-
-// 모집 알림 > isPermit
-export type RecruitPermit = {
-  isPermit: boolean | null;
 };

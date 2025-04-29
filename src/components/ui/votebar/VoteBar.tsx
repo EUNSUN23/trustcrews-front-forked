@@ -1,7 +1,7 @@
 'use client';
 
 import { ChangeEvent, useState } from 'react';
-import { VoteOption } from '@/service/project/vote/constant';
+import { VOTE_OPTIONS } from '@/features/project/auth/myProject/vote/constants/voteOptions';
 
 type VoteBarProps = {
   group: string;
@@ -36,10 +36,10 @@ function VoteBar({
     : 'bg-gray-400/80';
   const barWidth = counts > 0 ? Math.floor((counts / maxCounts) * 100) : 0;
   const barColor = disabled
-    ? value === VoteOption.VODA1001.code
+    ? value === VOTE_OPTIONS.VODA1001.code
       ? barColorVariants.green_disabled
       : barColorVariants.red_disabled
-    : value === VoteOption.VODA1001.code
+    : value === VOTE_OPTIONS.VODA1001.code
       ? barColorVariants.green
       : barColorVariants.red;
 
