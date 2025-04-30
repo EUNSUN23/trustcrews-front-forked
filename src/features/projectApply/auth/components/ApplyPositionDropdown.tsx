@@ -12,8 +12,8 @@ import {
   Transition,
 } from '@headlessui/react';
 import { bigIntToString, classNames, numStrToBigInt } from '@/utils/common';
-import { compareItems } from '@/app/_boardUtil/common';
 import { DEFAULT_POSITION_OPTION } from '@/utils/constant';
+import { compareItems } from '@/utils/compareItems';
 
 function RecruitPositionDropdown({
   recruitPositions,
