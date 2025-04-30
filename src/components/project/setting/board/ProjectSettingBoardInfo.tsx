@@ -16,7 +16,7 @@ import ProjectSettingBoardInfoSkeleton from '@/components/project/setting/board/
 import SettingContainer from '@/components/project/setting/SettingContainer';
 import SettingTitle from '@/components/project/setting/SettingTitle';
 import SettingBody from '@/components/project/setting/SettingBody';
-import { ProjectAuthMap } from '@/features/project/auth/myProject/global/types/projectAuth';
+import { ProjectAuthMap } from '@/features/project/auth/global/types/projectAuth';
 
 function ProjectSettingBoardInfo({
   projectId,
