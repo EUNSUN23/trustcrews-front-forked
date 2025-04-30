@@ -5,8 +5,8 @@ import { v4 } from 'uuid';
 import { CreateTaskInput } from '@/features/project/auth/jobs/service/task/createTask';
 import { UpdateTaskInput } from '@/features/project/auth/jobs/service/task/updateTask';
 import { TASK_STATUS } from '@/features/project/auth/jobs/constants/task/taskStatus';
-import { ProjectAuthCode } from '@/features/project/auth/global/types/projectAuth';
-import { PROJECT_AUTH_CODE } from '@/features/project/auth/global/constants/projectAuthCode';
+import { ProjectAuthCode } from '@/features/project/auth/projectManageAuth/types/projectAuth';
+import { PROJECT_AUTH_CODE } from '@/features/project/auth/projectManageAuth/constants/projectAuthCode';
 
 const {
   PS002: { code: TASK_PROCESSING },
