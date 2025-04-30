@@ -3,8 +3,8 @@
 import Button from '@/components/ui/button';
 import { FaPlus } from '@react-icons/all-files/fa/FaPlus';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { taskAddModalStateStore } from '@/features/project/auth/jobs/store/TaskModalStateStore';
-import { activeMilestoneStateStore } from '@/features/project/auth/jobs/store/ActiveMilestoneStateStore';
+import { taskAddModalStateStore } from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
+import { activeMilestoneStateStore } from '@/features/project/auth/projectJobs/store/ActiveMilestoneStateStore';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 
 const TaskAddButton = () => {

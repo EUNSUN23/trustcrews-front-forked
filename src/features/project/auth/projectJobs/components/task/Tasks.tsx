@@ -2,11 +2,11 @@
 
 import CommonPagination from '@/components/ui/CommonPagination';
 import { ITEM_COUNT } from '@/utils/constant';
-import useTasks from '@/features/project/auth/jobs/service/task/getTaskList';
-import TaskCard from '@/features/project/auth/jobs/components/task/card/TaskCard';
+import useTasks from '@/features/project/auth/projectJobs/service/task/getTaskList';
+import TaskCard from '@/features/project/auth/projectJobs/components/task/card/TaskCard';
 import { useRecoilValue } from 'recoil';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
-import { activeMilestoneStateStore } from '@/features/project/auth/jobs/store/ActiveMilestoneStateStore';
+import { activeMilestoneStateStore } from '@/features/project/auth/projectJobs/store/ActiveMilestoneStateStore';
 import { numStrToBigInt } from '@/utils/common';
 import { useState } from 'react';
 

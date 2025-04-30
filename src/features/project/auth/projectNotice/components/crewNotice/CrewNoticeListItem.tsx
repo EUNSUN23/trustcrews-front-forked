@@ -1,6 +1,6 @@
 import NoticeBadge from '@/components/ui/badge/NoticeBadge';
-import { NOTICE_TYPES } from '@/features/project/auth/notice/constants/noticeTypes';
-import { CrewNoticeData } from '@/features/project/auth/notice/service/getCrewNoticeList';
+import { NOTICE_TYPES } from '@/features/project/auth/projectNotice/constants/noticeTypes';
+import { CrewNoticeData } from '@/features/project/auth/projectNotice/service/getCrewNoticeList';
 
 type CrewNoticeListItemProps = {
   data: CrewNoticeData;

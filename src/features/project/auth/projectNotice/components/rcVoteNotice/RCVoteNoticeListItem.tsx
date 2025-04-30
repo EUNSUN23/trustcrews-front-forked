@@ -1,11 +1,11 @@
 import NoticeBadge from '@/components/ui/badge/NoticeBadge';
 import VoteStatusBadge from '@/components/ui/badge/VoteStatusBadge';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { NOTICE_TYPES } from '@/features/project/auth/notice/constants/noticeTypes';
-import { rcVoteNoticeModalState } from '@/features/project/auth/notice/store/RCVoteNoticeModalStateStore';
+import { NOTICE_TYPES } from '@/features/project/auth/projectNotice/constants/noticeTypes';
+import { rcVoteNoticeModalState } from '@/features/project/auth/projectNotice/store/RCVoteNoticeModalStateStore';
 import { bigIntToString } from '@/utils/common';
 import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
-import { RCVoteNoticeData } from '@/features/project/auth/notice/service/getRCVoteNoticeList';
+import { RCVoteNoticeData } from '@/features/project/auth/projectNotice/service/getRCVoteNoticeList';
 
 const {
   PRA1002: { code: RecruitNoticeCode, name: RecruitNoticeName },
