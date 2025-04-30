@@ -1,7 +1,7 @@
 import AvatarSkeleton from '@/components/ui/skeleton/AvatarSkeleton';
 import Skeleton from '@/components/ui/skeleton/Skeleton';
 
-function VAlertRecruitModalSkeleton() {
+const RCVoteNoticeModalSkeleton = () => {
   return (
     <section className='tablet:max-w-[400px] mx-auto pt-5 flex-col items-center border-t border-b border-grey300 '>
       <AvatarSkeleton size='sm' className='mx-auto' />
@@ -36,6 +36,6 @@ function VAlertRecruitModalSkeleton() {
       </section>
     </section>
   );
-}
+};
 
-export default VAlertRecruitModalSkeleton;
+export default RCVoteNoticeModalSkeleton;
