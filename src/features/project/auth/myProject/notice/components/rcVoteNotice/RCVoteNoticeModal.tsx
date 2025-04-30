@@ -4,6 +4,8 @@ import Modal from '@/components/ui/Modal';
 import RCVoteNoticeModalContents from '@/features/project/auth/myProject/notice/components/rcVoteNotice/RCVoteNoticeModalContents';
 import { rcVoteNoticeModalState } from '@/features/project/auth/myProject/notice/store/RCVoteNoticeModalStateStore';
 import useModalPortalElement from '@/hooks/common/useModalPortalElement';
+import { Suspense } from 'react';
+import RCVoteNoticeModalSkeleton from '@/features/project/auth/myProject/notice/components/rcVoteNotice/RCVoteNoticeModalSkeleton';
 
 const RCVoteNoticeModal = () => {
   const resetRCVoteNoticeModalState = useResetRecoilState(
@@ -20,10 +22,12 @@ const RCVoteNoticeModal = () => {
         ? createPortal(
             <Modal
               isOpen={isOpen}
-              close={() => resetRCVoteNoticeModalState()}
+              close={resetRCVoteNoticeModalState}
               title={title}
             >
-              <RCVoteNoticeModalContents />
+              <Suspense fallback={<RCVoteNoticeModalSkeleton />}>
+                <RCVoteNoticeModalContents />
+              </Suspense>
             </Modal>,
             portalElement as Element,
           )
