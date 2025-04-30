@@ -1,10 +1,10 @@
 'use client';
 
 import { MouseEvent } from 'react';
-import MilestoneCardMenu from '@/features/project/auth/jobs/components/milestone/card/MilestoneCardMenu';
+import MilestoneCardMenu from '@/features/project/auth/projectJobs/components/milestone/card/MilestoneCardMenu';
 import { useRecoilState } from 'recoil';
-import { activeMilestoneStateStore } from '@/features/project/auth/jobs/store/ActiveMilestoneStateStore';
-import { MilestoneInfo } from '@/features/project/auth/jobs/types/milestone';
+import { activeMilestoneStateStore } from '@/features/project/auth/projectJobs/store/ActiveMilestoneStateStore';
+import { MilestoneInfo } from '@/features/project/auth/projectJobs/types/milestone';
 import { bigIntToString, numStrToBigInt } from '@/utils/common';
 import { clsx } from 'clsx';
 

@@ -4,16 +4,16 @@ import ProjectRoleBadge from '@/components/ui/badge/ProjectRoleBadge';
 import VoteStatusBadge from '@/components/ui/badge/VoteStatusBadge';
 import { useRecoilValue } from 'recoil';
 import { numStrToBigInt } from '@/utils/common';
-import FWVoteNoticeModalSkeleton from '@/features/project/auth/notice/components/fwVoteNotice/FWVoteNoticeModalSkeleton';
+import FWVoteNoticeModalSkeleton from '@/features/project/auth/projectNotice/components/fwVoteNotice/FWVoteNoticeModalSkeleton';
 import VoteBar from '@/components/ui/votebar/VoteBar';
-import { VOTE_OPTIONS } from '@/features/project/auth/vote/constants/voteOptions';
+import { VOTE_OPTIONS } from '@/features/project/auth/projectVote/constants/voteOptions';
 import {
   fWVoteAnswerInputSchema,
   useForceWithdrawVote,
-} from '@/features/project/auth/vote/service/forceWithdrawVote';
+} from '@/features/project/auth/projectVote/service/forceWithdrawVote';
 import useSnackbar from '@/hooks/common/useSnackbar';
-import { useFWVoteNotice } from '@/features/project/auth/notice/service/getFWVoteNotice';
-import { fwNoticeModalState } from '@/features/project/auth/notice/store/FWVoteNoticeModalStateStore';
+import { useFWVoteNotice } from '@/features/project/auth/projectNotice/service/getFWVoteNotice';
+import { fwNoticeModalState } from '@/features/project/auth/projectNotice/store/FWVoteNoticeModalStateStore';
 import { ZodError } from 'zod';
 
 const {

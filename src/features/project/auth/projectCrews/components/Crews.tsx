@@ -1,6 +1,6 @@
 'use client';
 
-import CrewList from '@/features/project/auth/crews/components/CrewList';
+import CrewList from '@/features/project/auth/projectCrews/components/CrewList';
 import CrewListSkeleton from '@/components/ui/skeleton/project/crews/CrewListSkeleton';
 import { Suspense } from 'react';
 
