@@ -2,7 +2,8 @@ import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
 import { ApiResult } from '@/utils/type';
-import { RECRUIT_NOTICE_QUERY_KEY } from '@/features/project/auth/myProject/notice/service/getRCVoteNotice';
+import { RC_VOTE_NOTICE_LIST_QUERY_KEY } from '@/features/project/auth/myProject/notice/service/getRCVoteNoticeList';
+import { RCVOTE_NOTICE_QUERY_KEY } from '@/features/project/auth/myProject/notice/service/getRCVoteNotice';
 
 export type RecruitVoteBaseParams = {
   voteId: bigint;
@@ -45,7 +46,10 @@ export const useRecruitVote = (
     onSuccess: async (res) => {
       if (res.result === 'success') {
         await queryClient.invalidateQueries({
-          queryKey: [RECRUIT_NOTICE_QUERY_KEY],
+          queryKey: [RC_VOTE_NOTICE_LIST_QUERY_KEY],
+        });
+        await queryClient.invalidateQueries({
+          queryKey: [RCVOTE_NOTICE_QUERY_KEY],
         });
         onSuccess?.(res);
       } else {
