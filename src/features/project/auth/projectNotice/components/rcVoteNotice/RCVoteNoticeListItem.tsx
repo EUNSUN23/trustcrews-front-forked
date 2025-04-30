@@ -4,7 +4,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { NOTICE_TYPES } from '@/features/project/auth/notice/constants/noticeTypes';
 import { rcVoteNoticeModalState } from '@/features/project/auth/notice/store/RCVoteNoticeModalStateStore';
 import { bigIntToString } from '@/utils/common';
-import { projectManageAuthStateStore } from '@/features/project/auth/global/store/ProjectManageAuthStateStore';
+import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 import { RCVoteNoticeData } from '@/features/project/auth/notice/service/getRCVoteNoticeList';
 
 const {
