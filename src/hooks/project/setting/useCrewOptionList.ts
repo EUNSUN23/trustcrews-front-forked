@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { getCrewAuthOptions } from '@/service/setting/setting';
 import { PageResponseBody } from '@/utils/type';
-import { ProjectAuthMap } from '@/features/project/auth/global/types/projectAuth';
+import { ProjectAuthMap } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 
 /**
  * 프로젝트 크루 권한 옵션 조회
