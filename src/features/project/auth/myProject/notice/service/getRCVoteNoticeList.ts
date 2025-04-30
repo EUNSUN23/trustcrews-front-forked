@@ -27,9 +27,15 @@ export const getRCVoteNoticeList = async (
   );
 };
 
+export const RC_VOTE_NOTICE_LIST_QUERY_KEY = 'rcVoteNoticeList';
+
 export const useRCVoteNoticeList = (projectId: bigint, pageIndex: number) => {
   return useSuspenseQuery({
-    queryKey: ['rcVoteNoticeList', bigIntToString(projectId), pageIndex],
+    queryKey: [
+      RC_VOTE_NOTICE_LIST_QUERY_KEY,
+      bigIntToString(projectId),
+      pageIndex,
+    ],
     queryFn: () =>
       getRCVoteNoticeList(projectId, pageIndex, ITEM_COUNT.LIST_SM),
     refetchInterval: 60000,
