@@ -11,11 +11,11 @@ export const getProjectCrewList = async ({
   return await request('GET', `/api/project/crews/list?projectId=${projectId}`);
 };
 
-export const getProjectCrewListQueryKey = 'crewList';
+export const CREW_LIST_QUERY_KEY = 'crewList';
 
 export const useProjectCrewList = (projectId: string) => {
   return useSuspenseQuery({
-    queryKey: [getProjectCrewListQueryKey, projectId],
+    queryKey: [CREW_LIST_QUERY_KEY, projectId],
     queryFn: () => getProjectCrewList({ projectId }),
   });
 };

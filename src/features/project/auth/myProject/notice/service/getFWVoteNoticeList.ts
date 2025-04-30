@@ -29,9 +29,15 @@ export const getFWVoteNoticeList = async (
   );
 };
 
+export const FWVOTE_NOTICE_LIST_QUERY_KEY = 'fwVoteNoticeList';
+
 export const useFWVoteNoticeList = (projectId: bigint, pageIndex: number) => {
   return useSuspenseQuery({
-    queryKey: ['fwVoteNoticeList', bigIntToString(projectId), pageIndex],
+    queryKey: [
+      FWVOTE_NOTICE_LIST_QUERY_KEY,
+      bigIntToString(projectId),
+      pageIndex,
+    ],
     queryFn: () =>
       getFWVoteNoticeList(projectId, pageIndex, ITEM_COUNT.LIST_SM),
     refetchInterval: 60000,
