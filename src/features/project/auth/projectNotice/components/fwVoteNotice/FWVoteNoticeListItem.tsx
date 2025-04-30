@@ -1,9 +1,9 @@
 import NoticeBadge from '@/components/ui/badge/NoticeBadge';
 import VoteStatusBadge from '@/components/ui/badge/VoteStatusBadge';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { NOTICE_TYPES } from '@/features/project/auth/notice/constants/noticeTypes';
-import { fwNoticeModalState } from '@/features/project/auth/notice/store/FWVoteNoticeModalStateStore';
-import { FWVoteNoticeData } from '@/features/project/auth/notice/service/getFWVoteNoticeList';
+import { NOTICE_TYPES } from '@/features/project/auth/projectNotice/constants/noticeTypes';
+import { fwNoticeModalState } from '@/features/project/auth/projectNotice/store/FWVoteNoticeModalStateStore';
+import { FWVoteNoticeData } from '@/features/project/auth/projectNotice/service/getFWVoteNoticeList';
 import { bigIntToString } from '@/utils/common';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';

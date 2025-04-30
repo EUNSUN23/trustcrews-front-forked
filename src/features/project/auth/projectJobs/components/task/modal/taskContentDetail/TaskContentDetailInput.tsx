@@ -2,14 +2,14 @@
 
 import { ChangeEvent, useRef, useState } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import TaskContentCancelDeleteButton from '@/features/project/auth/jobs/components/task/modal/taskContentDetail/TaskContentCancelDeleteButton';
-import TaskContentEditFinishButton from '@/features/project/auth/jobs/components/task/modal/taskContentDetail/TaskContentEditFinishButton';
+import TaskContentCancelDeleteButton from '@/features/project/auth/projectJobs/components/task/modal/taskContentDetail/TaskContentCancelDeleteButton';
+import TaskContentEditFinishButton from '@/features/project/auth/projectJobs/components/task/modal/taskContentDetail/TaskContentEditFinishButton';
 import {
   taskContentDetailFieldSelector,
   taskModalContentDetailSelector,
   taskModalEditDisabledSelector,
-} from '@/features/project/auth/jobs/store/TaskModalStateStore';
-import { TaskContentDetails } from '@/features/project/auth/jobs/types/task';
+} from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
+import { TaskContentDetails } from '@/features/project/auth/projectJobs/types/task';
 import { clsx } from 'clsx';
 import { cva } from 'class-variance-authority';
 

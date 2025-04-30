@@ -1,10 +1,10 @@
-import ProjectCrewSelect from '@/features/project/auth/jobs/components/ProjectCrewSelect';
+import ProjectCrewSelect from '@/features/project/auth/projectJobs/components/ProjectCrewSelect';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import {
   taskModalDataFieldSelector,
   taskModalEditDisabledSelector,
   TaskModalType,
-} from '@/features/project/auth/jobs/store/TaskModalStateStore';
+} from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
 import { Suspense } from 'react';
 import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
 import { Field, Label } from '@headlessui/react';

@@ -2,20 +2,20 @@ import { useRecoilValue, useResetRecoilState } from 'recoil';
 import useModalPortalElement from '@/hooks/common/useModalPortalElement';
 import { createPortal } from 'react-dom';
 import Modal from '@/components/ui/Modal';
-import TaskDate from '@/features/project/auth/jobs/components/task/modal/TaskDate';
-import TaskAssignedCrew from '@/features/project/auth/jobs/components/task/modal/TaskAssignedCrew';
-import TaskContentDetail from '@/features/project/auth/jobs/components/task/modal/taskContentDetail/TaskContentDetail';
-import TaskContent from '@/features/project/auth/jobs/components/task/modal/TaskContent';
+import TaskDate from '@/features/project/auth/projectJobs/components/task/modal/TaskDate';
+import TaskAssignedCrew from '@/features/project/auth/projectJobs/components/task/modal/TaskAssignedCrew';
+import TaskContentDetail from '@/features/project/auth/projectJobs/components/task/modal/taskContentDetail/TaskContentDetail';
+import TaskContent from '@/features/project/auth/projectJobs/components/task/modal/TaskContent';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { ZodError } from 'zod';
 import useCreateTask, {
   createTaskInputSchema,
-} from '@/features/project/auth/jobs/service/task/createTask';
+} from '@/features/project/auth/projectJobs/service/task/createTask';
 import {
   taskAddModalDataStateStore,
   taskAddModalStateStore,
   TaskModalType,
-} from '@/features/project/auth/jobs/store/TaskModalStateStore';
+} from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
 import { numStrToBigInt } from '@/utils/common';
 
 const modalType: TaskModalType = 'add';

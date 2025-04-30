@@ -2,7 +2,7 @@ import { ApiResult, ResponseBody } from '@/utils/type';
 import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
-import { getMilestonesQueryKey } from '@/features/project/auth/jobs/service/milestone/getMilestones';
+import { getMilestonesQueryKey } from '@/features/project/auth/projectJobs/service/milestone/getMilestones';
 import { ProjectAuthCode } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 
 export const createMilestoneInputSchema = z.object({

@@ -6,7 +6,7 @@ import {
   taskModalDataFieldSelector,
   taskModalEditDisabledSelector,
   TaskModalType,
-} from '@/features/project/auth/jobs/store/TaskModalStateStore';
+} from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
 import { ChangeEvent } from 'react';
 
 const INPUT_ID = 'taskContent';

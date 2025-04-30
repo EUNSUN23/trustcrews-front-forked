@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import CommonPagination from '@/components/ui/CommonPagination';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
-import NoItemsContent from '@/features/project/auth/notice/components/NoItemsContent';
-import CrewNoticeListItem from '@/features/project/auth/notice/components/crewNotice/CrewNoticeListItem';
-import { useCrewNoticeList } from '@/features/project/auth/notice/service/getCrewNoticeList';
+import NoItemsContent from '@/features/project/auth/projectNotice/components/NoItemsContent';
+import CrewNoticeListItem from '@/features/project/auth/projectNotice/components/crewNotice/CrewNoticeListItem';
+import { useCrewNoticeList } from '@/features/project/auth/projectNotice/service/getCrewNoticeList';
 import { useRecoilValue } from 'recoil';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 import { numStrToBigInt } from '@/utils/common';

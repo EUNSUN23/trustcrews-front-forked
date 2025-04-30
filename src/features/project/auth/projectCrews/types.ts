@@ -1,6 +1,6 @@
 import { ProjectAuthMap } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 import { Position, ProjectUser, User } from '@/utils/type';
-import { CREW_STATUS } from '@/features/project/auth/crews/constants/crewStatus';
+import { CREW_STATUS } from '@/features/project/auth/projectCrews/constants/crewStatus';
 import { TaskPointType } from '@/features/project/auth/global/types/TaskPointType';
 
 export type CrewStatusKey = keyof typeof CREW_STATUS;

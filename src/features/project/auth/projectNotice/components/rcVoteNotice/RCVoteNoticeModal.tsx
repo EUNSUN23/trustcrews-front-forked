@@ -1,11 +1,11 @@
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { createPortal } from 'react-dom';
 import Modal from '@/components/ui/Modal';
-import RCVoteNoticeModalContents from '@/features/project/auth/notice/components/rcVoteNotice/RCVoteNoticeModalContents';
-import { rcVoteNoticeModalState } from '@/features/project/auth/notice/store/RCVoteNoticeModalStateStore';
+import RCVoteNoticeModalContents from '@/features/project/auth/projectNotice/components/rcVoteNotice/RCVoteNoticeModalContents';
+import { rcVoteNoticeModalState } from '@/features/project/auth/projectNotice/store/RCVoteNoticeModalStateStore';
 import useModalPortalElement from '@/hooks/common/useModalPortalElement';
 import { Suspense } from 'react';
-import RCVoteNoticeModalSkeleton from '@/features/project/auth/notice/components/rcVoteNotice/RCVoteNoticeModalSkeleton';
+import RCVoteNoticeModalSkeleton from '@/features/project/auth/projectNotice/components/rcVoteNotice/RCVoteNoticeModalSkeleton';
 
 const RCVoteNoticeModal = () => {
   const resetRCVoteNoticeModalState = useResetRecoilState(

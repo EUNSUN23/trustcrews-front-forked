@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { RiAddLine } from '@react-icons/all-files/ri/RiAddLine';
-import TaskContentDetailAddInput from '@/features/project/auth/jobs/components/task/modal/taskContentDetail/TaskContentDetailAddInput';
+import TaskContentDetailAddInput from '@/features/project/auth/projectJobs/components/task/modal/taskContentDetail/TaskContentDetailAddInput';
 import { useRecoilValue } from 'recoil';
 import {
   taskModalContentDetailSelector,
   taskModalEditDisabledSelector,
   TaskModalType,
-} from '@/features/project/auth/jobs/store/TaskModalStateStore';
-import { MAX_TASK_CONTENT_DETAIL } from '@/features/project/auth/jobs/constants/task/maxTaskContentDetail';
+} from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
+import { MAX_TASK_CONTENT_DETAIL } from '@/features/project/auth/projectJobs/constants/task/maxTaskContentDetail';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import clsx from 'clsx';
 

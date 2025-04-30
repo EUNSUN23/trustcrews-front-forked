@@ -11,17 +11,17 @@ import {
 } from '@headlessui/react';
 import { bigIntToString, numStrToBigInt } from '@/utils/common';
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
-import { useDeleteMilestone } from '@/features/project/auth/jobs/service/milestone/deleteMilestone';
+import { useDeleteMilestone } from '@/features/project/auth/projectJobs/service/milestone/deleteMilestone';
 import useSnackbar from '@/hooks/common/useSnackbar';
-import { activeMilestoneStateStore } from '@/features/project/auth/jobs/store/ActiveMilestoneStateStore';
+import { activeMilestoneStateStore } from '@/features/project/auth/projectJobs/store/ActiveMilestoneStateStore';
 import {
   milestoneModDataStateStore,
   milestoneModModalStateStore,
-} from '@/features/project/auth/jobs/store/MilestoneModalStateStore';
+} from '@/features/project/auth/projectJobs/store/MilestoneModalStateStore';
 import { cva } from 'class-variance-authority';
 import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
-import { MilestoneInfo } from '@/features/project/auth/jobs/types/milestone';
+import { MilestoneInfo } from '@/features/project/auth/projectJobs/types/milestone';
 
 type MilestoneCardMenuProps = {
   milestoneInfo: MilestoneInfo;
