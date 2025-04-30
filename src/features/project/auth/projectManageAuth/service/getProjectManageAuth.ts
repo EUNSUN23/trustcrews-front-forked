@@ -1,7 +1,7 @@
 import { ResponseBody } from '@/utils/type';
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { ProjectAuthMap } from '@/features/project/auth/global/types/projectAuth';
+import { ProjectAuthMap } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 
 export const getProjectManageAuth = async (
   projectId: string | bigint,
