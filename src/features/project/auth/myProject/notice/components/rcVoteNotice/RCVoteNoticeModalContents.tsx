@@ -2,7 +2,7 @@ import Avatar from '@/components/ui/Avatar';
 import { TechStackItem } from '@/utils/type';
 import TechStackImage from '@/components/ui/TechStackImage';
 import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
-import VAlertRecruitModalSkeleton from '@/components/ui/skeleton/project/alert/VAlertRecruitModalSkeleton';
+import RCVoteNoticeModalSkeleton from '@/features/project/auth/myProject/notice/components/rcVoteNotice/RCVoteNoticeModalSkeleton';
 import VoteStatusBadge from '@/components/ui/badge/VoteStatusBadge';
 import ApplicantProjectHistory from '@/features/project/auth/myProject/notice/components/rcVoteNotice/ApplicantProjectHisotry';
 import VoteBar from '@/components/ui/votebar/VoteBar';
@@ -49,7 +49,7 @@ const RCVoteNoticeModalContents = () => {
     numStrToBigInt(alertId),
   );
 
-  if (isUpdating) return <VAlertRecruitModalSkeleton />;
+  if (isUpdating) return <RCVoteNoticeModalSkeleton />;
 
   const {
     applicantInfo: {

@@ -18,8 +18,6 @@ const CrewNoticeList = () => {
     },
   } = useCrewNoticeList(numStrToBigInt(projectId), pageIndex);
 
-  // if (isFetching) return <NoticeListLoader />;
-
   return (
     <>
       <div className='alertList'>
