@@ -17,8 +17,6 @@ const RCVoteNoticeList = () => {
     },
   } = useRCVoteNoticeList(numStrToBigInt(projectId), pageIndex);
 
-  // if (isFetching) return <NoticeListLoader />;
-
   return (
     <>
       <div className='alertList'>

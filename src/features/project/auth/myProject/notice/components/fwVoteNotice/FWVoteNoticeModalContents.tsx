@@ -4,7 +4,7 @@ import ProjectRoleBadge from '@/components/ui/badge/ProjectRoleBadge';
 import VoteStatusBadge from '@/components/ui/badge/VoteStatusBadge';
 import { useRecoilValue } from 'recoil';
 import { numStrToBigInt } from '@/utils/common';
-import FWVoteNoticeModalSkeleton from '@/components/ui/skeleton/project/alert/FWVoteNoticeModalSkeleton';
+import FWVoteNoticeModalSkeleton from '@/features/project/auth/myProject/notice/components/fwVoteNotice/FWVoteNoticeModalSkeleton';
 import VoteBar from '@/components/ui/votebar/VoteBar';
 import { VOTE_OPTIONS } from '@/features/project/auth/myProject/vote/constants/voteOptions';
 import {
