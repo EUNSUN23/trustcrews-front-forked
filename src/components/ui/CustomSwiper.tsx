@@ -10,7 +10,7 @@ import { Grid, Navigation, Pagination } from 'swiper/modules';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useRecoilValue } from 'recoil';
-import { activeMilestoneStateStore } from '@/features/project/auth/jobs/store/ActiveMilestoneStateStore';
+import { activeMilestoneStateStore } from '@/features/project/auth/projectJobs/store/ActiveMilestoneStateStore';
 
 type SlideItem = {
   key: string;

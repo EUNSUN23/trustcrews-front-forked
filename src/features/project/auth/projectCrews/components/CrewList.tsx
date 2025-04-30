@@ -3,11 +3,11 @@
 import Avatar from '@/components/ui/Avatar';
 import ProjectRoleBadge from '@/components/ui/badge/ProjectRoleBadge';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
-import { ProjectCrew } from '@/features/project/auth/crews/types';
-import { useProjectCrewList } from '@/features/project/auth/crews/service/getProjectCrewList';
+import { ProjectCrew } from '@/features/project/auth/projectCrews/types';
+import { useProjectCrewList } from '@/features/project/auth/projectCrews/service/getProjectCrewList';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
-import { crewIdState } from '@/features/project/auth/crews/store/CrewIdStateStore';
+import { crewIdState } from '@/features/project/auth/projectCrews/store/CrewIdStateStore';
 import { projectActiveNavState } from '@/features/project/auth/global/store/ProjectNavTabStateStore';
 import { useTransition } from 'react';
 import { PROJECT_MENU } from '@/features/project/auth/global/constants/projectMenu';

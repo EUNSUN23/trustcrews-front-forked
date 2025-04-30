@@ -1,22 +1,22 @@
 'use client';
 
-import MilestoneAddButton from '@/features/project/auth/jobs/components/milestone/MilestoneAddButton';
-import Milestones from '@/features/project/auth/jobs/components/milestone/Milestones';
-import { useMilestones } from '@/features/project/auth/jobs/service/milestone/getMilestones';
+import MilestoneAddButton from '@/features/project/auth/projectJobs/components/milestone/MilestoneAddButton';
+import Milestones from '@/features/project/auth/projectJobs/components/milestone/Milestones';
+import { useMilestones } from '@/features/project/auth/projectJobs/service/milestone/getMilestones';
 import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
-import TaskAddButton from '@/features/project/auth/jobs/components/task/TaskAddButton';
-import Tasks from '@/features/project/auth/jobs/components/task/Tasks';
+import TaskAddButton from '@/features/project/auth/projectJobs/components/task/TaskAddButton';
+import Tasks from '@/features/project/auth/projectJobs/components/task/Tasks';
 import { Suspense, useEffect } from 'react';
 import {
   activeMilestoneStateStore,
   DEFAULT_ACTIVE_MILESTONE,
-} from '@/features/project/auth/jobs/store/ActiveMilestoneStateStore';
-import JobSkeleton from '@/features/project/auth/jobs/components/JobSkeleton';
-import MilestoneModModal from '@/features/project/auth/jobs/components/milestone/modal/mod/MilestoneModModal';
-import MilestoneAddModal from '@/features/project/auth/jobs/components/milestone/modal/add/MilestoneAddModal';
-import TaskAddModal from '@/features/project/auth/jobs/components/task/modal/add/TaskAddModal';
-import TaskModModal from '@/features/project/auth/jobs/components/task/modal/mod/TaskModModal';
+} from '@/features/project/auth/projectJobs/store/ActiveMilestoneStateStore';
+import JobSkeleton from '@/features/project/auth/projectJobs/components/JobSkeleton';
+import MilestoneModModal from '@/features/project/auth/projectJobs/components/milestone/modal/mod/MilestoneModModal';
+import MilestoneAddModal from '@/features/project/auth/projectJobs/components/milestone/modal/add/MilestoneAddModal';
+import TaskAddModal from '@/features/project/auth/projectJobs/components/task/modal/add/TaskAddModal';
+import TaskModModal from '@/features/project/auth/projectJobs/components/task/modal/mod/TaskModModal';
 import { bigIntToString } from '@/utils/common';
 import TasksSkeleton from '@/components/ui/skeleton/project/task/TasksSkeleton';
 import { ITEM_COUNT } from '@/utils/constant';

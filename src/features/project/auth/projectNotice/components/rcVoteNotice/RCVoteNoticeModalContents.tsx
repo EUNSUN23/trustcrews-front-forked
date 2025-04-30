@@ -2,19 +2,19 @@ import Avatar from '@/components/ui/Avatar';
 import { TechStackItem } from '@/utils/type';
 import TechStackImage from '@/components/ui/TechStackImage';
 import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
-import RCVoteNoticeModalSkeleton from '@/features/project/auth/notice/components/rcVoteNotice/RCVoteNoticeModalSkeleton';
+import RCVoteNoticeModalSkeleton from '@/features/project/auth/projectNotice/components/rcVoteNotice/RCVoteNoticeModalSkeleton';
 import VoteStatusBadge from '@/components/ui/badge/VoteStatusBadge';
-import ApplicantProjectHistory from '@/features/project/auth/notice/components/rcVoteNotice/ApplicantProjectHisotry';
+import ApplicantProjectHistory from '@/features/project/auth/projectNotice/components/rcVoteNotice/ApplicantProjectHisotry';
 import VoteBar from '@/components/ui/votebar/VoteBar';
-import { VOTE_OPTIONS } from '@/features/project/auth/vote/constants/voteOptions';
+import { VOTE_OPTIONS } from '@/features/project/auth/projectVote/constants/voteOptions';
 import {
   recruitVoteAnswerInputSchema,
   useRecruitVote,
-} from '@/features/project/auth/vote/service/recruitVote';
+} from '@/features/project/auth/projectVote/service/recruitVote';
 import useSnackbar from '@/hooks/common/useSnackbar';
-import { useRecruitNotice } from '@/features/project/auth/notice/service/getRCVoteNotice';
+import { useRecruitNotice } from '@/features/project/auth/projectNotice/service/getRCVoteNotice';
 import { useRecoilValue } from 'recoil';
-import { rcVoteNoticeModalState } from '@/features/project/auth/notice/store/RCVoteNoticeModalStateStore';
+import { rcVoteNoticeModalState } from '@/features/project/auth/projectNotice/store/RCVoteNoticeModalStateStore';
 import { numStrToBigInt } from '@/utils/common';
 import { ZodError } from 'zod';
 
