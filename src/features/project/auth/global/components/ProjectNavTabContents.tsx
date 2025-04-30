@@ -2,8 +2,8 @@
 
 import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
 import { ReactNode, useEffect } from 'react';
-import Job from '@/features/project/auth/jobs/components/Job';
-import JobSkeleton from '@/features/project/auth/jobs/components/JobSkeleton';
+import Job from '@/features/project/auth/projectJobs/components/Job';
+import JobSkeleton from '@/features/project/auth/projectJobs/components/JobSkeleton';
 import { PROJECT_MENU } from '@/features/project/auth/global/constants/projectMenu';
 import { useProjectManageAuth } from '@/features/project/auth/projectManageAuth/service/getProjectManageAuth';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
@@ -12,9 +12,9 @@ import {
   projectManageAuthStateStore,
 } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 import { projectActiveNavState } from '@/features/project/auth/global/store/ProjectNavTabStateStore';
-import Crews from '@/features/project/auth/crews/components/Crews';
-import { CrewDetail } from '@/features/project/auth/crews/components/crewDetail/CrewDetail';
-import { Notice } from '@/features/project/auth/notice/components/Notice';
+import Crews from '@/features/project/auth/projectCrews/components/Crews';
+import { CrewDetail } from '@/features/project/auth/projectCrews/components/crewDetail/CrewDetail';
+import { Notice } from '@/features/project/auth/projectNotice/components/Notice';
 
 const {
   TASK: { value: PROJECT_TASK },

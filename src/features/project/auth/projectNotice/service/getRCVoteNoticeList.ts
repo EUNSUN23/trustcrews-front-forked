@@ -3,8 +3,8 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 import { PageResponseBody } from '@/utils/type';
 import { ITEM_COUNT } from '@/utils/constant';
 import { bigIntToString } from '@/utils/common';
-import { NOTICE_TYPES } from '@/features/project/auth/notice/constants/noticeTypes';
-import { VoteStatusType } from '@/features/project/auth/vote/types';
+import { NOTICE_TYPES } from '@/features/project/auth/projectNotice/constants/noticeTypes';
+import { VoteStatusType } from '@/features/project/auth/projectVote/types';
 
 export type RCVoteNoticeData = {
   alertId: bigint;

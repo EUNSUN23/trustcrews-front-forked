@@ -2,8 +2,8 @@
 
 import TaskStatusBadge from '@/components/ui/badge/TaskStatusBadge';
 import { useMediaQuery } from 'react-responsive';
-import TaskCardMenu from '@/features/project/auth/jobs/components/task/card/TaskCardMenu';
-import { TaskItem } from '@/features/project/auth/jobs/types/task';
+import TaskCardMenu from '@/features/project/auth/projectJobs/components/task/card/TaskCardMenu';
+import { TaskItem } from '@/features/project/auth/projectJobs/types/task';
 
 type TaskCardProps = {
   item: TaskItem;

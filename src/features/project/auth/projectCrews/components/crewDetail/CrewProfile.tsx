@@ -3,14 +3,14 @@
 import Avatar from '@/components/ui/Avatar';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
 import ProjectRoleBadge from '@/components/ui/badge/ProjectRoleBadge';
-import CrewOutButton from '@/features/project/auth/crews/components/crewDetail/CrewOutButton';
+import CrewOutButton from '@/features/project/auth/projectCrews/components/crewDetail/CrewOutButton';
 import { getCookie } from 'cookies-next';
-import CrewFwButton from '@/features/project/auth/crews/components/crewDetail/CrewFWButton';
+import CrewFwButton from '@/features/project/auth/projectCrews/components/crewDetail/CrewFWButton';
 import TechStackImage from '@/components/ui/TechStackImage';
 import { TechStackItem } from '@/utils/type';
 import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
-import { useCrewDetail } from '@/features/project/auth/crews/service/getCrewDetail';
-import { crewIdState } from '@/features/project/auth/crews/store/CrewIdStateStore';
+import { useCrewDetail } from '@/features/project/auth/projectCrews/service/getCrewDetail';
+import { crewIdState } from '@/features/project/auth/projectCrews/store/CrewIdStateStore';
 import { useRecoilValue } from 'recoil';
 import { bigIntToString } from '@/utils/common';
 

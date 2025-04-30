@@ -4,8 +4,8 @@ import {
   CrewFWModalState,
   crewFWModalStateStore,
   DEFAULT_FW_MODAL_STATE,
-} from '@/features/project/auth/crews/store/CrewFWModalStateStore';
-import { ProjectCrewProfile } from '@/features/project/auth/crews/types';
+} from '@/features/project/auth/projectCrews/store/CrewFWModalStateStore';
+import { ProjectCrewProfile } from '@/features/project/auth/projectCrews/types';
 import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 
 const { title: DEFALUT_TITLE } = DEFAULT_FW_MODAL_STATE;
