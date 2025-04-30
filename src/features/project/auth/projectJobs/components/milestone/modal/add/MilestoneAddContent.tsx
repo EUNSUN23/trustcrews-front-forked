@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 import {
   MilestoneAddDataField,
   milestoneAddDataStateSelector,
-} from '@/features/project/auth/jobs/store/MilestoneModalStateStore';
+} from '@/features/project/auth/projectJobs/store/MilestoneModalStateStore';
 
 const INPUT_ID = 'milestoneAddContent';
 
