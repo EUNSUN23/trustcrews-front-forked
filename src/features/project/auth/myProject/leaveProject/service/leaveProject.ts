@@ -2,6 +2,8 @@ import { request } from '@/lib/clientApi/request';
 import { ProjectAuthCode } from '@/features/project/auth/myProject/global/types/projectAuth';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { ApiResult, ResponseBody } from '@/utils/type';
+import { CREW_NOTICE_LIST_QUERY_KEY } from '@/features/project/auth/myProject/notice/service/getCrewNoticeList';
+import { CREW_LIST_QUERY_KEY } from '@/features/project/auth/myProject/crews/service/getProjectCrewList';
 
 export type LeaveProjectInput = {
   projectId: bigint;
@@ -17,6 +19,7 @@ export const leaveProject = async (
 
 type LeaveProjectRes = ApiResult<typeof leaveProject>;
 
+// todo - 백엔드 성공 메세지
 export const useLeaveProject = ({
   onSuccess,
   onError,
@@ -29,7 +32,13 @@ export const useLeaveProject = ({
     mutationFn: (data: LeaveProjectInput) => leaveProject(data),
     onSuccess: async (res) => {
       if (res.result === 'success') {
-        await queryClient.invalidateQueries({ queryKey: ['noticeList'] });
+        await queryClient.invalidateQueries({
+          queryKey: [CREW_NOTICE_LIST_QUERY_KEY],
+        });
+        await queryClient.invalidateQueries({
+          queryKey: [CREW_LIST_QUERY_KEY],
+          refetchType: 'all',
+        });
         onSuccess?.(res);
       } else {
         onError?.(res);
