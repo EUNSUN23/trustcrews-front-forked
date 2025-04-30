@@ -1,7 +1,7 @@
 'use client';
 
 import { ChangeEvent, useState } from 'react';
-import { VOTE_OPTIONS } from '@/features/project/auth/myProject/vote/constants/voteOptions';
+import { VOTE_OPTIONS } from '@/features/project/auth/vote/constants/voteOptions';
 
 type VoteBarProps = {
   group: string;
