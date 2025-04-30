@@ -10,8 +10,8 @@ import {
 import { numStrToBigInt } from '@/utils/common';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import CrewAuthSelector from '@/components/project/setting/crewAuth/CrewAuthSelector';
-import { ProjectAuthMap } from '@/features/project/auth/myProject/global/types/projectAuth';
-import { ProjectCrew } from '@/features/project/auth/myProject/crews/types';
+import { ProjectAuthMap } from '@/features/project/auth/global/types/projectAuth';
+import { ProjectCrew } from '@/features/project/auth/crews/types';
 
 function CrewAuthRow({
   crew,

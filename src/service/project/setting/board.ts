@@ -1,6 +1,6 @@
 import { request } from '@/lib/clientApi/request';
 import { Position } from '@/utils/type';
-import { ProjectAuthCode } from '@/features/project/auth/myProject/global/types/projectAuth';
+import { ProjectAuthCode } from '@/features/project/auth/global/types/projectAuth';
 
 export type BoardPosition = {
   boardPositionId: bigint;
