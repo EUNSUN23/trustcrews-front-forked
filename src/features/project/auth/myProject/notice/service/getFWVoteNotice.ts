@@ -27,12 +27,12 @@ export const getFWVoteNotice = async (
   return await request('GET', reqUrl);
 };
 
-export const FW_VOTE_NOTICE_QUERY_KEY = 'vAlertFWDetailData';
+export const FWVOTE_NOTICE_QUERY_KEY = 'vAlertFWDetailData';
 
 export const useFWVoteNotice = (voteId: bigint, fwCrewId: bigint) => {
   return useSuspenseQuery({
     queryKey: [
-      FW_VOTE_NOTICE_QUERY_KEY,
+      FWVOTE_NOTICE_QUERY_KEY,
       bigIntToString(voteId),
       bigIntToString(fwCrewId),
     ],

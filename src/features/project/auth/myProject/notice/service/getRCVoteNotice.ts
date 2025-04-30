@@ -20,7 +20,7 @@ export const getRCVoteNotice = async (
   return await request('GET', reqUrl);
 };
 
-export const RECRUIT_NOTICE_QUERY_KEY = 'vAlertRecruitDetailData';
+export const RCVOTE_NOTICE_QUERY_KEY = 'vAlertRecruitDetailData';
 
 export const useRecruitNotice = (
   voteId: bigint,
@@ -29,7 +29,7 @@ export const useRecruitNotice = (
 ) => {
   return useSuspenseQuery({
     queryKey: [
-      RECRUIT_NOTICE_QUERY_KEY,
+      RCVOTE_NOTICE_QUERY_KEY,
       bigIntToString(voteId),
       bigIntToString(applyId),
       bigIntToString(alertId),
