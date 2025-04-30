@@ -19,7 +19,7 @@ import {
 } from '@/features/project/auth/jobs/store/TaskModalStateStore';
 import { TaskItem } from '@/features/project/auth/jobs/types/task';
 import { TASK_STATUS } from '@/features/project/auth/jobs/constants/task/taskStatus';
-import { projectManageAuthStateStore } from '@/features/project/auth/global/store/ProjectManageAuthStateStore';
+import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 import { cva } from 'class-variance-authority';
 import { bigIntToString } from '@/utils/common';
 

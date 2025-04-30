@@ -19,7 +19,7 @@ import {
   milestoneModModalStateStore,
 } from '@/features/project/auth/jobs/store/MilestoneModalStateStore';
 import { cva } from 'class-variance-authority';
-import { projectManageAuthStateStore } from '@/features/project/auth/global/store/ProjectManageAuthStateStore';
+import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 import { MilestoneInfo } from '@/features/project/auth/jobs/types/milestone';
 

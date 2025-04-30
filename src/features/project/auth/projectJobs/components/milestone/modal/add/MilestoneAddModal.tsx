@@ -18,7 +18,7 @@ import { numStrToBigInt } from '@/utils/common';
 import { activeMilestoneStateStore } from '@/features/project/auth/jobs/store/ActiveMilestoneStateStore';
 import { ZodError } from 'zod';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
-import { projectManageAuthStateStore } from '@/features/project/auth/global/store/ProjectManageAuthStateStore';
+import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 import useModalPortalElement from '@/hooks/common/useModalPortalElement';
 
 const MilestoneAddModal = () => {
