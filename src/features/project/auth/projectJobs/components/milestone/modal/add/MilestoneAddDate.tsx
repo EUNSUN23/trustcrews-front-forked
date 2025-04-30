@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import DateRangePicker from '@/components/ui/datepicker/DateRangePicker';
 import { useRecoilState } from 'recoil';
 import { addDays, format } from 'date-fns';
-import { milestoneAddDataStateSelector } from '@/features/project/auth/jobs/store/MilestoneModalStateStore';
+import { milestoneAddDataStateSelector } from '@/features/project/auth/projectJobs/store/MilestoneModalStateStore';
 
 const START_DATE_INPUT_ID = 'milestoneAddStartDate';
 const END_DATE_INPUT_ID = 'milestoneAddEndDate';

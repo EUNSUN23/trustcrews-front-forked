@@ -1,13 +1,13 @@
 'use client';
 
-import TaskContentDetailInput from '@/features/project/auth/jobs/components/task/modal/taskContentDetail/TaskContentDetailInput';
+import TaskContentDetailInput from '@/features/project/auth/projectJobs/components/task/modal/taskContentDetail/TaskContentDetailInput';
 import { useRecoilValue } from 'recoil';
 import _ from 'lodash';
-import ToggleTaskContentDetailAddInput from '@/features/project/auth/jobs/components/task/modal/taskContentDetail/ToggleTaskContentDetailAddInput';
+import ToggleTaskContentDetailAddInput from '@/features/project/auth/projectJobs/components/task/modal/taskContentDetail/ToggleTaskContentDetailAddInput';
 import {
   taskModalContentDetailSelector,
   TaskModalType,
-} from '@/features/project/auth/jobs/store/TaskModalStateStore';
+} from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
 
 type TaskContentDetailProps = {
   modalType: TaskModalType;

@@ -1,5 +1,5 @@
-import { NOTICE_TYPES } from '@/features/project/auth/notice/constants/noticeTypes';
-import { NOTICE_TABS } from '@/features/project/auth/notice/constants/noticeTabs';
+import { NOTICE_TYPES } from '@/features/project/auth/projectNotice/constants/noticeTypes';
+import { NOTICE_TABS } from '@/features/project/auth/projectNotice/constants/noticeTabs';
 
 export type NoticeTypeCode = Exclude<
   keyof typeof NOTICE_TYPES,

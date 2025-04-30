@@ -2,7 +2,7 @@ import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { bigIntToString } from '@/utils/common';
 import { ITEM_COUNT } from '@/utils/constant';
-import { NOTICE_TYPES } from '@/features/project/auth/notice/constants/noticeTypes';
+import { NOTICE_TYPES } from '@/features/project/auth/projectNotice/constants/noticeTypes';
 import { PageResponseBody } from '@/utils/type';
 
 export type CrewNoticeData = {

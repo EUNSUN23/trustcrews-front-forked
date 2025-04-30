@@ -1,9 +1,9 @@
 import { useRecoilState } from 'recoil';
 import TaskStatusBadge from '@/components/ui/badge/TaskStatusBadge';
-import { taskProgressModFieldSelector } from '@/features/project/auth/jobs/store/TaskModalStateStore';
-import { TASK_STATUS } from '@/features/project/auth/jobs/constants/task/taskStatus';
+import { taskProgressModFieldSelector } from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
+import { TASK_STATUS } from '@/features/project/auth/projectJobs/constants/task/taskStatus';
 import { Field, Label, Switch } from '@headlessui/react';
-import { TaskStatusCode } from '@/features/project/auth/jobs/types/task';
+import { TaskStatusCode } from '@/features/project/auth/projectJobs/types/task';
 
 const {
   PS001: TASK_WAIT,
