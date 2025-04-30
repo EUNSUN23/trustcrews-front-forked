@@ -2,8 +2,8 @@ import { baseBadgeVariants } from '@/utils/badge';
 import { HTMLAttributes } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 import cn from '@/utils/cn';
-import { ProjectAuthCode } from '@/features/project/auth/myProject/global/types/projectAuth';
-import { PROJECT_AUTH_CODE } from '@/features/project/auth/myProject/global/constants/projectAuthCode';
+import { ProjectAuthCode } from '@/features/project/auth/global/types/projectAuth';
+import { PROJECT_AUTH_CODE } from '@/features/project/auth/global/constants/projectAuthCode';
 
 const { MANAGER: MANAGER_AUTH, CREW: CREW_AUTH } = PROJECT_AUTH_CODE;
 
