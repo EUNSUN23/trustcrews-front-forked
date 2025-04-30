@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
 import useDropdownState from '@/hooks/common/useDropdownState';
 import { useRecoilState } from 'recoil';
-import { compareItems } from '@/app/_boardUtil/common';
 import {
   Listbox,
   ListboxButton,
@@ -14,6 +13,7 @@ import { bigIntToString, classNames, numStrToBigInt } from '@/utils/common';
 import { DEFAULT_POSITION_OPTION } from '@/utils/constant';
 import { selectedPositionState } from '@/features/post/public/posts/store/PostSearchStateStore';
 import { usePositionList } from '@/lib/static/getPositionList';
+import { compareItems } from '@/utils/compareItems';
 
 function PositionDropdown() {
   const [selectedPosition, setSelectedPosition] = useRecoilState(
