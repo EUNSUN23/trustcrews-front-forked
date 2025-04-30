@@ -1,4 +1,4 @@
-import { PROJECT_AUTH_CODE } from '@/features/project/auth/global/constants/projectAuthCode';
+import { PROJECT_AUTH_CODE } from '@/features/project/auth/projectManageAuth/constants/projectAuthCode';
 
 export type ProjectAuthCode =
   (typeof PROJECT_AUTH_CODE)[keyof typeof PROJECT_AUTH_CODE];

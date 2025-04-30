@@ -6,7 +6,7 @@ import { fwNoticeModalState } from '@/features/project/auth/notice/store/FWVoteN
 import { FWVoteNoticeData } from '@/features/project/auth/notice/service/getFWVoteNoticeList';
 import { bigIntToString } from '@/utils/common';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
-import { projectManageAuthStateStore } from '@/features/project/auth/global/store/ProjectManageAuthStateStore';
+import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 
 type VAlertFwListItemProps = {
   data: FWVoteNoticeData;
