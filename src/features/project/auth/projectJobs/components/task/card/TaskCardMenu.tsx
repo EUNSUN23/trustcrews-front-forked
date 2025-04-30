@@ -11,14 +11,14 @@ import {
 import { IoEllipsisVertical } from '@react-icons/all-files/io5/IoEllipsisVertical';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import useSnackbar from '@/hooks/common/useSnackbar';
-import { useDeleteTask } from '@/features/project/auth/jobs/service/task/deleteTask';
+import { useDeleteTask } from '@/features/project/auth/projectJobs/service/task/deleteTask';
 import {
   TaskModModalData,
   taskModModalDataStateStore,
   taskModModalStateStore,
-} from '@/features/project/auth/jobs/store/TaskModalStateStore';
-import { TaskItem } from '@/features/project/auth/jobs/types/task';
-import { TASK_STATUS } from '@/features/project/auth/jobs/constants/task/taskStatus';
+} from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
+import { TaskItem } from '@/features/project/auth/projectJobs/types/task';
+import { TASK_STATUS } from '@/features/project/auth/projectJobs/constants/task/taskStatus';
 import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 import { cva } from 'class-variance-authority';
 import { bigIntToString } from '@/utils/common';

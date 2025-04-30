@@ -1,8 +1,8 @@
 'use client';
 
-import MilestoneCard from '@/features/project/auth/jobs/components/milestone/card/MilestoneCard';
+import MilestoneCard from '@/features/project/auth/projectJobs/components/milestone/card/MilestoneCard';
 import CustomSwiper from '@/components/ui/CustomSwiper';
-import { MilestoneInfo } from '@/features/project/auth/jobs/types/milestone';
+import { MilestoneInfo } from '@/features/project/auth/projectJobs/types/milestone';
 
 type MilestonesProps = {
   data: MilestoneInfo[];

@@ -2,24 +2,24 @@ import { useRecoilValue, useResetRecoilState } from 'recoil';
 import useModalPortalElement from '@/hooks/common/useModalPortalElement';
 import { createPortal } from 'react-dom';
 import Modal from '@/components/ui/Modal';
-import TaskContent from '@/features/project/auth/jobs/components/task/modal/TaskContent';
-import TaskDate from '@/features/project/auth/jobs/components/task/modal/TaskDate';
-import TaskAssignedCrew from '@/features/project/auth/jobs/components/task/modal/TaskAssignedCrew';
-import TaskContentDetail from '@/features/project/auth/jobs/components/task/modal/taskContentDetail/TaskContentDetail';
-import TaskProgressStatus from '@/features/project/auth/jobs/components/task/modal/mod/TaskProgressStatus';
+import TaskContent from '@/features/project/auth/projectJobs/components/task/modal/TaskContent';
+import TaskDate from '@/features/project/auth/projectJobs/components/task/modal/TaskDate';
+import TaskAssignedCrew from '@/features/project/auth/projectJobs/components/task/modal/TaskAssignedCrew';
+import TaskContentDetail from '@/features/project/auth/projectJobs/components/task/modal/taskContentDetail/TaskContentDetail';
+import TaskProgressStatus from '@/features/project/auth/projectJobs/components/task/modal/mod/TaskProgressStatus';
 import {
   TaskModalType,
   TaskModModalData,
   taskModModalDataStateStore,
   taskModModalStateStore,
-} from '@/features/project/auth/jobs/store/TaskModalStateStore';
+} from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
 import useUpdateTask, {
   updateTaskInputSchema,
-} from '@/features/project/auth/jobs/service/task/updateTask';
-import { useCompleteTask } from '@/features/project/auth/jobs/service/task/completeTask';
+} from '@/features/project/auth/projectJobs/service/task/updateTask';
+import { useCompleteTask } from '@/features/project/auth/projectJobs/service/task/completeTask';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { ZodError } from 'zod';
-import { TASK_STATUS } from '@/features/project/auth/jobs/constants/task/taskStatus';
+import { TASK_STATUS } from '@/features/project/auth/projectJobs/constants/task/taskStatus';
 import { numStrToBigInt } from '@/utils/common';
 
 const modalType: TaskModalType = 'mod';

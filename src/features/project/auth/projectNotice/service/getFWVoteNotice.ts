@@ -2,7 +2,10 @@ import { ResponseBody } from '@/utils/type';
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { bigIntToString } from '@/utils/common';
-import { FWVoteReason, VoteData } from '@/features/project/auth/vote/types';
+import {
+  FWVoteReason,
+  VoteData,
+} from '@/features/project/auth/projectVote/types';
 import { ProjectAuthMap } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 
 export type FWVoteNoticeDetailData = VoteData & {

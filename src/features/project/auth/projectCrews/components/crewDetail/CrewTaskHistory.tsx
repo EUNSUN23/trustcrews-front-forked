@@ -3,12 +3,12 @@
 import { useState } from 'react';
 import CommonPagination from '@/components/ui/CommonPagination';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
-import { useCrewTaskHistory } from '@/features/project/auth/crews/service/getCrewTaskHistory';
+import { useCrewTaskHistory } from '@/features/project/auth/projectCrews/service/getCrewTaskHistory';
 import { clsx } from 'clsx';
 import { FaMinus } from '@react-icons/all-files/fa/FaMinus';
 import { FaPlus } from '@react-icons/all-files/fa/FaPlus';
 import { useRecoilValue } from 'recoil';
-import { crewIdState } from '@/features/project/auth/crews/store/CrewIdStateStore';
+import { crewIdState } from '@/features/project/auth/projectCrews/store/CrewIdStateStore';
 
 const CrewTaskHistory = () => {
   const crewId = useRecoilValue(crewIdState);

@@ -1,6 +1,6 @@
-import { VOTE_OPTIONS } from '@/features/project/auth/vote/constants/voteOptions';
-import { FW_VOTE_REASONS } from '@/features/project/auth/vote/constants/fwVoteReasons';
-import { VOTE_STATUS } from '@/features/project/auth/vote/constants/voteStatus';
+import { VOTE_OPTIONS } from '@/features/project/auth/projectVote/constants/voteOptions';
+import { FW_VOTE_REASONS } from '@/features/project/auth/projectVote/constants/fwVoteReasons';
+import { VOTE_STATUS } from '@/features/project/auth/projectVote/constants/voteStatus';
 
 export type VoteOptionCode = keyof typeof VOTE_OPTIONS;
 export type VoteOptionType = (typeof VOTE_OPTIONS)[VoteOptionCode];
