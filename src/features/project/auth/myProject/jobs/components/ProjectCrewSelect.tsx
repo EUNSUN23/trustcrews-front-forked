@@ -6,9 +6,9 @@ import { Listbox, Transition } from '@headlessui/react';
 import { bigIntToString, classNames } from '@/utils/common';
 import { AiFillCaretDown } from '@react-icons/all-files/ai/AiFillCaretDown';
 import Avatar from '@/components/ui/Avatar';
-import { compareItems } from '@/app/_boardUtil/common';
 import { projectIdState } from '@/features/project/auth/myProject/global/store/ProjectIdStateStore';
 import { useProjectCrewList } from '@/features/project/auth/myProject/crews/service/getProjectCrewList';
+import { compareItems } from '@/utils/compareItems';
 
 export const DEFAULT_CREW_OPTION = { name: '멤버 선택', value: '0' } as const;
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function useModalPortalElement(isOpen: boolean) {
+const useModalPortalElement = (isOpen: boolean) => {
   const [portalElement, setPortalElement] = useState<Element | null>(null);
 
   useEffect(() => {
@@ -17,4 +17,6 @@ export default function useModalPortalElement(isOpen: boolean) {
   }, [isOpen]);
 
   return [portalElement, setPortalElement];
-}
+};
+
+export default useModalPortalElement;
