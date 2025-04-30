@@ -44,7 +44,7 @@ const CrewFWCreateModal = () => {
 
   const handleClickConfirmButton = () => {
     try {
-      createCrewFWVoteInputSchema.parse({ reason });
+      createCrewFWVoteInputSchema.parse(reason);
     } catch (e: unknown) {
       setErrorSnackbar((e as ZodError).errors[0].message);
       return;
@@ -70,10 +70,10 @@ const CrewFWCreateModal = () => {
             >
               <section className='alertModal_contents'>
                 <section>
-                  <div className='mt-6 mb-4 text-lg text-greyDarkblue font-semibold'>
+                  <div className='mt-6 mb-8 text-xl text-greyDarkblue font-semibold'>
                     강제탈퇴 사유를 다음 중에서 선택해 주세요.
                   </div>
-                  <ul className='w-[65%] mx-auto mb-4 flex flex-col items-start space-y-2'>
+                  <ul className='w-[65%] mx-auto mb-4 flex flex-col items-start space-y-5'>
                     <li>
                       <input
                         type='radio'
