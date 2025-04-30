@@ -1,7 +1,7 @@
 'use client';
 
 import { PROJECT_MENU } from '@/features/project/auth/global/constants/projectMenu';
-import JobSkeleton from '@/features/project/auth/jobs/components/JobSkeleton';
+import JobSkeleton from '@/features/project/auth/projectJobs/components/JobSkeleton';
 import { projectActiveNavState } from '@/features/project/auth/global/store/ProjectNavTabStateStore';
 import { useRecoilValue } from 'recoil';
 

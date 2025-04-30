@@ -1,6 +1,6 @@
 import DateRangePicker from '@/components/ui/datepicker/DateRangePicker';
 import { useRecoilState } from 'recoil';
-import { milestoneModDataStateSelector } from '@/features/project/auth/jobs/store/MilestoneModalStateStore';
+import { milestoneModDataStateSelector } from '@/features/project/auth/projectJobs/store/MilestoneModalStateStore';
 
 const START_DATE_INPUT_ID = 'milestoneModStartDate';
 const END_DATE_INPUT_ID = 'milestoneModEndDate';

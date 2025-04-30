@@ -1,14 +1,14 @@
-import NoticeNavTab from '@/features/project/auth/notice/components/NoticeNavTab';
-import RCVoteNoticeList from '@/features/project/auth/notice/components/rcVoteNotice/RCVoteNoticeList';
-import FWVoteNoticeList from '@/features/project/auth/notice/components/fwVoteNotice/FWVoteNoticeList';
-import CrewNoticeList from '@/features/project/auth/notice/components/crewNotice/CrewNoticeList';
-import FWVoteNoticeModal from '@/features/project/auth/notice/components/fwVoteNotice/FWVoteNoticeModal';
-import RCVoteNoticeModal from '@/features/project/auth/notice/components/rcVoteNotice/RCVoteNoticeModal';
+import NoticeNavTab from '@/features/project/auth/projectNotice/components/NoticeNavTab';
+import RCVoteNoticeList from '@/features/project/auth/projectNotice/components/rcVoteNotice/RCVoteNoticeList';
+import FWVoteNoticeList from '@/features/project/auth/projectNotice/components/fwVoteNotice/FWVoteNoticeList';
+import CrewNoticeList from '@/features/project/auth/projectNotice/components/crewNotice/CrewNoticeList';
+import FWVoteNoticeModal from '@/features/project/auth/projectNotice/components/fwVoteNotice/FWVoteNoticeModal';
+import RCVoteNoticeModal from '@/features/project/auth/projectNotice/components/rcVoteNotice/RCVoteNoticeModal';
 import { useRecoilValue } from 'recoil';
-import { activeNoticeTabStateStore } from '@/features/project/auth/notice/store/ActiveNoticeTabStateStore';
-import { NOTICE_TABS } from '@/features/project/auth/notice/constants/noticeTabs';
+import { activeNoticeTabStateStore } from '@/features/project/auth/projectNotice/store/ActiveNoticeTabStateStore';
+import { NOTICE_TABS } from '@/features/project/auth/projectNotice/constants/noticeTabs';
 import { Suspense } from 'react';
-import NoticeListLoader from '@/features/project/auth/notice/components/NoticeListLoader';
+import NoticeListLoader from '@/features/project/auth/projectNotice/components/NoticeListLoader';
 
 const {
   NTAB001: { code: RCVOTE_NOTICE_TAB },

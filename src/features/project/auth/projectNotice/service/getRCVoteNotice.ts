@@ -2,7 +2,7 @@ import { ProfileInfo, ResponseBody } from '@/utils/type';
 import { request } from '@/lib/clientApi/request';
 import { bigIntToString } from '@/utils/common';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { VoteData } from '@/features/project/auth/vote/types';
+import { VoteData } from '@/features/project/auth/projectVote/types';
 
 export type RCVoteNoticeDetailData = {
   applicantInfo: Omit<ProfileInfo, 'userId'> & { userId: bigint };

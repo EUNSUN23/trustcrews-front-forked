@@ -2,8 +2,8 @@ import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
 import { ApiResult } from '@/utils/type';
-import { RC_VOTE_NOTICE_LIST_QUERY_KEY } from '@/features/project/auth/notice/service/getRCVoteNoticeList';
-import { RCVOTE_NOTICE_QUERY_KEY } from '@/features/project/auth/notice/service/getRCVoteNotice';
+import { RC_VOTE_NOTICE_LIST_QUERY_KEY } from '@/features/project/auth/projectNotice/service/getRCVoteNoticeList';
+import { RCVOTE_NOTICE_QUERY_KEY } from '@/features/project/auth/projectNotice/service/getRCVoteNotice';
 
 export type RecruitVoteBaseParams = {
   voteId: bigint;
