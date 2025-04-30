@@ -2,7 +2,8 @@ import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
 import { ApiResult } from '@/utils/type';
-import { FW_VOTE_NOTICE_QUERY_KEY } from '@/features/project/auth/myProject/notice/service/getFWVoteNotice';
+import { FWVOTE_NOTICE_LIST_QUERY_KEY } from '@/features/project/auth/myProject/notice/service/getFWVoteNoticeList';
+import { FWVOTE_NOTICE_QUERY_KEY } from '@/features/project/auth/myProject/notice/service/getFWVoteNotice';
 
 export type FWVoteBaseParams = {
   projectId: bigint;
@@ -31,6 +32,7 @@ export const voteForProjectFWithdraw = async (data: FWVoteReqParams) => {
 
 type VoteFWRes = ApiResult<typeof voteForProjectFWithdraw>;
 
+// todo - message 백엔드처리
 export const useForceWithdrawVote = (
   baseParams: FWVoteBaseParams,
   {
@@ -48,7 +50,11 @@ export const useForceWithdrawVote = (
     onSuccess: async (res) => {
       if (res.result === 'success') {
         await queryClient.invalidateQueries({
-          queryKey: [FW_VOTE_NOTICE_QUERY_KEY],
+          queryKey: [FWVOTE_NOTICE_LIST_QUERY_KEY],
+        });
+
+        await queryClient.invalidateQueries({
+          queryKey: [FWVOTE_NOTICE_QUERY_KEY],
         });
         onSuccess?.(res);
       } else {
