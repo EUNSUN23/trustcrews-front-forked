@@ -2,7 +2,7 @@
 
 import Skeleton from '@/components/ui/skeleton/Skeleton';
 
-import { PROJECT_MENU } from '@/features/project/auth/myProject/global/constants/projectMenu';
+import { PROJECT_MENU } from '@/features/project/auth/global/constants/projectMenu';
 
 function ProjectNavTabSkeleton() {
   return (
