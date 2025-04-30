@@ -14,6 +14,7 @@ import {
 import { projectActiveNavState } from '@/features/project/auth/myProject/global/store/ProjectNavTabStateStore';
 import Crews from '@/features/project/auth/myProject/crews/components/Crews';
 import { CrewDetail } from '@/features/project/auth/myProject/crews/components/crewDetail/CrewDetail';
+import { Notice } from '@/features/project/auth/myProject/notice/components/Notice';
 
 const {
   TASK: { value: PROJECT_TASK },
@@ -61,10 +62,9 @@ const ProjectNavTabContents = () => {
     case PROJECT_CREW_DETAIL:
       contents = <CrewDetail />;
       break;
-    //   break;
-    // case PM.NOTICE.code:
-    //   contents = notice;
-    //   break;
+    case PROJECT_NOTICE:
+      contents = <Notice />;
+      break;
     // case PM.SETTING.code:
     //   contents = setting;
     //   break;

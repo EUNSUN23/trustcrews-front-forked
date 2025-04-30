@@ -5,7 +5,7 @@ import FWVoteNoticeModalContents from '@/features/project/auth/myProject/notice/
 import { fwNoticeModalState } from '@/features/project/auth/myProject/notice/store/FWVoteNoticeModalStateStore';
 import useModalPortalElement from '@/hooks/common/useModalPortalElement';
 import { Suspense } from 'react';
-import FWVoteNoticeModalSkeleton from '@/components/ui/skeleton/project/alert/FWVoteNoticeModalSkeleton';
+import FWVoteNoticeModalSkeleton from '@/features/project/auth/myProject/notice/components/fwVoteNotice/FWVoteNoticeModalSkeleton';
 
 const FWVoteNoticeModal = () => {
   const { isOpen, title } = useRecoilValue(fwNoticeModalState);
@@ -19,7 +19,7 @@ const FWVoteNoticeModal = () => {
         ? createPortal(
             <Modal
               isOpen={isOpen}
-              close={() => resetVAlertFWModalState()}
+              close={resetVAlertFWModalState}
               title={title}
             >
               <Suspense fallback={<FWVoteNoticeModalSkeleton />}>
