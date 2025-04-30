@@ -2,7 +2,7 @@ import { request } from '@/lib/clientApi/request';
 import { TechStackItem } from '@/utils/type';
 import { isEqual } from 'lodash';
 import { throwErrorIfInvalid } from '@/utils/common';
-import { ProjectAuthCode } from '@/features/project/auth/myProject/global/types/projectAuth';
+import { ProjectAuthCode } from '@/features/project/auth/global/types/projectAuth';
 
 export type ProjectSettingInfoData = {
   projectId: bigint;

@@ -2,7 +2,7 @@ import cn from '@/utils/cn';
 import { HTMLAttributes } from 'react';
 import { baseBadgeVariants } from '@/utils/badge';
 import { cva, VariantProps } from 'class-variance-authority';
-import { TaskStatusCode } from '@/features/project/auth/myProject/jobs/types/task';
+import { TaskStatusCode } from '@/features/project/auth/jobs/types/task';
 
 const TaskStatusBadgeVariants = cva(
   'inline-flex items-center rounded-full font-medium',
