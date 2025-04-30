@@ -1,6 +1,6 @@
 import { request } from '@/lib/clientApi/request';
 import { PageResponseBody } from '@/utils/type';
-import { CrewTaskHistory } from '@/features/project/auth/crews/types';
+import { CrewTaskHistory } from '@/features/project/auth/projectCrews/types';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
 

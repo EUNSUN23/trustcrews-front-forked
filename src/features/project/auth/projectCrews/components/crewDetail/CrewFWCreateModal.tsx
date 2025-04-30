@@ -5,17 +5,17 @@ import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
 import {
   crewFWModalDataStateStore,
   crewFWModalStateStore,
-} from '@/features/project/auth/crews/store/CrewFWModalStateStore';
+} from '@/features/project/auth/projectCrews/store/CrewFWModalStateStore';
 import { createPortal } from 'react-dom';
 import Modal from '@/components/ui/Modal';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import {
   createCrewFWVoteInputSchema,
   useCreateFWVote,
-} from '@/features/project/auth/vote/service/createFWVote';
+} from '@/features/project/auth/projectVote/service/createFWVote';
 import { ZodError } from 'zod';
 import useModalPortalElement from '@/hooks/common/useModalPortalElement';
-import { FW_VOTE_REASONS } from '@/features/project/auth/vote/constants/fwVoteReasons';
+import { FW_VOTE_REASONS } from '@/features/project/auth/projectVote/constants/fwVoteReasons';
 
 const {
   FWR1001: REASON_CORP,
