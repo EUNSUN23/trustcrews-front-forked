@@ -5,12 +5,12 @@ import { ReactNode, useEffect } from 'react';
 import Job from '@/features/project/auth/jobs/components/Job';
 import JobSkeleton from '@/features/project/auth/jobs/components/JobSkeleton';
 import { PROJECT_MENU } from '@/features/project/auth/global/constants/projectMenu';
-import { useProjectManageAuth } from '@/features/project/auth/global/service/getProjectManageAuth';
+import { useProjectManageAuth } from '@/features/project/auth/projectManageAuth/service/getProjectManageAuth';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 import {
   DEFAULT_PM_AUTH,
   projectManageAuthStateStore,
-} from '@/features/project/auth/global/store/ProjectManageAuthStateStore';
+} from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 import { projectActiveNavState } from '@/features/project/auth/global/store/ProjectNavTabStateStore';
 import Crews from '@/features/project/auth/crews/components/Crews';
 import { CrewDetail } from '@/features/project/auth/crews/components/crewDetail/CrewDetail';

@@ -16,7 +16,7 @@ import {
   milestoneModModalStateStore,
 } from '@/features/project/auth/jobs/store/MilestoneModalStateStore';
 import { activeMilestoneStateStore } from '@/features/project/auth/jobs/store/ActiveMilestoneStateStore';
-import { projectManageAuthStateStore } from '@/features/project/auth/global/store/ProjectManageAuthStateStore';
+import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 import useModalPortalElement from '@/hooks/common/useModalPortalElement';
 import { numStrToBigInt } from '@/utils/common';
 
