@@ -2,8 +2,8 @@ import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { bigIntToString } from '@/utils/common';
 import { ITEM_COUNT } from '@/utils/constant';
-import { NOTICE_TYPES } from '@/features/project/auth/notice/constants/noticeTypes';
-import { VoteStatusType } from '@/features/project/auth/vote/types';
+import { NOTICE_TYPES } from '@/features/project/auth/projectNotice/constants/noticeTypes';
+import { VoteStatusType } from '@/features/project/auth/projectVote/types';
 import { PageResponseBody } from '@/utils/type';
 import { ProjectAuthMap } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 

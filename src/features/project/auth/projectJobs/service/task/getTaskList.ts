@@ -2,8 +2,8 @@ import { DataId, PageResponseBody } from '@/utils/type';
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ITEM_COUNT } from '@/utils/constant';
-import { TaskItem } from '@/features/project/auth/jobs/types/task';
-import { TASK_STATUS } from '@/features/project/auth/jobs/constants/task/taskStatus';
+import { TaskItem } from '@/features/project/auth/projectJobs/types/task';
+import { TASK_STATUS } from '@/features/project/auth/projectJobs/constants/task/taskStatus';
 import { bigIntToString } from '@/utils/common';
 
 export type TasksReqParam = {

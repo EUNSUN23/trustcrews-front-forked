@@ -1,7 +1,7 @@
-import { CreateMilestoneInput } from '@/features/project/auth/jobs/service/milestone/createMilestone';
+import { CreateMilestoneInput } from '@/features/project/auth/projectJobs/service/milestone/createMilestone';
 import { atom, DefaultValue, selectorFamily } from 'recoil';
 import { ModalState } from '@/utils/type';
-import { UpdateMilestoneInput } from '@/features/project/auth/jobs/service/milestone/updateMilestone';
+import { UpdateMilestoneInput } from '@/features/project/auth/projectJobs/service/milestone/updateMilestone';
 
 export type MilestoneAddDataKey = keyof CreateMilestoneInput;
 export type MilestoneAddDataField<T> = CreateMilestoneInput[Extract<
