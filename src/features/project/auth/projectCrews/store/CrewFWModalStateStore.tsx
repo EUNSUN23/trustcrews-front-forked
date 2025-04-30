@@ -2,7 +2,7 @@ import { ModalState } from '@/utils/type';
 import { atom } from 'recoil';
 import { ProjectAuthCode } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 import { PROJECT_AUTH_CODE } from '@/features/project/auth/projectManageAuth/constants/projectAuthCode';
-import { CreateCrewFWVoteReason } from '@/features/project/auth/vote/service/createFWVote';
+import { CreateCrewFWVoteReason } from '@/features/project/auth/projectVote/service/createFWVote';
 
 export type CrewFWModalState = ModalState & {
   projectId: bigint;

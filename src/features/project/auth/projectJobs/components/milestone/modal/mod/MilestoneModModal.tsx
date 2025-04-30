@@ -3,19 +3,19 @@
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import Modal from '@/components/ui/Modal';
 import { createPortal } from 'react-dom';
-import MilestoneModContent from '@/features/project/auth/jobs/components/milestone/modal/mod/MilestoneModContent';
-import MilestoneModDate from '@/features/project/auth/jobs/components/milestone/modal/mod/MilestoneModDate';
+import MilestoneModContent from '@/features/project/auth/projectJobs/components/milestone/modal/mod/MilestoneModContent';
+import MilestoneModDate from '@/features/project/auth/projectJobs/components/milestone/modal/mod/MilestoneModDate';
 import {
   updateMilestoneSchema,
   useUpdateMilestone,
-} from '@/features/project/auth/jobs/service/milestone/updateMilestone';
+} from '@/features/project/auth/projectJobs/service/milestone/updateMilestone';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { ZodError } from 'zod';
 import {
   milestoneModDataStateStore,
   milestoneModModalStateStore,
-} from '@/features/project/auth/jobs/store/MilestoneModalStateStore';
-import { activeMilestoneStateStore } from '@/features/project/auth/jobs/store/ActiveMilestoneStateStore';
+} from '@/features/project/auth/projectJobs/store/MilestoneModalStateStore';
+import { activeMilestoneStateStore } from '@/features/project/auth/projectJobs/store/ActiveMilestoneStateStore';
 import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 import useModalPortalElement from '@/hooks/common/useModalPortalElement';
 import { numStrToBigInt } from '@/utils/common';

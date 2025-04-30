@@ -3,7 +3,7 @@ import Button from '@/components/ui/button';
 import ProjectHistoryItem from '@/components/ui/ProjectHistoryItem';
 import CommonPagination from '@/components/ui/CommonPagination';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
-import { useApplicantProjectHistory } from '@/features/project/auth/applicantProjectHistory/service/getApplicantProjectHistory';
+import { useApplicantProjectHistory } from '@/features/project/auth/projectApplicantInfo/service/getApplicantProjectHistory';
 
 type ApplicantProjectHistoryProps = {
   applicantUserId: bigint;

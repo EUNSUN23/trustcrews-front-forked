@@ -2,8 +2,8 @@ import { request } from '@/lib/clientApi/request';
 import { ProjectAuthCode } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { ApiResult, ResponseBody } from '@/utils/type';
-import { CREW_NOTICE_LIST_QUERY_KEY } from '@/features/project/auth/notice/service/getCrewNoticeList';
-import { CREW_LIST_QUERY_KEY } from '@/features/project/auth/crews/service/getProjectCrewList';
+import { CREW_NOTICE_LIST_QUERY_KEY } from '@/features/project/auth/projectNotice/service/getCrewNoticeList';
+import { CREW_LIST_QUERY_KEY } from '@/features/project/auth/projectCrews/service/getProjectCrewList';
 
 export type LeaveProjectInput = {
   projectId: bigint;

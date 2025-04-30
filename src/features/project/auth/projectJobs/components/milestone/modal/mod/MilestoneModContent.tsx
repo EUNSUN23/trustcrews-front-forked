@@ -1,6 +1,6 @@
 import Input from '@/components/ui/form/Input';
 import { useRecoilState } from 'recoil';
-import { milestoneModDataStateSelector } from '@/features/project/auth/jobs/store/MilestoneModalStateStore';
+import { milestoneModDataStateSelector } from '@/features/project/auth/projectJobs/store/MilestoneModalStateStore';
 
 const MilestoneModContent = () => {
   const [content, setContent] = useRecoilState(

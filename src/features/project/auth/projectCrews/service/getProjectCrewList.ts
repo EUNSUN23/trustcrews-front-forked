@@ -1,6 +1,6 @@
 import { request } from '@/lib/clientApi/request';
 import { ResponseBody } from '@/utils/type';
-import { ProjectCrew } from '@/features/project/auth/crews/types';
+import { ProjectCrew } from '@/features/project/auth/projectCrews/types';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 export const getProjectCrewList = async ({
