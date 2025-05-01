@@ -1,25 +1,21 @@
 import TechStackSelect from '@/components/ui/selector/TechStackSelect';
-import { TechStackValueType } from '@/utils/type';
-import { ProjectSettingInfoData } from '@/service/project/setting/info';
+import { ProjectPublicInfoData, TechStackValueType } from '@/utils/type';
 import { useRecoilState } from 'recoil';
-import {
-  projectSettingInfoSelector,
-  ProjectSettingInfoUpdField,
-} from '@/store/project/setting/ProjectSettingFormStateStore';
 import FormRow from '@/components/ui/form/FormRow';
+import { projectInfoFormSelector } from '@/features/project/auth/updateProjectInfo/store/ProjectInfoFormStateStore';
 
-function ProjectTechnologies({
-  initData,
-}: {
-  initData: ProjectSettingInfoData['technologyStacks'];
-}) {
+type ProjectTechnologiesProps = {
+  initData: ProjectPublicInfoData['technologyStacks'];
+};
+
+const ProjectTechnologies = ({ initData }: ProjectTechnologiesProps) => {
   const [technologyIds, setTechnologyIds] = useRecoilState(
-    projectSettingInfoSelector('technologyIds'),
+    projectInfoFormSelector('technologyIds'),
   );
 
   const techStacks =
-    (technologyIds as ProjectSettingInfoUpdField<'technologyIds'>).length > 0
-      ? (technologyIds as ProjectSettingInfoUpdField<'technologyIds'>)
+    technologyIds.length > 0
+      ? technologyIds
       : initData.map((v) => v.techStackId);
 
   return (
@@ -34,6 +30,6 @@ function ProjectTechnologies({
       />
     </FormRow>
   );
-}
+};
 
 export default ProjectTechnologies;

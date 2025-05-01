@@ -1,22 +1,18 @@
-import {
-  projectSettingBoardInfoSelector,
-  ProjectSettingBoardInfoUpdField,
-} from '@/store/project/setting/ProjectSettingFormStateStore';
 import { useRecoilState } from 'recoil';
 import TextArea from '@/components/ui/form/TextArea';
+import { postInfoFormFieldSelector } from '@/features/project/auth/updatePostInfo/store/PostInfoFormStateStore';
+import { PostPublicInfoData } from '@/utils/type';
 
-function Content({
-  initData,
-}: {
-  initData: ProjectSettingBoardInfoUpdField<'content'>;
-}) {
+type ContentProps = {
+  initData: PostPublicInfoData['content'];
+};
+
+const Content = ({ initData }: ContentProps) => {
   const [content, setContent] = useRecoilState(
-    projectSettingBoardInfoSelector('content'),
+    postInfoFormFieldSelector('content'),
   );
 
-  const value = content
-    ? (content as ProjectSettingBoardInfoUpdField<'content'>)
-    : initData;
+  const value = content ? content : initData;
 
   return (
     <TextArea
@@ -29,6 +25,6 @@ function Content({
       onChange={(e) => setContent(e.target.value)}
     />
   );
-}
+};
 
 export default Content;
