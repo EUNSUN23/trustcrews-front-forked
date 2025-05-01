@@ -15,6 +15,7 @@ import { projectActiveNavState } from '@/features/project/auth/global/store/Proj
 import Crews from '@/features/project/auth/projectCrews/components/Crews';
 import { CrewDetail } from '@/features/project/auth/projectCrews/components/crewDetail/CrewDetail';
 import { Notice } from '@/features/project/auth/projectNotice/components/Notice';
+import ProjectConfig from '@/features/project/auth/projectConfigView/contents/ProjectConfig';
 
 const {
   TASK: { value: PROJECT_TASK },
@@ -65,9 +66,9 @@ const ProjectNavTabContents = () => {
     case PROJECT_NOTICE:
       contents = <Notice />;
       break;
-    // case PM.SETTING.code:
-    //   contents = setting;
-    //   break;
+    case PROJECT_SETTING:
+      contents = <ProjectConfig />;
+      break;
     default:
       throw Error(`Unknown Project NavTab: ${activeNavTab}`);
   }
