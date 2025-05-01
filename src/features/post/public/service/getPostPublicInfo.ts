@@ -9,9 +9,11 @@ export const getPostPublicInfo = async (
   return await request('GET', `/api/post/public?postId=${postId}`);
 };
 
+export const POST_PUBLIC_INFO_QUERY_KEY = 'postPublicInfo';
+
 export const getPostPublicInfoQueryOptions = (postId: bigint) => {
   return queryOptions({
-    queryKey: ['postPublicInfo', bigIntToString(postId)],
+    queryKey: [POST_PUBLIC_INFO_QUERY_KEY, bigIntToString(postId)],
     queryFn: () => getPostPublicInfo(postId),
   });
 };

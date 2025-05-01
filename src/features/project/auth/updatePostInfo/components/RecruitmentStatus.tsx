@@ -1,23 +1,18 @@
 import { Switch } from '@headlessui/react';
 import { useRecoilState } from 'recoil';
-import {
-  projectSettingBoardInfoSelector,
-  ProjectSettingBoardInfoUpdField,
-} from '@/store/project/setting/ProjectSettingFormStateStore';
+import { postInfoFormFieldSelector } from '@/features/project/auth/updatePostInfo/store/PostInfoFormStateStore';
+import { PostPublicInfoData } from '@/utils/type';
 
-function RecruitmentStatus({
-  initData,
-}: {
-  initData: ProjectSettingBoardInfoUpdField<'recruitmentStatus'>;
-}) {
+type RecruitmentStatusProps = {
+  initData: PostPublicInfoData['recruitmentStatus'];
+};
+
+const RecruitmentStatus = ({ initData }: RecruitmentStatusProps) => {
   const [recruitmentStatus, setRecruitmentStatus] = useRecoilState(
-    projectSettingBoardInfoSelector('recruitmentStatus'),
+    postInfoFormFieldSelector('recruitmentStatus'),
   );
 
-  const checked =
-    recruitmentStatus !== null
-      ? (recruitmentStatus as ProjectSettingBoardInfoUpdField<'recruitmentStatus'>)
-      : initData;
+  const checked = recruitmentStatus !== null ? recruitmentStatus : initData;
 
   const statusName = checked ? '모집완료' : '모집중';
 
@@ -28,7 +23,7 @@ function RecruitmentStatus({
       </label>
       <Switch
         id='recruitmentStatusSwitch'
-        checked={checked!}
+        checked={checked}
         onChange={setRecruitmentStatus}
         className='group relative flex h-7 w-12 mt-2 mobile:h-6 mobile:w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-primary transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-none  data-[headlessui-state=checked]:bg-gray-200'
       >
@@ -50,6 +45,6 @@ function RecruitmentStatus({
       </Switch>
     </div>
   );
-}
+};
 
 export default RecruitmentStatus;
