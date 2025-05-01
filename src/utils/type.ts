@@ -56,7 +56,7 @@ export interface TrustGradeItem {
 }
 
 export interface PositionItem {
-  positionId: bigint;
+  positionId: bigint | number;
   positionName: string;
 }
 
@@ -69,7 +69,7 @@ export interface TechStackCategory {
 }
 
 export interface TechStackItem {
-  techStackId: bigint;
+  techStackId: bigint | number;
   techStackName: string;
 }
 
