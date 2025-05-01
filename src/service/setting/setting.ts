@@ -47,11 +47,3 @@ export async function getTechStackListWithCategory(): Promise<
   );
   return await response.json();
 }
-
-/**
- * 프로젝트 크루 권한 옵션 조회
- */
-export const getCrewAuthOptions = async () => {
-  const response = await fetch(`${publicURL}/api/setting/crewAuth`);
-  return await response.json();
-};

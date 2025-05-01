@@ -3,7 +3,7 @@ import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ProjectAuthMap } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 
-export const getProjectManageAuth = async (
+export const getMyPMAuth = async (
   projectId: string | bigint,
 ): Promise<ResponseBody<ProjectAuthMap>> => {
   const _projectId =
@@ -14,14 +14,16 @@ export const getProjectManageAuth = async (
     `/api/project/currentUserAuth?projectId=${_projectId}`,
   );
 };
+
 export const getProjectManageAuthQueryKey = (
   projectId: string | bigint | null,
 ) => {
   return ['currentUserProjectAuth', projectId];
 };
-export const useProjectManageAuth = (projectId: string | bigint | null) => {
+
+export const useMyPMAuth = (projectId: string | bigint | null) => {
   return useSuspenseQuery({
     queryKey: getProjectManageAuthQueryKey(projectId),
-    queryFn: () => getProjectManageAuth(projectId!),
+    queryFn: () => getMyPMAuth(projectId!),
   });
 };

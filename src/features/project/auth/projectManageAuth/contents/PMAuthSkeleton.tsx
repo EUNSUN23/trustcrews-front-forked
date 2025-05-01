@@ -1,11 +1,11 @@
-import SettingContainer from '@/components/project/setting/SettingContainer';
-import SettingTitle from '@/components/project/setting/SettingTitle';
 import Skeleton from '@/components/ui/skeleton/Skeleton';
+import ConfigContainer from '@/features/project/auth/global/layouts/projectConfig/ConfigContainer';
+import ConfigSummary from '@/features/project/auth/global/layouts/projectConfig/ConfigSummary';
 
-function ProjectSettingCrewAuthSkeleton() {
+const PMAuthSkeleton = () => {
   return (
-    <SettingContainer>
-      <SettingTitle>크루 권한</SettingTitle>
+    <ConfigContainer>
+      <ConfigSummary>크루 권한</ConfigSummary>
       <div className='mx-auto mt-8 flow-root'>
         <div className='-ml-4 -my-2 overflow-x-auto sm:-ml-6 lg:-ml-12'>
           <div className='inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8'>
@@ -27,8 +27,8 @@ function ProjectSettingCrewAuthSkeleton() {
           </div>
         </div>
       </div>
-    </SettingContainer>
+    </ConfigContainer>
   );
-}
+};
 
-export default ProjectSettingCrewAuthSkeleton;
+export default PMAuthSkeleton;
