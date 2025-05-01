@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useTransition } from 'react';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
 import useDropdownState from '@/hooks/common/useDropdownState';
 import { useRecoilState } from 'recoil';
@@ -11,11 +11,12 @@ import {
 } from '@headlessui/react';
 import { bigIntToString, classNames, numStrToBigInt } from '@/utils/common';
 import { DEFAULT_POSITION_OPTION } from '@/utils/constant';
-import { selectedPositionState } from '@/features/post/public/posts/store/PostSearchStateStore';
+import { selectedPositionState } from '@/features/post/public/store/PostSearchStateStore';
 import { usePositionList } from '@/lib/static/getPositionList';
 import { compareItems } from '@/utils/compareItems';
 
-function PositionDropdown() {
+const PositionFilter = () => {
+  const [_, startTransition] = useTransition();
   const [selectedPosition, setSelectedPosition] = useRecoilState(
     selectedPositionState,
   );
@@ -38,13 +39,17 @@ function PositionDropdown() {
     (item) => item.value === bigIntToString(selectedPosition.value),
   )!;
 
+  const handleChangePosition = (item: { name: string; value: string }) => {
+    startTransition(() =>
+      setSelectedPosition({ ...item, value: numStrToBigInt(item.value) }),
+    );
+  };
+
   return (
     <Listbox
       aria-label='모집 포지션'
       value={selected}
-      onChange={(item) =>
-        setSelectedPosition({ ...item, value: numStrToBigInt(item.value) })
-      }
+      onChange={handleChangePosition}
       by={compareItems}
     >
       <div
@@ -94,6 +99,6 @@ function PositionDropdown() {
       </div>
     </Listbox>
   );
-}
+};
 
-export default PositionDropdown;
+export default PositionFilter;

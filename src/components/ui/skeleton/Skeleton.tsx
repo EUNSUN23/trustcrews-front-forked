@@ -1,15 +1,19 @@
 import { HTMLAttributes } from 'react';
-import { classNames } from '@/utils/common';
+import cn from '@/utils/cn';
 
 interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
   sizeClassName?: string;
   text?: string;
 }
 
-function Skeleton({ sizeClassName = '', text = '', ...props }: SkeletonProps) {
+const Skeleton = ({
+  sizeClassName = '',
+  text = '',
+  ...props
+}: SkeletonProps) => {
   return (
     <div
-      className={classNames(
+      className={cn(
         props.className || '',
         `${sizeClassName} text-transparent bg-gray-200 animate-pulse rounded-2xl`,
       )}
@@ -17,6 +21,6 @@ function Skeleton({ sizeClassName = '', text = '', ...props }: SkeletonProps) {
       {text}
     </div>
   );
-}
+};
 
 export default Skeleton;
