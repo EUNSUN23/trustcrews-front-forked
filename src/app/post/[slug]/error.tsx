@@ -10,7 +10,7 @@ import { activeBoardTabStore } from '@/features/board/store/BoardActiveStateStor
 import {
   selectedPositionState,
   selectedTechStackState,
-} from '@/features/post/public/posts/store/PostSearchStateStore';
+} from '@/features/post/public/store/PostSearchStateStore';
 import { useEffect } from 'react';
 
 export default function Error({
