@@ -12,7 +12,7 @@ const fields = [
   '기술 스택',
 ];
 
-function PostPageSkeleton() {
+const PostDetailSkeleton = () => {
   return (
     <div className='p-5 mobile:p-1'>
       <div className=' flex flex-col justify-center mt-5 mb-5 mobile:mt-0 space-y-6 mobile:space-y-3 border-b-2'>
@@ -46,6 +46,6 @@ function PostPageSkeleton() {
       </div>
     </div>
   );
-}
+};
 
-export default PostPageSkeleton;
+export default PostDetailSkeleton;

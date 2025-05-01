@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useTransition } from 'react';
 import { useRecoilValue } from 'recoil';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
-import TechStackDropdownList from './TechStackDropdownList';
+import TechStackDropdownList from '../../components/postFilter/TechStackDropdownList';
 import { TechStackWithCategory } from '@/utils/type';
-import { selectedTechStackState } from '@/features/post/public/posts/store/PostSearchStateStore';
+import { selectedTechStackState } from '@/features/post/public/store/PostSearchStateStore';
 import { useTechCategories } from '@/lib/static/getTechCategories';
 import { useTechMaps } from '@/lib/static/getTechMaps';
 
@@ -18,15 +18,11 @@ const getSelectedTechStackText = (
   return '기술스택';
 };
 
-const TechStackDropdown = () => {
+const TechStackFilter = () => {
+  const [_, startTransition] = useTransition();
   const selectedTechStacks = useRecoilValue(selectedTechStackState);
   const [openDropdown, setOpenDropdown] = useState(false);
   const dropdownRef = useRef<HTMLButtonElement | null>(null);
-
-  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    setOpenDropdown(!openDropdown);
-  };
 
   const handleDocumentClick = (e: MouseEvent) => {
     if (
@@ -42,6 +38,11 @@ const TechStackDropdown = () => {
     return () => document.removeEventListener('click', handleDocumentClick);
   }, []);
 
+  const handleClickTechStackButton = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    startTransition(() => setOpenDropdown((prev) => !prev));
+  };
+
   const { data: categoryResponse } = useTechCategories();
   const { data: techStackResponse } = useTechMaps();
 
@@ -52,7 +53,7 @@ const TechStackDropdown = () => {
       aria-owns='tech-stack-dropdown'
       ref={dropdownRef}
       className='relative z-10'
-      onClick={handleClick}
+      onClick={handleClickTechStackButton}
     >
       <div
         aria-hidden={true}
@@ -73,4 +74,4 @@ const TechStackDropdown = () => {
   );
 };
 
-export default TechStackDropdown;
+export default TechStackFilter;
