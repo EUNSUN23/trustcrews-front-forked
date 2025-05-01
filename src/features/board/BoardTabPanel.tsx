@@ -6,7 +6,7 @@ import {
   BOARD_TABS,
 } from '@/features/board/store/BoardActiveStateStore';
 import { MyProjectApply } from '@/features/projectApply/auth/components/MyProjectApply';
-import Posts from '@/features/post/public/posts/components/Posts';
+import Posts from '@/features/post/public/contents/posts/Posts';
 import { Suspense } from 'react';
 import CardListSkeleton from '@/components/ui/skeleton/CardListSkeleton';
 import { ITEM_COUNT } from '@/utils/constant';
