@@ -1,24 +1,19 @@
 import Input from '@/components/ui/form/Input';
 import { useRecoilState } from 'recoil';
-import {
-  projectSettingInfoSelector,
-  ProjectSettingInfoUpdField,
-} from '@/store/project/setting/ProjectSettingFormStateStore';
-import { ProjectSettingInfoData } from '@/service/project/setting/info';
 import FormRow from '@/components/ui/form/FormRow';
+import { projectInfoFormSelector } from '@/features/project/auth/updateProjectInfo/store/ProjectInfoFormStateStore';
+import { ProjectPublicInfoData } from '@/utils/type';
 
-function ProjectSubject({
-  initData,
-}: {
-  initData: ProjectSettingInfoData['projectSubject'];
-}) {
+type ProjectSubjectProps = {
+  initData: ProjectPublicInfoData['projectSubject'];
+};
+
+const ProjectSubject = ({ initData }: ProjectSubjectProps) => {
   const [projectSubject, setProjectSubject] = useRecoilState(
-    projectSettingInfoSelector('projectSubject'),
+    projectInfoFormSelector('projectSubject'),
   );
 
-  const value = projectSubject
-    ? (projectSubject as ProjectSettingInfoUpdField<'projectSubject'>)
-    : initData;
+  const value = projectSubject ? projectSubject : initData;
 
   return (
     <FormRow>
@@ -31,6 +26,6 @@ function ProjectSubject({
       />
     </FormRow>
   );
-}
+};
 
 export default ProjectSubject;

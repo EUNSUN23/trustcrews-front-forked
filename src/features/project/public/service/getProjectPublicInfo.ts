@@ -9,9 +9,11 @@ export const getProjectPublicInfo = async (
   return await request('GET', `/api/project/public?projectId=${projectId}`);
 };
 
+export const PROJECT_PUBLIC_INFO_QUERY_KEY = 'projectPublicInfo';
+
 export const getProjectPublicInfoQueryOptions = (projectId: bigint) => {
   return queryOptions({
-    queryKey: ['projectPublicInfo', bigIntToString(projectId)],
+    queryKey: [PROJECT_PUBLIC_INFO_QUERY_KEY, bigIntToString(projectId)],
     queryFn: () => getProjectPublicInfo(projectId),
   });
 };
