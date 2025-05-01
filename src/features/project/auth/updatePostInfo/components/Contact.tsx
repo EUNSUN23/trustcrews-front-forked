@@ -1,22 +1,18 @@
-import {
-  projectSettingBoardInfoSelector,
-  ProjectSettingBoardInfoUpdField,
-} from '@/store/project/setting/ProjectSettingFormStateStore';
 import { useRecoilState } from 'recoil';
 import Input from '@/components/ui/form/Input';
+import { postInfoFormFieldSelector } from '@/features/project/auth/updatePostInfo/store/PostInfoFormStateStore';
+import { PostPublicInfoData } from '@/utils/type';
 
-function Contact({
-  initData,
-}: {
-  initData: ProjectSettingBoardInfoUpdField<'contact'>;
-}) {
+type ContactProps = {
+  initData: PostPublicInfoData['contact'];
+};
+
+const Contact = ({ initData }: ContactProps) => {
   const [contact, setContact] = useRecoilState(
-    projectSettingBoardInfoSelector('contact'),
+    postInfoFormFieldSelector('contact'),
   );
 
-  const value = contact
-    ? (contact as ProjectSettingBoardInfoUpdField<'contact'>)
-    : initData;
+  const value = contact ? contact : initData;
 
   return (
     <Input
@@ -27,6 +23,6 @@ function Contact({
       onChange={(e) => setContact(e.target.value)}
     />
   );
-}
+};
 
 export default Contact;
