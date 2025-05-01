@@ -11,7 +11,7 @@ import { activeBoardTabStore } from '@/features/board/store/BoardActiveStateStor
 import {
   selectedPositionState,
   selectedTechStackState,
-} from '@/features/post/public/posts/store/PostSearchStateStore';
+} from '@/features/post/public/store/PostSearchStateStore';
 
 export default function Error({
   error,
