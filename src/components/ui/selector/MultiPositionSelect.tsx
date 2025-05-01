@@ -4,8 +4,8 @@ import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
 import { usePositionList } from '@/lib/static/getPositionList';
 
 interface MultiPositionSelectProps {
-  positions: PositionId[];
-  setPositions: (item: PositionId[]) => void;
+  positions: readonly PositionId[];
+  setPositions: (item: readonly PositionId[]) => void;
   required?: boolean;
 }
 
@@ -24,16 +24,15 @@ const MultiPositionSelect = ({
       />
     );
 
-  const positionList: SelectItem<string, bigint>[] = data!.data!.map(
+  const positionList: SelectItem<string, PositionId>[] = data!.data!.map(
     ({ positionId, positionName }) => ({
       name: positionName,
       value: positionId,
     }),
   );
 
-  const selectedPositions: SelectItem<string, bigint>[] = positionList.filter(
-    ({ name, value }) => positions.includes(value),
-  );
+  const selectedPositions: SelectItem<string, PositionId>[] =
+    positionList.filter(({ name, value }) => positions.includes(value));
 
   return (
     <MultiSelect
