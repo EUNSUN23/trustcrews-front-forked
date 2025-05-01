@@ -1,37 +1,26 @@
 import { useEffect, useState } from 'react';
 import CalendarInput from '@/components/ui/form/CalendarInput';
 import { useRecoilState } from 'recoil';
-import {
-  projectSettingInfoSelector,
-  ProjectSettingInfoUpdField,
-} from '@/store/project/setting/ProjectSettingFormStateStore';
-import { ProjectSettingInfoData } from '@/service/project/setting/info';
 import { addDays, format } from 'date-fns';
 import FormRow from '@/components/ui/form/FormRow';
+import { projectInfoFormSelector } from '@/features/project/auth/updateProjectInfo/store/ProjectInfoFormStateStore';
+import { ProjectPublicInfoData } from '@/utils/type';
 
-type ProjectSettingInfoStartDate = ProjectSettingInfoUpdField<'startDate'>;
-type ProjectSettingInfoEndDate = ProjectSettingInfoUpdField<'endDate'>;
+type ProjectDateProps = {
+  initStartDate: ProjectPublicInfoData['startDate'];
+  initEndDate: ProjectPublicInfoData['endDate'];
+};
 
-function ProjectDate({
-  initStartDate,
-  initEndDate,
-}: {
-  initStartDate: ProjectSettingInfoData['startDate'];
-  initEndDate: ProjectSettingInfoData['endDate'];
-}) {
+const ProjectDate = ({ initStartDate, initEndDate }: ProjectDateProps) => {
   const [startDate, setStartDate] = useRecoilState(
-    projectSettingInfoSelector('startDate'),
+    projectInfoFormSelector('startDate'),
   );
   const [endDate, setEndDate] = useRecoilState(
-    projectSettingInfoSelector('endDate'),
+    projectInfoFormSelector('endDate'),
   );
 
-  const startDateValue = startDate
-    ? (startDate as ProjectSettingInfoStartDate)
-    : initStartDate;
-  const endDateValue = endDate
-    ? (endDate as ProjectSettingInfoEndDate)
-    : initEndDate;
+  const startDateValue = startDate ? startDate : initStartDate;
+  const endDateValue = endDate ? endDate : initEndDate;
 
   const [endMinDate, setEndMinDate] = useState<Date | null>(() =>
     addDays(new Date(startDateValue), 1),
@@ -69,6 +58,6 @@ function ProjectDate({
       </div>
     </FormRow>
   );
-}
+};
 
 export default ProjectDate;
