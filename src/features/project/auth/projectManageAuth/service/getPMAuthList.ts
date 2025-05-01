@@ -1,0 +1,19 @@
+import { request } from '@/lib/clientApi/request';
+import { PageResponseBody } from '@/utils/type';
+import { ProjectAuthMap } from '@/features/project/auth/projectManageAuth/types/projectAuth';
+import { useSuspenseQuery } from '@tanstack/react-query';
+
+export const getPMAuthList = async (): Promise<
+  PageResponseBody<ProjectAuthMap[]>
+> => {
+  return await request('GET', '/api/setting/crewAuth');
+};
+
+export const PM_AUTH_LIST_QUERY_KEY = 'crewOptions';
+
+export const usePMAuthList = () => {
+  return useSuspenseQuery({
+    queryKey: [PM_AUTH_LIST_QUERY_KEY],
+    queryFn: getPMAuthList,
+  });
+};

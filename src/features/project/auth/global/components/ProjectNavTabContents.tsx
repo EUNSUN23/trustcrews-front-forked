@@ -5,7 +5,7 @@ import { ReactNode, useEffect } from 'react';
 import Job from '@/features/project/auth/projectJobs/components/Job';
 import JobSkeleton from '@/features/project/auth/projectJobs/components/JobSkeleton';
 import { PROJECT_MENU } from '@/features/project/auth/global/constants/projectMenu';
-import { useProjectManageAuth } from '@/features/project/auth/projectManageAuth/service/getProjectManageAuth';
+import { useMyPMAuth } from '@/features/project/auth/projectManageAuth/service/getMyPMAuth';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 import {
   DEFAULT_PM_AUTH,
@@ -37,7 +37,7 @@ const ProjectNavTabContents = () => {
 
   const {
     data: { data: pmAuthData },
-  } = useProjectManageAuth(projectId);
+  } = useMyPMAuth(projectId);
 
   useEffect(() => {
     setPMAuth(pmAuthData);
