@@ -1,15 +1,15 @@
 import Skeleton from '@/components/ui/skeleton/Skeleton';
 import InputStyleSkeleton from '@/components/ui/skeleton/InputStyleSkeleton';
-import SettingContainer from '@/components/project/setting/SettingContainer';
-import SettingTitle from '@/components/project/setting/SettingTitle';
-import SettingBody from '@/components/project/setting/SettingBody';
+import ConfigContainer from '@/features/project/auth/global/components/projectConfigs/ConfigContainer';
+import ConfigSummary from '@/features/project/auth/global/components/projectConfigs/ConfigSummary';
+import ConfigContents from '@/features/project/auth/global/components/projectConfigs/ConfigContents';
 import ButtonSkeleton from '@/components/ui/skeleton/ButtonSkeleton';
 
-function ProjectSettingBoardInfoSkeleton() {
+const ProjectPostInfoFormSkeleton = () => {
   return (
-    <SettingContainer>
-      <SettingTitle>모집 게시글</SettingTitle>
-      <SettingBody>
+    <ConfigContainer>
+      <ConfigSummary>모집 게시글</ConfigSummary>
+      <ConfigContents>
         <div className='w-[380px] mobile:w-[300px] space-y-5 mobile:space-y-3 mobile:mx-auto'>
           <div className='relative mobile:text-sm'>
             <span className='text-gray-700'>모집 상태</span>
@@ -25,13 +25,13 @@ function ProjectSettingBoardInfoSkeleton() {
             <Skeleton className='w-full h-[250px] py-2 px-4' />
           </div>
         </div>
-      </SettingBody>
+      </ConfigContents>
       <div className='pc:w-full my-4 flex items-center justify-center space-x-2'>
         <ButtonSkeleton>초기화</ButtonSkeleton>
         <ButtonSkeleton>저장</ButtonSkeleton>
       </div>
-    </SettingContainer>
+    </ConfigContainer>
   );
-}
+};
 
-export default ProjectSettingBoardInfoSkeleton;
+export default ProjectPostInfoFormSkeleton;
