@@ -5,10 +5,10 @@ import { ApiResult, ResponseBody } from '@/utils/type';
 import { getTaskListQueryKey } from '@/features/project/auth/projectJobs/service/task/getTaskList';
 
 export const createTaskInputSchema = z.object({
-  content: z.string().min(1, { message: '업무 제목을 입력해주세요' }),
+  summary: z.string().min(1, { message: '업무 제목을 입력해주세요' }),
   startDate: z.string().min(1, { message: '시작 날짜를 입력해주세요' }),
   endDate: z.string().min(1, { message: '시작 날짜를 입력해주세요' }),
-  contentDetail: z.string().min(1, { message: '할 일을 입력해주세요.' }),
+  todo: z.string().min(1, { message: '할 일을 입력해주세요.' }),
   assignedUserId: z
     .bigint()
     .or(z.number())
