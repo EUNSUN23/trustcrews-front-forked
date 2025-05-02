@@ -1,9 +1,14 @@
-import {useRecoilState} from 'recoil';
-import {postFieldSelector} from '@/features/registerProjectPost/store/RegisterProjectPostStateStore';
+import { useRecoilState } from 'recoil';
 import FormRowWide from '@/components/ui/form/FormRowWide';
+import { postFormFieldSelector } from '@/features/launch/auth/store/PostFormStateStore';
+import { ChangeEvent } from 'react';
 
-function PostTitleField() {
-  const [{ title }, setTitle] = useRecoilState(postFieldSelector('title'));
+const PostTitle = () => {
+  const [title, setTitle] = useRecoilState(postFormFieldSelector('title'));
+
+  const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+  };
 
   return (
     <FormRowWide className='h-[80px] mt-3 pc:mb-[50px] tablet:mb-[25px] mobile:mb-[15px]'>
@@ -13,7 +18,7 @@ function PostTitleField() {
             id='postRegister-title'
             type='text'
             value={title}
-            onChange={(e) => setTitle({ title: e.target.value })}
+            onChange={handleChangeInput}
             className='peer appearance-none bg-transparent border-none w-full font-semibold text-3xl mobile:text-lg border text-grey600 mr-3 py-1 px-1 leading-tight focus:border-transparent focus:outline-none focus:ring-transparent'
           />
           {title === '' && (
@@ -25,6 +30,6 @@ function PostTitleField() {
       </div>
     </FormRowWide>
   );
-}
+};
 
-export default PostTitleField;
+export default PostTitle;

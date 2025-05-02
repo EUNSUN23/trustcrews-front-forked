@@ -20,7 +20,7 @@ export const createProjectInputSchema = z.object({
 
 export type CreateProjectInput = z.infer<typeof createProjectInputSchema>;
 
-type CreateProjectResponseData = { projectId: bigint } | null;
+type CreateProjectResponseData = { projectId: bigint };
 
 export const createProject = async (
   data: CreateProjectInput,
@@ -28,31 +28,10 @@ export const createProject = async (
   return await request('POST', 'api/project/create', data);
 };
 
-type CreateProjectRes = ApiResult<typeof createProject>;
+export type CreateProjectRes = ApiResult<typeof createProject>;
 
-export const useCreateProject = ({
-  onSuccess,
-  onError,
-}: {
-  onSuccess?: (res: CreateProjectRes) => void;
-  onError?: (res: CreateProjectRes) => void;
-}) => {
+export const useCreateProject = () => {
   return useMutation({
     mutationFn: (data: CreateProjectInput) => createProject(data),
-    onSuccess: (res) => {
-      if (res.result === 'success') {
-        onSuccess?.(res);
-      } else {
-        onError?.(res);
-      }
-    },
-    onError: (error) => {
-      console.error(error.cause);
-      onError?.({
-        result: 'fail',
-        data: null,
-        message: '프로젝트 생성 중 오류가 발생했습니다,',
-      });
-    },
   });
 };
