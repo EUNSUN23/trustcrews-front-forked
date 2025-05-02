@@ -109,7 +109,7 @@ function SignUpForm() {
       />
       <TechStackSelect
         techStacks={techStackIds}
-        setTechStacks={(item: readonly TechStackValueType[]) =>
+        onChange={(item: readonly TechStackValueType[]) =>
           setTechStackIds([...item])
         }
         label='관심 스택'

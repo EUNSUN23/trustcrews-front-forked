@@ -22,7 +22,7 @@ const ProjectTechnologies = ({ initData }: ProjectTechnologiesProps) => {
     <FormRow>
       <TechStackSelect
         techStacks={techStacks}
-        setTechStacks={(item: readonly TechStackValueType[]) =>
+        onChange={(item: readonly TechStackValueType[]) =>
           setTechnologyIds([...item])
         }
         label='기술 스택'
