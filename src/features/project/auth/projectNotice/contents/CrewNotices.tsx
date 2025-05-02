@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import CommonPagination from '@/components/ui/CommonPagination';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
-import NoItemsContent from '@/features/project/auth/projectNotice/components/NoItemsContent';
-import CrewNoticeListItem from '@/features/project/auth/projectNotice/components/crewNotice/CrewNoticeListItem';
+import NoContentsMessage from '@/features/project/auth/projectNotice/components/NoContentsMessage';
 import { useCrewNoticeList } from '@/features/project/auth/projectNotice/service/getCrewNoticeList';
 import { useRecoilValue } from 'recoil';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 import { numStrToBigInt } from '@/utils/common';
+import NoticeBadge from '@/components/ui/badge/NoticeBadge';
+import { NOTICE_TYPES } from '@/features/project/auth/projectNotice/constants/noticeTypes';
 
-const CrewNoticeList = () => {
+const CrewNotices = () => {
   const [pageIndex, setPageIndex] = useState(0);
   const projectId = useRecoilValue(projectIdState);
 
@@ -23,12 +24,23 @@ const CrewNoticeList = () => {
       <div className='alertList'>
         {totalItemsCount > 0 ? (
           <ul role='list'>
-            {noticeList.map((item) => (
-              <CrewNoticeListItem key={item.alertId} data={item} />
+            {noticeList.map(({ alertId, contents, createDate }) => (
+              <li
+                key={`crewNotice-${alertId}`}
+                className='flex items-center gap-x-10 px-3 py-5 pc:text-lg mobile:text-sm text-grey900'
+              >
+                <div className='flex items-center gap-x-4'>
+                  <NoticeBadge noticeType={NOTICE_TYPES.PRA2001.code}>
+                    {NOTICE_TYPES.PRA2001.name}
+                  </NoticeBadge>
+                  {contents}
+                </div>
+                <div className='ml-auto text-grey600'>{createDate}</div>
+              </li>
             ))}
           </ul>
         ) : (
-          <NoItemsContent />
+          <NoContentsMessage />
         )}
       </div>
       <CommonPagination
@@ -42,4 +54,4 @@ const CrewNoticeList = () => {
   );
 };
 
-export default CrewNoticeList;
+export default CrewNotices;

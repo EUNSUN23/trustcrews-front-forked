@@ -12,7 +12,7 @@ type VAlertFwListItemProps = {
   data: FWVoteNoticeData;
 };
 
-const FWVoteNoticeListItem = ({ data }: VAlertFwListItemProps) => {
+const FWVoteNoticeRow = ({ data }: VAlertFwListItemProps) => {
   const setVAlertFWModalState = useSetRecoilState(fwNoticeModalState);
   const projectId = useRecoilValue(projectIdState);
   const { code: userAuth } = useRecoilValue(projectManageAuthStateStore);
@@ -59,4 +59,4 @@ const FWVoteNoticeListItem = ({ data }: VAlertFwListItemProps) => {
   );
 };
 
-export default FWVoteNoticeListItem;
+export default FWVoteNoticeRow;

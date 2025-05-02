@@ -1,21 +1,21 @@
 import { useState } from 'react';
 import CommonPagination from '@/components/ui/CommonPagination';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
-import FWVoteNoticeListItem from '@/features/project/auth/projectNotice/components/fwVoteNotice/FWVoteNoticeListItem';
-import NoItemsContent from '@/features/project/auth/projectNotice/components/NoItemsContent';
-import { useFWVoteNoticeList } from '@/features/project/auth/projectNotice/service/getFWVoteNoticeList';
+import RCVoteNoticeRow from '@/features/project/auth/projectNotice/components/noticeRow/RCVoteNoticeRow';
+import NoContentsMessage from '@/features/project/auth/projectNotice/components/NoContentsMessage';
+import { useRCVoteNoticeList } from '@/features/project/auth/projectNotice/service/getRCVoteNoticeList';
 import { useRecoilValue } from 'recoil';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 import { numStrToBigInt } from '@/utils/common';
 
-const FWVoteNoticeList = () => {
+const RCVoteNotice = () => {
   const [pageIndex, setPageIndex] = useState(0);
   const projectId = useRecoilValue(projectIdState);
   const {
     data: {
       data: { content: alertList, totalPages: totalItemsCount },
     },
-  } = useFWVoteNoticeList(numStrToBigInt(projectId), pageIndex);
+  } = useRCVoteNoticeList(numStrToBigInt(projectId), pageIndex);
 
   return (
     <>
@@ -23,11 +23,11 @@ const FWVoteNoticeList = () => {
         {totalItemsCount > 0 ? (
           <ul role='list'>
             {alertList.map((item) => (
-              <FWVoteNoticeListItem key={item.alertId} data={item} />
+              <RCVoteNoticeRow key={item.alertId} data={item} />
             ))}
           </ul>
         ) : (
-          <NoItemsContent />
+          <NoContentsMessage />
         )}
       </div>
       <CommonPagination
@@ -41,4 +41,4 @@ const FWVoteNoticeList = () => {
   );
 };
 
-export default FWVoteNoticeList;
+export default RCVoteNotice;
