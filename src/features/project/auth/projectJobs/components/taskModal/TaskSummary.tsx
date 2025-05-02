@@ -3,7 +3,7 @@
 import Input from '@/components/ui/form/Input';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import {
-  taskModalDataFieldSelector,
+  taskFormFieldSelector,
   taskModalEditDisabledSelector,
   TaskModalType,
 } from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
@@ -11,17 +11,17 @@ import { ChangeEvent } from 'react';
 
 const INPUT_ID = 'taskContent';
 
-type TaskContentProps = {
+type TaskSummaryProps = {
   modalType: TaskModalType;
 };
 
-const TaskContent = ({ modalType }: TaskContentProps) => {
+const TaskSummary = ({ modalType }: TaskSummaryProps) => {
   const disabled = useRecoilValue(taskModalEditDisabledSelector(modalType));
   const [content, setContent] = useRecoilState(
-    taskModalDataFieldSelector({ modalType, fieldKey: 'content' }),
+    taskFormFieldSelector({ modalType, fieldKey: 'content' }),
   );
 
-  const handleChangeContent = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setContent(e.target.value);
   };
 
@@ -38,7 +38,7 @@ const TaskContent = ({ modalType }: TaskContentProps) => {
           id={INPUT_ID}
           placeholder='제목 입력'
           value={content}
-          onChange={handleChangeContent}
+          onChange={handleChangeInput}
           maxLength={20}
           disabled={disabled}
         />
@@ -47,4 +47,4 @@ const TaskContent = ({ modalType }: TaskContentProps) => {
   );
 };
 
-export default TaskContent;
+export default TaskSummary;

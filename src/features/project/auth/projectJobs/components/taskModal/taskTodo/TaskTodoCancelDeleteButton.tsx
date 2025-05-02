@@ -11,7 +11,7 @@ interface TaskContentCancelDeleteButtonProps
   disabled: boolean;
 }
 
-const TaskContentCancelDeleteButton = ({
+const TaskTodoCancelDeleteButton = ({
   onClick,
   mode,
   disabled,
@@ -35,4 +35,4 @@ const TaskContentCancelDeleteButton = ({
   );
 };
 
-export default TaskContentCancelDeleteButton;
+export default TaskTodoCancelDeleteButton;
