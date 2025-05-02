@@ -2,11 +2,10 @@ import { request } from '@/lib/clientApi/request';
 import { ApiResult, ResponseBody } from '@/utils/type';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { getTaskListQueryKey } from '@/features/project/auth/projectJobs/service/task/getTaskList';
-import { ProjectAuthCode } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 
 export type TaskDeleteReqData = {
   workId: bigint;
-  auth: ProjectAuthCode;
+  auth: string;
 };
 
 export const deleteTask = async (
