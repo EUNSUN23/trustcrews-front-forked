@@ -3,13 +3,12 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
 import { ApiResult, ResponseBody } from '@/utils/type';
 import { getTaskListQueryKey } from '@/features/project/auth/projectJobs/service/task/getTaskList';
-import { ProjectAuthCode } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 
 export const updateTaskInputSchema = z.object({
-  content: z.string().min(1, { message: '업무 제목을 입력해주세요' }),
+  summary: z.string().min(1, { message: '업무 제목을 입력해주세요' }),
   startDate: z.string().min(1, { message: '시작 날짜를 입력해주세요' }),
   endDate: z.string().min(1, { message: '시작 날짜를 입력해주세요' }),
-  contentDetail: z.string().min(1, { message: '할 일을 입력해주세요.' }),
+  todo: z.string().min(1, { message: '할 일을 입력해주세요.' }),
   assignedUserId: z
     .bigint()
     .or(z.number())
@@ -22,7 +21,7 @@ export type UpdateTaskInput = z.infer<typeof updateTaskInputSchema>;
 export const updateTask = async (
   data: UpdateTaskInput,
   workId: bigint,
-  auth: ProjectAuthCode,
+  auth: string,
 ): Promise<ResponseBody<null>> => {
   return await request('PATCH', '/api/project/work', {
     ...data,
@@ -35,7 +34,7 @@ type UpdateTaskRes = ApiResult<typeof updateTask>;
 
 export const useUpdateTask = (
   workId: bigint,
-  auth: ProjectAuthCode,
+  auth: string,
   {
     onSuccess,
     onError,
