@@ -1,0 +1,42 @@
+import CalendarInput from '@/components/ui/form/CalendarInput';
+import { useRecoilState } from 'recoil';
+import FormRow from '@/components/ui/form/FormRow';
+import { projectFormFieldSelector } from '@/features/launch/auth/store/ProjectFormStateStore';
+
+const ProjectDate = () => {
+  const [startDate, setStartDate] = useRecoilState(
+    projectFormFieldSelector('startDate'),
+  );
+  const [endDate, setEndDate] = useRecoilState(
+    projectFormFieldSelector('endDate'),
+  );
+
+  const handleChangeStartDate = (value: string) => {
+    setStartDate(value);
+  };
+
+  const handleChangeEndDate = (value: string) => {
+    setEndDate(value);
+  };
+
+  return (
+    <FormRow className='pc:place-self-center row-span-2 '>
+      <div className='space-y-10'>
+        <CalendarInput
+          id='startDate'
+          label='시작 날짜'
+          date={startDate}
+          setDate={handleChangeStartDate}
+        />
+        <CalendarInput
+          id='endDate'
+          label='종료 날짜'
+          date={endDate}
+          setDate={handleChangeEndDate}
+        />
+      </div>
+    </FormRow>
+  );
+};
+
+export default ProjectDate;
