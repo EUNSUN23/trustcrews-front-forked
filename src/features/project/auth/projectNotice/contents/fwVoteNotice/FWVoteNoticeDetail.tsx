@@ -4,7 +4,7 @@ import ProjectRoleBadge from '@/components/ui/badge/ProjectRoleBadge';
 import VoteStatusBadge from '@/components/ui/badge/VoteStatusBadge';
 import { useRecoilValue } from 'recoil';
 import { numStrToBigInt } from '@/utils/common';
-import FWVoteNoticeModalSkeleton from '@/features/project/auth/projectNotice/components/fwVoteNotice/FWVoteNoticeModalSkeleton';
+import FWVoteNoticeDetailSkeleton from '@/features/project/auth/projectNotice/contents/fwVoteNotice/FWVoteNoticeDetailSkeleton';
 import VoteBar from '@/components/ui/votebar/VoteBar';
 import { VOTE_OPTIONS } from '@/features/project/auth/projectVote/constants/voteOptions';
 import {
@@ -21,7 +21,7 @@ const {
   VODA1002: { code: VOTE_DISAGREE },
 } = VOTE_OPTIONS;
 
-const FWVoteNoticeModalContents = () => {
+const FWVoteNoticeDetail = () => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
 
   const { projectId, voteId, crewId, crewAuth, userAuth } =
@@ -46,7 +46,7 @@ const FWVoteNoticeModalContents = () => {
     data: { data: noticeDetail },
   } = useFWVoteNotice(numStrToBigInt(voteId), numStrToBigInt(crewId));
 
-  if (isUpdating) return <FWVoteNoticeModalSkeleton />;
+  if (isUpdating) return <FWVoteNoticeDetailSkeleton />;
 
   const {
     crewAuth: { name: crewAuthName, code: crewAuthCode },
@@ -135,4 +135,4 @@ const FWVoteNoticeModalContents = () => {
   );
 };
 
-export default FWVoteNoticeModalContents;
+export default FWVoteNoticeDetail;

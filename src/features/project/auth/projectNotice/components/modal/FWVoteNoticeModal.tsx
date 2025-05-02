@@ -1,11 +1,11 @@
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { createPortal } from 'react-dom';
 import Modal from '@/components/ui/Modal';
-import FWVoteNoticeModalContents from '@/features/project/auth/projectNotice/components/fwVoteNotice/FWVoteNoticeModalContents';
+import FWVoteNoticeDetail from '@/features/project/auth/projectNotice/contents/fwVoteNotice/FWVoteNoticeDetail';
 import { fwNoticeModalState } from '@/features/project/auth/projectNotice/store/FWVoteNoticeModalStateStore';
 import useModalPortalElement from '@/hooks/common/useModalPortalElement';
 import { Suspense } from 'react';
-import FWVoteNoticeModalSkeleton from '@/features/project/auth/projectNotice/components/fwVoteNotice/FWVoteNoticeModalSkeleton';
+import FWVoteNoticeDetailSkeleton from '@/features/project/auth/projectNotice/contents/fwVoteNotice/FWVoteNoticeDetailSkeleton';
 
 const FWVoteNoticeModal = () => {
   const { isOpen, title } = useRecoilValue(fwNoticeModalState);
@@ -22,8 +22,8 @@ const FWVoteNoticeModal = () => {
               close={resetVAlertFWModalState}
               title={title}
             >
-              <Suspense fallback={<FWVoteNoticeModalSkeleton />}>
-                <FWVoteNoticeModalContents />
+              <Suspense fallback={<FWVoteNoticeDetailSkeleton />}>
+                <FWVoteNoticeDetail />
               </Suspense>
             </Modal>,
             portalElement as Element,

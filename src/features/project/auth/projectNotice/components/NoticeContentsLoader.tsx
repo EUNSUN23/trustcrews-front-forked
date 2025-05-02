@@ -1,6 +1,6 @@
 import Loader from '@/components/ui/Loader';
 
-const NoticeListLoader = () => {
+const NoticeContentsLoader = () => {
   return (
     <div className='flex w-full h-full'>
       <Loader size='md' />
@@ -8,4 +8,4 @@ const NoticeListLoader = () => {
   );
 };
 
-export default NoticeListLoader;
+export default NoticeContentsLoader;

@@ -15,7 +15,7 @@ type RCVoteNoticeListItemProps = {
   data: RCVoteNoticeData;
 };
 
-const RCVoteNoticeListItem = ({ data }: RCVoteNoticeListItemProps) => {
+const RCVoteNoticeRow = ({ data }: RCVoteNoticeListItemProps) => {
   const setVAlertRecruitModalState = useSetRecoilState(rcVoteNoticeModalState);
   const { code: userAuth } = useRecoilValue(projectManageAuthStateStore);
 
@@ -59,4 +59,4 @@ const RCVoteNoticeListItem = ({ data }: RCVoteNoticeListItemProps) => {
   );
 };
 
-export default RCVoteNoticeListItem;
+export default RCVoteNoticeRow;

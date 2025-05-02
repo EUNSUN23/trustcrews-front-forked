@@ -2,9 +2,9 @@ import Avatar from '@/components/ui/Avatar';
 import { TechStackItem } from '@/utils/type';
 import TechStackImage from '@/components/ui/TechStackImage';
 import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
-import RCVoteNoticeModalSkeleton from '@/features/project/auth/projectNotice/components/rcVoteNotice/RCVoteNoticeModalSkeleton';
+import RCVoteNoticeDetailSkeleton from '@/features/project/auth/projectNotice/contents/rcVoteNotice/RCVoteNoticeDetailSkeleton';
 import VoteStatusBadge from '@/components/ui/badge/VoteStatusBadge';
-import ApplicantProjectHistory from '@/features/project/auth/projectNotice/components/rcVoteNotice/ApplicantProjectHisotry';
+import RCTargetProjectHistory from '@/features/project/auth/projectNotice/contents/rcVoteNotice/RCTargetProjectHistory';
 import VoteBar from '@/components/ui/votebar/VoteBar';
 import { VOTE_OPTIONS } from '@/features/project/auth/projectVote/constants/voteOptions';
 import {
@@ -17,13 +17,15 @@ import { useRecoilValue } from 'recoil';
 import { rcVoteNoticeModalState } from '@/features/project/auth/projectNotice/store/RCVoteNoticeModalStateStore';
 import { numStrToBigInt } from '@/utils/common';
 import { ZodError } from 'zod';
+import { Suspense } from 'react';
+import Loader from '@/components/ui/Loader';
 
 const {
   VODA1001: { code: VOTE_AGREE },
   VODA1002: { code: VOTE_DISAGREE },
 } = VOTE_OPTIONS;
 
-const RCVoteNoticeModalContents = () => {
+const RCVoteNoticeDetail = () => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
   const { alertId, voteId, applyId, userAuth } = useRecoilValue(
     rcVoteNoticeModalState,
@@ -49,7 +51,7 @@ const RCVoteNoticeModalContents = () => {
     numStrToBigInt(alertId),
   );
 
-  if (isUpdating) return <RCVoteNoticeModalSkeleton />;
+  if (isUpdating) return <RCVoteNoticeDetailSkeleton />;
 
   const {
     applicantInfo: {
@@ -133,7 +135,9 @@ const RCVoteNoticeModalContents = () => {
             <span className='text-md text-grey900'>{trustScore}점</span>
           </div>
         </div>
-        <ApplicantProjectHistory applicantUserId={userId} />
+        <Suspense fallback={<Loader size='md' />}>
+          <RCTargetProjectHistory applicantUserId={userId} />
+        </Suspense>
       </section>
       <section className='tablet:max-w-[400px] h-[250px] mx-auto flex flex-col justify-center space-y-5'>
         <div className='flex justify-center items-center space-x-1 text-2xl text-greyDarkblue font-medium'>
@@ -172,4 +176,4 @@ const RCVoteNoticeModalContents = () => {
   );
 };
 
-export default RCVoteNoticeModalContents;
+export default RCVoteNoticeDetail;
