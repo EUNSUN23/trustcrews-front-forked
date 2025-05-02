@@ -4,8 +4,8 @@ import { ApiResult, ResponseBody } from '@/utils/type';
 import { getMyProjectAppliesQueryKey } from '@/features/projectApply/auth/service/getMyProjectApplies';
 
 export const applyProject = async (
-  projectId: bigint,
-  positionId: bigint,
+  projectId: bigint | number,
+  positionId: bigint | number,
 ): Promise<ResponseBody<null>> => {
   return await request(
     'POST',
@@ -34,8 +34,8 @@ export const useApplyProject = ({
       projectId,
       positionId,
     }: {
-      projectId: bigint;
-      positionId: bigint;
+      projectId: bigint | number;
+      positionId: bigint | number;
     }) => applyProject(projectId, positionId),
     onSuccess: async (res) => {
       if (res.result === 'success') {
