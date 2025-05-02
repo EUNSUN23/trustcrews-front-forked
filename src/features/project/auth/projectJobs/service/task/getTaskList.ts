@@ -2,9 +2,9 @@ import { DataId, PageResponseBody } from '@/utils/type';
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ITEM_COUNT } from '@/utils/constant';
-import { TaskItem } from '@/features/project/auth/projectJobs/types/task';
 import { TASK_STATUS } from '@/features/project/auth/projectJobs/constants/task/taskStatus';
 import { bigIntToString } from '@/utils/common';
+import { TaskStatus } from '@/features/project/auth/projectJobs/types/task';
 
 export type TasksReqParam = {
   projectId: DataId;
@@ -13,9 +13,22 @@ export type TasksReqParam = {
   pageNumber: number;
 };
 
-const { PS001: TASK_WAIT, PS002: TASK_PROCESSING } = TASK_STATUS;
+export type TaskItem = {
+  workId: bigint;
+  projectId: bigint;
+  milestoneId: bigint;
+  assignedUser: { projectMemberId: bigint; nickname: string } | null;
+  lastModifiedMemberNickname: string;
+  summary: string;
+  startDate: string;
+  endDate: string;
+  progressStatus: TaskStatus;
+  todo: string | '';
+};
 
 export const getTaskList = async (tasksReqParam: TasksReqParam) => {
+  const { PS001: TASK_WAIT, PS002: TASK_PROCESSING } = TASK_STATUS;
+
   const {
     milestoneId,
     projectId,
