@@ -1,36 +1,21 @@
 'use client';
 
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense } from 'react';
 import { useRecoilState } from 'recoil';
 import { myProjectAppliesModalStateStore } from '@/features/projectApply/auth/store/MyProjectAppliesModalStateStore';
 import { createPortal } from 'react-dom';
 import Modal from '@/components/ui/Modal';
-import { useQueryClient } from '@tanstack/react-query';
-import ProjectApplyStatusList from './MyProjectApplyList';
+import MyProjectAppliesDetail from '../contents/MyProjectAppliesDetail';
 import { ITEM_COUNT } from '@/utils/constant';
 import Skeleton from '@/components/ui/skeleton/Skeleton';
-import { getMyProjectAppliesQueryKey } from '@/features/projectApply/auth/service/getMyProjectApplies';
+import useModalPortalElement from '@/hooks/common/useModalPortalElement';
 
-function MyProjectApplyModal() {
-  const [portalElement, setPortalElement] = useState<Element | null>(null);
+const MyProjectAppliesModal = () => {
   const [{ isOpen }, setIsOpen] = useRecoilState(
     myProjectAppliesModalStateStore,
   );
-  const queryClient = useQueryClient();
 
-  useEffect(() => {
-    setPortalElement(document.getElementById('modal'));
-
-    if (!isOpen) {
-      queryClient.removeQueries({ queryKey: getMyProjectAppliesQueryKey });
-      const scrollY = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.overflowY = 'auto';
-
-      window.scrollTo(0, parseInt(scrollY || '0') * -1);
-    }
-  }, [isOpen, queryClient]);
+  const [portalElement] = useModalPortalElement(isOpen);
 
   return (
     <>
@@ -60,14 +45,14 @@ function MyProjectApplyModal() {
                   </div>
                 }
               >
-                <ProjectApplyStatusList />
+                <MyProjectAppliesDetail />
               </Suspense>
             </Modal>,
-            portalElement,
+            portalElement as Element,
           )
         : null}
     </>
   );
-}
+};
 
-export default MyProjectApplyModal;
+export default MyProjectAppliesModal;

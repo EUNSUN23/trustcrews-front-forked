@@ -6,11 +6,11 @@ import useSnackbar from '@/hooks/common/useSnackbar';
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
 import { confirmModalState } from '@/store/CommonStateStore';
 import { projectApplyPositionState } from '@/features/projectApply/auth/store/ApplyPositionStateStore';
-import ApplyPositionDropdown from '@/features/projectApply/auth/components/ApplyPositionDropdown';
+import ApplyPositionDropdown from '@/features/projectApply/public/components/ApplyPositionDropdown';
 import { useEffect } from 'react';
-import { useApplyProject } from '@/features/projectApply/auth/service/applyProject';
+import { useApplyProject } from '@/features/projectApply/public/service/applyProject';
 
-function ApplyProject({ postInfo }: { postInfo: PostPublicInfoData }) {
+const ApplyProject = ({ postInfo }: { postInfo: PostPublicInfoData }) => {
   const resetModalState = useResetRecoilState(confirmModalState);
   const { setSuccessSnackbar, setErrorSnackbar, setInfoSnackbar } =
     useSnackbar();
@@ -37,7 +37,7 @@ function ApplyProject({ postInfo }: { postInfo: PostPublicInfoData }) {
 
   const setModalState = useSetRecoilState(confirmModalState);
 
-  const onConfirmHandler = () => {
+  const handleClickConfirmButton = () => {
     if (recruitPosition === 0n) {
       setInfoSnackbar('포지션을 선택해 주세요.');
       return;
@@ -61,13 +61,13 @@ function ApplyProject({ postInfo }: { postInfo: PostPublicInfoData }) {
       <Button
         type='button'
         size='lg'
-        onClick={onConfirmHandler}
+        onClick={handleClickConfirmButton}
         disabled={isUpdating}
       >
         참여하기
       </Button>
     </footer>
   );
-}
+};
 
 export default ApplyProject;
