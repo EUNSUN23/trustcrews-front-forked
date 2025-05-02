@@ -1,35 +1,35 @@
 'use client';
 
-import TaskContentDetailInput from '@/features/project/auth/projectJobs/components/task/modal/taskContentDetail/TaskContentDetailInput';
 import { useRecoilValue } from 'recoil';
 import _ from 'lodash';
-import ToggleTaskContentDetailAddInput from '@/features/project/auth/projectJobs/components/task/modal/taskContentDetail/ToggleTaskContentDetailAddInput';
 import {
-  taskModalContentDetailSelector,
   TaskModalType,
+  taskTodoSelector,
 } from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
+import AddTaskTodoToggle from '@/features/project/auth/projectJobs/components/taskModal/taskTodo/AddTaskTodoToggle';
+import TaskTodoModInput from '@/features/project/auth/projectJobs/components/taskModal/taskTodo/TaskTodoModInput';
 
-type TaskContentDetailProps = {
+type TaskTodoProps = {
   modalType: TaskModalType;
 };
-const TaskContentDetail = ({ modalType }: TaskContentDetailProps) => {
-  const taskContentDetailMap = useRecoilValue(
-    taskModalContentDetailSelector(modalType),
-  );
+
+const TaskTodo = ({ modalType }: TaskTodoProps) => {
+  const taskTodos = useRecoilValue(taskTodoSelector(modalType));
+
   return (
     <div className='w-full flex-col pb-3'>
       <div className='w-full py-3 mobile:py-2 flex justify-center text-xl mobile:text-lg font-medium text-gray-700 bg-greyBlue/5 rounded-sm'>
         할 일
       </div>
-      <ToggleTaskContentDetailAddInput modalType={modalType} />
+      <AddTaskTodoToggle modalType={modalType} />
       <div className='max-h-[150px] overflow-y-auto'>
-        {_.isEmpty(taskContentDetailMap) ? (
+        {_.isEmpty(taskTodos) ? (
           <div className='mt-3 flex items-center justify-center text-xl noData h-[100px]'>
             <span>데이터가 없습니다.</span>
           </div>
         ) : (
-          Array.from(taskContentDetailMap.keys(), (idForEdit) => (
-            <TaskContentDetailInput
+          Array.from(taskTodos.keys(), (idForEdit) => (
+            <TaskTodoModInput
               modalType={modalType}
               key={idForEdit}
               idForEdit={idForEdit}
@@ -41,4 +41,4 @@ const TaskContentDetail = ({ modalType }: TaskContentDetailProps) => {
   );
 };
 
-export default TaskContentDetail;
+export default TaskTodo;

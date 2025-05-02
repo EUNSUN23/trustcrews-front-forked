@@ -2,16 +2,16 @@
 
 import { ChangeEvent, useRef, useState } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import TaskContentCancelDeleteButton from '@/features/project/auth/projectJobs/components/task/modal/taskContentDetail/TaskContentCancelDeleteButton';
-import TaskContentEditFinishButton from '@/features/project/auth/projectJobs/components/task/modal/taskContentDetail/TaskContentEditFinishButton';
 import {
-  taskContentDetailFieldSelector,
-  taskModalContentDetailSelector,
   taskModalEditDisabledSelector,
+  taskTodoItemSelector,
+  taskTodoSelector,
 } from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
 import { TaskContentDetails } from '@/features/project/auth/projectJobs/types/task';
 import { clsx } from 'clsx';
 import { cva } from 'class-variance-authority';
+import TaskTodoEditFinishButton from '@/features/project/auth/projectJobs/components/taskModal/taskTodo/TaskTodoEditFinishButton';
+import TaskTodoCancelDeleteButton from '@/features/project/auth/projectJobs/components/taskModal/taskTodo/TaskTodoCancelDeleteButton';
 
 const TaskContentDetailInputVariants = cva(
   'w-[320px] mobile:w-full h-full absolute top-0 left-0 z-10 appearance-none border-none focus:border-transparent  focus:ring-0 focus:outline-none',
@@ -30,7 +30,7 @@ type TaskContentDetailInputProps = {
   modalType: 'add' | 'mod';
 };
 
-const TaskContentDetailInput = ({
+const TaskTodoModInput = ({
   idForEdit,
   modalType,
 }: TaskContentDetailInputProps) => {
@@ -38,12 +38,10 @@ const TaskContentDetailInput = ({
   const [isReadOnly, setIsReadOnly] = useState(true);
   const [placeholder, setPlaceholder] = useState('할 일 입력');
   const [taskContentDetailField, setTaskContentDetailField] = useRecoilState(
-    taskContentDetailFieldSelector({ modalType, idForEdit }),
+    taskTodoItemSelector({ modalType, idForEdit }),
   );
   const [value, setValue] = useState(() => taskContentDetailField);
-  const setTaskContentDetails = useSetRecoilState(
-    taskModalContentDetailSelector(modalType),
-  );
+  const setTaskContentDetails = useSetRecoilState(taskTodoSelector(modalType));
 
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -107,14 +105,14 @@ const TaskContentDetailInput = ({
         </div>
       </div>
       <div className='w-full flex space-x-3 mx-1 text-3xl text-neutral-dark z-10'>
-        <TaskContentEditFinishButton
+        <TaskTodoEditFinishButton
           disabled={disabled}
           mode={isReadOnly ? 'edit' : 'finish'}
           onClick={
             isReadOnly ? handleClickEditButton : handleClickEditFinishButton
           }
         />
-        <TaskContentCancelDeleteButton
+        <TaskTodoCancelDeleteButton
           disabled={disabled}
           mode={isReadOnly ? 'delete' : 'cancel'}
           onClick={
@@ -126,4 +124,4 @@ const TaskContentDetailInput = ({
   );
 };
 
-export default TaskContentDetailInput;
+export default TaskTodoModInput;

@@ -4,8 +4,8 @@ import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { v4 } from 'uuid';
 import {
-  taskContentDetailFieldSelector,
   TaskModalType,
+  taskTodoItemSelector,
 } from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
 import { IoIosAddCircle } from '@react-icons/all-files/io/IoIosAddCircle';
 
@@ -14,7 +14,7 @@ type TaskContentDetailAddInputProps = {
   modalType: TaskModalType;
 };
 
-const TaskContentDetailAddInput = ({
+const TaskTodoAddInput = ({
   setIsOpen,
   modalType,
 }: TaskContentDetailAddInputProps) => {
@@ -23,7 +23,7 @@ const TaskContentDetailAddInput = ({
   const idForEdit = useRef(v4());
 
   const setTaskContentDetailField = useSetRecoilState(
-    taskContentDetailFieldSelector({
+    taskTodoItemSelector({
       modalType,
       idForEdit: idForEdit.current,
     }),
@@ -77,4 +77,4 @@ const TaskContentDetailAddInput = ({
   );
 };
 
-export default TaskContentDetailAddInput;
+export default TaskTodoAddInput;

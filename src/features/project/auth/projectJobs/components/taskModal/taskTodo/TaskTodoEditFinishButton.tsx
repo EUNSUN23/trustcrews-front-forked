@@ -10,7 +10,7 @@ type TaskContentEditFinishButtonProps = {
   disabled: boolean;
 };
 
-const TaskContentEditFinishButton = ({
+const TaskTodoEditFinishButton = ({
   onClick,
   mode,
   disabled,
@@ -34,4 +34,4 @@ const TaskContentEditFinishButton = ({
   );
 };
 
-export default TaskContentEditFinishButton;
+export default TaskTodoEditFinishButton;
