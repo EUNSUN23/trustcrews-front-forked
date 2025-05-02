@@ -20,18 +20,3 @@ export async function PUT(req: NextRequest) {
 
   return routeResponse(req, res);
 }
-
-/**
- * 프로젝트 종료
- * @param req
- * @constructor
- */
-export async function POST(req: NextRequest) {
-  const { projectId } = await req.json();
-
-  const res = await authApi(`${baseURL}/api/project/${projectId}/end`, {
-    method: 'POST',
-  });
-
-  return routeResponse(req, res);
-}
