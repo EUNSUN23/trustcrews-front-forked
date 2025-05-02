@@ -1,5 +1,5 @@
 import { ProjectPublicInfo } from '@/features/project/public/components/ProjectPublicInfo';
-import ApplyProject from '@/features/projectApply/auth/components/ApplyProject';
+import ApplyProject from '@/features/projectApply/public/contents/ApplyProject';
 import { usePostPublicInfo } from '@/features/post/public/service/getPostPublicInfo';
 import { numStrToBigInt } from '@/utils/common';
 import { useProjectPublicInfo } from '@/features/project/public/service/getProjectPublicInfo';

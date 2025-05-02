@@ -1,20 +1,27 @@
 import Button from '@/components/ui/button';
-import MyProjectApplyModal from '@/features/projectApply/auth/components/MyProjectApplyModal';
+import MyProjectAppliesModal from '@/features/projectApply/auth/components/MyProjectAppliesModal';
 import { useSetRecoilState } from 'recoil';
 import { myProjectAppliesModalStateStore } from '@/features/projectApply/auth/store/MyProjectAppliesModalStateStore';
 
-export function MyProjectApply() {
+const MyProjectApplies = () => {
   const setUserNoticeModal = useSetRecoilState(myProjectAppliesModalStateStore);
+
+  const handleClickOpenModalButton = () => {
+    setUserNoticeModal({ isOpen: true });
+  };
+
   return (
     <>
       <Button
         className='mt-10'
         type='button'
-        onClick={() => setUserNoticeModal({ isOpen: true })}
+        onClick={handleClickOpenModalButton}
       >
         프로젝트 지원 현황
       </Button>
-      <MyProjectApplyModal />
+      <MyProjectAppliesModal />
     </>
   );
-}
+};
+
+export default MyProjectApplies;

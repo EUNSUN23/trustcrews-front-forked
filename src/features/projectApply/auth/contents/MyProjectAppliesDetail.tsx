@@ -1,12 +1,13 @@
 'use client';
 
 import { useRef } from 'react';
-import MyProjectApplyItem from '@/features/projectApply/auth/components/MyProjectApplyItem';
 import Loader from '@/components/ui/Loader';
 import useIntersectionObserver from '@/hooks/common/useIntersectionObserver';
 import { useMyProjectApplies } from '@/features/projectApply/auth/service/getMyProjectApplies';
+import PositionBadge from '@/components/ui/badge/PositionBadge';
+import { ProjectApplyStatusBadge } from '@/components/ui/badge/ProjectApplyStatusBadge';
 
-function ProjectApplyStatusList() {
+const MyProjectAppliesDetail = () => {
   const bottomRef = useRef<HTMLLIElement | null>(null);
   const rootRef = useRef<HTMLUListElement | null>(null);
 
@@ -35,14 +36,35 @@ function ProjectApplyStatusList() {
     >
       {totalItemCount > 0 ? (
         pages.map(({ data: { content } }) => {
-          return content.map((item) => (
-            <li
-              key={`projectApply-${item.project_apply_id}`}
-              className='flex items-center justify-between gap-x-6 w-full px-2 py-5'
-            >
-              <MyProjectApplyItem myProjectApply={item} />
-            </li>
-          ));
+          return content.map(
+            ({
+              project_apply_id,
+              project_name,
+              position_name,
+              status: { code: statusCode, name: statusName },
+            }) => (
+              <li
+                key={`projectApply-${project_apply_id}`}
+                className='flex items-center justify-between gap-x-6 w-full px-2 py-5'
+              >
+                <div className='mobile:w-[320px] tablet:w-[450px] flex items-center justify-between'>
+                  <div className='min-w-0'>
+                    <div className='flex items-center gap-x-3'>
+                      <p className='mobile:text-sm tablet:text-xl font-semibold leading-6 text-gray-900'>
+                        {project_name}
+                      </p>
+                      <PositionBadge text={position_name} size='sm' />
+                    </div>
+                  </div>
+                  <div className='flex flex-none items-center'>
+                    <ProjectApplyStatusBadge applyStatus={statusCode}>
+                      {statusName}
+                    </ProjectApplyStatusBadge>
+                  </div>
+                </div>
+              </li>
+            ),
+          );
         })
       ) : (
         <li className='flex items-center justify-center mobile:w-[320px] tablet:w-[450px] h-[150px] bg-gray-100 rounded-md'>
@@ -65,6 +87,6 @@ function ProjectApplyStatusList() {
       )}
     </ul>
   );
-}
+};
 
-export default ProjectApplyStatusList;
+export default MyProjectAppliesDetail;

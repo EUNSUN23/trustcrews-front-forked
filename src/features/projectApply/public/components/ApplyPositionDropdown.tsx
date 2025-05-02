@@ -15,11 +15,13 @@ import { bigIntToString, classNames, numStrToBigInt } from '@/utils/common';
 import { DEFAULT_POSITION_OPTION } from '@/utils/constant';
 import { compareItems } from '@/utils/compareItems';
 
-function RecruitPositionDropdown({
-  recruitPositions,
-}: {
+type ApplyPositionDropdownProps = {
   recruitPositions: PostDetailPosition[];
-}) {
+};
+
+const ApplyPositionDropdown = ({
+  recruitPositions,
+}: ApplyPositionDropdownProps) => {
   const { dropdownRef, openDropdown, setOpenDropdown } = useDropdownState();
   const [projectApplyPosition, setProjectApplyPosition] = useRecoilState(
     projectApplyPositionState,
@@ -96,6 +98,6 @@ function RecruitPositionDropdown({
       </div>
     </Listbox>
   );
-}
+};
 
-export default RecruitPositionDropdown;
+export default ApplyPositionDropdown;
