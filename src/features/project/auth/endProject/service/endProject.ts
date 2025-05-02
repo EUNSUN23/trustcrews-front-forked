@@ -5,7 +5,7 @@ import { useMutation } from '@tanstack/react-query';
 export const endProject = async (
   projectId: bigint,
 ): Promise<ResponseBody<null>> => {
-  return await request('POST', '/api/project', { projectId });
+  return await request('POST', '/api/project/end', { projectId });
 };
 
 type EndProjectRes = ApiResult<typeof endProject>;
