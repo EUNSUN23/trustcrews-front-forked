@@ -7,6 +7,7 @@ import {
 } from '@/features/project/auth/projectCrews/store/CrewFWModalStateStore';
 import { ProjectCrewProfile } from '@/features/project/auth/projectCrews/types';
 import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
+import { bigIntToString } from '@/utils/common';
 
 const { title: DEFALUT_TITLE } = DEFAULT_FW_MODAL_STATE;
 
@@ -24,8 +25,8 @@ const CrewFwButton = ({ crewInfo }: { crewInfo: ProjectCrewProfile }) => {
     const updateModalState: CrewFWModalState = {
       title: DEFALUT_TITLE,
       isOpen: true,
-      projectId,
-      crewId,
+      projectId: bigIntToString(projectId),
+      crewId: bigIntToString(crewId),
       crewPMAuth,
       userPMAuth,
     };

@@ -16,6 +16,7 @@ import {
 import { ZodError } from 'zod';
 import useModalPortalElement from '@/hooks/common/useModalPortalElement';
 import { FW_VOTE_REASONS } from '@/features/project/auth/projectVote/constants/fwVoteReasons';
+import { numStrToBigInt } from '@/utils/common';
 
 const {
   FWR1001: REASON_CORP,
@@ -35,7 +36,12 @@ const CrewFWCreateModal = () => {
   const [reason, setReason] = useRecoilState(crewFWModalDataStateStore);
 
   const { mutate: createCrewFWVote } = useCreateFWVote(
-    { projectId, crewId, crewPMAuth, userPMAuth },
+    {
+      projectId: numStrToBigInt(projectId),
+      crewId: numStrToBigInt(crewId),
+      crewPMAuth,
+      userPMAuth,
+    },
     {
       onSuccess: (res) => setSuccessSnackbar(res.message),
       onError: (res) => setErrorSnackbar(res.message),

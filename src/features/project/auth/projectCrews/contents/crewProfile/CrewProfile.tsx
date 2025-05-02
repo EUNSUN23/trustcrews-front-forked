@@ -3,9 +3,9 @@
 import Avatar from '@/components/ui/Avatar';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
 import ProjectRoleBadge from '@/components/ui/badge/ProjectRoleBadge';
-import CrewOutButton from '@/features/project/auth/projectCrews/components/crewDetail/CrewOutButton';
+import CrewOutButton from '@/features/project/auth/projectCrews/contents/crewOutButtons/CrewOutButton';
 import { getCookie } from 'cookies-next';
-import CrewFwButton from '@/features/project/auth/projectCrews/components/crewDetail/CrewFWButton';
+import CrewFwButton from '@/features/project/auth/projectCrews/contents/crewOutButtons/CrewFWButton';
 import TechStackImage from '@/components/ui/TechStackImage';
 import { TechStackItem } from '@/utils/type';
 import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
