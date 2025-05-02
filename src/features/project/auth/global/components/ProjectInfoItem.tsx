@@ -1,12 +1,11 @@
 import { ReactNode } from 'react';
 
-function ProjectInfoItem({
-  title,
-  contents,
-}: {
+type ProjectInfoItemProps = {
   title: string;
   contents: ReactNode;
-}) {
+};
+
+const ProjectInfoItem = ({ title, contents }: ProjectInfoItemProps) => {
   return (
     <>
       <div aria-hidden={true} className='flex items-center my-3'>
@@ -16,6 +15,6 @@ function ProjectInfoItem({
       <div className='sr-only'>{`${title} : ${contents}`}</div>
     </>
   );
-}
+};
 
 export default ProjectInfoItem;
