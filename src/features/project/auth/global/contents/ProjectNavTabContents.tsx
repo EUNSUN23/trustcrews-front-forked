@@ -2,8 +2,8 @@
 
 import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
 import { ReactNode, useEffect } from 'react';
-import Job from '@/features/project/auth/projectJobs/components/Job';
-import JobSkeleton from '@/features/project/auth/projectJobs/components/JobSkeleton';
+import Job from '@/features/project/auth/projectJobs/contents/Job';
+import JobSkeleton from '@/features/project/auth/projectJobs/contents/JobSkeleton';
 import { PROJECT_MENU } from '@/features/project/auth/global/constants/projectMenu';
 import { useMyPMAuth } from '@/features/project/auth/projectManageAuth/service/getMyPMAuth';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
@@ -12,8 +12,8 @@ import {
   projectManageAuthStateStore,
 } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 import { projectActiveNavState } from '@/features/project/auth/global/store/ProjectNavTabStateStore';
-import Crews from '@/features/project/auth/projectCrews/components/Crews';
-import { CrewDetail } from '@/features/project/auth/projectCrews/components/crewDetail/CrewDetail';
+import Crews from '@/features/project/auth/projectCrews/contents/Crews';
+import { CrewDetail } from '@/features/project/auth/projectCrews/contents/CrewDetail';
 import { Notice } from '@/features/project/auth/projectNotice/components/Notice';
 import ProjectConfig from '@/features/project/auth/projectConfigView/contents/ProjectConfig';
 
