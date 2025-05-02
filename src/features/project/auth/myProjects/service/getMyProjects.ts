@@ -29,11 +29,11 @@ export const getMyProjects = async (
   };
 };
 
-export const getMyProjectsQueryKey = ['myProjects'];
+export const MY_PROJECTS_QUERY_KEY = ['myProjects'];
 
 export const useMyProjects = (pageNumber: number) => {
   return useSuspenseQuery({
-    queryKey: [...getMyProjectsQueryKey, pageNumber],
+    queryKey: [...MY_PROJECTS_QUERY_KEY, pageNumber],
     queryFn: () => getMyProjects(pageNumber, ITEM_COUNT.CARDS),
   });
 };
