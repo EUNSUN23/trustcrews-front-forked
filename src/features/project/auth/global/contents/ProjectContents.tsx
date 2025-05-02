@@ -31,7 +31,7 @@ const {
 
 const { code: DEFAULT_AUTH } = DEFAULT_PM_AUTH;
 
-const ProjectNavTabContents = () => {
+const ProjectContents = () => {
   const projectId = useRecoilValue(projectIdState);
   const [pmAuth, setPMAuth] = useRecoilState(projectManageAuthStateStore);
   const resetPMAuth = useResetRecoilState(projectManageAuthStateStore);
@@ -76,4 +76,4 @@ const ProjectNavTabContents = () => {
   return <>{contents}</>;
 };
 
-export default ProjectNavTabContents;
+export default ProjectContents;
