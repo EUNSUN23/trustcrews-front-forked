@@ -172,7 +172,7 @@ export type ProjectInfoSummary = {
  * 프로젝트 모집 게시글 - 모집 포지션
  */
 export interface PostDetailPosition {
-  boardPositionId: bigint;
+  boardPositionId: bigint | number;
   position: Position;
 }
 

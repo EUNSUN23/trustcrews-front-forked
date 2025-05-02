@@ -1,9 +1,9 @@
 import { IoCreateOutline } from '@react-icons/all-files/io5/IoCreateOutline';
 import Link from 'next/link';
 
-function RegisterNav() {
+const LaunchNav = () => {
   return (
-    <Link href='/postRegister' aria-label='프로젝트 생성 페이지'>
+    <Link href='/launch'>
       <div
         aria-hidden='true'
         className='mx-4 tablet:text-[20px] mobile:text-[16px] text-black100 font-semibold'
@@ -13,6 +13,6 @@ function RegisterNav() {
       </div>
     </Link>
   );
-}
+};
 
-export default RegisterNav;
+export default LaunchNav;

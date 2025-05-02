@@ -5,12 +5,12 @@ import {
   activeBoardTabStore,
   BOARD_TABS,
 } from '@/features/board/store/BoardActiveStateStore';
-import { MyProjectApply } from '@/features/projectApply/auth/components/MyProjectApply';
 import Posts from '@/features/post/public/contents/posts/Posts';
 import { Suspense } from 'react';
 import CardListSkeleton from '@/components/ui/skeleton/CardListSkeleton';
 import { ITEM_COUNT } from '@/utils/constant';
 import MyProjects from '@/features/project/auth/myProjects/contents/MyProjects';
+import MyProjectApplies from '@/features/projectApply/auth/contents/MyProjectApplies';
 
 const {
   MANAGE_PROJECT: { name: MANAGE_PROJECT },
@@ -28,7 +28,7 @@ function BoardTabPanel() {
         tabIndex={0}
         aria-labelledby={`tab-${MANAGE_PROJECT}`}
       >
-        {activeBoardTab === MANAGE_PROJECT && <MyProjectApply />}
+        {activeBoardTab === MANAGE_PROJECT && <MyProjectApplies />}
         {activeBoardTab === MANAGE_PROJECT && (
           <Suspense
             fallback={<CardListSkeleton itemCount={ITEM_COUNT.CARDS} />}
