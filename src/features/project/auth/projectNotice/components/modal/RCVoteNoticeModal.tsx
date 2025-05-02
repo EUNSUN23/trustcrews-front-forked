@@ -1,11 +1,11 @@
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { createPortal } from 'react-dom';
 import Modal from '@/components/ui/Modal';
-import RCVoteNoticeModalContents from '@/features/project/auth/projectNotice/components/rcVoteNotice/RCVoteNoticeModalContents';
+import RCVoteNoticeDetail from '@/features/project/auth/projectNotice/contents/rcVoteNotice/RCVoteNoticeDetail';
 import { rcVoteNoticeModalState } from '@/features/project/auth/projectNotice/store/RCVoteNoticeModalStateStore';
 import useModalPortalElement from '@/hooks/common/useModalPortalElement';
 import { Suspense } from 'react';
-import RCVoteNoticeModalSkeleton from '@/features/project/auth/projectNotice/components/rcVoteNotice/RCVoteNoticeModalSkeleton';
+import RCVoteNoticeDetailSkeleton from '@/features/project/auth/projectNotice/contents/rcVoteNotice/RCVoteNoticeDetailSkeleton';
 
 const RCVoteNoticeModal = () => {
   const resetRCVoteNoticeModalState = useResetRecoilState(
@@ -25,8 +25,8 @@ const RCVoteNoticeModal = () => {
               close={resetRCVoteNoticeModalState}
               title={title}
             >
-              <Suspense fallback={<RCVoteNoticeModalSkeleton />}>
-                <RCVoteNoticeModalContents />
+              <Suspense fallback={<RCVoteNoticeDetailSkeleton />}>
+                <RCVoteNoticeDetail />
               </Suspense>
             </Modal>,
             portalElement as Element,

@@ -5,13 +5,13 @@ import CommonPagination from '@/components/ui/CommonPagination';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
 import { useApplicantProjectHistory } from '@/features/project/auth/projectApplicantInfo/service/getApplicantProjectHistory';
 
-type ApplicantProjectHistoryProps = {
+type RCTargetProjectHistoryProps = {
   applicantUserId: bigint;
 };
 
-const ApplicantProjectHistory = ({
+const RCTargetProjectHistory = ({
   applicantUserId,
-}: ApplicantProjectHistoryProps) => {
+}: RCTargetProjectHistoryProps) => {
   const [pageNumber, setPageNumber] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,8 +20,6 @@ const ApplicantProjectHistory = ({
       data: { content: histories, totalPages: totalItemsCount },
     },
   } = useApplicantProjectHistory(applicantUserId, pageNumber);
-
-  // if (isFetching) return <Loader size='md' />;
 
   if (totalItemsCount === 0)
     return (
@@ -73,4 +71,4 @@ const ApplicantProjectHistory = ({
   );
 };
 
-export default ApplicantProjectHistory;
+export default RCTargetProjectHistory;

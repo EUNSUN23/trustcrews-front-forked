@@ -14,7 +14,7 @@ import {
 import { projectActiveNavState } from '@/features/project/auth/global/store/ProjectNavTabStateStore';
 import Crews from '@/features/project/auth/projectCrews/contents/Crews';
 import { CrewDetail } from '@/features/project/auth/projectCrews/contents/CrewDetail';
-import { Notice } from '@/features/project/auth/projectNotice/components/Notice';
+import { Notice } from '@/features/project/auth/projectNotice/contents/Notice';
 import ProjectConfig from '@/features/project/auth/projectConfigView/contents/ProjectConfig';
 
 const {
