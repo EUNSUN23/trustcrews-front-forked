@@ -9,7 +9,7 @@ import { useTechStackList } from '@/lib/static/getTechStackList';
 
 interface TechStackSelectProps {
   techStacks: readonly Value[];
-  setTechStacks: (item: readonly Value[]) => void;
+  onChange: (item: readonly Value[]) => void;
   label?: string;
   placeholder?: string;
   required?: boolean;
@@ -17,7 +17,7 @@ interface TechStackSelectProps {
 
 const TechStackSelect = ({
   techStacks,
-  setTechStacks,
+  onChange,
   label,
   placeholder,
   required,
@@ -50,7 +50,7 @@ const TechStackSelect = ({
     <MultiSelect
       values={selectedTechStacks}
       setValues={(item: readonly SelectItem<Name, Value>[]) =>
-        setTechStacks(item.map(({ value }) => value))
+        onChange(item.map(({ value }) => value))
       }
       items={techStackList}
       label={label}
