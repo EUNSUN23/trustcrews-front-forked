@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import logo from '../../../public/images/logo.png';
 import Link from 'next/link';
-import RegisterNav from '@/components/header/RegisterNav';
+import LaunchNav from '@/components/header/LaunchNav';
 import { hasCookie } from 'cookies-next';
 import LoginNav from '@/components/header/User/LoginNav';
 import { UserMenu } from '@/components/header/User';
@@ -39,7 +39,7 @@ function Header() {
           </Link>
         </div>
         <div id='top-navigation-main' className='flex items-center'>
-          <RegisterNav />
+          <LaunchNav />
           <div>
             {mounted && hasCookie('user_id') ? <UserMenu /> : <LoginNav />}
           </div>
