@@ -1,10 +1,10 @@
 import { GrScorecard } from '@react-icons/all-files/gr/GrScorecard';
-import CrewTaskHistory from '@/features/project/auth/projectCrews/contents/crewTaskHistory/CrewTaskHistory';
-import CrewFWCreateModal from '@/features/project/auth/projectCrews/contents/crewOut/CrewFWCreateModal';
+import CrewTaskHistory from '@/features/project/auth/projectCrews/contents/crewInfo/CrewTaskHistory';
+import CrewFWCreateModal from '@/features/project/auth/projectCrews/contents/crewManage/CrewFWCreateModal';
 import { Suspense } from 'react';
-import CrewProfileSkeleton from '@/features/project/auth/projectCrews/contents/crewProfile/CrewProfileSkeleton';
-import CrewTaskHistorySkeleton from '@/features/project/auth/projectCrews/contents/crewTaskHistory/CrewTaskHistorySkeleton';
-import CrewProfile from '@/features/project/auth/projectCrews/contents/crewProfile/CrewProfile';
+import CrewProfileSkeleton from '@/features/project/auth/projectCrews/contents/crewInfo/CrewProfileSkeleton';
+import CrewTaskHistorySkeleton from '@/features/project/auth/projectCrews/contents/crewInfo/CrewTaskHistorySkeleton';
+import CrewProfile from '@/features/project/auth/projectCrews/contents/crewInfo/CrewProfile';
 import Button from '@/components/ui/button';
 import { useSetRecoilState } from 'recoil';
 import { projectActiveNavState } from '@/features/project/auth/global/store/ProjectNavTabStateStore';
