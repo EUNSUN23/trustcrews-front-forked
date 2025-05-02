@@ -10,7 +10,7 @@ import Posts from '@/features/post/public/contents/posts/Posts';
 import { Suspense } from 'react';
 import CardListSkeleton from '@/components/ui/skeleton/CardListSkeleton';
 import { ITEM_COUNT } from '@/utils/constant';
-import MyProjects from '@/features/project/auth/myProjects/components/MyProjects';
+import MyProjects from '@/features/project/auth/myProjects/contents/MyProjects';
 
 const {
   MANAGE_PROJECT: { name: MANAGE_PROJECT },

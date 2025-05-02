@@ -2,7 +2,7 @@ import {
   ProjectInfoSkeleton,
   ProjectNavTabSkeleton,
 } from '@/components/ui/skeleton/project/task';
-import ProjectNavTabContentsSkeleton from '@/features/project/auth/global/components/ProjectNavTabContentsSkeleton';
+import ProjectNavTabContentsSkeleton from '@/features/project/auth/global/contents/ProjectNavTabContentsSkeleton';
 
 const ProjectPageSkeleton = () => {
   return (
