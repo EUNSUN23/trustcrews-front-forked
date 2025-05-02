@@ -2,12 +2,11 @@ import { ApiResult, ResponseBody } from '@/utils/type';
 import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { getMilestonesQueryKey } from '@/features/project/auth/projectJobs/service/milestone/getMilestones';
-import { ProjectAuthCode } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 
 export type DeleteMilestoneReqData = {
   milestoneId: bigint;
   projectId: bigint;
-  authMap: ProjectAuthCode;
+  authMap: string;
 };
 
 export const deleteMilestone = async (
@@ -20,7 +19,7 @@ type DeleteMilestoneRes = ApiResult<typeof deleteMilestone>;
 
 export const useDeleteMilestone = (
   projectId: bigint,
-  authMap: ProjectAuthCode,
+  authMap: string,
   {
     onSuccess,
     onError,

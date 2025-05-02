@@ -1,5 +1,4 @@
 import { request } from '@/lib/clientApi/request';
-import { ProjectAuthCode } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 import { useMutation } from '@tanstack/react-query';
 import { ApiResult, ResponseBody } from '@/utils/type';
 import { z } from 'zod';
@@ -15,8 +14,8 @@ export type CreateCrewFWVoteReason = z.infer<
 type CreateCrewFWVoteBaseParam = {
   projectId: bigint;
   crewId: bigint;
-  crewPMAuth: ProjectAuthCode;
-  userPMAuth: ProjectAuthCode;
+  crewPMAuth: string;
+  userPMAuth: string;
 };
 
 export const createFWVote = async (
