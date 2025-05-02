@@ -1,12 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import ProjectCard from './ProjectCard';
+import ProjectCard from '../components/ProjectCard';
 import CommonPagination from '@/components/ui/CommonPagination';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
 import { useMyProjects } from '@/features/project/auth/myProjects/service/getMyProjects';
 
-function MyProjects() {
+const MyProjects = () => {
   const [pageNumber, setPageNumber] = useState(0);
 
   const handleChangePage = (pageNumber: number) => {
@@ -50,6 +50,6 @@ function MyProjects() {
       />
     </section>
   );
-}
+};
 
 export default MyProjects;
