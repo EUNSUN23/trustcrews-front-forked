@@ -12,7 +12,7 @@ const {
   SETTING: { value: PROJECT_SETTING },
 } = PROJECT_MENU;
 
-const ProjectNavTabContentsSkeleton = () => {
+const ProjectContentsSkeleton = () => {
   const activeNavTab = useRecoilValue(projectActiveNavState);
   switch (activeNavTab) {
     case PROJECT_TASK:
@@ -22,4 +22,4 @@ const ProjectNavTabContentsSkeleton = () => {
   }
 };
 
-export default ProjectNavTabContentsSkeleton;
+export default ProjectContentsSkeleton;
