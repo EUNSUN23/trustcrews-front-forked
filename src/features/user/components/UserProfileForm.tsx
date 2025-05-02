@@ -163,10 +163,7 @@ function UserProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
         required
       />
       <PositionSelect positionId={positionId} setPosition={setPositionId} />
-      <TechStackSelect
-        techStacks={techStackIds}
-        setTechStacks={setTechStackIds}
-      />
+      <TechStackSelect techStacks={techStackIds} onChange={setTechStackIds} />
       <TextArea
         id='information'
         label='자기소개'
