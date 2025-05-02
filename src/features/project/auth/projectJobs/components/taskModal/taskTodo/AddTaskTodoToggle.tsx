@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { RiAddLine } from '@react-icons/all-files/ri/RiAddLine';
-import TaskContentDetailAddInput from '@/features/project/auth/projectJobs/components/task/modal/taskContentDetail/TaskContentDetailAddInput';
 import { useRecoilValue } from 'recoil';
 import {
-  taskModalContentDetailSelector,
   taskModalEditDisabledSelector,
   TaskModalType,
+  taskTodoSelector,
 } from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
 import { MAX_TASK_CONTENT_DETAIL } from '@/features/project/auth/projectJobs/constants/task/maxTaskContentDetail';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import clsx from 'clsx';
+import TaskTodoAddInput from '@/features/project/auth/projectJobs/components/taskModal/taskTodo/TaskTodoAddInput';
 
 const openAddInputButtonClass = (isInputOpen: boolean) =>
   clsx(
@@ -21,15 +21,13 @@ type ToggleTaskContentDetailAddInputProps = {
   modalType: TaskModalType;
 };
 
-const ToggleTaskContentDetailAddInput = ({
+const AddTaskTodoToggle = ({
   modalType,
 }: ToggleTaskContentDetailAddInputProps) => {
   const { setInfoSnackbar } = useSnackbar();
   const [isOpenAddInput, setIsOpenAddInput] = useState(false);
   const disabled = useRecoilValue(taskModalEditDisabledSelector(modalType));
-  const taskContentDetailMap = useRecoilValue(
-    taskModalContentDetailSelector(modalType),
-  );
+  const taskContentDetailMap = useRecoilValue(taskTodoSelector(modalType));
 
   const handleClickOpenInputButton = () => {
     if (taskContentDetailMap.size >= MAX_TASK_CONTENT_DETAIL) {
@@ -53,13 +51,10 @@ const ToggleTaskContentDetailAddInput = ({
         </span>
       </button>
       {isOpenAddInput && (
-        <TaskContentDetailAddInput
-          setIsOpen={setIsOpenAddInput}
-          modalType={modalType}
-        />
+        <TaskTodoAddInput setIsOpen={setIsOpenAddInput} modalType={modalType} />
       )}
     </>
   );
 };
 
-export default ToggleTaskContentDetailAddInput;
+export default AddTaskTodoToggle;
