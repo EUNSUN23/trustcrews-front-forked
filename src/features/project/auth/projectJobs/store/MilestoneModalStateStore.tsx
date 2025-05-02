@@ -23,29 +23,40 @@ const DEFAULT_ADD_MILESTONE_DATA = {
   content: '',
 } as const;
 
-export const milestoneAddDataStateStore = atom<CreateMilestoneInput>({
+export const milestoneAddFormStateStore = atom<CreateMilestoneInput>({
   key: 'milestoneAddDataStateStore',
   default: DEFAULT_ADD_MILESTONE_DATA,
 });
 
-export const milestoneAddDataStateSelector = selectorFamily({
-  key: 'milestoneAddDataStateSelector',
-  get:
-    (param: MilestoneAddDataKey) =>
-    ({ get }) => {
-      const state = get(milestoneAddDataStateStore);
-      return state[param] as MilestoneAddDataField<typeof param>;
-    },
-  set:
-    (param: MilestoneAddDataKey) =>
-    ({ get, set }, newValue) => {
-      if (newValue instanceof DefaultValue) return;
+export const milestoneAddFormFieldSelector = <
+  K extends keyof CreateMilestoneInput,
+>(
+  key: K,
+): ReturnType<typeof milestoneAddFormFieldSelectorFamily<K>> => {
+  return milestoneAddFormFieldSelectorFamily<K>(key);
+};
 
-      const state = get(milestoneAddDataStateStore);
-      const updated = { ...state, [param]: newValue };
-      set(milestoneAddDataStateStore, updated);
-    },
-});
+const milestoneAddFormFieldSelectorFamily = <
+  K extends keyof CreateMilestoneInput,
+>(
+  key: K,
+) =>
+  selectorFamily<CreateMilestoneInput[K], K>({
+    key: 'milestoneAddFormFieldSelectorFamily',
+    get:
+      (param) =>
+      ({ get }) => {
+        const state = get(milestoneAddFormStateStore);
+        return state[param];
+      },
+    set:
+      (param) =>
+      ({ get, set }, newValue) => {
+        if (newValue instanceof DefaultValue) return;
+        const state = get(milestoneAddFormStateStore);
+        set(milestoneAddFormStateStore, { ...state, [param]: newValue });
+      },
+  })(key);
 
 interface MilestoneModModalState extends ModalState {
   milestoneId: string;
@@ -63,10 +74,6 @@ export const milestoneModModalStateStore = atom<MilestoneModModalState>({
 });
 
 export type MilestoneModDataKey = keyof UpdateMilestoneInput;
-export type MilestoneModDataField<T> = UpdateMilestoneInput[Extract<
-  MilestoneModDataKey,
-  T
->];
 
 const DEFAULT_MOD_MILESTONE_DATA: UpdateMilestoneInput = {
   startDate: '',
@@ -74,26 +81,38 @@ const DEFAULT_MOD_MILESTONE_DATA: UpdateMilestoneInput = {
   content: '',
 };
 
-export const milestoneModDataStateStore = atom<UpdateMilestoneInput>({
+export const milestoneModFormStateStore = atom<UpdateMilestoneInput>({
   key: 'milestoneModDataStateStore',
   default: DEFAULT_MOD_MILESTONE_DATA,
 });
 
-export const milestoneModDataStateSelector = selectorFamily({
-  key: 'milestoneModDataStateSelector',
-  get:
-    (param: MilestoneModDataKey) =>
-    ({ get }) => {
-      const state = get(milestoneModDataStateStore);
-      return state[param];
-    },
-  set:
-    (param: MilestoneModDataKey) =>
-    ({ get, set }, newValue) => {
-      if (newValue instanceof DefaultValue) return;
+export const milestoneModFormFieldSelector = <
+  K extends keyof UpdateMilestoneInput,
+>(
+  key: K,
+): ReturnType<typeof milestoneModFormFieldSelectorFamily<K>> => {
+  return milestoneModFormFieldSelectorFamily<K>(key);
+};
 
-      const state = get(milestoneModDataStateStore);
-      const updated = { ...state, [param]: newValue };
-      set(milestoneModDataStateStore, updated);
-    },
-});
+const milestoneModFormFieldSelectorFamily = <
+  K extends keyof UpdateMilestoneInput,
+>(
+  key: K,
+) =>
+  selectorFamily<UpdateMilestoneInput[K], K>({
+    key: 'milestoneModDataStateSelector',
+    get:
+      (param) =>
+      ({ get }) => {
+        const state = get(milestoneModFormStateStore);
+        return state[param];
+      },
+    set:
+      (param: MilestoneModDataKey) =>
+      ({ get, set }, newValue) => {
+        if (newValue instanceof DefaultValue) return;
+
+        const state = get(milestoneModFormStateStore);
+        set(milestoneModFormStateStore, { ...state, [param]: newValue });
+      },
+  })(key);
