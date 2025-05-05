@@ -17,7 +17,7 @@ export type TaskItem = {
   workId: bigint;
   projectId: bigint;
   milestoneId: bigint;
-  assignedUser: { projectMemberId: bigint; nickname: string } | null;
+  assignedUser: { projectMemberId: bigint; nickname: string };
   lastModifiedMemberNickname: string;
   summary: string;
   startDate: string;
