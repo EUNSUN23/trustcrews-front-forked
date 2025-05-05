@@ -8,8 +8,6 @@ import NicknameField from '@/components/ui/form/NickNameField';
 import TextArea from '@/components/ui/form/TextArea';
 import FormButton from '@/components/ui/form/FormButton';
 import { PositionId, ProfileInfo, TechStackValueType } from '@/utils/type';
-import { deleteProfileImage as deleteProfileImageAPI } from '@/service/user/user';
-import { useMutation } from '@tanstack/react-query';
 import { isEqual } from 'lodash';
 import PositionSelect from '@/components/ui/selector/PositionSelect';
 import TechStackSelect from '@/components/ui/selector/TechStackSelect';
@@ -20,7 +18,7 @@ import {
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { ZodError } from 'zod';
 
-function UserProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
+const UserProfileForm = ({ profileInfo }: { profileInfo: ProfileInfo }) => {
   const {
     position,
     profileImgSrc,
@@ -53,16 +51,6 @@ function UserProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
     onError: (res) => setErrorSnackbar(res.message),
   });
 
-  const { mutate: deleteProfileImage } = useMutation({
-    mutationFn: deleteProfileImageAPI,
-    onSuccess: (data) => {
-      const { result } = data;
-      if (isEqual(result, 'success')) {
-        updateUserInfo();
-      }
-    },
-  });
-
   const updateUserInfo = () => {
     if (position) {
       const data = {
@@ -85,15 +73,11 @@ function UserProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
     }
   };
 
-  const saveProfile = () => {
-    if (profileImgSrc && imageSrc === null) {
-      deleteProfileImage();
-    } else {
-      updateUserInfo();
-    }
+  const handleClickSaveProfileButton = () => {
+    updateUserInfo();
   };
 
-  const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeProfileImg = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
 
     if (files && files.length > 0) {
@@ -103,13 +87,13 @@ function UserProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
     }
   };
 
-  const handleFileButtonClick = () => {
+  const handleClickFileButton = () => {
     if (fileRef.current) {
       fileRef.current.click();
     }
   };
 
-  const deleteImage = () => {
+  const handleClickDeleteProfileImgButton = () => {
     setImageSrc(null);
     setSelectedImage(null);
 
@@ -118,7 +102,7 @@ function UserProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
     }
   };
 
-  const onChangeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeNickname = (e: ChangeEvent<HTMLInputElement>) => {
     const newName = e.target.value;
     setNickname(newName);
     if (isEqual(newName, nickname)) {
@@ -139,16 +123,16 @@ function UserProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
           type='file'
           accept='.png, .jpg, .jpeg, .gif'
           hidden
-          onChange={handleImageChange}
+          onChange={handleChangeProfileImg}
         />
-        <Button size='md' theme='primaryHollow' onClick={handleFileButtonClick}>
-          {imageSrc === null ? '이미지 변경' : '변경'}
+        <Button size='md' theme='primaryHollow' onClick={handleClickFileButton}>
+          변경
         </Button>
         <Button
           size='md'
           theme='primary'
-          onClick={deleteImage}
-          hidden={imageSrc === null}
+          onClick={handleClickDeleteProfileImgButton}
+          hidden={!imageSrc}
         >
           삭제
         </Button>
@@ -157,7 +141,7 @@ function UserProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
       <NicknameField
         value={nickname}
         defaultValue={initNickname}
-        onChange={onChangeNickname}
+        onChange={handleChangeNickname}
         placeholder='영문, 숫자 포함 6자 이상'
         setCheck={setIsCheckedNickname}
         required
@@ -173,9 +157,9 @@ function UserProfileForm({ profileInfo }: { profileInfo: ProfileInfo }) {
         value={selfIntroduction}
         onChange={(e) => setSelfIntroduction(e.target.value)}
       />
-      <FormButton onClick={saveProfile}>저장</FormButton>
+      <FormButton onClick={handleClickSaveProfileButton}>저장</FormButton>
     </div>
   );
-}
+};
 
 export default UserProfileForm;

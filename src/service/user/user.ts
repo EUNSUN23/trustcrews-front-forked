@@ -9,10 +9,6 @@ export const checkNickname = async (nickname: string) => {
   return response.json();
 };
 
-export const deleteProfileImage = async () => {
-  return await request('DELETE', '/api/user/profile-img');
-};
-
 /**
  * 일반 사용자 정보 조회
  * @param userId

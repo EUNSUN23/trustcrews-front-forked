@@ -40,18 +40,3 @@ export async function GET(
 
   return routeResponse(req, res);
 }
-
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: Promise<{ slug: string }> },
-) {
-  let res: Response;
-  const { slug } = await params;
-  if (slug === 'profile-img') {
-    res = await authApi('/api/user/me/profile-img', { method: 'DELETE' });
-  } else {
-    throw Error('Unknown Api Route');
-  }
-
-  return routeResponse(req, res);
-}
