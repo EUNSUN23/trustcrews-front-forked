@@ -50,8 +50,7 @@ export function getRefreshToken(setCookieHeader: string) {
  * bigint 데이터 string으로 변환
  * @param data
  */
-export function bigIntToString(data?: bigint | number | string) {
-  if (!data) return '0';
+export function bigIntToString(data: bigint | number | string) {
   return typeof data === 'string' ? data : Number(data).toString();
 }
 
