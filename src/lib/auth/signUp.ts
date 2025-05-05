@@ -2,10 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { ApiResult, ResponseBody } from '@/utils/type';
 import { request } from '@/lib/clientApi/request';
 import { z } from 'zod';
-
-const passwordRegex: RegExp =
-  /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,12}$/;
-const nicknameRegex: RegExp = /^[a-zA-Z0-9]{6,10}$/;
+import { NICKNAME_REGEX, PASSWORD_REGEX } from '@/shared/constants/regex';
 
 export const signUpInputScheme = z.object({
   email: z
@@ -17,7 +14,7 @@ export const signUpInputScheme = z.object({
       init: z
         .string()
         .min(1, { message: '비밀번호를 입력해주세요.' })
-        .regex(passwordRegex, {
+        .regex(PASSWORD_REGEX, {
           message: '비밀번호는 6~12자로 영문, 숫자, 특수문자를 포함해야합니다.',
         }),
       confirm: z.string().min(1, { message: '비밀번호를 재입력해주세요.' }),
@@ -29,7 +26,7 @@ export const signUpInputScheme = z.object({
   nickname: z
     .string()
     .min(1, { message: '닉네임을 입력해주세요.' })
-    .regex(nicknameRegex, {
+    .regex(NICKNAME_REGEX, {
       message: '닉네임은 6~10자로, 영문과 숫자를 포함해야합니다.',
     }),
   isCheckedNickname: z.boolean().refine((val) => val, {
