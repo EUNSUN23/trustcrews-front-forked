@@ -4,11 +4,11 @@ import { ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import { IoMdArrowRoundBack } from '@react-icons/all-files/io/IoMdArrowRoundBack';
 
-interface UserLayoutProps {
+type UserLayoutProps = {
   children: ReactNode;
-}
+};
 
-function UserLayout({ children }: UserLayoutProps) {
+const UserLayout = ({ children }: UserLayoutProps) => {
   const router = useRouter();
 
   return (
@@ -22,6 +22,6 @@ function UserLayout({ children }: UserLayoutProps) {
       {children}
     </section>
   );
-}
+};
 
 export default UserLayout;

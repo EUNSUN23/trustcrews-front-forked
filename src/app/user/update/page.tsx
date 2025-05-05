@@ -4,7 +4,7 @@ import UserProfileForm from '@/features/user/components/UserProfileForm';
 import UserProfileFormSkeleton from '@/features/user/components/UserProfileFormSkeleton';
 import { Suspense } from 'react';
 
-const UserSettingPage = () => {
+const UserUpdatePage = () => {
   return (
     <div className='flex flex-col items-center justify-center min-h-[calc(100vh-200px)]'>
       <Suspense fallback={<UserProfileFormSkeleton />}>
@@ -14,4 +14,4 @@ const UserSettingPage = () => {
   );
 };
 
-export default UserSettingPage;
+export default UserUpdatePage;

@@ -14,7 +14,7 @@ const MyProjectHistory = dynamic(
   { ssr: false, loading: () => <MyProjectHistorySkeleton /> },
 );
 
-const ProfilePage = () => {
+const UserPage = () => {
   return (
     <>
       <Suspense fallback={<UserProfileSkeleton />}>
@@ -25,4 +25,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default UserPage;

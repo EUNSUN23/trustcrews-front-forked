@@ -69,7 +69,7 @@ const UserProfile = () => {
           <Button
             size='md'
             theme='primaryHollow'
-            onClick={() => router.push('/user/setting')}
+            onClick={() => router.push('/user/update')}
           >
             프로필 수정
           </Button>
