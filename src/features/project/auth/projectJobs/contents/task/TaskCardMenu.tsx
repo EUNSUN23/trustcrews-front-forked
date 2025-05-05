@@ -73,7 +73,7 @@ const TaskCardMenu = ({ taskItem }: TaskCardMenuProps) => {
       progressStatus: progressStatus.code,
       startDate,
       endDate,
-      assignedUserId: bigIntToString(assignedUser?.projectMemberId),
+      assignedUserId: bigIntToString(assignedUser.projectMemberId),
       todo,
     };
 
