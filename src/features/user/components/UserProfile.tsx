@@ -4,15 +4,15 @@ import { useRouter } from 'next/navigation';
 import Avatar from '@/components/ui/Avatar';
 import Button from '@/components/ui/button';
 import TechStackBadge from '@/components/ui/badge/TechStackBadge';
-import UserProfileSkeleton from '@/features/user/components/UserProfileSkeleton';
 import { useUserDetailInfo } from '@/features/user/service/getUserDetailInfo';
 import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
 
-function UserProfile() {
+const UserProfile = () => {
   const router = useRouter();
-  const { data, isFetching } = useUserDetailInfo();
+  const {
+    data: { data: profileInfo },
+  } = useUserDetailInfo();
 
-  if (isFetching) return <UserProfileSkeleton />;
   const {
     nickname,
     profileImgSrc,
@@ -22,12 +22,12 @@ function UserProfile() {
     techStacks,
     intro,
     projectHistoryTotalCount,
-  } = data!.data!;
+  } = profileInfo;
 
   return (
     <div className='rounded-lg border-2 border-gray-200 bg-white mt-3 mobile:mt-2 px-2'>
       <div className='space-y-2 mobile:space-y-1 w-full h-fit text-center my-6 mobile:my-4'>
-        <Avatar size='md' src={profileImgSrc} alt='빈 프로필' />
+        <Avatar size='md' src={profileImgSrc} alt='사용자 프로필 이미지' />
         <div className='max-w-[300px] m-auto'>
           <p className='text-xl mobile:text-lg'>{nickname}</p>
           <p className='text-lg mobile:text-base text-grey700'>
@@ -77,6 +77,6 @@ function UserProfile() {
       </div>
     </div>
   );
-}
+};
 
 export default UserProfile;

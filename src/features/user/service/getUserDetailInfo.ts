@@ -1,5 +1,5 @@
 import { request } from '@/lib/clientApi/request';
-import { queryOptions, useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { ProfileInfo, ResponseBody } from '@/utils/type';
 
 export const getUserDetailInfo = async (): Promise<
@@ -8,15 +8,11 @@ export const getUserDetailInfo = async (): Promise<
   return await request('GET', `/api/user`);
 };
 
-export const getUserDetailInfoQueryOptions = () => {
-  return queryOptions({
-    queryKey: ['profileInfo'],
-    queryFn: getUserDetailInfo,
-  });
-};
+export const USER_DETAIL_INFO_QUERY_KEY = 'profileInfo';
 
 export const useUserDetailInfo = () => {
-  const { data, isFetching } = useQuery(getUserDetailInfoQueryOptions());
-
-  return { data, isFetching };
+  return useSuspenseQuery({
+    queryKey: [USER_DETAIL_INFO_QUERY_KEY],
+    queryFn: getUserDetailInfo,
+  });
 };
