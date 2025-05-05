@@ -1,20 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Input from '@/components/ui/form/Input';
 import TextArea from '@/components/ui/form/TextArea';
 import FormButton from '@/components/ui/form/FormButton';
 import NicknameField from '@/components/ui/form/NickNameField';
-import { PositionId, TechStackValueType } from '@/utils/type';
+import { TechStackValueType } from '@/utils/type';
 import TechStackSelect from '@/components/ui/selector/TechStackSelect';
 import PositionSelect from '@/components/ui/selector/PositionSelect';
 import { ZodError } from 'zod';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { signUpInputScheme, useSignUp } from '@/lib/auth/signUp';
+import { numStrToBigInt } from '@/utils/common';
+import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
 
-// todo - 코드스타일 정리
-function SignUpForm() {
+const SignUpForm = () => {
   const router = useRouter();
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
 
@@ -22,7 +23,7 @@ function SignUpForm() {
   const [nickname, setNickname] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [positionId, setPositionId] = useState<PositionId | null>(null);
+  const [positionId, setPositionId] = useState<string>('');
   const [techStackIds, setTechStackIds] = useState<TechStackValueType[]>([]);
   const [intro, setIntro] = useState('');
   const [isCheckedNickname, setIsCheckedNickname] = useState(false);
@@ -51,7 +52,7 @@ function SignUpForm() {
         init: password,
         confirm: passwordConfirmation,
       },
-      positionId,
+      positionId: numStrToBigInt(positionId),
       techStackIds,
       intro,
       isCheckedNickname,
@@ -102,11 +103,17 @@ function SignUpForm() {
         value={nickname}
         onChange={onChangeNickname}
       />
-      <PositionSelect
-        positionId={positionId}
-        setPosition={(item) => setPositionId(item)}
-        required
-      />
+      <Suspense
+        fallback={
+          <SelectSkeleton label='직무' placeholder='직무를 선택해주세요' />
+        }
+      >
+        <PositionSelect
+          positionId={positionId}
+          onChange={(item) => setPositionId(item)}
+          required
+        />
+      </Suspense>
       <TechStackSelect
         techStacks={techStackIds}
         onChange={(item: readonly TechStackValueType[]) =>
@@ -128,6 +135,6 @@ function SignUpForm() {
       <FormButton onClick={signUpWithValidation}>가입</FormButton>
     </div>
   );
-}
+};
 
 export default SignUpForm;
