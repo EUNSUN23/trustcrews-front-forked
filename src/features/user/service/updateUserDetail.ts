@@ -4,7 +4,7 @@ import { ApiResult, ResponseBody } from '@/utils/type';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { getSimpleUserInfoQueryOptions } from '@/lib/user/getSimpleUserInfo';
 import { z } from 'zod';
-import { getUserDetailInfoQueryOptions } from '@/features/user/service/getUserDetailInfo';
+import { USER_DETAIL_INFO_QUERY_KEY } from '@/features/user/service/getUserDetailInfo';
 
 const nicknameRegex: RegExp = /^[a-zA-Z0-9]{6,10}$/;
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
@@ -87,7 +87,7 @@ export const useUpdateUserDetail = ({
     onSuccess: async (res) => {
       if (res.result === 'success') {
         const invalidateUserDetail = queryClient.invalidateQueries({
-          queryKey: getUserDetailInfoQueryOptions().queryKey,
+          queryKey: [USER_DETAIL_INFO_QUERY_KEY],
         });
         const invalidateSimpleUser = queryClient.invalidateQueries({
           queryKey: getSimpleUserInfoQueryOptions().queryKey,

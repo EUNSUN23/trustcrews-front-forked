@@ -1,13 +1,15 @@
 'use client';
 
 import UserProfile from '@/features/user/components/UserProfile';
-import MyProjectHistorySkeleton from '@/features/project/auth/myProjectHistory/components/MyProjectHistorySkeleton';
+import MyProjectHistorySkeleton from '@/features/project/auth/myProjectHistory/contents/MyProjectHistorySkeleton';
 import dynamic from 'next/dynamic';
+import UserProfileSkeleton from '@/features/user/components/UserProfileSkeleton';
+import { Suspense } from 'react';
 
 const MyProjectHistory = dynamic(
   () =>
     import(
-      '@/features/project/auth/myProjectHistory/components/MyProjectHistory'
+      '@/features/project/auth/myProjectHistory/contents/MyProjectHistory'
     ),
   { ssr: false, loading: () => <MyProjectHistorySkeleton /> },
 );
@@ -15,7 +17,9 @@ const MyProjectHistory = dynamic(
 const ProfilePage = () => {
   return (
     <>
-      <UserProfile />
+      <Suspense fallback={<UserProfileSkeleton />}>
+        <UserProfile />
+      </Suspense>
       <MyProjectHistory />
     </>
   );

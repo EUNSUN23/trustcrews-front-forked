@@ -7,7 +7,7 @@ import Input from '@/components/ui/form/Input';
 import NicknameField from '@/components/ui/form/NickNameField';
 import TextArea from '@/components/ui/form/TextArea';
 import FormButton from '@/components/ui/form/FormButton';
-import { PositionId, ProfileInfo, TechStackValueType } from '@/utils/type';
+import { PositionId, TechStackValueType } from '@/utils/type';
 import { isEqual } from 'lodash';
 import PositionSelect from '@/components/ui/selector/PositionSelect';
 import TechStackSelect from '@/components/ui/selector/TechStackSelect';
@@ -17,8 +17,12 @@ import {
 } from '@/features/user/service/updateUserDetail';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { ZodError } from 'zod';
+import { useUserDetailInfo } from '@/features/user/service/getUserDetailInfo';
 
-const UserProfileForm = ({ profileInfo }: { profileInfo: ProfileInfo }) => {
+const UserProfileForm = () => {
+  const {
+    data: { data: profileInfo },
+  } = useUserDetailInfo();
   const {
     position,
     profileImgSrc,

@@ -2,20 +2,16 @@
 
 import UserProfileForm from '@/features/user/components/UserProfileForm';
 import UserProfileFormSkeleton from '@/features/user/components/UserProfileFormSkeleton';
-import { useUserDetailInfo } from '@/features/user/service/getUserDetailInfo';
+import { Suspense } from 'react';
 
-function UserSettingPage() {
-  const { data, isFetching } = useUserDetailInfo();
-
+const UserSettingPage = () => {
   return (
     <div className='flex flex-col items-center justify-center min-h-[calc(100vh-200px)]'>
-      {isFetching || (!isFetching && data!.data === null) ? (
-        <UserProfileFormSkeleton />
-      ) : (
-        <UserProfileForm profileInfo={data!.data!} />
-      )}
+      <Suspense fallback={<UserProfileFormSkeleton />}>
+        <UserProfileForm />
+      </Suspense>
     </div>
   );
-}
+};
 
 export default UserSettingPage;
