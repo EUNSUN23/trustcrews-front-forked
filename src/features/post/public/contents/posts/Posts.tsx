@@ -12,9 +12,9 @@ import {
 } from '@/features/post/public/store/PostSearchStateStore';
 import { usePostList } from '@/features/post/public/service/getPostList';
 import { bigIntToString } from '@/utils/common';
-import PostCard from '@/features/post/public/components/postList/PostCard';
 import CommonPagination from '@/components/ui/CommonPagination';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
+import PostCard from '@/features/post/public/components/posts/PostCard';
 
 const Posts = () => {
   const [isPending] = useTransition();
