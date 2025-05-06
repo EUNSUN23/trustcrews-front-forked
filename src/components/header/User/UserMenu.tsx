@@ -52,7 +52,7 @@ function UserMenu() {
     const { nickname, profileImgSrc } = data.data!;
 
     const items: DropDownItem[] = [
-      { name: '내 프로필', value: '/user/profile' },
+      { name: '내 프로필', value: '/user' },
       {
         name: '로그아웃',
         value: '/user/logout',
