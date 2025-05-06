@@ -1,6 +1,5 @@
 'use client';
 
-import { ReactNode } from 'react';
 import { RecoilRoot } from 'recoil';
 import {
   isServer,
@@ -8,8 +7,13 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { ReactNode } from 'react';
+import {
+  AuthState,
+  AuthStateProvider,
+} from '@/shared/contexts/AuthStateContext';
 
-function makeQueryClient() {
+const makeQueryClient = () => {
   return new QueryClient({
     defaultOptions: {
       queries: {
@@ -18,30 +22,35 @@ function makeQueryClient() {
       },
     },
   });
-}
+};
 
 let browserQueryClient: QueryClient | undefined = undefined;
 
-function getQueryClient() {
+const getQueryClient = () => {
   if (isServer) {
     return makeQueryClient();
   } else {
     if (!browserQueryClient) browserQueryClient = makeQueryClient();
     return browserQueryClient;
   }
-}
+};
 
-function Providers({ children }: { children: ReactNode }) {
+type ProvidersProps = {
+  children: ReactNode;
+  authState: AuthState;
+};
+
+const Providers = ({ children, authState }: ProvidersProps) => {
   const queryClient = getQueryClient();
 
   return (
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
-        {children}
+        <AuthStateProvider authState={authState}>{children}</AuthStateProvider>
         <ReactQueryDevtools />
       </QueryClientProvider>
     </RecoilRoot>
   );
-}
+};
 
 export default Providers;
