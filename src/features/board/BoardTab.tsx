@@ -1,22 +1,20 @@
 'use client';
 
 import { useRecoilState } from 'recoil';
-import { hasCookie } from 'cookies-next';
-import useClientMount from '@/hooks/common/useClientMount';
 import {
   activeBoardTabStore,
   BOARD_TABS,
 } from '@/features/board/store/BoardActiveStateStore';
+import { useAuthState } from '@/shared/contexts/AuthStateContext';
 
 const BoardTab = () => {
+  const { isAuthorized } = useAuthState();
   const [activeBoardTab, setActiveBoardTab] =
     useRecoilState(activeBoardTabStore);
-  const mounted = useClientMount();
 
-  const tabList =
-    mounted && hasCookie('user_id')
-      ? Object.values(BOARD_TABS)
-      : [BOARD_TABS.PROJECT_POSTS];
+  const tabList = isAuthorized
+    ? Object.values(BOARD_TABS)
+    : [BOARD_TABS.PROJECT_POSTS];
 
   const selectedClass = 'border-b-2 border-black100 text-black100';
   const unselectedClass = 'text-greyUnselect';
