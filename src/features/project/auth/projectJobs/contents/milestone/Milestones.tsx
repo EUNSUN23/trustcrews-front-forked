@@ -6,8 +6,12 @@ import { activeMilestoneStateStore } from '@/features/project/auth/projectJobs/s
 import { useEffect, useRef, useState } from 'react';
 import SwiperCore from 'swiper';
 import { useMediaQuery } from 'react-responsive';
-import { Swiper, SwiperSlide } from 'swiper/swiper-react';
-import { Grid, Navigation, Pagination } from 'swiper/types/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import { Grid, Navigation, Pagination } from 'swiper/modules';
 import MilestoneCard from '@/features/project/auth/projectJobs/components/MilestoneCard';
 
 type MilestonesProps = {

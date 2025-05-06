@@ -1,9 +1,9 @@
 import Skeleton from '@/components/ui/skeleton/Skeleton';
 import InputStyleSkeleton from '@/components/ui/skeleton/InputStyleSkeleton';
-import ConfigContainer from '@/features/project/auth/global/components/projectConfigs/ConfigContainer';
-import ConfigSummary from '@/features/project/auth/global/components/projectConfigs/ConfigSummary';
-import ConfigContents from '@/features/project/auth/global/components/projectConfigs/ConfigContents';
 import ButtonSkeleton from '@/components/ui/skeleton/ButtonSkeleton';
+import ConfigContainer from '@/features/project/auth/global/layouts/projectConfig/ConfigContainer';
+import ConfigSummary from '@/features/project/auth/global/layouts/projectConfig/ConfigSummary';
+import ConfigContents from '@/features/project/auth/global/layouts/projectConfig/ConfigContents';
 
 const ProjectPostInfoFormSkeleton = () => {
   return (
