@@ -1,9 +1,9 @@
 'use client';
 
-import UserProfile from '@/features/user/components/UserProfile';
+import UserProfile from '@/features/user/contents/UserProfile';
 import MyProjectHistorySkeleton from '@/features/project/auth/myProjectHistory/contents/MyProjectHistorySkeleton';
 import dynamic from 'next/dynamic';
-import UserProfileSkeleton from '@/features/user/components/UserProfileSkeleton';
+import UserProfileSkeleton from '@/features/user/contents/UserProfileSkeleton';
 import { Suspense } from 'react';
 
 const MyProjectHistory = dynamic(
