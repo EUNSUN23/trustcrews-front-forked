@@ -1,3 +1,3 @@
-import UserMenu from '@/components/header/User/UserMenu';
+import UserMenu from '@/features/user/components/UserMenu';
 
 export { UserMenu };
