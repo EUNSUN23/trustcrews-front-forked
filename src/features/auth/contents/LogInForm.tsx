@@ -9,7 +9,7 @@ import { isEqual } from 'lodash';
 import { ZodError } from 'zod';
 import { loginInputSchema, useLogin } from '@/lib/auth/logIn';
 import useSnackbar from '@/hooks/common/useSnackbar';
-import { getSimpleUserInfoQueryOptions } from '@/lib/user/getSimpleUserInfo';
+import { SIMPLE_USER_INFO_QUERY_KEY } from '@/lib/user/getSimpleUserInfo';
 import { getMyProjectAppliesQueryKey } from '@/features/projectApply/auth/service/getMyProjectApplies';
 import { MY_PROJECTS_QUERY_KEY } from '@/features/project/auth/myProjects/service/getMyProjects';
 
@@ -27,7 +27,7 @@ function LoginForm() {
 
       if (isEqual(result, 'success')) {
         const invalidateUserInfo = queryClient.invalidateQueries({
-          queryKey: getSimpleUserInfoQueryOptions().queryKey,
+          queryKey: [SIMPLE_USER_INFO_QUERY_KEY],
         });
         const invalidateMyProjectList = queryClient.invalidateQueries({
           queryKey: MY_PROJECTS_QUERY_KEY,
