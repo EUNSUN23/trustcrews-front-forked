@@ -14,8 +14,9 @@ const Skeleton = ({
   return (
     <div
       className={cn(
+        'text-transparent bg-gray-200 animate-pulse rounded-2xl',
         props.className || '',
-        `${sizeClassName} text-transparent bg-gray-200 animate-pulse rounded-2xl`,
+        `${sizeClassName}`,
       )}
     >
       {text}
