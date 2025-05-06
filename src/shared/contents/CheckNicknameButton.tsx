@@ -8,21 +8,24 @@ import { ZodError } from 'zod';
 
 type CheckNicknameButtonProps = {
   nickname: string;
-  onSuccess: (nickname: string) => void;
+  isChecked: boolean;
+  onSuccess: () => void;
   onError: () => void;
 };
 
 const CheckNicknameButton = ({
   nickname,
+  isChecked,
   onSuccess,
   onError,
 }: CheckNicknameButtonProps) => {
-  const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
+  const { setSuccessSnackbar, setErrorSnackbar, setInfoSnackbar } =
+    useSnackbar();
 
   const { mutate: checkNickName } = useCheckNickname({
     onSuccess: (res) => {
       setSuccessSnackbar(res.message);
-      onSuccess(nickname);
+      onSuccess();
     },
     onError: (res) => {
       setErrorSnackbar(res.message);
@@ -41,7 +44,12 @@ const CheckNicknameButton = ({
   };
 
   return (
-    <Button className='ml-2 h-fit font-normal' onClick={handleClickButton}>
+    <Button
+      size='md'
+      className='ml-2 h-fit font-normal'
+      onClick={handleClickButton}
+      disabled={isChecked}
+    >
       중복확인
     </Button>
   );
