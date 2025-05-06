@@ -1,6 +1,6 @@
 import Skeleton from '@/components/ui/skeleton/Skeleton';
 
-function UserMenuSkeleton() {
+const UserMenuSkeleton = () => {
   return (
     <ul className='flex items-center'>
       <li className='mx-2'>
@@ -8,6 +8,6 @@ function UserMenuSkeleton() {
       </li>
     </ul>
   );
-}
+};
 
 export default UserMenuSkeleton;

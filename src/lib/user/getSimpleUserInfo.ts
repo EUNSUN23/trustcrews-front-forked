@@ -1,5 +1,5 @@
 import { request } from '@/lib/clientApi/request';
-import { queryOptions, useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { ResponseBody, UserBasicInfo } from '@/utils/type';
 
 export const getSimpleUserInfo = async (): Promise<
@@ -8,21 +8,11 @@ export const getSimpleUserInfo = async (): Promise<
   return await request('GET', '/api/user/simple');
 };
 
-export const getSimpleUserInfoQueryOptions = () => {
-  return queryOptions({
-    queryKey: ['simpleUserInfo'],
-    queryFn: getSimpleUserInfo,
-  });
-};
+export const SIMPLE_USER_INFO_QUERY_KEY = 'simpleUserInfo';
 
 export const useSimpleUserInfo = () => {
-  const { data, isPending, isRefetching, isError, isRefetchError } = useQuery(
-    getSimpleUserInfoQueryOptions(),
-  );
-
-  return {
-    data,
-    isPreparing: isPending || isRefetching,
-    isError: isError || isRefetchError,
-  };
+  return useSuspenseQuery({
+    queryKey: [SIMPLE_USER_INFO_QUERY_KEY],
+    queryFn: getSimpleUserInfo,
+  });
 };
