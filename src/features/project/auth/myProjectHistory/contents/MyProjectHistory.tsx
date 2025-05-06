@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import CommonPagination from '@/components/ui/CommonPagination';
-import { GrScorecard } from '@react-icons/all-files/gr/GrScorecard';
 import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
 import { useMyProjectHistory } from '@/features/project/auth/myProjectHistory/service/getMyProjectHistory';
 import ProjectHistoryItem from '@/components/ui/ProjectHistoryItem';
@@ -17,10 +16,9 @@ const MyProjectHistory = () => {
 
   return (
     <div className='p-3 mobile:p-0 mobile:pt-3 space-y-5'>
-      <div className='flex items-center tablet:text-[26px] mobile:text-lg font-semibold text-greyDarkBlue my-10 mobile:my-5'>
-        <GrScorecard className='tablet:text-[1.5rem]' />
-        <h3 className='ml-2'>프로젝트 이력</h3>
-      </div>
+      <h3 className='tablet:text-[26px] mobile:text-lg font-semibold text-greyDarkBlue my-10 mobile:my-5'>
+        프로젝트 이력
+      </h3>
       <div className='flow-root mx-2'>
         {totalPages > 0 ? (
           <>
