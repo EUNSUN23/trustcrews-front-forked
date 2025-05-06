@@ -9,7 +9,7 @@ import { USER_DETAIL_INFO_QUERY_KEY } from '@/features/user/service/getUserDetai
 const nicknameRegex: RegExp = /^[a-zA-Z0-9]{6,10}$/;
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
-export const updateUserDetailSchema = z.object({
+export const userInfoInputSchema = z.object({
   nickname: z
     .string()
     .min(1, { message: '닉네임을 입력해주세요.' })
@@ -29,21 +29,23 @@ export const updateUserDetailSchema = z.object({
     .min(1, { message: '관심스택을 선택해주세요.' })
     .readonly(),
   intro: z.string().nullable().optional(),
-  profileImgFile: z
-    .instanceof(File)
-    .refine((file) => file.size <= MAX_FILE_SIZE, {
-      message: '이미지 파일 용량은 5MB 이하만 가능합니다.',
-    })
-    .nullable(),
 });
 
-type UpdateUserDetailForm = z.infer<typeof updateUserDetailSchema>;
+export const userProfileImgInputSchema = z
+  .instanceof(File)
+  .refine((file) => file.size <= MAX_FILE_SIZE, {
+    message: '이미지 파일 용량은 5MB 이하만 가능합니다.',
+  })
+  .nullable();
+
+export type UserInfoInput = z.infer<typeof userInfoInputSchema>;
+export type UserProfileImgInput = z.infer<typeof userProfileImgInputSchema>;
 
 export const updateUserDetail = async (
-  updateUserDetailForm: UpdateUserDetailForm,
+  info: UserInfoInput,
+  profileImg?: UserProfileImgInput,
 ): Promise<ResponseBody<null>> => {
-  const { nickname, positionId, techStackIds, intro, profileImgFile } =
-    updateUserDetailForm;
+  const { nickname, positionId, techStackIds, intro } = info;
 
   const formData = new FormData();
   formData.set(
@@ -60,8 +62,8 @@ export const updateUserDetail = async (
     ),
   );
 
-  if (profileImgFile) {
-    formData.set('file', profileImgFile);
+  if (profileImg) {
+    formData.set('file', profileImg);
   }
 
   const res = await fetch(`${publicURL}/api/user`, {
@@ -83,7 +85,13 @@ export const useUpdateUserDetail = ({
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: UpdateUserDetailForm) => updateUserDetail(data),
+    mutationFn: ({
+      info,
+      profileImg,
+    }: {
+      info: UserInfoInput;
+      profileImg?: UserProfileImgInput;
+    }) => updateUserDetail(info, profileImg),
     onSuccess: async (res) => {
       if (res.result === 'success') {
         const invalidateUserDetail = queryClient.invalidateQueries({
