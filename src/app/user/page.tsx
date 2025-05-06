@@ -5,6 +5,8 @@ import MyProjectHistorySkeleton from '@/features/project/auth/myProjectHistory/c
 import dynamic from 'next/dynamic';
 import UserProfileSkeleton from '@/features/user/contents/UserProfileSkeleton';
 import { Suspense } from 'react';
+import UserTrustScore from '@/features/user/components/UserTrustScore';
+import UserTrustScoreSkeleton from '@/features/user/components/UserTrustScoreSkeleton';
 
 const MyProjectHistory = dynamic(
   () =>
@@ -19,6 +21,9 @@ const UserPage = () => {
     <>
       <Suspense fallback={<UserProfileSkeleton />}>
         <UserProfile />
+      </Suspense>
+      <Suspense fallback={<UserTrustScoreSkeleton />}>
+        <UserTrustScore />
       </Suspense>
       <MyProjectHistory />
     </>
