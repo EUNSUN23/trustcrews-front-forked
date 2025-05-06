@@ -3,7 +3,6 @@
 import Avatar from '@/components/ui/Avatar';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
 import ProjectRoleBadge from '@/components/ui/badge/ProjectRoleBadge';
-import { getCookie } from 'cookies-next';
 import TechStackImage from '@/components/ui/TechStackImage';
 import { TechStackItem } from '@/utils/type';
 import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
@@ -13,8 +12,10 @@ import { useRecoilValue } from 'recoil';
 import { bigIntToString } from '@/utils/common';
 import CrewOutButton from '@/features/project/auth/projectCrews/contents/crewManage/CrewOutButton';
 import CrewFwButton from '@/features/project/auth/projectCrews/contents/crewManage/CrewFWButton';
+import { useAuthState } from '@/shared/contexts/AuthStateContext';
 
 const CrewProfile = () => {
+  const { userId: currentUserId } = useAuthState();
   const crewId = useRecoilValue(crewIdState);
   const {
     data: { data: crewInfo },
@@ -33,7 +34,6 @@ const CrewProfile = () => {
     projectMemberAuth,
   } = crewInfo;
 
-  const currentUserId = getCookie('user_id');
   const isCrewCurrentUser = currentUserId === bigIntToString(crewUserId);
 
   return (
