@@ -8,6 +8,7 @@ import { ZodError } from 'zod';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { useLaunch } from '@/features/launch/auth/service/launch';
 import { useRouter } from 'next/navigation';
+import { numStrToBigInt } from '@/utils/common';
 
 const LaunchButton = () => {
   const router = useRouter();
@@ -29,15 +30,22 @@ const LaunchButton = () => {
   });
 
   const handleClickSaveButton = async () => {
+    const projectData = {
+      ...projectForm,
+      technologyIds: projectForm.technologyIds.map((item) =>
+        numStrToBigInt(item),
+      ),
+    };
+
     try {
       createPostInputSchema.parse(postForm);
-      createProjectInputSchema.parse(projectForm);
+      createProjectInputSchema.parse(projectData);
     } catch (e) {
       if (e instanceof ZodError) setErrorSnackbar(e.errors[0].message);
       return;
     }
 
-    createPostWithProject({ postData: postForm, projectData: projectForm });
+    createPostWithProject({ postData: postForm, projectData });
   };
 
   return (

@@ -1,8 +1,11 @@
 import TechStackSelect from '@/components/ui/selector/TechStackSelect';
-import { ProjectPublicInfoData, TechStackValueType } from '@/utils/type';
+import { ProjectPublicInfoData } from '@/utils/type';
 import { useRecoilState } from 'recoil';
 import FormRow from '@/components/ui/form/FormRow';
 import { projectInfoFormSelector } from '@/features/project/auth/updateProjectInfo/store/ProjectInfoFormStateStore';
+import { bigIntToString } from '@/utils/common';
+import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
+import { Suspense } from 'react';
 
 type ProjectTechnologiesProps = {
   initData: ProjectPublicInfoData['technologyStacks'];
@@ -16,18 +19,29 @@ const ProjectTechnologies = ({ initData }: ProjectTechnologiesProps) => {
   const techStacks =
     technologyIds.length > 0
       ? technologyIds
-      : initData.map((v) => v.techStackId);
+      : initData.map((v) => bigIntToString(v.techStackId));
+
+  const handleChangeSelect = (item: string[]) => {
+    setTechnologyIds([...item]);
+  };
 
   return (
     <FormRow>
-      <TechStackSelect
-        techStacks={techStacks}
-        onChange={(item: readonly TechStackValueType[]) =>
-          setTechnologyIds([...item])
+      <Suspense
+        fallback={
+          <SelectSkeleton
+            label='사용 스택'
+            placeholder='사용 스택을 선택해주세요.'
+          />
         }
-        label='기술 스택'
-        placeholder='기술 스택을 선택해주세요.'
-      />
+      >
+        <TechStackSelect
+          selectedTechStackIds={techStacks}
+          onChange={handleChangeSelect}
+          label='기술 스택'
+          placeholder='기술 스택을 선택해주세요.'
+        />
+      </Suspense>
     </FormRow>
   );
 };

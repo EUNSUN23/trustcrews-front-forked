@@ -1,7 +1,12 @@
 import { atom, DefaultValue, selectorFamily } from 'recoil';
 import { UpdateProjectInfoInput } from '@/features/project/auth/updateProjectInfo/service/updateProjectInfo';
 
-const DEFAULT_PROJECT_INFO_FORM: UpdateProjectInfoInput = {
+interface UpdateProjectInfoFormState
+  extends Omit<UpdateProjectInfoInput, 'technologyIds'> {
+  technologyIds: string[];
+}
+
+const DEFAULT_PROJECT_INFO_FORM: UpdateProjectInfoFormState = {
   projectName: '',
   projectSubject: '',
   startDate: '',
@@ -9,23 +14,25 @@ const DEFAULT_PROJECT_INFO_FORM: UpdateProjectInfoInput = {
   technologyIds: [],
 };
 
-export const projectInfoFormStateStore = atom<UpdateProjectInfoInput>({
+export const projectInfoFormStateStore = atom<UpdateProjectInfoFormState>({
   key: 'projectInfoFormStateStore',
   default: DEFAULT_PROJECT_INFO_FORM,
 });
 
-export const projectInfoFormSelector = <K extends keyof UpdateProjectInfoInput>(
+export const projectInfoFormSelector = <
+  K extends keyof UpdateProjectInfoFormState,
+>(
   key: K,
 ): ReturnType<typeof projectSettingInfoSelectorFamily<K>> => {
   return projectSettingInfoSelectorFamily<K>(key);
 };
 
 const projectSettingInfoSelectorFamily = <
-  K extends keyof UpdateProjectInfoInput,
+  K extends keyof UpdateProjectInfoFormState,
 >(
   key: K,
 ) =>
-  selectorFamily<UpdateProjectInfoInput[K], K>({
+  selectorFamily<UpdateProjectInfoFormState[K], K>({
     key: 'projectSettingInfoSelector',
     get:
       (param) =>

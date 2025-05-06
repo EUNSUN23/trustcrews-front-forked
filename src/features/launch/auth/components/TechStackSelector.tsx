@@ -1,25 +1,35 @@
 import TechStackSelect from '@/components/ui/selector/TechStackSelect';
 import { useRecoilState } from 'recoil';
-import { TechStackValueType } from '@/utils/type';
 import FormRow from '@/components/ui/form/FormRow';
 import { projectFormFieldSelector } from '@/features/launch/auth/store/ProjectFormStateStore';
+import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
+import { Suspense } from 'react';
 
 const TechStackSelector = () => {
   const [technologyIds, setTechIds] = useRecoilState(
     projectFormFieldSelector('technologyIds'),
   );
 
-  const handleChangeSelect = (item: readonly TechStackValueType[]) => {
-    setTechIds(item);
+  const handleChangeSelect = (item: string[]) => {
+    setTechIds([...item]);
   };
 
   return (
     <FormRow>
-      <TechStackSelect
-        techStacks={technologyIds}
-        onChange={handleChangeSelect}
-        label='사용 스택'
-      />
+      <Suspense
+        fallback={
+          <SelectSkeleton
+            label='사용 스택'
+            placeholder='사용 스택을 선택해주세요.'
+          />
+        }
+      >
+        <TechStackSelect
+          selectedTechStackIds={technologyIds}
+          onChange={handleChangeSelect}
+          label='사용 스택'
+        />
+      </Suspense>
     </FormRow>
   );
 };
