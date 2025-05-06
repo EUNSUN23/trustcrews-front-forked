@@ -4,14 +4,20 @@ import Skeleton from '@/components/ui/skeleton/Skeleton';
 const UserProfileSkeleton = () => {
   return (
     <div className='rounded-lg border-2 border-gray-200 bg-white mt-3 mobile:mt-2 px-2'>
-      <div className='space-y-2 mobile:space-y-1 w-full h-fit text-center my-6 mobile:my-4'>
-        <AvatarSkeleton size='md' className='relative inline-block' />
-        <div className='max-w-[300px] m-auto space-y-2'>
-          <Skeleton sizeClassName='w-full h-[76px] mobile:h-[68px]' />
+      <div className='flex flex-col items-center w-full h-fit text-center my-6 mobile:my-4'>
+        <AvatarSkeleton size='md' className='mt-1 mb-2 relative inline-block' />
+        <div className='flex flex-col items-center max-w-[300px] m-auto space-y-2'>
+          <Skeleton className='w-[100px] h-[30px] mobile:w-[90px] mobile:h-[32px] rounded-lg' />
+          <Skeleton className='w-[90px] h-[27px] mobile:w-[80px] mobile:h-[23px] rounded-lg' />
+          <Skeleton className='w-[200px] h-[22px] mobile:w-[130px] mobile:h-[18px] rounded-md' />
+          <div className='flex items-center justify-center space-x-1'>
+            <Skeleton className='w-[70px] h-[30px] mobile:w-[60px] mobile:h-[26px] rounded-full' />
+            <Skeleton className='w-[70px] h-[30px] mobile:w-[60px] mobile:h-[26px] rounded-full' />
+            <Skeleton className='w-[70px] h-[30px] mobile:w-[60px] mobile:h-[26px] rounded-full' />
+            <Skeleton className='w-[70px] h-[30px] mobile:w-[60px] mobile:h-[26px] rounded-full' />
+          </div>
         </div>
-        <Skeleton sizeClassName='max-w-[350px] m-auto h-6 mobile:h-5' />
-        <Skeleton sizeClassName='max-w-[160px] m-auto h-14 mobile:h-8' />
-        <Skeleton sizeClassName='max-w-[110px] m-auto h-12 mobile:h-7' />
+        <Skeleton className='w-[100px] h-[40px] mobile:w-[80px] mobile:h-[30px] rounded-full mt-4' />
       </div>
     </div>
   );
