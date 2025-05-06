@@ -24,6 +24,7 @@ const ProjectConfig = () => {
       </ErrorPageContainer>
     );
 
+  // todo - PMAuth suspense boundary & ProjectConfigSkeleton(ProjectContentsSkeleton에 추가)
   return (
     <section className='w-full mx-auto space-y-[100px]'>
       <Suspense fallback={<ProjectInfoFormSkeleton />}>
