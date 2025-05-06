@@ -1,22 +1,17 @@
 import MultiSelect from '@/components/ui/selector/MultiSelect';
-import {
-  SelectItem,
-  TechStackNameType as Name,
-  TechStackValueType as Value,
-} from '@/utils/type';
-import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
 import { useTechStackList } from '@/lib/static/getTechStackList';
+import { bigIntToString } from '@/utils/common';
 
-interface TechStackSelectProps {
-  techStacks: readonly Value[];
-  onChange: (item: readonly Value[]) => void;
+type TechStackSelectProps = {
+  selectedTechStackIds: string[];
+  onChange: (item: string[]) => void;
   label?: string;
   placeholder?: string;
   required?: boolean;
-}
+};
 
 const TechStackSelect = ({
-  techStacks,
+  selectedTechStackIds,
   onChange,
   label,
   placeholder,
@@ -24,34 +19,21 @@ const TechStackSelect = ({
 }: TechStackSelectProps) => {
   const {
     data: { data },
-    isFetching,
   } = useTechStackList();
 
-  if (isFetching)
-    return (
-      <SelectSkeleton
-        label='사용 스택'
-        placeholder='사용 스택을 선택해주세요.'
-      />
-    );
+  const techStackList = data.map(({ techStackId, techStackName }) => ({
+    name: techStackName,
+    value: bigIntToString(techStackId),
+  }));
 
-  const techStackList: SelectItem<Name, Value>[] = data.map(
-    ({ techStackId, techStackName }) => ({
-      name: techStackName,
-      value: techStackId,
-    }),
-  );
-
-  const selectedTechStacks: SelectItem<Name, Value>[] = techStackList.filter(
-    ({ value }) => techStacks.includes(value),
+  const selectedTechStacks = techStackList.filter(({ value }) =>
+    selectedTechStackIds.includes(value),
   );
 
   return (
     <MultiSelect
       values={selectedTechStacks}
-      setValues={(item: readonly SelectItem<Name, Value>[]) =>
-        onChange(item.map(({ value }) => value))
-      }
+      setValues={(item) => onChange(item.map(({ value }) => value))}
       items={techStackList}
       label={label}
       placeholder={placeholder}

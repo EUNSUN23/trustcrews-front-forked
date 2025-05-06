@@ -52,7 +52,7 @@ const ProjectInfoSaveButton = ({ initData }: ProjectInfoSaveButtonProps) => {
       endDate: endDate ? endDate : initEndDate,
       technologyIds:
         technologyIds.length > 0
-          ? technologyIds
+          ? technologyIds.map((v) => numStrToBigInt(v))
           : initTechnologyStacks.map((v) => v.techStackId),
     };
 

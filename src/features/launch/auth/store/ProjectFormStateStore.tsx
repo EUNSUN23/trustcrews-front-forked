@@ -1,7 +1,11 @@
 import { atom, DefaultValue, selectorFamily } from 'recoil';
 import { CreateProjectInput } from '@/features/project/auth/createProject/service/createProject';
 
-export const projectFormStateStore = atom<CreateProjectInput>({
+interface ProjectFormState extends Omit<CreateProjectInput, 'technologyIds'> {
+  technologyIds: string[];
+}
+
+export const projectFormStateStore = atom<ProjectFormState>({
   key: 'projectFormStateStore',
   default: {
     name: '',
@@ -12,16 +16,16 @@ export const projectFormStateStore = atom<CreateProjectInput>({
   },
 });
 
-export const projectFormFieldSelector = <K extends keyof CreateProjectInput>(
+export const projectFormFieldSelector = <K extends keyof ProjectFormState>(
   key: K,
 ): ReturnType<typeof projectFormFieldSelectorFamily<K>> => {
   return projectFormFieldSelectorFamily<K>(key);
 };
 
-const projectFormFieldSelectorFamily = <K extends keyof CreateProjectInput>(
+const projectFormFieldSelectorFamily = <K extends keyof ProjectFormState>(
   key: K,
 ) =>
-  selectorFamily<CreateProjectInput[K], K>({
+  selectorFamily<ProjectFormState[K], K>({
     key: 'projectFormFieldSelectorFamily',
     get:
       (param) =>

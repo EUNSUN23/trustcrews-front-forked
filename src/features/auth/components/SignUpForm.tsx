@@ -6,7 +6,6 @@ import Input from '@/components/ui/form/Input';
 import TextArea from '@/components/ui/form/TextArea';
 import FormButton from '@/components/ui/form/FormButton';
 import NicknameField from '@/components/ui/form/NickNameField';
-import { TechStackValueType } from '@/utils/type';
 import TechStackSelect from '@/components/ui/selector/TechStackSelect';
 import PositionSelect from '@/components/ui/selector/PositionSelect';
 import { ZodError } from 'zod';
@@ -24,7 +23,7 @@ const SignUpForm = () => {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [positionId, setPositionId] = useState<string>('');
-  const [techStackIds, setTechStackIds] = useState<TechStackValueType[]>([]);
+  const [techStackIds, setTechStackIds] = useState<string[]>([]);
   const [intro, setIntro] = useState('');
   const [isCheckedNickname, setIsCheckedNickname] = useState(false);
 
@@ -53,7 +52,7 @@ const SignUpForm = () => {
         confirm: passwordConfirmation,
       },
       positionId: numStrToBigInt(positionId),
-      techStackIds,
+      techStackIds: techStackIds.map((item) => numStrToBigInt(item)),
       intro,
       isCheckedNickname,
     };
@@ -114,15 +113,22 @@ const SignUpForm = () => {
           required
         />
       </Suspense>
-      <TechStackSelect
-        techStacks={techStackIds}
-        onChange={(item: readonly TechStackValueType[]) =>
-          setTechStackIds([...item])
+      <Suspense
+        fallback={
+          <SelectSkeleton
+            label='사용 스택'
+            placeholder='사용 스택을 선택해주세요.'
+          />
         }
-        label='관심 스택'
-        placeholder='관심 스택을 선택해주세요.'
-        required
-      />
+      >
+        <TechStackSelect
+          selectedTechStackIds={techStackIds}
+          onChange={(item) => setTechStackIds([...item])}
+          label='관심 스택'
+          placeholder='관심 스택을 선택해주세요.'
+          required
+        />
+      </Suspense>
       <TextArea
         id='information'
         label='자기소개'
