@@ -13,11 +13,18 @@ export type CookieName =
   | typeof COOKIE.ACS_TOKEN
   | typeof COOKIE.REF_TOKEN
   | typeof COOKIE.USER_ID;
+
+export const ssrHasCookie = (cookieName: CookieName) => {
+  const cookieStore = cookies();
+  return cookieStore.has(cookieName);
+};
+
 export const getCookieValue = (cookieName: CookieName) => {
   const cookieStore = cookies();
   const cookie = cookieStore.get(cookieName);
   return cookie?.value || '';
 };
+
 export const deleteCookieValue = (cookieName: CookieName) => {
   const cookieStore = cookies();
   cookieStore.delete(cookieName);

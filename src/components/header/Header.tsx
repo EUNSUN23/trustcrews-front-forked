@@ -3,15 +3,19 @@
 import Image from 'next/image';
 import logo from '../../../public/images/logo.png';
 import Link from 'next/link';
-import LaunchNav from '@/components/header/LaunchNav';
-import { hasCookie } from 'cookies-next';
 import LoginNav from '@/components/header/User/LoginNav';
-import { UserMenu } from '@/components/header/User';
-import useClientMount from '@/hooks/common/useClientMount';
+import UserMenuSkeleton from '@/features/user/components/UserMenuSkeleton';
+import { IoCreateOutline } from '@react-icons/all-files/io5/IoCreateOutline';
+import dynamic from 'next/dynamic';
+import { useAuthState } from '@/shared/contexts/AuthStateContext';
 
-// todo - components/layouts로 이동
-function Header() {
-  const mounted = useClientMount();
+const UserMenu = dynamic(() => import('@/features/user/components/UserMenu'), {
+  ssr: false,
+  loading: () => <UserMenuSkeleton />,
+});
+
+const Header = () => {
+  const { isAuthorized } = useAuthState();
 
   return (
     <header className='flex flex-col'>
@@ -39,14 +43,20 @@ function Header() {
           </Link>
         </div>
         <div id='top-navigation-main' className='flex items-center'>
-          <LaunchNav />
-          <div>
-            {mounted && hasCookie('user_id') ? <UserMenu /> : <LoginNav />}
-          </div>
+          <Link href='/launch'>
+            <div
+              aria-hidden='true'
+              className='mx-4 tablet:text-[20px] mobile:text-[16px] text-black100 font-semibold'
+            >
+              <span className='mobile:hidden'>새 프로젝트</span>
+              <IoCreateOutline className='pc:hidden tablet:hidden h-6 w-6' />
+            </div>
+          </Link>
+          <div>{isAuthorized ? <UserMenu /> : <LoginNav />}</div>
         </div>
       </div>
     </header>
   );
-}
+};
 
 export default Header;
