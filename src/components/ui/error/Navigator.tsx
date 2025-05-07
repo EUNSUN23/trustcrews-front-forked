@@ -1,21 +1,21 @@
 import { HTMLAttributes, ReactNode } from 'react';
-import { classNames } from '@/utils/common';
+import cn from '@/shared/styles/cn';
 
 type NavigatorProps = HTMLAttributes<HTMLDivElement> & {
   children?: ReactNode;
 };
 
-function Navigator({ children, ...props }: NavigatorProps) {
+const Navigator = ({ children, ...props }: NavigatorProps) => {
   return (
     <div
-      className={classNames(
+      className={cn(
         'min-h-[80px] flex items-center space-x-2',
-        props.className ? props.className : '',
+        props.className,
       )}
     >
       {children}
     </div>
   );
-}
+};
 
 export default Navigator;

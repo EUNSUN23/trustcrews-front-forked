@@ -1,21 +1,20 @@
-import { HTMLAttributes, ReactNode } from 'react';
-import { classNames } from '@/utils/common';
+import { HTMLAttributes } from 'react';
+import cn from '@/shared/styles/cn';
 
-type ErrorMessageProps = HTMLAttributes<HTMLHeadingElement> & {
-  children?: ReactNode;
-};
-
-function ErrorMessage({ children, ...props }: ErrorMessageProps) {
+const ErrorMessage = ({
+  children,
+  ...props
+}: HTMLAttributes<HTMLHeadingElement>) => {
   return (
     <h1
-      className={classNames(
+      className={cn(
         'text-2xl font-semibold w-full text-center mb-5',
-        props.className ? props.className : '',
+        props.className,
       )}
     >
       {children}
     </h1>
   );
-}
+};
 
 export default ErrorMessage;

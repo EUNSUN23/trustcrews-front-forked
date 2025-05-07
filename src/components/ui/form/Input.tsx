@@ -1,27 +1,25 @@
 'use client';
 
 import { InputHTMLAttributes } from 'react';
-import { classNames } from '@/utils/common';
+import { clsx } from 'clsx';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   required?: boolean;
 }
 
-function Input({
+const inputClassName = (disabled: boolean) =>
+  clsx('relative mobile:text-sm', disabled && 'opacity-50 pointer-events-none');
+
+const Input = ({
   id,
   label,
   disabled = false,
   required = false,
   ...props
-}: InputProps) {
+}: InputProps) => {
   return (
-    <div
-      className={classNames(
-        disabled ? 'opacity-50 pointer-events-none' : '',
-        'relative mobile:text-sm',
-      )}
-    >
+    <div className={inputClassName(disabled)}>
       {label && (
         <label htmlFor={id} className='text-gray-700'>
           {label}
@@ -49,6 +47,6 @@ function Input({
       )}
     </div>
   );
-}
+};
 
 export default Input;
