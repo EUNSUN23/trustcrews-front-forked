@@ -1,10 +1,11 @@
 'use client';
 
 import TechStackImage from '@/components/ui/TechStackImage';
-import { ProjectPublicInfoData } from '@/utils/type';
+
+import { ProjectInfoSummary } from '@/features/project/public/service/getProjectPublicInfo';
 
 type ProjectPublicInfoProps = {
-  projectInfo: ProjectPublicInfoData;
+  projectInfo: ProjectInfoSummary;
 };
 
 export function ProjectPublicInfo({ projectInfo }: ProjectPublicInfoProps) {

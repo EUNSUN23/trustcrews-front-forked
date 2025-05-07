@@ -5,8 +5,8 @@ import MilestoneCardMenu from '@/features/project/auth/projectJobs/contents/mile
 import { useRecoilState } from 'recoil';
 import { activeMilestoneStateStore } from '@/features/project/auth/projectJobs/store/ActiveMilestoneStateStore';
 import { MilestoneInfo } from '@/features/project/auth/projectJobs/types/milestone';
-import { bigIntToString, numStrToBigInt } from '@/utils/common';
 import { clsx } from 'clsx';
+import { bigIntToString, numStrToBigInt } from '@/shared/utils/stringUtils';
 
 const milestoneCardClass = (isActive: boolean) =>
   clsx(

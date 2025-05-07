@@ -1,5 +1,12 @@
+import { JSX } from 'react';
 import { atom } from 'recoil';
-import { ConfirmModalState } from '@/utils/type';
+
+import { ModalState } from '@/shared/types/ui';
+
+export interface ConfirmModalState extends ModalState {
+  content: string | JSX.Element;
+  onClickConfirmHandler: () => void;
+}
 
 export const confirmModalStateStore = atom<ConfirmModalState>({
   key: 'confirmModalStateStore',

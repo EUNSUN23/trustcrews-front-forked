@@ -1,7 +1,8 @@
 import authApi from '@/app/api/_interceptor/authApi';
 import { NextRequest } from 'next/server';
 import { routeResponse } from '@/app/api/_interceptor/routeResponse';
-import { JSONReplaceBigInt } from '@/utils/common';
+
+import { JSONReplaceBigInt } from '@/shared/utils/jsonUtils';
 
 /**
  * 내 프로젝트 목록/상세 조회

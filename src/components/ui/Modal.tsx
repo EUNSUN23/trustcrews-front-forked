@@ -3,7 +3,8 @@
 import { ReactNode, useEffect, useRef } from 'react';
 import { RiCloseFill } from '@react-icons/all-files/ri/RiCloseFill';
 import Button from '@/components/ui/button';
-import { ModalState } from '@/utils/type';
+
+import { ModalState } from '@/shared/types/ui';
 
 interface ModalProps extends ModalState {
   children: ReactNode;

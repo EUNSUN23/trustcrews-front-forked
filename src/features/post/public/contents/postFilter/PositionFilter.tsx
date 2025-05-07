@@ -9,11 +9,12 @@ import {
   ListboxOptions,
   Transition,
 } from '@headlessui/react';
-import { bigIntToString, classNames, numStrToBigInt } from '@/utils/common';
-import { DEFAULT_POSITION_OPTION } from '@/utils/constant';
 import { selectedPositionState } from '@/features/post/public/store/PostSearchStateStore';
 import { usePositionList } from '@/lib/static/getPositionList';
-import { compareItems } from '@/utils/compareItems';
+import { compareItems } from '@/shared/utils/compareItems';
+import { clsx } from 'clsx';
+import { bigIntToString, numStrToBigInt } from '@/shared/utils/stringUtils';
+import { DEFAULT_POSITION_OPTION } from '@/shared/constants/defaultSelectOptions';
 
 const PositionFilter = () => {
   const [_, startTransition] = useTransition();
@@ -84,9 +85,9 @@ const PositionFilter = () => {
               >
                 {({ selected }) => (
                   <span
-                    className={classNames(
-                      selected ? 'font-bold' : 'font-normal',
+                    className={clsx(
                       'flex items-center space-x-2 truncate',
+                      selected ? 'font-bold' : 'font-normal',
                     )}
                   >
                     {name}

@@ -6,9 +6,9 @@ import { myProjectAppliesModalStateStore } from '@/features/projectApply/auth/st
 import { createPortal } from 'react-dom';
 import Modal from '@/components/ui/Modal';
 import MyProjectAppliesDetail from '../contents/MyProjectAppliesDetail';
-import { ITEM_COUNT } from '@/utils/constant';
 import Skeleton from '@/components/ui/skeleton/Skeleton';
 import useModalPortalElement from '@/shared/hooks/useModalPortalElement';
+import { ITEM_COUNT_PER_PAGE } from '@/shared/constants/pagination';
 
 const MyProjectAppliesModal = () => {
   const [{ isOpen }, setIsOpen] = useRecoilState(
@@ -34,7 +34,7 @@ const MyProjectAppliesModal = () => {
               <Suspense
                 fallback={
                   <div className='w-[470px] max-h-[300px] overflow-y-auto divide-y divide-gray-100 px-2 py-5 space-y-4 mobile:w-[340px]'>
-                    {Array.from({ length: ITEM_COUNT.LIST_SM }).map(
+                    {Array.from({ length: ITEM_COUNT_PER_PAGE.LIST_SM }).map(
                       (_, index) => (
                         <Skeleton
                           key={`skeleton-${index}`}

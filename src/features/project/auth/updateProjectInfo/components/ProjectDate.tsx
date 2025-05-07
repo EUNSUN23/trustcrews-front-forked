@@ -4,11 +4,12 @@ import { useRecoilState } from 'recoil';
 import { addDays, format } from 'date-fns';
 import FormRow from '@/components/ui/form/FormRow';
 import { projectInfoFormSelector } from '@/features/project/auth/updateProjectInfo/store/ProjectInfoFormStateStore';
-import { ProjectPublicInfoData } from '@/utils/type';
+
+import { ProjectInfoSummary } from '@/features/project/public/service/getProjectPublicInfo';
 
 type ProjectDateProps = {
-  initStartDate: ProjectPublicInfoData['startDate'];
-  initEndDate: ProjectPublicInfoData['endDate'];
+  initStartDate: ProjectInfoSummary['startDate'];
+  initEndDate: ProjectInfoSummary['endDate'];
 };
 
 const ProjectDate = ({ initStartDate, initEndDate }: ProjectDateProps) => {

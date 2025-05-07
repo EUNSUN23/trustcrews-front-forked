@@ -1,5 +1,4 @@
 import Avatar from '@/components/ui/Avatar';
-import { TechStackItem } from '@/utils/type';
 import TechStackImage from '@/components/ui/TechStackImage';
 import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
 import RCVoteNoticeDetailSkeleton from '@/features/project/auth/projectNotice/contents/rcVoteNotice/RCVoteNoticeDetailSkeleton';
@@ -15,10 +14,11 @@ import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useRecruitNotice } from '@/features/project/auth/projectNotice/service/getRCVoteNotice';
 import { useRecoilValue } from 'recoil';
 import { rcVoteNoticeModalState } from '@/features/project/auth/projectNotice/store/RCVoteNoticeModalStateStore';
-import { numStrToBigInt } from '@/utils/common';
 import { ZodError } from 'zod';
 import { Suspense } from 'react';
 import Loader from '@/components/ui/Loader';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
+import { TechStackItem } from '@/service/setting/setting';
 
 const {
   VODA1001: { code: VOTE_AGREE },

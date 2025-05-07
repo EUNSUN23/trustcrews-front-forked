@@ -1,7 +1,30 @@
 import { request } from '@/lib/clientApi/request';
-import { PostPublicInfoData, ResponseBody } from '@/utils/type';
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
-import { bigIntToString } from '@/utils/common';
+import { bigIntToString } from '@/shared/utils/stringUtils';
+import { Position } from '@/shared/types/position';
+import { ResponseBody } from '@/shared/types/api';
+
+// todo - dataType, api명 ~detail로 수정
+export type PostPublicInfoData = {
+  boardId: bigint;
+  projectId: bigint;
+  title: string;
+  content: string;
+  pageView: number;
+  recruitmentStatus: boolean;
+  user: {
+    userId: bigint;
+    nickName: string;
+    userProfileImgSrc: string | null;
+  };
+  contact: string;
+  createDate: string;
+  updateDate: string;
+  boardPositions: {
+    boardPositionId: bigint | number;
+    position: Position;
+  }[];
+};
 
 export const getPostPublicInfo = async (
   postId: bigint,

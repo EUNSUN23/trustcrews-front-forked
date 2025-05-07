@@ -1,7 +1,8 @@
 import { request } from '@/lib/clientApi/request';
 import { useMutation } from '@tanstack/react-query';
-import { ApiResult, ResponseBody } from '@/utils/type';
 import { z } from 'zod';
+
+import { ApiResult, ResponseBody } from '@/shared/types/api';
 
 export const updateCrewPMAuthInputSchema = z.object({
   crewAuth: z.string().nonempty({ message: '프로젝트 권한을 선택해 주세요.' }),

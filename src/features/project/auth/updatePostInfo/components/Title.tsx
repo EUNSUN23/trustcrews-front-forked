@@ -1,7 +1,8 @@
 import { useRecoilState } from 'recoil';
 import Input from '@/components/ui/form/Input';
 import { postInfoFormFieldSelector } from '@/features/project/auth/updatePostInfo/store/PostInfoFormStateStore';
-import { PostPublicInfoData } from '@/utils/type';
+
+import { PostPublicInfoData } from '@/features/post/public/service/getPostPublicInfo';
 
 type TitleProps = {
   initData: PostPublicInfoData['title'];

@@ -1,9 +1,31 @@
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { ProfileInfo, ResponseBody } from '@/utils/type';
+import { PositionItem } from '@/shared/types/position';
+import { TechStackItem } from '@/service/setting/setting';
+
+import { ResponseBody } from '@/shared/types/api';
+import { TrustGradeName } from '@/shared/types/trustGradeType';
+
+export interface UserProfileInfo {
+  userId: bigint | null;
+  email: string;
+  nickname: string;
+  profileImgSrc?: string | null;
+  trustScore: number;
+  trustGrade: {
+    trustGradeId: number | bigint;
+    trustGradeName: TrustGradeName;
+  };
+  position: PositionItem;
+  techStacks: TechStackItem[];
+  intro?: string;
+  projectHistoryTotalCount: number;
+  createDate: string;
+  updateDate: string;
+}
 
 export const getUserDetailInfo = async (): Promise<
-  ResponseBody<ProfileInfo>
+  ResponseBody<UserProfileInfo>
 > => {
   return await request('GET', `/api/user`);
 };

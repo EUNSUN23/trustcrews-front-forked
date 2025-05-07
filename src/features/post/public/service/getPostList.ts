@@ -1,11 +1,12 @@
-import {
-  PageResponseBody,
-  PostCardInfo,
-  TechStackWithCategory,
-} from '@/utils/type';
 import { isEqual } from 'lodash';
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
+import { TechStackWithCategory } from '@/service/setting/setting';
+import { ProjectInfoSummary } from '@/features/project/public/service/getProjectPublicInfo';
+import { Position } from '@/shared/types/position';
+
+import { PageResponseBody } from '@/shared/types/api';
+import { TrustGrade } from '@/shared/types/trustGradeType';
 
 export interface SearchPostParams {
   techStacks: TechStackWithCategory[];
@@ -32,6 +33,23 @@ export const createQueryParams = (params: SearchPostParams) => {
   return decodeURI(queryParams.toString());
 };
 
+export type PostInfoSummary = {
+  project: ProjectInfoSummary;
+  boardId: bigint;
+  title: string;
+  recruitmentStatus: boolean;
+  boardPositions: { boardPositionId: bigint | number; position: Position }[];
+  boardPageView: number;
+  user: {
+    email: string;
+    nickname: string;
+    profileImgSrc: string | null;
+    trustGrade: TrustGrade;
+  };
+  createDate: string;
+  updateDate: string;
+};
+
 export const getPostList = async (
   params: SearchPostParams = {
     techStacks: [],
@@ -39,7 +57,7 @@ export const getPostList = async (
     page: 0,
     keyword: '',
   },
-): Promise<PageResponseBody<PostCardInfo[]>> => {
+): Promise<PageResponseBody<PostInfoSummary[]>> => {
   const queryParams = createQueryParams(params);
   return await request('GET', `/api/post/search?${queryParams}`);
 };

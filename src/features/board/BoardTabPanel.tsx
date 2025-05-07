@@ -8,9 +8,9 @@ import {
 import Posts from '@/features/post/public/contents/posts/Posts';
 import { Suspense } from 'react';
 import CardListSkeleton from '@/components/ui/skeleton/CardListSkeleton';
-import { ITEM_COUNT } from '@/utils/constant';
 import MyProjects from '@/features/project/auth/myProjects/contents/MyProjects';
 import MyProjectApplies from '@/features/projectApply/auth/contents/MyProjectApplies';
+import { ITEM_COUNT_PER_PAGE } from '@/shared/constants/pagination';
 
 const {
   MANAGE_PROJECT: { name: MANAGE_PROJECT },
@@ -31,7 +31,9 @@ function BoardTabPanel() {
         {activeBoardTab === MANAGE_PROJECT && <MyProjectApplies />}
         {activeBoardTab === MANAGE_PROJECT && (
           <Suspense
-            fallback={<CardListSkeleton itemCount={ITEM_COUNT.CARDS} />}
+            fallback={
+              <CardListSkeleton itemCount={ITEM_COUNT_PER_PAGE.CARDS} />
+            }
           >
             <MyProjects />
           </Suspense>

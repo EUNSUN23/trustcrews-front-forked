@@ -1,7 +1,7 @@
-import { ApiResult, ResponseBody } from '@/utils/type';
 import { useMutation } from '@tanstack/react-query';
 import { z } from 'zod';
 import { request } from '@/lib/clientApi/request';
+import { ApiResult, ResponseBody } from '@/shared/types/api';
 
 export const loginInputSchema = z.object({
   email: z.string().min(1, { message: '이메일을 입력해주세요.' }),

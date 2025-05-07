@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import CommonPagination from '@/components/ui/CommonPagination';
-import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
 import NoContentsMessage from '@/features/project/auth/projectNotice/components/NoContentsMessage';
 import { useCrewNoticeList } from '@/features/project/auth/projectNotice/service/getCrewNoticeList';
 import { useRecoilValue } from 'recoil';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
-import { numStrToBigInt } from '@/utils/common';
 import NoticeBadge from '@/components/ui/badge/NoticeBadge';
 import { NOTICE_TYPES } from '@/features/project/auth/projectNotice/constants/noticeTypes';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
+import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/shared/constants/pagination';
 
 const CrewNotices = () => {
   const [pageIndex, setPageIndex] = useState(0);
@@ -45,7 +45,7 @@ const CrewNotices = () => {
       </div>
       <CommonPagination
         activePage={pageIndex + 1}
-        itemsCountPerPage={ITEM_COUNT.LIST_SM}
+        itemsCountPerPage={ITEM_COUNT_PER_PAGE.LIST_SM}
         totalItemsCount={totalItemsCount}
         pageRangeDisplayed={PAGE_RANGE.DEFAULT}
         onChange={(pageIndex: number) => setPageIndex(pageIndex - 1)}

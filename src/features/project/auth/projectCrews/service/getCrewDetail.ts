@@ -1,12 +1,14 @@
 import { request } from '@/lib/clientApi/request';
-import { ResponseBody } from '@/utils/type';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { ProjectCrewProfile } from '@/features/project/auth/projectCrews/types';
-import { bigIntToString } from '@/utils/common';
+import { ProjectCrewProfileInfo } from '@/features/project/auth/projectCrews/types';
+
+import { bigIntToString } from '@/shared/utils/stringUtils';
+
+import { ResponseBody } from '@/shared/types/api';
 
 export const getCrewDetail = async (
   projectMemberId: bigint,
-): Promise<ResponseBody<ProjectCrewProfile>> => {
+): Promise<ResponseBody<ProjectCrewProfileInfo>> => {
   return await request(
     'GET',
     `/api/project/crews/detail?projectMemberId=${projectMemberId}`,

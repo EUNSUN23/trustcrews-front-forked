@@ -1,7 +1,8 @@
 import { useRecoilState } from 'recoil';
 import TextArea from '@/components/ui/form/TextArea';
 import { postInfoFormFieldSelector } from '@/features/project/auth/updatePostInfo/store/PostInfoFormStateStore';
-import { PostPublicInfoData } from '@/utils/type';
+
+import { PostPublicInfoData } from '@/features/post/public/service/getPostPublicInfo';
 
 type ContentProps = {
   initData: PostPublicInfoData['content'];

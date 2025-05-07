@@ -1,9 +1,10 @@
 import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
-import { ApiResult } from '@/utils/type';
 import { FWVOTE_NOTICE_LIST_QUERY_KEY } from '@/features/project/auth/projectNotice/service/getFWVoteNoticeList';
 import { FWVOTE_NOTICE_QUERY_KEY } from '@/features/project/auth/projectNotice/service/getFWVoteNotice';
+
+import { ApiResult } from '@/shared/types/api';
 
 export type FWVoteBaseParams = {
   projectId: bigint;

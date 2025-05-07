@@ -1,11 +1,11 @@
 import { ProjectPublicInfo } from '@/features/project/public/components/ProjectPublicInfo';
 import ApplyProject from '@/features/projectApply/public/contents/ApplyProject';
 import { usePostPublicInfo } from '@/features/post/public/service/getPostPublicInfo';
-import { numStrToBigInt } from '@/utils/common';
 import { useProjectPublicInfo } from '@/features/project/public/service/getProjectPublicInfo';
 import PostInformation from '@/features/post/public/components/postDetail/PostInformation';
 import PostIntroduction from '@/features/post/public/components/postDetail/PostIntroduction';
 import PostTitle from '@/features/post/public/components/postDetail/PostTitle';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 type PostDetailProps = {
   postId: string;

@@ -1,4 +1,4 @@
-import { SelectItem } from '@/utils/type';
+import { SelectItem } from '@/shared/types/ui';
 
 export const compareItems = (
   a: SelectItem<string, string>,
