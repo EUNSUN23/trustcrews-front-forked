@@ -2,7 +2,7 @@ import { request } from '@/lib/clientApi/request';
 import { ApiResult, ResponseBody } from '@/utils/type';
 import { useMutation } from '@tanstack/react-query';
 import { z } from 'zod';
-import { NICKNAME_REGEX } from '@/shared/constants/regex';
+import { NICKNAME_REGEX } from '@/shared/constants/validationRegex';
 
 export const checkNicknameInputSchema = z
   .string()

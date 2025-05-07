@@ -3,7 +3,7 @@ import {
   checkNicknameInputSchema,
   useCheckNickname,
 } from '@/features/user/service/checkNickName';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import { ZodError } from 'zod';
 
 type CheckNicknameButtonProps = {

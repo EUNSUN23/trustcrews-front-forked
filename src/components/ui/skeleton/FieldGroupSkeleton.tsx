@@ -1,5 +1,5 @@
 import Skeleton from '@/components/ui/skeleton/Skeleton';
-import cn from '@/utils/cn';
+import cn from '@/shared/styles/cn';
 
 type FieldGroupSkeletonProps = {
   label: string;

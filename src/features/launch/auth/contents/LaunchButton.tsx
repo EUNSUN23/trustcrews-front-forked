@@ -5,7 +5,7 @@ import { postFormStateStore } from '@/features/launch/auth/store/PostFormStateSt
 import { createPostInputSchema } from '@/features/post/auth/service/createPost';
 import { createProjectInputSchema } from '@/features/project/auth/createProject/service/createProject';
 import { ZodError } from 'zod';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useLaunch } from '@/features/launch/auth/service/launch';
 import { useRouter } from 'next/navigation';
 import { numStrToBigInt } from '@/utils/common';

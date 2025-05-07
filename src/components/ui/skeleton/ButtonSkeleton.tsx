@@ -1,6 +1,6 @@
 import { cva, VariantProps } from 'class-variance-authority';
 import { HTMLAttributes, ReactNode } from 'react';
-import cn from '@/utils/cn';
+import cn from '@/shared/styles/cn';
 
 const ButtonSkeletonVariants = cva(
   `bg-gray-200 animate-pulse rounded-full font-semibold text-transparent`,

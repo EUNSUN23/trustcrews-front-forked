@@ -2,7 +2,10 @@ import { useMutation } from '@tanstack/react-query';
 import { ApiResult, ResponseBody } from '@/utils/type';
 import { request } from '@/lib/clientApi/request';
 import { z } from 'zod';
-import { NICKNAME_REGEX, PASSWORD_REGEX } from '@/shared/constants/regex';
+import {
+  NICKNAME_REGEX,
+  PASSWORD_REGEX,
+} from '@/shared/constants/validationRegex';
 
 export const signUpInputScheme = z.object({
   email: z

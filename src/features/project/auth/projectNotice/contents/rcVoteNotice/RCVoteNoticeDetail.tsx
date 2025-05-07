@@ -11,7 +11,7 @@ import {
   recruitVoteAnswerInputSchema,
   useRecruitVote,
 } from '@/features/project/auth/projectVote/service/recruitVote';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useRecruitNotice } from '@/features/project/auth/projectNotice/service/getRCVoteNotice';
 import { useRecoilValue } from 'recoil';
 import { rcVoteNoticeModalState } from '@/features/project/auth/projectNotice/store/RCVoteNoticeModalStateStore';

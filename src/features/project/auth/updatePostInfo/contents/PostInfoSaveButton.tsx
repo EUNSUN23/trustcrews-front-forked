@@ -1,6 +1,6 @@
 import Button from '@/components/ui/button';
 import { useRecoilValue } from 'recoil';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import { postInfoFormStateStore } from '@/features/project/auth/updatePostInfo/store/PostInfoFormStateStore';
 import {
   updatePostInfoInputSchema,

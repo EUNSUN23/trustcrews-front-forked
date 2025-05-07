@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-export default function useDropdownState() {
+const useDropdownState = () => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
@@ -19,4 +19,6 @@ export default function useDropdownState() {
   }, []);
 
   return { openDropdown, setOpenDropdown, dropdownRef };
-}
+};
+
+export default useDropdownState;

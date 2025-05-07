@@ -3,7 +3,7 @@ import Avatar from '@/components/ui/Avatar';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
 import Button from '@/components/ui/button';
 import { numStrToBigInt } from '@/utils/common';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import PMAuthSelector from '@/features/project/auth/projectManageAuth/components/PMAuthSelector';
 import { ProjectCrew } from '@/features/project/auth/projectCrews/types';
 import { useRecoilValue } from 'recoil';

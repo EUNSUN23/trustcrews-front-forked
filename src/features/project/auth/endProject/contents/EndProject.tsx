@@ -4,7 +4,7 @@ import Button from '@/components/ui/button';
 import { useRecoilValue } from 'recoil';
 import { useRouter } from 'next/navigation';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useEndProject } from '@/features/project/auth/endProject/service/endProject';
 import { numStrToBigInt } from '@/utils/common';
 

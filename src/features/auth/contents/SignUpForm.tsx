@@ -9,7 +9,7 @@ import NicknameField from '@/components/ui/form/NickNameField';
 import TechStackSelect from '@/components/ui/selector/TechStackSelect';
 import PositionSelect from '@/components/ui/selector/PositionSelect';
 import { ZodError } from 'zod';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import { signUpInputScheme, useSignUp } from '@/lib/auth/signUp';
 import { numStrToBigInt } from '@/utils/common';
 import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
