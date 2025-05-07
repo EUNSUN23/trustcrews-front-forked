@@ -2,7 +2,7 @@
 
 import { ReactNode, useEffect, useRef } from 'react';
 import { RiCloseFill } from '@react-icons/all-files/ri/RiCloseFill';
-import Button from '@/components/ui/button';
+import Button from '@/components/ui/form/Button';
 
 import { ModalState } from '@/shared/types/ui';
 

@@ -1,10 +1,10 @@
 import Avatar from '@/components/ui/Avatar';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
-import ProjectRoleBadge from '@/components/ui/badge/ProjectRoleBadge';
-import VoteStatusBadge from '@/components/ui/badge/VoteStatusBadge';
+import ProjectRoleBadge from '@/features/project/auth/shared/ui/ProjectRoleBadge';
+import VoteStatusBadge from '@/features/project/auth/projectNotice/components/VoteStatusBadge';
 import { useRecoilValue } from 'recoil';
 import FWVoteNoticeDetailSkeleton from '@/features/project/auth/projectNotice/contents/fwVoteNotice/FWVoteNoticeDetailSkeleton';
-import VoteBar from '@/components/ui/votebar/VoteBar';
+import VoteBar from '@/features/project/auth/projectNotice/components/VoteBar';
 import { VOTE_OPTIONS } from '@/features/project/auth/projectVote/constants/voteOptions';
 import {
   fWVoteAnswerInputSchema,
@@ -115,7 +115,7 @@ const FWVoteNoticeDetail = () => {
         <VoteBar
           group='fwVote'
           label='찬성'
-          value={VOTE_AGREE}
+          voteOption={VOTE_AGREE}
           counts={agrees}
           maxCounts={maxVoteCount}
           disabled={isVoteEnded}
@@ -124,7 +124,7 @@ const FWVoteNoticeDetail = () => {
         <VoteBar
           group='fwVote'
           label='반대'
-          value={VOTE_DISAGREE}
+          voteOption={VOTE_DISAGREE}
           counts={disagrees}
           maxCounts={maxVoteCount}
           disabled={isVoteEnded}

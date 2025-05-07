@@ -1,9 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import logo from '../../../public/images/logo.png';
+import logo from '../../public/images/logo.png';
 import Link from 'next/link';
-import LoginNav from '@/components/header/User/LoginNav';
+import LoginNav from '@/components/ui/LoginNav';
 import UserMenuSkeleton from '@/features/user/components/UserMenuSkeleton';
 import { IoCreateOutline } from '@react-icons/all-files/io5/IoCreateOutline';
 import dynamic from 'next/dynamic';
@@ -22,7 +22,7 @@ const Header = () => {
       <div className='flex items-center justify-between h-[80px] mobile:h-[65px] my-1'>
         <div id='top-navigation-wrap'>
           <Link
-            href='/'
+            href='/public'
             aria-label='trustcrews 홈페이지'
             className='inline-block relative pc:w-[200px] pc:h-[60px] tablet:w-[150px] tablet:h-[50px] mobile:w-[120px] mobile:h-[40px]'
           >

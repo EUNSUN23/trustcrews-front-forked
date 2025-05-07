@@ -2,11 +2,11 @@ import Link from 'next/link';
 import { IoMdArrowRoundBack } from '@react-icons/all-files/io/IoMdArrowRoundBack';
 import { UrlObject } from 'url';
 
-interface BackNavProps {
+type NavProps = {
   to: string | UrlObject;
-}
+};
 
-function HomeNav({ to }: BackNavProps) {
+const Nav = ({ to }: NavProps) => {
   return (
     <Link href={to} aria-label='홈으로 가기'>
       <IoMdArrowRoundBack
@@ -15,6 +15,6 @@ function HomeNav({ to }: BackNavProps) {
       />
     </Link>
   );
-}
+};
 
-export default HomeNav;
+export default Nav;

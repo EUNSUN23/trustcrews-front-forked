@@ -1,5 +1,5 @@
-import NoticeBadge from '@/components/ui/badge/NoticeBadge';
-import VoteStatusBadge from '@/components/ui/badge/VoteStatusBadge';
+import NoticeBadge from '@/features/project/auth/projectNotice/components/NoticeBadge';
+import VoteStatusBadge from '@/features/project/auth/projectNotice/components/VoteStatusBadge';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { NOTICE_TYPES } from '@/features/project/auth/projectNotice/constants/noticeTypes';
 import { fwNoticeModalState } from '@/features/project/auth/projectNotice/store/FWVoteNoticeModalStateStore';

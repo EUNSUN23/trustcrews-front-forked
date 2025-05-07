@@ -5,7 +5,7 @@ import Loader from '@/components/ui/Loader';
 import useIntersectionObserver from '@/shared/hooks/useIntersectionObserver';
 import { useMyProjectApplies } from '@/features/projectApply/auth/service/getMyProjectApplies';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
-import { ProjectApplyStatusBadge } from '@/components/ui/badge/ProjectApplyStatusBadge';
+import { ProjectApplyStatusBadge } from '@/features/projectApply/auth/components/ProjectApplyStatusBadge';
 
 const MyProjectAppliesDetail = () => {
   const bottomRef = useRef<HTMLLIElement | null>(null);

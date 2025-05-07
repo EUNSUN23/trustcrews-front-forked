@@ -1,6 +1,6 @@
 'use client';
 
-import Button from '@/components/ui/button';
+import Button from '@/components/ui/form/Button';
 import { FaPlus } from '@react-icons/all-files/fa/FaPlus';
 import { useSetRecoilState } from 'recoil';
 import { milestoneAddModalStateStore } from '@/features/project/auth/projectJobs/store/MilestoneModalStateStore';

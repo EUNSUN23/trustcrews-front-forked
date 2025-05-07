@@ -1,6 +1,6 @@
-import CalendarInput from '@/components/ui/form/CalendarInput';
+import CalendarInput from '@/components/ui/datepicker/CalendarInput';
 import { useRecoilState } from 'recoil';
-import FormRow from '@/components/ui/form/FormRow';
+import FormRow from '@/features/project/auth/shared/ui/form/FormRow';
 import { projectFormFieldSelector } from '@/features/launch/auth/store/ProjectFormStateStore';
 
 const ProjectDate = () => {

@@ -3,7 +3,7 @@
 import ErrorPageContainer from '@/components/ui/error/ErrorPageContainer';
 import ErrorMessage from '@/components/ui/error/ErrorMessage';
 import Navigator from '@/components/ui/error/Navigator';
-import Button from '@/components/ui/button';
+import Button from '@/components/ui/form/Button';
 import { useRouter } from 'next/navigation';
 import { useResetRecoilState } from 'recoil';
 import { activeBoardTabStore } from '@/features/board/store/BoardActiveStateStore';
