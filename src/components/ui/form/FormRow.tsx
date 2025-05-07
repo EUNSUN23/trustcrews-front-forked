@@ -1,21 +1,21 @@
 import { HTMLAttributes, ReactNode } from 'react';
-import { classNames } from '@/utils/common';
+import cn from '@/shared/styles/cn';
 
 interface FormRowProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 
-function FormRow({ children, ...props }: FormRowProps) {
+const FormRow = ({ children, ...props }: FormRowProps) => {
   return (
     <div
-      className={classNames(
+      className={cn(
         `w-[380px] mobile:w-[300px] space-y-5 mobile:space-y-3 mobile:mx-auto`,
-        props.className || '',
+        props.className,
       )}
     >
       {children}
     </div>
   );
-}
+};
 
 export default FormRow;

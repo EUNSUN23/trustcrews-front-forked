@@ -1,20 +1,20 @@
-import { HTMLAttributes, ReactNode } from 'react';
-import { classNames } from '@/utils/common';
+import { HTMLAttributes } from 'react';
+import cn from '@/shared/styles/cn';
 
-interface SquareSkeletonProps extends HTMLAttributes<HTMLDivElement> {
-  children: ReactNode;
-}
-function SquareSkeleton({ children = '', ...props }: SquareSkeletonProps) {
+const SquareSkeleton = ({
+  children = '',
+  ...props
+}: HTMLAttributes<HTMLDivElement>) => {
   return (
     <div
-      className={classNames(
-        props.className || '',
+      className={cn(
         `text-transparent bg-gray-200 animate-pulse rounded-sm`,
+        props.className,
       )}
     >
       {children}
     </div>
   );
-}
+};
 
 export default SquareSkeleton;

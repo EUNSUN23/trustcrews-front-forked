@@ -2,9 +2,9 @@ import { Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { AiFillCaretDown } from '@react-icons/all-files/ai/AiFillCaretDown';
 import { AiOutlineCheck } from '@react-icons/all-files/ai/AiOutlineCheck';
-import { classNames } from '@/utils/common';
-import { compareItems } from '@/utils/compareItems';
+import { compareItems } from '@/shared/utils/compareItems';
 import { SelectItem } from '@/utils/type';
+import { clsx } from 'clsx';
 
 type MultiSelectProps<T, V> = {
   items: readonly SelectItem<T, V>[];
@@ -44,9 +44,9 @@ const MultiSelect = <T, V>({
           <div className='relative '>
             <Listbox.Button className='w-full min-h-[42px] py-2 pl-4 pr-10 flex-1 appearance-none mobile:text-sm cursor-default rounded-lg border-1 border text-left bg-white border-gray-300 text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent'>
               <span
-                className={classNames(
-                  values.length > 0 ? '' : 'text-greyUnselect',
+                className={clsx(
                   'block truncate',
+                  values.length > 0 ? '' : 'text-greyUnselect',
                 )}
               >
                 {values.length > 0
@@ -71,31 +71,31 @@ const MultiSelect = <T, V>({
                 {items.map((item) => (
                   <Listbox.Option
                     key={item.value as string}
-                    className={({ active }) =>
-                      classNames(
-                        active
+                    className={({ focus }) =>
+                      clsx(
+                        'relative cursor-default select-none py-2 pl-3 pr-9 mobile:text-sm',
+                        focus
                           ? 'bg-primary opacity-50 text-white'
                           : 'text-gray-900',
-                        'relative cursor-default select-none py-2 pl-3 pr-9 mobile:text-sm',
                       )
                     }
                     value={item}
                   >
-                    {({ selected, active }) => (
+                    {({ selected, focus }) => (
                       <>
                         <span
-                          className={classNames(
-                            selected ? 'font-bold' : 'font-normal',
+                          className={clsx(
                             'block truncate',
+                            selected ? 'font-bold' : 'font-normal',
                           )}
                         >
                           {item.name as string}
                         </span>
                         {selected ? (
                           <span
-                            className={classNames(
-                              active ? 'text-white' : 'text-primary',
+                            className={clsx(
                               'absolute inset-y-0 right-0 flex items-center pr-4',
+                              focus ? 'text-white' : 'text-primary',
                             )}
                           >
                             <AiOutlineCheck

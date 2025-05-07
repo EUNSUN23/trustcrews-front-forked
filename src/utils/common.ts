@@ -1,8 +1,3 @@
-// todo - 제거
-export function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
-
 export function JSONReplaceBigInt(data: Record<string, unknown>) {
   return JSON.stringify(data, (k, v) =>
     typeof v === 'bigint' ? Number(v) : v,
