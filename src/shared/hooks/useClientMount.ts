@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-function useClientMount() {
+const useClientMount = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -10,6 +10,6 @@ function useClientMount() {
   }, []);
 
   return mounted;
-}
+};
 
 export default useClientMount;

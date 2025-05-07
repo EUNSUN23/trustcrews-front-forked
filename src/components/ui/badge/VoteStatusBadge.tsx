@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
-import cn from '@/utils/cn';
-import { baseBadgeVariants } from '@/utils/badge';
+import cn from '@/shared/styles/cn';
+import baseBadgeVariants from '@/shared/styles/baseBadgeVariants';
 
 const VoteStatusBadgeVariants = cva(
   'inline-flex items-center rounded-full transparent font-medium  ring-1 ring-inset ',

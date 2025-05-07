@@ -2,7 +2,7 @@
 
 import Button from '@/components/ui/button';
 import { useRecoilValue } from 'recoil';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 import { numStrToBigInt } from '@/utils/common';

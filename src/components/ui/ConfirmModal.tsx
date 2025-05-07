@@ -4,12 +4,14 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import Modal from '@/components/ui/Modal';
-import { confirmModalState } from '@/store/CommonStateStore';
+
+import { confirmModalStateStore } from '@/shared/store/ConfirmModalStateStore';
 
 function ConfirmModal() {
-  const { isOpen, title, content, onClickConfirmHandler } =
-    useRecoilValue(confirmModalState);
-  const resetModalState = useResetRecoilState(confirmModalState);
+  const { isOpen, title, content, onClickConfirmHandler } = useRecoilValue(
+    confirmModalStateStore,
+  );
+  const resetModalState = useResetRecoilState(confirmModalStateStore);
   const [portalElement, setPortalElement] = useState<Element | null>(null);
 
   useEffect(() => {

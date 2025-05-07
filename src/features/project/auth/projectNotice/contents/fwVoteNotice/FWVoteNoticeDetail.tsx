@@ -11,7 +11,7 @@ import {
   fWVoteAnswerInputSchema,
   useForceWithdrawVote,
 } from '@/features/project/auth/projectVote/service/forceWithdrawVote';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useFWVoteNotice } from '@/features/project/auth/projectNotice/service/getFWVoteNotice';
 import { fwNoticeModalState } from '@/features/project/auth/projectNotice/store/FWVoteNoticeModalStateStore';
 import { ZodError } from 'zod';

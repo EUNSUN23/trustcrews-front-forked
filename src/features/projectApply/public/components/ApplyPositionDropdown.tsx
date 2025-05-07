@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import useDropdownState from '@/hooks/common/useDropdownState';
+import useDropdownState from '@/shared/hooks/useDropdownState';
 import { useRecoilState } from 'recoil';
 import { projectApplyPositionState } from '@/features/projectApply/auth/store/ApplyPositionStateStore';
 import { PostDetailPosition } from '@/utils/type';

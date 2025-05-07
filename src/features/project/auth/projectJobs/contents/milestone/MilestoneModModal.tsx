@@ -9,7 +9,7 @@ import {
   updateMilestoneSchema,
   useUpdateMilestone,
 } from '@/features/project/auth/projectJobs/service/milestone/updateMilestone';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import { ZodError } from 'zod';
 import {
   milestoneModFormStateStore,
@@ -17,7 +17,7 @@ import {
 } from '@/features/project/auth/projectJobs/store/MilestoneModalStateStore';
 import { activeMilestoneStateStore } from '@/features/project/auth/projectJobs/store/ActiveMilestoneStateStore';
 import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
-import useModalPortalElement from '@/hooks/common/useModalPortalElement';
+import useModalPortalElement from '@/shared/hooks/useModalPortalElement';
 import { numStrToBigInt } from '@/utils/common';
 
 const MilestoneModModal = () => {

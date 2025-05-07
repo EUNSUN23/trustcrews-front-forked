@@ -226,15 +226,6 @@ export type ProjectPostDetailData = {
   project: ProjectInfoSummary;
 };
 
-export type SnackbarType = 'INFO' | 'ERROR' | 'SUCCESS';
-
-export interface SnackbarState {
-  show: boolean;
-  type: SnackbarType;
-  content: string;
-  duration?: number;
-}
-
 export interface NoticeCreateForm {
   projectId: bigint;
   checkUserId?: bigint | null;

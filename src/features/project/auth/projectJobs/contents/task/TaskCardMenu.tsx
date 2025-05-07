@@ -10,7 +10,7 @@ import {
 } from '@headlessui/react';
 import { IoEllipsisVertical } from '@react-icons/all-files/io5/IoEllipsisVertical';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useDeleteTask } from '@/features/project/auth/projectJobs/service/task/deleteTask';
 import {
   TaskModForm,

@@ -1,8 +1,8 @@
-import cn from '@/utils/cn';
+import cn from '@/shared/styles/cn';
 import { ProjectApplyStatusData } from '@/features/projectApply/auth/type';
 import { clsx } from 'clsx';
 import { HTMLAttributes } from 'react';
-import { baseBadgeVariants } from '@/utils/badge';
+import baseBadgeVariants from '@/shared/styles/baseBadgeVariants';
 import { cva, VariantProps } from 'class-variance-authority';
 
 const STATUS_COLOR = {

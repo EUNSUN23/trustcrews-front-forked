@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import Modal from '@/components/ui/Modal';
 import RCVoteNoticeDetail from '@/features/project/auth/projectNotice/contents/rcVoteNotice/RCVoteNoticeDetail';
 import { rcVoteNoticeModalState } from '@/features/project/auth/projectNotice/store/RCVoteNoticeModalStateStore';
-import useModalPortalElement from '@/hooks/common/useModalPortalElement';
+import useModalPortalElement from '@/shared/hooks/useModalPortalElement';
 import { Suspense } from 'react';
 import RCVoteNoticeDetailSkeleton from '@/features/project/auth/projectNotice/contents/rcVoteNotice/RCVoteNoticeDetailSkeleton';
 
