@@ -11,7 +11,7 @@ import { ReactNode } from 'react';
 import {
   AuthState,
   AuthStateProvider,
-} from '@/shared/contexts/AuthStateContext';
+} from '@/features/user/contexts/AuthStateContext';
 
 const makeQueryClient = () => {
   return new QueryClient({

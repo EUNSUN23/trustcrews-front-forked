@@ -12,7 +12,7 @@ import { useRecoilValue } from 'recoil';
 import { bigIntToString } from '@/utils/common';
 import CrewOutButton from '@/features/project/auth/projectCrews/contents/crewManage/CrewOutButton';
 import CrewFwButton from '@/features/project/auth/projectCrews/contents/crewManage/CrewFWButton';
-import { useAuthState } from '@/shared/contexts/AuthStateContext';
+import { useAuthState } from '@/features/user/contexts/AuthStateContext';
 
 const CrewProfile = () => {
   const { userId: currentUserId } = useAuthState();

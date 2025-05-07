@@ -7,7 +7,7 @@ import LoginNav from '@/components/header/User/LoginNav';
 import UserMenuSkeleton from '@/features/user/components/UserMenuSkeleton';
 import { IoCreateOutline } from '@react-icons/all-files/io5/IoCreateOutline';
 import dynamic from 'next/dynamic';
-import { useAuthState } from '@/shared/contexts/AuthStateContext';
+import { useAuthState } from '@/features/user/contexts/AuthStateContext';
 
 const UserMenu = dynamic(() => import('@/features/user/components/UserMenu'), {
   ssr: false,
