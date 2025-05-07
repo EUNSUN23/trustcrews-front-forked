@@ -1,6 +1,6 @@
-import { ModalState } from '@/utils/type';
 import { atom } from 'recoil';
 import { CreateCrewFWVoteReason } from '@/features/project/auth/projectVote/service/createFWVote';
+import { ModalState } from '@/shared/types/ui';
 
 export type CrewFWModalState = ModalState & {
   projectId: string;

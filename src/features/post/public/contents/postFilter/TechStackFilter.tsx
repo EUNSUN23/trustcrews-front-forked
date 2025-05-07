@@ -4,10 +4,10 @@ import { useEffect, useRef, useState, useTransition } from 'react';
 import { useRecoilValue } from 'recoil';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
 import TechStackDropdownList from '../../components/postFilter/TechStackDropdownList';
-import { TechStackWithCategory } from '@/utils/type';
 import { selectedTechStackState } from '@/features/post/public/store/PostSearchStateStore';
 import { useTechCategories } from '@/lib/static/getTechCategories';
 import { useTechMaps } from '@/lib/static/getTechMaps';
+import { TechStackWithCategory } from '@/service/setting/setting';
 
 const getSelectedTechStackText = (
   selectedTechStacks: TechStackWithCategory[],

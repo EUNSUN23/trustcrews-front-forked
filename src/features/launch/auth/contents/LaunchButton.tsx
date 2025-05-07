@@ -8,7 +8,8 @@ import { ZodError } from 'zod';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useLaunch } from '@/features/launch/auth/service/launch';
 import { useRouter } from 'next/navigation';
-import { numStrToBigInt } from '@/utils/common';
+
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 const LaunchButton = () => {
   const router = useRouter();

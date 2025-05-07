@@ -1,10 +1,11 @@
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { PageResponseBody } from '@/utils/type';
-import { ITEM_COUNT } from '@/utils/constant';
-import { bigIntToString } from '@/utils/common';
 import { NOTICE_TYPES } from '@/features/project/auth/projectNotice/constants/noticeTypes';
 import { VoteStatusType } from '@/features/project/auth/projectVote/types';
+import { bigIntToString } from '@/shared/utils/stringUtils';
+import { ITEM_COUNT_PER_PAGE } from '@/shared/constants/pagination';
+
+import { PageResponseBody } from '@/shared/types/api';
 
 export type RCVoteNoticeData = {
   alertId: bigint;
@@ -37,7 +38,7 @@ export const useRCVoteNoticeList = (projectId: bigint, pageIndex: number) => {
       pageIndex,
     ],
     queryFn: () =>
-      getRCVoteNoticeList(projectId, pageIndex, ITEM_COUNT.LIST_SM),
+      getRCVoteNoticeList(projectId, pageIndex, ITEM_COUNT_PER_PAGE.LIST_SM),
     refetchInterval: 60000,
     refetchIntervalInBackground: true,
   });

@@ -18,7 +18,8 @@ import {
 import { activeMilestoneStateStore } from '@/features/project/auth/projectJobs/store/ActiveMilestoneStateStore';
 import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 import useModalPortalElement from '@/shared/hooks/useModalPortalElement';
-import { numStrToBigInt } from '@/utils/common';
+
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 const MilestoneModModal = () => {
   const { isOpen, title, milestoneId, updateDate } = useRecoilValue(

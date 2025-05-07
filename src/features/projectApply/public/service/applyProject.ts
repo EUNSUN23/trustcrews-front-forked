@@ -1,7 +1,8 @@
 import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { ApiResult, ResponseBody } from '@/utils/type';
 import { getMyProjectAppliesQueryKey } from '@/features/projectApply/auth/service/getMyProjectApplies';
+
+import { ApiResult, ResponseBody } from '@/shared/types/api';
 
 export const applyProject = async (
   projectId: bigint | number,

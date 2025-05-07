@@ -3,7 +3,6 @@ import PositionBadge from '@/components/ui/badge/PositionBadge';
 import ProjectRoleBadge from '@/components/ui/badge/ProjectRoleBadge';
 import VoteStatusBadge from '@/components/ui/badge/VoteStatusBadge';
 import { useRecoilValue } from 'recoil';
-import { numStrToBigInt } from '@/utils/common';
 import FWVoteNoticeDetailSkeleton from '@/features/project/auth/projectNotice/contents/fwVoteNotice/FWVoteNoticeDetailSkeleton';
 import VoteBar from '@/components/ui/votebar/VoteBar';
 import { VOTE_OPTIONS } from '@/features/project/auth/projectVote/constants/voteOptions';
@@ -15,6 +14,7 @@ import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useFWVoteNotice } from '@/features/project/auth/projectNotice/service/getFWVoteNotice';
 import { fwNoticeModalState } from '@/features/project/auth/projectNotice/store/FWVoteNoticeModalStateStore';
 import { ZodError } from 'zod';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 const {
   VODA1001: { code: VOTE_AGREE },

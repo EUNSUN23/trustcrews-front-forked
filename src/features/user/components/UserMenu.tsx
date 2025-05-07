@@ -12,13 +12,13 @@ import {
   Transition,
 } from '@headlessui/react';
 import Link from 'next/link';
-import { classNames } from '@/utils/common';
 import { useRouter } from 'next/navigation';
 import { useLogout } from '@/lib/auth/logout';
 import { useResetRecoilState } from 'recoil';
 import { activeBoardTabStore } from '@/features/board/store/BoardActiveStateStore';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useSimpleUserInfo } from '@/lib/user/getSimpleUserInfo';
+import { clsx } from 'clsx';
 
 const UserMenu = () => {
   const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
@@ -80,9 +80,9 @@ const UserMenu = () => {
                 {({ focus }) => (
                   <Link
                     href='/user'
-                    className={classNames(
-                      focus ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    className={clsx(
                       'block px-4 py-2 tablet:text-[16px] mobile:text-sm',
+                      focus ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     )}
                   >
                     내 프로필
@@ -93,9 +93,9 @@ const UserMenu = () => {
                 {({ focus }) => (
                   <span
                     onClick={handleClickLogout}
-                    className={classNames(
-                      focus ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    className={clsx(
                       'block px-4 py-2 tablet:text-[16px] mobile:text-sm',
+                      focus ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     )}
                   >
                     로그아웃

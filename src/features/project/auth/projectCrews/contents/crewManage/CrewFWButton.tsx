@@ -5,13 +5,14 @@ import {
   crewFWModalStateStore,
   DEFAULT_FW_MODAL_STATE,
 } from '@/features/project/auth/projectCrews/store/CrewFWModalStateStore';
-import { ProjectCrewProfile } from '@/features/project/auth/projectCrews/types';
+import { ProjectCrewProfileInfo } from '@/features/project/auth/projectCrews/types';
 import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
-import { bigIntToString } from '@/utils/common';
+
+import { bigIntToString } from '@/shared/utils/stringUtils';
 
 const { title: DEFALUT_TITLE } = DEFAULT_FW_MODAL_STATE;
 
-const CrewFwButton = ({ crewInfo }: { crewInfo: ProjectCrewProfile }) => {
+const CrewFwButton = ({ crewInfo }: { crewInfo: ProjectCrewProfileInfo }) => {
   const { code: userPMAuth } = useRecoilValue(projectManageAuthStateStore);
   const setCrewFWModalState = useSetRecoilState(crewFWModalStateStore);
 

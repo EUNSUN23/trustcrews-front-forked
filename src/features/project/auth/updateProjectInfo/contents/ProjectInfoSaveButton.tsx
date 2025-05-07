@@ -5,16 +5,16 @@ import { useRecoilValue } from 'recoil';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
-import { numStrToBigInt } from '@/utils/common';
 import {
   UpdateProjectInfoInput,
   useUpdateProjectInfo,
 } from '@/features/project/auth/updateProjectInfo/service/updateProjectInfo';
 import { projectInfoFormStateStore } from '@/features/project/auth/updateProjectInfo/store/ProjectInfoFormStateStore';
-import { ProjectPublicInfoData } from '@/utils/type';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
+import { ProjectInfoSummary } from '@/features/project/public/service/getProjectPublicInfo';
 
 type ProjectInfoSaveButtonProps = {
-  initData: ProjectPublicInfoData;
+  initData: ProjectInfoSummary;
 };
 
 const ProjectInfoSaveButton = ({ initData }: ProjectInfoSaveButtonProps) => {

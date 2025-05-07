@@ -5,11 +5,11 @@ import Snackbar from '@/components/ui/Snackbar';
 import StaticDataProvider from '@/app/StaticDataProvider';
 import Header from '@/components/header/Header';
 import { ReactNode } from 'react';
-import getIsAuthorized from '@/shared/utils/cookie/getIsAuthorized';
 import {
   COOKIE,
   getCookieValue,
 } from '@/app/api/_interceptor/utils/cookieUtils';
+import { getIsAuthorizedFromCookie } from '@/shared/utils/cookieUtils';
 
 export const metadata: Metadata = {
   title: 'TRUSTCREWS | 책임감 있는 사이드 프로젝트 팀, 팀원을 구하는 방법',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const authState = {
-    isAuthorized: getIsAuthorized(),
+    isAuthorized: getIsAuthorizedFromCookie(),
     userId: getCookieValue(COOKIE.USER_ID),
   };
 

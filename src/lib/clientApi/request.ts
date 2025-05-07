@@ -1,6 +1,6 @@
 import { HTTP_METHOD } from 'next/dist/server/web/http';
-import { JSONReplaceBigInt } from '@/utils/common';
 import { handleResponse } from '@/lib/clientApi/handleResponse';
+import { JSONReplaceBigInt } from '@/shared/utils/jsonUtils';
 
 export const publicURL = process.env.NEXT_PUBLIC_URL;
 export const headers: HeadersInit = {

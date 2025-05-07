@@ -1,10 +1,14 @@
 import { Metadata } from 'next';
-import { PostPublicInfoData, ResponseBody } from '@/utils/type';
-import { getPostPublicInfo } from '@/features/post/public/service/getPostPublicInfo';
-import { numStrToBigInt } from '@/utils/common';
+import {
+  getPostPublicInfo,
+  PostPublicInfoData,
+} from '@/features/post/public/service/getPostPublicInfo';
 import ConfirmModal from '@/components/ui/ConfirmModal';
 import { ReactNode } from 'react';
 import HomeNav from '@/components/ui/HomeNav';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
+
+import { ResponseBody } from '@/shared/types/api';
 
 export async function generateMetadata({
   params: { slug: postId },

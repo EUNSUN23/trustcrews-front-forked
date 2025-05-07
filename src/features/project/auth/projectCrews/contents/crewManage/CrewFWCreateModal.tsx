@@ -16,7 +16,8 @@ import {
 import { ZodError } from 'zod';
 import useModalPortalElement from '@/shared/hooks/useModalPortalElement';
 import { FW_VOTE_REASONS } from '@/features/project/auth/projectVote/constants/fwVoteReasons';
-import { numStrToBigInt } from '@/utils/common';
+
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 const {
   FWR1001: REASON_CORP,

@@ -1,8 +1,21 @@
 import { request } from '@/lib/clientApi/request';
-import { PageResponseBody } from '@/utils/type';
-import { CrewTaskHistory } from '@/features/project/auth/projectCrews/types';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
+
+import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/shared/constants/pagination';
+import { TaskPointType } from '@/features/project/auth/global/types/TaskPointType';
+import { CrewStatusKey } from '@/features/project/auth/projectCrews/types';
+
+import { PageResponseBody } from '@/shared/types/api';
+
+export interface CrewTaskHistory {
+  workId: bigint;
+  trustScoreHistoryId: bigint;
+  workContent: string;
+  createDate: string;
+  progressStatus: CrewStatusKey;
+  point: number;
+  point_type: TaskPointType;
+}
 
 export const getCrewTaskHistory = async (
   projectMemberId: string | bigint,
@@ -26,7 +39,7 @@ export const useCrewTaskHistory = (
       CREW_TASK_HISTORY_KEY,
       projectMemberId,
       pageIndex,
-      ITEM_COUNT.LIST_SM,
+      ITEM_COUNT_PER_PAGE.LIST_SM,
     ],
     queryFn: () =>
       getCrewTaskHistory(projectMemberId, pageIndex, PAGE_RANGE.DEFAULT),

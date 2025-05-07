@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 import { routeResponse } from '@/app/api/_interceptor/routeResponse';
 import { GatewayError } from '@/app/api/_interceptor/error/classes';
 import { COOKIE } from '@/app/api/_interceptor/utils/cookieUtils';
-import { getRefreshToken } from '@/shared/utils/cookie/getRefreshToken';
+import { getRfTokenFromSetCookie } from '@/shared/utils/cookieUtils';
 
 export async function POST(req: NextRequest) {
   const loginRequest = await req.json();
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
 
     const cookieStore = cookies();
     if (accessToken && setCookieHeader) {
-      const { token, options } = getRefreshToken(setCookieHeader);
+      const { token, options } = getRfTokenFromSetCookie(setCookieHeader);
       cookieStore.set(COOKIE.ACS_TOKEN, accessToken, {
         ...options,
         sameSite: 'strict',

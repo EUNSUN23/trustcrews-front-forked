@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 import useDropdownState from '@/shared/hooks/useDropdownState';
 import { useRecoilState } from 'recoil';
 import { projectApplyPositionState } from '@/features/projectApply/auth/store/ApplyPositionStateStore';
-import { PostDetailPosition } from '@/utils/type';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
 import {
   Listbox,
@@ -11,16 +10,18 @@ import {
   ListboxOptions,
   Transition,
 } from '@headlessui/react';
-import { bigIntToString, classNames, numStrToBigInt } from '@/utils/common';
-import { DEFAULT_POSITION_OPTION } from '@/utils/constant';
-import { compareItems } from '@/utils/compareItems';
+import { compareItems } from '@/shared/utils/compareItems';
+import { clsx } from 'clsx';
+import { bigIntToString, numStrToBigInt } from '@/shared/utils/stringUtils';
+import { DEFAULT_POSITION_OPTION } from '@/shared/constants/defaultSelectOptions';
+import { PostPublicInfoData } from '@/features/post/public/service/getPostPublicInfo';
 
 type ApplyPositionDropdownProps = {
-  recruitPositions: PostDetailPosition[];
+  applyPositions: PostPublicInfoData['boardPositions'];
 };
 
 const ApplyPositionDropdown = ({
-  recruitPositions,
+  applyPositions,
 }: ApplyPositionDropdownProps) => {
   const { dropdownRef, openDropdown, setOpenDropdown } = useDropdownState();
   const [projectApplyPosition, setProjectApplyPosition] = useRecoilState(
@@ -32,7 +33,7 @@ const ApplyPositionDropdown = ({
       ...DEFAULT_POSITION_OPTION,
       value: bigIntToString(DEFAULT_POSITION_OPTION.value),
     },
-    ...recruitPositions.map(({ position: { name, positionId } }) => ({
+    ...applyPositions.map(({ position: { name, positionId } }) => ({
       name,
       value: bigIntToString(positionId),
     })),
@@ -83,9 +84,9 @@ const ApplyPositionDropdown = ({
               >
                 {({ selected }) => (
                   <span
-                    className={classNames(
-                      selected ? 'font-bold' : 'font-normal',
+                    className={clsx(
                       'flex items-center space-x-2 truncate',
+                      selected ? 'font-bold' : 'font-normal',
                     )}
                   >
                     {name}

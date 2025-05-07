@@ -1,8 +1,9 @@
 import { request } from '@/lib/clientApi/request';
-import { sortByStartDate } from '@/utils/common';
-import { PageResponseBody, ProjectInfoSummary } from '@/utils/type';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { ITEM_COUNT } from '@/utils/constant';
+import { ITEM_COUNT_PER_PAGE } from '@/shared/constants/pagination';
+import { ProjectInfoSummary } from '@/features/project/public/service/getProjectPublicInfo';
+import { PageResponseBody } from '@/shared/types/api';
+import { sortByStartDate } from '@/shared/utils/sortUtils';
 
 /**
  * 참여 프로젝트 목록 조회
@@ -34,6 +35,6 @@ export const MY_PROJECTS_QUERY_KEY = ['myProjects'];
 export const useMyProjects = (pageNumber: number) => {
   return useSuspenseQuery({
     queryKey: [...MY_PROJECTS_QUERY_KEY, pageNumber],
-    queryFn: () => getMyProjects(pageNumber, ITEM_COUNT.CARDS),
+    queryFn: () => getMyProjects(pageNumber, ITEM_COUNT_PER_PAGE.CARDS),
   });
 };

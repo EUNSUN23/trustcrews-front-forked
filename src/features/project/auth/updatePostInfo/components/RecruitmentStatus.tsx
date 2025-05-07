@@ -1,7 +1,8 @@
 import { Switch } from '@headlessui/react';
 import { useRecoilState } from 'recoil';
 import { postInfoFormFieldSelector } from '@/features/project/auth/updatePostInfo/store/PostInfoFormStateStore';
-import { PostPublicInfoData } from '@/utils/type';
+
+import { PostPublicInfoData } from '@/features/post/public/service/getPostPublicInfo';
 
 type RecruitmentStatusProps = {
   initData: PostPublicInfoData['recruitmentStatus'];

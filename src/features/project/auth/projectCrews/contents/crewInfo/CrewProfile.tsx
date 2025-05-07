@@ -4,15 +4,15 @@ import Avatar from '@/components/ui/Avatar';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
 import ProjectRoleBadge from '@/components/ui/badge/ProjectRoleBadge';
 import TechStackImage from '@/components/ui/TechStackImage';
-import { TechStackItem } from '@/utils/type';
 import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
 import { useCrewDetail } from '@/features/project/auth/projectCrews/service/getCrewDetail';
 import { crewIdState } from '@/features/project/auth/projectCrews/store/CrewIdStateStore';
 import { useRecoilValue } from 'recoil';
-import { bigIntToString } from '@/utils/common';
 import CrewOutButton from '@/features/project/auth/projectCrews/contents/crewManage/CrewOutButton';
 import CrewFwButton from '@/features/project/auth/projectCrews/contents/crewManage/CrewFWButton';
 import { useAuthState } from '@/features/user/contexts/AuthStateContext';
+import { bigIntToString } from '@/shared/utils/stringUtils';
+import { TechStackItem } from '@/service/setting/setting';
 
 const CrewProfile = () => {
   const { userId: currentUserId } = useAuthState();

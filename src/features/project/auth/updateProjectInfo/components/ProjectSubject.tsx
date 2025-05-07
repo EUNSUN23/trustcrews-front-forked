@@ -2,10 +2,11 @@ import Input from '@/components/ui/form/Input';
 import { useRecoilState } from 'recoil';
 import FormRow from '@/components/ui/form/FormRow';
 import { projectInfoFormSelector } from '@/features/project/auth/updateProjectInfo/store/ProjectInfoFormStateStore';
-import { ProjectPublicInfoData } from '@/utils/type';
+
+import { ProjectInfoSummary } from '@/features/project/public/service/getProjectPublicInfo';
 
 type ProjectSubjectProps = {
-  initData: ProjectPublicInfoData['projectSubject'];
+  initData: ProjectInfoSummary['projectSubject'];
 };
 
 const ProjectSubject = ({ initData }: ProjectSubjectProps) => {

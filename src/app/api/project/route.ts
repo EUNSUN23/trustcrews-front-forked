@@ -1,7 +1,8 @@
 import { NextRequest } from 'next/server';
 import authApi from '@/app/api/_interceptor/authApi';
-import { JSONReplaceBigInt } from '@/utils/common';
 import { routeResponse } from '@/app/api/_interceptor/routeResponse';
+
+import { JSONReplaceBigInt } from '@/shared/utils/jsonUtils';
 
 const baseURL = process.env.BACKEND_HOST;
 
