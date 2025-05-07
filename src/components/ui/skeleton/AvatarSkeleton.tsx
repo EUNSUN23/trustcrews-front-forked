@@ -18,12 +18,12 @@ interface AvatarSkeletonProps
   extends HTMLAttributes<HTMLElement>,
     VariantProps<typeof AvatarSkeletonVariants> {}
 
-function AvatarSkeleton({ size, ...props }: AvatarSkeletonProps) {
+const AvatarSkeleton = ({ size, ...props }: AvatarSkeletonProps) => {
   return (
     <div
       className={cn(AvatarSkeletonVariants({ size }), props.className)}
     ></div>
   );
-}
+};
 
 export default AvatarSkeleton;

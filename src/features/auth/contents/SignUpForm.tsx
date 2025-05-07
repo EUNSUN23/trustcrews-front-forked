@@ -4,7 +4,7 @@ import { Suspense, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Input from '@/components/ui/form/Input';
 import TextArea from '@/components/ui/form/TextArea';
-import FormButton from '@/components/ui/form/FormButton';
+import FormButton from '@/features/project/auth/shared/ui/form/FormButton';
 import NicknameField from '@/components/ui/form/NickNameField';
 import TechStackSelect from '@/components/ui/selector/TechStackSelect';
 import PositionSelect from '@/components/ui/selector/PositionSelect';

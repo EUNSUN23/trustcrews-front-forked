@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import CalendarInput from '@/components/ui/form/CalendarInput';
+import CalendarInput from '@/components/ui/datepicker/CalendarInput';
 import { addDays, format } from 'date-fns';
 
 export type CustomDateRangePickerProps = {

@@ -1,6 +1,5 @@
 import MultiSelect from '@/components/ui/selector/MultiSelect';
 import { useTechStackList } from '@/lib/static/getTechStackList';
-
 import { bigIntToString } from '@/shared/utils/stringUtils';
 
 type TechStackSelectProps = {
