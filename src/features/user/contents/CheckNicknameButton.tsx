@@ -2,7 +2,7 @@ import Button from '@/components/ui/button';
 import {
   checkNicknameInputSchema,
   useCheckNickname,
-} from '@/shared/service/checkNickName';
+} from '@/features/user/service/checkNickName';
 import useSnackbar from '@/hooks/common/useSnackbar';
 import { ZodError } from 'zod';
 
