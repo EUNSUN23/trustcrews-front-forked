@@ -6,12 +6,12 @@ import ProjectPostInfoSaveButton from '@/features/project/auth/updatePostInfo/co
 import RecruitmentStatus from '@/features/project/auth/updatePostInfo/components/RecruitmentStatus';
 import { useRecoilValue } from 'recoil';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
-import { numStrToBigInt } from '@/utils/common';
 import { usePostPublicInfo } from '@/features/post/public/service/getPostPublicInfo';
 import PostInfoResetButton from '@/features/project/auth/updatePostInfo/contents/PostInfoResetButton';
 import ConfigContainer from '@/features/project/auth/global/layouts/projectConfig/ConfigContainer';
 import ConfigSummary from '@/features/project/auth/global/layouts/projectConfig/ConfigSummary';
 import ConfigContents from '@/features/project/auth/global/layouts/projectConfig/ConfigContents';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 const PostInfoForm = () => {
   const projectId = useRecoilValue(projectIdState);

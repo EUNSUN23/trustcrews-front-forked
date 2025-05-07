@@ -1,6 +1,7 @@
 import Select from '@/components/ui/selector/Select';
 import { usePositionList } from '@/lib/static/getPositionList';
-import { bigIntToString } from '@/utils/common';
+
+import { bigIntToString } from '@/shared/utils/stringUtils';
 
 type PositionSelectProps = {
   positionId: string;

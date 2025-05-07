@@ -1,9 +1,14 @@
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { ResponseBody, UserBasicInfo } from '@/utils/type';
+import { ResponseBody } from '@/shared/types/api';
+
+export interface SimpleUserInfo {
+  nickname: string;
+  profileImgSrc: string;
+}
 
 export const getSimpleUserInfo = async (): Promise<
-  ResponseBody<UserBasicInfo>
+  ResponseBody<SimpleUserInfo>
 > => {
   return await request('GET', '/api/user/simple');
 };

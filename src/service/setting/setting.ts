@@ -1,10 +1,6 @@
-import {
-  PositionItem,
-  ResponseBody,
-  TechStackCategory,
-  TechStackItem,
-  TechStackWithCategory,
-} from '@/utils/type';
+import { PositionItem } from '@/shared/types/position';
+
+import { ResponseBody } from '@/shared/types/api';
 
 const publicURL = process.env.NEXT_PUBLIC_URL;
 
@@ -16,6 +12,15 @@ export async function getPositionList(): Promise<ResponseBody<PositionItem[]>> {
   return await response.json();
 }
 
+export interface TechStackItem {
+  techStackId: bigint | number;
+  techStackName: string;
+}
+
+export interface TechStackWithCategory extends TechStackItem {
+  categories: string[];
+}
+
 /**
  * 기술스택 목록 조회
  */
@@ -25,6 +30,11 @@ export async function getTechStackList(): Promise<
   const response = await fetch(`${publicURL}/api/setting/tech-stack`);
   return await response.json();
 }
+
+export type TechStackCategory = {
+  techStackCategoryId: bigint;
+  techStackCategoryName: string;
+};
 
 /**
  * 기술스택 카테고리 목록 조회

@@ -1,11 +1,13 @@
-import { ProfileInfo, ResponseBody } from '@/utils/type';
 import { request } from '@/lib/clientApi/request';
-import { bigIntToString } from '@/utils/common';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { VoteData } from '@/features/project/auth/projectVote/types';
+import { bigIntToString } from '@/shared/utils/stringUtils';
+import { UserProfileInfo } from '@/features/user/service/getUserDetailInfo';
+
+import { ResponseBody } from '@/shared/types/api';
 
 export type RCVoteNoticeDetailData = {
-  applicantInfo: Omit<ProfileInfo, 'userId'> & { userId: bigint };
+  applicantInfo: Omit<UserProfileInfo, 'userId'> & { userId: bigint };
   voteInfo: VoteData & {
     applicant_id: bigint;
   };

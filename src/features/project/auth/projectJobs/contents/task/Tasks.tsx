@@ -1,14 +1,14 @@
 'use client';
 
 import CommonPagination from '@/components/ui/CommonPagination';
-import { ITEM_COUNT } from '@/utils/constant';
 import useTasks from '@/features/project/auth/projectJobs/service/task/getTaskList';
 import TaskCard from '@/features/project/auth/projectJobs/components/TaskCard';
 import { useRecoilValue } from 'recoil';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 import { activeMilestoneStateStore } from '@/features/project/auth/projectJobs/store/ActiveMilestoneStateStore';
-import { numStrToBigInt } from '@/utils/common';
 import { useState } from 'react';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
+import { ITEM_COUNT_PER_PAGE } from '@/shared/constants/pagination';
 
 const Tasks = () => {
   const [pageNumber, setPageNumber] = useState(0);
@@ -49,7 +49,7 @@ const Tasks = () => {
         activePage={pageNumber + 1}
         totalItemsCount={totalPages}
         pageRangeDisplayed={5}
-        itemsCountPerPage={ITEM_COUNT.CARDS_SM}
+        itemsCountPerPage={ITEM_COUNT_PER_PAGE.CARDS_SM}
         onChange={handleChangePage}
       />
     </div>

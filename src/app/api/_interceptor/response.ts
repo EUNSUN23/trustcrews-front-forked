@@ -1,4 +1,3 @@
-import { ResponseBody } from '@/utils/type';
 import {
   COOKIE,
   deleteCookieValue,
@@ -10,6 +9,8 @@ import {
   GATEWAY_ERROR,
   GatewayErrorCode,
 } from '@/app/api/_interceptor/error/constants';
+
+import { ResponseBody } from '@/shared/types/api';
 
 export type CustomResponseHeaderInit = HeadersInit & {
   'X-Error-Instruction'?: 'REDIRECT' | 'MESSAGE' | 'NONE';

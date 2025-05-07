@@ -1,7 +1,8 @@
 import { NextRequest } from 'next/server';
-import { JSONReplaceBigInt } from '@/utils/common';
 import authApi from '@/app/api/_interceptor/authApi';
 import { routeResponse } from '@/app/api/_interceptor/routeResponse';
+
+import { JSONReplaceBigInt } from '@/shared/utils/jsonUtils';
 
 /**
  * 프로젝트 '강제탈퇴' 투표

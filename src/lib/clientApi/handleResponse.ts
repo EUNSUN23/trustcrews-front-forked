@@ -1,4 +1,4 @@
-import { ResponseBody } from '@/utils/type';
+import { ResponseBody } from '@/shared/types/api';
 
 export async function handleResponse(res: Response) {
   if (res.ok) return res.json();

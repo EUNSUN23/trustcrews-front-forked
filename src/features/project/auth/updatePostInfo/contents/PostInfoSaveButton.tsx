@@ -8,9 +8,9 @@ import {
 } from '@/features/post/auth/service/updatePostInfo';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
-import { numStrToBigInt } from '@/utils/common';
 import { ZodError } from 'zod';
-import { PostPublicInfoData } from '@/utils/type';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
+import { PostPublicInfoData } from '@/features/post/public/service/getPostPublicInfo';
 
 type PostInfoSaveButtonProps = {
   initData: PostPublicInfoData;

@@ -1,7 +1,8 @@
 import { request } from '@/lib/clientApi/request';
 import { z } from 'zod';
-import { ApiResult, ResponseBody } from '@/utils/type';
 import { useMutation } from '@tanstack/react-query';
+
+import { ApiResult, ResponseBody } from '@/shared/types/api';
 
 export const createPostInputSchema = z.object({
   title: z.string().nonempty({ message: '게시글 제목을 입력해 주세요.' }),

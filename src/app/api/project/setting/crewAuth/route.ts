@@ -1,7 +1,8 @@
 import { NextRequest } from 'next/server';
-import { JSONReplaceBigInt } from '@/utils/common';
 import { routeResponse } from '@/app/api/_interceptor/routeResponse';
 import authApi from '@/app/api/_interceptor/authApi';
+
+import { JSONReplaceBigInt } from '@/shared/utils/jsonUtils';
 
 /**
  * 프로젝트 설정 - 크루 권한 업데이트

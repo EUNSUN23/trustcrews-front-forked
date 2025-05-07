@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Button from '@/components/ui/button';
 import ProjectHistoryItem from '@/components/ui/ProjectHistoryItem';
 import CommonPagination from '@/components/ui/CommonPagination';
-import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
 import { useApplicantProjectHistory } from '@/features/project/auth/projectApplicantInfo/service/getApplicantProjectHistory';
+import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/shared/constants/pagination';
 
 type RCTargetProjectHistoryProps = {
   applicantUserId: bigint;
@@ -58,7 +58,7 @@ const RCTargetProjectHistory = ({
               </ul>
               <CommonPagination
                 activePage={pageNumber + 1}
-                itemsCountPerPage={ITEM_COUNT.LIST_SM}
+                itemsCountPerPage={ITEM_COUNT_PER_PAGE.LIST_SM}
                 totalItemsCount={totalItemsCount}
                 pageRangeDisplayed={PAGE_RANGE.DEFAULT}
                 onChange={(page) => setPageNumber(page - 1)}

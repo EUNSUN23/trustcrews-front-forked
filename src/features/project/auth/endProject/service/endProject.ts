@@ -1,6 +1,7 @@
 import { request } from '@/lib/clientApi/request';
-import { ApiResult, ResponseBody } from '@/utils/type';
 import { useMutation } from '@tanstack/react-query';
+
+import { ApiResult, ResponseBody } from '@/shared/types/api';
 
 export const endProject = async (
   projectId: bigint,

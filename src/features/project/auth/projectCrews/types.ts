@@ -1,15 +1,30 @@
 import { ProjectAuthMap } from '@/features/project/auth/projectManageAuth/types/projectAuth';
-import { Position, ProjectUser, User } from '@/utils/type';
 import { CREW_STATUS } from '@/features/project/auth/projectCrews/constants/crewStatus';
-import { TaskPointType } from '@/features/project/auth/global/types/TaskPointType';
+import { Position } from '@/shared/types/position';
+import { TechStackItem } from '@/service/setting/setting';
+import { TrustGrade } from '@/shared/types/trustGradeType';
 
 export type CrewStatusKey = keyof typeof CREW_STATUS;
 
-export type ProjectCrewProfile = {
+export interface ProjectCrewUserDetail {
+  userId: bigint;
+  email: string;
+  nickname: string;
+  profileImgSrc: string;
+  position: Position;
+  trustGrade: TrustGrade;
+  trustScore: number;
+  role: string;
+  createDate: string;
+  updateDate: string;
+  technologyStacks: TechStackItem[];
+}
+
+export type ProjectCrewProfileInfo = {
   projectMemberId: bigint;
   projectId: bigint;
   projectCount: number;
-  user: ProjectUser;
+  user: ProjectCrewUserDetail;
   projectMemberAuth: ProjectAuthMap;
   position: Position;
   status: CrewStatusKey;
@@ -17,18 +32,13 @@ export type ProjectCrewProfile = {
 
 export type ProjectCrew = {
   projectMemberId: bigint;
-  user: User;
+  user: {
+    userId: bigint;
+    email: string;
+    nickname: string;
+    profileImgSrc: string;
+  };
   projectMemberAuth: ProjectAuthMap;
   position: Position;
   lastWorkDate: string;
 };
-
-export interface CrewTaskHistory {
-  workId: bigint;
-  trustScoreHistoryId: bigint;
-  workContent: string;
-  createDate: string;
-  progressStatus: CrewStatusKey;
-  point: number;
-  point_type: TaskPointType;
-}

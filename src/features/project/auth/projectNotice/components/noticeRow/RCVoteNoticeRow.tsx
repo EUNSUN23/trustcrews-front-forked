@@ -3,9 +3,9 @@ import VoteStatusBadge from '@/components/ui/badge/VoteStatusBadge';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { NOTICE_TYPES } from '@/features/project/auth/projectNotice/constants/noticeTypes';
 import { rcVoteNoticeModalState } from '@/features/project/auth/projectNotice/store/RCVoteNoticeModalStateStore';
-import { bigIntToString } from '@/utils/common';
 import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 import { RCVoteNoticeData } from '@/features/project/auth/projectNotice/service/getRCVoteNoticeList';
+import { bigIntToString } from '@/shared/utils/stringUtils';
 
 const {
   PRA1002: { code: RecruitNoticeCode, name: RecruitNoticeName },

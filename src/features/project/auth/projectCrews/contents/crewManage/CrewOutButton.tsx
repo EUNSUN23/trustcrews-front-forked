@@ -3,14 +3,14 @@
 import Button from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import useSnackbar from '@/shared/hooks/useSnackbar';
-import { ProjectCrewProfile } from '@/features/project/auth/projectCrews/types';
+import { ProjectCrewProfileInfo } from '@/features/project/auth/projectCrews/types';
 import {
   LeaveProjectInput,
   useLeaveProject,
 } from '@/features/project/auth/leaveProject/service/leaveProject';
 
 type CrewOutButtonProps = {
-  crewInfo: ProjectCrewProfile;
+  crewInfo: ProjectCrewProfileInfo;
 };
 
 const CrewOutButton = ({ crewInfo }: CrewOutButtonProps) => {

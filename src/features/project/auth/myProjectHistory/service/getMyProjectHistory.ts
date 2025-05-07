@@ -1,7 +1,8 @@
 import { request } from '@/lib/clientApi/request';
-import { PageResponseBody } from '@/utils/type';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ProjectHistoryData } from '@/lib/projectHistory/types';
+
+import { PageResponseBody } from '@/shared/types/api';
 
 export const getMyProjectHistory = async (
   pageNumber: number,

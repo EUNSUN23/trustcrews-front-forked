@@ -1,5 +1,6 @@
-export default class Logger {
+export class Logger {
   public marker: string;
+
   constructor(marker: string) {
     this.marker = marker;
   }

@@ -1,8 +1,9 @@
 import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
-import { ApiResult, ResponseBody } from '@/utils/type';
 import { getTaskListQueryKey } from '@/features/project/auth/projectJobs/service/task/getTaskList';
+
+import { ApiResult, ResponseBody } from '@/shared/types/api';
 
 export const updateTaskInputSchema = z.object({
   summary: z.string().min(1, { message: '업무 제목을 입력해주세요' }),

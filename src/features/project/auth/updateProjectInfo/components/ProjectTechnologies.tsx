@@ -1,14 +1,14 @@
 import TechStackSelect from '@/components/ui/selector/TechStackSelect';
-import { ProjectPublicInfoData } from '@/utils/type';
 import { useRecoilState } from 'recoil';
 import FormRow from '@/components/ui/form/FormRow';
 import { projectInfoFormSelector } from '@/features/project/auth/updateProjectInfo/store/ProjectInfoFormStateStore';
-import { bigIntToString } from '@/utils/common';
 import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
 import { Suspense } from 'react';
+import { bigIntToString } from '@/shared/utils/stringUtils';
+import { ProjectInfoSummary } from '@/features/project/public/service/getProjectPublicInfo';
 
 type ProjectTechnologiesProps = {
-  initData: ProjectPublicInfoData['technologyStacks'];
+  initData: ProjectInfoSummary['technologyStacks'];
 };
 
 const ProjectTechnologies = ({ initData }: ProjectTechnologiesProps) => {

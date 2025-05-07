@@ -1,5 +1,5 @@
-import { PostPublicInfoData } from '@/utils/type';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
+import { PostPublicInfoData } from '@/features/post/public/service/getPostPublicInfo';
 
 interface InfoProps {
   postInfo: PostPublicInfoData;
