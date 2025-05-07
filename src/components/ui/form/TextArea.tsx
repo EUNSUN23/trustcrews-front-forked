@@ -5,7 +5,7 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   required?: boolean;
 }
 
-function TextArea({ id, label, required = false, ...props }: TextAreaProps) {
+const TextArea = ({ id, label, required = false, ...props }: TextAreaProps) => {
   return (
     <div className='relative mobile:text-sm'>
       {label ? (
@@ -31,6 +31,6 @@ function TextArea({ id, label, required = false, ...props }: TextAreaProps) {
       />
     </div>
   );
-}
+};
 
 export default TextArea;

@@ -2,9 +2,9 @@ import Avatar from '@/components/ui/Avatar';
 import TechStackImage from '@/components/ui/TechStackImage';
 import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
 import RCVoteNoticeDetailSkeleton from '@/features/project/auth/projectNotice/contents/rcVoteNotice/RCVoteNoticeDetailSkeleton';
-import VoteStatusBadge from '@/components/ui/badge/VoteStatusBadge';
+import VoteStatusBadge from '@/features/project/auth/projectNotice/components/VoteStatusBadge';
 import RCTargetProjectHistory from '@/features/project/auth/projectNotice/contents/rcVoteNotice/RCTargetProjectHistory';
-import VoteBar from '@/components/ui/votebar/VoteBar';
+import VoteBar from '@/features/project/auth/projectNotice/components/VoteBar';
 import { VOTE_OPTIONS } from '@/features/project/auth/projectVote/constants/voteOptions';
 import {
   recruitVoteAnswerInputSchema,
@@ -135,7 +135,7 @@ const RCVoteNoticeDetail = () => {
             <span className='text-md text-grey900'>{trustScore}점</span>
           </div>
         </div>
-        <Suspense fallback={<Loader size='md' />}>
+        <Suspense fallback={<Loader />}>
           <RCTargetProjectHistory applicantUserId={userId} />
         </Suspense>
       </section>
@@ -156,7 +156,7 @@ const RCVoteNoticeDetail = () => {
         <VoteBar
           group='recruitVote'
           label='찬성'
-          value={VOTE_AGREE}
+          voteOption={VOTE_AGREE}
           onChangeVoteHandler={handleChangeVoteOption}
           counts={agrees}
           maxCounts={maxVoteCount}
@@ -165,7 +165,7 @@ const RCVoteNoticeDetail = () => {
         <VoteBar
           group='recruitVote'
           label='반대'
-          value={VOTE_DISAGREE}
+          voteOption={VOTE_DISAGREE}
           onChangeVoteHandler={handleChangeVoteOption}
           counts={disagrees}
           maxCounts={maxVoteCount}
