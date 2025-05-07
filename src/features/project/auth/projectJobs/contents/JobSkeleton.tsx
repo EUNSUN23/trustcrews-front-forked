@@ -5,7 +5,6 @@ import { useMediaQuery } from 'react-responsive';
 import SquareSkeleton from '@/components/ui/skeleton/SquareSkeleton';
 import BadgeStyleSkeleton from '@/components/ui/skeleton/BadgeStyleSkeleton';
 import TasksSkeleton from '@/features/project/auth/projectJobs/contents/task/TasksSkeleton';
-
 import { ITEM_COUNT_PER_PAGE } from '@/shared/constants/pagination';
 
 const JobSkeleton = () => {

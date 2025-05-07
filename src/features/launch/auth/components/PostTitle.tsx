@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil';
-import FormRowWide from '@/components/ui/form/FormRowWide';
+import FormRowWide from '@/features/project/auth/shared/ui/form/FormRowWide';
 import { postFormFieldSelector } from '@/features/launch/auth/store/PostFormStateStore';
 import { ChangeEvent } from 'react';
 

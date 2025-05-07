@@ -1,6 +1,6 @@
 'use client';
 
-import Button from '@/components/ui/button';
+import Button from '@/components/ui/form/Button';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useResetRecoilState } from 'recoil';

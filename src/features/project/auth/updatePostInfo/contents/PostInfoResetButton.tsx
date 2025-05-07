@@ -1,4 +1,4 @@
-import Button from '@/components/ui/button';
+import Button from '@/components/ui/form/Button';
 import { useQueryClient } from '@tanstack/react-query';
 import { useResetRecoilState } from 'recoil';
 import { postInfoFormStateStore } from '@/features/project/auth/updatePostInfo/store/PostInfoFormStateStore';

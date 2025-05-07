@@ -1,7 +1,7 @@
 import { ChangeEvent, useRef } from 'react';
 import { useRecoilState } from 'recoil';
 import Avatar from '@/components/ui/Avatar';
-import Button from '@/components/ui/button';
+import Button from '@/components/ui/form/Button';
 import { userProfileImgFormStateStore } from '@/features/user/store/UserProfileImgFormStateStore';
 import { useUserDetailInfo } from '@/features/user/service/getUserDetailInfo';
 

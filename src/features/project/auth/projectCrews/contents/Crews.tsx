@@ -10,7 +10,7 @@ import { PROJECT_MENU } from '@/features/project/auth/global/constants/projectMe
 import { ProjectCrew } from '@/features/project/auth/projectCrews/types';
 import Avatar from '@/components/ui/Avatar';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
-import ProjectRoleBadge from '@/components/ui/badge/ProjectRoleBadge';
+import ProjectRoleBadge from '@/features/project/auth/shared/ui/ProjectRoleBadge';
 
 const {
   CREWS: {

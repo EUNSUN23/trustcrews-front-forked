@@ -4,7 +4,7 @@ import NoContentsMessage from '@/features/project/auth/projectNotice/components/
 import { useCrewNoticeList } from '@/features/project/auth/projectNotice/service/getCrewNoticeList';
 import { useRecoilValue } from 'recoil';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
-import NoticeBadge from '@/components/ui/badge/NoticeBadge';
+import NoticeBadge from '@/features/project/auth/projectNotice/components/NoticeBadge';
 import { NOTICE_TYPES } from '@/features/project/auth/projectNotice/constants/noticeTypes';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
 import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/shared/constants/pagination';
