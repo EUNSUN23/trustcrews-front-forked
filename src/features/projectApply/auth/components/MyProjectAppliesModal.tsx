@@ -8,7 +8,7 @@ import Modal from '@/components/ui/Modal';
 import MyProjectAppliesDetail from '../contents/MyProjectAppliesDetail';
 import { ITEM_COUNT } from '@/utils/constant';
 import Skeleton from '@/components/ui/skeleton/Skeleton';
-import useModalPortalElement from '@/hooks/common/useModalPortalElement';
+import useModalPortalElement from '@/shared/hooks/useModalPortalElement';
 
 const MyProjectAppliesModal = () => {
   const [{ isOpen }, setIsOpen] = useRecoilState(

@@ -1,10 +1,10 @@
 import publicApi from '@/app/api/_interceptor/publicApi';
 import { NextRequest } from 'next/server';
 import { cookies } from 'next/headers';
-import { getRefreshToken } from '@/utils/common';
 import { routeResponse } from '@/app/api/_interceptor/routeResponse';
 import { GatewayError } from '@/app/api/_interceptor/error/classes';
 import { COOKIE } from '@/app/api/_interceptor/utils/cookieUtils';
+import { getRefreshToken } from '@/shared/utils/cookie/getRefreshToken';
 
 export async function POST(req: NextRequest) {
   const loginRequest = await req.json();

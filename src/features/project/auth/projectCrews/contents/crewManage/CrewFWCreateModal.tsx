@@ -8,13 +8,13 @@ import {
 } from '@/features/project/auth/projectCrews/store/CrewFWModalStateStore';
 import { createPortal } from 'react-dom';
 import Modal from '@/components/ui/Modal';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import {
   createCrewFWVoteInputSchema,
   useCreateFWVote,
 } from '@/features/project/auth/projectVote/service/createFWVote';
 import { ZodError } from 'zod';
-import useModalPortalElement from '@/hooks/common/useModalPortalElement';
+import useModalPortalElement from '@/shared/hooks/useModalPortalElement';
 import { FW_VOTE_REASONS } from '@/features/project/auth/projectVote/constants/fwVoteReasons';
 import { numStrToBigInt } from '@/utils/common';
 

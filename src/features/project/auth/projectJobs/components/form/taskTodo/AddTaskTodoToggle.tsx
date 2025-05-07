@@ -7,7 +7,7 @@ import {
   taskTodoSelector,
 } from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
 import { MAX_TASK_CONTENT_DETAIL } from '@/features/project/auth/projectJobs/constants/task/maxTaskContentDetail';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import clsx from 'clsx';
 import TaskTodoAddInput from '@/features/project/auth/projectJobs/components/form/taskTodo/TaskTodoAddInput';
 

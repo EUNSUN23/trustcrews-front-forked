@@ -2,21 +2,29 @@ import { Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { AiFillCaretDown } from '@react-icons/all-files/ai/AiFillCaretDown';
 import { AiOutlineCheck } from '@react-icons/all-files/ai/AiOutlineCheck';
-import { MultiSelectProps, SelectItem } from '@/utils/type';
 import { classNames } from '@/utils/common';
+import { compareItems } from '@/utils/compareItems';
+import { SelectItem } from '@/utils/type';
 
-export default function MultiSelect<T, V>({
+type MultiSelectProps<T, V> = {
+  items: readonly SelectItem<T, V>[];
+  values: readonly SelectItem<T, V>[];
+  setValues: (value: readonly SelectItem<T, V>[]) => void;
+  value?: SelectItem<T, V> | null;
+  setValue?: (value: SelectItem<T, V>) => void;
+  label?: string;
+  placeholder?: string;
+  required?: boolean;
+};
+
+const MultiSelect = <T, V>({
   values,
   setValues,
   items = [],
   label,
   placeholder = '',
   required = false,
-}: MultiSelectProps<T, V>) {
-  const compareItems = (a: SelectItem<T, V>, b: SelectItem<T, V>) => {
-    return a.value === b.value;
-  };
-
+}: MultiSelectProps<T, V>) => {
   return (
     <Listbox value={values} onChange={setValues} by={compareItems} multiple>
       {({ open }) => (
@@ -107,4 +115,6 @@ export default function MultiSelect<T, V>({
       )}
     </Listbox>
   );
-}
+};
+
+export default MultiSelect;

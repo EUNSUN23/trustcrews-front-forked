@@ -17,7 +17,7 @@ import { useRouter } from 'next/navigation';
 import { useLogout } from '@/lib/auth/logout';
 import { useResetRecoilState } from 'recoil';
 import { activeBoardTabStore } from '@/features/board/store/BoardActiveStateStore';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useSimpleUserInfo } from '@/lib/user/getSimpleUserInfo';
 
 const UserMenu = () => {

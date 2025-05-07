@@ -1,5 +1,5 @@
 import FormButton from '@/components/ui/form/FormButton';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import {
   userInfoInputSchema,
   userProfileImgInputSchema,

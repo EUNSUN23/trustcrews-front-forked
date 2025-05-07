@@ -2,8 +2,8 @@
 
 import { HTMLAttributes } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
-import cn from '@/utils/cn';
-import { baseBadgeVariants } from '@/utils/badge';
+import cn from '@/shared/styles/cn';
+import baseBadgeVariants from '@/shared/styles/baseBadgeVariants';
 
 const PositionBadgeVariants = cva(
   'inline-flex min-w-fit items-center rounded-full bg-[#F2F4F8] text-[#4A5E75] font-medium',

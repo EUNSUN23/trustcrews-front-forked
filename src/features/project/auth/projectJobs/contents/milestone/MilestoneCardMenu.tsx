@@ -12,7 +12,7 @@ import {
 import { bigIntToString, numStrToBigInt } from '@/utils/common';
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
 import { useDeleteMilestone } from '@/features/project/auth/projectJobs/service/milestone/deleteMilestone';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import { activeMilestoneStateStore } from '@/features/project/auth/projectJobs/store/ActiveMilestoneStateStore';
 import {
   milestoneModFormStateStore,

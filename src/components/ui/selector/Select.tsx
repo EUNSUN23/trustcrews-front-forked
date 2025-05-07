@@ -1,25 +1,27 @@
 import { Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { AiFillCaretDown } from '@react-icons/all-files/ai/AiFillCaretDown';
-import { SelectItem, SelectProps } from '@/utils/type';
+import { SelectItem } from '@/utils/type';
 import { classNames } from '@/utils/common';
+import { compareItems } from '@/utils/compareItems';
 
-export default function Select<T, V>({
+export type SelectProps<T, V> = {
+  items: readonly SelectItem<T, V>[];
+  value: SelectItem<T, V>;
+  setValue: (item: SelectItem<T, V>) => void;
+  label?: string;
+  placeholder?: string;
+  required?: boolean;
+};
+
+const Select = <T, V>({
   value,
   setValue,
   items = [],
   label,
   placeholder = '',
   required = false,
-}: SelectProps<T, V>) {
-  const compareItems = (a: SelectItem<T, V>, b: SelectItem<T, V>) => {
-    if (a && b) {
-      return a?.value === b?.value;
-    }
-
-    return false;
-  };
-
+}: SelectProps<T, V>) => {
   return (
     <Listbox value={value} onChange={setValue} by={compareItems}>
       {({ open }) => (
@@ -62,9 +64,9 @@ export default function Select<T, V>({
                 {items.map((item) => (
                   <Listbox.Option
                     key={item.value as string}
-                    className={({ active }) =>
+                    className={({ focus }) =>
                       classNames(
-                        active
+                        focus
                           ? 'bg-primary opacity-50 text-white'
                           : 'text-gray-900',
                         'relative cursor-default select-none py-2 pl-3 pr-9 mobile:text-sm',
@@ -72,7 +74,7 @@ export default function Select<T, V>({
                     }
                     value={item}
                   >
-                    {({ selected, active }) => (
+                    {({ selected, focus }) => (
                       <>
                         <span
                           className={classNames(
@@ -85,7 +87,7 @@ export default function Select<T, V>({
                         {selected ? (
                           <span
                             className={classNames(
-                              active ? 'text-white' : 'text-primary',
+                              focus ? 'text-white' : 'text-primary',
                               'absolute inset-y-0 right-0 flex items-center pr-4',
                             )}
                           ></span>
@@ -101,4 +103,6 @@ export default function Select<T, V>({
       )}
     </Listbox>
   );
-}
+};
+
+export default Select;

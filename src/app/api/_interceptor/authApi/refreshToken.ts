@@ -1,5 +1,4 @@
 import { cookies } from 'next/headers';
-import { getRefreshToken } from '@/utils/common';
 import {
   COOKIE,
   getCookieValue,
@@ -7,6 +6,7 @@ import {
 import { reqLogger, resLogger } from '@/app/api/_interceptor/utils/logger';
 import { GatewayError } from '@/app/api/_interceptor/error/classes';
 import { baseURL } from '@/app/api/_interceptor/utils/baseURL';
+import { getRefreshToken } from '@/shared/utils/cookie/getRefreshToken';
 
 const userRefToken: Map<string, string> = new Map();
 
