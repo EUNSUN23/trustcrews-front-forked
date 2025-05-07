@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import CommonPagination from '@/components/ui/CommonPagination';
-import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
 import { useMyProjectHistory } from '@/features/project/auth/myProjectHistory/service/getMyProjectHistory';
 import ProjectHistoryItem from '@/components/ui/ProjectHistoryItem';
+import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/shared/constants/pagination';
 
 const MyProjectHistory = () => {
   const [pageNumber, setPageNumber] = useState(0);
@@ -37,7 +37,7 @@ const MyProjectHistory = () => {
             </ul>
             <CommonPagination
               activePage={pageNumber + 1}
-              itemsCountPerPage={ITEM_COUNT.LIST_SM}
+              itemsCountPerPage={ITEM_COUNT_PER_PAGE.LIST_SM}
               totalItemsCount={totalPages}
               pageRangeDisplayed={PAGE_RANGE.DEFAULT}
               onChange={(page) => setPageNumber(page - 1)}

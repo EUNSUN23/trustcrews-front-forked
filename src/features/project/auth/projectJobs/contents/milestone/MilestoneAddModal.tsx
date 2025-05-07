@@ -14,12 +14,12 @@ import {
   milestoneAddModalStateStore,
 } from '@/features/project/auth/projectJobs/store/MilestoneModalStateStore';
 import useSnackbar from '@/shared/hooks/useSnackbar';
-import { numStrToBigInt } from '@/utils/common';
 import { activeMilestoneStateStore } from '@/features/project/auth/projectJobs/store/ActiveMilestoneStateStore';
 import { ZodError } from 'zod';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 import useModalPortalElement from '@/shared/hooks/useModalPortalElement';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 const MilestoneAddModal = () => {
   const { isOpen, title } = useRecoilValue(milestoneAddModalStateStore);

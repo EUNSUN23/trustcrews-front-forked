@@ -1,11 +1,21 @@
 import { request } from '@/lib/clientApi/request';
-import { ProjectPublicInfoData, ResponseBody } from '@/utils/type';
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
-import { bigIntToString } from '@/utils/common';
+import { bigIntToString } from '@/shared/utils/stringUtils';
+import { TechStackItem } from '@/service/setting/setting';
 
+import { ResponseBody } from '@/shared/types/api';
+
+export type ProjectInfoSummary = {
+  projectId: bigint;
+  projectName: string;
+  projectSubject: string;
+  startDate: string;
+  endDate: string;
+  technologyStacks: TechStackItem[];
+};
 export const getProjectPublicInfo = async (
   projectId: bigint,
-): Promise<ResponseBody<ProjectPublicInfoData>> => {
+): Promise<ResponseBody<ProjectInfoSummary>> => {
   return await request('GET', `/api/project/public?projectId=${projectId}`);
 };
 

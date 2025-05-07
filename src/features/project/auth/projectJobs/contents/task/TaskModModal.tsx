@@ -19,8 +19,8 @@ import { useCompleteTask } from '@/features/project/auth/projectJobs/service/tas
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { ZodError } from 'zod';
 import { TASK_STATUS } from '@/features/project/auth/projectJobs/constants/task/taskStatus';
-import { numStrToBigInt } from '@/utils/common';
 import TaskTodo from '@/features/project/auth/projectJobs/components/form/taskTodo';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 const modalType: TaskModalType = 'mod';
 

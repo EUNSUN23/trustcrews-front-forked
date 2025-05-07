@@ -5,12 +5,12 @@ import ProjectInfoResetButton from '@/features/project/auth/updateProjectInfo/co
 import ProjectInfoSaveButton from '@/features/project/auth/updateProjectInfo/contents/ProjectInfoSaveButton';
 import { useRecoilValue } from 'recoil';
 import ProjectTechnologies from '@/features/project/auth/updateProjectInfo/components/ProjectTechnologies';
-import { numStrToBigInt } from '@/utils/common';
 import { useProjectPublicInfo } from '@/features/project/public/service/getProjectPublicInfo';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 import ConfigContainer from '@/features/project/auth/global/layouts/projectConfig/ConfigContainer';
 import ConfigSummary from '@/features/project/auth/global/layouts/projectConfig/ConfigSummary';
 import ConfigContents from '@/features/project/auth/global/layouts/projectConfig/ConfigContents';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 const ProjectInfoForm = () => {
   const projectId = useRecoilValue(projectIdState);

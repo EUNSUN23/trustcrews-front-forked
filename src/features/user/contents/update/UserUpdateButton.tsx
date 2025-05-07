@@ -5,11 +5,11 @@ import {
   userProfileImgInputSchema,
   useUpdateUserDetail,
 } from '@/features/user/service/updateUserDetail';
-import { numStrToBigInt } from '@/utils/common';
 import { ZodError } from 'zod';
 import { useRecoilValue } from 'recoil';
 import { userInfoFormStateStore } from '@/features/user/store/UserInfoFormStateStore';
 import { userProfileImgFormStateStore } from '@/features/user/store/UserProfileImgFormStateStore';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 const UserUpdateButton = () => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();

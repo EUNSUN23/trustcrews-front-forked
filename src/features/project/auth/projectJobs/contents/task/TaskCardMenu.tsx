@@ -20,8 +20,8 @@ import {
 import { TASK_STATUS } from '@/features/project/auth/projectJobs/constants/task/taskStatus';
 import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 import { cva } from 'class-variance-authority';
-import { bigIntToString } from '@/utils/common';
 import { TaskItem } from '@/features/project/auth/projectJobs/service/task/getTaskList';
+import { bigIntToString } from '@/shared/utils/stringUtils';
 
 const CardMenuButtonVariants = cva(
   'block px-4 py-2 tablet:text-[16px] mobile:text-sm',

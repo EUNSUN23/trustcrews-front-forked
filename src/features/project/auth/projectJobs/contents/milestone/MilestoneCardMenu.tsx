@@ -9,7 +9,6 @@ import {
   MenuItems,
   Transition,
 } from '@headlessui/react';
-import { bigIntToString, numStrToBigInt } from '@/utils/common';
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
 import { useDeleteMilestone } from '@/features/project/auth/projectJobs/service/milestone/deleteMilestone';
 import useSnackbar from '@/shared/hooks/useSnackbar';
@@ -22,6 +21,7 @@ import { cva } from 'class-variance-authority';
 import { projectManageAuthStateStore } from '@/features/project/auth/projectManageAuth/store/ProjectManageAuthStateStore';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 import { MilestoneInfo } from '@/features/project/auth/projectJobs/types/milestone';
+import { bigIntToString, numStrToBigInt } from '@/shared/utils/stringUtils';
 
 type MilestoneCardMenuProps = {
   milestoneInfo: MilestoneInfo;

@@ -17,9 +17,9 @@ import MilestoneModModal from '@/features/project/auth/projectJobs/contents/mile
 import MilestoneAddModal from '@/features/project/auth/projectJobs/contents/milestone/MilestoneAddModal';
 import TaskAddModal from '@/features/project/auth/projectJobs/contents/task/TaskAddModal';
 import TaskModModal from '@/features/project/auth/projectJobs/contents/task/TaskModModal';
-import { bigIntToString } from '@/utils/common';
 import TasksSkeleton from '@/features/project/auth/projectJobs/contents/task/TasksSkeleton';
-import { ITEM_COUNT } from '@/utils/constant';
+import { bigIntToString } from '@/shared/utils/stringUtils';
+import { ITEM_COUNT_PER_PAGE } from '@/shared/constants/pagination';
 
 const { milestoneId: DEFAULT_MILESTONE_ID } = DEFAULT_ACTIVE_MILESTONE;
 
@@ -74,7 +74,9 @@ const Job = () => {
             )}
           </div>
           <Suspense
-            fallback={<TasksSkeleton itemCount={ITEM_COUNT.CARDS_SM} />}
+            fallback={
+              <TasksSkeleton itemCount={ITEM_COUNT_PER_PAGE.CARDS_SM} />
+            }
           >
             <Tasks />
           </Suspense>

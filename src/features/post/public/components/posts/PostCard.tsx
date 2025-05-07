@@ -3,11 +3,11 @@ import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
 import TechStackImage from '@/components/ui/TechStackImage';
 import Avatar from '@/components/ui/Avatar';
-import { PostCardInfo } from '@/utils/type';
 import { format } from 'date-fns';
 import { FaPlusCircle } from '@react-icons/all-files/fa/FaPlusCircle';
+import { PostInfoSummary } from '@/features/post/public/service/getPostList';
 
-function PostCard({ postInfo }: { postInfo: PostCardInfo }) {
+function PostCard({ postInfo }: { postInfo: PostInfoSummary }) {
   const {
     boardId,
     title,

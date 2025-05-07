@@ -1,9 +1,10 @@
 import { ProjectAuthCode } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
-import { ApiResult, ResponseBody } from '@/utils/type';
 import { request } from '@/lib/clientApi/request';
 import { PROJECT_PUBLIC_INFO_QUERY_KEY } from '@/features/project/public/service/getProjectPublicInfo';
+
+import { ApiResult, ResponseBody } from '@/shared/types/api';
 
 export type ProjectSettingInfoUpdReqData = {
   projectId: bigint;

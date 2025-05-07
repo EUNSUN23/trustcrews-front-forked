@@ -3,8 +3,8 @@ import { Listbox, Transition } from '@headlessui/react';
 import { AiFillCaretDown } from '@react-icons/all-files/ai/AiFillCaretDown';
 import { AiOutlineCheck } from '@react-icons/all-files/ai/AiOutlineCheck';
 import { compareItems } from '@/shared/utils/compareItems';
-import { SelectItem } from '@/utils/type';
 import { clsx } from 'clsx';
+import { SelectItem } from '@/shared/types/ui';
 
 type MultiSelectProps<T, V> = {
   items: readonly SelectItem<T, V>[];

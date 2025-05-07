@@ -1,6 +1,5 @@
 'use client';
 
-import { PostPublicInfoData } from '@/utils/type';
 import Button from '@/components/ui/button';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
@@ -9,6 +8,7 @@ import ApplyPositionDropdown from '@/features/projectApply/public/components/App
 import { useEffect } from 'react';
 import { useApplyProject } from '@/features/projectApply/public/service/applyProject';
 import { confirmModalStateStore } from '@/shared/store/ConfirmModalStateStore';
+import { PostPublicInfoData } from '@/features/post/public/service/getPostPublicInfo';
 
 const ApplyProject = ({ postInfo }: { postInfo: PostPublicInfoData }) => {
   const resetModalState = useResetRecoilState(confirmModalStateStore);
@@ -57,7 +57,7 @@ const ApplyProject = ({ postInfo }: { postInfo: PostPublicInfoData }) => {
 
   return (
     <footer className='flex justify-center gap-5 my-5'>
-      <ApplyPositionDropdown recruitPositions={postInfo.boardPositions} />
+      <ApplyPositionDropdown applyPositions={postInfo.boardPositions} />
       <Button
         type='button'
         size='lg'
