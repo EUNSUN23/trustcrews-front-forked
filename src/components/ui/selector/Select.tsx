@@ -2,8 +2,8 @@ import { Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { AiFillCaretDown } from '@react-icons/all-files/ai/AiFillCaretDown';
 import { SelectItem } from '@/utils/type';
-import { classNames } from '@/utils/common';
-import { compareItems } from '@/utils/compareItems';
+import { compareItems } from '@/shared/utils/compareItems';
+import { clsx } from 'clsx';
 
 export type SelectProps<T, V> = {
   items: readonly SelectItem<T, V>[];
@@ -39,10 +39,7 @@ const Select = <T, V>({
           <div className='relative'>
             <Listbox.Button className='w-full mobile:text-sm cursor-default rounded-lg border-1 flex-1 appearance-none border py-2 pl-4 pr-10 text-left bg-white border-gray-300 text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent'>
               <span
-                className={classNames(
-                  value ? '' : 'text-greyUnselect',
-                  'block truncate',
-                )}
+                className={clsx('block truncate', value && 'text-greyUnselect')}
               >
                 {value ? (value.name as string) : placeholder}
               </span>
@@ -65,11 +62,11 @@ const Select = <T, V>({
                   <Listbox.Option
                     key={item.value as string}
                     className={({ focus }) =>
-                      classNames(
+                      clsx(
+                        'relative cursor-default select-none py-2 pl-3 pr-9 mobile:text-sm',
                         focus
                           ? 'bg-primary opacity-50 text-white'
                           : 'text-gray-900',
-                        'relative cursor-default select-none py-2 pl-3 pr-9 mobile:text-sm',
                       )
                     }
                     value={item}
@@ -77,18 +74,18 @@ const Select = <T, V>({
                     {({ selected, focus }) => (
                       <>
                         <span
-                          className={classNames(
-                            selected ? 'font-bold' : 'font-normal',
+                          className={clsx(
                             'block truncate',
+                            selected ? 'font-bold' : 'font-normal',
                           )}
                         >
                           {item.name as string}
                         </span>
                         {selected ? (
                           <span
-                            className={classNames(
-                              focus ? 'text-white' : 'text-primary',
+                            className={clsx(
                               'absolute inset-y-0 right-0 flex items-center pr-4',
+                              focus ? 'text-white' : 'text-primary',
                             )}
                           ></span>
                         ) : null}

@@ -4,27 +4,29 @@ import { Fragment, useEffect } from 'react';
 import { Transition } from '@headlessui/react';
 import { RiCloseFill } from '@react-icons/all-files/ri/RiCloseFill';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
-import { classNames } from '@/utils/common';
-import { SnackbarType } from '@/utils/type';
+import { snackbarState } from '@/shared/store/SnackbarStateStore';
+import { cva } from 'class-variance-authority';
 
-import { snackbarState } from '@/shared/store/SnackbarState';
+const SnackbarVariants = cva(
+  'pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5',
+  {
+    variants: {
+      variant: {
+        DEFAULT: 'bg-white text-black',
+        ERROR: 'bg-red-500 text-white',
+        SUCCESS: 'bg-green-600 text-white',
+        INFO: 'bg-blue-500 text-white',
+      },
+    },
+    defaultVariants: {
+      variant: 'DEFAULT',
+    },
+  },
+);
 
-export default function Snackbar() {
+const Snackbar = () => {
   const state = useRecoilValue(snackbarState);
   const resetSnackbar = useResetRecoilState(snackbarState);
-
-  const getTypeColor = (type: SnackbarType) => {
-    switch (type) {
-      case 'ERROR':
-        return 'bg-red-500 text-white';
-      case 'SUCCESS':
-        return 'bg-green-600 text-white';
-      case 'INFO':
-        return 'bg-blue-500 text-white';
-      default:
-        return 'bg-white text-black';
-    }
-  };
 
   useEffect(() => {
     if (state.show) {
@@ -56,12 +58,7 @@ export default function Snackbar() {
           leaveFrom='opacity-100'
           leaveTo='opacity-0'
         >
-          <div
-            className={classNames(
-              'pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5',
-              getTypeColor(state.type),
-            )}
-          >
+          <div className={SnackbarVariants({ variant: state.type })}>
             <div className='p-4'>
               <div className='flex items-center'>
                 <div className='flex w-0 flex-1 justify-between'>
@@ -86,4 +83,6 @@ export default function Snackbar() {
       </div>
     </div>
   );
-}
+};
+
+export default Snackbar;
