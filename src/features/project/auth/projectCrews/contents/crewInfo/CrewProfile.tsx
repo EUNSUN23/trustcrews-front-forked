@@ -2,7 +2,7 @@
 
 import Avatar from '@/components/ui/Avatar';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
-import ProjectRoleBadge from '@/components/ui/badge/ProjectRoleBadge';
+import ProjectRoleBadge from '@/features/project/auth/shared/ui/ProjectRoleBadge';
 import TechStackImage from '@/components/ui/TechStackImage';
 import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
 import { useCrewDetail } from '@/features/project/auth/projectCrews/service/getCrewDetail';

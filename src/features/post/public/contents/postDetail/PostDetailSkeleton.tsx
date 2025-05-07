@@ -1,6 +1,5 @@
 import AvatarSkeleton from '@/components/ui/skeleton/AvatarSkeleton';
 import Skeleton from '@/components/ui/skeleton/Skeleton';
-import { FieldGroupSkeleton } from '@/components/ui/skeleton/FieldGroupSkeleton';
 
 const fields = [
   '연락 방법',
@@ -32,7 +31,15 @@ const PostDetailSkeleton = () => {
       <div className='pc:w-[90%] w-full h-[350px] mobile:h-[300px] flex flex-col justify-center'>
         <div className='grid gap-x-1 grid-cols-2 gap-y-8 auto-rows-auto mobile:grid-cols-1 mobile:gap-y-0 mobile:text-sm'>
           {fields.map((v) => (
-            <FieldGroupSkeleton key={`field-${v}`} label={v} />
+            <div
+              className='flex gap-5 min-h-10 items-center break-words'
+              key={v}
+            >
+              <div className='text-grey800 w-[110px] mobile:w-[80px] text-xl mobile:text-sm whitespace-nowrap font-bold'>
+                {v}
+              </div>
+              <Skeleton className='w-[calc(100%-130px)] h-full mobile:h-5 mr-5 mobile:mr-0' />
+            </div>
           ))}
         </div>
       </div>

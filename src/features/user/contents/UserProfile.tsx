@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import Avatar from '@/components/ui/Avatar';
-import Button from '@/components/ui/button';
+import Button from '@/components/ui/form/Button';
 import TechStackBadge from '@/components/ui/badge/TechStackBadge';
 import { useUserDetailInfo } from '@/features/user/service/getUserDetailInfo';
 

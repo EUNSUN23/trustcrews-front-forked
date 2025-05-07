@@ -27,14 +27,12 @@ interface ButtonSkeletonProps
   children?: ReactNode;
 }
 
-export default function ButtonSkeleton({
-  children,
-  size,
-  ...props
-}: ButtonSkeletonProps) {
+const ButtonSkeleton = ({ children, size, ...props }: ButtonSkeletonProps) => {
   return (
     <div className={cn(ButtonSkeletonVariants({ size }), props.className)}>
       {children}
     </div>
   );
-}
+};
+
+export default ButtonSkeleton;

@@ -1,6 +1,6 @@
 import TechStackSelect from '@/components/ui/selector/TechStackSelect';
 import { useRecoilState } from 'recoil';
-import FormRow from '@/components/ui/form/FormRow';
+import FormRow from '@/features/project/auth/shared/ui/form/FormRow';
 import { projectInfoFormSelector } from '@/features/project/auth/updateProjectInfo/store/ProjectInfoFormStateStore';
 import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
 import { Suspense } from 'react';

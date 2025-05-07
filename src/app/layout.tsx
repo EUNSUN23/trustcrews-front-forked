@@ -3,7 +3,7 @@ import './globals.css';
 import Providers from '@/app/Providers';
 import Snackbar from '@/components/ui/Snackbar';
 import StaticDataProvider from '@/app/StaticDataProvider';
-import Header from '@/components/header/Header';
+import Header from '@/components/Header';
 import { ReactNode } from 'react';
 import {
   COOKIE,

@@ -1,7 +1,7 @@
 import { Suspense, useState } from 'react';
 import Avatar from '@/components/ui/Avatar';
 import PositionBadge from '@/components/ui/badge/PositionBadge';
-import Button from '@/components/ui/button';
+import Button from '@/components/ui/form/Button';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import PMAuthSelector from '@/features/project/auth/projectManageAuth/components/PMAuthSelector';
 import { ProjectCrew } from '@/features/project/auth/projectCrews/types';

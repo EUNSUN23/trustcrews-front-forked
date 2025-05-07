@@ -1,6 +1,6 @@
 import Skeleton from '@/components/ui/skeleton/Skeleton';
 
-function InputStyleSkeleton({ label }: { label: string }) {
+const InputStyleSkeleton = ({ label }: { label: string }) => {
   return (
     <div className='w-[380px] mobile:w-[300px] space-y-5 mobile:space-y-3 mobile:mx-auto'>
       <div className='relative mobile:text-sm'>
@@ -9,6 +9,6 @@ function InputStyleSkeleton({ label }: { label: string }) {
       </div>
     </div>
   );
-}
+};
 
 export default InputStyleSkeleton;
