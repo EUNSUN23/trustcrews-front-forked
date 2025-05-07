@@ -2,7 +2,7 @@
 
 import Button from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import { ProjectCrewProfile } from '@/features/project/auth/projectCrews/types';
 import {
   LeaveProjectInput,

@@ -1,7 +1,7 @@
-import { baseBadgeVariants } from '@/utils/badge';
+import baseBadgeVariants from '@/shared/styles/baseBadgeVariants';
 import { HTMLAttributes } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
-import cn from '@/utils/cn';
+import cn from '@/shared/styles/cn';
 import { ProjectAuthCode } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 import { PROJECT_AUTH_CODE } from '@/features/project/auth/projectManageAuth/constants/projectAuthCode';
 

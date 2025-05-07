@@ -1,5 +1,5 @@
 import { useRecoilValue, useResetRecoilState } from 'recoil';
-import useModalPortalElement from '@/hooks/common/useModalPortalElement';
+import useModalPortalElement from '@/shared/hooks/useModalPortalElement';
 import { createPortal } from 'react-dom';
 import Modal from '@/components/ui/Modal';
 import TaskSummary from '@/features/project/auth/projectJobs/components/form/task/TaskSummary';
@@ -16,7 +16,7 @@ import useUpdateTask, {
   updateTaskInputSchema,
 } from '@/features/project/auth/projectJobs/service/task/updateTask';
 import { useCompleteTask } from '@/features/project/auth/projectJobs/service/task/completeTask';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import { ZodError } from 'zod';
 import { TASK_STATUS } from '@/features/project/auth/projectJobs/constants/task/taskStatus';
 import { numStrToBigInt } from '@/utils/common';

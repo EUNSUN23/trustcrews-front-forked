@@ -2,9 +2,9 @@
 
 import { HTMLAttributes } from 'react';
 import { FaRegSmile } from '@react-icons/all-files/fa/FaRegSmile';
-import { baseBadgeVariants } from '@/utils/badge';
+import baseBadgeVariants from '@/shared/styles/baseBadgeVariants';
 import { cva, VariantProps } from 'class-variance-authority';
-import cn from '@/utils/cn';
+import cn from '@/shared/styles/cn';
 
 const TrustGradeBadgeVariants = cva('font-semibold', {
   variants: {

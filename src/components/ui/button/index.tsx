@@ -2,7 +2,7 @@
 
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
-import cn from '@/utils/cn';
+import cn from '@/shared/styles/cn';
 
 export const ButtonVariants = cva(
   `rounded-full font-semibold shadow-sm disabled:opacity-50 disabled:cursor-not-allowed`,

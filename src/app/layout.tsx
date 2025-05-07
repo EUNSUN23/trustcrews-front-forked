@@ -5,7 +5,7 @@ import Snackbar from '@/components/ui/Snackbar';
 import StaticDataProvider from '@/app/StaticDataProvider';
 import Header from '@/components/header/Header';
 import { ReactNode } from 'react';
-import getIsAuthorized from '@/utils/getIsAuthorized';
+import getIsAuthorized from '@/shared/utils/cookie/getIsAuthorized';
 import {
   COOKIE,
   getCookieValue,

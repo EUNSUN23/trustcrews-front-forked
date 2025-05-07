@@ -3,7 +3,7 @@
 import Image, { StaticImageData } from 'next/image';
 import { HTMLAttributes } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
-import cn from '@/utils/cn';
+import cn from '@/shared/styles/cn';
 
 const AvatarVariants = cva(
   `relative inline-block rounded-full ring-2 ring-white`,

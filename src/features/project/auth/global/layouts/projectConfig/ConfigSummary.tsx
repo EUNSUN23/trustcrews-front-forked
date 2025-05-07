@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import cn from '@/utils/cn';
+import cn from '@/shared/styles/cn';
 
 const ConfigSummary = ({ ...props }: HTMLAttributes<HTMLHeadingElement>) => {
   return (

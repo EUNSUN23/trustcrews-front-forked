@@ -2,16 +2,16 @@
 
 import { PostPublicInfoData } from '@/utils/type';
 import Button from '@/components/ui/button';
-import useSnackbar from '@/hooks/common/useSnackbar';
+import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
-import { confirmModalState } from '@/store/CommonStateStore';
 import { projectApplyPositionState } from '@/features/projectApply/auth/store/ApplyPositionStateStore';
 import ApplyPositionDropdown from '@/features/projectApply/public/components/ApplyPositionDropdown';
 import { useEffect } from 'react';
 import { useApplyProject } from '@/features/projectApply/public/service/applyProject';
+import { confirmModalStateStore } from '@/shared/store/ConfirmModalStateStore';
 
 const ApplyProject = ({ postInfo }: { postInfo: PostPublicInfoData }) => {
-  const resetModalState = useResetRecoilState(confirmModalState);
+  const resetModalState = useResetRecoilState(confirmModalStateStore);
   const { setSuccessSnackbar, setErrorSnackbar, setInfoSnackbar } =
     useSnackbar();
   const resetRecruitPositionState = useResetRecoilState(
@@ -35,7 +35,7 @@ const ApplyProject = ({ postInfo }: { postInfo: PostPublicInfoData }) => {
     },
   });
 
-  const setModalState = useSetRecoilState(confirmModalState);
+  const setModalState = useSetRecoilState(confirmModalStateStore);
 
   const handleClickConfirmButton = () => {
     if (recruitPosition === 0n) {

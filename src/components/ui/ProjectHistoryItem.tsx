@@ -4,7 +4,7 @@ import { BiCheck } from '@react-icons/all-files/bi/BiCheck';
 import { BiUndo } from '@react-icons/all-files/bi/BiUndo';
 import { BiX } from '@react-icons/all-files/bi/BiX';
 import { clsx } from 'clsx';
-import cn from '@/utils/cn';
+import cn from '@/shared/styles/cn';
 import {
   ProjectHistoryData,
   ProjectHistoryStatus,
