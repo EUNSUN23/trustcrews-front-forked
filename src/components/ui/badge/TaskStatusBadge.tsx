@@ -1,6 +1,6 @@
-import cn from '@/utils/cn';
+import cn from '@/shared/styles/cn';
 import { HTMLAttributes } from 'react';
-import { baseBadgeVariants } from '@/utils/badge';
+import baseBadgeVariants from '@/shared/styles/baseBadgeVariants';
 import { cva, VariantProps } from 'class-variance-authority';
 import { TaskStatusCode } from '@/features/project/auth/projectJobs/types/task';
 

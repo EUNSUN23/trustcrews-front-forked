@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
-import { baseBadgeVariants } from '@/utils/badge';
+import baseBadgeVariants from '@/shared/styles/baseBadgeVariants';
 import { cva, VariantProps } from 'class-variance-authority';
-import cn from '@/utils/cn';
+import cn from '@/shared/styles/cn';
 
 const BadgeSkeletonVariants = cva(
   'bg-gray-200 rounded-full animate-pulse text-transparent',

@@ -1,6 +1,6 @@
 import { cva, VariantProps } from 'class-variance-authority';
 import { HTMLAttributes } from 'react';
-import cn from '@/utils/cn';
+import cn from '@/shared/styles/cn';
 
 const AvatarSkeletonVariants = cva(`bg-gray-300 rounded-full animate-pulse`, {
   variants: {

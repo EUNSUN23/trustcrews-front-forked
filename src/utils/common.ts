@@ -1,5 +1,4 @@
-import { camelCase } from 'lodash';
-
+// todo - 제거
 export function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
@@ -10,6 +9,7 @@ export function JSONReplaceBigInt(data: Record<string, unknown>) {
   );
 }
 
+// todo - 제거
 export const isValidNickname = (nickname: string) => {
   const nicknameRegex: RegExp = /^[a-zA-Z0-9]{6,10}$/;
   return nicknameRegex.test(nickname);
@@ -26,26 +26,6 @@ export const sortByStartDate = <T extends Record<'startDate', string>>(
   return sortBy === 'desc' ? sorted.reverse() : sorted;
 };
 
-export function getRefreshToken(setCookieHeader: string) {
-  let refreshTokenValue = '';
-  let cookieOptions = {};
-  setCookieHeader.split(';').map((item) => {
-    const cookieItem = item.trim().split('=');
-    if (cookieItem.includes('Refresh')) {
-      refreshTokenValue = cookieItem[1];
-    } else {
-      const optionName = camelCase(cookieItem[0]);
-      const optionValue = cookieItem[1] ?? true;
-      cookieOptions = {
-        ...cookieOptions,
-        [optionName]: optionValue,
-      };
-    }
-  });
-
-  return { token: refreshTokenValue, options: cookieOptions };
-}
-
 /**
  * bigint 데이터 string으로 변환
  * @param data
@@ -60,8 +40,4 @@ export function bigIntToString(data: bigint | number | string) {
  */
 export function numStrToBigInt(data: string) {
   return BigInt(data);
-}
-
-export function throwErrorIfInvalid(flag: boolean, message: string) {
-  if (flag) throw Error(message);
 }

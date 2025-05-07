@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { LinkProps } from 'next/dist/client/link';
 import { ReactNode } from 'react';
-import cn from '@/utils/cn';
+import cn from '@/shared/styles/cn';
 
 export type StyledLinkProps = LinkProps & {
   children?: ReactNode;

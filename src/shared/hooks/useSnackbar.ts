@@ -1,20 +1,22 @@
 import { useSetRecoilState } from 'recoil';
-import { snackbarState } from '@/store/CommonStateStore';
+import { snackbarState } from '@/shared/store/SnackbarStateStore';
 
-export default function useSnackbar() {
+const useSnackbar = () => {
   const setSnackbar = useSetRecoilState(snackbarState);
 
-  function setSuccessSnackbar(content: string) {
+  const setSuccessSnackbar = (content: string) => {
     setSnackbar({ show: true, type: 'SUCCESS', content });
-  }
+  };
 
-  function setErrorSnackbar(content: string) {
+  const setErrorSnackbar = (content: string) => {
     setSnackbar({ show: true, type: 'ERROR', content });
-  }
+  };
 
-  function setInfoSnackbar(content: string) {
+  const setInfoSnackbar = (content: string) => {
     setSnackbar({ show: true, type: 'INFO', content });
-  }
+  };
 
   return { setSuccessSnackbar, setErrorSnackbar, setInfoSnackbar };
-}
+};
+
+export default useSnackbar;

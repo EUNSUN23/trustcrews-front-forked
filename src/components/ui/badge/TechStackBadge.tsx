@@ -1,9 +1,9 @@
 'use client';
 
-import { baseBadgeVariants } from '@/utils/badge';
+import baseBadgeVariants from '@/shared/styles/baseBadgeVariants';
 import { HTMLAttributes } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
-import cn from '@/utils/cn';
+import cn from '@/shared/styles/cn';
 
 const TechStackBadgeVariants = cva(
   'inline-flex items-center rounded-full bg-primary text-white font-medium',

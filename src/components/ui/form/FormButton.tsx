@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react';
-import cn from '@/utils/cn';
+import cn from '@/shared/styles/cn';
 
 interface FormButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
