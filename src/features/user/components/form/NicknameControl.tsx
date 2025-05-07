@@ -2,7 +2,7 @@ import { useRecoilState } from 'recoil';
 import { userInfoFormFieldSelector } from '@/features/user/store/UserInfoFormStateStore';
 import Input from '@/components/ui/form/Input';
 import { ChangeEvent, useEffect, useRef } from 'react';
-import CheckNicknameButton from '@/shared/contents/CheckNicknameButton';
+import CheckNicknameButton from '@/features/user/contents/CheckNicknameButton';
 
 export const NicknameControl = () => {
   const [isCheckedNickname, setIsCheckedNickname] = useRecoilState(
