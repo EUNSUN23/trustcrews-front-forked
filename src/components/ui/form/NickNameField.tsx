@@ -5,7 +5,7 @@ import { useSetRecoilState } from 'recoil';
 import { isEqual } from 'lodash';
 import { classNames, isValidNickname } from '@/utils/common';
 import { snackbarState } from '@/store/CommonStateStore';
-import { checkNickname } from '@/shared/service/checkNickName';
+import { checkNickname } from '@/features/user/service/checkNickName';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   required?: boolean;
