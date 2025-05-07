@@ -1,6 +1,6 @@
 import { request } from '@/lib/clientApi/request';
 import { useMutation } from '@tanstack/react-query';
-import { ApiResult, ResponseBody } from '@/utils/type';
+import { ApiResult, ResponseBody } from '@/shared/types/api';
 
 export const logout = async (): Promise<ResponseBody<null>> => {
   return await request('POST', '/api/user/logout');

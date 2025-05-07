@@ -15,8 +15,8 @@ import {
   taskAddModalStateStore,
   TaskModalType,
 } from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
-import { numStrToBigInt } from '@/utils/common';
 import TaskTodo from '@/features/project/auth/projectJobs/components/form/taskTodo';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 const modalType: TaskModalType = 'add';
 

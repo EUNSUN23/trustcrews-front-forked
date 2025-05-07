@@ -1,8 +1,9 @@
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { PageResponseBody } from '@/utils/type';
-import { bigIntToString } from '@/utils/common';
 import { ProjectHistoryData } from '@/lib/projectHistory/types';
+import { bigIntToString } from '@/shared/utils/stringUtils';
+
+import { PageResponseBody } from '@/shared/types/api';
 
 export const getApplicantProjectHistory = async (
   userId: bigint,

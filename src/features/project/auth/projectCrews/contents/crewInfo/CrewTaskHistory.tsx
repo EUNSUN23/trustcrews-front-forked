@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import CommonPagination from '@/components/ui/CommonPagination';
-import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
 import { useCrewTaskHistory } from '@/features/project/auth/projectCrews/service/getCrewTaskHistory';
 import { clsx } from 'clsx';
 import { FaMinus } from '@react-icons/all-files/fa/FaMinus';
 import { FaPlus } from '@react-icons/all-files/fa/FaPlus';
 import { useRecoilValue } from 'recoil';
 import { crewIdState } from '@/features/project/auth/projectCrews/store/CrewIdStateStore';
+import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/shared/constants/pagination';
 
 const CrewTaskHistory = () => {
   const crewId = useRecoilValue(crewIdState);
@@ -96,7 +96,7 @@ const CrewTaskHistory = () => {
       <CommonPagination
         activePage={pageIndex + 1}
         pageRangeDisplayed={PAGE_RANGE.DEFAULT}
-        itemsCountPerPage={ITEM_COUNT.LIST_SM}
+        itemsCountPerPage={ITEM_COUNT_PER_PAGE.LIST_SM}
         totalItemsCount={totalPages}
         onChange={(pageIndex: number) => setPageIndex(pageIndex - 1)}
       />

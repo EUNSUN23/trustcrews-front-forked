@@ -3,14 +3,28 @@
 import { Fragment } from 'react';
 import { useRecoilValue } from 'recoil';
 import { Listbox, Transition } from '@headlessui/react';
-import { bigIntToString, classNames } from '@/utils/common';
 import { AiFillCaretDown } from '@react-icons/all-files/ai/AiFillCaretDown';
 import Avatar from '@/components/ui/Avatar';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 import { useProjectCrewList } from '@/features/project/auth/projectCrews/service/getProjectCrewList';
-import { compareItems } from '@/utils/compareItems';
+import { compareItems } from '@/shared/utils/compareItems';
+import { clsx } from 'clsx';
+import { bigIntToString } from '@/shared/utils/stringUtils';
 
 export const DEFAULT_CREW_OPTION = { name: '멤버 선택', value: '0' } as const;
+
+const selectButtonTextClass = ({
+  defaultSelected,
+  disabled,
+}: {
+  defaultSelected: boolean;
+  disabled: boolean;
+}) =>
+  clsx(
+    'block truncate',
+    defaultSelected && 'text-greyUnselect',
+    disabled && 'text-gray-700/60',
+  );
 
 type ProjectCrewSelectProps = {
   disabled: boolean;
@@ -60,11 +74,10 @@ const ProjectCrewSelect = ({
         <div className='relative w-full tablet:w-[200px]'>
           <Listbox.Button className='w-full mobile:text-sm cursor-default rounded-lg border-1 flex-1 appearance-none border py-2 pl-4 pr-10 text-left bg-white border-gray-300 text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent'>
             <span
-              className={classNames(
-                selectedCrew ? '' : 'text-greyUnselect',
-                'block truncate',
-                `${disabled && 'text-gray-700/60'}`,
-              )}
+              className={selectButtonTextClass({
+                defaultSelected: !selectedCrew,
+                disabled,
+              })}
             >
               {selectedCrew.name}
             </span>
@@ -86,22 +99,22 @@ const ProjectCrewSelect = ({
               {crewSelectItems.map(({ name, value }) => (
                 <Listbox.Option
                   key={`key-${value}`}
-                  className={({ active }) =>
-                    classNames(
-                      active
+                  className={({ focus }) =>
+                    clsx(
+                      'relative cursor-default select-none py-2 pl-3 pr-9 mobile:text-sm',
+                      focus
                         ? 'bg-primary opacity-50 text-white'
                         : 'text-gray-900',
-                      'relative cursor-default select-none py-2 pl-3 pr-9 mobile:text-sm',
                     )
                   }
                   value={{ name, value }}
                 >
-                  {({ selected, active }) => (
+                  {({ selected, focus }) => (
                     <>
                       <span
-                        className={classNames(
-                          selected ? 'font-bold' : 'font-normal',
+                        className={clsx(
                           'block items-center space-x-2 truncate',
+                          selected ? 'font-bold' : 'font-normal',
                         )}
                       >
                         {value !== '0' && (
@@ -117,14 +130,14 @@ const ProjectCrewSelect = ({
                         )}
                         <span>{name}</span>
                       </span>
-                      {selected ? (
+                      {selected && (
                         <span
-                          className={classNames(
-                            active ? 'text-white' : 'text-primary',
+                          className={clsx(
                             'absolute inset-y-0 right-0 flex items-center pr-4',
+                            focus ? 'text-white' : 'text-primary',
                           )}
                         ></span>
-                      ) : null}
+                      )}
                     </>
                   )}
                 </Listbox.Option>

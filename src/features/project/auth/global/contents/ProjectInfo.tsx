@@ -4,8 +4,8 @@ import ProjectInfoItem from '@/features/project/auth/global/components/ProjectIn
 import TechStackImage from '@/components/ui/TechStackImage';
 import { useRecoilValue } from 'recoil';
 import { useProjectPublicInfo } from '@/features/project/public/service/getProjectPublicInfo';
-import { numStrToBigInt } from '@/utils/common';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 const ProjectInfo = () => {
   const projectId = useRecoilValue(projectIdState);

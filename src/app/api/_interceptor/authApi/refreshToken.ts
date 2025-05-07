@@ -6,7 +6,7 @@ import {
 import { reqLogger, resLogger } from '@/app/api/_interceptor/utils/logger';
 import { GatewayError } from '@/app/api/_interceptor/error/classes';
 import { baseURL } from '@/app/api/_interceptor/utils/baseURL';
-import { getRefreshToken } from '@/shared/utils/cookie/getRefreshToken';
+import { getRfTokenFromSetCookie } from '@/shared/utils/cookieUtils';
 
 const userRefToken: Map<string, string> = new Map();
 
@@ -55,7 +55,7 @@ export async function refreshToken(): Promise<void> {
 
   if (accessToken && setCookieHeader) {
     // 액세스 & 리프레쉬 토큰 세팅
-    const { token, options } = getRefreshToken(setCookieHeader);
+    const { token, options } = getRfTokenFromSetCookie(setCookieHeader);
     const cookieStore = cookies();
     cookieStore.set(COOKIE.ACS_TOKEN, accessToken, {
       ...options,

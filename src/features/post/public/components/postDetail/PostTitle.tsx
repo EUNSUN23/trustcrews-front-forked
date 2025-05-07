@@ -1,7 +1,8 @@
 'use client';
 
 import Avatar from '@/components/ui/Avatar';
-import { PostPublicInfoData } from '@/utils/type';
+
+import { PostPublicInfoData } from '@/features/post/public/service/getPostPublicInfo';
 
 function PostTitle({ postInfo }: { postInfo: PostPublicInfoData }) {
   const { title, createDate, user } = postInfo;

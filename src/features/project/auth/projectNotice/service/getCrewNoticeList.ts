@@ -1,9 +1,10 @@
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { bigIntToString } from '@/utils/common';
-import { ITEM_COUNT } from '@/utils/constant';
 import { NOTICE_TYPES } from '@/features/project/auth/projectNotice/constants/noticeTypes';
-import { PageResponseBody } from '@/utils/type';
+import { bigIntToString } from '@/shared/utils/stringUtils';
+import { ITEM_COUNT_PER_PAGE } from '@/shared/constants/pagination';
+
+import { PageResponseBody } from '@/shared/types/api';
 
 export type CrewNoticeData = {
   alertId: bigint;
@@ -33,7 +34,8 @@ export const useCrewNoticeList = (projectId: bigint, pageIndex: number) => {
       bigIntToString(projectId),
       pageIndex,
     ],
-    queryFn: () => getCrewNoticeList(projectId, pageIndex, ITEM_COUNT.LIST_SM),
+    queryFn: () =>
+      getCrewNoticeList(projectId, pageIndex, ITEM_COUNT_PER_PAGE.LIST_SM),
     refetchInterval: 60000,
     refetchIntervalInBackground: true,
   });

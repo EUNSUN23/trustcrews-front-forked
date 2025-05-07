@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import CommonPagination from '@/components/ui/CommonPagination';
-import { ITEM_COUNT, PAGE_RANGE } from '@/utils/constant';
 import { useMyProjects } from '@/features/project/auth/myProjects/service/getMyProjects';
+import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/shared/constants/pagination';
 
 const MyProjects = () => {
   const [pageNumber, setPageNumber] = useState(0);
@@ -43,7 +43,7 @@ const MyProjects = () => {
       </ul>
       <CommonPagination
         activePage={pageNumber + 1}
-        itemsCountPerPage={ITEM_COUNT.CARDS}
+        itemsCountPerPage={ITEM_COUNT_PER_PAGE.CARDS}
         totalItemsCount={totalPages}
         pageRangeDisplayed={PAGE_RANGE.DEFAULT}
         onChange={handleChangePage}

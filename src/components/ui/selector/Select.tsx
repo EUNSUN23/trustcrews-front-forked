@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { AiFillCaretDown } from '@react-icons/all-files/ai/AiFillCaretDown';
-import { SelectItem } from '@/utils/type';
 import { compareItems } from '@/shared/utils/compareItems';
 import { clsx } from 'clsx';
+import { SelectItem } from '@/shared/types/ui';
 
 export type SelectProps<T, V> = {
   items: readonly SelectItem<T, V>[];

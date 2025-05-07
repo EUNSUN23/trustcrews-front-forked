@@ -11,9 +11,10 @@ import PositionSelect from '@/components/ui/selector/PositionSelect';
 import { ZodError } from 'zod';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { signUpInputScheme, useSignUp } from '@/lib/auth/signUp';
-import { numStrToBigInt } from '@/utils/common';
 import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
+// todo - NicknameField 제거
 const SignUpForm = () => {
   const router = useRouter();
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();

@@ -6,7 +6,8 @@ import { useRouter } from 'next/navigation';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useEndProject } from '@/features/project/auth/endProject/service/endProject';
-import { numStrToBigInt } from '@/utils/common';
+
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 const EndProject = () => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
