@@ -2,46 +2,49 @@
 
 import { ChangeEvent, useState } from 'react';
 import { VOTE_OPTIONS } from '@/features/project/auth/projectVote/constants/voteOptions';
+import { clsx } from 'clsx';
+import { cva, VariantProps } from 'class-variance-authority';
+import { VoteOptionCode } from '@/features/project/auth/projectVote/types';
 
-type VoteBarProps = {
+const {
+  VODA1001: { code: AGREE },
+  VODA1002: { code: DISAGREE },
+} = VOTE_OPTIONS;
+
+const VoteBarVariants = cva(
+  'h-full text-center text-xs text-white rounded-full',
+  {
+    variants: {
+      voteOption: {
+        [AGREE]: 'bg-green-500 aria-disabled:bg-green-500/30',
+        [DISAGREE]: 'bg-red-500 aria-disabled:bg-red-500/30',
+      },
+    },
+  },
+);
+
+interface VoteBarProps extends VariantProps<typeof VoteBarVariants> {
   group: string;
   label: string;
   counts: number;
   maxCounts: number;
   disabled: boolean;
   onChangeVoteHandler: (value: string) => void;
-  value: string;
-};
+  voteOption: VoteOptionCode;
+}
 
-const barColorVariants = {
-  green: 'bg-green-500',
-  green_disabled: 'bg-green-500/30',
-  red: 'bg-red-500',
-  red_disabled: 'bg-red-500/30',
-};
-
-function VoteBar({
+const VoteBar = ({
   group,
   label,
   counts,
   maxCounts,
   onChangeVoteHandler,
   disabled,
-  value,
-}: VoteBarProps) {
+  voteOption,
+}: VoteBarProps) => {
   const [checked, setChecked] = useState(false);
 
-  const barBackgroundColorColor = disabled
-    ? 'bg-gray-400/40'
-    : 'bg-gray-400/80';
   const barWidth = counts > 0 ? Math.floor((counts / maxCounts) * 100) : 0;
-  const barColor = disabled
-    ? value === VOTE_OPTIONS.VODA1001.code
-      ? barColorVariants.green_disabled
-      : barColorVariants.red_disabled
-    : value === VOTE_OPTIONS.VODA1001.code
-      ? barColorVariants.green
-      : barColorVariants.red;
 
   const onChangeCheckedHandler = (e: ChangeEvent<HTMLInputElement>) => {
     if (confirm('투표하시겠습니까?')) {
@@ -59,11 +62,15 @@ function VoteBar({
       </div>
       <div className='flex w-full justify-around items-center space-x-12 mobile:space-x-9'>
         <div
-          className={`relative tablet:basis-[70%] mobile:w-full h-2 ${barBackgroundColorColor} rounded-full`}
+          className={clsx(
+            `relative tablet:basis-[70%] mobile:w-full h-2 rounded-full`,
+            disabled ? 'bg-gray-400/40' : 'bg-gray-400/80',
+          )}
         >
           <div
+            aria-disabled={disabled}
             style={{ width: `${barWidth}%` }}
-            className={`${barColor} h-full text-center text-xs text-white rounded-full`}
+            className={VoteBarVariants({})}
           ></div>
           <span className='absolute top-[-7px] left-[102%] mobile:text-sm text-greyBlue font-medium'>{`${counts}/${maxCounts}`}</span>
         </div>
@@ -72,7 +79,7 @@ function VoteBar({
             type='radio'
             name={group}
             onChange={onChangeCheckedHandler}
-            value={value}
+            value={voteOption}
             checked={checked}
             className='self-stretch border-gray-400 text-indigo-600 focus:ring-none'
             disabled={disabled}
@@ -81,6 +88,6 @@ function VoteBar({
       </div>
     </div>
   );
-}
+};
 
 export default VoteBar;

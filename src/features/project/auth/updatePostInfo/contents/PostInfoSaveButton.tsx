@@ -1,4 +1,4 @@
-import Button from '@/components/ui/button';
+import Button from '@/components/ui/form/Button';
 import { useRecoilValue } from 'recoil';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { postInfoFormStateStore } from '@/features/project/auth/updatePostInfo/store/PostInfoFormStateStore';

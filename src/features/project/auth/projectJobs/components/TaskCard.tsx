@@ -1,6 +1,6 @@
 'use client';
 
-import TaskStatusBadge from '@/components/ui/badge/TaskStatusBadge';
+import TaskStatusBadge from '@/features/project/auth/projectJobs/components/TaskStatusBadge';
 import { useMediaQuery } from 'react-responsive';
 import TaskCardMenu from '@/features/project/auth/projectJobs/contents/task/TaskCardMenu';
 import { TaskItem } from '@/features/project/auth/projectJobs/service/task/getTaskList';

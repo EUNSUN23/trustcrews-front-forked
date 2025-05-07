@@ -1,6 +1,6 @@
 'use client';
 
-import Button from '@/components/ui/button';
+import Button from '@/components/ui/form/Button';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
 import { projectApplyPositionState } from '@/features/projectApply/auth/store/ApplyPositionStateStore';
