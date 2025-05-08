@@ -1,9 +1,10 @@
 import { atom } from 'recoil';
 
-import { DEFAULT_POSITION_OPTION } from '@/shared/constants/defaultSelectOptions';
-import { PositionId, PositionName } from '@/shared/types/position';
+import { DEFAULT_POSITION_OPTION } from '@/constants/defaultSelectOptions';
+import { PositionId, PositionName } from '@/types/position';
 import { TechStackWithCategory } from '@/service/setting/setting';
-import { SelectItem } from '@/shared/types/ui';
+
+import { SelectItem } from '@/shared/types/selectItem';
 
 export const selectedTechStackState = atom<TechStackWithCategory[]>({
   key: 'selectedTechStackState',

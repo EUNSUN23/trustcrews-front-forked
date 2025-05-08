@@ -3,7 +3,8 @@ import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { getMilestonesQueryKey } from '@/features/project/auth/projectJobs/service/milestone/getMilestones';
 
-import { ApiResult, ResponseBody } from '@/shared/types/api';
+import { ResponseBody } from '@/types/responseBody';
+import { ApiResult } from '@/shared/types/apiResult';
 
 export const updateMilestoneSchema = z.object({
   content: z.string().nonempty('마일스톤 내용을 입력해 주세요'),

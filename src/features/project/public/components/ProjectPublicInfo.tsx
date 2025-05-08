@@ -1,6 +1,6 @@
 'use client';
 
-import TechStackImage from '@/components/ui/TechStackImage';
+import TechStackImage from '@/components/TechStackImage';
 
 import { ProjectInfoSummary } from '@/features/project/public/service/getProjectPublicInfo';
 

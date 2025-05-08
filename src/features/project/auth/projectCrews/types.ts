@@ -1,8 +1,8 @@
 import { ProjectAuthMap } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 import { CREW_STATUS } from '@/features/project/auth/projectCrews/constants/crewStatus';
-import { Position } from '@/shared/types/position';
+import { Position } from '@/types/position';
 import { TechStackItem } from '@/service/setting/setting';
-import { TrustGrade } from '@/shared/types/trustGradeType';
+import { TrustGrade } from '@/types/trustGradeType';
 
 export type CrewStatusKey = keyof typeof CREW_STATUS;
 

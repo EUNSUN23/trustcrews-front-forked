@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import DateRangePicker from '@/components/ui/datepicker/DateRangePicker';
+import DateRangePicker from '@/shared/ui/DateRangePicker';
 import { useRecoilState } from 'recoil';
 import { addDays, format } from 'date-fns';
 import { milestoneAddFormFieldSelector } from '@/features/project/auth/projectJobs/store/MilestoneModalStateStore';

@@ -1,6 +1,6 @@
 'use client';
 
-import Avatar from '@/components/ui/Avatar';
+import Avatar from '@/shared/ui/Avatar';
 
 import { PostPublicInfoData } from '@/features/post/public/service/getPostPublicInfo';
 

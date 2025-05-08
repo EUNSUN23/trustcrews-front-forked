@@ -4,7 +4,8 @@ import { z } from 'zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { POST_PUBLIC_INFO_QUERY_KEY } from '@/features/post/public/service/getPostPublicInfo';
 
-import { ApiResult, ResponseBody } from '@/shared/types/api';
+import { ResponseBody } from '@/types/responseBody';
+import { ApiResult } from '@/shared/types/apiResult';
 
 export type ProjectSettingBoardUpdReqData = {
   projectId: bigint;

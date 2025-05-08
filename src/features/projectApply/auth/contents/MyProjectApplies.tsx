@@ -1,4 +1,4 @@
-import Button from '@/components/ui/form/Button';
+import Button from '@/shared/ui/Button';
 import MyProjectAppliesModal from '@/features/projectApply/auth/components/MyProjectAppliesModal';
 import { useSetRecoilState } from 'recoil';
 import { myProjectAppliesModalStateStore } from '@/features/projectApply/auth/store/MyProjectAppliesModalStateStore';

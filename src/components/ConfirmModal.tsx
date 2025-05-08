@@ -2,8 +2,8 @@
 
 import { createPortal } from 'react-dom';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
-import Modal from '@/components/ui/Modal';
-import { confirmModalStateStore } from '@/shared/store/ConfirmModalStateStore';
+import Modal from '@/shared/ui/Modal';
+import { confirmModalStateStore } from '@/store/ConfirmModalStateStore';
 import useModalPortalElement from '@/shared/hooks/useModalPortalElement';
 
 const ConfirmModal = () => {

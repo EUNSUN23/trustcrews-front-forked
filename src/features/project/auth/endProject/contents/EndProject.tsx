@@ -1,6 +1,6 @@
 import ConfigSummary from '@/features/project/auth/global/layouts/projectConfig/ConfigSummary';
 import ConfigContainer from '@/features/project/auth/global/layouts/projectConfig/ConfigContainer';
-import Button from '@/components/ui/form/Button';
+import Button from '@/shared/ui/Button';
 import { useRecoilValue } from 'recoil';
 import { useRouter } from 'next/navigation';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';

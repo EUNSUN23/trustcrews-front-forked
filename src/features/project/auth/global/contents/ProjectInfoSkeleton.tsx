@@ -1,6 +1,6 @@
 'use client';
 
-import Skeleton from '@/components/ui/skeleton/Skeleton';
+import Skeleton from '@/shared/ui/Skeleton';
 
 const PROJECT_INFO = ['기간', '주제', '기술스택'] as const;
 

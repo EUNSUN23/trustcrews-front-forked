@@ -1,6 +1,6 @@
-import { SelectItem } from '@/shared/types/ui';
+import { SelectItem } from '@/shared/types/selectItem';
 
-export const compareItems = (
+export const selectItemComparator = (
   a: SelectItem<string, string>,
   b: SelectItem<string, string>,
 ) => {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import CalendarInput from '@/components/ui/datepicker/CalendarInput';
+import DateInput from '@/shared/ui/DateInput';
 import { useRecoilState } from 'recoil';
 import { addDays, format } from 'date-fns';
 import FormRow from '@/features/project/auth/shared/ui/form/FormRow';
@@ -41,14 +41,14 @@ const ProjectDate = ({ initStartDate, initEndDate }: ProjectDateProps) => {
   return (
     <FormRow className='row-span-2 '>
       <div className='space-y-10'>
-        <CalendarInput
+        <DateInput
           id='startDate'
           label='시작 날짜'
           placeholder='날짜를 선택해주세요.'
           date={startDateValue}
           setDate={(startDate) => setStartDate(startDate)}
         />
-        <CalendarInput
+        <DateInput
           id='endDate'
           label='종료 날짜'
           placeholder='날짜를 선택해주세요.'

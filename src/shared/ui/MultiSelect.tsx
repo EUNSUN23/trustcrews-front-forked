@@ -2,9 +2,10 @@ import { Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { AiFillCaretDown } from '@react-icons/all-files/ai/AiFillCaretDown';
 import { AiOutlineCheck } from '@react-icons/all-files/ai/AiOutlineCheck';
-import { compareItems } from '@/shared/utils/compareItems';
+import { selectItemComparator } from '@/shared/utils/selectItemComparator';
 import { clsx } from 'clsx';
-import { SelectItem } from '@/shared/types/ui';
+
+import { SelectItem } from '@/shared/types/selectItem';
 
 type MultiSelectProps<T, V> = {
   items: readonly SelectItem<T, V>[];
@@ -26,7 +27,12 @@ const MultiSelect = <T, V>({
   required = false,
 }: MultiSelectProps<T, V>) => {
   return (
-    <Listbox value={values} onChange={setValues} by={compareItems} multiple>
+    <Listbox
+      value={values}
+      onChange={setValues}
+      by={selectItemComparator}
+      multiple
+    >
       {({ open }) => (
         <div>
           {label && (
