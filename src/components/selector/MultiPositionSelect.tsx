@@ -1,7 +1,7 @@
 import MultiSelect from '@/shared/ui/MultiSelect';
 import SelectSkeleton from '@/components/skeleton/SelectSkeleton';
 import { SelectItem } from '@/shared/types/selectItem';
-import { usePositionList } from '@/service/getPositionList';
+import { usePositionList } from '@/service/position/public/getPositionList';
 import { PositionId } from '@/types/data/position';
 
 interface MultiPositionSelectProps {

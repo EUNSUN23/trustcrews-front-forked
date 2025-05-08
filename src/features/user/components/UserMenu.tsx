@@ -17,7 +17,7 @@ import { useLogout } from '@/service/auth/logout';
 import { useResetRecoilState } from 'recoil';
 import { activeBoardTabStore } from '@/features/board/store/BoardActiveStateStore';
 import useSnackbar from '@/shared/hooks/useSnackbar';
-import { useSimpleUserInfo } from '@/lib/user/getSimpleUserInfo';
+import { useSimpleUserInfo } from '@/service/user/private/getSimpleUserInfo';
 import { clsx } from 'clsx';
 
 const UserMenu = () => {
