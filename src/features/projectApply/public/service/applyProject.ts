@@ -1,4 +1,4 @@
-import { request } from '@/lib/clientApi/request';
+import { request } from '@/utils/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { getMyProjectAppliesQueryKey } from '@/features/projectApply/auth/service/getMyProjectApplies';
 

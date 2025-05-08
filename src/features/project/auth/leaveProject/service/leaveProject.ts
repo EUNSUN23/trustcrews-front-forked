@@ -1,4 +1,4 @@
-import { request } from '@/lib/clientApi/request';
+import { request } from '@/utils/clientApi/request';
 import { ProjectAuthCode } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { CREW_NOTICE_LIST_QUERY_KEY } from '@/features/project/auth/projectNotice/service/getCrewNoticeList';

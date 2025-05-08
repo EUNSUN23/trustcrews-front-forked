@@ -1,7 +1,7 @@
 import { ProjectAuthCode } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
-import { request } from '@/lib/clientApi/request';
+import { request } from '@/utils/clientApi/request';
 import { PROJECT_PUBLIC_INFO_QUERY_KEY } from '@/features/project/public/service/getProjectPublicInfo';
 
 import { ResponseBody } from '@/types/responseBody';

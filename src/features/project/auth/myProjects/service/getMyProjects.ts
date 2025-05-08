@@ -1,4 +1,4 @@
-import { request } from '@/lib/clientApi/request';
+import { request } from '@/utils/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 import { ProjectInfoSummary } from '@/features/project/public/service/getProjectPublicInfo';
