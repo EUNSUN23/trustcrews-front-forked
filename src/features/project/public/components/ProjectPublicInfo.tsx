@@ -1,14 +1,13 @@
 'use client';
 
 import TechStackImage from '@/components/TechStackImage';
-
 import { ProjectInfoSummary } from '@/features/project/public/service/getProjectPublicInfo';
 
 type ProjectPublicInfoProps = {
   projectInfo: ProjectInfoSummary;
 };
 
-export function ProjectPublicInfo({ projectInfo }: ProjectPublicInfoProps) {
+const ProjectPublicInfo = ({ projectInfo }: ProjectPublicInfoProps) => {
   const { projectName, projectSubject, startDate, endDate, technologyStacks } =
     projectInfo;
   return (
@@ -75,4 +74,6 @@ export function ProjectPublicInfo({ projectInfo }: ProjectPublicInfoProps) {
       </div>
     </article>
   );
-}
+};
+
+export default ProjectPublicInfo;
