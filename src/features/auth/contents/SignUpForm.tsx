@@ -10,7 +10,7 @@ import TechStackSelect from '@/components/selector/TechStackSelect';
 import PositionSelect from '@/components/selector/PositionSelect';
 import { ZodError } from 'zod';
 import useSnackbar from '@/shared/hooks/useSnackbar';
-import { signUpInputScheme, useSignUp } from '@/lib/auth/signUp';
+import { signUpInputScheme, useSignUp } from '@/service/auth/signUp';
 import SelectSkeleton from '@/components/skeleton/SelectSkeleton';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
 

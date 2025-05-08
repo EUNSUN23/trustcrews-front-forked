@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { request } from '@/lib/clientApi/request';
+import { request } from '@/utils/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { getMilestonesQueryKey } from '@/features/project/auth/projectJobs/service/milestone/getMilestones';
 
