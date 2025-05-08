@@ -1,8 +1,8 @@
 'use client';
 
-import UserProfileImgForm from '@/features/user/contents/update/UserProfileImgForm';
-import UserInfoForm from '@/features/user/contents/update/UserInfoForm';
-import UserUpdateButton from '@/features/user/contents/update/UserUpdateButton';
+import UserProfileImgForm from '@/features/user/private/contents/update/UserProfileImgForm';
+import UserInfoForm from '@/features/user/private/contents/update/UserInfoForm';
+import UserUpdateButton from '@/features/user/private/contents/update/UserUpdateButton';
 
 const UserUpdatePage = () => {
   return (
