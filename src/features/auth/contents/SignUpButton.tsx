@@ -1,4 +1,4 @@
-import FormButton from '@/features/project/auth/shared/ui/form/FormButton';
+import FormButton from '@/components/FormButton';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
 import { signUpInputScheme, useSignUp } from '@/service/auth/signUp';
 import { ZodError } from 'zod';

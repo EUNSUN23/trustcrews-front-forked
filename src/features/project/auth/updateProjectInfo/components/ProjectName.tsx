@@ -1,6 +1,6 @@
 import Input from '@/shared/ui/Input';
 import { useRecoilState } from 'recoil';
-import FormRow from '@/features/project/auth/shared/ui/form/FormRow';
+import FormRow from '@/components/FormRow';
 import { projectInfoFormSelector } from '@/features/project/auth/updateProjectInfo/store/ProjectInfoFormStateStore';
 
 import { ProjectInfoSummary } from '@/features/project/public/service/getProjectPublicInfo';
