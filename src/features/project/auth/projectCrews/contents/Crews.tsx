@@ -10,7 +10,7 @@ import { PROJECT_MENU } from '@/features/project/auth/global/constants/projectMe
 import { ProjectCrew } from '@/features/project/auth/projectCrews/types';
 import Avatar from '@/shared/ui/Avatar';
 import PositionBadge from '@/components/badge/PositionBadge';
-import ProjectRoleBadge from '@/features/project/auth/shared/ui/ProjectRoleBadge';
+import ProjectRoleBadge from '@/components/badge/ProjectRoleBadge';
 
 const {
   CREWS: {
@@ -44,7 +44,7 @@ const Crews = () => {
         <ul role='list' className='min-h-[350px]'>
           {crewList.map(
             ({
-              position: { name },
+              position: { positionName },
               projectMemberAuth,
               user: { userId: projectMemberUseId, nickname, profileImgSrc },
               projectMemberId,
@@ -67,7 +67,7 @@ const Crews = () => {
                       </p>
                       <ul className='flex items-center space-x-3'>
                         <li>
-                          <PositionBadge text={name} />
+                          <PositionBadge text={positionName} />
                         </li>
                         <li>
                           <ProjectRoleBadge auth={projectMemberAuth.code}>
