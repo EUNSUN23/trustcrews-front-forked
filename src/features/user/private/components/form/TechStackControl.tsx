@@ -1,6 +1,6 @@
 import TechStackSelect from '@/components/selector/TechStackSelect';
 import { useRecoilState } from 'recoil';
-import { userInfoFormFieldSelector } from '@/features/user/store/UserInfoFormStateStore';
+import { userInfoFormFieldSelector } from '@/features/user/private/store/UserInfoFormStateStore';
 
 const TechStackControl = () => {
   const [techStackIds, setTechStackIds] = useRecoilState(
