@@ -5,13 +5,14 @@ import { useRecoilValue } from 'recoil';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
 import TechStackDropdownList from '../../components/postFilter/TechStackDropdownList';
 import { selectedTechStackState } from '@/features/post/public/store/PostSearchStateStore';
-import { useTechCategories } from '@/lib/static/getTechCategories';
-import { useTechMaps } from '@/lib/static/getTechMaps';
-import { TechStackWithCategory } from '@/service/setting/setting';
 
-const getSelectedTechStackText = (
-  selectedTechStacks: TechStackWithCategory[],
-) => {
+import { useTechCategories } from '@/service/techStack/getTechStackCategories';
+import {
+  TechStackMapping,
+  useTechStackMappings,
+} from '@/service/techStack/getTechStackMappings';
+
+const getSelectedTechStackText = (selectedTechStacks: TechStackMapping[]) => {
   if (selectedTechStacks.length > 0) {
     return selectedTechStacks.map((stack) => stack.techStackName).join(', ');
   }
@@ -44,7 +45,7 @@ const TechStackFilter = () => {
   };
 
   const { data: categoryResponse } = useTechCategories();
-  const { data: techStackResponse } = useTechMaps();
+  const { data: techStackResponse } = useTechStackMappings();
 
   return (
     <button

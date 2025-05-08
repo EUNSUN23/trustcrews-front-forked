@@ -10,11 +10,11 @@ import {
   Transition,
 } from '@headlessui/react';
 import { selectedPositionState } from '@/features/post/public/store/PostSearchStateStore';
-import { usePositionList } from '@/lib/static/getPositionList';
 import { selectItemComparator } from '@/shared/utils/selectItemComparator';
 import { clsx } from 'clsx';
 import { bigIntToString, numStrToBigInt } from '@/shared/utils/stringUtils';
 import { DEFAULT_POSITION_OPTION } from '@/constants/defaultSelectOptions';
+import { usePositionList } from '@/service/getPositionList';
 
 const PositionFilter = () => {
   const [_, startTransition] = useTransition();
