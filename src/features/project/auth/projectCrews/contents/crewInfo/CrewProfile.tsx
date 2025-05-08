@@ -12,7 +12,8 @@ import CrewOutButton from '@/features/project/auth/projectCrews/contents/crewMan
 import CrewFwButton from '@/features/project/auth/projectCrews/contents/crewManage/CrewFWButton';
 import { useAuthState } from '@/features/user/contexts/AuthStateContext';
 import { bigIntToString } from '@/shared/utils/stringUtils';
-import { TechStackItem } from '@/service/setting/setting';
+
+import { TechStack } from '@/types/data/techStack';
 
 const CrewProfile = () => {
   const { userId: currentUserId } = useAuthState();
@@ -81,7 +82,7 @@ const CrewProfile = () => {
           </span>
           <div className='min-w-[100px] flex justify-center grow-0 mx-auto'>
             <ul className='flex items-center space-x-1'>
-              {crewTechnologyStacks.map((stack: TechStackItem) => (
+              {crewTechnologyStacks.map((stack: TechStack) => (
                 <li key={stack.techStackId}>
                   <TechStackImage
                     stackName={stack.techStackName}
