@@ -1,5 +1,5 @@
 import { isEqual } from 'lodash';
-import { request } from '@/lib/clientApi/request';
+import { request } from '@/utils/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ProjectInfoSummary } from '@/features/project/public/service/getProjectPublicInfo';
 import { PageResponseBody } from '@/types/responseBody';
