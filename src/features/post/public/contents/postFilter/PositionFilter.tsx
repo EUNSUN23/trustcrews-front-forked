@@ -14,7 +14,7 @@ import { selectItemComparator } from '@/shared/utils/selectItemComparator';
 import { clsx } from 'clsx';
 import { bigIntToString, numStrToBigInt } from '@/shared/utils/stringUtils';
 import { DEFAULT_POSITION_OPTION } from '@/constants/defaultSelectOptions';
-import { usePositionList } from '@/service/getPositionList';
+import { usePositionList } from '@/service/position/public/getPositionList';
 
 const PositionFilter = () => {
   const [_, startTransition] = useTransition();

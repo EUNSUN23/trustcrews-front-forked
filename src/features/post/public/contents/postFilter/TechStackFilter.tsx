@@ -6,11 +6,11 @@ import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
 import TechStackDropdownList from '../../components/postFilter/TechStackDropdownList';
 import { selectedTechStackState } from '@/features/post/public/store/PostSearchStateStore';
 
-import { useTechCategories } from '@/service/techStack/getTechStackCategories';
+import { useTechCategories } from '@/service/techStack/public/getTechStackCategories';
 import {
   TechStackMapping,
   useTechStackMappings,
-} from '@/service/techStack/getTechStackMappings';
+} from '@/service/techStack/public/getTechStackMappings';
 
 const getSelectedTechStackText = (selectedTechStacks: TechStackMapping[]) => {
   if (selectedTechStacks.length > 0) {
