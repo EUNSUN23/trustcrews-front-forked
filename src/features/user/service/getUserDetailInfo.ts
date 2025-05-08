@@ -1,10 +1,11 @@
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { PositionItem } from '@/types/position';
-import { TechStackItem } from '@/service/setting/setting';
-
 import { ResponseBody } from '@/types/responseBody';
-import { TrustGradeName } from '@/types/trustGradeType';
+import { TrustGradeName } from '@/types/data/trustGrade';
+
+import { Position } from '@/types/data/position';
+
+import { TechStack } from '@/types/data/techStack';
 
 export interface UserProfileInfo {
   userId: bigint | null;
@@ -16,8 +17,8 @@ export interface UserProfileInfo {
     trustGradeId: number | bigint;
     trustGradeName: TrustGradeName;
   };
-  position: PositionItem;
-  techStacks: TechStackItem[];
+  position: Position;
+  techStacks: TechStack[];
   intro?: string;
   projectHistoryTotalCount: number;
   createDate: string;

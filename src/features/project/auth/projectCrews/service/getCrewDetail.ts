@@ -1,9 +1,7 @@
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ProjectCrewProfileInfo } from '@/features/project/auth/projectCrews/types';
-
 import { bigIntToString } from '@/shared/utils/stringUtils';
-
 import { ResponseBody } from '@/types/responseBody';
 
 export const getCrewDetail = async (

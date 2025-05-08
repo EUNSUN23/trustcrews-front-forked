@@ -1,7 +1,13 @@
+import { ResponseBody } from '@/types/responseBody';
+import { request } from '@/lib/clientApi/request';
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
-import { getPositionList } from '@/service/setting/setting';
+import { Position } from '@/types/data/position';
 
 export const POSITION_LIST_QUERY_KEY = 'positions';
+
+export const getPositionList = async (): Promise<ResponseBody<Position[]>> => {
+  return await request('GET', '/api/setting/position');
+};
 
 export const positionQueryOptions = () => {
   return queryOptions({

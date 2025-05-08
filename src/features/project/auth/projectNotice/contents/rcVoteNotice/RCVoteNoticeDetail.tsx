@@ -18,7 +18,8 @@ import { ZodError } from 'zod';
 import { Suspense } from 'react';
 import Loader from '@/shared/ui/Loader';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
-import { TechStackItem } from '@/service/setting/setting';
+
+import { TechStack } from '@/types/data/techStack';
 
 const {
   VODA1001: { code: VOTE_AGREE },
@@ -99,7 +100,7 @@ const RCVoteNoticeDetail = () => {
         <div className='text-md text-greyBlue font-medium'>{positionName}</div>
         <div className='mt-1 text-sm text-grey700'>{intro}</div>
         <ul className='mt-2 flex items-center justify-center space-x-1'>
-          {techStacks.map(({ techStackName }: TechStackItem) => {
+          {techStacks.map(({ techStackName }: TechStack) => {
             return (
               <li key={techStackName} className='relative h-10 w-10'>
                 <TechStackImage stackName={techStackName.toLowerCase()} />

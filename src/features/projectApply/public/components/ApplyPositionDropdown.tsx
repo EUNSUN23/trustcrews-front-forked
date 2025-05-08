@@ -33,8 +33,8 @@ const ApplyPositionDropdown = ({
       ...DEFAULT_POSITION_OPTION,
       value: bigIntToString(DEFAULT_POSITION_OPTION.value),
     },
-    ...applyPositions.map(({ position: { name, positionId } }) => ({
-      name,
+    ...applyPositions.map(({ position: { positionName, positionId } }) => ({
+      name: positionName,
       value: bigIntToString(positionId),
     })),
   ];
