@@ -1,4 +1,4 @@
-import { request } from '@/lib/clientApi/request';
+import { request } from '@/utils/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { VoteData } from '@/features/project/auth/projectVote/types';
 import { bigIntToString } from '@/shared/utils/stringUtils';

@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useQueryClient } from '@tanstack/react-query';
 import { isEqual } from 'lodash';
 import { ZodError } from 'zod';
-import { loginInputSchema, useLogin } from '@/lib/auth/logIn';
+import { loginInputSchema, useLogin } from '@/service/auth/logIn';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { SIMPLE_USER_INFO_QUERY_KEY } from '@/lib/user/getSimpleUserInfo';
 import { getMyProjectAppliesQueryKey } from '@/features/projectApply/auth/service/getMyProjectApplies';
