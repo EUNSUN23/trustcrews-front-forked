@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import logo from '../../public/images/logo.png';
 import Link from 'next/link';
-import LoginNav from '@/components/ui/LoginNav';
+import LoginNav from '@/components/LoginNav';
 import UserMenuSkeleton from '@/features/user/components/UserMenuSkeleton';
 import { IoCreateOutline } from '@react-icons/all-files/io5/IoCreateOutline';
 import dynamic from 'next/dynamic';

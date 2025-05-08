@@ -1,4 +1,4 @@
-import CalendarInput from '@/components/ui/datepicker/CalendarInput';
+import DateInput from '@/shared/ui/DateInput';
 import { useRecoilState } from 'recoil';
 import FormRow from '@/features/project/auth/shared/ui/form/FormRow';
 import { projectFormFieldSelector } from '@/features/launch/auth/store/ProjectFormStateStore';
@@ -22,13 +22,13 @@ const ProjectDate = () => {
   return (
     <FormRow className='pc:place-self-center row-span-2 '>
       <div className='space-y-10'>
-        <CalendarInput
+        <DateInput
           id='startDate'
           label='시작 날짜'
           date={startDate}
           setDate={handleChangeStartDate}
         />
-        <CalendarInput
+        <DateInput
           id='endDate'
           label='종료 날짜'
           date={endDate}

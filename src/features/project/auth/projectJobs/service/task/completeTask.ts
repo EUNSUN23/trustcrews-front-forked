@@ -2,7 +2,8 @@ import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { getTaskListQueryKey } from '@/features/project/auth/projectJobs/service/task/getTaskList';
 
-import { ApiResult, ResponseBody } from '@/shared/types/api';
+import { ResponseBody } from '@/types/responseBody';
+import { ApiResult } from '@/shared/types/apiResult';
 
 export type WorkCompleteRequestDto = {
   workId: bigint;

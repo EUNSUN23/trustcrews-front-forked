@@ -5,7 +5,7 @@ import {
 } from '@/features/user/store/UserInfoFormStateStore';
 import { useUserDetailInfo } from '@/features/user/service/getUserDetailInfo';
 import { useEffect } from 'react';
-import Input from '@/components/ui/form/Input';
+import Input from '@/shared/ui/Input';
 import { NicknameControl } from '@/features/user/components/form/NicknameControl';
 import PositionControl from '@/features/user/components/form/PositionControl';
 import TechStackControl from '@/features/user/components/form/TechStackControl';

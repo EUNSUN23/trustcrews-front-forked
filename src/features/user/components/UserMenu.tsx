@@ -2,7 +2,7 @@
 
 import { Fragment } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import Avatar from '@/components/ui/Avatar';
+import Avatar from '@/shared/ui/Avatar';
 import { FaChevronDown } from '@react-icons/all-files/fa/FaChevronDown';
 import {
   Menu,

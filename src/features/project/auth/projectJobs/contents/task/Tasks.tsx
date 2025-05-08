@@ -1,6 +1,6 @@
 'use client';
 
-import CommonPagination from '@/components/ui/CommonPagination';
+import CommonPagination from '@/components/CommonPagination';
 import useTasks from '@/features/project/auth/projectJobs/service/task/getTaskList';
 import TaskCard from '@/features/project/auth/projectJobs/components/TaskCard';
 import { useRecoilValue } from 'recoil';
@@ -8,7 +8,7 @@ import { projectIdState } from '@/features/project/auth/global/store/ProjectIdSt
 import { activeMilestoneStateStore } from '@/features/project/auth/projectJobs/store/ActiveMilestoneStateStore';
 import { useState } from 'react';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
-import { ITEM_COUNT_PER_PAGE } from '@/shared/constants/pagination';
+import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 
 const Tasks = () => {
   const [pageNumber, setPageNumber] = useState(0);

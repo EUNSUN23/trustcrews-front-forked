@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 import { useRecoilState } from 'recoil';
-import TechStackImage from '@/components/ui/TechStackImage';
+import TechStackImage from '@/components/TechStackImage';
 import { selectedTechStackState } from '@/features/post/public/store/PostSearchStateStore';
 import {
   TechStackCategory,

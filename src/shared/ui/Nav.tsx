@@ -8,7 +8,7 @@ type NavProps = {
 
 const Nav = ({ to }: NavProps) => {
   return (
-    <Link href={to} aria-label='홈으로 가기'>
+    <Link href={to}>
       <IoMdArrowRoundBack
         aria-hidden='true'
         className='tablet:h-12 tablet:w-12 mobile:h-6 mobile:w-6 text-grey700'

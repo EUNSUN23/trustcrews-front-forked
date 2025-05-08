@@ -1,4 +1,4 @@
-export const sortByStartDate = <T extends Record<'startDate', string>>(
+const sortByStartDate = <T extends Record<'startDate', string>>(
   dataList: T[],
   sortBy: 'asc' | 'desc',
 ): T[] => {
@@ -8,3 +8,5 @@ export const sortByStartDate = <T extends Record<'startDate', string>>(
 
   return sortBy === 'desc' ? sorted.reverse() : sorted;
 };
+
+export default sortByStartDate;

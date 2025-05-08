@@ -1,4 +1,4 @@
-import Select from '@/components/ui/selector/Select';
+import Select from '@/shared/ui/Select';
 import { ProjectAuthMap } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 import { usePMAuthList } from '@/features/project/auth/projectManageAuth/service/getPMAuthList';
 

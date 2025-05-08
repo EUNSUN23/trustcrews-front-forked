@@ -1,4 +1,4 @@
-import Button from '@/components/ui/form/Button';
+import Button from '@/shared/ui/Button';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { projectFormStateStore } from '@/features/launch/auth/store/ProjectFormStateStore';
 import { postFormStateStore } from '@/features/launch/auth/store/PostFormStateStore';
