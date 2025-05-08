@@ -1,6 +1,6 @@
 import Avatar from '@/shared/ui/Avatar';
 import PositionBadge from '@/components/badge/PositionBadge';
-import ProjectRoleBadge from '@/features/project/auth/shared/ui/ProjectRoleBadge';
+import ProjectRoleBadge from '@/components/badge/ProjectRoleBadge';
 import VoteStatusBadge from '@/features/project/auth/projectNotice/components/VoteStatusBadge';
 import { useRecoilValue } from 'recoil';
 import FWVoteNoticeDetailSkeleton from '@/features/project/auth/projectNotice/contents/fwVoteNotice/FWVoteNoticeDetailSkeleton';
