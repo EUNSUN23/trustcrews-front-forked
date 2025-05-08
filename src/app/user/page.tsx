@@ -1,12 +1,12 @@
 'use client';
 
-import UserProfile from '@/features/user/contents/UserProfile';
+import UserProfile from '@/features/user/private/contents/UserProfile';
 import MyProjectHistorySkeleton from '@/features/project/auth/myProjectHistory/contents/MyProjectHistorySkeleton';
 import dynamic from 'next/dynamic';
-import UserProfileSkeleton from '@/features/user/contents/UserProfileSkeleton';
+import UserProfileSkeleton from '@/features/user/private/contents/UserProfileSkeleton';
 import { Suspense } from 'react';
-import UserTrustScore from '@/features/user/components/UserTrustScore';
-import UserTrustScoreSkeleton from '@/features/user/components/UserTrustScoreSkeleton';
+import UserTrustScore from '@/features/user/private/components/UserTrustScore';
+import UserTrustScoreSkeleton from '@/features/user/private/components/UserTrustScoreSkeleton';
 
 const MyProjectHistory = dynamic(
   () =>
