@@ -1,6 +1,6 @@
 import TextArea from '@/shared/ui/TextArea';
 import { useRecoilState } from 'recoil';
-import FormRowWide from '@/features/project/auth/shared/ui/form/FormRowWide';
+import FormRowWide from '@/components/FormRowWide';
 import { postFormFieldSelector } from '@/features/launch/auth/store/PostFormStateStore';
 import { ChangeEvent } from 'react';
 
