@@ -10,9 +10,8 @@ import { crewIdState } from '@/features/project/auth/projectCrews/store/CrewIdSt
 import { useRecoilValue } from 'recoil';
 import CrewOutButton from '@/features/project/auth/projectCrews/contents/crewManage/CrewOutButton';
 import CrewFwButton from '@/features/project/auth/projectCrews/contents/crewManage/CrewFWButton';
-import { useAuthState } from '@/features/user/contexts/AuthStateContext';
+import { useAuthState } from '@/features/user/private/contexts/AuthStateContext';
 import { bigIntToString } from '@/shared/utils/stringUtils';
-
 import { TechStack } from '@/types/data/techStack';
 
 const CrewProfile = () => {
@@ -73,7 +72,7 @@ const CrewProfile = () => {
             프로젝트 포지션
           </span>
           <div className='min-w-[100px] flex justify-center grow-0 mx-auto'>
-            <PositionBadge text={position.name} size='md' />
+            <PositionBadge text={position.positionName} size='md' />
           </div>
         </div>
         <div className='pc:h-[50px] tablet:mx-8 flex items-center justify-around mobile:space-x-4'>
