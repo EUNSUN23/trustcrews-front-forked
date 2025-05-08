@@ -87,12 +87,12 @@ function PostCard({ postInfo }: { postInfo: PostInfoSummary }) {
                 >
                   {boardPositions
                     .slice(0, 3)
-                    .map(({ position: { positionId, name } }) => (
+                    .map(({ position: { positionId, positionName } }) => (
                       <li key={positionId.toString()}>
                         <PositionBadge
                           key={positionId.toString()}
                           size='xs'
-                          text={name}
+                          text={positionName}
                         />
                       </li>
                     ))}

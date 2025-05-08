@@ -1,9 +1,8 @@
 import MultiSelect from '@/shared/ui/MultiSelect';
 import SelectSkeleton from '@/components/skeleton/SelectSkeleton';
-import { usePositionList } from '@/lib/static/getPositionList';
-import { PositionId } from '@/types/position';
-
 import { SelectItem } from '@/shared/types/selectItem';
+import { usePositionList } from '@/service/getPositionList';
+import { PositionId } from '@/types/data/position';
 
 interface MultiPositionSelectProps {
   positions: readonly PositionId[];
