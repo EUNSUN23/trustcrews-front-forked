@@ -1,4 +1,4 @@
-import { request } from '@/lib/clientApi/request';
+import { request } from '@/utils/clientApi/request';
 import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
 import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 

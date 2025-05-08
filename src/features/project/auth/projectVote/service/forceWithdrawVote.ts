@@ -1,4 +1,4 @@
-import { request } from '@/lib/clientApi/request';
+import { request } from '@/utils/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
 import { FWVOTE_NOTICE_LIST_QUERY_KEY } from '@/features/project/auth/projectNotice/service/getFWVoteNoticeList';
