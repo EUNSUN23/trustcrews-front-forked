@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { UserProfileImgInput } from '@/features/user/service/updateUserDetail';
+import { UserProfileImgInput } from '@/features/user/private/service/updateUserDetail';
 
 type UserProfileImgFormStateStore = {
   profileImg: UserProfileImgInput;
