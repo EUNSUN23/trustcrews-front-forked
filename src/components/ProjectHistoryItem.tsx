@@ -5,10 +5,8 @@ import { BiUndo } from '@react-icons/all-files/bi/BiUndo';
 import { BiX } from '@react-icons/all-files/bi/BiX';
 import { clsx } from 'clsx';
 import cn from '@/shared/styles/cn';
-import {
-  ProjectHistoryData,
-  ProjectHistoryStatus,
-} from '@/lib/projectHistory/types';
+import { ProjectHistoryData } from '@/types/data/projectHistory';
+import { ProjectHistoryStatus } from '@/types/data/projectHistoryStatus';
 
 const HISTORY_COLOR = {
   LAUNCH: 'bg-orange-400',

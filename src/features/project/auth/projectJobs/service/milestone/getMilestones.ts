@@ -1,4 +1,4 @@
-import { request } from '@/lib/clientApi/request';
+import { request } from '@/utils/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { MilestoneInfo } from '@/features/project/auth/projectJobs/types/milestone';
 import { ResponseBody } from '@/types/responseBody';

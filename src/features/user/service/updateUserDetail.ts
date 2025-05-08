@@ -1,5 +1,5 @@
-import { handleResponse } from '@/lib/clientApi/handleResponse';
-import { publicURL } from '@/lib/clientApi/request';
+import { handleResponse } from '@/utils/clientApi/handleResponse';
+import { publicURL } from '@/utils/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { SIMPLE_USER_INFO_QUERY_KEY } from '@/lib/user/getSimpleUserInfo';
 import { z } from 'zod';
