@@ -1,8 +1,10 @@
 import { ProjectAuthMap } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 import { CREW_STATUS } from '@/features/project/auth/projectCrews/constants/crewStatus';
-import { Position } from '@/types/position';
-import { TechStackItem } from '@/service/setting/setting';
-import { TrustGrade } from '@/types/trustGradeType';
+import { TrustGrade } from '@/types/data/trustGrade';
+
+import { Position } from '@/types/data/position';
+
+import { TechStack } from '@/types/data/techStack';
 
 export type CrewStatusKey = keyof typeof CREW_STATUS;
 
@@ -17,7 +19,7 @@ export interface ProjectCrewUserDetail {
   role: string;
   createDate: string;
   updateDate: string;
-  technologyStacks: TechStackItem[];
+  technologyStacks: TechStack[];
 }
 
 export type ProjectCrewProfileInfo = {

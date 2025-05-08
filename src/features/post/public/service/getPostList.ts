@@ -1,15 +1,15 @@
 import { isEqual } from 'lodash';
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { TechStackWithCategory } from '@/service/setting/setting';
 import { ProjectInfoSummary } from '@/features/project/public/service/getProjectPublicInfo';
-import { Position } from '@/types/position';
-
 import { PageResponseBody } from '@/types/responseBody';
-import { TrustGrade } from '@/types/trustGradeType';
+import { TrustGrade } from '@/types/data/trustGrade';
+
+import { Position } from '@/types/data/position';
+import { TechStackMapping } from '@/service/techStack/getTechStackMappings';
 
 export interface SearchPostParams {
-  techStacks: TechStackWithCategory[];
+  techStacks: TechStackMapping[];
   position: string;
   keyword: string;
   page: number;

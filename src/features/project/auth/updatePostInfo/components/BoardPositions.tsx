@@ -1,7 +1,8 @@
 import { useRecoilState } from 'recoil';
 import MultiPositionSelect from '@/components/selector/MultiPositionSelect';
 import { postInfoFormFieldSelector } from '@/features/project/auth/updatePostInfo/store/PostInfoFormStateStore';
-import { PositionId } from '@/types/position';
+
+import { PositionId } from '@/types/data/position';
 
 type BoardPositionsProps = {
   initData: PositionId[];
