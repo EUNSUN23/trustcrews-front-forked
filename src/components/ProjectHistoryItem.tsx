@@ -3,55 +3,65 @@ import { BiUser } from '@react-icons/all-files/bi/BiUser';
 import { BiCheck } from '@react-icons/all-files/bi/BiCheck';
 import { BiUndo } from '@react-icons/all-files/bi/BiUndo';
 import { BiX } from '@react-icons/all-files/bi/BiX';
-import { clsx } from 'clsx';
-import cn from '@/shared/styles/cn';
 import { ProjectHistoryData } from '@/types/data/projectHistory';
 import { ProjectHistoryStatus } from '@/types/data/projectHistoryStatus';
+import { PROJECT_HISTORY_STATUS } from '@/constants/data/projectHistoryStatus';
+import { cva } from 'class-variance-authority';
 
-const HISTORY_COLOR = {
-  LAUNCH: 'bg-orange-400',
-  JOIN: 'bg-blue-500',
-  FINISH: 'bg-green-500',
-  WITHDRAW: 'bg-gray-400',
-  FWITHDRAW: 'bg-red-400',
-} as const;
-const { LAUNCH, JOIN, FINISH, FWITHDRAW, WITHDRAW } = HISTORY_COLOR;
+const {
+  PHIST_STAT_001: { code: LAUNCH },
+  PHIST_STAT_002: { code: JOIN },
+  PHIST_STAT_003: { code: FINISH },
+  PHIST_STAT_004: { code: WITHDRAW },
+  PHIST_STAT_005: { code: FWITHDRAW },
+} = PROJECT_HISTORY_STATUS;
 
-const iconColorClassName = (status: ProjectHistoryStatus) =>
-  clsx({
-    [LAUNCH]: status.code === 'PHIST_STAT_001',
-    [JOIN]: status.code === 'PHIST_STAT_002',
-    [FINISH]: status.code === 'PHIST_STAT_003',
-    [WITHDRAW]: status.code === 'PHIST_STAT_004',
-    [FWITHDRAW]: status.code === 'PHIST_STAT_005',
-  });
+const HistoryStatusIconVariants = cva(
+  'h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white',
+  {
+    variants: {
+      status: {
+        [LAUNCH]: 'bg-orange-400',
+        [JOIN]: 'bg-blue-500',
+        [FINISH]: 'bg-green-500',
+        [WITHDRAW]: 'bg-gray-400',
+        [FWITHDRAW]: 'bg-red-400',
+      },
+    },
+  },
+);
 
 const getIconByStatus = (status: ProjectHistoryStatus) => {
   const iconClassName = 'h-5 w-5 text-white';
 
   switch (status.code) {
-    case 'PHIST_STAT_001':
+    case LAUNCH:
       return <AiFillRocket className={iconClassName} aria-hidden={true} />;
-    case 'PHIST_STAT_002':
+    case JOIN:
       return <BiUser className={iconClassName} aria-hidden={true} />;
-    case 'PHIST_STAT_003':
+    case FINISH:
       return <BiCheck className={iconClassName} aria-hidden={true} />;
-    case 'PHIST_STAT_004':
+    case WITHDRAW:
       return <BiUndo className={iconClassName} aria-hidden={true} />;
-    case 'PHIST_STAT_005':
+    case FWITHDRAW:
       return <BiX className={iconClassName} aria-hidden={true} />;
     default:
-      return <></>;
+      return null;
   }
 };
 
-function ProjectHistoryItem({
-  history,
-  isLast,
-}: {
+type ProjectHistoryItemProps = {
   history: ProjectHistoryData;
   isLast: boolean;
-}) {
+};
+
+const ProjectHistoryItem = ({ history, isLast }: ProjectHistoryItemProps) => {
+  const {
+    status: { code: statusCode, name: StatusDesc },
+    projectName,
+    updateDate,
+  } = history;
+
   return (
     <>
       {!isLast && (
@@ -63,27 +73,26 @@ function ProjectHistoryItem({
       <ul className='relative grid grid-cols-12 grid-rows-1'>
         <li className='mobile:col-span-2' aria-hidden={true}>
           <div
-            className={cn(
-              iconColorClassName(history.status),
-              'h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white',
-            )}
+            className={HistoryStatusIconVariants({
+              status: statusCode,
+            })}
           >
-            <span className='sr-only'>{history.status.name}</span>
+            <span className='sr-only'>{StatusDesc}</span>
             {getIconByStatus(history.status)}
           </div>
         </li>
         <li className='pt-1 col-span-3 tablet:col-span-4 mobile:col-span-7 tablet:text-lg mobile:text-sm font-medium text-gray-900'>
-          {history.projectName}
+          {projectName}
         </li>
         <li className='pt-1 col-span-7 tablet:col-span-6 mobile:sr-only text-gray-500'>
-          {history.status.name}
+          {StatusDesc}
         </li>
         <li className='pt-1 mobile:col-span-3 whitespace-nowrap mobile:text-xs text-right text-gray-500 '>
-          <time dateTime={history.updateDate}>{history.updateDate}</time>
+          <time dateTime={updateDate}>{updateDate}</time>
         </li>
       </ul>
     </>
   );
-}
+};
 
 export default ProjectHistoryItem;
