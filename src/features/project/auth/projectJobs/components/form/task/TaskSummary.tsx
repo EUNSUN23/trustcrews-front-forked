@@ -1,6 +1,6 @@
 'use client';
 
-import Input from '@/components/ui/form/Input';
+import Input from '@/shared/ui/Input';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import {
   taskFormFieldSelector,

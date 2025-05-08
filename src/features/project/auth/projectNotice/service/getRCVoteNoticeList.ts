@@ -3,9 +3,9 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 import { NOTICE_TYPES } from '@/features/project/auth/projectNotice/constants/noticeTypes';
 import { VoteStatusType } from '@/features/project/auth/projectVote/types';
 import { bigIntToString } from '@/shared/utils/stringUtils';
-import { ITEM_COUNT_PER_PAGE } from '@/shared/constants/pagination';
+import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 
-import { PageResponseBody } from '@/shared/types/api';
+import { PageResponseBody } from '@/types/responseBody';
 
 export type RCVoteNoticeData = {
   alertId: bigint;

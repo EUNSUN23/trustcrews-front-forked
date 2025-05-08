@@ -3,7 +3,8 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
 import { getMilestonesQueryKey } from '@/features/project/auth/projectJobs/service/milestone/getMilestones';
 
-import { ApiResult, ResponseBody } from '@/shared/types/api';
+import { ResponseBody } from '@/types/responseBody';
+import { ApiResult } from '@/shared/types/apiResult';
 
 export const createMilestoneInputSchema = z.object({
   startDate: z.string().min(1, { message: '마일스톤 내용을 입력해 주세요' }),

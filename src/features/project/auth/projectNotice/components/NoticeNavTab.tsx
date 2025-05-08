@@ -1,7 +1,7 @@
 'use client';
 
 import { useRecoilState } from 'recoil';
-import Select from '@/components/ui/selector/Select';
+import Select from '@/shared/ui/Select';
 import { NoticeTab } from '@/features/project/auth/projectNotice/types';
 import { activeNoticeTabStateStore } from '@/features/project/auth/projectNotice/store/ActiveNoticeTabStateStore';
 import { NOTICE_TABS } from '@/features/project/auth/projectNotice/constants/noticeTabs';

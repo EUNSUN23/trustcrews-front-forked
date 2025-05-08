@@ -1,6 +1,6 @@
-import Avatar from '@/components/ui/Avatar';
-import TechStackImage from '@/components/ui/TechStackImage';
-import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
+import Avatar from '@/shared/ui/Avatar';
+import TechStackImage from '@/components/TechStackImage';
+import TrustGradeBadge from '@/components/badge/TrustGradeBadge';
 import RCVoteNoticeDetailSkeleton from '@/features/project/auth/projectNotice/contents/rcVoteNotice/RCVoteNoticeDetailSkeleton';
 import VoteStatusBadge from '@/features/project/auth/projectNotice/components/VoteStatusBadge';
 import RCTargetProjectHistory from '@/features/project/auth/projectNotice/contents/rcVoteNotice/RCTargetProjectHistory';
@@ -16,7 +16,7 @@ import { useRecoilValue } from 'recoil';
 import { rcVoteNoticeModalState } from '@/features/project/auth/projectNotice/store/RCVoteNoticeModalStateStore';
 import { ZodError } from 'zod';
 import { Suspense } from 'react';
-import Loader from '@/components/ui/Loader';
+import Loader from '@/shared/ui/Loader';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
 import { TechStackItem } from '@/service/setting/setting';
 

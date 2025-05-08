@@ -5,7 +5,8 @@ import { SIMPLE_USER_INFO_QUERY_KEY } from '@/lib/user/getSimpleUserInfo';
 import { z } from 'zod';
 import { USER_DETAIL_INFO_QUERY_KEY } from '@/features/user/service/getUserDetailInfo';
 
-import { ApiResult, ResponseBody } from '@/shared/types/api';
+import { ResponseBody } from '@/types/responseBody';
+import { ApiResult } from '@/shared/types/apiResult';
 
 const nicknameRegex: RegExp = /^[a-zA-Z0-9]{6,10}$/;
 const MAX_FILE_SIZE = 5 * 1024 * 1024;

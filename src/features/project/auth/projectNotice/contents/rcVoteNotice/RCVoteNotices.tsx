@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import CommonPagination from '@/components/ui/CommonPagination';
+import CommonPagination from '@/components/CommonPagination';
 import RCVoteNoticeRow from '@/features/project/auth/projectNotice/components/noticeRow/RCVoteNoticeRow';
 import NoContentsMessage from '@/features/project/auth/projectNotice/components/NoContentsMessage';
 import { useRCVoteNoticeList } from '@/features/project/auth/projectNotice/service/getRCVoteNoticeList';
@@ -7,7 +7,7 @@ import { useRecoilValue } from 'recoil';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
-import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/shared/constants/pagination';
+import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
 
 const RCVoteNotice = () => {
   const [pageIndex, setPageIndex] = useState(0);

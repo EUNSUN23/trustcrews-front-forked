@@ -1,4 +1,4 @@
-import Button from '@/components/ui/form/Button';
+import Button from '@/shared/ui/Button';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import {
   CrewFWModalState,

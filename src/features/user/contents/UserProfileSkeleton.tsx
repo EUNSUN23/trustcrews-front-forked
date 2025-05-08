@@ -1,5 +1,5 @@
-import AvatarSkeleton from '@/components/ui/skeleton/AvatarSkeleton';
-import Skeleton from '@/components/ui/skeleton/Skeleton';
+import AvatarSkeleton from '@/components/skeleton/AvatarSkeleton';
+import Skeleton from '@/shared/ui/Skeleton';
 
 const UserProfileSkeleton = () => {
   return (

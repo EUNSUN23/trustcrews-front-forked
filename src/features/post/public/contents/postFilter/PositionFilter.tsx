@@ -11,10 +11,10 @@ import {
 } from '@headlessui/react';
 import { selectedPositionState } from '@/features/post/public/store/PostSearchStateStore';
 import { usePositionList } from '@/lib/static/getPositionList';
-import { compareItems } from '@/shared/utils/compareItems';
+import { selectItemComparator } from '@/shared/utils/selectItemComparator';
 import { clsx } from 'clsx';
 import { bigIntToString, numStrToBigInt } from '@/shared/utils/stringUtils';
-import { DEFAULT_POSITION_OPTION } from '@/shared/constants/defaultSelectOptions';
+import { DEFAULT_POSITION_OPTION } from '@/constants/defaultSelectOptions';
 
 const PositionFilter = () => {
   const [_, startTransition] = useTransition();
@@ -51,7 +51,7 @@ const PositionFilter = () => {
       aria-label='모집 포지션'
       value={selected}
       onChange={handleChangePosition}
-      by={compareItems}
+      by={selectItemComparator}
     >
       <div
         ref={dropdownRef}

@@ -3,9 +3,9 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 import { TASK_STATUS } from '@/features/project/auth/projectJobs/constants/task/taskStatus';
 import { TaskStatus } from '@/features/project/auth/projectJobs/types/task';
 import { bigIntToString } from '@/shared/utils/stringUtils';
-import { ITEM_COUNT_PER_PAGE } from '@/shared/constants/pagination';
+import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 
-import { PageResponseBody } from '@/shared/types/api';
+import { PageResponseBody } from '@/types/responseBody';
 
 export type TasksReqParam = {
   projectId: bigint;

@@ -5,7 +5,7 @@ import {
   PostInfoSummary,
 } from '@/features/post/public/service/getPostList';
 
-import { PageResponseBody } from '@/shared/types/api';
+import { PageResponseBody } from '@/types/responseBody';
 
 const DOMAIN = process.env.NEXT_PUBLIC_URL;
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

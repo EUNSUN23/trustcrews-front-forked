@@ -2,9 +2,9 @@
 
 import { ReactNode, useEffect, useRef } from 'react';
 import { RiCloseFill } from '@react-icons/all-files/ri/RiCloseFill';
-import Button from '@/components/ui/form/Button';
+import Button from '@/shared/ui/Button';
 
-import { ModalState } from '@/shared/types/ui';
+import { ModalState } from '@/shared/types/modalState';
 
 interface ModalProps extends ModalState {
   children: ReactNode;
@@ -14,7 +14,7 @@ interface ModalProps extends ModalState {
   footer?: ReactNode;
 }
 
-function Modal({
+const Modal = ({
   isOpen,
   close,
   title,
@@ -22,7 +22,7 @@ function Modal({
   children,
   isUpdating = false,
   footer,
-}: ModalProps) {
+}: ModalProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -128,6 +128,6 @@ function Modal({
       </div>
     </div>
   );
-}
+};
 
 export default Modal;

@@ -1,4 +1,4 @@
-import MultiSelect from '@/components/ui/selector/MultiSelect';
+import MultiSelect from '@/shared/ui/MultiSelect';
 import { useTechStackList } from '@/lib/static/getTechStackList';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 

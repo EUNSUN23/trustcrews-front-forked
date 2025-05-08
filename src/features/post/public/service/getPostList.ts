@@ -3,10 +3,10 @@ import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { TechStackWithCategory } from '@/service/setting/setting';
 import { ProjectInfoSummary } from '@/features/project/public/service/getProjectPublicInfo';
-import { Position } from '@/shared/types/position';
+import { Position } from '@/types/position';
 
-import { PageResponseBody } from '@/shared/types/api';
-import { TrustGrade } from '@/shared/types/trustGradeType';
+import { PageResponseBody } from '@/types/responseBody';
+import { TrustGrade } from '@/types/trustGradeType';
 
 export interface SearchPostParams {
   techStacks: TechStackWithCategory[];

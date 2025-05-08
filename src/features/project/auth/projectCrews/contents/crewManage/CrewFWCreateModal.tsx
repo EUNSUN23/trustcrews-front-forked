@@ -7,7 +7,7 @@ import {
   crewFWModalStateStore,
 } from '@/features/project/auth/projectCrews/store/CrewFWModalStateStore';
 import { createPortal } from 'react-dom';
-import Modal from '@/components/ui/Modal';
+import Modal from '@/shared/ui/Modal';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import {
   createCrewFWVoteInputSchema,

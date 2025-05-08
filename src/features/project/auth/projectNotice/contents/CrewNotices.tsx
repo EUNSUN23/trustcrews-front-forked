@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import CommonPagination from '@/components/ui/CommonPagination';
+import CommonPagination from '@/components/CommonPagination';
 import NoContentsMessage from '@/features/project/auth/projectNotice/components/NoContentsMessage';
 import { useCrewNoticeList } from '@/features/project/auth/projectNotice/service/getCrewNoticeList';
 import { useRecoilValue } from 'recoil';
@@ -7,7 +7,7 @@ import { projectIdState } from '@/features/project/auth/global/store/ProjectIdSt
 import NoticeBadge from '@/features/project/auth/projectNotice/components/NoticeBadge';
 import { NOTICE_TYPES } from '@/features/project/auth/projectNotice/constants/noticeTypes';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
-import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/shared/constants/pagination';
+import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
 
 const CrewNotices = () => {
   const [pageIndex, setPageIndex] = useState(0);

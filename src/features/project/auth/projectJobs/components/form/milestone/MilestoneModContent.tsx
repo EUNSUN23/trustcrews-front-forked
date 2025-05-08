@@ -1,4 +1,4 @@
-import Input from '@/components/ui/form/Input';
+import Input from '@/shared/ui/Input';
 import { useRecoilState } from 'recoil';
 import { milestoneModFormFieldSelector } from '@/features/project/auth/projectJobs/store/MilestoneModalStateStore';
 import { ChangeEvent } from 'react';

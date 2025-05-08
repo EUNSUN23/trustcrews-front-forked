@@ -1,7 +1,7 @@
 import PMAuth from '@/features/project/auth/projectManageAuth/contents/PMAuth';
 import EndProject from '@/features/project/auth/endProject/contents/EndProject';
-import ErrorPageContainer from '@/components/ui/error/ErrorPageContainer';
-import ErrorMessage from '@/components/ui/error/ErrorMessage';
+import ErrorPageContainer from '@/components/error/ErrorPageContainer';
+import ErrorMessage from '@/components/error/ErrorMessage';
 import ProjectInfoForm from '@/features/project/auth/updateProjectInfo/contents/ProjectInfoForm';
 import { Suspense } from 'react';
 import ProjectInfoFormSkeleton from '@/features/project/auth/updateProjectInfo/contents/ProjectInfoFormSkeleton';

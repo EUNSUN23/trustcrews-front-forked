@@ -10,10 +10,10 @@ import {
   ListboxOptions,
   Transition,
 } from '@headlessui/react';
-import { compareItems } from '@/shared/utils/compareItems';
+import { selectItemComparator } from '@/shared/utils/selectItemComparator';
 import { clsx } from 'clsx';
 import { bigIntToString, numStrToBigInt } from '@/shared/utils/stringUtils';
-import { DEFAULT_POSITION_OPTION } from '@/shared/constants/defaultSelectOptions';
+import { DEFAULT_POSITION_OPTION } from '@/constants/defaultSelectOptions';
 import { PostPublicInfoData } from '@/features/post/public/service/getPostPublicInfo';
 
 type ApplyPositionDropdownProps = {
@@ -50,7 +50,7 @@ const ApplyPositionDropdown = ({
       onChange={(item) =>
         setProjectApplyPosition({ ...item, value: numStrToBigInt(item.value) })
       }
-      by={compareItems}
+      by={selectItemComparator}
     >
       <div
         ref={dropdownRef}

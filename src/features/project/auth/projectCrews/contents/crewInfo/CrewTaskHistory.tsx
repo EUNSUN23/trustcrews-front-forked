@@ -1,14 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import CommonPagination from '@/components/ui/CommonPagination';
+import CommonPagination from '@/components/CommonPagination';
 import { useCrewTaskHistory } from '@/features/project/auth/projectCrews/service/getCrewTaskHistory';
 import { clsx } from 'clsx';
 import { FaMinus } from '@react-icons/all-files/fa/FaMinus';
 import { FaPlus } from '@react-icons/all-files/fa/FaPlus';
 import { useRecoilValue } from 'recoil';
 import { crewIdState } from '@/features/project/auth/projectCrews/store/CrewIdStateStore';
-import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/shared/constants/pagination';
+import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
 
 const CrewTaskHistory = () => {
   const crewId = useRecoilValue(crewIdState);

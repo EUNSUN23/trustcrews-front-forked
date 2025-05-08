@@ -1,12 +1,7 @@
 import 'server-only';
-import { COOKIE, ssrHasCookie } from '@/app/api/_interceptor/utils/cookieUtils';
 import { camelCase } from 'lodash';
 
-export const getIsAuthorizedFromCookie = () => {
-  return ssrHasCookie(COOKIE.ACS_TOKEN) && ssrHasCookie(COOKIE.REF_TOKEN);
-};
-
-export const getRfTokenFromSetCookie = (setCookieHeader: string) => {
+const getRfTokenFromSetCookie = (setCookieHeader: string) => {
   let refreshTokenValue = '';
   let cookieOptions = {};
   setCookieHeader.split(';').map((item) => {
@@ -25,3 +20,5 @@ export const getRfTokenFromSetCookie = (setCookieHeader: string) => {
 
   return { token: refreshTokenValue, options: cookieOptions };
 };
+
+export default getRfTokenFromSetCookie;

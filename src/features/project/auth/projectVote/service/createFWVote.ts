@@ -2,7 +2,8 @@ import { request } from '@/lib/clientApi/request';
 import { useMutation } from '@tanstack/react-query';
 import { z } from 'zod';
 
-import { ApiResult, ResponseBody } from '@/shared/types/api';
+import { ResponseBody } from '@/types/responseBody';
+import { ApiResult } from '@/shared/types/apiResult';
 
 export const createCrewFWVoteInputSchema = z.object({
   reason: z.string().nonempty({ message: '강제탈퇴 사유를 선택해주세요.' }),

@@ -1,4 +1,4 @@
-import Skeleton from '@/components/ui/skeleton/Skeleton';
+import Skeleton from '@/shared/ui/Skeleton';
 import ConfigContainer from '@/features/project/auth/global/layouts/projectConfig/ConfigContainer';
 import ConfigSummary from '@/features/project/auth/global/layouts/projectConfig/ConfigSummary';
 

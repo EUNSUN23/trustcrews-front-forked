@@ -4,7 +4,7 @@ import { ProjectCrewProfileInfo } from '@/features/project/auth/projectCrews/typ
 
 import { bigIntToString } from '@/shared/utils/stringUtils';
 
-import { ResponseBody } from '@/shared/types/api';
+import { ResponseBody } from '@/types/responseBody';
 
 export const getCrewDetail = async (
   projectMemberId: bigint,

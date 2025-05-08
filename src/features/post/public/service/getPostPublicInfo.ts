@@ -1,8 +1,8 @@
 import { request } from '@/lib/clientApi/request';
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
 import { bigIntToString } from '@/shared/utils/stringUtils';
-import { Position } from '@/shared/types/position';
-import { ResponseBody } from '@/shared/types/api';
+import { Position } from '@/types/position';
+import { ResponseBody } from '@/types/responseBody';
 
 // todo - dataType, api명 ~detail로 수정
 export type PostPublicInfoData = {
