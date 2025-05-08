@@ -5,7 +5,7 @@ import {
   activeBoardTabStore,
   BOARD_TABS,
 } from '@/features/board/store/BoardActiveStateStore';
-import { useAuthState } from '@/features/user/contexts/AuthStateContext';
+import { useAuthState } from '@/features/user/private/contexts/AuthStateContext';
 
 const BoardTab = () => {
   const { isAuthorized } = useAuthState();

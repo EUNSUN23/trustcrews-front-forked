@@ -1,4 +1,4 @@
-import { UserInfoInput } from '@/features/user/service/updateUserDetail';
+import { UserInfoInput } from '@/features/user/private/service/updateUserDetail';
 import { atom, DefaultValue, selector, selectorFamily } from 'recoil';
 
 interface UserInfoFormData

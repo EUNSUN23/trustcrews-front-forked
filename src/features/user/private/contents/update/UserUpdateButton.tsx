@@ -4,11 +4,11 @@ import {
   userInfoInputSchema,
   userProfileImgInputSchema,
   useUpdateUserDetail,
-} from '@/features/user/service/updateUserDetail';
+} from '@/features/user/private/service/updateUserDetail';
 import { ZodError } from 'zod';
 import { useRecoilValue } from 'recoil';
-import { userInfoFormStateStore } from '@/features/user/store/UserInfoFormStateStore';
-import { userProfileImgFormStateStore } from '@/features/user/store/UserProfileImgFormStateStore';
+import { userInfoFormStateStore } from '@/features/user/private/store/UserInfoFormStateStore';
+import { userProfileImgFormStateStore } from '@/features/user/private/store/UserProfileImgFormStateStore';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 const UserUpdateButton = () => {

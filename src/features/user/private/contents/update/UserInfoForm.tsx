@@ -2,14 +2,14 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 import {
   userInfoFormLoadingSelector,
   userInfoFormStateStore,
-} from '@/features/user/store/UserInfoFormStateStore';
-import { useUserDetailInfo } from '@/features/user/service/getUserDetailInfo';
+} from '@/features/user/private/store/UserInfoFormStateStore';
+import { useUserDetailInfo } from '@/features/user/private/service/getUserDetailInfo';
 import { useEffect } from 'react';
 import Input from '@/shared/ui/Input';
-import { NicknameControl } from '@/features/user/components/form/NicknameControl';
-import PositionControl from '@/features/user/components/form/PositionControl';
-import TechStackControl from '@/features/user/components/form/TechStackControl';
-import IntroductionControl from '@/features/user/components/form/IntroductionControl';
+import { NicknameControl } from '@/features/user/private/components/form/NicknameControl';
+import PositionControl from '@/features/user/private/components/form/PositionControl';
+import TechStackControl from '@/features/user/private/components/form/TechStackControl';
+import IntroductionControl from '@/features/user/private/components/form/IntroductionControl';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 
 const UserInfoForm = () => {
