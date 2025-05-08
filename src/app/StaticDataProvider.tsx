@@ -4,10 +4,10 @@ import {
   QueryClient,
 } from '@tanstack/react-query';
 import { ReactNode } from 'react';
-import { positionQueryOptions } from '@/service/getPositionList';
-import { techCategoryQueryOptions } from '@/service/techStack/getTechStackCategories';
-import { techStackMappingsQueryOptions } from '@/service/techStack/getTechStackMappings';
-import { techListQueryOptions } from '@/service/techStack/getTechStackList';
+import { positionQueryOptions } from '@/service/position/public/getPositionList';
+import { techCategoryQueryOptions } from '@/service/techStack/public/getTechStackCategories';
+import { techStackMappingsQueryOptions } from '@/service/techStack/public/getTechStackMappings';
+import { techListQueryOptions } from '@/service/techStack/public/getTechStackList';
 
 const StaticDataProvider = ({ children }: { children: ReactNode }) => {
   const queryClient = new QueryClient();

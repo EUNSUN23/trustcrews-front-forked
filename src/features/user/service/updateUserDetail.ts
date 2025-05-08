@@ -1,7 +1,7 @@
 import { handleResponse } from '@/utils/clientApi/handleResponse';
 import { publicURL } from '@/utils/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { SIMPLE_USER_INFO_QUERY_KEY } from '@/lib/user/getSimpleUserInfo';
+import { SIMPLE_USER_INFO_QUERY_KEY } from '@/service/user/private/getSimpleUserInfo';
 import { z } from 'zod';
 import { USER_DETAIL_INFO_QUERY_KEY } from '@/features/user/service/getUserDetailInfo';
 
