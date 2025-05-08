@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Input from '@/shared/ui/Input';
-import FormButton from '@/features/project/auth/shared/ui/form/FormButton';
+import FormButton from '@/components/FormButton';
 import { useRouter } from 'next/navigation';
 import { useQueryClient } from '@tanstack/react-query';
 import { isEqual } from 'lodash';
