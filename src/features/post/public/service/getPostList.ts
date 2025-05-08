@@ -6,7 +6,7 @@ import { PageResponseBody } from '@/types/responseBody';
 import { TrustGrade } from '@/types/data/trustGrade';
 
 import { Position } from '@/types/data/position';
-import { TechStackMapping } from '@/service/techStack/getTechStackMappings';
+import { TechStackMapping } from '@/service/techStack/public/getTechStackMappings';
 
 export interface SearchPostParams {
   techStacks: TechStackMapping[];
