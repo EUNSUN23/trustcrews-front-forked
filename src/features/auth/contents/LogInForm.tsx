@@ -9,7 +9,7 @@ import { isEqual } from 'lodash';
 import { ZodError } from 'zod';
 import { loginInputSchema, useLogin } from '@/service/auth/logIn';
 import useSnackbar from '@/shared/hooks/useSnackbar';
-import { SIMPLE_USER_INFO_QUERY_KEY } from '@/lib/user/getSimpleUserInfo';
+import { SIMPLE_USER_INFO_QUERY_KEY } from '@/service/user/private/getSimpleUserInfo';
 import { getMyProjectAppliesQueryKey } from '@/features/projectApply/auth/service/getMyProjectApplies';
 import { MY_PROJECTS_QUERY_KEY } from '@/features/project/auth/myProjects/service/getMyProjects';
 
