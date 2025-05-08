@@ -19,7 +19,7 @@ import TaskAddModal from '@/features/project/auth/projectJobs/contents/task/Task
 import TaskModModal from '@/features/project/auth/projectJobs/contents/task/TaskModModal';
 import TasksSkeleton from '@/features/project/auth/projectJobs/contents/task/TasksSkeleton';
 import { bigIntToString } from '@/shared/utils/stringUtils';
-import { ITEM_COUNT_PER_PAGE } from '@/shared/constants/pagination';
+import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 
 const { milestoneId: DEFAULT_MILESTONE_ID } = DEFAULT_ACTIVE_MILESTONE;
 

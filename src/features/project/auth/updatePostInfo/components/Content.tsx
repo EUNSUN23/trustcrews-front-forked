@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil';
-import TextArea from '@/components/ui/form/TextArea';
+import TextArea from '@/shared/ui/TextArea';
 import { postInfoFormFieldSelector } from '@/features/project/auth/updatePostInfo/store/PostInfoFormStateStore';
 
 import { PostPublicInfoData } from '@/features/post/public/service/getPostPublicInfo';

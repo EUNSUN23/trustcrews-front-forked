@@ -1,9 +1,10 @@
 import { Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { AiFillCaretDown } from '@react-icons/all-files/ai/AiFillCaretDown';
-import { compareItems } from '@/shared/utils/compareItems';
+import { selectItemComparator } from '@/shared/utils/selectItemComparator';
 import { clsx } from 'clsx';
-import { SelectItem } from '@/shared/types/ui';
+
+import { SelectItem } from '@/shared/types/selectItem';
 
 export type SelectProps<T, V> = {
   items: readonly SelectItem<T, V>[];
@@ -23,7 +24,7 @@ const Select = <T, V>({
   required = false,
 }: SelectProps<T, V>) => {
   return (
-    <Listbox value={value} onChange={setValue} by={compareItems}>
+    <Listbox value={value} onChange={setValue} by={selectItemComparator}>
       {({ open }) => (
         <div>
           <Listbox.Label className='block text-gray-700 mobile:text-sm'>

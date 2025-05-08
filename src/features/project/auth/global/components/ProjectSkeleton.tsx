@@ -1,7 +1,7 @@
 import ProjectContentsSkeleton from '@/features/project/auth/global/contents/ProjectContentsSkeleton';
 import ProjectInfoSkeleton from '@/features/project/auth/global/contents/ProjectInfoSkeleton';
 import { PROJECT_MENU } from '@/features/project/auth/global/constants/projectMenu';
-import Skeleton from '@/components/ui/skeleton/Skeleton';
+import Skeleton from '@/shared/ui/Skeleton';
 
 const ProjectSkeleton = () => {
   return (

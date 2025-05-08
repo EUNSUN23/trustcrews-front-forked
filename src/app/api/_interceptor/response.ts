@@ -10,7 +10,7 @@ import {
   GatewayErrorCode,
 } from '@/app/api/_interceptor/error/constants';
 
-import { ResponseBody } from '@/shared/types/api';
+import { ResponseBody } from '@/types/responseBody';
 
 export type CustomResponseHeaderInit = HeadersInit & {
   'X-Error-Instruction'?: 'REDIRECT' | 'MESSAGE' | 'NONE';

@@ -1,6 +1,6 @@
-import { PositionItem } from '@/shared/types/position';
+import { PositionItem } from '@/types/position';
 
-import { ResponseBody } from '@/shared/types/api';
+import { ResponseBody } from '@/types/responseBody';
 
 const publicURL = process.env.NEXT_PUBLIC_URL;
 

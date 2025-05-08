@@ -1,16 +1,15 @@
-import Navigator from '@/components/ui/error/Navigator';
-import StyledLink from '@/components/ui/StyledLink';
-import ErrorPageContainer from '@/components/ui/error/ErrorPageContainer';
-import ErrorMessage from '@/components/ui/error/ErrorMessage';
+import StyledLink from '@/shared/ui/StyledLink';
+import ErrorPageContainer from '@/components/error/ErrorPageContainer';
+import ErrorMessage from '@/components/error/ErrorMessage';
 import { HttpStatus } from '@/app/api/_interceptor/utils/httpStatus';
 
-function Page({
+const Page = ({
   params,
   searchParams,
 }: {
   params: { slug: string };
   searchParams: { error: string };
-}) {
+}) => {
   const status = parseInt(params.slug, 10);
   return (
     <ErrorPageContainer className=''>
@@ -21,18 +20,18 @@ function Page({
         {searchParams.error}
       </ErrorMessage>
       {status === HttpStatus.UNAUTHORIZED && (
-        <Navigator className=''>
+        <div className='min-h-[80px] flex items-center space-x-2'>
           <StyledLink href='/login'>로그인</StyledLink>
           <StyledLink href='/'>홈으로</StyledLink>
-        </Navigator>
+        </div>
       )}
       {status === HttpStatus.FORBIDDEN && (
-        <Navigator>
+        <div className='min-h-[80px] flex items-center space-x-2'>
           <StyledLink href='/'>홈으로</StyledLink>
-        </Navigator>
+        </div>
       )}
     </ErrorPageContainer>
   );
-}
+};
 
 export default Page;

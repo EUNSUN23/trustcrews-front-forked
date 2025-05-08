@@ -1,7 +1,3 @@
-export type ApiResult<T extends (...args: any) => Promise<any>> = Awaited<
-  ReturnType<T>
->;
-
 export type ResponseResult = 'success' | 'fail';
 
 export type ResponseBody<T> = {

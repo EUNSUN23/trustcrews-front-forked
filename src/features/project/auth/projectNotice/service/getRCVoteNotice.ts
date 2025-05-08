@@ -4,7 +4,7 @@ import { VoteData } from '@/features/project/auth/projectVote/types';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 import { UserProfileInfo } from '@/features/user/service/getUserDetailInfo';
 
-import { ResponseBody } from '@/shared/types/api';
+import { ResponseBody } from '@/types/responseBody';
 
 export type RCVoteNoticeDetailData = {
   applicantInfo: Omit<UserProfileInfo, 'userId'> & { userId: bigint };

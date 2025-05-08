@@ -1,5 +1,5 @@
 import FormRowWide from '@/features/project/auth/shared/ui/form/FormRowWide';
-import Button from '@/components/ui/form/Button';
+import Button from '@/shared/ui/Button';
 import { useRouter } from 'next/navigation';
 import { useResetRecoilState } from 'recoil';
 import { useEffect } from 'react';

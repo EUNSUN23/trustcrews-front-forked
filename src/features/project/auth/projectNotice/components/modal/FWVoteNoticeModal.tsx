@@ -1,6 +1,6 @@
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { createPortal } from 'react-dom';
-import Modal from '@/components/ui/Modal';
+import Modal from '@/shared/ui/Modal';
 import FWVoteNoticeDetail from '@/features/project/auth/projectNotice/contents/fwVoteNotice/FWVoteNoticeDetail';
 import { fwNoticeModalState } from '@/features/project/auth/projectNotice/store/FWVoteNoticeModalStateStore';
 import useModalPortalElement from '@/shared/hooks/useModalPortalElement';
