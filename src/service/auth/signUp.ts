@@ -44,7 +44,7 @@ export const signUpInputScheme = z.object({
   intro: z.string().nullable().optional(),
 });
 
-type SignUpInput = z.infer<typeof signUpInputScheme>;
+export type SignUpInput = z.infer<typeof signUpInputScheme>;
 
 export const signUp = async (
   param: SignUpInput,
