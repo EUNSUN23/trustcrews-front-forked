@@ -1,4 +1,4 @@
-import { request } from '@/lib/clientApi/request';
+import { request } from '@/utils/clientApi/request';
 import { useMutation } from '@tanstack/react-query';
 import { z } from 'zod';
 

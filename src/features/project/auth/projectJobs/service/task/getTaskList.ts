@@ -1,4 +1,4 @@
-import { request } from '@/lib/clientApi/request';
+import { request } from '@/utils/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { TASK_STATUS } from '@/features/project/auth/projectJobs/constants/task/taskStatus';
 import { TaskStatus } from '@/features/project/auth/projectJobs/types/task';
