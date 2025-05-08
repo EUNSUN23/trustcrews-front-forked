@@ -1,6 +1,6 @@
 import MultiSelect from '@/shared/ui/MultiSelect';
-import { useTechStackList } from '@/lib/static/getTechStackList';
 import { bigIntToString } from '@/shared/utils/stringUtils';
+import { useTechStackList } from '@/service/techStack/getTechStackList';
 
 type TechStackSelectProps = {
   selectedTechStackIds: string[];
