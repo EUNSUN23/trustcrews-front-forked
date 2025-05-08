@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import DateInput from '@/shared/ui/DateInput';
 import { useRecoilState } from 'recoil';
 import { addDays, format } from 'date-fns';
-import FormRow from '@/features/project/auth/shared/ui/form/FormRow';
+import FormRow from '@/components/FormRow';
 import { projectInfoFormSelector } from '@/features/project/auth/updateProjectInfo/store/ProjectInfoFormStateStore';
 
 import { ProjectInfoSummary } from '@/features/project/public/service/getProjectPublicInfo';
