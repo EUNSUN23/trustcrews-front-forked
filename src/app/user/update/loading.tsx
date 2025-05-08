@@ -1,4 +1,4 @@
-import UserUpdatePageLoader from '@/features/user/components/UserUpdatePageLoader';
+import UserUpdatePageLoader from '@/features/user/private/components/UserUpdatePageLoader';
 
 const UserUpdatePageLoading = () => {
   return <UserUpdatePageLoader />;

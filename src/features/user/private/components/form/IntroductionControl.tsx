@@ -1,5 +1,5 @@
 import TextArea from '@/shared/ui/TextArea';
-import { userInfoFormFieldSelector } from '@/features/user/store/UserInfoFormStateStore';
+import { userInfoFormFieldSelector } from '@/features/user/private/store/UserInfoFormStateStore';
 import { useRecoilState } from 'recoil';
 import { ChangeEvent } from 'react';
 
