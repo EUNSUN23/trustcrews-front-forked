@@ -6,7 +6,7 @@ import {
   TaskModalType,
 } from '@/features/project/auth/projectJobs/store/TaskModalStateStore';
 import { Suspense } from 'react';
-import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
+import SelectSkeleton from '@/components/skeleton/SelectSkeleton';
 import { Field, Label } from '@headlessui/react';
 
 type TaskAssignedCrewProps = {

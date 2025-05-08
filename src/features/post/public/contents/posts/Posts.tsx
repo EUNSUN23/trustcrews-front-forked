@@ -11,10 +11,10 @@ import {
   selectedTechStackState,
 } from '@/features/post/public/store/PostSearchStateStore';
 import { usePostList } from '@/features/post/public/service/getPostList';
-import CommonPagination from '@/components/ui/CommonPagination';
+import CommonPagination from '@/components/CommonPagination';
 import PostCard from '@/features/post/public/components/posts/PostCard';
 import { bigIntToString } from '@/shared/utils/stringUtils';
-import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/shared/constants/pagination';
+import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
 
 const Posts = () => {
   const [isPending] = useTransition();

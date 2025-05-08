@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Providers from '@/app/Providers';
-import Snackbar from '@/components/ui/Snackbar';
+import Snackbar from '@/shared/ui/Snackbar';
 import StaticDataProvider from '@/app/StaticDataProvider';
-import Header from '@/components/Header';
+import Header from '@/layouts/Header';
 import { ReactNode } from 'react';
 import {
   COOKIE,
   getCookieValue,
 } from '@/app/api/_interceptor/utils/cookieUtils';
-import { getIsAuthorizedFromCookie } from '@/shared/utils/cookieUtils';
+import getIsAuthorizedFromCookie from '@/utils/getIsAuthorizedFromCookie';
 
 export const metadata: Metadata = {
   title: 'TRUSTCREWS | 책임감 있는 사이드 프로젝트 팀, 팀원을 구하는 방법',

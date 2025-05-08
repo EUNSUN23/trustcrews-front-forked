@@ -2,7 +2,8 @@ import { z } from 'zod';
 import { request } from '@/lib/clientApi/request';
 import { useMutation } from '@tanstack/react-query';
 
-import { ApiResult, ResponseBody } from '@/shared/types/api';
+import { ResponseBody } from '@/types/responseBody';
+import { ApiResult } from '@/shared/types/apiResult';
 
 export const createProjectInputSchema = z.object({
   name: z.string().nonempty({ message: '프로젝트 이름을 입력해 주세요.' }),

@@ -5,7 +5,7 @@ import { Suspense } from 'react';
 import CrewProfileSkeleton from '@/features/project/auth/projectCrews/contents/crewInfo/CrewProfileSkeleton';
 import CrewTaskHistorySkeleton from '@/features/project/auth/projectCrews/contents/crewInfo/CrewTaskHistorySkeleton';
 import CrewProfile from '@/features/project/auth/projectCrews/contents/crewInfo/CrewProfile';
-import Button from '@/components/ui/form/Button';
+import Button from '@/shared/ui/Button';
 import { useSetRecoilState } from 'recoil';
 import { projectActiveNavState } from '@/features/project/auth/global/store/ProjectNavTabStateStore';
 import { PROJECT_MENU } from '@/features/project/auth/global/constants/projectMenu';

@@ -3,7 +3,7 @@ import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 import { TechStackItem } from '@/service/setting/setting';
 
-import { ResponseBody } from '@/shared/types/api';
+import { ResponseBody } from '@/types/responseBody';
 
 export type ProjectInfoSummary = {
   projectId: bigint;

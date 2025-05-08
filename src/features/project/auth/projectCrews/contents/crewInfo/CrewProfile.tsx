@@ -1,10 +1,10 @@
 'use client';
 
-import Avatar from '@/components/ui/Avatar';
-import PositionBadge from '@/components/ui/badge/PositionBadge';
+import Avatar from '@/shared/ui/Avatar';
+import PositionBadge from '@/components/badge/PositionBadge';
 import ProjectRoleBadge from '@/features/project/auth/shared/ui/ProjectRoleBadge';
-import TechStackImage from '@/components/ui/TechStackImage';
-import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
+import TechStackImage from '@/components/TechStackImage';
+import TrustGradeBadge from '@/components/badge/TrustGradeBadge';
 import { useCrewDetail } from '@/features/project/auth/projectCrews/service/getCrewDetail';
 import { crewIdState } from '@/features/project/auth/projectCrews/store/CrewIdStateStore';
 import { useRecoilValue } from 'recoil';

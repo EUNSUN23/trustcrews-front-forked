@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { RC_VOTE_NOTICE_LIST_QUERY_KEY } from '@/features/project/auth/projectNotice/service/getRCVoteNoticeList';
 import { RCVOTE_NOTICE_QUERY_KEY } from '@/features/project/auth/projectNotice/service/getRCVoteNotice';
 
-import { ApiResult } from '@/shared/types/api';
+import { ApiResult } from '@/shared/types/apiResult';
 
 export type RecruitVoteBaseParams = {
   voteId: bigint;

@@ -4,10 +4,10 @@ import { Fragment } from 'react';
 import { useRecoilValue } from 'recoil';
 import { Listbox, Transition } from '@headlessui/react';
 import { AiFillCaretDown } from '@react-icons/all-files/ai/AiFillCaretDown';
-import Avatar from '@/components/ui/Avatar';
+import Avatar from '@/shared/ui/Avatar';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
 import { useProjectCrewList } from '@/features/project/auth/projectCrews/service/getProjectCrewList';
-import { compareItems } from '@/shared/utils/compareItems';
+import { selectItemComparator } from '@/shared/utils/selectItemComparator';
 import { clsx } from 'clsx';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 
@@ -67,7 +67,7 @@ const ProjectCrewSelect = ({
       onChange={({ value }) => {
         setAssignedUserId(value);
       }}
-      by={compareItems}
+      by={selectItemComparator}
       disabled={disabled}
     >
       {({ open }) => (

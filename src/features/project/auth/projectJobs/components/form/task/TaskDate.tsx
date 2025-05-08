@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import DateRangePicker from '@/components/ui/datepicker/DateRangePicker';
+import DateRangePicker from '@/shared/ui/DateRangePicker';
 import { addDays, format, subDays } from 'date-fns';
 import { activeMilestoneStateStore } from '@/features/project/auth/projectJobs/store/ActiveMilestoneStateStore';
 import {

@@ -4,9 +4,9 @@ import { NOTICE_TYPES } from '@/features/project/auth/projectNotice/constants/no
 import { VoteStatusType } from '@/features/project/auth/projectVote/types';
 import { ProjectAuthMap } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 import { bigIntToString } from '@/shared/utils/stringUtils';
-import { ITEM_COUNT_PER_PAGE } from '@/shared/constants/pagination';
+import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 
-import { PageResponseBody } from '@/shared/types/api';
+import { PageResponseBody } from '@/types/responseBody';
 
 export type FWVoteNoticeData = {
   alertId: bigint;

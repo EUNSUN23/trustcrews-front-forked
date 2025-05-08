@@ -1,9 +1,9 @@
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { ITEM_COUNT_PER_PAGE } from '@/shared/constants/pagination';
+import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 import { ProjectInfoSummary } from '@/features/project/public/service/getProjectPublicInfo';
-import { PageResponseBody } from '@/shared/types/api';
-import { sortByStartDate } from '@/shared/utils/sortUtils';
+import { PageResponseBody } from '@/types/responseBody';
+import sortByStartDate from '@/utils/sortByStartDate';
 
 /**
  * 참여 프로젝트 목록 조회

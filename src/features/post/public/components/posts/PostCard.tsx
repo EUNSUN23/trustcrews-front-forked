@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import TrustGradeBadge from '@/components/ui/badge/TrustGradeBadge';
-import PositionBadge from '@/components/ui/badge/PositionBadge';
-import TechStackImage from '@/components/ui/TechStackImage';
-import Avatar from '@/components/ui/Avatar';
+import TrustGradeBadge from '@/components/badge/TrustGradeBadge';
+import PositionBadge from '@/components/badge/PositionBadge';
+import TechStackImage from '@/components/TechStackImage';
+import Avatar from '@/shared/ui/Avatar';
 import { format } from 'date-fns';
 import { FaPlusCircle } from '@react-icons/all-files/fa/FaPlusCircle';
 import { PostInfoSummary } from '@/features/post/public/service/getPostList';

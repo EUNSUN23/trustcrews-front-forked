@@ -1,4 +1,4 @@
-import TextArea from '@/components/ui/form/TextArea';
+import TextArea from '@/shared/ui/TextArea';
 import { useRecoilState } from 'recoil';
 import FormRowWide from '@/features/project/auth/shared/ui/form/FormRowWide';
 import { postFormFieldSelector } from '@/features/launch/auth/store/PostFormStateStore';

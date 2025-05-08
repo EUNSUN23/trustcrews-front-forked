@@ -8,7 +8,7 @@ export type StyledLinkProps = LinkProps & {
   className?: string;
 };
 
-function StyledLink({ children, ...props }: StyledLinkProps) {
+const StyledLink = ({ children, ...props }: StyledLinkProps) => {
   return (
     <Link
       {...props}
@@ -20,6 +20,6 @@ function StyledLink({ children, ...props }: StyledLinkProps) {
       {children}
     </Link>
   );
-}
+};
 
 export default StyledLink;

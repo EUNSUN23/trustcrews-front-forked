@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Button from '@/components/ui/form/Button';
-import ProjectHistoryItem from '@/components/ui/ProjectHistoryItem';
-import CommonPagination from '@/components/ui/CommonPagination';
+import Button from '@/shared/ui/Button';
+import ProjectHistoryItem from '@/components/ProjectHistoryItem';
+import CommonPagination from '@/components/CommonPagination';
 import { useApplicantProjectHistory } from '@/features/project/auth/projectApplicantInfo/service/getApplicantProjectHistory';
-import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/shared/constants/pagination';
+import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
 
 type RCTargetProjectHistoryProps = {
   applicantUserId: bigint;

@@ -1,4 +1,4 @@
-import Nav from '@/components/ui/Nav';
+import Nav from '@/shared/ui/Nav';
 import { ReactNode } from 'react';
 
 type LaunchLayoutLayoutProps = {

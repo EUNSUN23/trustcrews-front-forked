@@ -1,4 +1,4 @@
-import Select from '@/components/ui/selector/Select';
+import Select from '@/shared/ui/Select';
 import { HTMLAttributes } from 'react';
 
 interface SelectSkeletonProps extends HTMLAttributes<HTMLElement> {

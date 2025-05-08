@@ -4,7 +4,8 @@ import { v4 } from 'uuid';
 import { CreateTaskInput } from '@/features/project/auth/projectJobs/service/task/createTask';
 import { UpdateTaskInput } from '@/features/project/auth/projectJobs/service/task/updateTask';
 import { TASK_STATUS } from '@/features/project/auth/projectJobs/constants/task/taskStatus';
-import { ModalState } from '@/shared/types/ui';
+
+import { ModalState } from '@/shared/types/modalState';
 
 const {
   PS002: { code: TASK_PROCESSING },

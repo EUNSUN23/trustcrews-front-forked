@@ -1,9 +1,8 @@
 'use client';
 
-import ErrorPageContainer from '@/components/ui/error/ErrorPageContainer';
-import ErrorMessage from '@/components/ui/error/ErrorMessage';
-import Navigator from '@/components/ui/error/Navigator';
-import Button from '@/components/ui/form/Button';
+import ErrorPageContainer from '@/components/error/ErrorPageContainer';
+import ErrorMessage from '@/components/error/ErrorMessage';
+import Button from '@/shared/ui/Button';
 import { useRouter } from 'next/navigation';
 import { useResetRecoilState } from 'recoil';
 import { activeBoardTabStore } from '@/features/board/store/BoardActiveStateStore';
@@ -40,10 +39,10 @@ export default function Error({
   return (
     <ErrorPageContainer>
       <ErrorMessage>에러가 발생했습니다.</ErrorMessage>
-      <Navigator>
+      <div className='min-h-[80px] flex items-center space-x-2'>
         <Button onClick={() => reset()}>재시도</Button>
         <Button onClick={goHome}>홈으로</Button>
-      </Navigator>
+      </div>
     </ErrorPageContainer>
   );
 }

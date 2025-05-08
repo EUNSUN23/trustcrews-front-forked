@@ -1,11 +1,11 @@
 import { FaPlus } from '@react-icons/all-files/fa/FaPlus';
-import ButtonSkeleton from '@/components/ui/skeleton/ButtonSkeleton';
-import Skeleton from '@/components/ui/skeleton/Skeleton';
+import ButtonSkeleton from '@/components/skeleton/ButtonSkeleton';
+import Skeleton from '@/shared/ui/Skeleton';
 import { useMediaQuery } from 'react-responsive';
-import SquareSkeleton from '@/components/ui/skeleton/SquareSkeleton';
-import BadgeStyleSkeleton from '@/components/ui/skeleton/BadgeStyleSkeleton';
+import SquareSkeleton from '@/components/skeleton/SquareSkeleton';
+import BadgeStyleSkeleton from '@/components/skeleton/BadgeStyleSkeleton';
 import TasksSkeleton from '@/features/project/auth/projectJobs/contents/task/TasksSkeleton';
-import { ITEM_COUNT_PER_PAGE } from '@/shared/constants/pagination';
+import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 
 const JobSkeleton = () => {
   const mobile = useMediaQuery({ maxWidth: 700 });

@@ -4,7 +4,8 @@ import { z } from 'zod';
 import { request } from '@/lib/clientApi/request';
 import { PROJECT_PUBLIC_INFO_QUERY_KEY } from '@/features/project/public/service/getProjectPublicInfo';
 
-import { ApiResult, ResponseBody } from '@/shared/types/api';
+import { ResponseBody } from '@/types/responseBody';
+import { ApiResult } from '@/shared/types/apiResult';
 
 export type ProjectSettingInfoUpdReqData = {
   projectId: bigint;

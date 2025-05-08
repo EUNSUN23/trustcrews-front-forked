@@ -1,7 +1,7 @@
 'use client';
 
 import ProjectInfoItem from '@/features/project/auth/global/components/ProjectInfoItem';
-import TechStackImage from '@/components/ui/TechStackImage';
+import TechStackImage from '@/components/TechStackImage';
 import { useRecoilValue } from 'recoil';
 import { useProjectPublicInfo } from '@/features/project/public/service/getProjectPublicInfo';
 import { projectIdState } from '@/features/project/auth/global/store/ProjectIdStateStore';
