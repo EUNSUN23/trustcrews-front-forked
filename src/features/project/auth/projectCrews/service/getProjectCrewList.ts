@@ -1,4 +1,4 @@
-import { request } from '@/lib/clientApi/request';
+import { request } from '@/utils/clientApi/request';
 import { ProjectCrew } from '@/features/project/auth/projectCrews/types';
 import { useSuspenseQuery } from '@tanstack/react-query';
 

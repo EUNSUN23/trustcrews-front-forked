@@ -1,5 +1,5 @@
 import { HTTP_METHOD } from 'next/dist/server/web/http';
-import { handleResponse } from '@/lib/clientApi/handleResponse';
+import { handleResponse } from '@/utils/clientApi/handleResponse';
 import { JSONReplaceBigInt } from '@/shared/utils/jsonUtils';
 
 export const publicURL = process.env.NEXT_PUBLIC_URL;
