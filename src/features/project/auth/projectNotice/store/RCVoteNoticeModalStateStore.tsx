@@ -1,5 +1,6 @@
 import { atom } from 'recoil';
-import { ModalState } from '@/shared/types/ui';
+
+import { ModalState } from '@/shared/types/modalState';
 
 type RCVoteNoticeModalState = ModalState & {
   voteId: string;

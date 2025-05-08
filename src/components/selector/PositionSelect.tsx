@@ -1,4 +1,4 @@
-import Select from '@/components/ui/selector/Select';
+import Select from '@/shared/ui/Select';
 import { usePositionList } from '@/lib/static/getPositionList';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 

@@ -1,6 +1,6 @@
 import NoticeContentsLoader from '@/features/project/auth/projectNotice/components/NoticeContentsLoader';
 import { NOTICE_TABS } from '@/features/project/auth/projectNotice/constants/noticeTabs';
-import Skeleton from '@/components/ui/skeleton/Skeleton';
+import Skeleton from '@/shared/ui/Skeleton';
 
 export const NoticeSkeleton = () => {
   return (

@@ -1,7 +1,7 @@
 import { Suspense, useState } from 'react';
-import Avatar from '@/components/ui/Avatar';
-import PositionBadge from '@/components/ui/badge/PositionBadge';
-import Button from '@/components/ui/form/Button';
+import Avatar from '@/shared/ui/Avatar';
+import PositionBadge from '@/components/badge/PositionBadge';
+import Button from '@/shared/ui/Button';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import PMAuthSelector from '@/features/project/auth/projectManageAuth/components/PMAuthSelector';
 import { ProjectCrew } from '@/features/project/auth/projectCrews/types';
@@ -14,7 +14,7 @@ import {
   useUpdateCrewPMAuth,
 } from '@/features/project/auth/projectManageAuth/service/updateCrewPMAuth';
 import { ZodError } from 'zod';
-import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
+import SelectSkeleton from '@/components/skeleton/SelectSkeleton';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 type CrewAuthRowProps = {

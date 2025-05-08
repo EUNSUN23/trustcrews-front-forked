@@ -1,5 +1,5 @@
-import Avatar from '@/components/ui/Avatar';
-import PositionBadge from '@/components/ui/badge/PositionBadge';
+import Avatar from '@/shared/ui/Avatar';
+import PositionBadge from '@/components/badge/PositionBadge';
 import ProjectRoleBadge from '@/features/project/auth/shared/ui/ProjectRoleBadge';
 import VoteStatusBadge from '@/features/project/auth/projectNotice/components/VoteStatusBadge';
 import { useRecoilValue } from 'recoil';

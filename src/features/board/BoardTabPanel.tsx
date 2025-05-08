@@ -7,10 +7,10 @@ import {
 } from '@/features/board/store/BoardActiveStateStore';
 import Posts from '@/features/post/public/contents/posts/Posts';
 import { Suspense } from 'react';
-import CardListSkeleton from '@/components/ui/skeleton/CardListSkeleton';
+import CardListSkeleton from '@/components/skeleton/CardListSkeleton';
 import MyProjects from '@/features/project/auth/myProjects/contents/MyProjects';
 import MyProjectApplies from '@/features/projectApply/auth/contents/MyProjectApplies';
-import { ITEM_COUNT_PER_PAGE } from '@/shared/constants/pagination';
+import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 
 const {
   MANAGE_PROJECT: { name: MANAGE_PROJECT },

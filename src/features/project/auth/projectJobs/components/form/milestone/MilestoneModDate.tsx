@@ -1,4 +1,4 @@
-import DateRangePicker from '@/components/ui/datepicker/DateRangePicker';
+import DateRangePicker from '@/shared/ui/DateRangePicker';
 import { useRecoilState } from 'recoil';
 import { milestoneModFormFieldSelector } from '@/features/project/auth/projectJobs/store/MilestoneModalStateStore';
 

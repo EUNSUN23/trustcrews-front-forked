@@ -1,4 +1,4 @@
-import InputStyleSkeleton from '@/components/ui/skeleton/InputStyleSkeleton';
+import InputStyleSkeleton from '@/components/skeleton/InputStyleSkeleton';
 import ConfigContainer from '@/features/project/auth/global/layouts/projectConfig/ConfigContainer';
 import ConfigSummary from '@/features/project/auth/global/layouts/projectConfig/ConfigSummary';
 import ConfigContents from '@/features/project/auth/global/layouts/projectConfig/ConfigContents';

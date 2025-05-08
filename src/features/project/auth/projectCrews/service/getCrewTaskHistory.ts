@@ -1,11 +1,11 @@
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
-import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/shared/constants/pagination';
+import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
 import { TaskPointType } from '@/features/project/auth/global/types/TaskPointType';
 import { CrewStatusKey } from '@/features/project/auth/projectCrews/types';
 
-import { PageResponseBody } from '@/shared/types/api';
+import { PageResponseBody } from '@/types/responseBody';
 
 export interface CrewTaskHistory {
   workId: bigint;

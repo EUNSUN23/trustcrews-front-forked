@@ -1,7 +1,7 @@
 'use client';
 
 import { useRecoilValue, useResetRecoilState } from 'recoil';
-import Modal from '@/components/ui/Modal';
+import Modal from '@/shared/ui/Modal';
 import { createPortal } from 'react-dom';
 import MilestoneAddDate from '@/features/project/auth/projectJobs/components/form/milestone/MilestoneAddDate';
 import MilestoneAddContent from '@/features/project/auth/projectJobs/components/form/milestone/MilestoneAddContent';

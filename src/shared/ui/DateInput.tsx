@@ -4,7 +4,7 @@ import { AiTwotoneCalendar } from '@react-icons/all-files/ai/AiTwotoneCalendar';
 import { format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
 
-export interface CalenderProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface DateInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   required?: boolean;
   date?: string | null;
@@ -15,7 +15,7 @@ export interface CalenderProps extends InputHTMLAttributes<HTMLInputElement> {
   openToDate?: Date | undefined;
 }
 
-const CalendarInput = ({
+const DateInput = ({
   id,
   label,
   required = false,
@@ -26,7 +26,7 @@ const CalendarInput = ({
   includeDateIntervals,
   openToDate,
   ...props
-}: CalenderProps) => {
+}: DateInputProps) => {
   const datePickerRef = useRef<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -115,4 +115,4 @@ const CalendarInput = ({
   );
 };
 
-export default CalendarInput;
+export default DateInput;

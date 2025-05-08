@@ -1,13 +1,13 @@
 'use client';
 
-import Button from '@/components/ui/form/Button';
+import Button from '@/shared/ui/Button';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
 import { projectApplyPositionState } from '@/features/projectApply/auth/store/ApplyPositionStateStore';
 import ApplyPositionDropdown from '@/features/projectApply/public/components/ApplyPositionDropdown';
 import { useEffect } from 'react';
 import { useApplyProject } from '@/features/projectApply/public/service/applyProject';
-import { confirmModalStateStore } from '@/shared/store/ConfirmModalStateStore';
+import { confirmModalStateStore } from '@/store/ConfirmModalStateStore';
 import { PostPublicInfoData } from '@/features/post/public/service/getPostPublicInfo';
 
 const ApplyProject = ({ postInfo }: { postInfo: PostPublicInfoData }) => {

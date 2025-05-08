@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import CalendarInput from '@/components/ui/datepicker/CalendarInput';
+import DateInput from '@/shared/ui/DateInput';
 import { addDays, format } from 'date-fns';
 
 export type CustomDateRangePickerProps = {
@@ -48,7 +48,7 @@ const DateRangePicker = ({
 
   return (
     <div className='w-[350px] mobile:w-[220px] ml-auto flex space-x-1'>
-      <CalendarInput
+      <DateInput
         id={startDateId}
         placeholder='시작 날짜 선택'
         date={startDate}
@@ -58,7 +58,7 @@ const DateRangePicker = ({
         disabled={disabled}
       />
       <div className='text-gray-700 w-[20px] text-center self-center'>~</div>
-      <CalendarInput
+      <DateInput
         id={endDateId}
         placeholder='종료 날짜 선택'
         date={endDate}

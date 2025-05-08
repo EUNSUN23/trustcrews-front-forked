@@ -1,6 +1,6 @@
 'use client';
 
-import Button from '@/components/ui/form/Button';
+import Button from '@/shared/ui/Button';
 import { useRouter } from 'next/navigation';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { ProjectCrewProfileInfo } from '@/features/project/auth/projectCrews/types';

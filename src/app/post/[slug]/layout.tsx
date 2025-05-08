@@ -3,12 +3,12 @@ import {
   getPostPublicInfo,
   PostPublicInfoData,
 } from '@/features/post/public/service/getPostPublicInfo';
-import ConfirmModal from '@/components/ui/ConfirmModal';
+import ConfirmModal from '@/components/ConfirmModal';
 import { ReactNode } from 'react';
-import Nav from '@/components/ui/Nav';
+import Nav from '@/shared/ui/Nav';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
-import { ResponseBody } from '@/shared/types/api';
+import { ResponseBody } from '@/types/responseBody';
 
 export async function generateMetadata({
   params: { slug: postId },

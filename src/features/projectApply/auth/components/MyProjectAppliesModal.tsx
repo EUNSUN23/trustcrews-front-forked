@@ -4,11 +4,11 @@ import { Suspense } from 'react';
 import { useRecoilState } from 'recoil';
 import { myProjectAppliesModalStateStore } from '@/features/projectApply/auth/store/MyProjectAppliesModalStateStore';
 import { createPortal } from 'react-dom';
-import Modal from '@/components/ui/Modal';
+import Modal from '@/shared/ui/Modal';
 import MyProjectAppliesDetail from '../contents/MyProjectAppliesDetail';
-import Skeleton from '@/components/ui/skeleton/Skeleton';
+import Skeleton from '@/shared/ui/Skeleton';
 import useModalPortalElement from '@/shared/hooks/useModalPortalElement';
-import { ITEM_COUNT_PER_PAGE } from '@/shared/constants/pagination';
+import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 
 const MyProjectAppliesModal = () => {
   const [{ isOpen }, setIsOpen] = useRecoilState(

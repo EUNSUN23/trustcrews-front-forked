@@ -7,7 +7,7 @@ import {
 import { ProjectAuthMap } from '@/features/project/auth/projectManageAuth/types/projectAuth';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 
-import { ResponseBody } from '@/shared/types/api';
+import { ResponseBody } from '@/types/responseBody';
 
 export type FWVoteNoticeDetailData = VoteData & {
   reason: FWVoteReason;

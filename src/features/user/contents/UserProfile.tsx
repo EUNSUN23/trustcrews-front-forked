@@ -1,9 +1,9 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import Avatar from '@/components/ui/Avatar';
-import Button from '@/components/ui/form/Button';
-import TechStackBadge from '@/components/ui/badge/TechStackBadge';
+import Avatar from '@/shared/ui/Avatar';
+import Button from '@/shared/ui/Button';
+import TechStackBadge from '@/components/badge/TechStackBadge';
 import { useUserDetailInfo } from '@/features/user/service/getUserDetailInfo';
 
 const UserProfile = () => {

@@ -2,16 +2,16 @@
 
 import { Suspense, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Input from '@/components/ui/form/Input';
-import TextArea from '@/components/ui/form/TextArea';
+import Input from '@/shared/ui/Input';
+import TextArea from '@/shared/ui/TextArea';
 import FormButton from '@/features/project/auth/shared/ui/form/FormButton';
 import NicknameField from '@/components/ui/form/NickNameField';
-import TechStackSelect from '@/components/ui/selector/TechStackSelect';
-import PositionSelect from '@/components/ui/selector/PositionSelect';
+import TechStackSelect from '@/components/selector/TechStackSelect';
+import PositionSelect from '@/components/selector/PositionSelect';
 import { ZodError } from 'zod';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { signUpInputScheme, useSignUp } from '@/lib/auth/signUp';
-import SelectSkeleton from '@/components/ui/skeleton/SelectSkeleton';
+import SelectSkeleton from '@/components/skeleton/SelectSkeleton';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 // todo - NicknameField 제거

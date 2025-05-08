@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import CommonPagination from '@/components/ui/CommonPagination';
+import CommonPagination from '@/components/CommonPagination';
 import { useMyProjectHistory } from '@/features/project/auth/myProjectHistory/service/getMyProjectHistory';
-import ProjectHistoryItem from '@/components/ui/ProjectHistoryItem';
-import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/shared/constants/pagination';
+import ProjectHistoryItem from '@/components/ProjectHistoryItem';
+import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
 
 const MyProjectHistory = () => {
   const [pageNumber, setPageNumber] = useState(0);
