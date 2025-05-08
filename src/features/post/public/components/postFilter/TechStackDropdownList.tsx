@@ -4,14 +4,13 @@ import { useMediaQuery } from 'react-responsive';
 import { useRecoilState } from 'recoil';
 import TechStackImage from '@/components/TechStackImage';
 import { selectedTechStackState } from '@/features/post/public/store/PostSearchStateStore';
-import {
-  TechStackCategory,
-  TechStackWithCategory,
-} from '@/service/setting/setting';
+
+import { TechStackCategory } from '@/service/techStack/getTechStackCategories';
+import { TechStackMapping } from '@/service/techStack/getTechStackMappings';
 
 interface TechStackDropdownListProps {
   categories: TechStackCategory[];
-  items: TechStackWithCategory[];
+  items: TechStackMapping[];
 }
 
 const TechStackDropdownList = ({
@@ -57,7 +56,7 @@ const TechStackDropdownList = ({
     setSelectedCategory(category);
   };
 
-  const handleTechStackClick = (stack: TechStackWithCategory) => {
+  const handleTechStackClick = (stack: TechStackMapping) => {
     setSelectedTechStacks((prevSelected) => {
       if (prevSelected.includes(stack)) {
         return prevSelected.filter((prevStack) => prevStack !== stack);
@@ -67,7 +66,7 @@ const TechStackDropdownList = ({
     });
   };
 
-  const handleTechStackRemove = (stack: TechStackWithCategory) => {
+  const handleTechStackRemove = (stack: TechStackMapping) => {
     setSelectedTechStacks((prevSelected) =>
       prevSelected.filter((prevStack) => prevStack !== stack),
     );

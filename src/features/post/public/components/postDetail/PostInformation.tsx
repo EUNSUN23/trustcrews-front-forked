@@ -32,12 +32,12 @@ const PostInformation = ({ postInfo }: InfoProps) => {
         <ul className='flex w-[calc(100%-130px)] gap-1 items-center overflow-auto'>
           {boardPositions.length > 0 &&
             boardPositions.map((boardPosition) => {
-              const { positionId, name } = boardPosition.position;
+              const { positionId, positionName } = boardPosition.position;
               return (
                 <PositionBadge
                   key={positionId.toString()}
                   size='xs'
-                  text={name}
+                  text={positionName}
                 />
               );
             })}
