@@ -3,7 +3,7 @@ import { DEFAULT_POSITION_OPTION } from '@/constants/defaultSelectOptions';
 import { SelectItem } from '@/shared/types/selectItem';
 
 import { PositionId, PositionName } from '@/types/data/position';
-import { TechStackMapping } from '@/service/techStack/getTechStackMappings';
+import { TechStackMapping } from '@/service/techStack/public/getTechStackMappings';
 
 export const selectedTechStackState = atom<TechStackMapping[]>({
   key: 'selectedTechStackState',
