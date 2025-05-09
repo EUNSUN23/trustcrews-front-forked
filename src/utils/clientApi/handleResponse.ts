@@ -1,6 +1,6 @@
 import { ResponseBody } from '@/types/responseBody';
 
-export async function handleResponse(res: Response) {
+const handleResponse = async (res: Response) => {
   if (res.ok) return res.json();
 
   const data: ResponseBody<null> = await res.json();
@@ -16,4 +16,6 @@ export async function handleResponse(res: Response) {
   } else if (errorInstruction === 'MESSAGE') {
     return data;
   }
-}
+};
+
+export default handleResponse;

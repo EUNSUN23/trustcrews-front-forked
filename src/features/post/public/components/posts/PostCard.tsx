@@ -7,7 +7,7 @@ import { format } from 'date-fns';
 import { FaPlusCircle } from '@react-icons/all-files/fa/FaPlusCircle';
 import { PostInfoSummary } from '@/features/post/public/service/getPostList';
 
-function PostCard({ postInfo }: { postInfo: PostInfoSummary }) {
+const PostCard = ({ postInfo }: { postInfo: PostInfoSummary }) => {
   const {
     boardId,
     title,
@@ -169,6 +169,6 @@ function PostCard({ postInfo }: { postInfo: PostInfoSummary }) {
       </Link>
     </div>
   );
-}
+};
 
 export default PostCard;

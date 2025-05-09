@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { KeyboardEvent, useState } from 'react';
 import Image from 'next/image';
 import { useRecoilState } from 'recoil';
 import { postSearchValue } from '@/features/post/public/store/PostSearchStateStore';
@@ -9,7 +9,7 @@ const TitleFilter = () => {
   const [searchValue, setSearchValue] = useRecoilState(postSearchValue);
   const [value, setValue] = useState(searchValue);
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       setSearchValue(value);
     }
