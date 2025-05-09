@@ -19,8 +19,7 @@ const CheckNicknameButton = ({
   onSuccess,
   onError,
 }: CheckNicknameButtonProps) => {
-  const { setSuccessSnackbar, setErrorSnackbar, setInfoSnackbar } =
-    useSnackbar();
+  const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
 
   const { mutate: checkNickName } = useCheckNickname({
     onSuccess: (res) => {
