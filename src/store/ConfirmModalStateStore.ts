@@ -1,6 +1,5 @@
 import { JSX } from 'react';
 import { atom } from 'recoil';
-
 import { ModalState } from '@/shared/types/modalState';
 
 export interface ConfirmModalState extends ModalState {

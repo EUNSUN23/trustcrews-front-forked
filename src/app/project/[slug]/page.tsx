@@ -1,20 +1,20 @@
 'use client';
 
 import { Suspense, useEffect } from 'react';
-import ProjectInfo from '@/features/project/auth/global/contents/ProjectInfo';
 import { useRecoilState } from 'recoil';
 import {
   DEFAULT_PROJECT_ID,
   projectIdState,
-} from '@/features/project/auth/global/store/ProjectIdStateStore';
-import ProjectSkeleton from '@/features/project/auth/global/components/ProjectSkeleton';
+} from '@/features/project/private/store/myProject/ProjectIdStateStore';
 import dynamic from 'next/dynamic';
-import ProjectContentsSkeleton from '@/features/project/auth/global/contents/ProjectContentsSkeleton';
-import ProjectNavTab from '@/features/project/auth/global/components/ProjectNavTab';
-import ProjectInfoSkeleton from '@/features/project/auth/global/contents/ProjectInfoSkeleton';
+import ProjectContentsSkeleton from '@/features/project/private/contents/myProject/ProjectContentsSkeleton';
+import ProjectSkeleton from '@/features/project/private/components/myProject/ProjectSkeleton';
+import ProjectInfoSkeleton from '@/features/project/private/contents/myProject/ProjectInfoSkeleton';
+import ProjectNavTab from '@/features/project/private/components/myProject/ProjectNavTab';
+import ProjectInfo from '@/features/project/private/contents/myProject/ProjectInfo';
 
 const ProjectNavTabContents = dynamic(
-  () => import('@/features/project/auth/global/contents/ProjectContents'),
+  () => import('@/features/project/private/contents/myProject/ProjectContents'),
   { ssr: false, loading: () => <ProjectContentsSkeleton /> },
 );
 
