@@ -1,6 +1,6 @@
 import TechStackDropdownSkeleton from '@/features/post/public/contents/postFilter/TeckStackFilterSkeleton';
 import { PositionFilterSkeleton } from '@/features/post/public/contents/postFilter/PositionFilterSkeleton';
-import CardListSkeleton from '@/components/skeleton/CardListSkeleton';
+import CardListSkeleton from '@/shared/ui/skeleton/CardListSkeleton';
 import Skeleton from '@/shared/ui/Skeleton';
 
 const PostsSkeleton = () => {

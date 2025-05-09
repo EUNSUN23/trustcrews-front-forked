@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import TrustGradeBadge from '@/components/badge/TrustGradeBadge';
-import PositionBadge from '@/components/badge/PositionBadge';
-import TechStackImage from '@/components/TechStackImage';
+import TrustGradeBadge from '@/components/trustGrade/public/TrustGradeBadge';
+import PositionBadge from '@/components/position/public/PositionBadge';
+import TechStackImage from '@/components/techStack/public/TechStackImage';
 import Avatar from '@/shared/ui/Avatar';
 import { format } from 'date-fns';
 import { FaPlusCircle } from '@react-icons/all-files/fa/FaPlusCircle';
