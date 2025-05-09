@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import TrustGradeBadge from '@/components/trustGrade/public/TrustGradeBadge';
-import PositionBadge from '@/components/position/public/PositionBadge';
+import Badge from '@/shared/ui/Badge';
 import TechStackImage from '@/components/techStack/public/TechStackImage';
 import Avatar from '@/shared/ui/Avatar';
 import { format } from 'date-fns';
@@ -89,7 +89,7 @@ const PostCard = ({ postInfo }: { postInfo: PostInfoSummary }) => {
                     .slice(0, 3)
                     .map(({ position: { positionId, positionName } }) => (
                       <li key={positionId.toString()}>
-                        <PositionBadge
+                        <Badge
                           key={positionId.toString()}
                           size='xs'
                           text={positionName}
