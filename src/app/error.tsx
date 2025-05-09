@@ -4,8 +4,8 @@ import Button from '@/shared/ui/Button';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useResetRecoilState } from 'recoil';
-import ErrorPageContainer from '@/components/error/ErrorPageContainer';
-import ErrorMessage from '@/components/error/ErrorMessage';
+import ErrorPageContainer from '@/ui/error/ErrorPageContainer';
+import ErrorMessage from '@/ui/error/ErrorMessage';
 import { activeMainBoardTabStore } from '@/store/ActiveMainBoardTabStateStore';
 import {
   selectedPositionState,
