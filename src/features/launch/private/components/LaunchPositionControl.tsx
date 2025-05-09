@@ -1,6 +1,6 @@
 import MultiPositionSelect from '@/components/position/public/MultiPositionSelect';
 import { useRecoilState } from 'recoil';
-import FormRow from '@/components/FormRow';
+import FormRow from '@/ui/FormRow';
 import { PositionId } from '@/types/data/position';
 import { postFormFieldSelector } from '@/features/launch/private/store/PostFormStateStore';
 
