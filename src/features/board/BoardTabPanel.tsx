@@ -8,9 +8,9 @@ import {
 import Posts from '@/features/post/public/contents/posts/Posts';
 import { Suspense } from 'react';
 import CardListSkeleton from '@/components/skeleton/CardListSkeleton';
-import MyProjects from '@/features/project/auth/myProjects/contents/MyProjects';
-import MyProjectApplies from '@/features/projectApply/auth/contents/MyProjectApplies';
 import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
+import MyProjectApplies from '@/features/myProjectApplies/private/contents/MyProjectApplies';
+import MyProjects from '@/features/project/private/contents/myProjects/MyProjects';
 
 const {
   MANAGE_PROJECT: { name: MANAGE_PROJECT },

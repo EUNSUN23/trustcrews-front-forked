@@ -2,9 +2,7 @@ import { request } from '@/utils/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ResponseBody } from '@/types/responseBody';
 import { TrustGradeName } from '@/types/data/trustGrade';
-
 import { Position } from '@/types/data/position';
-
 import { TechStack } from '@/types/data/techStack';
 
 export interface UserProfileInfo {

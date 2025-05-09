@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useState } from 'react';
 import TechStackFilter from '@/features/post/public/contents/postFilter/TechStackFilter';
 import PositionFilter from '@/features/post/public/contents/postFilter/PositionFilter';
 import TitleFilter from '@/features/post/public/contents/postFilter/TitleFilter';
@@ -17,7 +17,6 @@ import { bigIntToString } from '@/shared/utils/stringUtils';
 import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
 
 const Posts = () => {
-  const [isPending] = useTransition();
   const selectedTechStacks = useRecoilValue(selectedTechStackState);
   const { value: selectedPosition } = useRecoilValue(selectedPositionState);
   const searchValue = useRecoilValue(postSearchValue);
