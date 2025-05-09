@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from '@/shared/ui/Button';
-import ProjectHistoryItem from '@/components/ProjectHistoryItem';
-import CommonPagination from '@/components/CommonPagination';
+import ProjectHistoryItem from '@/components/projectHistory/public/ProjectHistoryItem';
+import CommonPagination from '@/shared/ui/CommonPagination';
 import { useApplicantProjectHistory } from '@/features/projectHistory/private/projectApplicantHistory/service/getApplicantProjectHistory';
 import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
 

@@ -1,6 +1,6 @@
 'use client';
 
-import CommonPagination from '@/components/CommonPagination';
+import CommonPagination from '@/shared/ui/CommonPagination';
 import useTasks from '@/features/projectJobs/private/service/task/getTaskList';
 import TaskCard from '@/features/projectJobs/private/components/task/TaskCard';
 import { useRecoilValue } from 'recoil';

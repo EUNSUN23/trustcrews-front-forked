@@ -1,13 +1,13 @@
 import { Suspense, useState } from 'react';
 import Avatar from '@/shared/ui/Avatar';
-import PositionBadge from '@/components/badge/PositionBadge';
+import PositionBadge from '@/components/position/public/PositionBadge';
 import Button from '@/shared/ui/Button';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { ProjectCrew } from '@/features/projectCrews/private/types';
 import { useRecoilValue } from 'recoil';
 import { projectIdState } from '@/features/project/private/store/myProject/ProjectIdStateStore';
 import { ZodError } from 'zod';
-import SelectSkeleton from '@/components/skeleton/SelectSkeleton';
+import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
 import { projectManageAuthStateStore } from '@/features/projectConfig/private/store/ProjectManageAuthStateStore';
 import {

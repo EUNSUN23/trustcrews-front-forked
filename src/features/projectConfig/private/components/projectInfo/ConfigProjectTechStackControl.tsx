@@ -1,8 +1,8 @@
-import TechStackSelect from '@/components/selector/TechStackSelect';
+import TechStackSelect from '@/components/techStack/public/TechStackSelect';
 import { useRecoilState } from 'recoil';
 import FormRow from '@/components/FormRow';
 import { projectInfoFormSelector } from '@/features/projectConfig/private/store/ProjectInfoFormStateStore';
-import SelectSkeleton from '@/components/skeleton/SelectSkeleton';
+import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
 import { Suspense } from 'react';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 import { ProjectInfoSummary } from '@/service/project/public/getProjectPublicInfo';

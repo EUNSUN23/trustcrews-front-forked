@@ -5,7 +5,7 @@ import {
   TaskModalType,
 } from '@/features/projectJobs/private/store/TaskModalStateStore';
 import { Fragment, Suspense } from 'react';
-import SelectSkeleton from '@/components/skeleton/SelectSkeleton';
+import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
 import {
   Field,
   Label,

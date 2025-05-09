@@ -11,7 +11,7 @@ import {
   selectedTechStackState,
 } from '@/features/post/public/store/PostSearchStateStore';
 import { usePostList } from '@/features/post/public/service/getPostList';
-import CommonPagination from '@/components/CommonPagination';
+import CommonPagination from '@/shared/ui/CommonPagination';
 import PostCard from '@/features/post/public/components/posts/PostCard';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
