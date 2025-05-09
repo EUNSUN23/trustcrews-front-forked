@@ -1,12 +1,11 @@
-import { handleResponse } from '@/utils/clientApi/handleResponse';
-import { publicURL } from '@/utils/clientApi/request';
+import handleResponse from '@/utils/clientApi/handleResponse';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { SIMPLE_USER_INFO_QUERY_KEY } from '@/service/user/private/getSimpleUserInfo';
 import { z } from 'zod';
 import { USER_DETAIL_INFO_QUERY_KEY } from '@/features/user/private/service/getUserDetailInfo';
-
 import { ResponseBody } from '@/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
+import publicURL from '@/constants/api/publicURL';
 
 const nicknameRegex: RegExp = /^[a-zA-Z0-9]{6,10}$/;
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
@@ -54,7 +53,7 @@ export const updateUserDetail = async (
     'updateRequestDto',
     new Blob(
       [
-        JSON.stringify({ nickname, positionId, techStackIds, intro }, (k, v) =>
+        JSON.stringify({ nickname, positionId, techStackIds, intro }, (_, v) =>
           typeof v === 'bigint' ? Number(v) : v,
         ),
       ],

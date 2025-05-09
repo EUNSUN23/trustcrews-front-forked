@@ -1,5 +1,5 @@
 import { atom, DefaultValue, selectorFamily } from 'recoil';
-import { CreatePostInput } from '@/features/post/auth/service/createPost';
+import { CreatePostInput } from '@/service/post/private/createPost';
 
 export const postFormStateStore = atom<CreatePostInput>({
   key: 'postFormStateStore',

@@ -25,7 +25,7 @@ const Header = () => {
       <div className='flex items-center justify-between h-[80px] mobile:h-[65px] my-1'>
         <div id='top-navigation-wrap'>
           <Link
-            href='/public'
+            href='/'
             aria-label='trustcrews 홈페이지'
             className='inline-block relative pc:w-[200px] pc:h-[60px] tablet:w-[150px] tablet:h-[50px] mobile:w-[120px] mobile:h-[40px]'
           >
