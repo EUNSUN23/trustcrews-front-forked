@@ -1,11 +1,16 @@
 'use client';
 
-import { useEffect, useRef, useState, useTransition } from 'react';
+import {
+  MouseEvent as ReactMouseEvent,
+  useEffect,
+  useRef,
+  useState,
+  useTransition,
+} from 'react';
 import { useRecoilValue } from 'recoil';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
 import TechStackDropdownList from '../../components/postFilter/TechStackDropdownList';
 import { selectedTechStackState } from '@/features/post/public/store/PostSearchStateStore';
-
 import { useTechCategories } from '@/service/techStack/public/getTechStackCategories';
 import {
   TechStackMapping,
@@ -39,7 +44,7 @@ const TechStackFilter = () => {
     return () => document.removeEventListener('click', handleDocumentClick);
   }, []);
 
-  const handleClickTechStackButton = (e: React.MouseEvent<HTMLElement>) => {
+  const handleClickTechStackButton = (e: ReactMouseEvent<HTMLElement>) => {
     e.preventDefault();
     startTransition(() => setOpenDropdown((prev) => !prev));
   };

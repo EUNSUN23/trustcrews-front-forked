@@ -1,15 +1,15 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import {
-  CreateProjectInput,
-  CreateProjectRes,
-  useCreateProject,
-} from '@/features/project/auth/createProject/service/createProject';
+import { MY_PROJECTS_QUERY_KEY } from '@/features/project/private/service/myProjects/getMyProjects';
 import {
   CreatePostInput,
   CreatePostRes,
   useCreatePost,
-} from '@/features/post/auth/service/createPost';
-import { MY_PROJECTS_QUERY_KEY } from '@/features/project/auth/myProjects/service/getMyProjects';
+} from '@/service/post/private/createPost';
+import {
+  CreateProjectInput,
+  CreateProjectRes,
+  useCreateProject,
+} from '@/service/project/private/createProject';
 
 export const useLaunch = ({
   onSuccess,
