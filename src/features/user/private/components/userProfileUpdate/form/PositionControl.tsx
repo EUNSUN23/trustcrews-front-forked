@@ -1,4 +1,4 @@
-import PositionSelect from '@/components/selector/PositionSelect';
+import PositionSelect from '@/components/position/public/PositionSelect';
 import { userInfoFormFieldSelector } from '@/features/user/private/store/UserInfoFormStateStore';
 import { useRecoilState } from 'recoil';
 

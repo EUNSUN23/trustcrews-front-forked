@@ -1,4 +1,4 @@
-import TrustGradeBadge from '@/components/badge/TrustGradeBadge';
+import TrustGradeBadge from '@/components/trustGrade/public/TrustGradeBadge';
 import { useUserDetailInfo } from '@/features/user/private/service/getUserDetailInfo';
 
 const UserTrustScore = () => {
