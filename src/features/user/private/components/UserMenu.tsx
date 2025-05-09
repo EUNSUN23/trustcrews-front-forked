@@ -15,7 +15,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useLogout } from '@/service/auth/logout';
 import { useResetRecoilState } from 'recoil';
-import { activeBoardTabStore } from '@/features/board/store/BoardActiveStateStore';
+import { activeMainBoardTabStore } from '@/store/ActiveMainBoardTabStateStore';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useSimpleUserInfo } from '@/service/user/private/getSimpleUserInfo';
 import { clsx } from 'clsx';
@@ -24,7 +24,7 @@ const UserMenu = () => {
   const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
 
   const router = useRouter();
-  const resetActiveBoardTab = useResetRecoilState(activeBoardTabStore);
+  const resetActiveBoardTab = useResetRecoilState(activeMainBoardTabStore);
   const { setInfoSnackbar, setErrorSnackbar } = useSnackbar();
 
   const { mutate: logout } = useLogout({

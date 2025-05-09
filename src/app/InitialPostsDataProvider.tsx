@@ -16,7 +16,11 @@ export const DEFAULT_SEARCH_POST_PARAM: SearchPostParams = {
   page: 0,
 } as const;
 
-async function InitialPostsDataProvider({ children }: { children: ReactNode }) {
+const InitialPostsDataProvider = async ({
+  children,
+}: {
+  children: ReactNode;
+}) => {
   const queryClient = new QueryClient();
 
   const { techStacks, position, keyword, page } = DEFAULT_SEARCH_POST_PARAM;
@@ -30,6 +34,6 @@ async function InitialPostsDataProvider({ children }: { children: ReactNode }) {
   return (
     <HydrationBoundary state={dehydratedState}>{children}</HydrationBoundary>
   );
-}
+};
 
 export default InitialPostsDataProvider;
