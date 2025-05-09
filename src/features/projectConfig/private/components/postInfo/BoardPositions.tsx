@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil';
-import MultiPositionSelect from '@/components/selector/MultiPositionSelect';
+import MultiPositionSelect from '@/components/position/public/MultiPositionSelect';
 import { PositionId } from '@/types/data/position';
 import { postInfoFormFieldSelector } from '@/features/projectConfig/private/store/PostInfoFormStateStore';
 
