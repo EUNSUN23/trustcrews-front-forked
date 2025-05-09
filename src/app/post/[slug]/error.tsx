@@ -1,7 +1,7 @@
 'use client';
 
-import ErrorPageContainer from '@/components/error/ErrorPageContainer';
-import ErrorMessage from '@/components/error/ErrorMessage';
+import ErrorPageContainer from '@/ui/error/ErrorPageContainer';
+import ErrorMessage from '@/ui/error/ErrorMessage';
 import Button from '@/shared/ui/Button';
 import { useRouter } from 'next/navigation';
 import { useResetRecoilState } from 'recoil';
