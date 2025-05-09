@@ -8,8 +8,8 @@ import { projectIdState } from '@/features/project/private/store/myProject/Proje
 import { useProjectCrewList } from '@/features/projectCrews/private/service/getProjectCrewList';
 import { ProjectCrew } from '@/features/projectCrews/private/types';
 import Avatar from '@/shared/ui/Avatar';
-import PositionBadge from '@/components/position/public/PositionBadge';
-import ProjectCrewRoleBadge from '@/components/projectCrew/public/ProjectCrewRoleBadge';
+import Badge from '@/shared/ui/Badge';
+import ProjectCrewRoleBadge from '@/components/projectCrew/private/ProjectCrewRoleBadge';
 import { PROJECT_MENU } from '@/features/project/private/constants/myProject/projectMenu';
 
 const {
@@ -67,7 +67,7 @@ const Crews = () => {
                       </p>
                       <ul className='flex items-center space-x-3'>
                         <li>
-                          <PositionBadge text={positionName} />
+                          <Badge text={positionName} />
                         </li>
                         <li>
                           <ProjectCrewRoleBadge auth={projectMemberAuth.code}>
