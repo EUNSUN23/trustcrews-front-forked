@@ -4,7 +4,6 @@ import {
   getPostList,
   PostInfoSummary,
 } from '@/features/post/public/service/getPostList';
-
 import { PageResponseBody } from '@/types/responseBody';
 
 const DOMAIN = process.env.NEXT_PUBLIC_URL;

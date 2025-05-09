@@ -1,9 +1,15 @@
 import { Fragment } from 'react';
-import { Listbox, Transition } from '@headlessui/react';
+import {
+  Label,
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+  Transition,
+} from '@headlessui/react';
 import { AiFillCaretDown } from '@react-icons/all-files/ai/AiFillCaretDown';
 import { selectItemComparator } from '@/shared/utils/selectItemComparator';
 import { clsx } from 'clsx';
-
 import { SelectItem } from '@/shared/types/selectItem';
 
 export type SelectProps<T, V> = {
@@ -27,7 +33,7 @@ const Select = <T, V>({
     <Listbox value={value} onChange={setValue} by={selectItemComparator}>
       {({ open }) => (
         <div>
-          <Listbox.Label className='block text-gray-700 mobile:text-sm'>
+          <Label className='block text-gray-700 mobile:text-sm'>
             {label}
             {required ? (
               <span className='text-red-500 required-dot ml-1.5 align-middle'>
@@ -36,9 +42,9 @@ const Select = <T, V>({
             ) : (
               <></>
             )}
-          </Listbox.Label>
+          </Label>
           <div className='relative'>
-            <Listbox.Button className='w-full mobile:text-sm cursor-default rounded-lg border-1 flex-1 appearance-none border py-2 pl-4 pr-10 text-left bg-white border-gray-300 text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent'>
+            <ListboxButton className='w-full mobile:text-sm cursor-default rounded-lg border-1 flex-1 appearance-none border py-2 pl-4 pr-10 text-left bg-white border-gray-300 text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent'>
               <span
                 className={clsx('block truncate', value && 'text-greyUnselect')}
               >
@@ -50,7 +56,7 @@ const Select = <T, V>({
                   aria-hidden='true'
                 />
               </span>
-            </Listbox.Button>
+            </ListboxButton>
             <Transition
               show={open}
               as={Fragment}
@@ -58,9 +64,9 @@ const Select = <T, V>({
               leaveFrom='opacity-100'
               leaveTo='opacity-0'
             >
-              <Listbox.Options className='absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>
+              <ListboxOptions className='absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>
                 {items.map((item) => (
-                  <Listbox.Option
+                  <ListboxOption
                     key={item.value as string}
                     className={({ focus }) =>
                       clsx(
@@ -92,9 +98,9 @@ const Select = <T, V>({
                         ) : null}
                       </>
                     )}
-                  </Listbox.Option>
+                  </ListboxOption>
                 ))}
-              </Listbox.Options>
+              </ListboxOptions>
             </Transition>
           </div>
         </div>

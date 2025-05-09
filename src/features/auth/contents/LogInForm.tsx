@@ -10,8 +10,8 @@ import { ZodError } from 'zod';
 import { loginInputSchema, useLogin } from '@/service/auth/logIn';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { SIMPLE_USER_INFO_QUERY_KEY } from '@/service/user/private/getSimpleUserInfo';
-import { getMyProjectAppliesQueryKey } from '@/features/projectApply/auth/service/getMyProjectApplies';
-import { MY_PROJECTS_QUERY_KEY } from '@/features/project/auth/myProjects/service/getMyProjects';
+import { MY_PROJECTS_QUERY_KEY } from '@/features/project/private/service/myProjects/getMyProjects';
+import { MY_PROJECT_APPLIES_QUERY_KEY } from '@/features/myProjectApplies/private/service/getMyProjectApplies';
 
 function LoginForm() {
   const router = useRouter();
@@ -30,10 +30,10 @@ function LoginForm() {
           queryKey: [SIMPLE_USER_INFO_QUERY_KEY],
         });
         const invalidateMyProjectList = queryClient.invalidateQueries({
-          queryKey: MY_PROJECTS_QUERY_KEY,
+          queryKey: [MY_PROJECTS_QUERY_KEY],
         });
         const invalidateProjectNotice = queryClient.invalidateQueries({
-          queryKey: getMyProjectAppliesQueryKey,
+          queryKey: [MY_PROJECT_APPLIES_QUERY_KEY],
         });
         await Promise.all([
           invalidateMyProjectList,

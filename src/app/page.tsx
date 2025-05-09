@@ -1,7 +1,7 @@
 import UserGuide from '@/features/userGuide';
 import { Board } from '@/features/board';
 
-function HomePage() {
+const RootPage = () => {
   return (
     <>
       <aside>
@@ -12,6 +12,6 @@ function HomePage() {
       </main>
     </>
   );
-}
+};
 
-export default HomePage;
+export default RootPage;

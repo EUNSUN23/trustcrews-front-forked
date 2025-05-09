@@ -2,12 +2,11 @@ import { Metadata } from 'next';
 import {
   getPostPublicInfo,
   PostPublicInfoData,
-} from '@/features/post/public/service/getPostPublicInfo';
+} from '@/service/post/public/getPostPublicInfo';
 import ConfirmModal from '@/components/ConfirmModal';
 import { ReactNode } from 'react';
 import Nav from '@/shared/ui/Nav';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
-
 import { ResponseBody } from '@/types/responseBody';
 
 export async function generateMetadata({

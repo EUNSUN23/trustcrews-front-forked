@@ -1,10 +1,9 @@
 import { isEqual } from 'lodash';
 import { request } from '@/utils/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { ProjectInfoSummary } from '@/features/project/public/service/getProjectPublicInfo';
+import { ProjectInfoSummary } from '@/service/project/public/getProjectPublicInfo';
 import { PageResponseBody } from '@/types/responseBody';
 import { TrustGrade } from '@/types/data/trustGrade';
-
 import { Position } from '@/types/data/position';
 import { TechStackMapping } from '@/service/techStack/public/getTechStackMappings';
 
