@@ -1,4 +1,4 @@
-import PositionBadge from '@/components/position/public/PositionBadge';
+import Badge from '@/shared/ui/Badge';
 import { PostPublicInfoData } from '@/service/post/public/getPostPublicInfo';
 
 interface InfoProps {
@@ -34,7 +34,7 @@ const PostInformation = ({ postInfo }: InfoProps) => {
             boardPositions.map((boardPosition) => {
               const { positionId, positionName } = boardPosition.position;
               return (
-                <PositionBadge
+                <Badge
                   key={positionId.toString()}
                   size='xs'
                   text={positionName}
