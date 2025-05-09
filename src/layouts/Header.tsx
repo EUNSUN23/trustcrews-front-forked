@@ -4,18 +4,15 @@ import Image from 'next/image';
 import logo from '../../public/images/logo.png';
 import Link from 'next/link';
 import LoginNav from '@/components/LoginNav';
-import UserMenuSkeleton from '@/features/user/private/components/UserMenuSkeleton';
+import UserMenuSkeleton from '@/contents/user/private/UserMenuSkeleton';
 import { IoCreateOutline } from '@react-icons/all-files/io5/IoCreateOutline';
 import dynamic from 'next/dynamic';
 import { useAuthState } from '@/features/user/private/contexts/AuthStateContext';
 
-const UserMenu = dynamic(
-  () => import('@/features/user/private/components/UserMenu'),
-  {
-    ssr: false,
-    loading: () => <UserMenuSkeleton />,
-  },
-);
+const UserMenu = dynamic(() => import('@/contents/user/private/UserMenu'), {
+  ssr: false,
+  loading: () => <UserMenuSkeleton />,
+});
 
 const Header = () => {
   const { isAuthorized } = useAuthState();
