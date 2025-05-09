@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { useResetRecoilState } from 'recoil';
 import ErrorPageContainer from '@/components/error/ErrorPageContainer';
 import ErrorMessage from '@/components/error/ErrorMessage';
-import { activeBoardTabStore } from '@/features/board/store/BoardActiveStateStore';
+import { activeMainBoardTabStore } from '@/store/ActiveMainBoardTabStateStore';
 import {
   selectedPositionState,
   selectedTechStackState,
@@ -20,7 +20,7 @@ export default function Error({
   reset: () => void;
 }) {
   const router = useRouter();
-  const resetActiveBoardTab = useResetRecoilState(activeBoardTabStore);
+  const resetActiveBoardTab = useResetRecoilState(activeMainBoardTabStore);
   const resetSelectedTechStacks = useResetRecoilState(selectedTechStackState);
   const resetSelectedPosition = useResetRecoilState(selectedPositionState);
 
