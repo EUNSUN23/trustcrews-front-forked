@@ -1,7 +1,6 @@
 import { NextRequest } from 'next/server';
 import { routeResponse } from '@/app/api/_interceptor/routeResponse';
 import authApi from '@/app/api/_interceptor/authApi';
-
 import { JSONReplaceBigInt } from '@/shared/utils/jsonUtils';
 
 /**
