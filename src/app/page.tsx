@@ -1,5 +1,6 @@
 import UserGuide from '@/features/userGuide';
-import { Board } from '@/features/board';
+import MainBoard from '@/contents/MainBoard';
+import InitialPostsDataProvider from '@/app/InitialPostsDataProvider';
 
 const RootPage = () => {
   return (
@@ -8,7 +9,9 @@ const RootPage = () => {
         <UserGuide />
       </aside>
       <main className='mt-10 mobile:mt-2'>
-        <Board />
+        <InitialPostsDataProvider>
+          <MainBoard />
+        </InitialPostsDataProvider>
       </main>
     </>
   );
