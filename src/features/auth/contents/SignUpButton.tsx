@@ -1,4 +1,4 @@
-import FormButton from '@/components/FormButton';
+import FormButton from '@/ui/FormButton';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
 import { signUpInputScheme, useSignUp } from '@/service/auth/signUp';
 import { ZodError } from 'zod';

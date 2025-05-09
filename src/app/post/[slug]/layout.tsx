@@ -3,7 +3,7 @@ import {
   getPostPublicInfo,
   PostPublicInfoData,
 } from '@/service/post/public/getPostPublicInfo';
-import ConfirmModal from '@/components/ConfirmModal';
+import ConfirmModal from '@/ui/ConfirmModal';
 import { ReactNode } from 'react';
 import Nav from '@/shared/ui/Nav';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
