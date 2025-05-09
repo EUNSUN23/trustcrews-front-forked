@@ -1,4 +1,4 @@
-import MultiPositionSelect from '@/components/selector/MultiPositionSelect';
+import MultiPositionSelect from '@/components/position/public/MultiPositionSelect';
 import { useRecoilState } from 'recoil';
 import FormRow from '@/components/FormRow';
 import { PositionId } from '@/types/data/position';

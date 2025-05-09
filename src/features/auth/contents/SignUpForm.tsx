@@ -1,7 +1,7 @@
 'use client';
 
 import { Suspense } from 'react';
-import SelectSkeleton from '@/components/skeleton/SelectSkeleton';
+import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
 import SignUpEmailControl from '@/features/auth/components/SignUpEmailControl';
 import SignUpPasswordControl from '@/features/auth/components/SignUpPasswordControl';
 import SignUpNicknameControl from '@/features/auth/components/SignUpNicknameControl';
