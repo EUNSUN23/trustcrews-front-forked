@@ -1,6 +1,6 @@
 import DateInput from '@/shared/ui/DateInput';
 import { useRecoilState } from 'recoil';
-import FormRow from '@/components/FormRow';
+import FormRow from '@/ui/FormRow';
 import { projectFormFieldSelector } from '@/features/launch/private/store/ProjectFormStateStore';
 
 const LaunchProjectDateControl = () => {
