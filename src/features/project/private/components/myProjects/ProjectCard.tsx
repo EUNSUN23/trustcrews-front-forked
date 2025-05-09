@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import Link from 'next/link';
-import TechStackImage from '@/components/TechStackImage';
+import TechStackImage from '@/components/techStack/public/TechStackImage';
 import { FaPlusCircle } from '@react-icons/all-files/fa/FaPlusCircle';
 import { ProjectInfoSummary } from '@/service/project/public/getProjectPublicInfo';
 

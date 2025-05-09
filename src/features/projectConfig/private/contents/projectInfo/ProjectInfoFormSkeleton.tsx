@@ -1,4 +1,4 @@
-import InputStyleSkeleton from '@/components/skeleton/InputStyleSkeleton';
+import InputStyleSkeleton from '@/shared/ui/skeleton/InputStyleSkeleton';
 import ConfigContainer from '@/features/projectConfig/private/layouts/ConfigContainer';
 import ConfigSummary from '@/features/projectConfig/private/layouts/ConfigSummary';
 import ConfigContents from '@/features/projectConfig/private/layouts/ConfigContents';

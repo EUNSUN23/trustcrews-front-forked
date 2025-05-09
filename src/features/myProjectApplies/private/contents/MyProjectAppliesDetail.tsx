@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import Loader from '@/shared/ui/Loader';
 import useIntersectionObserver from '@/shared/hooks/useIntersectionObserver';
-import PositionBadge from '@/components/badge/PositionBadge';
+import PositionBadge from '@/components/position/public/PositionBadge';
 import { useMyProjectApplies } from '@/features/myProjectApplies/private/service/getMyProjectApplies';
 import { ProjectApplyStatusBadge } from '@/features/myProjectApplies/private/components/ProjectApplyStatusBadge';
 

@@ -1,6 +1,6 @@
 import Avatar from '@/shared/ui/Avatar';
-import PositionBadge from '@/components/badge/PositionBadge';
-import ProjectRoleBadge from '@/components/badge/ProjectRoleBadge';
+import PositionBadge from '@/components/position/public/PositionBadge';
+import ProjectCrewRoleBadge from '@/components/projectCrew/public/ProjectCrewRoleBadge';
 import VoteStatusBadge from '@/features/projectNotice/private/components/VoteStatusBadge';
 import { useRecoilValue } from 'recoil';
 import FWVoteNoticeDetailSkeleton from '@/features/projectNotice/private/contents/fwVoteNotice/FWVoteNoticeDetailSkeleton';
@@ -84,9 +84,9 @@ const FWVoteNoticeDetail = () => {
           {crewNickname}
         </h3>
         <div className='mx-auto flex justify-center space-x-2'>
-          <ProjectRoleBadge auth={crewAuthCode}>
+          <ProjectCrewRoleBadge auth={crewAuthCode}>
             {crewAuthName}
-          </ProjectRoleBadge>
+          </ProjectCrewRoleBadge>
           <PositionBadge text={crewPositionName} />
         </div>
       </section>
