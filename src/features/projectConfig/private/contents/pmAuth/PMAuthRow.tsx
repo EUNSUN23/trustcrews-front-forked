@@ -1,6 +1,6 @@
 import { Suspense, useState } from 'react';
 import Avatar from '@/shared/ui/Avatar';
-import PositionBadge from '@/components/position/public/PositionBadge';
+import Badge from '@/shared/ui/Badge';
 import Button from '@/shared/ui/Button';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { ProjectCrew } from '@/features/projectCrews/private/types';
@@ -77,7 +77,7 @@ const PMAuthRow = ({ crew }: CrewAuthRowProps) => {
             <div className='font-medium text-gray-900'>{user.nickname}</div>
           </div>
           <div className='ml-3 mobile:ml-2'>
-            <PositionBadge text={position.positionName} size='sm' />
+            <Badge text={position.positionName} size='sm' />
           </div>
         </div>
       </td>
