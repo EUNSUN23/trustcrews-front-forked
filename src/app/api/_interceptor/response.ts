@@ -9,7 +9,6 @@ import {
   GATEWAY_ERROR,
   GatewayErrorCode,
 } from '@/app/api/_interceptor/error/constants';
-
 import { ResponseBody } from '@/types/responseBody';
 
 export type CustomResponseHeaderInit = HeadersInit & {

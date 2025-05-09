@@ -4,7 +4,6 @@ import { useMediaQuery } from 'react-responsive';
 import { useRecoilState } from 'recoil';
 import TechStackImage from '@/components/TechStackImage';
 import { selectedTechStackState } from '@/features/post/public/store/PostSearchStateStore';
-
 import { TechStackCategory } from '@/service/techStack/public/getTechStackCategories';
 import { TechStackMapping } from '@/service/techStack/public/getTechStackMappings';
 
