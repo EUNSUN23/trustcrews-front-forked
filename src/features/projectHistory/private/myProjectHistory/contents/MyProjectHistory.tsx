@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import CommonPagination from '@/components/CommonPagination';
-import ProjectHistoryItem from '@/components/ProjectHistoryItem';
+import CommonPagination from '@/shared/ui/CommonPagination';
+import ProjectHistoryItem from '@/components/projectHistory/public/ProjectHistoryItem';
 import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
 import { useMyProjectHistory } from '@/features/projectHistory/private/myProjectHistory/service/getMyProjectHistory';
 

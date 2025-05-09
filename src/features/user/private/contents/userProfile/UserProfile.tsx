@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import Avatar from '@/shared/ui/Avatar';
 import Button from '@/shared/ui/Button';
-import TechStackBadge from '@/components/badge/TechStackBadge';
+import TechStackBadge from '@/components/techStack/public/TechStackBadge';
 import { useUserDetailInfo } from '@/features/user/private/service/getUserDetailInfo';
 
 const UserProfile = () => {

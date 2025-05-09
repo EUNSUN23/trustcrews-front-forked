@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import CommonPagination from '@/components/CommonPagination';
+import CommonPagination from '@/shared/ui/CommonPagination';
 import { useCrewTaskHistory } from '@/features/projectCrews/private/service/getCrewTaskHistory';
 import { clsx } from 'clsx';
 import { FaMinus } from '@react-icons/all-files/fa/FaMinus';
