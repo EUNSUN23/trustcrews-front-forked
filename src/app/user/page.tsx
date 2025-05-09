@@ -1,17 +1,17 @@
 'use client';
 
-import UserProfile from '@/features/user/private/contents/UserProfile';
-import MyProjectHistorySkeleton from '@/features/project/auth/myProjectHistory/contents/MyProjectHistorySkeleton';
+import UserProfile from '@/features/user/private/contents/userProfile/UserProfile';
 import dynamic from 'next/dynamic';
-import UserProfileSkeleton from '@/features/user/private/contents/UserProfileSkeleton';
+import UserProfileSkeleton from '@/features/user/private/contents/userProfile/UserProfileSkeleton';
 import { Suspense } from 'react';
-import UserTrustScore from '@/features/user/private/components/UserTrustScore';
-import UserTrustScoreSkeleton from '@/features/user/private/components/UserTrustScoreSkeleton';
+import UserTrustScoreSkeleton from '@/features/user/private/components/userProfile/UserTrustScoreSkeleton';
+import UserTrustScore from '@/features/user/private/components/userProfile/UserTrustScore';
+import MyProjectHistorySkeleton from '@/features/projectHistory/private/myProjectHistory/contents/MyProjectHistorySkeleton';
 
 const MyProjectHistory = dynamic(
   () =>
     import(
-      '@/features/project/auth/myProjectHistory/contents/MyProjectHistory'
+      '@/features/projectHistory/private/myProjectHistory/contents/MyProjectHistory'
     ),
   { ssr: false, loading: () => <MyProjectHistorySkeleton /> },
 );

@@ -1,11 +1,13 @@
 'use client';
 
 import Avatar from '@/shared/ui/Avatar';
+import { PostPublicInfoData } from '@/service/post/public/getPostPublicInfo';
 
-import { PostPublicInfoData } from '@/features/post/public/service/getPostPublicInfo';
+type PostTitleProps = { postInfo: PostPublicInfoData };
 
-function PostTitle({ postInfo }: { postInfo: PostPublicInfoData }) {
+const PostTitle = ({ postInfo }: PostTitleProps) => {
   const { title, createDate, user } = postInfo;
+
   return (
     <section className='h-[130px] mobile:h-[100px] flex flex-col justify-center mt-5 mb-5 mobile:mt-0 space-y-6 mobile:space-y-3 border-b-2'>
       <h1 className='text-black100 font-bold text-4xl mobile:text-2xl break-words'>
@@ -27,6 +29,6 @@ function PostTitle({ postInfo }: { postInfo: PostPublicInfoData }) {
       </article>
     </section>
   );
-}
+};
 
 export default PostTitle;
