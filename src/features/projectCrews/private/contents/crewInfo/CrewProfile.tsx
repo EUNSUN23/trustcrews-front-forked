@@ -1,8 +1,7 @@
 'use client';
 
 import Avatar from '@/shared/ui/Avatar';
-import PositionBadge from '@/components/position/public/PositionBadge';
-import ProjectCrewRoleBadge from '@/components/projectCrew/public/ProjectCrewRoleBadge';
+import Badge from '@/shared/ui/Badge';
 import TechStackImage from '@/components/techStack/public/TechStackImage';
 import TrustGradeBadge from '@/components/trustGrade/public/TrustGradeBadge';
 import { useCrewDetail } from '@/features/projectCrews/private/service/getCrewDetail';
@@ -13,6 +12,7 @@ import CrewFwButton from '@/features/projectCrews/private/contents/crewManage/Cr
 import { useAuthState } from '@/features/user/private/contexts/AuthStateContext';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 import { TechStack } from '@/types/data/techStack';
+import ProjectCrewRoleBadge from '@/components/projectCrew/private/ProjectCrewRoleBadge';
 
 const CrewProfile = () => {
   const { userId: currentUserId } = useAuthState();
@@ -72,7 +72,7 @@ const CrewProfile = () => {
             프로젝트 포지션
           </span>
           <div className='min-w-[100px] flex justify-center grow-0 mx-auto'>
-            <PositionBadge text={position.positionName} size='md' />
+            <Badge text={position.positionName} size='md' />
           </div>
         </div>
         <div className='pc:h-[50px] tablet:mx-8 flex items-center justify-around mobile:space-x-4'>
