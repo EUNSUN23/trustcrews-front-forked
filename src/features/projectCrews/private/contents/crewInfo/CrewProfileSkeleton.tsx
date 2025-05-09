@@ -1,6 +1,6 @@
-import AvatarSkeleton from '@/components/skeleton/AvatarSkeleton';
-import BadgeStyleSkeleton from '@/components/skeleton/BadgeStyleSkeleton';
-import ButtonSkeleton from '@/components/skeleton/ButtonSkeleton';
+import AvatarSkeleton from '@/shared/ui/skeleton/AvatarSkeleton';
+import BadgeStyleSkeleton from '@/shared/ui/skeleton/BadgeStyleSkeleton';
+import ButtonSkeleton from '@/shared/ui/skeleton/ButtonSkeleton';
 import Skeleton from '@/shared/ui/Skeleton';
 
 const CrewProfileSkeleton = () => {
