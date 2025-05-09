@@ -1,6 +1,6 @@
 import StyledLink from '@/shared/ui/StyledLink';
-import ErrorPageContainer from '@/components/error/ErrorPageContainer';
-import ErrorMessage from '@/components/error/ErrorMessage';
+import ErrorPageContainer from '@/ui/error/ErrorPageContainer';
+import ErrorMessage from '@/ui/error/ErrorMessage';
 import { HttpStatus } from '@/app/api/_interceptor/utils/httpStatus';
 
 const Page = ({

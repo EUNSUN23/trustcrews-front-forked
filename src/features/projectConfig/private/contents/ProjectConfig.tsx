@@ -1,5 +1,5 @@
-import ErrorPageContainer from '@/components/error/ErrorPageContainer';
-import ErrorMessage from '@/components/error/ErrorMessage';
+import ErrorPageContainer from '@/ui/error/ErrorPageContainer';
+import ErrorMessage from '@/ui/error/ErrorMessage';
 import { Suspense } from 'react';
 import PostInfoForm from '@/features/projectConfig/private/contents/postInfo/PostInfoForm';
 import PostInfoFormSkeleton from '@/features/projectConfig/private/contents/postInfo/PostInfoFormSkeleton';
