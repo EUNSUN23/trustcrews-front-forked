@@ -1,7 +1,7 @@
 import LoginForm from '@/features/auth/contents/LogInForm';
 import Link from 'next/link';
 
-function LoginPage() {
+const LoginPage = () => {
   return (
     <div className='flex flex-col items-center justify-center min-h-[calc(100vh-100px)]'>
       <h1 className='text-3xl mobile:text-2xl font-semibold w-full text-center mb-10'>
@@ -16,6 +16,6 @@ function LoginPage() {
       </div>
     </div>
   );
-}
+};
 
 export default LoginPage;
