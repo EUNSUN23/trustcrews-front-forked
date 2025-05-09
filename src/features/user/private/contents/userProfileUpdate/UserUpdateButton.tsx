@@ -1,4 +1,4 @@
-import FormButton from '@/components/FormButton';
+import FormButton from '@/ui/FormButton';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import {
   userInfoInputSchema,

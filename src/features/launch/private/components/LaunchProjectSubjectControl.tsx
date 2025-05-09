@@ -1,6 +1,6 @@
 import Input from '@/shared/ui/Input';
 import { useRecoilState } from 'recoil';
-import FormRow from '@/components/FormRow';
+import FormRow from '@/ui/FormRow';
 import { projectFormFieldSelector } from '@/features/launch/private/store/ProjectFormStateStore';
 import { ChangeEvent } from 'react';
 
