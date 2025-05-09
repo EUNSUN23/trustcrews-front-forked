@@ -7,7 +7,7 @@ import { PROJECT_AUTH_CODE } from '@/constants/data/projectAuthCode';
 
 const { MANAGER: MANAGER_AUTH, CREW: CREW_AUTH } = PROJECT_AUTH_CODE;
 
-const ProjectRoleBadgeVariants = cva(
+const ProjectCrewRoleBadgeVariants = cva(
   'inline-flex items-center rounded-full font-medium',
   {
     variants: {
@@ -23,21 +23,28 @@ const ProjectRoleBadgeVariants = cva(
   },
 );
 
-interface ProjectRoleBadgeProps
+interface ProjectCrewRoleBadgeProps
   extends HTMLAttributes<HTMLSpanElement>,
-    VariantProps<typeof ProjectRoleBadgeVariants> {
+    VariantProps<typeof ProjectCrewRoleBadgeVariants> {
   auth: ProjectAuthCode;
 }
 
-const ProjectRoleBadge = ({ size, auth, ...props }: ProjectRoleBadgeProps) => {
+const ProjectCrewRoleBadge = ({
+  size,
+  auth,
+  ...props
+}: ProjectCrewRoleBadgeProps) => {
   return (
     <span
       {...props}
-      className={cn(ProjectRoleBadgeVariants({ size, auth }), props.className)}
+      className={cn(
+        ProjectCrewRoleBadgeVariants({ size, auth }),
+        props.className,
+      )}
     >
       {props.children}
     </span>
   );
 };
 
-export default ProjectRoleBadge;
+export default ProjectCrewRoleBadge;

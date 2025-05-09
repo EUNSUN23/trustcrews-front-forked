@@ -1,4 +1,4 @@
-import PositionSelect from '@/components/selector/PositionSelect';
+import PositionSelect from '@/components/position/public/PositionSelect';
 import { useRecoilState } from 'recoil';
 import { signUpFormFieldSelector } from '@/features/auth/store/SignUpFormStateStore';
 

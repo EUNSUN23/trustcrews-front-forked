@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import ProjectCard from '../../components/myProjects/ProjectCard';
-import CommonPagination from '@/components/CommonPagination';
+import CommonPagination from '@/shared/ui/CommonPagination';
 import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
 import { useMyProjects } from '@/features/project/private/service/myProjects/getMyProjects';
 

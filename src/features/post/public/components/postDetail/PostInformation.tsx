@@ -1,4 +1,4 @@
-import PositionBadge from '@/components/badge/PositionBadge';
+import PositionBadge from '@/components/position/public/PositionBadge';
 import { PostPublicInfoData } from '@/service/post/public/getPostPublicInfo';
 
 interface InfoProps {

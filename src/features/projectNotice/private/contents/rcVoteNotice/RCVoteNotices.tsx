@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import CommonPagination from '@/components/CommonPagination';
+import CommonPagination from '@/shared/ui/CommonPagination';
 import NoContentsMessage from '@/features/projectNotice/private/components/NoContentsMessage';
 import { useRCVoteNoticeList } from '@/features/projectNotice/private/service/getRCVoteNoticeList';
 import { useRecoilValue } from 'recoil';

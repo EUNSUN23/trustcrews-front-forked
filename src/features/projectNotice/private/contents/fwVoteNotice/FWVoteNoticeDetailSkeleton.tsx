@@ -1,6 +1,6 @@
-import AvatarSkeleton from '@/components/skeleton/AvatarSkeleton';
+import AvatarSkeleton from '@/shared/ui/skeleton/AvatarSkeleton';
 import Skeleton from '@/shared/ui/Skeleton';
-import BadgeStyleSkeleton from '@/components/skeleton/BadgeStyleSkeleton';
+import BadgeStyleSkeleton from '@/shared/ui/skeleton/BadgeStyleSkeleton';
 
 const FWVoteNoticeDetailSkeleton = () => {
   return (

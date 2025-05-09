@@ -1,10 +1,10 @@
 'use client';
 
 import Avatar from '@/shared/ui/Avatar';
-import PositionBadge from '@/components/badge/PositionBadge';
-import ProjectRoleBadge from '@/components/badge/ProjectRoleBadge';
-import TechStackImage from '@/components/TechStackImage';
-import TrustGradeBadge from '@/components/badge/TrustGradeBadge';
+import PositionBadge from '@/components/position/public/PositionBadge';
+import ProjectCrewRoleBadge from '@/components/projectCrew/public/ProjectCrewRoleBadge';
+import TechStackImage from '@/components/techStack/public/TechStackImage';
+import TrustGradeBadge from '@/components/trustGrade/public/TrustGradeBadge';
 import { useCrewDetail } from '@/features/projectCrews/private/service/getCrewDetail';
 import { crewIdState } from '@/features/projectCrews/private/store/CrewIdStateStore';
 import { useRecoilValue } from 'recoil';
@@ -62,9 +62,9 @@ const CrewProfile = () => {
             프로젝트 권한
           </span>
           <div className='min-w-[100px] flex justify-center grow-0 mx-auto'>
-            <ProjectRoleBadge auth={projectMemberAuth.code} size='md'>
+            <ProjectCrewRoleBadge auth={projectMemberAuth.code} size='md'>
               {projectMemberAuth.name}
-            </ProjectRoleBadge>
+            </ProjectCrewRoleBadge>
           </div>
         </div>
         <div className='pc:h-[50px] tablet:mx-8 flex items-center justify-around mobile:space-x-4'>
