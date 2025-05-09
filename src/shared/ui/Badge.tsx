@@ -5,7 +5,7 @@ import { cva, VariantProps } from 'class-variance-authority';
 import cn from '@/shared/styles/cn';
 import baseBadgeVariants from '@/shared/styles/baseBadgeVariants';
 
-const PositionBadgeVariants = cva(
+const BadgeVariants = cva(
   'inline-flex min-w-fit items-center rounded-full bg-[#F2F4F8] text-[#4A5E75] font-medium',
   {
     variants: {
@@ -17,21 +17,18 @@ const PositionBadgeVariants = cva(
   },
 );
 
-interface PositionBadgeProps
+interface BadgeProps
   extends HTMLAttributes<HTMLSpanElement>,
-    VariantProps<typeof PositionBadgeVariants> {
+    VariantProps<typeof BadgeVariants> {
   text: string;
 }
 
-const PositionBadge = ({ size, text = '', ...props }: PositionBadgeProps) => {
+const Badge = ({ size, text = '', ...props }: BadgeProps) => {
   return (
-    <span
-      {...props}
-      className={cn(PositionBadgeVariants({ size }), props.className)}
-    >
+    <span {...props} className={cn(BadgeVariants({ size }), props.className)}>
       {text}
     </span>
   );
 };
 
-export default PositionBadge;
+export default Badge;

@@ -1,6 +1,6 @@
 import Avatar from '@/shared/ui/Avatar';
-import PositionBadge from '@/components/position/public/PositionBadge';
-import ProjectCrewRoleBadge from '@/components/projectCrew/public/ProjectCrewRoleBadge';
+import Badge from '@/shared/ui/Badge';
+import ProjectCrewRoleBadge from '@/components/projectCrew/private/ProjectCrewRoleBadge';
 import VoteStatusBadge from '@/features/projectNotice/private/components/VoteStatusBadge';
 import { useRecoilValue } from 'recoil';
 import FWVoteNoticeDetailSkeleton from '@/features/projectNotice/private/contents/fwVoteNotice/FWVoteNoticeDetailSkeleton';
@@ -87,7 +87,7 @@ const FWVoteNoticeDetail = () => {
           <ProjectCrewRoleBadge auth={crewAuthCode}>
             {crewAuthName}
           </ProjectCrewRoleBadge>
-          <PositionBadge text={crewPositionName} />
+          <Badge text={crewPositionName} />
         </div>
       </section>
       <section className='tablet:max-w-[400px] h-[100px] mx-auto mt-8 flex flex-col justify-center space-y-3 bg-ground200 rounded-md'>

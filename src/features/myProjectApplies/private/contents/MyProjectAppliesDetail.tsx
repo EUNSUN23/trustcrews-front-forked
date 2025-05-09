@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import Loader from '@/shared/ui/Loader';
 import useIntersectionObserver from '@/shared/hooks/useIntersectionObserver';
-import PositionBadge from '@/components/position/public/PositionBadge';
+import Badge from '@/shared/ui/Badge';
 import { useMyProjectApplies } from '@/features/myProjectApplies/private/service/getMyProjectApplies';
 import { ProjectApplyStatusBadge } from '@/features/myProjectApplies/private/components/ProjectApplyStatusBadge';
 
@@ -53,7 +53,7 @@ const MyProjectAppliesDetail = () => {
                       <p className='mobile:text-sm tablet:text-xl font-semibold leading-6 text-gray-900'>
                         {project_name}
                       </p>
-                      <PositionBadge text={position_name} size='sm' />
+                      <Badge text={position_name} size='sm' />
                     </div>
                   </div>
                   <div className='flex flex-none items-center'>
