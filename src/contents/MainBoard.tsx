@@ -1,10 +1,10 @@
 'use client';
 
 import { useAuthState } from '@/features/user/private/contexts/AuthStateContext';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useResetRecoilState } from 'recoil';
 import { activeMainBoardTabStore } from '@/store/ActiveMainBoardTabStateStore';
 import MyProjectApplies from '@/features/myProjectApplies/private/contents/MyProjectApplies';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import CardListSkeleton from '@/shared/ui/skeleton/CardListSkeleton';
 import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 import MyProjects from '@/features/project/private/contents/myProjects/MyProjects';
@@ -17,6 +17,12 @@ const {
 } = MAIN_BOARD_TABS;
 
 const MainBoard = () => {
+  const resetActiveBoardTab = useResetRecoilState(activeMainBoardTabStore);
+
+  useEffect(() => {
+    resetActiveBoardTab();
+  }, [resetActiveBoardTab]);
+
   const { isAuthorized } = useAuthState();
   const [activeMainBoardTab, setActiveMainBoardTab] = useRecoilState(
     activeMainBoardTabStore,
