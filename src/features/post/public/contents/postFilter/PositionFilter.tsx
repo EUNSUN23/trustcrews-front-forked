@@ -1,7 +1,7 @@
-import { Fragment, useTransition } from 'react';
+import { Fragment, useEffect, useTransition } from 'react';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
 import useDropdownState from '@/shared/hooks/useDropdownState';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useResetRecoilState } from 'recoil';
 import {
   Listbox,
   ListboxButton,
@@ -18,9 +18,15 @@ import { usePositionList } from '@/service/position/public/getPositionList';
 
 const PositionFilter = () => {
   const [_, startTransition] = useTransition();
+  const resetSelectedPosition = useResetRecoilState(selectedPositionState);
   const [selectedPosition, setSelectedPosition] = useRecoilState(
     selectedPositionState,
   );
+
+  useEffect(() => {
+    resetSelectedPosition();
+  }, [resetSelectedPosition]);
+
   const { dropdownRef, openDropdown, setOpenDropdown } = useDropdownState();
 
   const { data: positions } = usePositionList();
