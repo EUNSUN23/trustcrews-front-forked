@@ -1,7 +1,7 @@
 import { HTTP_METHOD } from 'next/dist/server/web/http';
 import handleResponse from '@/utils/clientApi/handleResponse';
 import { JSONReplaceBigInt } from '@/shared/utils/jsonUtils';
-import publicURL from '@/constants/api/publicURL';
+import publicURL from '@/constants/clientApi/publicURL';
 
 const headers: HeadersInit = {
   'Content-Type': 'application/json',

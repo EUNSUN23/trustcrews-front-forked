@@ -4,7 +4,7 @@ import useSnackbar from '@/shared/hooks/useSnackbar';
 import { projectIdState } from '@/features/project/private/store/myProject/ProjectIdStateStore';
 import { ZodError } from 'zod';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
-import { PostPublicInfoData } from '@/service/post/public/getPostPublicInfo';
+import { PostDetailData } from '@/service/post/public/getPostDetail';
 import { postInfoFormStateStore } from '@/features/projectConfig/private/store/PostInfoFormStateStore';
 import {
   updatePostInfoInputSchema,
@@ -13,7 +13,7 @@ import {
 import { projectManageAuthStateStore } from '@/features/projectConfig/private/store/ProjectManageAuthStateStore';
 
 type PostInfoSaveButtonProps = {
-  initData: PostPublicInfoData;
+  initData: PostDetailData;
 };
 
 const PostInfoSaveButton = ({ initData }: PostInfoSaveButtonProps) => {
