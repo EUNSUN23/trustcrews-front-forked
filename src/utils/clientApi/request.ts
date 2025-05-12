@@ -16,6 +16,7 @@ export const request = async (
     headers,
     method,
   };
+
   if (method !== 'GET' && data) requestInit.body = JSONReplaceBigInt(data);
 
   const res = await fetch(`${publicURL}${url}`, requestInit);
