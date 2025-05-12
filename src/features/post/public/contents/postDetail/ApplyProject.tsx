@@ -7,10 +7,10 @@ import ApplyPositionDropdown from '@/features/post/public/components/postDetail/
 import { useEffect } from 'react';
 import { useApplyProject } from '@/service/applyProject/public/applyProject';
 import { confirmModalStateStore } from '@/store/ConfirmModalStateStore';
-import { PostPublicInfoData } from '@/service/post/public/getPostPublicInfo';
+import { PostDetailData } from '@/service/post/public/getPostDetail';
 import { projectApplyPositionState } from '@/features/post/public/store/ApplyPositionStateStore';
 
-const ApplyProject = ({ postInfo }: { postInfo: PostPublicInfoData }) => {
+const ApplyProject = ({ postInfo }: { postInfo: PostDetailData }) => {
   const resetModalState = useResetRecoilState(confirmModalStateStore);
   const { setSuccessSnackbar, setErrorSnackbar, setInfoSnackbar } =
     useSnackbar();

@@ -1,10 +1,10 @@
 import { useRecoilState } from 'recoil';
 import Input from '@/shared/ui/Input';
 import { postInfoFormFieldSelector } from '@/features/projectConfig/private/store/PostInfoFormStateStore';
-import { PostPublicInfoData } from '@/service/post/public/getPostPublicInfo';
+import { PostDetailData } from '@/service/post/public/getPostDetail';
 
 type TitleProps = {
-  initData: PostPublicInfoData['title'];
+  initData: PostDetailData['title'];
 };
 
 const Title = ({ initData }: TitleProps) => {

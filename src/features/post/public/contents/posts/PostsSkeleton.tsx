@@ -1,4 +1,4 @@
-import TechStackDropdownSkeleton from '@/features/post/public/contents/postFilter/TeckStackFilterSkeleton';
+import TechStackFilterSkeleton from '@/features/post/public/contents/postFilter/TeckStackFilterSkeleton';
 import { PositionFilterSkeleton } from '@/features/post/public/contents/postFilter/PositionFilterSkeleton';
 import CardListSkeleton from '@/shared/ui/skeleton/CardListSkeleton';
 import Skeleton from '@/shared/ui/Skeleton';
@@ -12,7 +12,7 @@ const PostsSkeleton = () => {
         className='mt-6 flex justify-between mobile:block mobile:space-y-5'
       >
         <div className='flex space-x-5'>
-          <TechStackDropdownSkeleton />
+          <TechStackFilterSkeleton />
           <PositionFilterSkeleton />
         </div>
         <Skeleton className='w-[150px] h-[40px]' />
