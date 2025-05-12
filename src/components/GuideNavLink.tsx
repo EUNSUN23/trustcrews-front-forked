@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
 
-function UserGuideNavLink({
+function GuideNavLink({
   children,
   href,
 }: {
@@ -23,4 +23,4 @@ function UserGuideNavLink({
   );
 }
 
-export default UserGuideNavLink;
+export default GuideNavLink;
