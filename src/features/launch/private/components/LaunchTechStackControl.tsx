@@ -3,7 +3,8 @@ import { useRecoilState } from 'recoil';
 import FormRow from '@/ui/FormRow';
 import { projectFormFieldSelector } from '@/features/launch/private/store/ProjectFormStateStore';
 import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
-import { Suspense } from 'react';
+import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import { Field, Label } from '@headlessui/react';
 
 const LaunchTechStackControl = () => {
   const [technologyIds, setTechIds] = useRecoilState(
@@ -16,20 +17,19 @@ const LaunchTechStackControl = () => {
 
   return (
     <FormRow>
-      <Suspense
-        fallback={
-          <SelectSkeleton
-            label='사용 스택'
-            placeholder='사용 스택을 선택해주세요.'
+      <Field>
+        <Label className='block text-gray-700 mobile:text-sm'>기술 스택</Label>
+        <FieldQueryBoundary
+          suspenseFallback={
+            <SelectSkeleton placeholder='기술 스택을 선택해주세요.' />
+          }
+        >
+          <TechStackSelect
+            selectedTechStackIds={technologyIds}
+            onChange={handleChangeSelect}
           />
-        }
-      >
-        <TechStackSelect
-          selectedTechStackIds={technologyIds}
-          onChange={handleChangeSelect}
-          label='사용 스택'
-        />
-      </Suspense>
+        </FieldQueryBoundary>
+      </Field>
     </FormRow>
   );
 };
