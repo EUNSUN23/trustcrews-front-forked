@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import Input from '@/shared/ui/Input';
 import { NicknameControl } from '@/features/user/private/components/userProfileUpdate/form/NicknameControl';
 import PositionControl from '@/features/user/private/components/userProfileUpdate/form/PositionControl';
-import TechStackControl from '@/features/user/private/components/userProfileUpdate/form/TechStackControl';
+import UpdateTechStackControl from '@/features/user/private/components/userProfileUpdate/form/UpdateTechStackControl';
 import IntroductionControl from '@/features/user/private/components/userProfileUpdate/form/IntroductionControl';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 
@@ -58,7 +58,7 @@ const UserInfoForm = () => {
       <Input id='email' label='이메일' required disabled defaultValue={email} />
       <NicknameControl />
       <PositionControl />
-      <TechStackControl />
+      <UpdateTechStackControl />
       <IntroductionControl />
     </>
   );
