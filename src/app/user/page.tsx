@@ -1,11 +1,8 @@
 'use client';
 
-import UserProfile from '@/features/user/private/contents/userProfile/UserProfile';
 import dynamic from 'next/dynamic';
 import UserProfileSkeleton from '@/features/user/private/contents/userProfile/UserProfileSkeleton';
-import { Suspense } from 'react';
 import UserTrustScoreSkeleton from '@/features/user/private/components/userProfile/UserTrustScoreSkeleton';
-import UserTrustScore from '@/features/user/private/components/userProfile/UserTrustScore';
 import MyProjectHistorySkeleton from '@/features/projectHistory/private/myProjectHistory/contents/MyProjectHistorySkeleton';
 
 const MyProjectHistory = dynamic(
@@ -16,15 +13,21 @@ const MyProjectHistory = dynamic(
   { ssr: false, loading: () => <MyProjectHistorySkeleton /> },
 );
 
+const UserProfile = dynamic(
+  () => import('@/features/user/private/contents/userProfile/UserProfile'),
+  { ssr: false, loading: () => <UserProfileSkeleton /> },
+);
+
+const UserTrustScore = dynamic(
+  () => import('@/features/user/private/components/userProfile/UserTrustScore'),
+  { ssr: false, loading: () => <UserTrustScoreSkeleton /> },
+);
+
 const UserPage = () => {
   return (
     <>
-      <Suspense fallback={<UserProfileSkeleton />}>
-        <UserProfile />
-      </Suspense>
-      <Suspense fallback={<UserTrustScoreSkeleton />}>
-        <UserTrustScore />
-      </Suspense>
+      <UserProfile />
+      <UserTrustScore />
       <MyProjectHistory />
     </>
   );
