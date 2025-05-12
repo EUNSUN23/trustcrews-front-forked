@@ -37,7 +37,6 @@ const PositionSelect = ({
       value={selected || DEFAULT_POSITION_SELECT}
       setValue={(item) => onChange(item.value)}
       items={positionList}
-      label='직무'
       placeholder='직무를 선택해주세요.'
       required={required}
     />
