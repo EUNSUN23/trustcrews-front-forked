@@ -5,7 +5,6 @@ import { useTechStackList } from '@/service/techStack/public/getTechStackList';
 type TechStackSelectProps = {
   selectedTechStackIds: string[];
   onChange: (item: string[]) => void;
-  label?: string;
   placeholder?: string;
   required?: boolean;
 };
@@ -13,7 +12,6 @@ type TechStackSelectProps = {
 const TechStackSelect = ({
   selectedTechStackIds,
   onChange,
-  label,
   placeholder,
   required,
 }: TechStackSelectProps) => {
@@ -35,7 +33,6 @@ const TechStackSelect = ({
       values={selectedTechStacks}
       setValues={(item) => onChange(item.map(({ value }) => value))}
       items={techStackList}
-      label={label}
       placeholder={placeholder}
       required={required}
     />
