@@ -7,7 +7,7 @@ import {
   useState,
   useTransition,
 } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
 import TechStackDropdownList from '../../components/postFilter/TechStackDropdownList';
 import { selectedTechStackState } from '@/features/post/public/store/PostSearchStateStore';
@@ -26,6 +26,7 @@ const getSelectedTechStackText = (selectedTechStacks: TechStackMapping[]) => {
 
 const TechStackFilter = () => {
   const [_, startTransition] = useTransition();
+  const resetSelectedTechStacks = useResetRecoilState(selectedTechStackState);
   const selectedTechStacks = useRecoilValue(selectedTechStackState);
   const [openDropdown, setOpenDropdown] = useState(false);
   const dropdownRef = useRef<HTMLButtonElement | null>(null);
@@ -43,6 +44,10 @@ const TechStackFilter = () => {
     document.addEventListener('click', handleDocumentClick);
     return () => document.removeEventListener('click', handleDocumentClick);
   }, []);
+
+  useEffect(() => {
+    resetSelectedTechStacks();
+  }, [resetSelectedTechStacks]);
 
   const handleClickTechStackButton = (e: ReactMouseEvent<HTMLElement>) => {
     e.preventDefault();
