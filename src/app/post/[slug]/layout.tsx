@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import {
-  getPostPublicInfo,
-  PostPublicInfoData,
-} from '@/service/post/public/getPostPublicInfo';
+  getPostDetail,
+  PostDetailData,
+} from '@/service/post/public/getPostDetail';
 import ConfirmModal from '@/ui/ConfirmModal';
 import { ReactNode } from 'react';
 import Nav from '@/shared/ui/Nav';
@@ -14,7 +14,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const data: ResponseBody<PostPublicInfoData> = await getPostPublicInfo(
+  const data: ResponseBody<PostDetailData> = await getPostDetail(
     numStrToBigInt(postId),
   );
 
