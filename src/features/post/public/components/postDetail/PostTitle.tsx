@@ -1,9 +1,9 @@
 'use client';
 
 import Avatar from '@/shared/ui/Avatar';
-import { PostPublicInfoData } from '@/service/post/public/getPostPublicInfo';
+import { PostDetailData } from '@/service/post/public/getPostDetail';
 
-type PostTitleProps = { postInfo: PostPublicInfoData };
+type PostTitleProps = { postInfo: PostDetailData };
 
 const PostTitle = ({ postInfo }: PostTitleProps) => {
   const { title, createDate, user } = postInfo;
