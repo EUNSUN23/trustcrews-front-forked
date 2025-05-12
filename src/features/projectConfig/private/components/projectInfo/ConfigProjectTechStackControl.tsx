@@ -3,9 +3,10 @@ import { useRecoilState } from 'recoil';
 import FormRow from '@/ui/FormRow';
 import { projectInfoFormSelector } from '@/features/projectConfig/private/store/ProjectInfoFormStateStore';
 import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
-import { Suspense } from 'react';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 import { ProjectInfoSummary } from '@/service/project/public/getProjectPublicInfo';
+import { Field, Label } from '@headlessui/react';
+import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
 
 type ProjectTechnologiesProps = {
   initData: ProjectInfoSummary['technologyStacks'];
@@ -29,21 +30,20 @@ const ConfigProjectTechStackControl = ({
 
   return (
     <FormRow>
-      <Suspense
-        fallback={
-          <SelectSkeleton
-            label='사용 스택'
-            placeholder='사용 스택을 선택해주세요.'
+      <Field>
+        <Label className='block text-gray-700 mobile:text-sm'>기술 스택</Label>
+        <FieldQueryBoundary
+          suspenseFallback={
+            <SelectSkeleton placeholder='기술 스택을 선택해주세요.' />
+          }
+        >
+          <TechStackSelect
+            selectedTechStackIds={techStacks}
+            onChange={handleChangeSelect}
+            placeholder='기술 스택을 선택해주세요.'
           />
-        }
-      >
-        <TechStackSelect
-          selectedTechStackIds={techStacks}
-          onChange={handleChangeSelect}
-          label='기술 스택'
-          placeholder='기술 스택을 선택해주세요.'
-        />
-      </Suspense>
+        </FieldQueryBoundary>
+      </Field>
     </FormRow>
   );
 };
