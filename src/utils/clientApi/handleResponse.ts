@@ -1,4 +1,5 @@
 import { HttpError } from '@/utils/clientApi/HttpError';
+import DEFAULT_ERROR_MESSAGE from '@/constants/message/defaultErrorMessage';
 
 const handleResponse = async (res: Response) => {
   if (res.ok) {
@@ -11,7 +12,7 @@ const handleResponse = async (res: Response) => {
       body || {
         result: 'fail',
         data: null,
-        message: '요청 수행 중 오류가 발생했습니다.',
+        message: DEFAULT_ERROR_MESSAGE,
       },
       res.statusText,
     );
