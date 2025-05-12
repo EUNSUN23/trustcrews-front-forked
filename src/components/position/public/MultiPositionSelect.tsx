@@ -1,31 +1,24 @@
 import MultiSelect from '@/shared/ui/MultiSelect';
-import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
 import { SelectItem } from '@/shared/types/selectItem';
 import { usePositionList } from '@/service/position/public/getPositionList';
 import { PositionId } from '@/types/data/position';
 
-interface MultiPositionSelectProps {
+type MultiPositionSelectProps = {
   positions: readonly PositionId[];
   setPositions: (item: readonly PositionId[]) => void;
   required?: boolean;
-}
+};
 
 const MultiPositionSelect = ({
   positions,
   setPositions,
   required,
 }: MultiPositionSelectProps) => {
-  const { data, isFetching } = usePositionList();
+  const {
+    data: { data: positionListData },
+  } = usePositionList();
 
-  if (isFetching)
-    return (
-      <SelectSkeleton
-        label='모집 분야'
-        placeholder='모집 분야를 선택해주세요.'
-      />
-    );
-
-  const positionList: SelectItem<string, PositionId>[] = data!.data!.map(
+  const positionList: SelectItem<string, PositionId>[] = positionListData.map(
     ({ positionId, positionName }) => ({
       name: positionName,
       value: positionId,
@@ -33,14 +26,13 @@ const MultiPositionSelect = ({
   );
 
   const selectedPositions: SelectItem<string, PositionId>[] =
-    positionList.filter(({ name, value }) => positions.includes(value));
+    positionList.filter(({ value }) => positions.includes(value));
 
   return (
     <MultiSelect
       values={selectedPositions}
       setValues={(item) => setPositions(item.map((v) => v.value))}
       items={positionList}
-      label='모집 분야'
       required={required}
     />
   );
