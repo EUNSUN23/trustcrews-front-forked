@@ -1,5 +1,7 @@
 import PostDetailSkeleton from '@/features/post/public/contents/postDetail/PostDetailSkeleton';
 
-export default function Loading() {
+const PostDetailPageLoading = () => {
   return <PostDetailSkeleton />;
-}
+};
+
+export default PostDetailPageLoading;
