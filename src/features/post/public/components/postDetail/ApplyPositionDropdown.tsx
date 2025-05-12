@@ -13,11 +13,11 @@ import { selectItemComparator } from '@/shared/utils/selectItemComparator';
 import { clsx } from 'clsx';
 import { bigIntToString, numStrToBigInt } from '@/shared/utils/stringUtils';
 import { DEFAULT_POSITION_OPTION } from '@/constants/defaultSelectOptions';
-import { PostPublicInfoData } from '@/service/post/public/getPostPublicInfo';
+import { PostDetailData } from '@/service/post/public/getPostDetail';
 import { projectApplyPositionState } from '@/features/post/public/store/ApplyPositionStateStore';
 
 type ApplyPositionDropdownProps = {
-  applyPositions: PostPublicInfoData['boardPositions'];
+  applyPositions: PostDetailData['boardPositions'];
 };
 
 const ApplyPositionDropdown = ({

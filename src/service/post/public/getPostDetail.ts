@@ -1,11 +1,10 @@
 import { request } from '@/utils/clientApi/request';
-import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 import { ResponseBody } from '@/types/responseBody';
 import { Position } from '@/types/data/position';
 
-// todo - dataType, api명 ~detail로 수정
-export type PostPublicInfoData = {
+export type PostDetailData = {
   boardId: bigint;
   projectId: bigint;
   title: string;
@@ -26,21 +25,17 @@ export type PostPublicInfoData = {
   }[];
 };
 
-export const getPostPublicInfo = async (
+export const getPostDetail = async (
   postId: bigint,
-): Promise<ResponseBody<PostPublicInfoData>> => {
+): Promise<ResponseBody<PostDetailData>> => {
   return await request('GET', `/api/post/public?postId=${postId}`);
 };
 
-export const POST_PUBLIC_INFO_QUERY_KEY = 'postPublicInfo';
+export const POST_DETAIL_QUERY_KEY = 'postDetailInfo';
 
-export const getPostPublicInfoQueryOptions = (postId: bigint) => {
-  return queryOptions({
-    queryKey: [POST_PUBLIC_INFO_QUERY_KEY, bigIntToString(postId)],
-    queryFn: () => getPostPublicInfo(postId),
+export const usePostDetail = (postId: bigint) => {
+  return useSuspenseQuery({
+    queryKey: [POST_DETAIL_QUERY_KEY, bigIntToString(postId)],
+    queryFn: () => getPostDetail(postId),
   });
-};
-
-export const usePostPublicInfo = (postId: bigint) => {
-  return useSuspenseQuery(getPostPublicInfoQueryOptions(postId));
 };
