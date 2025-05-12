@@ -1,6 +1,6 @@
 import ProjectInformation from '@/features/post/public/components/postDetail/ProjectInformation';
 import ApplyProject from '@/features/post/public/contents/postDetail/ApplyProject';
-import { usePostPublicInfo } from '@/service/post/public/getPostPublicInfo';
+import { usePostDetail } from '@/service/post/public/getPostDetail';
 import { useProjectPublicInfo } from '@/service/project/public/getProjectPublicInfo';
 import PostInformation from '@/features/post/public/components/postDetail/PostInformation';
 import PostIntroduction from '@/features/post/public/components/postDetail/PostIntroduction';
@@ -12,7 +12,7 @@ type PostDetailProps = {
 };
 
 const PostDetail = ({ postId }: PostDetailProps) => {
-  const { data: postRes } = usePostPublicInfo(numStrToBigInt(postId));
+  const { data: postRes } = usePostDetail(numStrToBigInt(postId));
 
   const postInfo = postRes.data;
 
