@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import CommonPagination from '@/shared/ui/CommonPagination';
-import ProjectHistoryItem from '@/components/projectHistory/public/ProjectHistoryItem';
 import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
 import { useMyProjectHistory } from '@/features/projectHistory/private/myProjectHistory/service/getMyProjectHistory';
+import ProjectHistoryItem from '@/components/projectHistory/private/ProjectHistoryItem';
 
 const MyProjectHistory = () => {
   const [pageNumber, setPageNumber] = useState(0);
