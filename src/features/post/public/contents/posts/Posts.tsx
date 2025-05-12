@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import TechStackFilter from '@/features/post/public/contents/postFilter/TechStackFilter';
 import PositionFilter from '@/features/post/public/contents/postFilter/PositionFilter';
 import TitleFilter from '@/features/post/public/contents/postFilter/TitleFilter';
 import { useRecoilValue } from 'recoil';
@@ -15,6 +14,10 @@ import CommonPagination from '@/shared/ui/CommonPagination';
 import PostCard from '@/features/post/public/components/posts/PostCard';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
+import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import TechStackFilterSkeleton from '@/features/post/public/contents/postFilter/TeckStackFilterSkeleton';
+import PositionFilterSkeleton from '@/features/post/public/contents/postFilter/PositionFilterSkeleton';
+import TechStackFilter from '@/features/post/public/contents/postFilter/TechStackFilter';
 
 const Posts = () => {
   const selectedTechStacks = useRecoilValue(selectedTechStackState);
@@ -41,8 +44,12 @@ const Posts = () => {
         className='mt-6 flex justify-between mobile:block mobile:space-y-5'
       >
         <div className='flex space-x-5'>
-          <TechStackFilter />
-          <PositionFilter />
+          <FieldQueryBoundary suspenseFallback={<TechStackFilterSkeleton />}>
+            <TechStackFilter />
+          </FieldQueryBoundary>
+          <FieldQueryBoundary suspenseFallback={<PositionFilterSkeleton />}>
+            <PositionFilter />
+          </FieldQueryBoundary>
         </div>
         <TitleFilter />
       </section>

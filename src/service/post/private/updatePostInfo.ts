@@ -1,7 +1,7 @@
 import { request } from '@/utils/clientApi/request';
 import { z } from 'zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { POST_PUBLIC_INFO_QUERY_KEY } from '@/service/post/public/getPostPublicInfo';
+import { POST_DETAIL_QUERY_KEY } from '@/service/post/public/getPostDetail';
 import { ResponseBody } from '@/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
 
@@ -59,7 +59,7 @@ export const useUpdatePostInfo = (
       const { result } = res;
       if (result === 'success') {
         await queryClient.invalidateQueries({
-          queryKey: [POST_PUBLIC_INFO_QUERY_KEY],
+          queryKey: [POST_DETAIL_QUERY_KEY],
         });
         onSuccess?.(res);
       } else {

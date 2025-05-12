@@ -5,7 +5,7 @@ import ProjectPostInfoSaveButton from '@/features/projectConfig/private/contents
 import RecruitmentStatus from '@/features/projectConfig/private/components/postInfo/RecruitmentStatus';
 import { useRecoilValue } from 'recoil';
 import { projectIdState } from '@/features/project/private/store/myProject/ProjectIdStateStore';
-import { usePostPublicInfo } from '@/service/post/public/getPostPublicInfo';
+import { usePostDetail } from '@/service/post/public/getPostDetail';
 import PostInfoResetButton from '@/features/projectConfig/private/contents/postInfo/PostInfoResetButton';
 import ConfigContainer from '@/features/projectConfig/private/layouts/ConfigContainer';
 import ConfigSummary from '@/features/projectConfig/private/layouts/ConfigSummary';
@@ -18,7 +18,7 @@ const PostInfoForm = () => {
 
   const {
     data: { data },
-  } = usePostPublicInfo(numStrToBigInt(projectId));
+  } = usePostDetail(numStrToBigInt(projectId));
 
   const { title, boardPositions, contact, recruitmentStatus, content } = data;
 
