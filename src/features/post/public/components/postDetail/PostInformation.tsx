@@ -1,8 +1,8 @@
 import Badge from '@/shared/ui/Badge';
-import { PostPublicInfoData } from '@/service/post/public/getPostPublicInfo';
+import { PostDetailData } from '@/service/post/public/getPostDetail';
 
 interface InfoProps {
-  postInfo: PostPublicInfoData;
+  postInfo: PostDetailData;
 }
 
 const PostInformation = ({ postInfo }: InfoProps) => {

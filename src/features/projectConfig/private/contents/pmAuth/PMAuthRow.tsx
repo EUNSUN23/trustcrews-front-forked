@@ -1,4 +1,4 @@
-import { Suspense, useState } from 'react';
+import { useState } from 'react';
 import Avatar from '@/shared/ui/Avatar';
 import Badge from '@/shared/ui/Badge';
 import Button from '@/shared/ui/Button';
@@ -16,6 +16,7 @@ import {
   useUpdateCrewPMAuth,
 } from '@/service/pmAuth/private/updateCrewPMAuth';
 import PMAuthSelector from '@/features/projectConfig/private/components/pmAuth/PMAuthSelector';
+import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
 
 type CrewAuthRowProps = {
   crew: ProjectCrew;
@@ -83,16 +84,13 @@ const PMAuthRow = ({ crew }: CrewAuthRowProps) => {
       </td>
       <td className='max-w-[30%] whitespace-nowrap px-3 py-5 text-sm text-gray-500'>
         <div className=' flex items-center'>
-          <Suspense
-            fallback={
-              <SelectSkeleton
-                label=''
-                className='w-[230px] mobile:w-[95px] h-[42px]'
-              />
+          <FieldQueryBoundary
+            suspenseFallback={
+              <SelectSkeleton className='w-[230px] mobile:w-[95px] h-[42px]' />
             }
           >
             <PMAuthSelector value={auth} setValue={setAuth} />
-          </Suspense>
+          </FieldQueryBoundary>
         </div>
       </td>
       <td className='max-w-[30%] relative whitespace-nowrap py-5 pl-3 pr-4 tablet:text-right text-sm font-medium sm:pr-0'>
