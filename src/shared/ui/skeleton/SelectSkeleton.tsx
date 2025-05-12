@@ -2,7 +2,7 @@ import Select from '@/shared/ui/Select';
 import { HTMLAttributes } from 'react';
 
 interface SelectSkeletonProps extends HTMLAttributes<HTMLElement> {
-  label: string;
+  label?: string;
   placeholder?: string;
   required?: boolean;
 }
