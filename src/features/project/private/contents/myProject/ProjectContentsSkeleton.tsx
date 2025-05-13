@@ -6,11 +6,13 @@ import { NoticeSkeleton } from '@/features/projectNotice/private/contents/Notice
 import { PROJECT_MENU } from '@/features/project/private/constants/myProject/projectMenu';
 import { projectActiveNavState } from '@/features/project/private/store/myProject/ProjectNavTabStateStore';
 import CrewsSkeleton from '@/features/projectCrews/private/contents/CrewsSkeleton';
+import ProjectConfigSkeleton from '@/features/projectConfig/private/contents/ProjectConfigSkeleton';
 
 const {
   TASK: { value: PROJECT_TASK },
   CREWS: { value: PROJECT_CREWS },
   NOTICE: { value: PROJECT_NOTICE },
+  SETTING: { value: PROJECT_SETTING },
 } = PROJECT_MENU;
 
 const ProjectContentsSkeleton = () => {
@@ -22,6 +24,8 @@ const ProjectContentsSkeleton = () => {
       return <CrewsSkeleton />;
     case PROJECT_NOTICE:
       return <NoticeSkeleton />;
+    case PROJECT_SETTING:
+      return <ProjectConfigSkeleton />;
     default:
       throw Error(`Unknown Project NavTab: ${activeNavTab}`);
   }
