@@ -60,10 +60,12 @@ export const getPostList = async (
   return await request('GET', `/api/post/search?${queryParams}`);
 };
 
+export const POST_LIST_QUERY_KEY = 'postList';
+
 export const usePostList = (params: SearchPostParams) => {
   return useSuspenseQuery({
     queryKey: [
-      'postList',
+      POST_LIST_QUERY_KEY,
       params.techStacks,
       params.position,
       params.page,
