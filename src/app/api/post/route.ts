@@ -4,31 +4,22 @@ import { NextRequest } from 'next/server';
 import { routeResponse } from '@/app/api/_interceptor/routeResponse';
 import { JSONReplaceBigInt } from '@/shared/utils/jsonUtils';
 
-/**
- * 게시글 상세조회
- * @param req
- * @constructor
- */
+// todo - 라우트 public, private 구분
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const postId = searchParams.get('postId');
 
-  const res = await publicApi(`/api/board/${postId}/public`);
+  const res = await publicApi(`/api/post/${postId}/public`);
 
   return routeResponse(req, res);
 }
 
-/**
- * 게시글 생성
- * @param req
- * @constructor
- */
 export async function POST(req: NextRequest) {
-  const { board, project } = await req.json();
+  const data = await req.json();
 
-  const res = await authApi('/api/board', {
+  const res = await authApi('/api/post', {
     method: 'POST',
-    body: JSONReplaceBigInt({ board, project }),
+    body: JSONReplaceBigInt(data),
   });
 
   return routeResponse(req, res);

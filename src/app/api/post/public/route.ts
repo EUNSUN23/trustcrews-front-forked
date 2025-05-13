@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
   const method = req.method;
 
   const res = await publicApi(
-    `/api/board/${searchParams.get('postId')}/public`,
+    `/api/post/${searchParams.get('postId')}/public`,
     {
       method,
     },
