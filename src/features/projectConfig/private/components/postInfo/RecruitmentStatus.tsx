@@ -1,10 +1,10 @@
 import { Switch } from '@headlessui/react';
 import { useRecoilState } from 'recoil';
 import { postInfoFormFieldSelector } from '@/features/projectConfig/private/store/PostInfoFormStateStore';
-import { PostDetailData } from '@/service/post/public/getPostDetail';
+import { PostConfigData } from '@/features/projectConfig/private/service/post/getPostConfig';
 
 type RecruitmentStatusProps = {
-  initData: PostDetailData['recruitmentStatus'];
+  initData: PostConfigData['recruitmentStatus'];
 };
 
 const RecruitmentStatus = ({ initData }: RecruitmentStatusProps) => {
