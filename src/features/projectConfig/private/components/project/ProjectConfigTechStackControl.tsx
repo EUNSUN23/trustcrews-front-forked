@@ -1,28 +1,15 @@
 import TechStackSelect from '@/components/techStack/public/TechStackSelect';
 import { useRecoilState } from 'recoil';
 import FormRow from '@/ui/FormRow';
-import { projectInfoFormSelector } from '@/features/projectConfig/private/store/ProjectInfoFormStateStore';
+import { projectConfigFormFieldSelector } from '@/features/projectConfig/private/store/ProjectConfigFormStateStore';
 import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
-import { bigIntToString } from '@/shared/utils/stringUtils';
 import { Field, Label } from '@headlessui/react';
 import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
-import { ProjectConfigData } from '@/features/projectConfig/private/service/project/getProjectConfig';
 
-type ProjectTechnologiesProps = {
-  initData: ProjectConfigData['technologyStacks'];
-};
-
-const ConfigProjectTechStackControl = ({
-  initData,
-}: ProjectTechnologiesProps) => {
+const ProjectConfigTechStackControl = () => {
   const [technologyIds, setTechnologyIds] = useRecoilState(
-    projectInfoFormSelector('technologyIds'),
+    projectConfigFormFieldSelector('technologyIds'),
   );
-
-  const techStacks =
-    technologyIds.length > 0
-      ? technologyIds
-      : initData.map((v) => bigIntToString(v.techStackId));
 
   const handleChangeSelect = (item: string[]) => {
     setTechnologyIds([...item]);
@@ -38,7 +25,7 @@ const ConfigProjectTechStackControl = ({
           }
         >
           <TechStackSelect
-            selectedTechStackIds={techStacks}
+            selectedTechStackIds={technologyIds}
             onChange={handleChangeSelect}
             placeholder='기술 스택을 선택해주세요.'
           />
@@ -48,4 +35,4 @@ const ConfigProjectTechStackControl = ({
   );
 };
 
-export default ConfigProjectTechStackControl;
+export default ProjectConfigTechStackControl;
