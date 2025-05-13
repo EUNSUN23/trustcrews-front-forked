@@ -2,7 +2,7 @@
 
 import TechStackImage from '@/components/techStack/public/TechStackImage';
 import { useRecoilValue } from 'recoil';
-import { useProjectPublicInfo } from '@/service/project/public/getProjectPublicInfo';
+import { useProjectSummaryInfo } from '@/service/project/public/getProjectInfoSummary';
 import { projectIdState } from '@/features/project/private/store/myProject/ProjectIdStateStore';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
 import ProjectInfoItem from '@/features/project/private/components/myProject/ProjectInfoItem';
@@ -11,7 +11,7 @@ const ProjectInfo = () => {
   const projectId = useRecoilValue(projectIdState);
   const {
     data: { data },
-  } = useProjectPublicInfo(numStrToBigInt(projectId));
+  } = useProjectSummaryInfo(numStrToBigInt(projectId));
 
   const { projectName, projectSubject, startDate, endDate, technologyStacks } =
     data;
