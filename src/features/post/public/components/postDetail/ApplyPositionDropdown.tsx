@@ -17,7 +17,7 @@ import { PostDetailData } from '@/service/post/public/getPostDetail';
 import { projectApplyPositionState } from '@/features/post/public/store/ApplyPositionStateStore';
 
 type ApplyPositionDropdownProps = {
-  applyPositions: PostDetailData['boardPositions'];
+  applyPositions: PostDetailData['postPositions'];
 };
 
 const ApplyPositionDropdown = ({
