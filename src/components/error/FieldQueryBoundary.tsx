@@ -4,17 +4,53 @@ import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { HttpError } from '@/utils/clientApi/HttpError';
 import cn from '@/shared/styles/cn';
 import { CgRedo } from '@react-icons/all-files/cg/CgRedo';
+import { cva, VariantProps } from 'class-variance-authority';
 
-type SuspenseFieldQueryBoundaryProps = {
+const QueryErrorMessageVariants = cva(
+  'flex flex-wrap items-center  space-x-3 text-gray-500',
+  {
+    variants: {
+      errorFallbackSize: {
+        lg: 'mx-auto my-[100px] mobile:my-[30px] justify-center w-[640px] mobile:w-[330px] text-3xl font-semibold mobile:text-xl mobile:font-medium leading-loose',
+        md: 'my-4 mobile:my-2 justify-center w-[500px] mobile:w-[300px] text-[22px] tablet:font-medium mobile:text-xl',
+        sm: 'justify-start w-full mobile:text-sm',
+      },
+    },
+    defaultVariants: {
+      errorFallbackSize: 'sm',
+    },
+  },
+);
+
+interface SuspenseFieldQueryBoundaryProps
+  extends VariantProps<typeof QueryErrorMessageVariants>,
+    VariantProps<typeof QueryRetryIconVariants> {
   suspenseFallback: ReactNode;
   children: ReactNode;
   className?: string;
-};
+}
+
+const QueryRetryIconVariants = cva(
+  'text-primary shadow-md rounded-xl border border-gray-100',
+  {
+    variants: {
+      errorFallbackSize: {
+        lg: 'size-12 mobile:size-8',
+        md: 'size-9 mobile:size-7',
+        sm: 'size-7 mobile:size-5',
+      },
+    },
+    defaultVariants: {
+      errorFallbackSize: 'sm',
+    },
+  },
+);
 
 const FieldQueryBoundary = ({
   suspenseFallback,
   children,
   className,
+  errorFallbackSize,
 }: SuspenseFieldQueryBoundaryProps) => {
   const { reset } = useQueryErrorResetBoundary();
   return (
@@ -25,7 +61,7 @@ const FieldQueryBoundary = ({
         <div
           role='alert'
           className={cn(
-            'w-full flex items-center justify-start space-x-3 text-gray-500',
+            QueryErrorMessageVariants({ errorFallbackSize }),
             className,
           )}
         >
@@ -36,7 +72,10 @@ const FieldQueryBoundary = ({
           </p>
           <button title='재시도' onClick={resetErrorBoundary}>
             <span className='sr-only'>재시도</span>
-            <CgRedo aria-hidden={true} className={cn('size-7')} />
+            <CgRedo
+              aria-hidden={true}
+              className={QueryRetryIconVariants({ errorFallbackSize })}
+            />
           </button>
         </div>
       )}

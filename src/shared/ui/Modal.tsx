@@ -65,15 +65,15 @@ const Modal = ({
   return (
     <div className='inset-0 z-10 w-full h-screen overflow-y-auto'>
       <div className='absolute inset-0 w-full h-full bg-gray-500 opacity-75'></div>
-      <div className='flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0'>
+      <div className='flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center mobile:block mobile:p-0'>
         <span
-          className='hidden sm:inline-block sm:align-middle sm:h-screen'
+          className='hidden mobile:inline-block mobile:align-middle mobile:h-screen'
           aria-hidden='true'
         ></span>
         {/*모달 컨텐츠 시작 */}
         <div
           ref={ref}
-          className='relative inline-block transition-all transform sm:align-middle mobile:w-max-[320px] tablet:max-w-[600px]'
+          className='relative inline-block transition-all transform mobile:align-middle mobile:max-w-[340px] tablet:max-w-[600px] overflow-auto'
           role='dialog'
           aria-modal='true'
           aria-labelledby='modal-headline'
@@ -96,7 +96,7 @@ const Modal = ({
                 </div>
               </div>
               {/* End modal header */}
-              <div className='px-8 py-4'>{children}</div>
+              <div className='px-8 mobile:px-4 py-4'>{children}</div>
               {/* Start modal footer */}
               {footer ? (
                 footer
