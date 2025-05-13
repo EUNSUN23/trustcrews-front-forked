@@ -57,7 +57,7 @@ const ApplyProject = ({ postInfo }: { postInfo: PostDetailData }) => {
 
   return (
     <footer className='flex justify-center gap-5 my-5'>
-      <ApplyPositionDropdown applyPositions={postInfo.boardPositions} />
+      <ApplyPositionDropdown applyPositions={postInfo.postPositions} />
       <Button
         type='button'
         size='lg'
