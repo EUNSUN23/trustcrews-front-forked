@@ -4,8 +4,9 @@ import { request } from '@/utils/clientApi/request';
 import { PROJECT_INFO_SUMMARY_QUERY_KEY } from '@/service/project/public/getProjectInfoSummary';
 import { ResponseBody } from '@/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
+import { PROJECT_CONFIG_QUERY_KEY } from '@/features/projectConfig/private/service/project/getProjectConfig';
 
-const updateProjectInfoInputSchema = z.object({
+const updateProjectConfigInputSchema = z.object({
   projectName: z
     .string()
     .nonempty({ message: '프로젝트 이름을 입력해주세요.' }),
@@ -24,44 +25,44 @@ const updateProjectInfoInputSchema = z.object({
     .readonly(),
 });
 
-export type UpdateProjectInfoInput = z.infer<
-  typeof updateProjectInfoInputSchema
+export type UpdateProjectConfigInput = z.infer<
+  typeof updateProjectConfigInputSchema
 >;
 
-export const updateProjectInfo = async (
+export const updateProjectConfig = async (
   projectId: bigint,
   userAuth: string,
-  data: UpdateProjectInfoInput,
+  data: UpdateProjectConfigInput,
 ): Promise<ResponseBody<null>> => {
-  return await request('PUT', '/api/project/setting/info', {
+  return await request('PUT', '/api/projectConfig/project', {
     ...data,
     projectId,
-    authMap: userAuth,
+    userAuth,
   });
 };
 
-type UpdateProjectInfoRes = ApiResult<typeof updateProjectInfo>;
+type UpdateProjectConfigRes = ApiResult<typeof updateProjectConfig>;
 
 // todo - 백엔드 성공 메세지
-export const useUpdateProjectInfo = (
+export const useUpdateProjectConfig = (
   projectId: bigint,
   userAuth: string,
   {
     onSuccess,
     onError,
   }: {
-    onSuccess?: (res: UpdateProjectInfoRes) => void;
-    onError?: (res: UpdateProjectInfoRes) => void;
+    onSuccess?: (res: UpdateProjectConfigRes) => void;
+    onError?: (res: UpdateProjectConfigRes) => void;
   },
 ) => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (data: UpdateProjectInfoInput) =>
-      updateProjectInfo(projectId, userAuth, data),
+    mutationFn: (data: UpdateProjectConfigInput) =>
+      updateProjectConfig(projectId, userAuth, data),
     onSuccess: async (res) => {
       if (res.result === 'success') {
         await queryClient.invalidateQueries({
-          queryKey: [PROJECT_INFO_SUMMARY_QUERY_KEY],
+          queryKey: [PROJECT_INFO_SUMMARY_QUERY_KEY, PROJECT_CONFIG_QUERY_KEY],
         });
         onSuccess?.(res);
       } else {

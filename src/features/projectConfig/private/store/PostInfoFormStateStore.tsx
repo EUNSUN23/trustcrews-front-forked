@@ -1,7 +1,7 @@
 import { atom, DefaultValue, selectorFamily } from 'recoil';
-import { UpdatePostInfoInput } from '@/service/post/private/updatePostInfo';
+import { UpdatePostConfigInput } from '@/features/projectConfig/private/service/post/updatePostConfig';
 
-const DEFAULT_POST_INFO_FORM: UpdatePostInfoInput = {
+const DEFAULT_POST_INFO_FORM: UpdatePostConfigInput = {
   title: '',
   content: '',
   recruitmentStatus: null,
@@ -9,21 +9,23 @@ const DEFAULT_POST_INFO_FORM: UpdatePostInfoInput = {
   positionIds: [],
 };
 
-export const postInfoFormStateStore = atom<UpdatePostInfoInput>({
+export const postInfoFormStateStore = atom<UpdatePostConfigInput>({
   key: 'postInfoFormStateStore',
   default: DEFAULT_POST_INFO_FORM,
 });
 
-export const postInfoFormFieldSelector = <K extends keyof UpdatePostInfoInput>(
+export const postInfoFormFieldSelector = <
+  K extends keyof UpdatePostConfigInput,
+>(
   key: K,
 ): ReturnType<typeof postInfoFormFieldSelectorFamily<K>> => {
   return postInfoFormFieldSelectorFamily<K>(key);
 };
 
-const postInfoFormFieldSelectorFamily = <K extends keyof UpdatePostInfoInput>(
+const postInfoFormFieldSelectorFamily = <K extends keyof UpdatePostConfigInput>(
   key: K,
 ) =>
-  selectorFamily<UpdatePostInfoInput[K], K>({
+  selectorFamily<UpdatePostConfigInput[K], K>({
     key: 'postInfoFormFieldSelector',
     get:
       (param) =>
