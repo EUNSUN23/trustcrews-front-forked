@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import PositionFilter from '@/features/post/public/contents/postFilter/PositionFilter';
 import TitleFilter from '@/features/post/public/contents/postFilter/TitleFilter';
 import { useRecoilValue } from 'recoil';
 import {
@@ -14,10 +13,8 @@ import CommonPagination from '@/shared/ui/CommonPagination';
 import PostCard from '@/features/post/public/components/posts/PostCard';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
-import TechStackFilterSkeleton from '@/features/post/public/contents/postFilter/TeckStackFilterSkeleton';
-import PositionFilterSkeleton from '@/features/post/public/contents/postFilter/PositionFilterSkeleton';
 import TechStackFilter from '@/features/post/public/contents/postFilter/TechStackFilter';
+import PositionFilter from '@/features/post/public/contents/postFilter/PositionFilter';
 
 const Posts = () => {
   const selectedTechStacks = useRecoilValue(selectedTechStackState);
@@ -41,15 +38,11 @@ const Posts = () => {
       <h2 className='sr-only'>팀 프로젝트</h2>
       <section
         aria-label='게시글 검색'
-        className='mt-6 flex justify-between mobile:block mobile:space-y-5'
+        className='mt-6 flex justify-start mobile:block mobile:space-y-5'
       >
-        <div className='flex space-x-5'>
-          <FieldQueryBoundary suspenseFallback={<TechStackFilterSkeleton />}>
-            <TechStackFilter />
-          </FieldQueryBoundary>
-          <FieldQueryBoundary suspenseFallback={<PositionFilterSkeleton />}>
-            <PositionFilter />
-          </FieldQueryBoundary>
+        <div className='flex justify-start space-x-5 mr-auto'>
+          <TechStackFilter />
+          <PositionFilter />
         </div>
         <TitleFilter />
       </section>
