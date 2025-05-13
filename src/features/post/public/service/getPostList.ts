@@ -1,7 +1,7 @@
 import { isEqual } from 'lodash';
 import { request } from '@/utils/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { ProjectInfoSummary } from '@/service/project/public/getProjectPublicInfo';
+import { ProjectInfoSummary } from '@/service/project/public/getProjectInfoSummary';
 import { PageResponseBody } from '@/types/responseBody';
 import { TrustGrade } from '@/types/data/trustGrade';
 import { Position } from '@/types/data/position';
