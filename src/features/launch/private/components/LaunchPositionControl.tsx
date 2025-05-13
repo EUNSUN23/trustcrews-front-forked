@@ -1,6 +1,5 @@
 import { useRecoilState } from 'recoil';
 import FormRow from '@/ui/FormRow';
-import { PositionId } from '@/types/data/position';
 import { postFormFieldSelector } from '@/features/launch/private/store/PostFormStateStore';
 import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
 import MultiPositionSelect from '@/components/position/public/MultiPositionSelect';
@@ -12,7 +11,7 @@ const LaunchPositionControl = () => {
     postFormFieldSelector('positionIds'),
   );
 
-  const handleChangeSelect = (item: readonly PositionId[]) => {
+  const handleChangeSelect = (item: readonly string[]) => {
     setPositionIds(item);
   };
 
