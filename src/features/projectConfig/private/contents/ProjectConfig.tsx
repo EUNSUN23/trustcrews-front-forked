@@ -1,15 +1,15 @@
 import ErrorPageContainer from '@/ui/error/ErrorPageContainer';
 import ErrorMessage from '@/ui/error/ErrorMessage';
 import { Suspense } from 'react';
-import PostInfoForm from '@/features/projectConfig/private/contents/postInfo/PostInfoForm';
-import PostInfoFormSkeleton from '@/features/projectConfig/private/contents/postInfo/PostInfoFormSkeleton';
+import PostConfigForm from '@/features/projectConfig/private/contents/post/PostConfigForm';
 import { useRecoilValue } from 'recoil';
-import ProjectInfoFormSkeleton from '@/features/projectConfig/private/contents/projectInfo/ProjectInfoFormSkeleton';
-import ProjectInfoForm from '@/features/projectConfig/private/contents/projectInfo/ProjectInfoForm';
+import ProjectConfigFormSkeleton from '@/features/projectConfig/private/contents/project/ProjectConfigFormSkeleton';
+import ProjectConfigForm from '@/features/projectConfig/private/contents/project/ProjectConfigForm';
 import PMAuth from '@/features/projectConfig/private/contents/pmAuth/PMAuth';
 import EndProject from '@/features/projectConfig/private/contents/EndProject';
 import { projectManageAuthStateStore } from '@/features/projectConfig/private/store/ProjectManageAuthStateStore';
 import PMAuthSkeleton from '@/features/projectConfig/private/contents/pmAuth/PMAuthSkeleton';
+import PostConfigFormSkeleton from '@/features/projectConfig/private/contents/post/PostConfigFormSkeleton';
 
 const ProjectConfig = () => {
   const { configYn: isConfigAccessible } = useRecoilValue(
@@ -27,11 +27,11 @@ const ProjectConfig = () => {
 
   return (
     <section className='w-full mx-auto space-y-[100px]'>
-      <Suspense fallback={<ProjectInfoFormSkeleton />}>
-        <ProjectInfoForm />
+      <Suspense fallback={<ProjectConfigFormSkeleton />}>
+        <ProjectConfigForm />
       </Suspense>
-      <Suspense fallback={<PostInfoFormSkeleton />}>
-        <PostInfoForm />
+      <Suspense fallback={<PostConfigFormSkeleton />}>
+        <PostConfigForm />
       </Suspense>
       <Suspense fallback={<PMAuthSkeleton />}>
         <PMAuth />
