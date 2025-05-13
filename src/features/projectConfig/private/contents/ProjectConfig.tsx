@@ -9,6 +9,7 @@ import ProjectInfoForm from '@/features/projectConfig/private/contents/projectIn
 import PMAuth from '@/features/projectConfig/private/contents/pmAuth/PMAuth';
 import EndProject from '@/features/projectConfig/private/contents/EndProject';
 import { projectManageAuthStateStore } from '@/features/projectConfig/private/store/ProjectManageAuthStateStore';
+import PMAuthSkeleton from '@/features/projectConfig/private/contents/pmAuth/PMAuthSkeleton';
 
 const ProjectConfig = () => {
   const { configYn: isConfigAccessible } = useRecoilValue(
@@ -24,7 +25,6 @@ const ProjectConfig = () => {
       </ErrorPageContainer>
     );
 
-  // todo - PMAuth suspense boundary & ProjectConfigSkeleton(ProjectContentsSkeleton에 추가)
   return (
     <section className='w-full mx-auto space-y-[100px]'>
       <Suspense fallback={<ProjectInfoFormSkeleton />}>
@@ -33,7 +33,9 @@ const ProjectConfig = () => {
       <Suspense fallback={<PostInfoFormSkeleton />}>
         <PostInfoForm />
       </Suspense>
-      <PMAuth />
+      <Suspense fallback={<PMAuthSkeleton />}>
+        <PMAuth />
+      </Suspense>
       <EndProject />
     </section>
   );
