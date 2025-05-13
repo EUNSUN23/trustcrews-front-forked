@@ -3,7 +3,7 @@ import DateInput from '@/shared/ui/DateInput';
 import { useRecoilState } from 'recoil';
 import { addDays, format } from 'date-fns';
 import FormRow from '@/ui/FormRow';
-import { ProjectInfoSummary } from '@/service/project/public/getProjectPublicInfo';
+import { ProjectInfoSummary } from '@/service/project/public/getProjectInfoSummary';
 import { projectInfoFormSelector } from '@/features/projectConfig/private/store/ProjectInfoFormStateStore';
 
 type ProjectDateProps = {

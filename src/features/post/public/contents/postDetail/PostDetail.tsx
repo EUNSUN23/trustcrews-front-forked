@@ -1,7 +1,7 @@
 import ProjectInformation from '@/features/post/public/components/postDetail/ProjectInformation';
 import ApplyProject from '@/features/post/public/contents/postDetail/ApplyProject';
 import { usePostDetail } from '@/service/post/public/getPostDetail';
-import { useProjectPublicInfo } from '@/service/project/public/getProjectPublicInfo';
+import { useProjectSummaryInfo } from '@/service/project/public/getProjectInfoSummary';
 import PostInformation from '@/features/post/public/components/postDetail/PostInformation';
 import PostIntroduction from '@/features/post/public/components/postDetail/PostIntroduction';
 import PostTitle from '@/features/post/public/components/postDetail/PostTitle';
@@ -16,7 +16,7 @@ const PostDetail = ({ postId }: PostDetailProps) => {
 
   const postInfo = postRes.data;
 
-  const { data: projectRes } = useProjectPublicInfo(postInfo.projectId);
+  const { data: projectRes } = useProjectSummaryInfo(postInfo.projectId);
 
   const projectInfo = projectRes.data;
 
