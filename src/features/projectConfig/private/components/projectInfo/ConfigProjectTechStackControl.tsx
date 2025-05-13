@@ -4,7 +4,7 @@ import FormRow from '@/ui/FormRow';
 import { projectInfoFormSelector } from '@/features/projectConfig/private/store/ProjectInfoFormStateStore';
 import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
 import { bigIntToString } from '@/shared/utils/stringUtils';
-import { ProjectInfoSummary } from '@/service/project/public/getProjectPublicInfo';
+import { ProjectInfoSummary } from '@/service/project/public/getProjectInfoSummary';
 import { Field, Label } from '@headlessui/react';
 import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
 
