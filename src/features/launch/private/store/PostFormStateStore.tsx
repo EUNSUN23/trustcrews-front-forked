@@ -1,7 +1,11 @@
 import { atom, DefaultValue, selectorFamily } from 'recoil';
 import { CreatePostInput } from '@/service/post/private/createPost';
 
-export const postFormStateStore = atom<CreatePostInput>({
+interface CreatePostFormData extends Omit<CreatePostInput, 'positionIds'> {
+  positionIds: readonly string[];
+}
+
+export const postFormStateStore = atom<CreatePostFormData>({
   key: 'postFormStateStore',
   default: {
     title: '',
@@ -11,14 +15,16 @@ export const postFormStateStore = atom<CreatePostInput>({
   },
 });
 
-export const postFormFieldSelector = <K extends keyof CreatePostInput>(
+export const postFormFieldSelector = <K extends keyof CreatePostFormData>(
   key: K,
 ): ReturnType<typeof postFormFieldSelectorFamily<K>> => {
   return postFormFieldSelectorFamily<K>(key);
 };
 
-const postFormFieldSelectorFamily = <K extends keyof CreatePostInput>(key: K) =>
-  selectorFamily<CreatePostInput[K], K>({
+const postFormFieldSelectorFamily = <K extends keyof CreatePostFormData>(
+  key: K,
+) =>
+  selectorFamily<CreatePostFormData[K], K>({
     key: 'postFormFieldSelectorFamily',
     get:
       (param) =>

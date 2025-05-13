@@ -3,7 +3,7 @@ import ConfigContainer from '@/features/projectConfig/private/layouts/ConfigCont
 import ConfigSummary from '@/features/projectConfig/private/layouts/ConfigSummary';
 import ConfigContents from '@/features/projectConfig/private/layouts/ConfigContents';
 
-const ProjectInfoFormSkeleton = () => {
+const ProjectConfigFormSkeleton = () => {
   return (
     <ConfigContainer>
       <ConfigSummary>프로젝트 정보</ConfigSummary>
@@ -22,4 +22,4 @@ const ProjectInfoFormSkeleton = () => {
   );
 };
 
-export default ProjectInfoFormSkeleton;
+export default ProjectConfigFormSkeleton;
