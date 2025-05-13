@@ -30,6 +30,10 @@ const LaunchButton = () => {
   });
 
   const handleClickSaveButton = async () => {
+    const postData = {
+      ...postForm,
+      positionIds: postForm.positionIds.map((v) => numStrToBigInt(v)),
+    };
     const projectData = {
       ...projectForm,
       technologyIds: projectForm.technologyIds.map((item) =>
@@ -38,14 +42,14 @@ const LaunchButton = () => {
     };
 
     try {
-      createPostInputSchema.parse(postForm);
+      createPostInputSchema.parse(postData);
       createProjectInputSchema.parse(projectData);
     } catch (e) {
       if (e instanceof ZodError) setErrorSnackbar(e.errors[0].message);
       return;
     }
 
-    createPostWithProject({ postData: postForm, projectData });
+    createPostWithProject({ postData, projectData });
   };
 
   return (
