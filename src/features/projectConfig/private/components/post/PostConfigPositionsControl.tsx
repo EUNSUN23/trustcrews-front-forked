@@ -1,21 +1,14 @@
 import { useRecoilState } from 'recoil';
 import MultiPositionSelect from '@/components/position/public/MultiPositionSelect';
-import { PositionId } from '@/types/data/position';
-import { postInfoFormFieldSelector } from '@/features/projectConfig/private/store/PostInfoFormStateStore';
+import { postConfigFormFieldSelector } from '@/features/projectConfig/private/store/PostConfigFormStateStore';
 import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
 import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
 import { Field, Label } from '@headlessui/react';
 
-type PostPositionsProps = {
-  initData: PositionId[];
-};
-
-const PostPositions = ({ initData }: PostPositionsProps) => {
+const PostConfigPositionsControl = () => {
   const [positionsId, setPositionsId] = useRecoilState(
-    postInfoFormFieldSelector('positionIds'),
+    postConfigFormFieldSelector('positionIds'),
   );
-
-  const value = positionsId.length > 0 ? positionsId : initData;
 
   return (
     <Field>
@@ -26,7 +19,7 @@ const PostPositions = ({ initData }: PostPositionsProps) => {
         }
       >
         <MultiPositionSelect
-          positions={value}
+          positions={positionsId}
           setPositions={(item) => setPositionsId(item)}
         />
       </FieldQueryBoundary>
@@ -34,4 +27,4 @@ const PostPositions = ({ initData }: PostPositionsProps) => {
   );
 };
 
-export default PostPositions;
+export default PostConfigPositionsControl;

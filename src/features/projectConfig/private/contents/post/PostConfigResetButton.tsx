@@ -1,12 +1,12 @@
 import Button from '@/shared/ui/Button';
 import { useQueryClient } from '@tanstack/react-query';
 import { useResetRecoilState } from 'recoil';
-import { postInfoFormStateStore } from '@/features/projectConfig/private/store/PostInfoFormStateStore';
+import { postConfigFormStateStore } from '@/features/projectConfig/private/store/PostConfigFormStateStore';
 import { POST_CONFIG_QUERY_KEY } from '@/features/projectConfig/private/service/post/getPostConfig';
 
-const PostInfoResetButton = () => {
+const PostConfigResetButton = () => {
   const resetProjectSettingBoardInfo = useResetRecoilState(
-    postInfoFormStateStore,
+    postConfigFormStateStore,
   );
 
   const queryClient = useQueryClient();
@@ -25,4 +25,4 @@ const PostInfoResetButton = () => {
   );
 };
 
-export default PostInfoResetButton;
+export default PostConfigResetButton;
