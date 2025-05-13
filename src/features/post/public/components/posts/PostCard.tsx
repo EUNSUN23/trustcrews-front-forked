@@ -9,7 +9,7 @@ import { PostInfoSummary } from '@/features/post/public/service/getPostList';
 
 const PostCard = ({ postInfo }: { postInfo: PostInfoSummary }) => {
   const {
-    boardId,
+    postId,
     title,
     project: {
       projectName,
@@ -18,13 +18,13 @@ const PostCard = ({ postInfo }: { postInfo: PostInfoSummary }) => {
       projectSubject,
       technologyStacks,
     },
-    boardPositions,
+    postPositions,
     user: { profileImgSrc, nickname, trustGrade },
   } = postInfo;
 
   return (
     <div className='p-4'>
-      <Link aria-label={`${title}로 가기`} href={`/post/${boardId}`}>
+      <Link aria-label={`${title}로 가기`} href={`/post/${postId}`}>
         <article>
           <h3 className='text-xl font-bold  truncate mb-1'>{title}</h3>
           <section className='mt-4 mb-2 flex items-center text-base text-gray-600 font-medium'>
@@ -75,9 +75,9 @@ const PostCard = ({ postInfo }: { postInfo: PostInfoSummary }) => {
               </div>
             </article>
           </section>
-          {boardPositions.length > 0 && (
+          {postPositions.length > 0 && (
             <section>
-              <h4 id={`recruit-card-position-${boardId}`} className='sr-only'>
+              <h4 id={`recruit-card-position-${postId}`} className='sr-only'>
                 모집 포지션
               </h4>
               <article className='flex items-center gap-2 mt-5'>
@@ -85,7 +85,7 @@ const PostCard = ({ postInfo }: { postInfo: PostInfoSummary }) => {
                   aria-labelledby='recruit-card-position'
                   className='basis-[200px] mobile:basis-[180px] flex items-center'
                 >
-                  {boardPositions
+                  {postPositions
                     .slice(0, 3)
                     .map(({ position: { positionId, positionName } }) => (
                       <li key={positionId.toString()}>
@@ -97,14 +97,14 @@ const PostCard = ({ postInfo }: { postInfo: PostInfoSummary }) => {
                       </li>
                     ))}
                 </ul>
-                {boardPositions.length > 3 && (
+                {postPositions.length > 3 && (
                   <div className='flex items-center space-x-2'>
                     <div>
                       <span className='sr-only'>외 </span>
                       <FaPlusCircle aria-hidden={true} />
                     </div>
                     <div className='pt-1 leading-none text-greyDarkblue/80 font-semibold'>
-                      {boardPositions.length - 3}
+                      {postPositions.length - 3}
                       <span className='sr-only'>개</span>
                     </div>
                   </div>
