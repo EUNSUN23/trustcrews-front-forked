@@ -1,20 +1,13 @@
 import { Switch } from '@headlessui/react';
 import { useRecoilState } from 'recoil';
-import { postInfoFormFieldSelector } from '@/features/projectConfig/private/store/PostInfoFormStateStore';
-import { PostConfigData } from '@/features/projectConfig/private/service/post/getPostConfig';
+import { postConfigFormFieldSelector } from '@/features/projectConfig/private/store/PostConfigFormStateStore';
 
-type RecruitmentStatusProps = {
-  initData: PostConfigData['recruitmentStatus'];
-};
-
-const RecruitmentStatus = ({ initData }: RecruitmentStatusProps) => {
+const PostConfigRecruitStatusControl = () => {
   const [recruitmentStatus, setRecruitmentStatus] = useRecoilState(
-    postInfoFormFieldSelector('recruitmentStatus'),
+    postConfigFormFieldSelector('recruitmentStatus'),
   );
 
-  const checked = recruitmentStatus !== null ? recruitmentStatus : initData;
-
-  const statusName = checked ? '모집완료' : '모집중';
+  const statusName = recruitmentStatus ? '모집완료' : '모집중';
 
   return (
     <div className='relative mobile:text-sm'>
@@ -23,7 +16,7 @@ const RecruitmentStatus = ({ initData }: RecruitmentStatusProps) => {
       </label>
       <Switch
         id='recruitmentStatusSwitch'
-        checked={checked}
+        checked={recruitmentStatus}
         onChange={setRecruitmentStatus}
         className='group relative flex h-7 w-12 mt-2 mobile:h-6 mobile:w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-primary transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-none  data-[headlessui-state=checked]:bg-gray-200'
       >
@@ -47,4 +40,4 @@ const RecruitmentStatus = ({ initData }: RecruitmentStatusProps) => {
   );
 };
 
-export default RecruitmentStatus;
+export default PostConfigRecruitStatusControl;
