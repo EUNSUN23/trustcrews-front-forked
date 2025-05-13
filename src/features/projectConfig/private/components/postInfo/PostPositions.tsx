@@ -6,11 +6,11 @@ import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
 import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
 import { Field, Label } from '@headlessui/react';
 
-type BoardPositionsProps = {
+type PostPositionsProps = {
   initData: PositionId[];
 };
 
-const BoardPositions = ({ initData }: BoardPositionsProps) => {
+const PostPositions = ({ initData }: PostPositionsProps) => {
   const [positionsId, setPositionsId] = useRecoilState(
     postInfoFormFieldSelector('positionIds'),
   );
@@ -34,4 +34,4 @@ const BoardPositions = ({ initData }: BoardPositionsProps) => {
   );
 };
 
-export default BoardPositions;
+export default PostPositions;

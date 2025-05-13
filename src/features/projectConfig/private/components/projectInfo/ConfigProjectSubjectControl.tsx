@@ -2,10 +2,10 @@ import Input from '@/shared/ui/Input';
 import { useRecoilState } from 'recoil';
 import FormRow from '@/ui/FormRow';
 import { projectInfoFormSelector } from '@/features/projectConfig/private/store/ProjectInfoFormStateStore';
-import { ProjectInfoSummary } from '@/service/project/public/getProjectInfoSummary';
+import { ProjectConfigData } from '@/features/projectConfig/private/service/project/getProjectConfig';
 
 type ProjectSubjectProps = {
-  initData: ProjectInfoSummary['projectSubject'];
+  initData: ProjectConfigData['projectSubject'];
 };
 
 const ConfigProjectSubjectControl = ({ initData }: ProjectSubjectProps) => {

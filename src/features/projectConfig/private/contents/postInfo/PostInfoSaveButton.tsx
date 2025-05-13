@@ -4,16 +4,16 @@ import useSnackbar from '@/shared/hooks/useSnackbar';
 import { projectIdState } from '@/features/project/private/store/myProject/ProjectIdStateStore';
 import { ZodError } from 'zod';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
-import { PostDetailData } from '@/service/post/public/getPostDetail';
 import { postInfoFormStateStore } from '@/features/projectConfig/private/store/PostInfoFormStateStore';
-import {
-  updatePostInfoInputSchema,
-  useUpdatePostInfo,
-} from '@/service/post/private/updatePostInfo';
 import { projectManageAuthStateStore } from '@/features/projectConfig/private/store/ProjectManageAuthStateStore';
+import {
+  updatePostConfigInputSchema,
+  useUpdatePostConfig,
+} from '@/features/projectConfig/private/service/post/updatePostConfig';
+import { PostConfigData } from '@/features/projectConfig/private/service/post/getPostConfig';
 
 type PostInfoSaveButtonProps = {
-  initData: PostDetailData;
+  initData: PostConfigData;
 };
 
 const PostInfoSaveButton = ({ initData }: PostInfoSaveButtonProps) => {
@@ -23,19 +23,19 @@ const PostInfoSaveButton = ({ initData }: PostInfoSaveButtonProps) => {
 
   const {
     title: initTitle,
-    boardPositions: initBoardPositions,
+    postPositions: initPostPositions,
     contact: initContact,
     content: initContent,
     recruitmentStatus: initRecruitmentStatus,
-    boardId,
+    postId,
   } = initData;
 
   const { title, positionIds, contact, content, recruitmentStatus } =
     useRecoilValue(postInfoFormStateStore);
 
-  const { mutate: updatePostInfo, isPending } = useUpdatePostInfo(
+  const { mutate: updatePostInfo, isPending } = useUpdatePostConfig(
     numStrToBigInt(projectId),
-    boardId,
+    postId,
     userAuth,
     {
       onSuccess: (res) => setSuccessSnackbar(res.message),
@@ -46,12 +46,12 @@ const PostInfoSaveButton = ({ initData }: PostInfoSaveButtonProps) => {
   const handleSavePostInfButton = () => {
     const data = {
       projectId: numStrToBigInt(projectId),
-      boardId,
+      postId,
       title: title ? title : initTitle,
       positionIds:
         positionIds.length > 0
           ? positionIds
-          : initBoardPositions.map((v) => v.position.positionId),
+          : initPostPositions.map((v) => v.position.positionId),
       contact: contact ? contact : initContact,
       content: content ? content : initContent,
       recruitmentStatus:
@@ -59,7 +59,7 @@ const PostInfoSaveButton = ({ initData }: PostInfoSaveButtonProps) => {
     };
 
     try {
-      updatePostInfoInputSchema.parse(data);
+      updatePostConfigInputSchema.parse(data);
     } catch (e: unknown) {
       if (e instanceof ZodError) setErrorSnackbar(e.errors[0].message);
       return;
