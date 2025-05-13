@@ -13,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       DEFAULT_SEARCH_POST_PARAM,
     );
     const postSiteMap: MetadataRoute.Sitemap = res.data.content.map((post) => ({
-      url: `${DOMAIN}/post?postId=${post.boardId}&amp;projectId=${post.project.projectId}`,
+      url: `${DOMAIN}/post?postId=${post.postId}&amp;projectId=${post.project.projectId}`,
       lastModified: new Date(post.updateDate),
       priority: 0.8,
     }));
