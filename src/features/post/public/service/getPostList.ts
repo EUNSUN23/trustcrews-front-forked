@@ -34,11 +34,10 @@ export const createQueryParams = (params: SearchPostParams) => {
 
 export type PostInfoSummary = {
   project: ProjectInfoSummary;
-  boardId: bigint;
+  postId: bigint;
   title: string;
   recruitmentStatus: boolean;
-  boardPositions: { boardPositionId: bigint | number; position: Position }[];
-  boardPageView: number;
+  postPositions: { postPositionId: bigint | number; position: Position }[];
   user: {
     email: string;
     nickname: string;
