@@ -1,5 +1,5 @@
 import { useRecoilValue } from 'recoil';
-import { useProjectPublicInfo } from '@/service/project/public/getProjectPublicInfo';
+import { useProjectSummaryInfo } from '@/service/project/public/getProjectInfoSummary';
 import { projectIdState } from '@/features/project/private/store/myProject/ProjectIdStateStore';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
 import ProjectInfoResetButton from '@/features/projectConfig/private/contents/projectInfo/ProjectInfoResetButton';
@@ -17,7 +17,7 @@ const ProjectInfoForm = () => {
 
   const {
     data: { data: projectInfo },
-  } = useProjectPublicInfo(numStrToBigInt(projectId));
+  } = useProjectSummaryInfo(numStrToBigInt(projectId));
 
   const { projectName, projectSubject, startDate, endDate, technologyStacks } =
     projectInfo;

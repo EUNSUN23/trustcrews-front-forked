@@ -1,4 +1,4 @@
-import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 import { ResponseBody } from '@/types/responseBody';
 import { TechStack } from '@/types/data/techStack';
@@ -13,21 +13,17 @@ export type ProjectInfoSummary = {
   technologyStacks: TechStack[];
 };
 
-export const getProjectPublicInfo = async (
+export const getProjectInfoSummary = async (
   projectId: bigint,
 ): Promise<ResponseBody<ProjectInfoSummary>> => {
   return await request('GET', `/api/project/public?projectId=${projectId}`);
 };
 
-export const PROJECT_PUBLIC_INFO_QUERY_KEY = 'projectPublicInfo';
+export const PROJECT_INFO_SUMMARY_QUERY_KEY = 'projectInfoSummary';
 
-export const getProjectPublicInfoQueryOptions = (projectId: bigint) => {
-  return queryOptions({
-    queryKey: [PROJECT_PUBLIC_INFO_QUERY_KEY, bigIntToString(projectId)],
-    queryFn: () => getProjectPublicInfo(projectId),
+export const useProjectSummaryInfo = (projectId: bigint) => {
+  return useSuspenseQuery({
+    queryKey: [PROJECT_INFO_SUMMARY_QUERY_KEY, bigIntToString(projectId)],
+    queryFn: () => getProjectInfoSummary(projectId),
   });
-};
-
-export const useProjectPublicInfo = (projectId: bigint) => {
-  return useSuspenseQuery(getProjectPublicInfoQueryOptions(projectId));
 };
