@@ -31,7 +31,7 @@ const MyProjectAppliesDetail = () => {
   return (
     <ul
       role='list'
-      className='min-w-[340px] max-h-[300px] overflow-y-auto divide-y divide-gray-100'
+      className='min-w-[300px] max-h-[300px] overflow-y-auto divide-y divide-gray-100'
       ref={rootRef}
     >
       {totalItemCount > 0 ? (
@@ -73,16 +73,12 @@ const MyProjectAppliesDetail = () => {
           </div>
         </li>
       )}
-      {hasNextPage ? (
+      {hasNextPage && (
         <li
           ref={bottomRef}
           className='border border-red flex items-center w-full h-[80px]'
         >
           <Loader size='sm' />
-        </li>
-      ) : (
-        <li className='flex items-center justify-center w-full h-[100px] text-lg text-center text-gray-600/80'>
-          <div>지원한 프로젝트가 더 이상 없습니다.</div>
         </li>
       )}
     </ul>
