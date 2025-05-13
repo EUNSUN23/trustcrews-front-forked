@@ -6,6 +6,7 @@ import {
 import { ReactNode } from 'react';
 import {
   getPostList,
+  POST_LIST_QUERY_KEY,
   SearchPostParams,
 } from '@/features/post/public/service/getPostList';
 
@@ -25,7 +26,7 @@ const InitialPostsDataProvider = async ({
 
   const { techStacks, position, keyword, page } = DEFAULT_SEARCH_POST_PARAM;
   await queryClient.prefetchQuery({
-    queryKey: ['postList', techStacks, position, keyword, page],
+    queryKey: [POST_LIST_QUERY_KEY, techStacks, position, keyword, page],
     queryFn: () => getPostList(DEFAULT_SEARCH_POST_PARAM),
   });
 

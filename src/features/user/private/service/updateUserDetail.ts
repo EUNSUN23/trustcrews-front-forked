@@ -6,6 +6,7 @@ import { USER_DETAIL_INFO_QUERY_KEY } from '@/features/user/private/service/getU
 import { ResponseBody } from '@/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
 import publicURL from '@/constants/clientApi/publicURL';
+import { POST_LIST_QUERY_KEY } from '@/features/post/public/service/getPostList';
 
 const nicknameRegex: RegExp = /^[a-zA-Z0-9]{6,10}$/;
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
@@ -102,7 +103,7 @@ export const useUpdateUserDetail = ({
           queryKey: [SIMPLE_USER_INFO_QUERY_KEY],
         });
         const invalidatePostList = queryClient.invalidateQueries({
-          queryKey: ['postList'],
+          queryKey: [POST_LIST_QUERY_KEY],
         });
 
         await Promise.all([
