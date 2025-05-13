@@ -68,10 +68,10 @@ const Posts = () => {
             >
               {infos.map((info) => (
                 <li
-                  key={info.boardId.toString()}
+                  key={info.postId.toString()}
                   className='flex-col w-[280px] max-h-[330px] rounded-xl border-2 shadow-lg mobile:w-full mobile:mt-2'
                 >
-                  <PostCard key={info.boardId.toString()} postInfo={info} />
+                  <PostCard key={info.postId.toString()} postInfo={info} />
                 </li>
               ))}
             </ul>
