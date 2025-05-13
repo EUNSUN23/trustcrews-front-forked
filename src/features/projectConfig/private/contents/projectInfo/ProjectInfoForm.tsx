@@ -1,5 +1,4 @@
 import { useRecoilValue } from 'recoil';
-import { useProjectSummaryInfo } from '@/service/project/public/getProjectInfoSummary';
 import { projectIdState } from '@/features/project/private/store/myProject/ProjectIdStateStore';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
 import ProjectInfoResetButton from '@/features/projectConfig/private/contents/projectInfo/ProjectInfoResetButton';
@@ -11,13 +10,14 @@ import ConfigContents from '@/features/projectConfig/private/layouts/ConfigConte
 import ConfigProjectNameControl from '@/features/projectConfig/private/components/projectInfo/ConfigProjectNameControl';
 import ConfigProjectSubjectControl from '@/features/projectConfig/private/components/projectInfo/ConfigProjectSubjectControl';
 import ConfigProjectDateControl from '@/features/projectConfig/private/components/projectInfo/ConfigProjectDateControl';
+import { useProjectConfig } from '@/features/projectConfig/private/service/project/getProjectConfig';
 
 const ProjectInfoForm = () => {
   const projectId = useRecoilValue(projectIdState);
 
   const {
     data: { data: projectInfo },
-  } = useProjectSummaryInfo(numStrToBigInt(projectId));
+  } = useProjectConfig(numStrToBigInt(projectId));
 
   const { projectName, projectSubject, startDate, endDate, technologyStacks } =
     projectInfo;
