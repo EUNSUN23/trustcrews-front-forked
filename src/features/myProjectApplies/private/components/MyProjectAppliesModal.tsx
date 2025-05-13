@@ -1,14 +1,13 @@
 'use client';
 
-import { Suspense } from 'react';
 import { useRecoilState } from 'recoil';
 import { createPortal } from 'react-dom';
 import Modal from '@/shared/ui/Modal';
 import MyProjectAppliesDetail from '../contents/MyProjectAppliesDetail';
-import Skeleton from '@/shared/ui/Skeleton';
 import useModalPortalElement from '@/shared/hooks/useModalPortalElement';
-import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 import { myProjectAppliesModalStateStore } from '@/features/myProjectApplies/private/store/MyProjectAppliesModalStateStore';
+import MyProjectAppliesDetailSkeleton from '@/features/myProjectApplies/private/contents/MyProjectAppliesDetailSkeleton';
+import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
 
 const MyProjectAppliesModal = () => {
   const [{ isOpen }, setIsOpen] = useRecoilState(
@@ -31,22 +30,12 @@ const MyProjectAppliesModal = () => {
                 setIsOpen({ isOpen: false });
               }}
             >
-              <Suspense
-                fallback={
-                  <div className='w-[470px] max-h-[300px] overflow-y-auto divide-y divide-gray-100 px-2 py-5 space-y-4 mobile:w-[340px]'>
-                    {Array.from({ length: ITEM_COUNT_PER_PAGE.LIST_SM }).map(
-                      (_, index) => (
-                        <Skeleton
-                          key={`skeleton-${index}`}
-                          className='w-full h-10'
-                        />
-                      ),
-                    )}
-                  </div>
-                }
+              <FieldQueryBoundary
+                errorFallbackSize='md'
+                suspenseFallback={<MyProjectAppliesDetailSkeleton />}
               >
                 <MyProjectAppliesDetail />
-              </Suspense>
+              </FieldQueryBoundary>
             </Modal>,
             portalElement as Element,
           )
