@@ -5,7 +5,7 @@ import ConfigContainer from '@/features/projectConfig/private/layouts/ConfigCont
 import ConfigSummary from '@/features/projectConfig/private/layouts/ConfigSummary';
 import ConfigContents from '@/features/projectConfig/private/layouts/ConfigContents';
 
-const ProjectPostInfoFormSkeleton = () => {
+const PostConfigFormSkeleton = () => {
   return (
     <ConfigContainer>
       <ConfigSummary>모집 게시글</ConfigSummary>
@@ -34,4 +34,4 @@ const ProjectPostInfoFormSkeleton = () => {
   );
 };
 
-export default ProjectPostInfoFormSkeleton;
+export default PostConfigFormSkeleton;

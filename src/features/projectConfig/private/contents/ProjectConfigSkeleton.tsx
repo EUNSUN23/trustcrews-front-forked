@@ -1,15 +1,15 @@
-import ProjectInfoFormSkeleton from '@/features/projectConfig/private/contents/projectInfo/ProjectInfoFormSkeleton';
-import PostInfoFormSkeleton from '@/features/projectConfig/private/contents/postInfo/PostInfoFormSkeleton';
+import ProjectConfigFormSkeleton from '@/features/projectConfig/private/contents/project/ProjectConfigFormSkeleton';
 import PMAuthSkeleton from '@/features/projectConfig/private/contents/pmAuth/PMAuthSkeleton';
 import ConfigSummary from '@/features/projectConfig/private/layouts/ConfigSummary';
 import ConfigContainer from '@/features/projectConfig/private/layouts/ConfigContainer';
 import ButtonSkeleton from '@/shared/ui/skeleton/ButtonSkeleton';
+import PostConfigFormSkeleton from '@/features/projectConfig/private/contents/post/PostConfigFormSkeleton';
 
 const ProjectConfigSkeleton = () => {
   return (
     <section className='w-full mx-auto space-y-[100px]'>
-      <ProjectInfoFormSkeleton />
-      <PostInfoFormSkeleton />
+      <ProjectConfigFormSkeleton />
+      <PostConfigFormSkeleton />
       <PMAuthSkeleton />
       <ConfigContainer>
         <ConfigSummary>프로젝트 종료</ConfigSummary>
