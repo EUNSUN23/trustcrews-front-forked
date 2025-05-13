@@ -9,10 +9,7 @@ import { POST_CONFIG_QUERY_KEY } from '@/features/projectConfig/private/service/
 export const updatePostConfigInputSchema = z.object({
   title: z.string().nonempty({ message: '게시글 제목을 입력해주세요.' }),
   content: z.string().nonempty({ message: '게시글 내용을 입력해주세요.' }),
-  recruitmentStatus: z
-    .boolean()
-    .nullable()
-    .refine((val) => val, { message: '모집 상태를 선택해주세요.' }),
+  recruitmentStatus: z.boolean(),
   contact: z.string().nonempty({ message: '연락처를 입력해주세요.' }),
   positionIds: z
     .array(z.bigint().or(z.number()))
@@ -24,13 +21,11 @@ export type UpdatePostConfigInput = z.infer<typeof updatePostConfigInputSchema>;
 
 export const updatePostConfig = async (
   projectId: bigint,
-  postId: bigint,
   userAuth: string,
   data: UpdatePostConfigInput,
 ): Promise<ResponseBody<null>> => {
   return await request('PUT', '/api/projectConfig/post', {
     ...data,
-    postId,
     userAuth,
     projectId,
   });
@@ -41,7 +36,6 @@ type UpdatePostInfoRes = ApiResult<typeof updatePostConfig>;
 // todo - 백엔드 성공 메세지
 export const useUpdatePostConfig = (
   projectId: bigint,
-  postId: bigint,
   userAuth: string,
   {
     onSuccess,
@@ -55,7 +49,7 @@ export const useUpdatePostConfig = (
 
   return useMutation({
     mutationFn: (data: UpdatePostConfigInput) =>
-      updatePostConfig(projectId, postId, userAuth, data),
+      updatePostConfig(projectId, userAuth, data),
     onSuccess: async (res) => {
       const { result } = res;
       if (result === 'success') {
