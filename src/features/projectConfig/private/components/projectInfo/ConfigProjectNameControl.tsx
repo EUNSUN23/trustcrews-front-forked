@@ -2,7 +2,7 @@ import Input from '@/shared/ui/Input';
 import { useRecoilState } from 'recoil';
 import FormRow from '@/ui/FormRow';
 import { projectInfoFormSelector } from '@/features/projectConfig/private/store/ProjectInfoFormStateStore';
-import { ProjectInfoSummary } from '@/service/project/public/getProjectPublicInfo';
+import { ProjectInfoSummary } from '@/service/project/public/getProjectInfoSummary';
 
 type ProjectNameProps = {
   initData: ProjectInfoSummary['projectName'];

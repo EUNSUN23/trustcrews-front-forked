@@ -6,7 +6,7 @@ import useSnackbar from '@/shared/hooks/useSnackbar';
 import { projectIdState } from '@/features/project/private/store/myProject/ProjectIdStateStore';
 import { projectInfoFormStateStore } from '@/features/projectConfig/private/store/ProjectInfoFormStateStore';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
-import { ProjectInfoSummary } from '@/service/project/public/getProjectPublicInfo';
+import { ProjectInfoSummary } from '@/service/project/public/getProjectInfoSummary';
 import {
   UpdateProjectInfoInput,
   useUpdateProjectInfo,
