@@ -1,10 +1,10 @@
 import { useRecoilState } from 'recoil';
 import TextArea from '@/shared/ui/TextArea';
 import { postInfoFormFieldSelector } from '@/features/projectConfig/private/store/PostInfoFormStateStore';
-import { PostDetailData } from '@/service/post/public/getPostDetail';
+import { PostConfigData } from '@/features/projectConfig/private/service/post/getPostConfig';
 
 type ContentProps = {
-  initData: PostDetailData['content'];
+  initData: PostConfigData['content'];
 };
 
 const Content = ({ initData }: ContentProps) => {

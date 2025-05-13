@@ -1,8 +1,8 @@
 import { atom, DefaultValue, selectorFamily } from 'recoil';
-import { UpdateProjectInfoInput } from '@/service/project/private/updateProjectInfo';
+import { UpdateProjectConfigInput } from '@/features/projectConfig/private/service/project/updateProjectConfig';
 
 interface UpdateProjectInfoFormState
-  extends Omit<UpdateProjectInfoInput, 'technologyIds'> {
+  extends Omit<UpdateProjectConfigInput, 'technologyIds'> {
   technologyIds: string[];
 }
 
