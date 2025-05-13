@@ -4,29 +4,31 @@ import { z } from 'zod';
 import { ResponseBody } from '@/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
 
-export const updateCrewPMAuthInputSchema = z.object({
+export const updatePMAuthConfigInputSchema = z.object({
   crewAuth: z.string().nonempty({ message: '프로젝트 권한을 선택해 주세요.' }),
 });
 
-export type UpdateCrewPMAuthInput = z.infer<typeof updateCrewPMAuthInputSchema>;
+export type UpdatePMAuthConfigInput = z.infer<
+  typeof updatePMAuthConfigInputSchema
+>;
 
-export const updateCrewPMAuth = async (
+export const updatePMAuthConfig = async (
   projectId: bigint,
   crewId: bigint,
   userAuth: string,
-  data: UpdateCrewPMAuthInput,
+  data: UpdatePMAuthConfigInput,
 ): Promise<ResponseBody<null>> => {
-  return request('PUT', '/api/project/setting/crewAuth', {
+  return request('PUT', '/api/projectConfig/pmAuth', {
+    ...data,
     projectId,
-    projectMemberId: crewId,
-    authMap: userAuth,
-    projectMemberAuth: data.crewAuth,
+    crewId,
+    userAuth,
   });
 };
 
-type UpdateCrewPMAuthRes = ApiResult<typeof updateCrewPMAuth>;
+type UpdatePMAuthConfigRes = ApiResult<typeof updatePMAuthConfig>;
 
-export const useUpdateCrewPMAuth = (
+export const useUpdatePMAuthConfig = (
   projectId: bigint,
   crewId: bigint,
   userAuth: string,
@@ -34,13 +36,13 @@ export const useUpdateCrewPMAuth = (
     onSuccess,
     onError,
   }: {
-    onSuccess?: (res: UpdateCrewPMAuthRes) => void;
-    onError?: (res: UpdateCrewPMAuthRes) => void;
+    onSuccess?: (res: UpdatePMAuthConfigRes) => void;
+    onError?: (res: UpdatePMAuthConfigRes) => void;
   },
 ) => {
   return useMutation({
-    mutationFn: (data: UpdateCrewPMAuthInput) =>
-      updateCrewPMAuth(projectId, crewId, userAuth, data),
+    mutationFn: (data: UpdatePMAuthConfigInput) =>
+      updatePMAuthConfig(projectId, crewId, userAuth, data),
     onSuccess: (res) => {
       if (res.result === 'success') {
         onSuccess?.(res);

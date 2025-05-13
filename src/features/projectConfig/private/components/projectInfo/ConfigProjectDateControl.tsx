@@ -3,12 +3,12 @@ import DateInput from '@/shared/ui/DateInput';
 import { useRecoilState } from 'recoil';
 import { addDays, format } from 'date-fns';
 import FormRow from '@/ui/FormRow';
-import { ProjectInfoSummary } from '@/service/project/public/getProjectInfoSummary';
 import { projectInfoFormSelector } from '@/features/projectConfig/private/store/ProjectInfoFormStateStore';
+import { ProjectConfigData } from '@/features/projectConfig/private/service/project/getProjectConfig';
 
 type ProjectDateProps = {
-  initStartDate: ProjectInfoSummary['startDate'];
-  initEndDate: ProjectInfoSummary['endDate'];
+  initStartDate: ProjectConfigData['startDate'];
+  initEndDate: ProjectConfigData['endDate'];
 };
 
 const ConfigProjectDateControl = ({
@@ -31,8 +31,8 @@ const ConfigProjectDateControl = ({
 
   // 시작날짜보다 종료날짜 앞서지 못하도록
   useEffect(() => {
-    const endDateValueNum = parseInt(endDateValue.replaceAll('-', ''));
-    const startDateValueNum = parseInt(startDateValue.replaceAll('-', ''));
+    const endDateValueNum = Number(endDateValue.replaceAll('-', ''));
+    const startDateValueNum = Number(startDateValue.replaceAll('-', ''));
     const initEndMinDate = addDays(new Date(startDateValue), 1);
     if (endDateValueNum <= startDateValueNum) {
       setEndDate(format(initEndMinDate, 'yyyy-MM-dd'));
