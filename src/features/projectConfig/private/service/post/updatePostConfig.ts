@@ -4,8 +4,9 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { POST_DETAIL_QUERY_KEY } from '@/service/post/public/getPostDetail';
 import { ResponseBody } from '@/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
+import { POST_CONFIG_QUERY_KEY } from '@/features/projectConfig/private/service/post/getPostConfig';
 
-export const updatePostInfoInputSchema = z.object({
+export const updatePostConfigInputSchema = z.object({
   title: z.string().nonempty({ message: '게시글 제목을 입력해주세요.' }),
   content: z.string().nonempty({ message: '게시글 내용을 입력해주세요.' }),
   recruitmentStatus: z
@@ -19,28 +20,28 @@ export const updatePostInfoInputSchema = z.object({
     .readonly(),
 });
 
-export type UpdatePostInfoInput = z.infer<typeof updatePostInfoInputSchema>;
+export type UpdatePostConfigInput = z.infer<typeof updatePostConfigInputSchema>;
 
-export const updatePostInfo = async (
+export const updatePostConfig = async (
   projectId: bigint,
-  boardId: bigint,
+  postId: bigint,
   userAuth: string,
-  data: UpdatePostInfoInput,
+  data: UpdatePostConfigInput,
 ): Promise<ResponseBody<null>> => {
-  return await request('PUT', '/api/project/setting/board', {
+  return await request('PUT', '/api/projectConfig/post', {
     ...data,
+    postId,
+    userAuth,
     projectId,
-    boardId,
-    authMap: userAuth,
   });
 };
 
-type UpdatePostInfoRes = ApiResult<typeof updatePostInfo>;
+type UpdatePostInfoRes = ApiResult<typeof updatePostConfig>;
 
 // todo - 백엔드 성공 메세지
-export const useUpdatePostInfo = (
+export const useUpdatePostConfig = (
   projectId: bigint,
-  boardId: bigint,
+  postId: bigint,
   userAuth: string,
   {
     onSuccess,
@@ -53,13 +54,13 @@ export const useUpdatePostInfo = (
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: UpdatePostInfoInput) =>
-      updatePostInfo(projectId, boardId, userAuth, data),
+    mutationFn: (data: UpdatePostConfigInput) =>
+      updatePostConfig(projectId, postId, userAuth, data),
     onSuccess: async (res) => {
       const { result } = res;
       if (result === 'success') {
         await queryClient.invalidateQueries({
-          queryKey: [POST_DETAIL_QUERY_KEY],
+          queryKey: [POST_CONFIG_QUERY_KEY, POST_DETAIL_QUERY_KEY],
         });
         onSuccess?.(res);
       } else {
