@@ -5,7 +5,7 @@ import { ResponseBody } from '@/types/responseBody';
 import { Position } from '@/types/data/position';
 
 export type PostDetailData = {
-  boardId: bigint;
+  postId: bigint;
   projectId: bigint;
   title: string;
   content: string;
@@ -19,8 +19,8 @@ export type PostDetailData = {
   contact: string;
   createDate: string;
   updateDate: string;
-  boardPositions: {
-    boardPositionId: bigint | number;
+  postPositions: {
+    postPositionId: bigint | number;
     position: Position;
   }[];
 };
