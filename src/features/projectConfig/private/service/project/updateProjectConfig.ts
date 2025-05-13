@@ -6,7 +6,7 @@ import { ResponseBody } from '@/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
 import { PROJECT_CONFIG_QUERY_KEY } from '@/features/projectConfig/private/service/project/getProjectConfig';
 
-const updateProjectConfigInputSchema = z.object({
+export const updateProjectConfigInputSchema = z.object({
   projectName: z
     .string()
     .nonempty({ message: '프로젝트 이름을 입력해주세요.' }),
