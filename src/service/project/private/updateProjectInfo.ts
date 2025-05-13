@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
 import { request } from '@/utils/clientApi/request';
-import { PROJECT_PUBLIC_INFO_QUERY_KEY } from '@/service/project/public/getProjectPublicInfo';
+import { PROJECT_INFO_SUMMARY_QUERY_KEY } from '@/service/project/public/getProjectInfoSummary';
 import { ResponseBody } from '@/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
 
@@ -61,7 +61,7 @@ export const useUpdateProjectInfo = (
     onSuccess: async (res) => {
       if (res.result === 'success') {
         await queryClient.invalidateQueries({
-          queryKey: [PROJECT_PUBLIC_INFO_QUERY_KEY],
+          queryKey: [PROJECT_INFO_SUMMARY_QUERY_KEY],
         });
         onSuccess?.(res);
       } else {
