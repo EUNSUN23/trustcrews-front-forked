@@ -1,26 +1,26 @@
-import BoardPositions from '@/features/projectConfig/private/components/postInfo/BoardPositions';
+import PostPositions from '@/features/projectConfig/private/components/postInfo/PostPositions';
 import Contact from '@/features/projectConfig/private/components/postInfo/Contact';
 import Content from '@/features/projectConfig/private/components/postInfo/Content';
 import ProjectPostInfoSaveButton from '@/features/projectConfig/private/contents/postInfo/PostInfoSaveButton';
 import RecruitmentStatus from '@/features/projectConfig/private/components/postInfo/RecruitmentStatus';
 import { useRecoilValue } from 'recoil';
 import { projectIdState } from '@/features/project/private/store/myProject/ProjectIdStateStore';
-import { usePostDetail } from '@/service/post/public/getPostDetail';
 import PostInfoResetButton from '@/features/projectConfig/private/contents/postInfo/PostInfoResetButton';
 import ConfigContainer from '@/features/projectConfig/private/layouts/ConfigContainer';
 import ConfigSummary from '@/features/projectConfig/private/layouts/ConfigSummary';
 import ConfigContents from '@/features/projectConfig/private/layouts/ConfigContents';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
 import Title from '@/features/projectConfig/private/components/postInfo/Title';
+import { usePostConfig } from '@/features/projectConfig/private/service/post/getPostConfig';
 
 const PostInfoForm = () => {
   const projectId = useRecoilValue(projectIdState);
 
   const {
     data: { data },
-  } = usePostDetail(numStrToBigInt(projectId));
+  } = usePostConfig(numStrToBigInt(projectId));
 
-  const { title, boardPositions, contact, recruitmentStatus, content } = data;
+  const { title, postPositions, contact, recruitmentStatus, content } = data;
 
   return (
     <ConfigContainer>
@@ -33,8 +33,8 @@ const PostInfoForm = () => {
           <Title initData={title} />
         </div>
         <div className='w-[380px] mobile:w-[300px] space-y-5 mobile:space-y-3 mobile:mx-auto'>
-          <BoardPositions
-            initData={boardPositions.map((v) => v.position.positionId)}
+          <PostPositions
+            initData={postPositions.map((v) => v.position.positionId)}
           />
         </div>
         <div className='w-[380px] mobile:w-[300px] space-y-5 mobile:space-y-3 mobile:mx-auto'>

@@ -1,10 +1,10 @@
 import { useRecoilState } from 'recoil';
 import Input from '@/shared/ui/Input';
 import { postInfoFormFieldSelector } from '@/features/projectConfig/private/store/PostInfoFormStateStore';
-import { PostDetailData } from '@/service/post/public/getPostDetail';
+import { PostConfigData } from '@/features/projectConfig/private/service/post/getPostConfig';
 
 type ContactProps = {
-  initData: PostDetailData['contact'];
+  initData: PostConfigData['contact'];
 };
 
 const Contact = ({ initData }: ContactProps) => {
