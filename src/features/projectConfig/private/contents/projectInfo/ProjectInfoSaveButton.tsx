@@ -6,15 +6,15 @@ import useSnackbar from '@/shared/hooks/useSnackbar';
 import { projectIdState } from '@/features/project/private/store/myProject/ProjectIdStateStore';
 import { projectInfoFormStateStore } from '@/features/projectConfig/private/store/ProjectInfoFormStateStore';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
-import { ProjectInfoSummary } from '@/service/project/public/getProjectInfoSummary';
 import {
-  UpdateProjectInfoInput,
-  useUpdateProjectInfo,
-} from '@/service/project/private/updateProjectInfo';
+  UpdateProjectConfigInput,
+  useUpdateProjectConfig,
+} from '@/features/projectConfig/private/service/project/updateProjectConfig';
 import { projectManageAuthStateStore } from '@/features/projectConfig/private/store/ProjectManageAuthStateStore';
+import { ProjectConfigData } from '@/features/projectConfig/private/service/project/getProjectConfig';
 
 type ProjectInfoSaveButtonProps = {
-  initData: ProjectInfoSummary;
+  initData: ProjectConfigData;
 };
 
 const ProjectInfoSaveButton = ({ initData }: ProjectInfoSaveButtonProps) => {
@@ -24,7 +24,7 @@ const ProjectInfoSaveButton = ({ initData }: ProjectInfoSaveButtonProps) => {
   const projectSettingInfo = useRecoilValue(projectInfoFormStateStore);
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
 
-  const { mutate: updatePost, isPending: isUpdating } = useUpdateProjectInfo(
+  const { mutate: updatePost, isPending: isUpdating } = useUpdateProjectConfig(
     numStrToBigInt(projectId),
     userPMAuth,
     {
@@ -45,7 +45,7 @@ const ProjectInfoSaveButton = ({ initData }: ProjectInfoSaveButtonProps) => {
     const { projectName, projectSubject, startDate, endDate, technologyIds } =
       projectSettingInfo;
 
-    const reqData: UpdateProjectInfoInput = {
+    const reqData: UpdateProjectConfigInput = {
       projectName: projectName ? projectName : initProjectName,
       projectSubject: projectSubject ? projectSubject : initProjectSubject,
       startDate: startDate ? startDate : initStartDate,
