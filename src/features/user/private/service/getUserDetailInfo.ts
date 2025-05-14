@@ -5,7 +5,7 @@ import { TrustGradeName } from '@/types/data/trustGrade';
 import { Position } from '@/types/data/position';
 import { TechStack } from '@/types/data/techStack';
 
-export interface UserProfileInfo {
+export type UserProfileInfo = {
   userId: bigint | null;
   email: string;
   nickname: string;
@@ -21,7 +21,7 @@ export interface UserProfileInfo {
   projectHistoryTotalCount: number;
   createDate: string;
   updateDate: string;
-}
+};
 
 export const getUserDetailInfo = async (): Promise<
   ResponseBody<UserProfileInfo>
