@@ -38,26 +38,18 @@ export const useCreateFWVote = (
     onError,
   }: {
     onSuccess?: (res: CreateCrewFWVoteRes) => void;
-    onError?: (res: CreateCrewFWVoteRes) => void;
+    onError?: (error: Error) => void;
   },
 ) => {
   return useMutation({
     mutationFn: (reason: CreateCrewFWVoteReason) =>
       createFWVote(baseParam, reason),
     onSuccess: (res) => {
-      if (res.result === 'success') {
-        onSuccess?.(res);
-      } else {
-        onError?.(res);
-      }
+      onSuccess?.(res);
     },
     onError: (error) => {
       console.error(error.cause);
-      onError?.({
-        result: 'fail',
-        data: null,
-        message: '강제투표 생성 중 오류가 발생했습니다.',
-      });
+      onError?.(error);
     },
   });
 };

@@ -11,32 +11,18 @@ type LogOutRes = ApiResult<typeof logout>;
 
 export const useLogout = ({
   onSuccess,
+  onError,
 }: {
   onSuccess?: (res: LogOutRes) => void;
+  onError?: (error: Error) => void;
 }) => {
-  // const router = useRouter();
-  // const resetActiveBoardTab = useResetRecoilState(activeBoardTabStore);
-  // const { setInfoSnackbar, setErrorSnackbar } = useSnackbar();
   return useMutation({
     mutationFn: logout,
     onSuccess: (res) => {
       onSuccess?.(res);
-      // const { message, result } = res;
-      // if (isEqual(result, 'success')) {
-      //   resetActiveBoardTab();
-      //
-      //   router.push('/');
-      //   router.refresh();
-      //
-      //   setInfoSnackbar(message);
-      // }
-      //
-      // if (isEqual(result, 'error')) {
-      //   setErrorSnackbar(message);
-      // }
     },
-    // onError: (err) => {
-    //   console.log('err', err);
-    // },
+    onError: (error) => {
+      onError?.(error);
+    },
   });
 };

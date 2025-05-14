@@ -28,15 +28,14 @@ const UserMenu = () => {
   const { setInfoSnackbar, setErrorSnackbar } = useSnackbar();
 
   const { mutate: logout } = useLogout({
-    onSuccess: ({ result, message }) => {
-      if (result === 'success') {
-        resetActiveBoardTab();
-        router.push('/');
-        router.refresh();
-        setInfoSnackbar(message);
-      } else {
-        setErrorSnackbar(message);
-      }
+    onSuccess: ({ message }) => {
+      resetActiveBoardTab();
+      router.push('/');
+      router.refresh();
+      setInfoSnackbar(message);
+    },
+    onError: (error) => {
+      setErrorSnackbar(error.message);
     },
   });
 

@@ -38,7 +38,7 @@ const FWVoteNoticeDetail = () => {
       },
       {
         onSuccess: (res) => setSuccessSnackbar(res.message),
-        onError: (res) => setErrorSnackbar(res.message),
+        onError: (error) => setErrorSnackbar(error.message),
       },
     );
 
