@@ -10,6 +10,9 @@ import EndProject from '@/features/projectConfig/private/contents/EndProject';
 import { projectManageAuthStateStore } from '@/features/projectConfig/private/store/ProjectManageAuthStateStore';
 import PMAuthSkeleton from '@/features/projectConfig/private/contents/pmAuth/PMAuthSkeleton';
 import PostConfigFormSkeleton from '@/features/projectConfig/private/contents/post/PostConfigFormSkeleton';
+import ConfigSummary from '@/features/projectConfig/private/layouts/ConfigSummary';
+import ConfigContainer from '@/features/projectConfig/private/layouts/ConfigContainer';
+import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
 
 const ProjectConfig = () => {
   const { configYn: isConfigAccessible } = useRecoilValue(
@@ -33,9 +36,15 @@ const ProjectConfig = () => {
       <Suspense fallback={<PostConfigFormSkeleton />}>
         <PostConfigForm />
       </Suspense>
-      <Suspense fallback={<PMAuthSkeleton />}>
-        <PMAuth />
-      </Suspense>
+      <ConfigContainer>
+        <ConfigSummary>크루 권한</ConfigSummary>
+        <FieldQueryBoundary
+          errorFallbackSize='md'
+          suspenseFallback={<PMAuthSkeleton />}
+        >
+          <PMAuth />
+        </FieldQueryBoundary>
+      </ConfigContainer>
       <EndProject />
     </section>
   );
