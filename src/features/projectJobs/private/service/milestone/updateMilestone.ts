@@ -35,7 +35,7 @@ export const useUpdateMilestone = (
     onError,
   }: {
     onSuccess?: (res: UpdateMilestoneRes) => void;
-    onError?: (res: UpdateMilestoneRes) => void;
+    onError?: (error: Error) => void;
   },
 ) => {
   const queryClient = useQueryClient();
@@ -43,22 +43,14 @@ export const useUpdateMilestone = (
     mutationFn: (data: UpdateMilestoneInput) =>
       updateMilestone(milestoneId, authMap, data),
     onSuccess: async (res) => {
-      if (res.message === 'success') {
-        await queryClient.invalidateQueries({
-          queryKey: [MILESTONES_QUERY_KEY],
-        });
-        onSuccess?.(res);
-      } else {
-        onError?.(res);
-      }
+      await queryClient.invalidateQueries({
+        queryKey: [MILESTONES_QUERY_KEY],
+      });
+      onSuccess?.(res);
     },
     onError: (error) => {
       console.error(error.cause);
-      onError?.({
-        result: 'fail',
-        data: null,
-        message: '마일스톤 수정 중 오류가 발생했습니다.',
-      });
+      onError?.(error);
     },
   });
 };

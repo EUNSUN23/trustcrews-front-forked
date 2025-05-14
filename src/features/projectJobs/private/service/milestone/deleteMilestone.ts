@@ -26,7 +26,7 @@ export const useDeleteMilestone = (
     onError,
   }: {
     onSuccess?: (res: DeleteMilestoneRes) => void;
-    onError?: (res: DeleteMilestoneRes) => void;
+    onError?: (error: Error) => void;
   },
 ) => {
   const queryClient = useQueryClient();
@@ -38,22 +38,14 @@ export const useDeleteMilestone = (
         authMap: authMap,
       }),
     onSuccess: async (res) => {
-      if (res.message === 'success') {
-        await queryClient.invalidateQueries({
-          queryKey: [MILESTONES_QUERY_KEY],
-        });
-        onSuccess?.(res);
-      } else {
-        onError?.(res);
-      }
+      await queryClient.invalidateQueries({
+        queryKey: [MILESTONES_QUERY_KEY],
+      });
+      onSuccess?.(res);
     },
     onError: (error) => {
       console.error(error.cause);
-      onError?.({
-        result: 'fail',
-        data: null,
-        message: '마일스톤 삭제중 오류가 발생했습니다.',
-      });
+      onError?.(error);
     },
   });
 };
