@@ -13,11 +13,11 @@ export const getCrewDetail = async (
   );
 };
 
-export const getCrewDetailQueryKey = 'crewDetail';
+export const CREW_DETAIL_QUERY_KEY = 'crewDetail';
 
 export const useCrewDetail = (projectMemberId: bigint) => {
   return useSuspenseQuery({
-    queryKey: [getCrewDetailQueryKey, bigIntToString(projectMemberId)],
+    queryKey: [CREW_DETAIL_QUERY_KEY, bigIntToString(projectMemberId)],
     queryFn: () => getCrewDetail(projectMemberId),
   });
 };
