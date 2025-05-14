@@ -23,7 +23,7 @@ const CrewOutButton = ({ crewInfo }: CrewOutButtonProps) => {
       setSuccessSnackbar(res.message);
       router.replace('/');
     },
-    onError: (res) => setErrorSnackbar(res.message),
+    onError: (error) => setErrorSnackbar(error.message),
   });
 
   const handleClickLeaveButton = () => {
