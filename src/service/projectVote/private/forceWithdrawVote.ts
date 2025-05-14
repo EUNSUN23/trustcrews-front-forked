@@ -40,7 +40,7 @@ export const useForceWithdrawVote = (
     onError,
   }: {
     onSuccess?: (res: VoteFWRes) => void;
-    onError?: (res: VoteFWRes) => void;
+    onError?: (error: Error) => void;
   },
 ) => {
   const queryClient = useQueryClient();
@@ -48,28 +48,17 @@ export const useForceWithdrawVote = (
     mutationFn: (data: FWVoteAnswerInput) =>
       voteForProjectFWithdraw({ ...baseParams, ...data }),
     onSuccess: async (res) => {
-      if (res.result === 'success') {
-        await queryClient.invalidateQueries({
-          queryKey: [FWVOTE_NOTICE_LIST_QUERY_KEY],
-        });
+      await queryClient.invalidateQueries({
+        queryKey: [FWVOTE_NOTICE_LIST_QUERY_KEY],
+      });
 
-        await queryClient.invalidateQueries({
-          queryKey: [FWVOTE_NOTICE_QUERY_KEY],
-        });
-        onSuccess?.(res);
-      } else {
-        onError?.(res);
-      }
+      await queryClient.invalidateQueries({
+        queryKey: [FWVOTE_NOTICE_QUERY_KEY],
+      });
+      onSuccess?.(res);
     },
-    onError: (err: unknown) => {
-      if (err instanceof Error) {
-        console.error(err.cause);
-        onError?.({
-          result: 'fail',
-          data: null,
-          message: '투표 중 오류가 발생했습니다.',
-        });
-      }
+    onError: (error) => {
+      onError?.(error);
     },
   });
 };
