@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { HttpError } from '@/utils/clientApi/HttpError';
-import DEFAULT_ERROR_MESSAGE from '@/constants/message/defaultErrorMessage';
 import Button from '@/shared/ui/Button';
 
 type ErrorPageDisplayProps = {
@@ -25,15 +23,10 @@ const ErrorPageDisplay = ({ error, reset }: ErrorPageDisplayProps) => {
     reset();
   };
 
-  const errorMessage =
-    error instanceof HttpError
-      ? error.responseBody.message
-      : DEFAULT_ERROR_MESSAGE;
-
   return (
     <div className='flex flex-col items-center space-y-5 min-h-[calc(100vh/1.5)] mt-16 mb-12'>
       <div className='text-2xl font-semibold w-full text-center mb-5'>
-        {errorMessage}
+        {error.message}
       </div>
       <div className='min-h-[80px] flex items-center space-x-2'>
         <Button onClick={handleClickRetryButton}>재시도</Button>
