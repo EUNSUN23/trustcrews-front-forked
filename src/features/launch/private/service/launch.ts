@@ -16,7 +16,7 @@ export const useLaunch = ({
   onError,
 }: {
   onSuccess?: (res: CreatePostRes | CreateProjectRes) => void;
-  onError?: (res: CreatePostRes | CreateProjectRes) => void;
+  onError?: (error: Error) => void;
 }) => {
   const queryClient = useQueryClient();
 
@@ -50,11 +50,7 @@ export const useLaunch = ({
     },
     onError: (error) => {
       console.error(error.cause);
-      onError?.({
-        result: 'fail',
-        data: null,
-        message: '프로젝트 및 게시물 생성 중 오류가 발생했습니다.',
-      });
+      onError?.(error);
     },
   });
 };
