@@ -13,13 +13,12 @@ const SignUpButton = () => {
   const formData = useRecoilValue(signUpFormStateStore);
 
   const { mutate: signup } = useSignUp({
-    onSuccess: (res) => {
-      if (res.result === 'success') {
-        setSuccessSnackbar(res.message);
-        router.push('/');
-      } else {
-        setErrorSnackbar(res.message);
-      }
+    onSuccess: ({ message }) => {
+      setSuccessSnackbar(message);
+      router.push('/');
+    },
+    onError: (error) => {
+      setErrorSnackbar(error.message);
     },
   });
 
