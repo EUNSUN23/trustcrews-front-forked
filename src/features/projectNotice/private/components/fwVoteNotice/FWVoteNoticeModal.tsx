@@ -4,8 +4,8 @@ import Modal from '@/shared/ui/Modal';
 import FWVoteNoticeDetail from '@/features/projectNotice/private/contents/fwVoteNotice/FWVoteNoticeDetail';
 import { fwNoticeModalState } from '@/features/projectNotice/private/store/FWVoteNoticeModalStateStore';
 import useModalPortalElement from '@/shared/hooks/useModalPortalElement';
-import { Suspense } from 'react';
 import FWVoteNoticeDetailSkeleton from '@/features/projectNotice/private/contents/fwVoteNotice/FWVoteNoticeDetailSkeleton';
+import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
 
 const FWVoteNoticeModal = () => {
   const { isOpen, title } = useRecoilValue(fwNoticeModalState);
@@ -22,9 +22,12 @@ const FWVoteNoticeModal = () => {
               close={resetVAlertFWModalState}
               title={title}
             >
-              <Suspense fallback={<FWVoteNoticeDetailSkeleton />}>
+              <FieldQueryBoundary
+                errorFallbackSize='md'
+                suspenseFallback={<FWVoteNoticeDetailSkeleton />}
+              >
                 <FWVoteNoticeDetail />
-              </Suspense>
+              </FieldQueryBoundary>
             </Modal>,
             portalElement as Element,
           )
