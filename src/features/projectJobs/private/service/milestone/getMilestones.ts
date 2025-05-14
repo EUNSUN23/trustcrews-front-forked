@@ -23,11 +23,11 @@ export const getMilestones = async (
   };
 };
 
-export const getMilestonesQueryKey = ['milestoneList'];
+export const MILESTONES_QUERY_KEY = 'milestoneList';
 
 export const useMilestones = (projectId: string) => {
   return useSuspenseQuery({
-    queryKey: [...getMilestonesQueryKey, projectId],
+    queryKey: [MILESTONES_QUERY_KEY, projectId],
     queryFn: () => getMilestones(projectId),
   });
 };
