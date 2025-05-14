@@ -42,7 +42,7 @@ export const useUpdatePostConfig = (
     onError,
   }: {
     onSuccess?: (res: UpdatePostInfoRes) => void;
-    onError?: (res: UpdatePostInfoRes) => void;
+    onError?: (error: Error) => void;
   },
 ) => {
   const queryClient = useQueryClient();
@@ -51,23 +51,14 @@ export const useUpdatePostConfig = (
     mutationFn: (data: UpdatePostConfigInput) =>
       updatePostConfig(projectId, userAuth, data),
     onSuccess: async (res) => {
-      const { result } = res;
-      if (result === 'success') {
-        await queryClient.invalidateQueries({
-          queryKey: [POST_CONFIG_QUERY_KEY, POST_DETAIL_QUERY_KEY],
-        });
-        onSuccess?.(res);
-      } else {
-        onError?.(res);
-      }
+      await queryClient.invalidateQueries({
+        queryKey: [POST_CONFIG_QUERY_KEY, POST_DETAIL_QUERY_KEY],
+      });
+      onSuccess?.(res);
     },
     onError: (error) => {
       console.error(error.cause);
-      onError?.({
-        result: 'fail',
-        data: null,
-        message: '게시글 정보 업데이트 중 오류가 발생했습니다.',
-      });
+      onError?.(error);
     },
   });
 };
