@@ -26,7 +26,7 @@ export const useApplyProject = ({
   onError,
 }: {
   onSuccess?: (res: ApplyProjectRes) => void;
-  onError?: (res: ApplyProjectRes) => void;
+  onError?: (error: Error) => void;
 }) => {
   const queryClient = useQueryClient();
 
@@ -39,22 +39,14 @@ export const useApplyProject = ({
       positionId: bigint | number;
     }) => applyProject(projectId, positionId),
     onSuccess: async (res) => {
-      if (res.result === 'success') {
-        await queryClient.invalidateQueries({
-          queryKey: [MY_PROJECT_APPLIES_QUERY_KEY],
-        });
-        onSuccess?.(res);
-      } else {
-        onError?.(res);
-      }
+      await queryClient.invalidateQueries({
+        queryKey: [MY_PROJECT_APPLIES_QUERY_KEY],
+      });
+      onSuccess?.(res);
     },
     onError: (error) => {
       console.error(error);
-      onError?.({
-        result: 'fail',
-        data: null,
-        message: '프로젝트 지원 중 문제가 발생했습니다.',
-      });
+      onError?.(error);
     },
   });
 };
