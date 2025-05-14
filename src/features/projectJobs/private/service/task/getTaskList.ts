@@ -70,7 +70,7 @@ export const getTaskList = async (tasksReqParam: TasksReqParam) => {
   };
 };
 
-export const getTaskListQueryKey = 'taskList';
+export const TASKS_QUERY_KEY = 'taskList';
 
 export const useTasks = ({
   projectId,
@@ -83,7 +83,7 @@ export const useTasks = ({
 }) => {
   return useSuspenseQuery({
     queryKey: [
-      getTaskListQueryKey,
+      TASKS_QUERY_KEY,
       bigIntToString(milestoneId),
       bigIntToString(projectId),
       pageNumber,
