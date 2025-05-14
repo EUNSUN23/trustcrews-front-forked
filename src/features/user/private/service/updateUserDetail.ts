@@ -82,7 +82,7 @@ export const useUpdateUserDetail = ({
   onError,
 }: {
   onSuccess?: (res: ApiResult<typeof updateUserDetail>) => void;
-  onError?: (res: ApiResult<typeof updateUserDetail>) => void;
+  onError?: (error: Error) => void;
 }) => {
   const queryClient = useQueryClient();
 
@@ -95,27 +95,26 @@ export const useUpdateUserDetail = ({
       profileImg?: UserProfileImgInput;
     }) => updateUserDetail(info, profileImg),
     onSuccess: async (res) => {
-      if (res.result === 'success') {
-        const invalidateUserDetail = queryClient.invalidateQueries({
-          queryKey: [USER_DETAIL_INFO_QUERY_KEY],
-        });
-        const invalidateSimpleUser = queryClient.invalidateQueries({
-          queryKey: [SIMPLE_USER_INFO_QUERY_KEY],
-        });
-        const invalidatePostList = queryClient.invalidateQueries({
-          queryKey: [POST_LIST_QUERY_KEY],
-        });
+      const invalidateUserDetail = queryClient.invalidateQueries({
+        queryKey: [USER_DETAIL_INFO_QUERY_KEY],
+      });
+      const invalidateSimpleUser = queryClient.invalidateQueries({
+        queryKey: [SIMPLE_USER_INFO_QUERY_KEY],
+      });
+      const invalidatePostList = queryClient.invalidateQueries({
+        queryKey: [POST_LIST_QUERY_KEY],
+      });
 
-        await Promise.all([
-          invalidateUserDetail,
-          invalidateSimpleUser,
-          invalidatePostList,
-        ]);
+      await Promise.all([
+        invalidateUserDetail,
+        invalidateSimpleUser,
+        invalidatePostList,
+      ]);
 
-        onSuccess?.(res);
-      } else {
-        onError?.(res);
-      }
+      onSuccess?.(res);
+    },
+    onError: (error) => {
+      onError?.(error);
     },
   });
 };

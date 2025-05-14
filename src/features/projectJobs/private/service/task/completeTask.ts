@@ -28,7 +28,7 @@ export const useCompleteTask = (
     onError,
   }: {
     onSuccess: (res: CompleteTaskRes) => void;
-    onError: (res: CompleteTaskRes) => void;
+    onError: (error: Error) => void;
   },
 ) => {
   const queryClient = useQueryClient();
@@ -36,22 +36,14 @@ export const useCompleteTask = (
   const { mutate: completeTask, isPending: isUpdating } = useMutation({
     mutationFn: () => workComplete({ workId, auth }),
     onSuccess: async (res) => {
-      if (res.result === 'success') {
-        await queryClient.invalidateQueries({
-          queryKey: [TASKS_QUERY_KEY],
-        });
-        onSuccess?.(res);
-      } else {
-        onError?.(res);
-      }
+      await queryClient.invalidateQueries({
+        queryKey: [TASKS_QUERY_KEY],
+      });
+      onSuccess?.(res);
     },
     onError: (error) => {
       console.error(error.cause);
-      onError?.({
-        result: 'fail',
-        data: null,
-        message: '프로세스 수행중 오류가 발생했습니다.',
-      });
+      onError?.(error);
     },
   });
 
