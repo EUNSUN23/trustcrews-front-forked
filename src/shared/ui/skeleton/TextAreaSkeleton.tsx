@@ -1,22 +1,21 @@
 import { TextareaHTMLAttributes } from 'react';
 
-interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface TextAreaSkeletonProps
+  extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   required?: boolean;
 }
 
-const TextArea = ({
-  id,
+const TextAreaSkeleton = ({
   label,
+  required,
   rows = 2,
   cols = 25,
-  required = false,
-  ...props
-}: TextAreaProps) => {
+}: TextAreaSkeletonProps) => {
   return (
     <div className='relative mobile:text-sm'>
       {label ? (
-        <label htmlFor={id} className='text-gray-700'>
+        <label className='text-gray-700'>
           {label}
           {required ? (
             <span className='text-red-500 required-dot ml-1.5 align-middle'>
@@ -30,14 +29,14 @@ const TextArea = ({
         <></>
       )}
       <textarea
-        id={id}
+        readOnly={true}
+        disabled={true}
         rows={rows}
         cols={cols}
-        className='mobile:text-sm rounded-lg border-1 flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent'
-        {...props}
+        className='rounded-lg flex-1 appearance-none w-full py-2 px-4 text-transparent bg-gray-200 animate-pulse placeholder-transparent shadow-sm focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent'
       />
     </div>
   );
 };
 
-export default TextArea;
+export default TextAreaSkeleton;
