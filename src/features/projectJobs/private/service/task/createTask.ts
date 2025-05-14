@@ -40,7 +40,7 @@ export const useCreateTask = (
     onError,
   }: {
     onSuccess?: (res: CreateTaskRes) => void;
-    onError?: (res: CreateTaskRes) => void;
+    onError?: (error: Error) => void;
   },
 ) => {
   const queryClient = useQueryClient();
@@ -49,22 +49,14 @@ export const useCreateTask = (
     mutationFn: (data: CreateTaskInput) =>
       createTask(projectId, milestoneId, data),
     onSuccess: async (res) => {
-      if (res.result === 'success') {
-        await queryClient.invalidateQueries({
-          queryKey: [TASKS_QUERY_KEY],
-        });
-        onSuccess?.(res);
-      } else {
-        onError?.(res);
-      }
+      await queryClient.invalidateQueries({
+        queryKey: [TASKS_QUERY_KEY],
+      });
+      onSuccess?.(res);
     },
     onError: (error) => {
       console.error(error);
-      onError?.({
-        result: 'fail',
-        data: null,
-        message: '업무생성 중 오류가 발생했습니다.',
-      });
+      onError?.(error);
     },
   });
 };
