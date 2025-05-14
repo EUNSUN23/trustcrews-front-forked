@@ -1,7 +1,7 @@
 import { request } from '@/utils/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
-import { getTaskListQueryKey } from '@/features/projectJobs/private/service/task/getTaskList';
+import { TASKS_QUERY_KEY } from '@/features/projectJobs/private/service/task/getTaskList';
 import { ResponseBody } from '@/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
 
@@ -51,7 +51,7 @@ export const useCreateTask = (
     onSuccess: async (res) => {
       if (res.result === 'success') {
         await queryClient.invalidateQueries({
-          queryKey: [getTaskListQueryKey],
+          queryKey: [TASKS_QUERY_KEY],
         });
         onSuccess?.(res);
       } else {
