@@ -9,7 +9,7 @@ import {
   COOKIE,
   getCookieValue,
 } from '@/app/api/_interceptor/utils/cookieUtils';
-import getIsAuthorizedFromCookie from '@/utils/getIsAuthorizedFromCookie';
+import getIsAuthorizedFromCookie from '@/utils/auth/getIsAuthorizedFromCookie';
 
 export const metadata: Metadata = {
   title: 'TRUSTCREWS | 책임감 있는 사이드 프로젝트 팀, 팀원을 구하는 방법',
