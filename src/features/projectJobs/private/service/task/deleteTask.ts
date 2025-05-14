@@ -25,29 +25,21 @@ export const useDeleteTask = ({
   onError,
 }: {
   onSuccess?: (res: DeleteTaskRes) => void;
-  onError?: (res: DeleteTaskRes) => void;
+  onError?: (error: Error) => void;
 }) => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: (reqData: TaskDeleteReqData) => deleteTask(reqData),
     onSuccess: async (res) => {
-      if (res.result === 'success') {
-        await queryClient.invalidateQueries({
-          queryKey: [TASKS_QUERY_KEY],
-        });
-        onSuccess?.(res);
-      } else {
-        onError?.(res);
-      }
+      await queryClient.invalidateQueries({
+        queryKey: [TASKS_QUERY_KEY],
+      });
+      onSuccess?.(res);
     },
     onError: (error) => {
       console.error(error.cause);
-      onError?.({
-        result: 'fail',
-        data: null,
-        message: '업무삭제 중 오류가 발생했습니다.',
-      });
+      onError?.(error);
     },
   });
 };

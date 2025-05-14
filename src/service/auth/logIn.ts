@@ -19,13 +19,19 @@ type LoginRes = ApiResult<typeof login>;
 
 export const useLogin = ({
   onSuccess,
+  onError,
 }: {
   onSuccess?: (res: LoginRes) => void;
+  onError?: (error: Error) => void;
 }) => {
   return useMutation({
     mutationFn: login,
     onSuccess: (res) => {
       onSuccess?.(res);
+    },
+    onError: (error) => {
+      console.log(error.message);
+      onError?.(error);
     },
   });
 };

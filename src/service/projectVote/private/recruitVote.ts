@@ -35,7 +35,7 @@ export const useRecruitVote = (
     onError,
   }: {
     onSuccess?: (res: VoteRecruitRes) => void;
-    onError?: (res: VoteRecruitRes) => void;
+    onError?: (error: Error) => void;
   },
 ) => {
   const queryClient = useQueryClient();
@@ -56,13 +56,8 @@ export const useRecruitVote = (
         onError?.(res);
       }
     },
-    onError: (err: unknown) => {
-      if (err instanceof Error) console.error(err.cause);
-      onError?.({
-        result: 'fail',
-        data: null,
-        message: '투표 중 오류가 발생했습니다.',
-      });
+    onError: (error) => {
+      onError?.(error);
     },
   });
 };

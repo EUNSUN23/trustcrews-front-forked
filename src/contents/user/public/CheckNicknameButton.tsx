@@ -26,8 +26,8 @@ const CheckNicknameButton = ({
       setSuccessSnackbar(res.message);
       onSuccess();
     },
-    onError: (res) => {
-      setErrorSnackbar(res.message);
+    onError: (error) => {
+      setErrorSnackbar(error.message);
       onError();
     },
   });
