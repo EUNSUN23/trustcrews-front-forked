@@ -1,7 +1,6 @@
 import ComposedBoundary from '@/components/error/ComposedBoundary';
 import { ReactNode } from 'react';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
-import { HttpError } from '@/utils/clientApi/HttpError';
 import cn from '@/shared/styles/cn';
 import { CgRedo } from '@react-icons/all-files/cg/CgRedo';
 import { cva, VariantProps } from 'class-variance-authority';
@@ -12,7 +11,7 @@ const QueryErrorMessageVariants = cva(
     variants: {
       errorFallbackSize: {
         lg: 'mx-auto my-[100px] mobile:my-[30px] justify-center w-[640px] mobile:w-[330px] text-3xl font-semibold mobile:text-xl mobile:font-medium leading-loose',
-        md: 'my-4 mobile:my-2 justify-center w-[500px] mobile:w-[300px] text-[22px] tablet:font-medium mobile:text-xl',
+        md: 'my-4 mobile:my-2 justify-center min-w-[500px] mobile:min-w-[300px] text-[22px] tablet:font-medium mobile:text-xl',
         sm: 'justify-start w-full mobile:text-sm',
       },
     },
@@ -65,11 +64,7 @@ const FieldQueryBoundary = ({
             className,
           )}
         >
-          <p>
-            {error instanceof HttpError
-              ? error.responseBody.message
-              : '요청 수행 중 오류가 발생했습니다.'}
-          </p>
+          <p>{error.message}</p>
           <button title='재시도' onClick={resetErrorBoundary}>
             <span className='sr-only'>재시도</span>
             <CgRedo
