@@ -48,7 +48,7 @@ const TaskModModal = () => {
         resetTaskModModalData();
         setSuccessSnackbar(res.message);
       },
-      onError: (res) => setErrorSnackbar(res.message),
+      onError: (error) => setErrorSnackbar(error.message),
     },
   );
 
@@ -61,7 +61,7 @@ const TaskModModal = () => {
         resetTaskModModalData();
         setSuccessSnackbar(res.message);
       },
-      onError: (res) => setErrorSnackbar(res.message),
+      onError: (error) => setErrorSnackbar(error.message),
     },
   );
 

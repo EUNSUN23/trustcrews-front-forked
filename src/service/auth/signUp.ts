@@ -73,13 +73,18 @@ type SignUpRes = ApiResult<typeof signUp>;
 
 export const useSignUp = ({
   onSuccess,
+  onError,
 }: {
   onSuccess?: (res: SignUpRes) => void;
+  onError?: (error: Error) => void;
 }) => {
   return useMutation({
     mutationFn: signUp,
     onSuccess: (res) => {
       onSuccess?.(res);
+    },
+    onError: (error) => {
+      onError?.(error);
     },
   });
 };

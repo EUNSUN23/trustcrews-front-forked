@@ -40,8 +40,8 @@ const TaskAddModal = () => {
         resetAddModalData();
         resetAddModalState();
       },
-      onError: (res) => {
-        setErrorSnackbar(res.message);
+      onError: (error) => {
+        setErrorSnackbar(error.message);
       },
     },
   );
