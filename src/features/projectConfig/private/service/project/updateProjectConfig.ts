@@ -52,7 +52,7 @@ export const useUpdateProjectConfig = (
     onError,
   }: {
     onSuccess?: (res: UpdateProjectConfigRes) => void;
-    onError?: (res: UpdateProjectConfigRes) => void;
+    onError?: (error: Error) => void;
   },
 ) => {
   const queryClient = useQueryClient();
@@ -60,22 +60,14 @@ export const useUpdateProjectConfig = (
     mutationFn: (data: UpdateProjectConfigInput) =>
       updateProjectConfig(projectId, userAuth, data),
     onSuccess: async (res) => {
-      if (res.result === 'success') {
-        await queryClient.invalidateQueries({
-          queryKey: [PROJECT_INFO_SUMMARY_QUERY_KEY, PROJECT_CONFIG_QUERY_KEY],
-        });
-        onSuccess?.(res);
-      } else {
-        onError?.(res);
-      }
-    },
-    onError: (err) => {
-      console.error(err.cause);
-      onError?.({
-        result: 'fail',
-        data: null,
-        message: '게시글 업데이트 중 오류가 발생했습니다.',
+      await queryClient.invalidateQueries({
+        queryKey: [PROJECT_INFO_SUMMARY_QUERY_KEY, PROJECT_CONFIG_QUERY_KEY],
       });
+      onSuccess?.(res);
+    },
+    onError: (error) => {
+      console.error(error.cause);
+      onError?.(error);
     },
   });
 };

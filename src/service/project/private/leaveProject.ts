@@ -26,32 +26,24 @@ export const useLeaveProject = ({
   onError,
 }: {
   onSuccess?: (res: LeaveProjectRes) => void;
-  onError?: (res: LeaveProjectRes) => void;
+  onError?: (error: Error) => void;
 }) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (data: LeaveProjectInput) => leaveProject(data),
     onSuccess: async (res) => {
-      if (res.result === 'success') {
-        await queryClient.invalidateQueries({
-          queryKey: [CREW_NOTICE_LIST_QUERY_KEY],
-        });
-        await queryClient.invalidateQueries({
-          queryKey: [CREW_LIST_QUERY_KEY],
-          refetchType: 'all',
-        });
-        onSuccess?.(res);
-      } else {
-        onError?.(res);
-      }
-    },
-    onError: (err) => {
-      console.error(err.cause);
-      onError?.({
-        result: 'fail',
-        data: null,
-        message: '프로젝트 탈퇴중 오류가 발생했습니다.',
+      await queryClient.invalidateQueries({
+        queryKey: [CREW_NOTICE_LIST_QUERY_KEY],
       });
+      await queryClient.invalidateQueries({
+        queryKey: [CREW_LIST_QUERY_KEY],
+        refetchType: 'all',
+      });
+      onSuccess?.(res);
+    },
+    onError: (error) => {
+      console.error(error.cause);
+      onError?.(error);
     },
   });
 };
