@@ -11,6 +11,7 @@ import UpdatePositionControl from '@/features/user/private/components/userProfil
 import UpdateTechStackControl from '@/features/user/private/components/userProfileUpdate/form/UpdateTechStackControl';
 import IntroductionControl from '@/features/user/private/components/userProfileUpdate/form/IntroductionControl';
 import { bigIntToString } from '@/shared/utils/stringUtils';
+import UserInfoFormSkeleton from '@/features/user/private/contents/userProfileUpdate/UserInfoFormSkeleton';
 
 const UserInfoForm = () => {
   const setUserInfoForm = useSetRecoilState(userInfoFormStateStore);
@@ -51,7 +52,7 @@ const UserInfoForm = () => {
     setIsUserInfoFormLoading,
   ]);
 
-  if (isUserInfoFormLoading) return null;
+  if (isUserInfoFormLoading) return <UserInfoFormSkeleton />;
 
   return (
     <>
