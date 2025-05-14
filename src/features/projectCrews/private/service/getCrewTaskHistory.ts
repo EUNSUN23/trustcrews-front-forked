@@ -15,6 +15,7 @@ export interface CrewTaskHistory {
   point_type: TaskPointType;
 }
 
+// todo - projectMember -> crew로 prefix 변경 (api, parameter, 데이터 field)
 export const getCrewTaskHistory = async (
   projectMemberId: string | bigint,
   pageIndex: number,
