@@ -27,24 +27,16 @@ export const useCheckNickname = ({
   onError,
 }: {
   onSuccess?: (res: CheckNicknameRes) => void;
-  onError?: (res: CheckNicknameRes) => void;
+  onError?: (error: Error) => void;
 }) => {
   return useMutation({
     mutationFn: (nickname: string) => checkNickname(nickname),
     onSuccess: (res) => {
-      if (res.result === 'success') {
-        onSuccess?.(res);
-      } else {
-        onError?.(res);
-      }
+      onSuccess?.(res);
     },
     onError: (error) => {
       console.error(error.cause);
-      onError?.({
-        result: 'fail',
-        data: null,
-        message: '닉네임 중복체크 중 오류가 발생했습니다.',
-      });
+      onError?.(error);
     },
   });
 };

@@ -19,25 +19,17 @@ export const useEndProject = (
     onError,
   }: {
     onSuccess?: (res: EndProjectRes) => void;
-    onError?: (res: EndProjectRes) => void;
+    onError?: (error: Error) => void;
   },
 ) => {
   return useMutation({
     mutationFn: () => endProject(projectId),
     onSuccess: (res) => {
-      if (res.result === 'success') {
-        onSuccess?.(res);
-      } else {
-        onError?.(res);
-      }
+      onSuccess?.(res);
     },
     onError: (error) => {
       console.error(error.cause);
-      onError?.({
-        result: 'fail',
-        data: null,
-        message: '프로젝트 종료 중 오류가 발생했습니다.',
-      });
+      onError?.(error);
     },
   });
 };
