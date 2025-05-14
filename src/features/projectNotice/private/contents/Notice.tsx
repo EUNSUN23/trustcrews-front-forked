@@ -7,8 +7,9 @@ import RCVoteNoticeModal from '@/features/projectNotice/private/components/rcVot
 import { useRecoilValue } from 'recoil';
 import { activeNoticeTabStateStore } from '@/features/projectNotice/private/store/ActiveNoticeTabStateStore';
 import { NOTICE_TABS } from '@/features/projectNotice/private/constants/noticeTabs';
-import { Suspense } from 'react';
 import NoticeContentsLoader from '@/features/projectNotice/private/components/NoticeContentsLoader';
+import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import { ApplicationError } from '@/utils/error/ApplicationError';
 
 const {
   NTAB001: { code: RCVOTE_NOTICE_TAB },
@@ -31,14 +32,19 @@ export const Notice = () => {
       contents = <CrewNotices />;
       break;
     default:
-      throw Error(`Unknown Notice Tab: ${activeNoticeTab}`);
+      throw new ApplicationError(`Unknown Notice Tab: ${activeNoticeTab}`);
   }
 
   return (
     <section className='tablet:flex tablet:space-x-16 pc:space-x-24 pc:max-w-[1000px] tablet:max-w-[700px] mx-3'>
       <NoticeNavTab />
       <section className='mb-20 tablet:basis-4/5'>
-        <Suspense fallback={<NoticeContentsLoader />}>{contents}</Suspense>
+        <FieldQueryBoundary
+          errorFallbackSize='md'
+          suspenseFallback={<NoticeContentsLoader />}
+        >
+          {contents}
+        </FieldQueryBoundary>
         <FWVoteNoticeModal />
         <RCVoteNoticeModal />
       </section>
