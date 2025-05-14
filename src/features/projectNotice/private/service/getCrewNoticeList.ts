@@ -8,7 +8,7 @@ import { PageResponseBody } from '@/types/responseBody';
 export type CrewNoticeData = {
   alertId: bigint;
   projectId: bigint;
-  aleretType: typeof NOTICE_TYPES.PRA2001;
+  alertType: typeof NOTICE_TYPES.PRA2001;
   contents: string;
   createDate: string;
 };
