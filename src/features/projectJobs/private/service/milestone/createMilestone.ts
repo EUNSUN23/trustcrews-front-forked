@@ -1,7 +1,7 @@
 import { request } from '@/utils/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
-import { getMilestonesQueryKey } from '@/features/projectJobs/private/service/milestone/getMilestones';
+import { MILESTONES_QUERY_KEY } from '@/features/projectJobs/private/service/milestone/getMilestones';
 import { ResponseBody } from '@/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
 
@@ -46,7 +46,7 @@ export const useCreateMilestone = (
     onSuccess: async (res) => {
       if (res.result === 'success') {
         await queryClient.invalidateQueries({
-          queryKey: getMilestonesQueryKey,
+          queryKey: [MILESTONES_QUERY_KEY],
         });
         onSuccess?.(res);
       } else {
