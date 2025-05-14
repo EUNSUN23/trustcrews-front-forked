@@ -47,7 +47,7 @@ const MilestoneAddModal = () => {
         resetMilestoneAddData();
         resetActiveMilestone();
       },
-      onError: (res) => setErrorSnackbar(res.message),
+      onError: (error) => setErrorSnackbar(error.message),
     },
   );
 

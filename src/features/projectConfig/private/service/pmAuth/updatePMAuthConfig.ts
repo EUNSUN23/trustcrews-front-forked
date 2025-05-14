@@ -37,26 +37,18 @@ export const useUpdatePMAuthConfig = (
     onError,
   }: {
     onSuccess?: (res: UpdatePMAuthConfigRes) => void;
-    onError?: (res: UpdatePMAuthConfigRes) => void;
+    onError?: (error: Error) => void;
   },
 ) => {
   return useMutation({
     mutationFn: (data: UpdatePMAuthConfigInput) =>
       updatePMAuthConfig(projectId, crewId, userAuth, data),
     onSuccess: (res) => {
-      if (res.result === 'success') {
-        onSuccess?.(res);
-      } else {
-        onError?.(res);
-      }
+      onSuccess?.(res);
     },
     onError: (error) => {
       console.error(error.cause);
-      onError?.({
-        result: 'fail',
-        data: null,
-        message: '권한 수정 중 오류가 발생했습니다.',
-      });
+      onError?.(error);
     },
   });
 };
