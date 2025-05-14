@@ -60,7 +60,7 @@ const TaskCardMenu = ({ taskItem }: TaskCardMenuProps) => {
   } = taskItem;
   const { mutate: deleteTask } = useDeleteTask({
     onSuccess: (res) => setSuccessSnackbar(res.message),
-    onError: (res) => setErrorSnackbar(res.message),
+    onError: (error) => setErrorSnackbar(error.message),
   });
 
   const setTaskModalState = useSetRecoilState(taskModModalStateStore);

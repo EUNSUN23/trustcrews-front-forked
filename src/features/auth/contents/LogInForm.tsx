@@ -5,7 +5,6 @@ import Input from '@/shared/ui/Input';
 import FormButton from '@/ui/FormButton';
 import { useRouter } from 'next/navigation';
 import { useQueryClient } from '@tanstack/react-query';
-import { isEqual } from 'lodash';
 import { ZodError } from 'zod';
 import { loginInputSchema, useLogin } from '@/service/auth/logIn';
 import useSnackbar from '@/shared/hooks/useSnackbar';
@@ -23,30 +22,29 @@ function LoginForm() {
   const queryClient = useQueryClient();
   const { mutate: login } = useLogin({
     onSuccess: async (res) => {
-      const { result, message } = res;
+      const { message } = res;
 
-      if (isEqual(result, 'success')) {
-        const invalidateUserInfo = queryClient.invalidateQueries({
-          queryKey: [SIMPLE_USER_INFO_QUERY_KEY],
-        });
-        const invalidateMyProjectList = queryClient.invalidateQueries({
-          queryKey: [MY_PROJECTS_QUERY_KEY],
-        });
-        const invalidateProjectNotice = queryClient.invalidateQueries({
-          queryKey: [MY_PROJECT_APPLIES_QUERY_KEY],
-        });
-        await Promise.all([
-          invalidateMyProjectList,
-          invalidateProjectNotice,
-          invalidateUserInfo,
-        ]);
-        router.replace('/');
-        router.refresh();
+      const invalidateUserInfo = queryClient.invalidateQueries({
+        queryKey: [SIMPLE_USER_INFO_QUERY_KEY],
+      });
+      const invalidateMyProjectList = queryClient.invalidateQueries({
+        queryKey: [MY_PROJECTS_QUERY_KEY],
+      });
+      const invalidateProjectNotice = queryClient.invalidateQueries({
+        queryKey: [MY_PROJECT_APPLIES_QUERY_KEY],
+      });
+      await Promise.all([
+        invalidateMyProjectList,
+        invalidateProjectNotice,
+        invalidateUserInfo,
+      ]);
+      router.replace('/');
+      router.refresh();
 
-        setInfoSnackbar(message);
-      } else {
-        setErrorSnackbar(message);
-      }
+      setInfoSnackbar(message);
+    },
+    onError: (error) => {
+      setErrorSnackbar(error.message);
     },
   });
 
