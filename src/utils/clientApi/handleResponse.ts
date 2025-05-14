@@ -1,5 +1,4 @@
 import { HttpError } from '@/utils/clientApi/HttpError';
-import DEFAULT_ERROR_MESSAGE from '@/constants/message/defaultErrorMessage';
 
 const handleResponse = async (res: Response) => {
   if (res.ok) {
@@ -7,15 +6,7 @@ const handleResponse = async (res: Response) => {
   } else {
     const body = await res.json().catch(() => null);
 
-    throw new HttpError(
-      res.status,
-      body || {
-        result: 'fail',
-        data: null,
-        message: DEFAULT_ERROR_MESSAGE,
-      },
-      res.statusText,
-    );
+    throw new HttpError(res.status, res.statusText, body?.message);
   }
 
   // todo - 메세지 연결

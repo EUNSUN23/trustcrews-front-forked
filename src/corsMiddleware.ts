@@ -25,14 +25,11 @@ const isAuthorizedApiRequest = (request: NextRequest) => {
 
 const corsMiddleware = (request: NextRequest) => {
   if (!isAuthorizedApiRequest(request)) {
-    return NextResponse.json(
-      { result: 'fail', data: null, message: '로그인을 해주세요.' },
-      {
-        status: HttpStatusCode.Unauthorized,
-        statusText: 'Unauthorized',
-        headers: { 'X-Error-Instruction': 'MESSAGE' },
-      },
-    );
+    return NextResponse.next({
+      status: HttpStatusCode.Unauthorized,
+      statusText: 'Unauthorized',
+      headers: { 'X-Error-Instruction': 'MESSAGE' },
+    });
   }
 
   const origin = request.headers.get('origin') ?? '';
