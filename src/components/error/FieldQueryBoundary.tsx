@@ -4,6 +4,7 @@ import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import cn from '@/shared/styles/cn';
 import { CgRedo } from '@react-icons/all-files/cg/CgRedo';
 import { cva, VariantProps } from 'class-variance-authority';
+import { HttpError } from '@/utils/clientApi/HttpError';
 
 const QueryErrorMessageVariants = cva(
   'flex flex-wrap items-center  space-x-3 text-gray-500',
@@ -65,13 +66,16 @@ const FieldQueryBoundary = ({
           )}
         >
           <p>{error.message}</p>
-          <button title='재시도' onClick={resetErrorBoundary}>
-            <span className='sr-only'>재시도</span>
-            <CgRedo
-              aria-hidden={true}
-              className={QueryRetryIconVariants({ errorFallbackSize })}
-            />
-          </button>
+          {error instanceof HttpError &&
+          error.status.toString().startsWith('4') ? null : (
+            <button title='재시도' onClick={resetErrorBoundary}>
+              <span className='sr-only'>재시도</span>
+              <CgRedo
+                aria-hidden={true}
+                className={QueryRetryIconVariants({ errorFallbackSize })}
+              />
+            </button>
+          )}
         </div>
       )}
     >
