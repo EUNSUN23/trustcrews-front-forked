@@ -7,7 +7,7 @@ import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
 import { projectIdState } from '@/features/project/private/store/myProject/ProjectIdStateStore';
 import TaskAddButton from '@/features/projectJobs/private/components/task/TaskAddButton';
 import Tasks from '@/features/projectJobs/private/contents/task/Tasks';
-import { Suspense, useEffect } from 'react';
+import { useEffect } from 'react';
 import {
   activeMilestoneStateStore,
   DEFAULT_ACTIVE_MILESTONE,
@@ -19,7 +19,7 @@ import TaskAddModal from '@/features/projectJobs/private/contents/task/TaskAddMo
 import TaskModModal from '@/features/projectJobs/private/contents/task/TaskModModal';
 import TasksSkeleton from '@/features/projectJobs/private/contents/task/TasksSkeleton';
 import { bigIntToString } from '@/shared/utils/stringUtils';
-import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
+import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
 
 const { milestoneId: DEFAULT_MILESTONE_ID } = DEFAULT_ACTIVE_MILESTONE;
 
@@ -73,13 +73,12 @@ const Job = () => {
               </div>
             )}
           </div>
-          <Suspense
-            fallback={
-              <TasksSkeleton itemCount={ITEM_COUNT_PER_PAGE.CARDS_SM} />
-            }
+          <FieldQueryBoundary
+            errorFallbackSize='md'
+            suspenseFallback={<TasksSkeleton />}
           >
             <Tasks />
-          </Suspense>
+          </FieldQueryBoundary>
         </section>
       </section>
       <MilestoneModModal />
