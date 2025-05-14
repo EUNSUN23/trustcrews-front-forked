@@ -1,7 +1,6 @@
 import { GrScorecard } from '@react-icons/all-files/gr/GrScorecard';
 import CrewTaskHistory from '@/features/projectCrews/private/contents/crewInfo/CrewTaskHistory';
 import CrewFWCreateModal from '@/features/projectCrews/private/contents/crewManage/CrewFWCreateModal';
-import { Suspense } from 'react';
 import CrewProfileSkeleton from '@/features/projectCrews/private/contents/crewInfo/CrewProfileSkeleton';
 import CrewTaskHistorySkeleton from '@/features/projectCrews/private/contents/crewInfo/CrewTaskHistorySkeleton';
 import CrewProfile from '@/features/projectCrews/private/contents/crewInfo/CrewProfile';
@@ -9,6 +8,7 @@ import Button from '@/shared/ui/Button';
 import { useSetRecoilState } from 'recoil';
 import { projectActiveNavState } from '@/features/project/private/store/myProject/ProjectNavTabStateStore';
 import { PROJECT_MENU } from '@/features/project/private/constants/myProject/projectMenu';
+import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
 
 const {
   CREWS: { value: PROJECT_CREWS },
@@ -28,18 +28,24 @@ export const CrewDetail = () => {
         </Button>
       </section>
       <section className='pc:min-h-[300px] tablet:py-3 border-b-2 border-gray-200'>
-        <Suspense fallback={<CrewProfileSkeleton />}>
+        <FieldQueryBoundary
+          errorFallbackSize='md'
+          suspenseFallback={<CrewProfileSkeleton />}
+        >
           <CrewProfile />
-        </Suspense>
+        </FieldQueryBoundary>
       </section>
       <section className='pc:w-[95%] tablet:w-[95%] mobile:min-w-[75%] mt-12 mobile:mt-6'>
         <div className='flex items-center pc:text-3xl tablet:text-2xl mobile:text-lg font-semibold text-greyDarkBlue'>
           <GrScorecard className='tablet:text-[1.5rem]' />
           <h3 className='ml-2'>업무 이력</h3>
         </div>
-        <Suspense fallback={<CrewTaskHistorySkeleton />}>
+        <FieldQueryBoundary
+          errorFallbackSize='md'
+          suspenseFallback={<CrewTaskHistorySkeleton />}
+        >
           <CrewTaskHistory />
-        </Suspense>
+        </FieldQueryBoundary>
       </section>
       <CrewFWCreateModal />
     </section>

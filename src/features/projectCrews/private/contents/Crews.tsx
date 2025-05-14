@@ -11,6 +11,7 @@ import Avatar from '@/shared/ui/Avatar';
 import Badge from '@/shared/ui/Badge';
 import ProjectCrewRoleBadge from '@/components/projectCrew/private/ProjectCrewRoleBadge';
 import { PROJECT_MENU } from '@/features/project/private/constants/myProject/projectMenu';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 const {
   CREWS: {
@@ -29,7 +30,7 @@ const Crews = () => {
     data: {
       data: { projectMembers: crewList },
     },
-  } = useProjectCrewList(projectId);
+  } = useProjectCrewList(numStrToBigInt(projectId));
 
   const handleClickCrew = (projectMemberId: bigint) => {
     startTransition(() => {
