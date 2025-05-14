@@ -13,7 +13,7 @@ import ProjectInfoSkeleton from '@/features/project/private/contents/myProject/P
 import ProjectNavTab from '@/features/project/private/components/myProject/ProjectNavTab';
 import ProjectInfo from '@/features/project/private/contents/myProject/ProjectInfo';
 
-const ProjectNavTabContents = dynamic(
+const ProjectContents = dynamic(
   () => import('@/features/project/private/contents/myProject/ProjectContents'),
   { ssr: false, loading: () => <ProjectContentsSkeleton /> },
 );
@@ -30,6 +30,7 @@ const ProjectPage = ({
     setCurrentProjectId(projectId);
   }, [setCurrentProjectId, projectId]);
 
+  // todo - isLoading state로 관리
   if (currentProjectId === DEFAULT_PROJECT_ID) return <ProjectSkeleton />;
 
   return (
@@ -38,7 +39,7 @@ const ProjectPage = ({
         <ProjectInfo />
       </Suspense>
       <ProjectNavTab />
-      <ProjectNavTabContents />
+      <ProjectContents />
     </>
   );
 };

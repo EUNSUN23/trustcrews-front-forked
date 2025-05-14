@@ -16,6 +16,11 @@ import {
 import { useMyPMAuth } from '@/service/pmAuth/private/getMyPMAuth';
 import { projectActiveNavState } from '@/features/project/private/store/myProject/ProjectNavTabStateStore';
 import ProjectConfig from '@/features/projectConfig/private/contents/ProjectConfig';
+import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import CrewsSkeleton from '@/features/projectCrews/private/contents/CrewsSkeleton';
+import { NoticeSkeleton } from '@/features/projectNotice/private/contents/NoticeSkeleton';
+import ProjectConfigSkeleton from '@/features/projectConfig/private/contents/ProjectConfigSkeleton';
+import { ApplicationError } from '@/utils/error/ApplicationError';
 
 const {
   TASK: { value: PROJECT_TASK },
@@ -53,27 +58,39 @@ const ProjectContents = () => {
   if (pmAuth.code === DEFAULT_AUTH) return <JobSkeleton />;
 
   let contents: ReactNode;
+  let suspenseFallback: ReactNode = null;
   switch (activeNavTab) {
     case PROJECT_TASK:
       contents = <Job />;
+      suspenseFallback = <JobSkeleton />;
       break;
     case PROJECT_CREWS:
       contents = <Crews />;
+      suspenseFallback = <CrewsSkeleton />;
       break;
     case PROJECT_CREW_DETAIL:
       contents = <CrewDetail />;
       break;
     case PROJECT_NOTICE:
       contents = <Notice />;
+      suspenseFallback = <NoticeSkeleton />;
       break;
     case PROJECT_SETTING:
       contents = <ProjectConfig />;
+      suspenseFallback = <ProjectConfigSkeleton />;
       break;
     default:
-      throw Error(`Unknown Project NavTab: ${activeNavTab}`);
+      throw new ApplicationError(`Unknown Project NavTab: ${activeNavTab}`);
   }
 
-  return <>{contents}</>;
+  return (
+    <FieldQueryBoundary
+      errorFallbackSize='lg'
+      suspenseFallback={suspenseFallback}
+    >
+      {contents}
+    </FieldQueryBoundary>
+  );
 };
 
 export default ProjectContents;

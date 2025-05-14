@@ -7,6 +7,7 @@ import { PROJECT_MENU } from '@/features/project/private/constants/myProject/pro
 import { projectActiveNavState } from '@/features/project/private/store/myProject/ProjectNavTabStateStore';
 import CrewsSkeleton from '@/features/projectCrews/private/contents/CrewsSkeleton';
 import ProjectConfigSkeleton from '@/features/projectConfig/private/contents/ProjectConfigSkeleton';
+import { ApplicationError } from '@/utils/error/ApplicationError';
 
 const {
   TASK: { value: PROJECT_TASK },
@@ -27,7 +28,7 @@ const ProjectContentsSkeleton = () => {
     case PROJECT_SETTING:
       return <ProjectConfigSkeleton />;
     default:
-      throw Error(`Unknown Project NavTab: ${activeNavTab}`);
+      throw new ApplicationError(`Unknown Project NavTab: ${activeNavTab}`);
   }
 };
 
