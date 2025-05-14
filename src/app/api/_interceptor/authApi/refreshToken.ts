@@ -6,7 +6,7 @@ import {
 import { reqLogger, resLogger } from '@/app/api/_interceptor/utils/logger';
 import { GatewayError } from '@/app/api/_interceptor/error/classes';
 import { baseURL } from '@/app/api/_interceptor/utils/baseURL';
-import getRfTokenFromSetCookie from '@/utils/getRfTokenFromSetCookie';
+import getRfTokenFromSetCookie from '@/utils/auth/getRfTokenFromSetCookie';
 
 const userRefToken: Map<string, string> = new Map();
 
