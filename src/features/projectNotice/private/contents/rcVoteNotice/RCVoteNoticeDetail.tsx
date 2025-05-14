@@ -15,10 +15,10 @@ import { useRecruitNotice } from '@/features/projectNotice/private/service/getRC
 import { useRecoilValue } from 'recoil';
 import { rcVoteNoticeModalState } from '@/features/projectNotice/private/store/RCVoteNoticeModalStateStore';
 import { ZodError } from 'zod';
-import { Suspense } from 'react';
 import Loader from '@/shared/ui/Loader';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
 import { TechStack } from '@/types/data/techStack';
+import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
 
 const {
   VODA1001: { code: VOTE_AGREE },
@@ -135,9 +135,12 @@ const RCVoteNoticeDetail = () => {
             <span className='text-md text-grey900'>{trustScore}점</span>
           </div>
         </div>
-        <Suspense fallback={<Loader />}>
+        <FieldQueryBoundary
+          errorFallbackSize='md'
+          suspenseFallback={<Loader />}
+        >
           <RCTargetProjectHistory applicantUserId={userId} />
-        </Suspense>
+        </FieldQueryBoundary>
       </section>
       <section className='tablet:max-w-[400px] h-[250px] mx-auto flex flex-col justify-center space-y-5'>
         <div className='flex justify-center items-center space-x-1 text-2xl text-greyDarkblue font-medium'>
