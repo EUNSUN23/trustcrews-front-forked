@@ -1,15 +1,12 @@
 'use client';
 
-import UserUpdateButton from '@/features/user/private/contents/userProfileUpdate/UserUpdateButton';
-import UserProfileImgFormSkeleton from '@/features/user/private/contents/userProfileUpdate/UserProfileImgFormSkeleton';
-import UserInfoFormSkeleton from '@/features/user/private/contents/userProfileUpdate/UserInfoFormSkeleton';
+import UserUpdateButton from '@/features/user/contents/userProfileUpdate/UserUpdateButton';
+import UserProfileImgFormSkeleton from '@/features/user/contents/userProfileUpdate/UserProfileImgFormSkeleton';
+import UserInfoFormSkeleton from '@/features/user/contents/userProfileUpdate/UserInfoFormSkeleton';
 import dynamic from 'next/dynamic';
 
 const UserProfileImgForm = dynamic(
-  () =>
-    import(
-      '@/features/user/private/contents/userProfileUpdate/UserProfileImgForm'
-    ),
+  () => import('@/features/user/contents/userProfileUpdate/UserProfileImgForm'),
   {
     ssr: false,
     loading: () => <UserProfileImgFormSkeleton />,
@@ -17,8 +14,7 @@ const UserProfileImgForm = dynamic(
 );
 
 const UserInfoForm = dynamic(
-  () =>
-    import('@/features/user/private/contents/userProfileUpdate/UserInfoForm'),
+  () => import('@/features/user/contents/userProfileUpdate/UserInfoForm'),
   { ssr: false, loading: () => <UserInfoFormSkeleton /> },
 );
 

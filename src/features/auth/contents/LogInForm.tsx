@@ -8,9 +8,9 @@ import { useQueryClient } from '@tanstack/react-query';
 import { ZodError } from 'zod';
 import { loginInputSchema, useLogin } from '@/service/auth/logIn';
 import useSnackbar from '@/shared/hooks/useSnackbar';
-import { SIMPLE_USER_INFO_QUERY_KEY } from '@/service/user/private/getSimpleUserInfo';
-import { MY_PROJECTS_QUERY_KEY } from '@/features/project/private/service/myProjects/getMyProjects';
-import { MY_PROJECT_APPLIES_QUERY_KEY } from '@/features/myProjectApplies/private/service/getMyProjectApplies';
+import { SIMPLE_USER_INFO_QUERY_KEY } from '@/service/user/auth/getSimpleUserInfo';
+import { MY_PROJECTS_QUERY_KEY } from '@/features/project/auth/service/myProjects/getMyProjects';
+import { MY_PROJECT_APPLIES_QUERY_KEY } from '@/features/myProjectApplies/auth/service/getMyProjectApplies';
 
 function LoginForm() {
   const router = useRouter();

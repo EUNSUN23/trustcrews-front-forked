@@ -5,16 +5,16 @@ import { useRecoilState } from 'recoil';
 import {
   DEFAULT_PROJECT_ID,
   projectIdState,
-} from '@/features/project/private/store/myProject/ProjectIdStateStore';
+} from '@/features/project/auth/store/myProject/ProjectIdStateStore';
 import dynamic from 'next/dynamic';
-import ProjectContentsSkeleton from '@/features/project/private/contents/myProject/ProjectContentsSkeleton';
-import ProjectSkeleton from '@/features/project/private/components/myProject/ProjectSkeleton';
-import ProjectInfoSkeleton from '@/features/project/private/contents/myProject/ProjectInfoSkeleton';
-import ProjectNavTab from '@/features/project/private/components/myProject/ProjectNavTab';
-import ProjectInfo from '@/features/project/private/contents/myProject/ProjectInfo';
+import ProjectContentsSkeleton from '@/features/project/auth/contents/myProject/ProjectContentsSkeleton';
+import ProjectSkeleton from '@/features/project/auth/components/myProject/ProjectSkeleton';
+import ProjectInfoSkeleton from '@/features/project/auth/contents/myProject/ProjectInfoSkeleton';
+import ProjectNavTab from '@/features/project/auth/components/myProject/ProjectNavTab';
+import ProjectInfo from '@/features/project/auth/contents/myProject/ProjectInfo';
 
 const ProjectContents = dynamic(
-  () => import('@/features/project/private/contents/myProject/ProjectContents'),
+  () => import('@/features/project/auth/contents/myProject/ProjectContents'),
   { ssr: false, loading: () => <ProjectContentsSkeleton /> },
 );
 
