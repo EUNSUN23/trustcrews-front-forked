@@ -5,17 +5,14 @@ import { ResponseBody } from '@/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
 
 export type TaskDeleteReqData = {
-  workId: bigint;
-  auth: string;
+  taskId: bigint;
+  userPMAuth: string;
 };
 
 export const deleteTask = async (
-  reqData: TaskDeleteReqData,
+  data: TaskDeleteReqData,
 ): Promise<ResponseBody<null>> => {
-  return await request('DELETE', '/api/projectJobs/auth/task', {
-    ...reqData,
-    authMap: reqData.auth,
-  });
+  return await request('DELETE', '/api/projectJobs/auth/task', data);
 };
 
 type DeleteTaskRes = ApiResult<typeof deleteTask>;
@@ -30,7 +27,7 @@ export const useDeleteTask = ({
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (reqData: TaskDeleteReqData) => deleteTask(reqData),
+    mutationFn: (data: TaskDeleteReqData) => deleteTask(data),
     onSuccess: async (res) => {
       await queryClient.invalidateQueries({
         queryKey: [TASKS_QUERY_KEY],

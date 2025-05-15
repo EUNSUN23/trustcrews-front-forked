@@ -24,14 +24,9 @@ type CrewAuthRowProps = {
 
 const PMAuthRow = ({ crew }: CrewAuthRowProps) => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
-  const { code: userAuth } = useRecoilValue(projectManageAuthStateStore);
+  const { code: userPMAuth } = useRecoilValue(projectManageAuthStateStore);
   const projectId = useRecoilValue(projectIdState);
-  const {
-    projectMemberAuth: initCrewAuth,
-    user,
-    position,
-    projectMemberId: crewId,
-  } = crew;
+  const { crewPMAuth: initCrewAuth, user, position, crewId } = crew;
 
   const [auth, setAuth] = useState(() => ({
     name: initCrewAuth.name,
@@ -41,7 +36,7 @@ const PMAuthRow = ({ crew }: CrewAuthRowProps) => {
   const { mutate: updateCrewPMAuth } = useUpdatePMAuthConfig(
     numStrToBigInt(projectId),
     crewId,
-    userAuth,
+    userPMAuth,
     {
       onSuccess: (res) => setSuccessSnackbar(res.message),
       onError: (error) => setErrorSnackbar(error.message),
@@ -50,7 +45,7 @@ const PMAuthRow = ({ crew }: CrewAuthRowProps) => {
 
   const handleClickSaveButton = () => {
     const data: UpdatePMAuthConfigInput = {
-      crewAuth: auth.value,
+      crewPMAuth: auth.value,
     };
 
     try {

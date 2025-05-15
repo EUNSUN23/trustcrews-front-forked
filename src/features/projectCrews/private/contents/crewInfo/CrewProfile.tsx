@@ -31,7 +31,7 @@ const CrewProfile = () => {
       technologyStacks: crewTechnologyStacks,
     },
     position,
-    projectMemberAuth,
+    crewPMAuth,
   } = crewInfo;
 
   const isCrewCurrentUser = currentUserId === bigIntToString(crewUserId);
@@ -62,8 +62,8 @@ const CrewProfile = () => {
             프로젝트 권한
           </span>
           <div className='min-w-[100px] flex justify-center grow-0 mx-auto'>
-            <ProjectCrewRoleBadge auth={projectMemberAuth.code} size='md'>
-              {projectMemberAuth.name}
+            <ProjectCrewRoleBadge auth={crewPMAuth.code} size='md'>
+              {crewPMAuth.name}
             </ProjectCrewRoleBadge>
           </div>
         </div>

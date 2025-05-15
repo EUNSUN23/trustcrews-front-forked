@@ -28,15 +28,15 @@ const Crews = () => {
   const projectId = useRecoilValue(projectIdState);
   const {
     data: {
-      data: { projectMembers: crewList },
+      data: { projectCrews: crewList },
     },
   } = useProjectCrewList(numStrToBigInt(projectId));
 
-  const handleClickCrew = (projectMemberId: bigint) => {
+  const handleClickCrew = (crewId: bigint) => {
     startTransition(() => {
       setActiveNavTab(PROJECT_CREW_DETAIL);
     });
-    setCrewIdState(projectMemberId);
+    setCrewIdState(crewId);
   };
 
   return (
@@ -46,15 +46,15 @@ const Crews = () => {
           {crewList.map(
             ({
               position: { positionName },
-              projectMemberAuth,
+              crewPMAuth,
               user: { userId: projectMemberUseId, nickname, profileImgSrc },
-              projectMemberId,
+              crewId,
             }: ProjectCrew) => {
               return (
                 <li
                   key={projectMemberUseId}
                   className='cursor flex items-center gap-x-6 py-5 cursor-pointer hover:bg-grey000 border-b border-grey300'
-                  onClick={() => handleClickCrew(projectMemberId)}
+                  onClick={() => handleClickCrew(crewId)}
                 >
                   <div className='w-full min-w-0 flex mobile:flex-col items-center mobile:items-start mobile:space-y-3 tablet:px-6 mobile:pl-4'>
                     <div className='min-w-0 flex items-center tablet:space-x-6 mobile:space-x-4'>
@@ -71,8 +71,8 @@ const Crews = () => {
                           <Badge text={positionName} />
                         </li>
                         <li>
-                          <ProjectCrewRoleBadge auth={projectMemberAuth.code}>
-                            {projectMemberAuth.name}
+                          <ProjectCrewRoleBadge auth={crewPMAuth.code}>
+                            {crewPMAuth.name}
                           </ProjectCrewRoleBadge>
                         </li>
                       </ul>

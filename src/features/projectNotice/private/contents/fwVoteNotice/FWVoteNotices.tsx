@@ -23,7 +23,7 @@ const FWVoteNotices = () => {
         {totalItemsCount > 0 ? (
           <ul role='list'>
             {alertList.map((item) => (
-              <FWVoteNoticeRow key={item.alertId} data={item} />
+              <FWVoteNoticeRow key={item.noticeId} data={item} />
             ))}
           </ul>
         ) : (

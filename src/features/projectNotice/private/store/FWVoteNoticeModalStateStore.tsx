@@ -16,8 +16,8 @@ const DEFAULT_FW_NOTICE_MODAL_STATE: FWNoticeModalState = {
   projectId: '0',
   voteId: '0',
   crewId: '0',
-  crewAuth: '',
-  userAuth: '',
+  crewPMAuth: '',
+  userPMAuth: '',
 };
 
 export const fwNoticeModalState = atom<FWNoticeModalState>({

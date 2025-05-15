@@ -8,8 +8,8 @@ import { ApiResult } from '@/shared/types/apiResult';
 
 export type LeaveProjectInput = {
   projectId: bigint;
-  wMemberId: bigint;
-  wMemberAuth: ProjectAuthCode;
+  crewId: bigint;
+  crewPMAuth: ProjectAuthCode;
 };
 
 export const leaveProject = async (

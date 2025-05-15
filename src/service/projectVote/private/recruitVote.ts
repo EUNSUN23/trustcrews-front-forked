@@ -8,7 +8,7 @@ import { ApiResult } from '@/shared/types/apiResult';
 export type RecruitVoteBaseParams = {
   voteId: bigint;
   applyId: bigint;
-  userAuth: string;
+  userPMAuth: string;
 };
 
 export const recruitVoteAnswerInputSchema = z.object({
@@ -20,10 +20,7 @@ type RecruitVoteAnswerInput = z.infer<typeof recruitVoteAnswerInputSchema>;
 type VoteRecruitReqParams = RecruitVoteBaseParams & RecruitVoteAnswerInput;
 
 export const recruitVote = async (data: VoteRecruitReqParams) => {
-  return await request('POST', '/api/projectVote/auth/recruit', {
-    ...data,
-    authMap: data.userAuth,
-  });
+  return await request('POST', '/api/projectVote/auth/recruit', data);
 };
 
 type VoteRecruitRes = ApiResult<typeof recruitVote>;

@@ -7,7 +7,7 @@ import { FWVoteReason, VoteData } from '@/types/data/projectVote';
 
 export type FWVoteNoticeDetailData = VoteData & {
   reason: FWVoteReason;
-  crewAuth: ProjectAuthMap;
+  crewPMAuth: ProjectAuthMap;
   crewPosition: {
     id: bigint;
     name: string;

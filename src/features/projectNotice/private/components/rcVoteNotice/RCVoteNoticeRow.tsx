@@ -17,10 +17,10 @@ type RCVoteNoticeListItemProps = {
 
 const RCVoteNoticeRow = ({ data }: RCVoteNoticeListItemProps) => {
   const setVAlertRecruitModalState = useSetRecoilState(rcVoteNoticeModalState);
-  const { code: userAuth } = useRecoilValue(projectManageAuthStateStore);
+  const { code: userPMAuth } = useRecoilValue(projectManageAuthStateStore);
 
   const {
-    alertId,
+    noticeId,
     voteId,
     applyId,
     contents,
@@ -33,15 +33,15 @@ const RCVoteNoticeRow = ({ data }: RCVoteNoticeListItemProps) => {
       isOpen: true,
       title: contents,
       voteId: bigIntToString(voteId),
-      alertId: bigIntToString(alertId),
+      noticeId: bigIntToString(noticeId),
       applyId: bigIntToString(applyId),
-      userAuth,
+      userPMAuth,
     });
   };
 
   return (
     <li
-      key={`recruitNotice-${alertId}`}
+      key={`recruitNotice-${noticeId}`}
       className='flex items-center gap-x-10 px-3 py-5 pc:text-lg mobile:text-sm text-grey900 cursor-pointer'
       onClick={handleClickNoticeItem}
     >

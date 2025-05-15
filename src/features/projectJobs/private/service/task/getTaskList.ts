@@ -14,10 +14,10 @@ export type TasksReqParam = {
 };
 
 export type TaskItem = {
-  workId: bigint;
+  taskId: bigint;
   projectId: bigint;
   milestoneId: bigint;
-  assignedUser: { projectMemberId: bigint; nickname: string };
+  assignedUser: { crewId: bigint; nickname: string };
   lastModifiedMemberNickname: string;
   summary: string;
   startDate: string;

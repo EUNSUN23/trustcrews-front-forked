@@ -37,11 +37,11 @@ const MilestoneModModal = () => {
   const { content, startDate, endDate } = useRecoilValue(
     milestoneModFormStateStore,
   );
-  const { code: authCode } = useRecoilValue(projectManageAuthStateStore);
+  const { code: userPMAuth } = useRecoilValue(projectManageAuthStateStore);
 
   const { mutate: updateMilestone, isPending: isUpdating } = useUpdateMilestone(
     numStrToBigInt(milestoneId),
-    authCode,
+    userPMAuth,
     {
       onSuccess: (res) => {
         setSuccessSnackbar(res.message);

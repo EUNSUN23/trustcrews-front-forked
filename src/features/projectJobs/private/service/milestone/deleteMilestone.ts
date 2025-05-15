@@ -7,7 +7,7 @@ import { ApiResult } from '@/shared/types/apiResult';
 export type DeleteMilestoneReqData = {
   milestoneId: bigint;
   projectId: bigint;
-  authMap: string;
+  userPMAuth: string;
 };
 
 export const deleteMilestone = async (
@@ -20,7 +20,7 @@ type DeleteMilestoneRes = ApiResult<typeof deleteMilestone>;
 
 export const useDeleteMilestone = (
   projectId: bigint,
-  authMap: string,
+  userPMAuth: string,
   {
     onSuccess,
     onError,
@@ -35,7 +35,7 @@ export const useDeleteMilestone = (
       deleteMilestone({
         projectId: projectId,
         milestoneId: mileStoneId,
-        authMap: authMap,
+        userPMAuth,
       }),
     onSuccess: async (res) => {
       await queryClient.invalidateQueries({

@@ -24,7 +24,7 @@ const {
 const FWVoteNoticeDetail = () => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
 
-  const { projectId, voteId, crewId, crewAuth, userAuth } =
+  const { projectId, voteId, crewId, crewPMAuth, userPMAuth } =
     useRecoilValue(fwNoticeModalState);
 
   const { mutate: forceWithdrawVote, isPending: isUpdating } =
@@ -33,8 +33,8 @@ const FWVoteNoticeDetail = () => {
         projectId: numStrToBigInt(projectId),
         voteId: numStrToBigInt(voteId),
         crewId: numStrToBigInt(crewId),
-        userAuth,
-        crewAuth,
+        userPMAuth,
+        crewPMAuth,
       },
       {
         onSuccess: (res) => setSuccessSnackbar(res.message),
@@ -49,7 +49,7 @@ const FWVoteNoticeDetail = () => {
   if (isUpdating) return <FWVoteNoticeDetailSkeleton />;
 
   const {
-    crewAuth: { name: crewAuthName, code: crewAuthCode },
+    crewPMAuth: { name: crewAuthName, code: crewAuthCode },
     crewPosition: { name: crewPositionName },
     crewNickname,
     crewProfileImgSrc,

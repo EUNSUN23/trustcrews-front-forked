@@ -6,9 +6,9 @@ import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 import { PageResponseBody } from '@/types/responseBody';
 
 export type CrewNoticeData = {
-  alertId: bigint;
+  noticeId: bigint;
   projectId: bigint;
-  alertType: typeof NOTICE_TYPES.PRA2001;
+  noticeType: typeof NOTICE_TYPES.PRA2001;
   contents: string;
   createDate: string;
 };

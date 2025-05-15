@@ -8,11 +8,11 @@ import { PageResponseBody } from '@/types/responseBody';
 import { VoteStatusType } from '@/types/data/projectVote';
 
 export type FWVoteNoticeData = {
-  alertId: bigint;
+  noticeId: bigint;
   voteId: bigint;
   crewId: bigint;
-  crewAuth: ProjectAuthMap;
-  alertType: typeof NOTICE_TYPES.PRA1003;
+  crewPMAuth: ProjectAuthMap;
+  noticeType: typeof NOTICE_TYPES.PRA1003;
   contents: string;
   voteStatus: VoteStatusType;
   createDate: string;

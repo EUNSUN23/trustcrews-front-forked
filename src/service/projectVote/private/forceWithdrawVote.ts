@@ -9,8 +9,8 @@ export type FWVoteBaseParams = {
   projectId: bigint;
   voteId: bigint;
   crewId: bigint;
-  crewAuth: string;
-  userAuth: string;
+  crewPMAuth: string;
+  userPMAuth: string;
 };
 
 export const fWVoteAnswerInputSchema = z.object({
@@ -22,12 +22,7 @@ export type FWVoteAnswerInput = z.infer<typeof fWVoteAnswerInputSchema>;
 type FWVoteReqParams = FWVoteBaseParams & FWVoteAnswerInput;
 
 export const voteForProjectFWithdraw = async (data: FWVoteReqParams) => {
-  return await request('POST', '/api/projectVote/auth/fwithdraw', {
-    ...data,
-    fw_member_id: data.crewId,
-    fw_member_auth: data.crewAuth,
-    authMap: data.userAuth,
-  });
+  return await request('POST', '/api/projectVote/auth/fwithdraw', data);
 };
 
 type VoteFWRes = ApiResult<typeof voteForProjectFWithdraw>;

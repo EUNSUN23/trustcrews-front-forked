@@ -48,10 +48,10 @@ type TaskCardMenuProps = {
 
 const TaskCardMenu = ({ taskItem }: TaskCardMenuProps) => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
-  const { code: auth } = useRecoilValue(projectManageAuthStateStore);
+  const { code: userPMAuth } = useRecoilValue(projectManageAuthStateStore);
   const {
     summary,
-    workId,
+    taskId,
     startDate,
     endDate,
     progressStatus,
@@ -73,15 +73,15 @@ const TaskCardMenu = ({ taskItem }: TaskCardMenuProps) => {
       progressStatus: progressStatus.code,
       startDate,
       endDate,
-      assignedUserId: bigIntToString(assignedUser.projectMemberId),
+      assignedUserId: bigIntToString(assignedUser.crewId),
       todo,
     };
 
     setTaskModalState((prev) => ({
       ...prev,
       isOpen: true,
-      workId: bigIntToString(workId),
-      auth,
+      taskId: bigIntToString(taskId),
+      userPMAuth,
     }));
     setTaskModalData(updateForm);
   };
@@ -89,7 +89,7 @@ const TaskCardMenu = ({ taskItem }: TaskCardMenuProps) => {
   const handleClickDeleteButton = (e: MouseEvent) => {
     e.preventDefault();
     if (confirm('업무를 삭제하시겠습니까?')) {
-      deleteTask({ workId, auth });
+      deleteTask({ taskId, userPMAuth });
     }
   };
 
