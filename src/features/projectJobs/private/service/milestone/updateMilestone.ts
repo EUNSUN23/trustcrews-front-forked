@@ -18,7 +18,7 @@ export const updateMilestone = async (
   authMap: string,
   data: UpdateMilestoneInput,
 ): Promise<ResponseBody<null>> => {
-  return await request('PATCH', `/api/project/milestone`, {
+  return await request('PATCH', `/api/projectJobs/auth/milestone`, {
     ...data,
     milestoneId,
     authMap,

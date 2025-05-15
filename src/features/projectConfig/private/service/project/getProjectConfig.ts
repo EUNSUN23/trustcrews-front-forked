@@ -18,7 +18,7 @@ export const getProjectConfig = async (
 ): Promise<ResponseBody<ProjectConfigData>> => {
   return await request(
     'GET',
-    `/api/projectConfig/project?projectId=${projectId}`,
+    `/api/projectConfig/auth/project?projectId=${projectId}`,
   );
 };
 

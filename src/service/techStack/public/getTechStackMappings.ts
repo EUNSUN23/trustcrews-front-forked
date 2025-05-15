@@ -10,7 +10,7 @@ export interface TechStackMapping extends TechStack {
 export const getTechStackMappings = async (): Promise<
   ResponseBody<TechStackMapping[]>
 > => {
-  return await request('GET', '/api/setting/tech-stack-with-category');
+  return await request('GET', '/api/techStack/mapping');
 };
 
 export const techStackMappingsQueryOptions = () => {

@@ -7,10 +7,7 @@ import { ResponseBody } from '@/types/responseBody';
 export const getCrewDetail = async (
   projectMemberId: bigint,
 ): Promise<ResponseBody<ProjectCrewProfileInfo>> => {
-  return await request(
-    'GET',
-    `/api/project/crews/detail?projectMemberId=${projectMemberId}`,
-  );
+  return await request('GET', `/api/projectCrew/auth/${projectMemberId}`);
 };
 
 export const CREW_DETAIL_QUERY_KEY = 'crewDetail';

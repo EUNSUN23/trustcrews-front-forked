@@ -18,7 +18,7 @@ export const createMilestone = async (
   authMap: string,
   reqData: CreateMilestoneInput,
 ): Promise<ResponseBody<null>> => {
-  return await request('POST', `/api/project/milestone`, {
+  return await request('POST', `/api/projectJobs/auth/milestone`, {
     ...reqData,
     projectId,
     authMap,

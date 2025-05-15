@@ -23,7 +23,7 @@ export const createTask = async (
   milestoneId: bigint,
   data: CreateTaskInput,
 ): Promise<ResponseBody<null>> => {
-  return await request('POST', '/api/project/work', {
+  return await request('POST', '/api/projectJobs/auth/task', {
     ...data,
     projectId,
     milestoneId,

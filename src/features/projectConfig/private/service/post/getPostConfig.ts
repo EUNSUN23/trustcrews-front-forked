@@ -19,7 +19,10 @@ export type PostConfigData = {
 export const getPostConfig = async (
   projectId: bigint,
 ): Promise<ResponseBody<PostConfigData>> => {
-  return await request('GET', `/api/projectConfig/post?projectId=${projectId}`);
+  return await request(
+    'GET',
+    `/api/projectConfig/auth/post?projectId=${projectId}`,
+  );
 };
 
 export const POST_CONFIG_QUERY_KEY = 'postConfig';

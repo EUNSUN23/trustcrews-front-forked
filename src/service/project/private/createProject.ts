@@ -29,7 +29,7 @@ type CreateProjectResponseData = { projectId: bigint };
 export const createProject = async (
   data: CreateProjectInput,
 ): Promise<ResponseBody<CreateProjectResponseData>> => {
-  return await request('POST', 'api/project/create', data);
+  return await request('POST', 'api/project/auth/create', data);
 };
 
 export type CreateProjectRes = ApiResult<typeof createProject>;

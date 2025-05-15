@@ -9,7 +9,7 @@ export const getMilestones = async (
 ): Promise<ResponseBody<MilestoneInfo[]>> => {
   const resBody = await request(
     'GET',
-    `/api/project/milestone?projectId=${projectId}`,
+    `/api/projectJobs/auth/milestone?projectId=${projectId}`,
   );
 
   return {

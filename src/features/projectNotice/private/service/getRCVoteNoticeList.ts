@@ -23,7 +23,7 @@ export const getRCVoteNoticeList = async (
 ): Promise<PageResponseBody<RCVoteNoticeData[]>> => {
   return request(
     'GET',
-    `/api/project/alert/vote/recruit?projectId=${projectId}&pageIndex=${pageIndex}&itemCount=${itemCount}`,
+    `/api/projectNotice/auth/rcVote/list?projectId=${projectId}&pageIndex=${pageIndex}&itemCount=${itemCount}`,
   );
 };
 

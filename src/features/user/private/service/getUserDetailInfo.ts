@@ -26,7 +26,7 @@ export type UserProfileInfo = {
 export const getUserDetailInfo = async (): Promise<
   ResponseBody<UserProfileInfo>
 > => {
-  return await request('GET', `/api/user`);
+  return await request('GET', `/api/user/profile`);
 };
 
 export const USER_DETAIL_INFO_QUERY_KEY = 'profileInfo';

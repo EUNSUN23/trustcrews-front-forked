@@ -22,7 +22,7 @@ export type FWVoteAnswerInput = z.infer<typeof fWVoteAnswerInputSchema>;
 type FWVoteReqParams = FWVoteBaseParams & FWVoteAnswerInput;
 
 export const voteForProjectFWithdraw = async (data: FWVoteReqParams) => {
-  return await request('POST', '/api/project/vote/fwithdraw', {
+  return await request('POST', '/api/projectVote/auth/fwithdraw', {
     ...data,
     fw_member_id: data.crewId,
     fw_member_auth: data.crewAuth,

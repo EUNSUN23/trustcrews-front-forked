@@ -12,7 +12,7 @@ export type TaskDeleteReqData = {
 export const deleteTask = async (
   reqData: TaskDeleteReqData,
 ): Promise<ResponseBody<null>> => {
-  return await request('DELETE', '/api/project/work', {
+  return await request('DELETE', '/api/projectJobs/auth/task', {
     ...reqData,
     authMap: reqData.auth,
   });

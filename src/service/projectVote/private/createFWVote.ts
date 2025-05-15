@@ -23,7 +23,7 @@ export const createFWVote = async (
   baseParam: CreateCrewFWVoteBaseParam,
   reason: CreateCrewFWVoteReason,
 ): Promise<ResponseBody<null>> => {
-  return await request('POST', `/api/project/alert/vote/fwithdraw`, {
+  return await request('POST', `/api/projectNotice/auth/fwVote`, {
     ...baseParam,
     ...reason,
   });

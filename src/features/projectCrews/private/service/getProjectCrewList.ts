@@ -7,7 +7,7 @@ import { bigIntToString } from '@/shared/utils/stringUtils';
 export const getProjectCrewList = async (
   projectId: bigint,
 ): Promise<ResponseBody<Record<'projectMembers', ProjectCrew[]>>> => {
-  return await request('GET', `/api/project/crews/list?projectId=${projectId}`);
+  return await request('GET', `/api/projectCrew/auth?projectId=${projectId}`);
 };
 
 export const CREW_LIST_QUERY_KEY = 'crewList';

@@ -50,13 +50,13 @@ const CrewTaskHistory = () => {
                         'ml-4 mr-2 h-[24px] w-[24px] mobile:h-[20px] mobile:w-[20px] rounded-full flex items-center justify-center ring-8 ring-white',
                         {
                           'bg-primary':
-                            event.point_type === 'plus' ||
-                            event.point_type === 'default',
-                          'bg-danger': event.point_type === 'minus',
+                            event.pointType === 'plus' ||
+                            event.pointType === 'default',
+                          'bg-danger': event.pointType === 'minus',
                         },
                       )}
                     >
-                      {event.point_type === 'minus' ? (
+                      {event.pointType === 'minus' ? (
                         <FaMinus
                           className='h-4 w-4 mobile:h-3 mobile:w-3text-white bg-danger'
                           aria-hidden='true'
@@ -73,9 +73,9 @@ const CrewTaskHistory = () => {
                         'tablet:min-w-[40px] mobile:min-w-[30px] pc:text-[22px] tablet:text-xl mobile:text-base font-semibold',
                         {
                           'text-primary':
-                            event.point_type === 'plus' ||
-                            event.point_type === 'default',
-                          'text-danger': event.point_type === 'minus',
+                            event.pointType === 'plus' ||
+                            event.pointType === 'default',
+                          'text-danger': event.pointType === 'minus',
                         },
                       )}
                     >
@@ -84,7 +84,7 @@ const CrewTaskHistory = () => {
                   </div>
                   <div>
                     <p className='pc:text-[20px] tablet:text-lg mobile:text-md text-gray-500'>
-                      {event.workContent}
+                      {event.summary}
                     </p>
                   </div>
                 </div>

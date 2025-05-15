@@ -18,7 +18,7 @@ export const updatePMAuthConfig = async (
   userAuth: string,
   data: UpdatePMAuthConfigInput,
 ): Promise<ResponseBody<null>> => {
-  return request('PUT', '/api/projectConfig/pmAuth', {
+  return request('PUT', '/api/projectConfig/auth/pmAuth', {
     ...data,
     projectId,
     crewId,

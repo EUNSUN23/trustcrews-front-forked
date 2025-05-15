@@ -6,7 +6,7 @@ import { ApiResult } from '@/shared/types/apiResult';
 export const endProject = async (
   projectId: bigint,
 ): Promise<ResponseBody<null>> => {
-  return await request('POST', '/api/project/end', { projectId });
+  return await request('POST', '/api/project/auth/end', { projectId });
 };
 
 type EndProjectRes = ApiResult<typeof endProject>;

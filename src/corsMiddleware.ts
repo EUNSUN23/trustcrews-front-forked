@@ -12,7 +12,7 @@ const corsOptions = {
 
 const isAuthorizedApiRequest = (request: NextRequest) => {
   const authRouteMatcher = new RegExp(
-    /(\/api)\/(((project|user|projectApply)(\/(?!(public))).*)|((project|user|projectApply)\s))/,
+    /(\/api)\/((.*)(((\/(?=(auth))).*)|(user\s))|(user.*))/,
     'i',
   );
   if (!authRouteMatcher.test(request.nextUrl.pathname)) return true;

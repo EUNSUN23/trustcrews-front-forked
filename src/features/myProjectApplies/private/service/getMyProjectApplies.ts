@@ -24,7 +24,7 @@ export const getMyProjectApplies = async (
 ): Promise<PageResponseBody<ProjectApplyStatusData[]>> => {
   return await request(
     'GET',
-    `/api/project/apply?pageIndex=${pageIndex}&itemCount=${itemCount}`,
+    `/api/projectApply/auth?pageIndex=${pageIndex}&itemCount=${itemCount}`,
   );
 };
 

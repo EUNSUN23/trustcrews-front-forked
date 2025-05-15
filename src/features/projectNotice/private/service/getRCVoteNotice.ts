@@ -17,7 +17,7 @@ export const getRCVoteNotice = async (
   applyId: bigint,
   voteId: bigint,
 ): Promise<ResponseBody<RCVoteNoticeDetailData>> => {
-  const reqUrl = `/api/project/alert/vote/recruit/detail?alertId=${alertId}&applyId=${applyId}&voteId=${voteId}`;
+  const reqUrl = `/api/projectNotice/auth/rcVote?alertId=${alertId}&applyId=${applyId}&voteId=${voteId}`;
   return await request('GET', reqUrl);
 };
 

@@ -15,7 +15,7 @@ export type LeaveProjectInput = {
 export const leaveProject = async (
   reqData: LeaveProjectInput,
 ): Promise<ResponseBody<null>> => {
-  return await request('POST', `/api/project/crews/withdraw`, reqData);
+  return await request('POST', `/api/project/auth/leave`, reqData);
 };
 
 type LeaveProjectRes = ApiResult<typeof leaveProject>;

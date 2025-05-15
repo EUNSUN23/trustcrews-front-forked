@@ -68,7 +68,7 @@ export const updateUserDetail = async (
     formData.set('file', profileImg);
   }
 
-  const res = await fetch(`${publicURL}/api/user`, {
+  const res = await fetch(`${publicURL}/api/user/profile`, {
     method: 'PUT',
     cache: 'no-cache',
     body: formData,

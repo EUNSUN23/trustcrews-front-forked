@@ -11,7 +11,7 @@ export const getMyPMAuth = async (
 
   return await request(
     'GET',
-    `/api/project/currentUserAuth?projectId=${_projectId}`,
+    `/api/projectConfig/auth/pmAuth?projectId=${_projectId}`,
   );
 };
 

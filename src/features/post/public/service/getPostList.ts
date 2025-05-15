@@ -57,7 +57,7 @@ export const getPostList = async (
   },
 ): Promise<PageResponseBody<PostInfoSummary[]>> => {
   const queryParams = createQueryParams(params);
-  return await request('GET', `/api/post/search?${queryParams}`);
+  return await request('GET', `/api/post/public/list?${queryParams}`);
 };
 
 export const POST_LIST_QUERY_KEY = 'postList';
