@@ -9,7 +9,7 @@ const PMAuth = () => {
 
   const {
     data: {
-      data: { projectMembers: crewList },
+      data: { projectCrews: crewList },
     },
   } = useProjectCrewList(numStrToBigInt(projectId));
 
@@ -20,7 +20,7 @@ const PMAuth = () => {
           <table className='min-w-full divide-y divide-gray-300'>
             <tbody className='divide-y divide-gray-200 bg-white'>
               {crewList.map((crew) => (
-                <PMAuthRow key={crew.projectMemberId} crew={crew} />
+                <PMAuthRow key={crew.crewId} crew={crew} />
               ))}
             </tbody>
           </table>

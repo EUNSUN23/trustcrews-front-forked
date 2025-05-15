@@ -21,24 +21,24 @@ export interface ProjectCrewUserDetail {
 }
 
 export type ProjectCrewProfileInfo = {
-  projectMemberId: bigint;
+  crewId: bigint;
   projectId: bigint;
   projectCount: number;
   user: ProjectCrewUserDetail;
-  projectMemberAuth: ProjectAuthMap;
+  crewPMAuth: ProjectAuthMap;
   position: Position;
   status: CrewStatusKey;
 };
 
 export type ProjectCrew = {
-  projectMemberId: bigint;
+  crewId: bigint;
   user: {
     userId: bigint;
     email: string;
     nickname: string;
     profileImgSrc: string;
   };
-  projectMemberAuth: ProjectAuthMap;
+  crewPMAuth: ProjectAuthMap;
   position: Position;
   lastWorkDate: string;
 };

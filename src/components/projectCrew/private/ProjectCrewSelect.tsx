@@ -42,20 +42,20 @@ const ProjectCrewSelect = ({
 }: ProjectCrewSelectProps) => {
   const {
     data: {
-      data: { projectMembers: crewList },
+      data: { projectCrews: crewList },
     },
   } = useProjectCrewList(numStrToBigInt(projectId));
 
   const crewProfileImgSrcList = crewList.map((crew) => ({
     profileImgSrc: crew.user.profileImgSrc,
-    projectMemberId: bigIntToString(crew.projectMemberId),
+    crewId: bigIntToString(crew.crewId),
   }));
 
   const crewSelectItems = [
     DEFAULT_CREW_OPTION,
     ...crewList.map((crew) => ({
       name: crew.user.nickname,
-      value: bigIntToString(crew.projectMemberId),
+      value: bigIntToString(crew.crewId),
     })),
   ];
 
@@ -124,7 +124,7 @@ const ProjectCrewSelect = ({
                             <Avatar
                               src={
                                 crewProfileImgSrcList.find(
-                                  (v) => v.projectMemberId === value,
+                                  (v) => v.crewId === value,
                                 )!.profileImgSrc
                               }
                               alt={`${name}의 프로필 이미지`}

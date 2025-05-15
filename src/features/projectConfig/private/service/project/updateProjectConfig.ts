@@ -31,13 +31,13 @@ export type UpdateProjectConfigInput = z.infer<
 
 export const updateProjectConfig = async (
   projectId: bigint,
-  userAuth: string,
+  userPMAuth: string,
   data: UpdateProjectConfigInput,
 ): Promise<ResponseBody<null>> => {
   return await request('PUT', '/api/projectConfig/auth/project', {
     ...data,
     projectId,
-    userAuth,
+    userPMAuth,
   });
 };
 
@@ -46,7 +46,7 @@ type UpdateProjectConfigRes = ApiResult<typeof updateProjectConfig>;
 // todo - 백엔드 성공 메세지
 export const useUpdateProjectConfig = (
   projectId: bigint,
-  userAuth: string,
+  userPMAuth: string,
   {
     onSuccess,
     onError,
@@ -58,7 +58,7 @@ export const useUpdateProjectConfig = (
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (data: UpdateProjectConfigInput) =>
-      updateProjectConfig(projectId, userAuth, data),
+      updateProjectConfig(projectId, userPMAuth, data),
     onSuccess: async (res) => {
       await queryClient.invalidateQueries({
         queryKey: [PROJECT_INFO_SUMMARY_QUERY_KEY, PROJECT_CONFIG_QUERY_KEY],

@@ -16,7 +16,7 @@ import { ZodError } from 'zod';
 
 const SaveProjectConfigButton = () => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
-  const { code: userAuth } = useRecoilValue(projectManageAuthStateStore);
+  const { code: userPMAuth } = useRecoilValue(projectManageAuthStateStore);
   const projectId = useRecoilValue(projectIdState);
 
   const {
@@ -25,7 +25,7 @@ const SaveProjectConfigButton = () => {
 
   const { mutate: updatePost, isPending: isUpdating } = useUpdateProjectConfig(
     numStrToBigInt(projectId),
-    userAuth,
+    userPMAuth,
     {
       onSuccess: (res) => setSuccessSnackbar(res.message),
       onError: (error) => setErrorSnackbar(error.message),

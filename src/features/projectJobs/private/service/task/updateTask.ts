@@ -21,21 +21,21 @@ export type UpdateTaskInput = z.infer<typeof updateTaskInputSchema>;
 
 export const updateTask = async (
   data: UpdateTaskInput,
-  workId: bigint,
-  auth: string,
+  taskId: bigint,
+  userPMAuth: string,
 ): Promise<ResponseBody<null>> => {
   return await request('PATCH', '/api/projectJobs/auth/task', {
     ...data,
-    workId,
-    authMap: auth,
+    taskId,
+    userPMAuth,
   });
 };
 
 type UpdateTaskRes = ApiResult<typeof updateTask>;
 
 export const useUpdateTask = (
-  workId: bigint,
-  auth: string,
+  taskId: bigint,
+  userPMAuth: string,
   {
     onSuccess,
     onError,
@@ -47,7 +47,7 @@ export const useUpdateTask = (
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: UpdateTaskInput) => updateTask(data, workId, auth),
+    mutationFn: (data: UpdateTaskInput) => updateTask(data, taskId, userPMAuth),
     onSuccess: async (res) => {
       await queryClient.invalidateQueries({
         queryKey: [TASKS_QUERY_KEY],

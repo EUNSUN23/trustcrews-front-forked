@@ -24,9 +24,9 @@ const CrewNotices = () => {
       <div className='alertList'>
         {totalItemsCount > 0 ? (
           <ul role='list'>
-            {noticeList.map(({ alertId, contents, createDate }) => (
+            {noticeList.map(({ noticeId, contents, createDate }) => (
               <li
-                key={`crewNotice-${alertId}`}
+                key={`crewNotice-${noticeId}`}
                 className='flex items-center gap-x-10 px-3 py-5 pc:text-lg mobile:text-sm text-grey900'
               >
                 <div className='flex items-center gap-x-4'>

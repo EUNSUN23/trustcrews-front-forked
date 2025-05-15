@@ -15,16 +15,16 @@ type VAlertFwListItemProps = {
 const FWVoteNoticeRow = ({ data }: VAlertFwListItemProps) => {
   const setVAlertFWModalState = useSetRecoilState(fwNoticeModalState);
   const projectId = useRecoilValue(projectIdState);
-  const { code: userAuth } = useRecoilValue(projectManageAuthStateStore);
+  const { code: userPMAuth } = useRecoilValue(projectManageAuthStateStore);
 
   const {
-    alertId,
+    noticeId,
     contents,
     createDate,
     voteStatus,
     voteId,
     crewId,
-    crewAuth: { code: crewAuth },
+    crewPMAuth: { code: crewPMAuth },
   } = data;
 
   const handleClickNoticeItem = () => {
@@ -34,14 +34,14 @@ const FWVoteNoticeRow = ({ data }: VAlertFwListItemProps) => {
       projectId,
       voteId: bigIntToString(voteId),
       crewId: bigIntToString(crewId),
-      userAuth,
-      crewAuth,
+      userPMAuth,
+      crewPMAuth,
     });
   };
 
   return (
     <li
-      key={`fwVoteNotice-${alertId}`}
+      key={`fwVoteNotice-${noticeId}`}
       className={`flex items-center gap-x-10 px-3 py-5 pc:text-lg mobile:text-sm text-grey900 cursor-pointer`}
       onClick={handleClickNoticeItem}
     >

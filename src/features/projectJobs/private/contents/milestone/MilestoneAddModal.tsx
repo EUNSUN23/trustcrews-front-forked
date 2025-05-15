@@ -34,12 +34,12 @@ const MilestoneAddModal = () => {
   const resetActiveMilestone = useResetRecoilState(activeMilestoneStateStore);
 
   const projectId = useRecoilValue(projectIdState);
-  const { code: authCode } = useRecoilValue(projectManageAuthStateStore);
+  const { code: userPMAuth } = useRecoilValue(projectManageAuthStateStore);
   const milestoneAddData = useRecoilValue(milestoneAddFormStateStore);
 
   const { mutate: createMilestone, isPending: isCreating } = useCreateMilestone(
     numStrToBigInt(projectId),
-    authCode,
+    userPMAuth,
     {
       onSuccess: (res) => {
         setSuccessSnackbar(res.message);

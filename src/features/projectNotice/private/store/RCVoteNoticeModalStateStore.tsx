@@ -3,9 +3,9 @@ import { ModalState } from '@/shared/types/modalState';
 
 type RCVoteNoticeModalState = ModalState & {
   voteId: string;
-  alertId: string;
+  noticeId: string;
   applyId: string;
-  userAuth: string;
+  userPMAuth: string;
 };
 
 export const rcVoteNoticeModalState = atom<RCVoteNoticeModalState>({
@@ -14,8 +14,8 @@ export const rcVoteNoticeModalState = atom<RCVoteNoticeModalState>({
     isOpen: false,
     title: '',
     voteId: '0',
-    alertId: '0',
+    noticeId: '0',
     applyId: '0',
-    userAuth: '',
+    userPMAuth: '',
   },
 });

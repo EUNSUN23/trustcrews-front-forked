@@ -13,11 +13,11 @@ export type RCVoteNoticeDetailData = {
 };
 
 export const getRCVoteNotice = async (
-  alertId: bigint,
+  noticeId: bigint,
   applyId: bigint,
   voteId: bigint,
 ): Promise<ResponseBody<RCVoteNoticeDetailData>> => {
-  const reqUrl = `/api/projectNotice/auth/rcVote?alertId=${alertId}&applyId=${applyId}&voteId=${voteId}`;
+  const reqUrl = `/api/projectNotice/auth/rcVote?noticeId=${noticeId}&applyId=${applyId}&voteId=${voteId}`;
   return await request('GET', reqUrl);
 };
 
@@ -26,15 +26,15 @@ export const RCVOTE_NOTICE_QUERY_KEY = 'vAlertRecruitDetailData';
 export const useRecruitNotice = (
   voteId: bigint,
   applyId: bigint,
-  alertId: bigint,
+  noticeId: bigint,
 ) => {
   return useSuspenseQuery({
     queryKey: [
       RCVOTE_NOTICE_QUERY_KEY,
       bigIntToString(voteId),
       bigIntToString(applyId),
-      bigIntToString(alertId),
+      bigIntToString(noticeId),
     ],
-    queryFn: () => getRCVoteNotice(alertId, applyId, voteId),
+    queryFn: () => getRCVoteNotice(noticeId, applyId, voteId),
   });
 };

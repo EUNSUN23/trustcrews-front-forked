@@ -15,7 +15,11 @@ type CrewOutButtonProps = {
 
 const CrewOutButton = ({ crewInfo }: CrewOutButtonProps) => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
-  const { projectMemberAuth, projectMemberId, projectId } = crewInfo;
+  const {
+    crewPMAuth: { code: crewPMAuth },
+    crewId,
+    projectId,
+  } = crewInfo;
   const router = useRouter();
 
   const { mutate: leaveProject, isPending } = useLeaveProject({
@@ -30,8 +34,8 @@ const CrewOutButton = ({ crewInfo }: CrewOutButtonProps) => {
     if (confirm('프로젝트를 탈퇴하시겠습니까?')) {
       const reqData: LeaveProjectInput = {
         projectId,
-        wMemberId: projectMemberId,
-        wMemberAuth: projectMemberAuth.code,
+        crewId,
+        crewPMAuth,
       };
       leaveProject(reqData);
     }

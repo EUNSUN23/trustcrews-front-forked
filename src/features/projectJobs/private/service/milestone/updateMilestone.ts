@@ -15,13 +15,13 @@ export type UpdateMilestoneInput = z.infer<typeof updateMilestoneSchema>;
 
 export const updateMilestone = async (
   milestoneId: bigint,
-  authMap: string,
+  userPMAuth: string,
   data: UpdateMilestoneInput,
 ): Promise<ResponseBody<null>> => {
   return await request('PATCH', `/api/projectJobs/auth/milestone`, {
     ...data,
     milestoneId,
-    authMap,
+    userPMAuth,
   });
 };
 
@@ -29,7 +29,7 @@ type UpdateMilestoneRes = ApiResult<typeof updateMilestone>;
 
 export const useUpdateMilestone = (
   milestoneId: bigint,
-  authMap: string,
+  userPMAuth: string,
   {
     onSuccess,
     onError,
@@ -41,7 +41,7 @@ export const useUpdateMilestone = (
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (data: UpdateMilestoneInput) =>
-      updateMilestone(milestoneId, authMap, data),
+      updateMilestone(milestoneId, userPMAuth, data),
     onSuccess: async (res) => {
       await queryClient.invalidateQueries({
         queryKey: [MILESTONES_QUERY_KEY],

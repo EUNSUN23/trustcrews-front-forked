@@ -15,7 +15,8 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const { projectId, content, startDate, endDate, authMap } = await req.json();
+  const { projectId, content, startDate, endDate, userPMAuth } =
+    await req.json();
 
   const res = await authApi(`/api/projectJobs/milestone`, {
     method: 'POST',
@@ -24,7 +25,7 @@ export async function POST(req: NextRequest) {
       content,
       startDate,
       endDate,
-      authMap,
+      userPMAuth,
     }),
   });
 

@@ -16,9 +16,9 @@ const CrewFwButton = ({ crewInfo }: { crewInfo: ProjectCrewProfileInfo }) => {
   const setCrewFWModalState = useSetRecoilState(crewFWModalStateStore);
 
   const {
-    projectMemberId: crewId,
+    crewId,
     projectId,
-    projectMemberAuth: { code: crewPMAuth },
+    crewPMAuth: { code: crewPMAuth },
   } = crewInfo;
 
   const handleClickCrewFWButton = () => {

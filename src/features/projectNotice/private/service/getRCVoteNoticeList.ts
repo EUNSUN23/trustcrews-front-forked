@@ -7,10 +7,10 @@ import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 import { PageResponseBody } from '@/types/responseBody';
 
 export type RCVoteNoticeData = {
-  alertId: bigint;
+  noticeId: bigint;
   voteId: bigint;
   applyId: bigint;
-  alertType: typeof NOTICE_TYPES.PRA1002;
+  noticeType: typeof NOTICE_TYPES.PRA1002;
   contents: string;
   voteStatus: VoteStatusType;
   createDate: string;

@@ -23,7 +23,7 @@ const RCVoteNotice = () => {
         {totalItemsCount > 0 ? (
           <ul role='list'>
             {alertList.map((item) => (
-              <RCVoteNoticeRow key={item.alertId} data={item} />
+              <RCVoteNoticeRow key={item.noticeId} data={item} />
             ))}
           </ul>
         ) : (

@@ -14,7 +14,7 @@ import {
 const PostConfigSaveButton = () => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
   const projectId = useRecoilValue(projectIdState);
-  const { code: userAuth } = useRecoilValue(projectManageAuthStateStore);
+  const { code: userPMAuth } = useRecoilValue(projectManageAuthStateStore);
 
   const {
     data: { title, positionIds, contact, content, recruitmentStatus },
@@ -22,7 +22,7 @@ const PostConfigSaveButton = () => {
 
   const { mutate: updatePostInfo, isPending } = useUpdatePostConfig(
     numStrToBigInt(projectId),
-    userAuth,
+    userPMAuth,
     {
       onSuccess: (res) => setSuccessSnackbar(res.message),
       onError: (error) => setErrorSnackbar(error.message),

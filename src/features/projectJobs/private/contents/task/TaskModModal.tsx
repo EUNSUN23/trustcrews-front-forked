@@ -26,7 +26,7 @@ const TaskModModal = () => {
   const resetTaskModModalState = useResetRecoilState(taskModModalStateStore);
   const resetTaskModModalData = useResetRecoilState(taskModFormStateStore);
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
-  const { isOpen, title, workId, auth } = useRecoilValue(
+  const { isOpen, title, taskId, userPMAuth } = useRecoilValue(
     taskModModalStateStore,
   );
   const [portalElement] = useModalPortalElement(isOpen);
@@ -34,8 +34,8 @@ const TaskModModal = () => {
   const modModalData = useRecoilValue(taskModFormStateStore);
 
   const { mutate: updateTask, isPending: isUpdating } = useUpdateTask(
-    numStrToBigInt(workId),
-    auth,
+    numStrToBigInt(taskId),
+    userPMAuth,
     {
       onSuccess: (res) => {
         resetTaskModModalState();

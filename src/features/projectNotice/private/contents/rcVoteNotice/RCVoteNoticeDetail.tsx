@@ -27,7 +27,7 @@ const {
 
 const RCVoteNoticeDetail = () => {
   const { setSuccessSnackbar, setErrorSnackbar } = useSnackbar();
-  const { alertId, voteId, applyId, userAuth } = useRecoilValue(
+  const { noticeId, voteId, applyId, userPMAuth } = useRecoilValue(
     rcVoteNoticeModalState,
   );
 
@@ -35,7 +35,7 @@ const RCVoteNoticeDetail = () => {
     {
       voteId: numStrToBigInt(voteId),
       applyId: numStrToBigInt(applyId),
-      userAuth,
+      userPMAuth,
     },
     {
       onSuccess: (res) => setSuccessSnackbar(res.message),
@@ -48,7 +48,7 @@ const RCVoteNoticeDetail = () => {
   } = useRecruitNotice(
     numStrToBigInt(voteId),
     numStrToBigInt(applyId),
-    numStrToBigInt(alertId),
+    numStrToBigInt(noticeId),
   );
 
   if (isUpdating) return <RCVoteNoticeDetailSkeleton />;

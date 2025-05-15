@@ -21,12 +21,12 @@ export type UpdatePostConfigInput = z.infer<typeof updatePostConfigInputSchema>;
 
 export const updatePostConfig = async (
   projectId: bigint,
-  userAuth: string,
+  userPMAuth: string,
   data: UpdatePostConfigInput,
 ): Promise<ResponseBody<null>> => {
   return await request('PUT', '/api/projectConfig/auth/post', {
     ...data,
-    userAuth,
+    userPMAuth,
     projectId,
   });
 };
@@ -36,7 +36,7 @@ type UpdatePostInfoRes = ApiResult<typeof updatePostConfig>;
 // todo - 백엔드 성공 메세지
 export const useUpdatePostConfig = (
   projectId: bigint,
-  userAuth: string,
+  userPMAuth: string,
   {
     onSuccess,
     onError,
@@ -49,7 +49,7 @@ export const useUpdatePostConfig = (
 
   return useMutation({
     mutationFn: (data: UpdatePostConfigInput) =>
-      updatePostConfig(projectId, userAuth, data),
+      updatePostConfig(projectId, userPMAuth, data),
     onSuccess: async (res) => {
       await queryClient.invalidateQueries({
         queryKey: [POST_CONFIG_QUERY_KEY, POST_DETAIL_QUERY_KEY],

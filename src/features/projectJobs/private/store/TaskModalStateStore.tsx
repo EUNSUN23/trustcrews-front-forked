@@ -53,8 +53,8 @@ export const taskAddFormStateStore = atom<TaskAddForm>({
 });
 
 export interface TaskModModalState extends ModalState {
-  workId: string;
-  auth: string;
+  taskId: string;
+  userPMAuth: string;
 }
 
 export const taskModModalStateStore = atom<TaskModModalState>({
@@ -62,8 +62,8 @@ export const taskModModalStateStore = atom<TaskModModalState>({
   default: {
     isOpen: false,
     title: '업무 수정',
-    workId: '0',
-    auth: '',
+    taskId: '0',
+    userPMAuth: '',
   },
 });
 

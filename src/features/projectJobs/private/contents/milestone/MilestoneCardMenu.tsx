@@ -55,7 +55,7 @@ const MilestoneCardMenu = ({ milestoneInfo }: MilestoneCardMenuProps) => {
   const { milestoneId, content, startDate, endDate, updateDate } =
     milestoneInfo;
   const projectId = useRecoilValue(projectIdState);
-  const { code: authCode } = useRecoilValue(projectManageAuthStateStore);
+  const { code: userPMAuth } = useRecoilValue(projectManageAuthStateStore);
 
   const handleClickModButton = () => {
     setMilestoneModModalState((prev) => ({
@@ -73,7 +73,7 @@ const MilestoneCardMenu = ({ milestoneInfo }: MilestoneCardMenuProps) => {
 
   const { mutate: deleteMilestone } = useDeleteMilestone(
     numStrToBigInt(projectId),
-    authCode,
+    userPMAuth,
     {
       onSuccess: (res) => {
         resetActiveMilestone();
