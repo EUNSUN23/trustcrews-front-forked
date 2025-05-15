@@ -6,7 +6,7 @@ import { PageResponseBody } from '@/types/responseBody';
 export const getPMAuthList = async (): Promise<
   PageResponseBody<ProjectAuthMap[]>
 > => {
-  return await request('GET', '/api/setting/crewAuth');
+  return await request('GET', '/api/pmAuth');
 };
 
 export const PM_AUTH_LIST_QUERY_KEY = 'crewOptions';

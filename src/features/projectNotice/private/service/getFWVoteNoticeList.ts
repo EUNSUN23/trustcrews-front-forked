@@ -25,7 +25,7 @@ export const getFWVoteNoticeList = async (
 ): Promise<PageResponseBody<FWVoteNoticeData[]>> => {
   return request(
     'GET',
-    `/api/project/alert/vote/fwithdraw?projectId=${projectId}&pageIndex=${pageIndex}&itemCount=${itemCount}`,
+    `/api/projectNotice/auth/fwVote/list?projectId=${projectId}&pageIndex=${pageIndex}&itemCount=${itemCount}`,
   );
 };
 

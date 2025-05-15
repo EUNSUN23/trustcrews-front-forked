@@ -6,7 +6,10 @@ import { ProjectHistoryData } from '@/types/data/projectHistory';
 export const getMyProjectHistory = async (
   pageNumber: number,
 ): Promise<PageResponseBody<ProjectHistoryData[]>> => {
-  return await request('GET', `/api/user/history-me?pageNumber=${pageNumber}`);
+  return await request(
+    'GET',
+    `/api/projectHistory/auth?pageNumber=${pageNumber}`,
+  );
 };
 
 export const useMyProjectHistory = (pageIndex: number) => {

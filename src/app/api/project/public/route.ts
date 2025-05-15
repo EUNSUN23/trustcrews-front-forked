@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
 
   const projectId = searchParams.get('projectId');
 
-  const res = await publicApi(`/api/project/${projectId}/public`, {
+  const res = await publicApi(`/api/project/public/${projectId}`, {
     method,
   });
   return routeResponse(req, res);

@@ -6,7 +6,7 @@ import { Position } from '@/types/data/position';
 export const POSITION_LIST_QUERY_KEY = 'positions';
 
 export const getPositionList = async (): Promise<ResponseBody<Position[]>> => {
-  return await request('GET', '/api/setting/position');
+  return await request('GET', '/api/position');
 };
 
 export const positionQueryOptions = () => {

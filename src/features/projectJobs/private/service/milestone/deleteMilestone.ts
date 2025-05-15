@@ -13,7 +13,7 @@ export type DeleteMilestoneReqData = {
 export const deleteMilestone = async (
   reqData: DeleteMilestoneReqData,
 ): Promise<ResponseBody<null>> => {
-  return await request('DELETE', `/api/project/milestone`, reqData);
+  return await request('DELETE', `/api/projectJobs/auth/milestone`, reqData);
 };
 
 type DeleteMilestoneRes = ApiResult<typeof deleteMilestone>;

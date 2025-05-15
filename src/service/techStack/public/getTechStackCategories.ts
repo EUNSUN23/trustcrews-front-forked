@@ -10,7 +10,7 @@ export type TechStackCategory = {
 export const getTechStackCategories = async (): Promise<
   ResponseBody<TechStackCategory[]>
 > => {
-  return await request('GET', '/api/setting/tech-stack-category');
+  return await request('GET', '/api/techStack/category');
 };
 
 export const techCategoryQueryOptions = () => {

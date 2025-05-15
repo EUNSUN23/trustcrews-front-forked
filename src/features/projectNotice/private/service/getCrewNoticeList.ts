@@ -20,7 +20,7 @@ export const getCrewNoticeList = async (
 ): Promise<PageResponseBody<CrewNoticeData[]>> => {
   return await request(
     'GET',
-    `/api/project/alert/crew?projectId=${projectId}&pageIndex=${pageIndex}&itemCount=${itemCount}`,
+    `/api/projectNotice/auth/crew?projectId=${projectId}&pageIndex=${pageIndex}&itemCount=${itemCount}`,
   );
 };
 

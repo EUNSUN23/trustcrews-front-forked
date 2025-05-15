@@ -11,7 +11,7 @@ export const getMyProjects = async (
 ): Promise<PageResponseBody<ProjectInfoSummary[]>> => {
   const resBody = await request(
     'GET',
-    `/api/project/list?pageIndex=${pageIndex}&itemCount=${itemCount}`,
+    `/api/project/auth?pageIndex=${pageIndex}&itemCount=${itemCount}`,
   );
 
   return {

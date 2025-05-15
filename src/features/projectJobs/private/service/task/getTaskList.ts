@@ -38,7 +38,7 @@ export const getTaskList = async (tasksReqParam: TasksReqParam) => {
 
   const res: PageResponseBody<TaskItem[]> = await request(
     'GET',
-    `/api/project/work?milestoneId=${milestoneId}&projectId=${projectId}&pageIndex=${pageIndex}&itemCount=${itemCount}`,
+    `/api/projectJobs/auth/task?milestoneId=${milestoneId}&projectId=${projectId}&pageIndex=${pageIndex}&itemCount=${itemCount}`,
   );
 
   const today = new Date();

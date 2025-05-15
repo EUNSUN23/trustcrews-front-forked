@@ -10,7 +10,7 @@ export const getApplicantProjectHistory = async (
 ): Promise<PageResponseBody<ProjectHistoryData[]>> => {
   return await request(
     'GET',
-    `/api/user/history?pageNumber=${pageNumber}&userId=${userId}`,
+    `/api/projectHistory?pageNumber=${pageNumber}&userId=${userId}`,
   );
 };
 

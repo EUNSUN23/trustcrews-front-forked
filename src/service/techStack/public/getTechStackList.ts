@@ -6,7 +6,7 @@ import { TechStack } from '@/types/data/techStack';
 export const getTechStackList = async (): Promise<
   ResponseBody<TechStack[]>
 > => {
-  return await request('GET', '/api/setting/tech-stack');
+  return await request('GET', '/api/techStack');
 };
 
 export const TECH_LIST_QUERY_KEY = 'techStacks';

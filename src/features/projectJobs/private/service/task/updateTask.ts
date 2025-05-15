@@ -24,7 +24,7 @@ export const updateTask = async (
   workId: bigint,
   auth: string,
 ): Promise<ResponseBody<null>> => {
-  return await request('PATCH', '/api/project/work', {
+  return await request('PATCH', '/api/projectJobs/auth/task', {
     ...data,
     workId,
     authMap: auth,

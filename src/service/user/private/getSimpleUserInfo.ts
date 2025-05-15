@@ -10,7 +10,7 @@ export interface SimpleUserInfo {
 export const getSimpleUserInfo = async (): Promise<
   ResponseBody<SimpleUserInfo>
 > => {
-  return await request('GET', '/api/user/simple');
+  return await request('GET', '/api/user');
 };
 
 export const SIMPLE_USER_INFO_QUERY_KEY = 'simpleUserInfo';

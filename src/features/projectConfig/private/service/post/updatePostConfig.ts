@@ -24,7 +24,7 @@ export const updatePostConfig = async (
   userAuth: string,
   data: UpdatePostConfigInput,
 ): Promise<ResponseBody<null>> => {
-  return await request('PUT', '/api/projectConfig/post', {
+  return await request('PUT', '/api/projectConfig/auth/post', {
     ...data,
     userAuth,
     projectId,

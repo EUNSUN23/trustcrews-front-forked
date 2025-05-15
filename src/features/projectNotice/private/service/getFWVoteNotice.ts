@@ -20,7 +20,7 @@ export const getFWVoteNotice = async (
   voteId: bigint,
   fwMemberId: bigint,
 ): Promise<ResponseBody<FWVoteNoticeDetailData>> => {
-  const reqUrl = `/api/project/alert/vote/fwithdraw/detail?voteId=${voteId}&fwMemberId=${fwMemberId}`;
+  const reqUrl = `/api/projectNotice/auth/fwVote?voteId=${voteId}&fwMemberId=${fwMemberId}`;
   return await request('GET', reqUrl);
 };
 

@@ -20,7 +20,7 @@ export const createPost = async (
   projectId: bigint,
   data: CreatePostInput,
 ): Promise<ResponseBody<null>> => {
-  return await request('POST', `/api/post`, { ...data, projectId });
+  return await request('POST', `/api/post/auth`, { ...data, projectId });
 };
 
 export type CreatePostRes = ApiResult<typeof createPost>;

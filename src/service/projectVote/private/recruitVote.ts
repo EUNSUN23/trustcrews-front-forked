@@ -20,7 +20,7 @@ type RecruitVoteAnswerInput = z.infer<typeof recruitVoteAnswerInputSchema>;
 type VoteRecruitReqParams = RecruitVoteBaseParams & RecruitVoteAnswerInput;
 
 export const recruitVote = async (data: VoteRecruitReqParams) => {
-  return await request('POST', '/api/project/vote/recruit', {
+  return await request('POST', '/api/projectVote/auth/recruit', {
     ...data,
     authMap: data.userAuth,
   });

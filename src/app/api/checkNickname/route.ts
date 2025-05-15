@@ -5,7 +5,7 @@ import { NextRequest } from 'next/server';
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const res = await publicApi(
-    `/api/user/check-nickname/${searchParams.get('nickname')}/public`,
+    `/api/user/public/checkNickname/${searchParams.get('nickname')}`,
   );
 
   return routeResponse(req, res);

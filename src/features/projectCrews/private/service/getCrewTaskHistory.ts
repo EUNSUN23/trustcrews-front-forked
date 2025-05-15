@@ -6,41 +6,36 @@ import { PageResponseBody } from '@/types/responseBody';
 import { TaskPointType } from '@/types/data/taskPointType';
 
 export interface CrewTaskHistory {
-  workId: bigint;
+  taskId: bigint;
   trustScoreHistoryId: bigint;
-  workContent: string;
+  summary: string;
   createDate: string;
   progressStatus: CrewStatusKey;
   point: number;
-  point_type: TaskPointType;
+  pointType: TaskPointType;
 }
 
-// todo - projectMember -> crew로 prefix 변경 (api, parameter, 데이터 field)
 export const getCrewTaskHistory = async (
-  projectMemberId: string | bigint,
+  crewId: bigint,
   pageIndex: number,
   itemCount: number,
 ): Promise<PageResponseBody<CrewTaskHistory[]>> => {
   return await request(
     'GET',
-    `/api/project/crewTaskHistory?projectMemberId=${projectMemberId}&pageIndex=${pageIndex}&itemCount=${itemCount}`,
+    `/api/projectCrew/auth/taskHistory?crewId=${crewId}&pageIndex=${pageIndex}&itemCount=${itemCount}`,
   );
 };
 
 export const CREW_TASK_HISTORY_KEY = 'crewTaskHistory';
 
-export const useCrewTaskHistory = (
-  projectMemberId: string | bigint,
-  pageIndex: number,
-) => {
+export const useCrewTaskHistory = (crewId: bigint, pageIndex: number) => {
   return useSuspenseQuery({
     queryKey: [
       CREW_TASK_HISTORY_KEY,
-      projectMemberId,
+      crewId,
       pageIndex,
       ITEM_COUNT_PER_PAGE.LIST_SM,
     ],
-    queryFn: () =>
-      getCrewTaskHistory(projectMemberId, pageIndex, PAGE_RANGE.DEFAULT),
+    queryFn: () => getCrewTaskHistory(crewId, pageIndex, PAGE_RANGE.DEFAULT),
   });
 };

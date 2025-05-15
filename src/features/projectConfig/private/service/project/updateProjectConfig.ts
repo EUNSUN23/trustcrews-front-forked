@@ -34,7 +34,7 @@ export const updateProjectConfig = async (
   userAuth: string,
   data: UpdateProjectConfigInput,
 ): Promise<ResponseBody<null>> => {
-  return await request('PUT', '/api/projectConfig/project', {
+  return await request('PUT', '/api/projectConfig/auth/project', {
     ...data,
     projectId,
     userAuth,
