@@ -1,13 +1,13 @@
 'use client';
 
-import { useAuthState } from '@/features/user/private/contexts/AuthStateContext';
+import { useAuthState } from '@/features/user/contexts/AuthStateContext';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import { activeMainBoardTabStore } from '@/store/ActiveMainBoardTabStateStore';
-import MyProjectApplies from '@/features/myProjectApplies/private/contents/MyProjectApplies';
+import MyProjectApplies from '@/features/myProjectApplies/auth/contents/MyProjectApplies';
 import { useEffect } from 'react';
 import CardListSkeleton from '@/shared/ui/skeleton/CardListSkeleton';
 import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
-import MyProjects from '@/features/project/private/contents/myProjects/MyProjects';
+import MyProjects from '@/features/project/auth/contents/myProjects/MyProjects';
 import Posts from '@/features/post/public/contents/posts/Posts';
 import MAIN_BOARD_TABS from '@/constants/data/mainBoardTabs';
 import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
