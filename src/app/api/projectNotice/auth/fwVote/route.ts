@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
-import authApi from '@/app/api/_interceptor/authApi';
+import authFetch from '@/utils/interceptor/auth/authFetch';
 import { JSONReplaceBigInt } from '@/shared/utils/jsonUtils';
-import { routeResponse } from '@/app/api/_interceptor/routeResponse';
+import { routeResponse } from '@/utils/serverApi/routeResponse';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
   const reqUrl = `/api/projectNotice/fwVote?voteId=${voteId}&fwMemberId=${fwMemberId}`;
   const method = req.method;
 
-  const res = await authApi(reqUrl, { method });
+  const res = await authFetch(reqUrl, { method });
   return routeResponse(req, res);
 }
 
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
   const reqData = await req.json();
   const method = req.method;
 
-  const res = await authApi('/api/projectNotice/fwVote', {
+  const res = await authFetch('/api/projectNotice/fwVote', {
     method,
     body: JSONReplaceBigInt(reqData),
   });

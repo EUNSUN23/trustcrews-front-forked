@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server';
-import authApi from '@/app/api/_interceptor/authApi';
-import { routeResponse } from '@/app/api/_interceptor/routeResponse';
+import authFetch from '@/utils/interceptor/auth/authFetch';
+import { routeResponse } from '@/utils/serverApi/routeResponse';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
 
   const reqUrl = `/api/projectNotice/fwVote/list?projectId=${projectId}&pageIndex=${pageIndex}&itemCount=${itemCount}`;
   const method = req.method;
-  const res = await authApi(reqUrl, { method });
+  const res = await authFetch(reqUrl, { method });
 
   return routeResponse(req, res);
 }

@@ -11,8 +11,12 @@ import useSnackbar from '@/shared/hooks/useSnackbar';
 import { SIMPLE_USER_INFO_QUERY_KEY } from '@/service/user/auth/getSimpleUserInfo';
 import { MY_PROJECTS_QUERY_KEY } from '@/features/project/auth/service/myProjects/getMyProjects';
 import { MY_PROJECT_APPLIES_QUERY_KEY } from '@/features/myProjectApplies/auth/service/getMyProjectApplies';
+import { useSetRecoilState } from 'recoil';
+import { authStateStore } from '@/store/AuthStateStore';
 
-function LoginForm() {
+const LoginForm = () => {
+  const setAuthState = useSetRecoilState(authStateStore);
+
   const router = useRouter();
   const { setErrorSnackbar, setInfoSnackbar } = useSnackbar();
 
@@ -22,7 +26,7 @@ function LoginForm() {
   const queryClient = useQueryClient();
   const { mutate: login } = useLogin({
     onSuccess: async (res) => {
-      const { message } = res;
+      const { message, data } = res;
 
       const invalidateUserInfo = queryClient.invalidateQueries({
         queryKey: [SIMPLE_USER_INFO_QUERY_KEY],
@@ -89,6 +93,6 @@ function LoginForm() {
       </FormButton>
     </div>
   );
-}
+};
 
 export default LoginForm;

@@ -18,7 +18,7 @@ import { ZodError } from 'zod';
 import Loader from '@/shared/ui/Loader';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
 import { TechStack } from '@/types/data/techStack';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/ui/error/FieldQueryBoundary';
 
 const {
   VODA1001: { code: VOTE_AGREE },

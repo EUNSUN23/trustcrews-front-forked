@@ -3,19 +3,26 @@
 import Image from 'next/image';
 import logo from '../../public/images/logo.png';
 import Link from 'next/link';
-import LoginNav from '@/ui/LoginNav';
-import UserMenuSkeleton from '@/contents/user/private/UserMenuSkeleton';
+import UserMenuSkeleton from '@/contents/user/auth/UserMenuSkeleton';
 import { IoCreateOutline } from '@react-icons/all-files/io5/IoCreateOutline';
 import dynamic from 'next/dynamic';
-import { useAuthState } from '@/features/user/contexts/AuthStateContext';
+import FieldQueryBoundary from '@/ui/error/FieldQueryBoundary';
+import { AuthState, authStateStore } from '@/store/AuthStateStore';
+import useSyncAuthState from '@/hooks/useSyncAuthState';
+import { useRecoilValue } from 'recoil';
 
-const UserMenu = dynamic(() => import('@/contents/user/private/UserMenu'), {
+const UserMenu = dynamic(() => import('@/contents/user/auth/UserMenu'), {
   ssr: false,
   loading: () => <UserMenuSkeleton />,
 });
 
-const Header = () => {
-  const { isAuthorized } = useAuthState();
+type HeaderProps = {
+  serverAuthState: AuthState;
+};
+
+const Header = ({ serverAuthState }: HeaderProps) => {
+  const { isAuthSync } = useSyncAuthState(serverAuthState);
+  const { isAuthorized } = useRecoilValue(authStateStore);
 
   return (
     <header className='flex flex-col'>
@@ -52,7 +59,28 @@ const Header = () => {
               <IoCreateOutline className='pc:hidden tablet:hidden h-6 w-6' />
             </div>
           </Link>
-          <div>{isAuthorized ? <UserMenu /> : <LoginNav />}</div>
+          <div>
+            {isAuthSync ? (
+              isAuthorized ? (
+                <FieldQueryBoundary
+                  isThrowingAllowed={false}
+                  suspenseFallback={<UserMenuSkeleton />}
+                >
+                  <UserMenu />
+                </FieldQueryBoundary>
+              ) : (
+                <Link
+                  aria-label='로그인 페이지'
+                  href='/login'
+                  className='mx-2 tablet:text-[20px] mobile:text-[16px] text-black100 font-semibold'
+                >
+                  로그인
+                </Link>
+              )
+            ) : (
+              <UserMenuSkeleton />
+            )}
+          </div>
         </div>
       </div>
     </header>

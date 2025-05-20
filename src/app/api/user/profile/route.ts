@@ -1,9 +1,9 @@
 import { NextRequest } from 'next/server';
-import authApi from '@/app/api/_interceptor/authApi';
-import { routeResponse } from '@/app/api/_interceptor/routeResponse';
+import authFetch from '@/utils/interceptor/auth/authFetch';
+import { routeResponse } from '@/utils/serverApi/routeResponse';
 
 export async function GET(req: NextRequest) {
-  const res = await authApi('/api/user/profile', {
+  const res = await authFetch('/api/user/profile', {
     method: 'GET',
   });
 
@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
 export async function PUT(req: NextRequest) {
   const formData = await req.formData();
 
-  const res = await authApi(`/api/user/profile`, {
+  const res = await authFetch(`/api/user/profile`, {
     method: 'PUT',
     body: formData,
   });

@@ -13,7 +13,7 @@ import { selectedPositionState } from '@/features/post/public/store/PostSearchSt
 import { selectItemComparator } from '@/shared/utils/selectItemComparator';
 import { clsx } from 'clsx';
 import { bigIntToString, numStrToBigInt } from '@/shared/utils/stringUtils';
-import { DEFAULT_POSITION_OPTION } from '@/constants/defaultSelectOptions';
+import { DEFAULT_POSITION_OPTION } from '@/constants/data/defaultSelectOptions';
 import { usePositionList } from '@/service/position/public/getPositionList';
 
 const PositionFilter = () => {

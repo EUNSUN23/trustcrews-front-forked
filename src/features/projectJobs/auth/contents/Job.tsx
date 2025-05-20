@@ -19,7 +19,7 @@ import TaskAddModal from '@/features/projectJobs/auth/contents/task/TaskAddModal
 import TaskModModal from '@/features/projectJobs/auth/contents/task/TaskModModal';
 import TasksSkeleton from '@/features/projectJobs/auth/contents/task/TasksSkeleton';
 import { bigIntToString } from '@/shared/utils/stringUtils';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/ui/error/FieldQueryBoundary';
 
 const { milestoneId: DEFAULT_MILESTONE_ID } = DEFAULT_ACTIVE_MILESTONE;
 

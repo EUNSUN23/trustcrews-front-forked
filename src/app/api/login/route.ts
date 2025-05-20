@@ -1,15 +1,17 @@
-import publicApi from '@/app/api/_interceptor/publicApi';
+import publicFetch from '@/utils/interceptor/public/publicFetch';
 import { NextRequest } from 'next/server';
 import { cookies } from 'next/headers';
-import { routeResponse } from '@/app/api/_interceptor/routeResponse';
-import { GatewayError } from '@/app/api/_interceptor/error/classes';
-import { COOKIE } from '@/app/api/_interceptor/utils/cookieUtils';
-import getRfTokenFromSetCookie from '@/utils/auth/getRfTokenFromSetCookie';
+import { routeResponse } from '@/utils/serverApi/routeResponse';
+import { getRefreshTokenFromHeader } from '@/utils/interceptor/getRefreshTokenFromHeader';
+import { COOKIE } from '@/constants/cookie';
+import { HttpStatusCode } from 'axios';
+import { createErrorResponse } from '@/utils/interceptor/createErrorResponse';
+import { HttpError } from '@/utils/error/HttpError';
 
 export async function POST(req: NextRequest) {
   const loginRequest = await req.json();
 
-  const res = await publicApi('/api/user/login/public', {
+  const res = await publicFetch('/api/user/login', {
     method: 'POST',
     body: JSON.stringify(loginRequest),
     credentials: 'include',
@@ -22,7 +24,7 @@ export async function POST(req: NextRequest) {
 
     const cookieStore = cookies();
     if (accessToken && setCookieHeader) {
-      const { token, options } = getRfTokenFromSetCookie(setCookieHeader);
+      const { token, options } = getRefreshTokenFromHeader(setCookieHeader);
       cookieStore.set(COOKIE.ACS_TOKEN, accessToken, {
         ...options,
         sameSite: 'strict',
@@ -32,10 +34,9 @@ export async function POST(req: NextRequest) {
         sameSite: 'strict',
       });
     } else {
-      throw new GatewayError(
-        'EAUTH',
-        `Token refresh response did not contain necessary headers: Empty - ${!accessToken && 'Access,'} ${!setCookieHeader && 'Set-Cookie Header'}`,
-      );
+      const error = new HttpError(HttpStatusCode.InternalServerError);
+      // todo - sentry error log
+      return createErrorResponse(error);
     }
 
     const copiedRes = res.clone();

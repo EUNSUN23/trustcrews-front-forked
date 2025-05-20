@@ -1,13 +1,11 @@
-import authApi from '@/app/api/_interceptor/authApi';
+import authFetch from '@/utils/interceptor/auth/authFetch';
 import { NextRequest } from 'next/server';
-import { routeResponse } from '@/app/api/_interceptor/routeResponse';
-import {
-  COOKIE,
-  deleteCookieValue,
-} from '@/app/api/_interceptor/utils/cookieUtils';
+import { routeResponse } from '@/utils/serverApi/routeResponse';
+import { deleteCookieValue } from '@/utils/cookieUtils';
+import { COOKIE } from '@/constants/cookie';
 
 export async function POST(req: NextRequest) {
-  const res = await authApi('/api/user/logout', { method: 'POST' });
+  const res = await authFetch('/api/user/logout', { method: 'POST' });
 
   if (res.ok) {
     deleteCookieValue(COOKIE.USER_ID);

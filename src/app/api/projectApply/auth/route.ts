@@ -1,5 +1,5 @@
-import authApi from '@/app/api/_interceptor/authApi';
-import { routeResponse } from '@/app/api/_interceptor/routeResponse';
+import authFetch from '@/utils/interceptor/auth/authFetch';
+import { routeResponse } from '@/utils/serverApi/routeResponse';
 import { NextRequest } from 'next/server';
 
 export async function GET(req: NextRequest) {
@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
   const pageIndex = searchParams.get('pageIndex');
   const itemCount = searchParams.get('itemCount');
 
-  const res = await authApi(
+  const res = await authFetch(
     `/api/projectApply?pageIndex=${pageIndex}&itemCount=${itemCount}`,
     { method: 'GET' },
   );
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
   const method = req.method;
   const requestData = await req.json();
 
-  const res = await authApi(`/api/projectApply`, {
+  const res = await authFetch(`/api/projectApply`, {
     method,
     body: JSON.stringify(requestData),
   });

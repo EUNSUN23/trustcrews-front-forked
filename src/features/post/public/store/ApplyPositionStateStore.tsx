@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { DEFAULT_POSITION_OPTION } from '@/constants/defaultSelectOptions';
+import { DEFAULT_POSITION_OPTION } from '@/constants/data/defaultSelectOptions';
 import { SelectItem } from '@/shared/types/selectItem';
 import { PositionId, PositionName } from '@/types/data/position';
 

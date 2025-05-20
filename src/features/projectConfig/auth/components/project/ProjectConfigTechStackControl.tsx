@@ -4,7 +4,7 @@ import FormRow from '@/ui/FormRow';
 import { projectConfigFormFieldSelector } from '@/features/projectConfig/auth/store/ProjectConfigFormStateStore';
 import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
 import { Field, Label } from '@headlessui/react';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/ui/error/FieldQueryBoundary';
 
 const ProjectConfigTechStackControl = () => {
   const [technologyIds, setTechnologyIds] = useRecoilState(

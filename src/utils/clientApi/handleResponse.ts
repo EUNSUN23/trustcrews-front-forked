@@ -1,4 +1,4 @@
-import { HttpError } from '@/utils/clientApi/HttpError';
+import { HttpError } from '@/utils/error/HttpError';
 
 const handleResponse = async (res: Response) => {
   if (res.ok) {

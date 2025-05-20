@@ -1,15 +1,11 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Providers from '@/app/Providers';
 import Snackbar from '@/shared/ui/Snackbar';
-import StaticOptionDataProvider from '@/app/StaticOptionDataProvider';
+import StaticOptionDataProvider from '@/providers/data/StaticOptionDataProvider';
 import Header from '@/contents/Header';
 import { ReactNode } from 'react';
-import {
-  COOKIE,
-  getCookieValue,
-} from '@/app/api/_interceptor/utils/cookieUtils';
-import getIsAuthorizedFromCookie from '@/utils/auth/getIsAuthorizedFromCookie';
+import RootProvider from '@/providers/RootProvider';
+import ServerAuthStateProvider from '@/providers/ServerAuthStateProvider';
 
 export const metadata: Metadata = {
   title: 'TRUSTCREWS | 책임감 있는 사이드 프로젝트 팀, 팀원을 구하는 방법',
@@ -18,22 +14,19 @@ export const metadata: Metadata = {
 };
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
-  const authState = {
-    isAuthorized: getIsAuthorizedFromCookie(),
-    userId: getCookieValue(COOKIE.USER_ID),
-  };
-
   return (
     <html lang='en'>
       <body className='w-full'>
-        <Providers authState={authState}>
+        <RootProvider>
           <div className='responsiveContainer'>
-            <Header />
+            <ServerAuthStateProvider>
+              {(authState) => <Header serverAuthState={authState} />}
+            </ServerAuthStateProvider>
             <StaticOptionDataProvider>{children}</StaticOptionDataProvider>
           </div>
           <div id='modal' className='absolute top-0 w-full'></div>
           <Snackbar />
-        </Providers>
+        </RootProvider>
       </body>
     </html>
   );

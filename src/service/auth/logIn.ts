@@ -11,7 +11,9 @@ export const loginInputSchema = z.object({
 
 export type LoginInput = z.infer<typeof loginInputSchema>;
 
-export const login = async (param: LoginInput): Promise<ResponseBody<null>> => {
+export const login = async (
+  param: LoginInput,
+): Promise<ResponseBody<bigint | number>> => {
   return await request('POST', '/api/login', param);
 };
 
@@ -30,7 +32,6 @@ export const useLogin = ({
       onSuccess?.(res);
     },
     onError: (error) => {
-      console.log(error.message);
       onError?.(error);
     },
   });
