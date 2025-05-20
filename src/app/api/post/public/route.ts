@@ -1,12 +1,12 @@
-import publicApi from '@/app/api/_interceptor/publicApi';
+import publicFetch from '@/utils/interceptor/public/publicFetch';
 import { NextRequest } from 'next/server';
-import { routeResponse } from '@/app/api/_interceptor/routeResponse';
+import { routeResponse } from '@/utils/serverApi/routeResponse';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const postId = searchParams.get('postId');
 
-  const res = await publicApi(`/api/post/public/${postId}`);
+  const res = await publicFetch(`/api/post/public/${postId}`);
 
   return routeResponse(req, res);
 }

@@ -4,7 +4,7 @@ import { postFormFieldSelector } from '@/features/launch/auth/store/PostFormStat
 import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
 import MultiPositionSelect from '@/components/position/public/MultiPositionSelect';
 import { Field, Label } from '@headlessui/react';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/ui/error/FieldQueryBoundary';
 
 const LaunchPositionControl = () => {
   const [positionIds, setPositionIds] = useRecoilState(

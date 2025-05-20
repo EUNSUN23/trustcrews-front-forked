@@ -9,10 +9,6 @@ import { useMyProjects } from '@/features/project/auth/service/myProjects/getMyP
 const MyProjects = () => {
   const [pageNumber, setPageNumber] = useState(0);
 
-  const handleChangePage = (pageNumber: number) => {
-    setPageNumber(pageNumber - 1);
-  };
-
   const {
     data: {
       data: { content, totalPages },
@@ -27,6 +23,10 @@ const MyProjects = () => {
         </p>
       </div>
     );
+
+  const handleChangePage = (pageNumber: number) => {
+    setPageNumber(pageNumber - 1);
+  };
 
   return (
     <section className='my-10'>

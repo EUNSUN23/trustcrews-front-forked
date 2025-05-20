@@ -1,11 +1,11 @@
-import authApi from '@/app/api/_interceptor/authApi';
+import authFetch from '@/utils/interceptor/auth/authFetch';
 import { NextRequest } from 'next/server';
-import { routeResponse } from '@/app/api/_interceptor/routeResponse';
+import { routeResponse } from '@/utils/serverApi/routeResponse';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
 
-  const res = await authApi(
+  const res = await authFetch(
     `/api/projectHistory/me?pageNumber=${searchParams.get('pageNumber')}`,
   );
 

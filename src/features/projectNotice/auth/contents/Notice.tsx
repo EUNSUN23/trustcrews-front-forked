@@ -8,7 +8,7 @@ import { useRecoilValue } from 'recoil';
 import { activeNoticeTabStateStore } from '@/features/projectNotice/auth/store/ActiveNoticeTabStateStore';
 import { NOTICE_TABS } from '@/features/projectNotice/auth/constants/noticeTabs';
 import NoticeContentsLoader from '@/features/projectNotice/auth/components/NoticeContentsLoader';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/ui/error/FieldQueryBoundary';
 import { ApplicationError } from '@/utils/error/ApplicationError';
 
 const {

@@ -5,7 +5,6 @@ import { useMediaQuery } from 'react-responsive';
 import SquareSkeleton from '@/shared/ui/skeleton/SquareSkeleton';
 import BadgeStyleSkeleton from '@/shared/ui/skeleton/BadgeStyleSkeleton';
 import TasksSkeleton from '@/features/projectJobs/auth/contents/task/TasksSkeleton';
-import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 
 const JobSkeleton = () => {
   const mobile = useMediaQuery({ maxWidth: 700 });
@@ -47,7 +46,7 @@ const JobSkeleton = () => {
             </div>
           </div>
         </div>
-        <TasksSkeleton itemCount={ITEM_COUNT_PER_PAGE.CARDS_SM} />
+        <TasksSkeleton />
       </section>
     </section>
   );

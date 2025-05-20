@@ -1,7 +1,7 @@
 import { HTTP_METHOD } from 'next/dist/server/web/http';
 import handleResponse from '@/utils/clientApi/handleResponse';
 import { JSONReplaceBigInt } from '@/shared/utils/jsonUtils';
-import publicURL from '@/constants/clientApi/publicURL';
+import NEXT_PUBLIC_URL from '@/constants/clientApi/nextPublicUrl';
 
 const headers: HeadersInit = {
   'Content-Type': 'application/json',
@@ -16,9 +16,8 @@ export const request = async (
     headers,
     method,
   };
-
   if (method !== 'GET' && data) requestInit.body = JSONReplaceBigInt(data);
 
-  const res = await fetch(`${publicURL}${url}`, requestInit);
+  const res = await fetch(`${NEXT_PUBLIC_URL}${url}`, requestInit);
   return await handleResponse(res);
 };

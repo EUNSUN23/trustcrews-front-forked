@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server';
-import authApi from '@/app/api/_interceptor/authApi';
-import { routeResponse } from '@/app/api/_interceptor/routeResponse';
+import authFetch from '@/utils/interceptor/auth/authFetch';
+import { routeResponse } from '@/utils/serverApi/routeResponse';
 import { JSONReplaceBigInt } from '@/shared/utils/jsonUtils';
 
 export async function GET(req: NextRequest) {
@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
   const pageIndex = searchParams.get('pageIndex');
   const itemCount = searchParams.get('itemCount');
 
-  const res = await authApi(
+  const res = await authFetch(
     `/api/projectJobs/task?projectId=${projectId}&milestoneId=${milestoneId}&pageIndex=${pageIndex}&itemCount=${itemCount}`,
     { method: 'GET' },
   );
@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   const reqData = await req.json();
-  const res = await authApi(`/api/projectJobs/task`, {
+  const res = await authFetch(`/api/projectJobs/task`, {
     method: 'POST',
     body: JSONReplaceBigInt(reqData),
   });
@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
 export async function PATCH(req: NextRequest) {
   const reqData = await req.json();
 
-  const res = await authApi(`/api/projectJobs/task`, {
+  const res = await authFetch(`/api/projectJobs/task`, {
     method: 'PATCH',
     body: JSONReplaceBigInt(reqData),
   });
@@ -42,7 +42,7 @@ export async function PATCH(req: NextRequest) {
 export async function DELETE(req: NextRequest) {
   const reqData = await req.json();
 
-  const res = await authApi(`/api/projectJobs/task`, {
+  const res = await authFetch(`/api/projectJobs/task`, {
     method: 'DELETE',
     body: JSONReplaceBigInt(reqData),
   });

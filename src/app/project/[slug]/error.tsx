@@ -1,6 +1,6 @@
 'use client';
 
-import ErrorPageDisplay from '@/components/error/ErrorPageDisplay';
+import ErrorPageDisplay from '@/ui/error/ErrorPageDisplay';
 
 const ProjectErrorPage = ({
   error,

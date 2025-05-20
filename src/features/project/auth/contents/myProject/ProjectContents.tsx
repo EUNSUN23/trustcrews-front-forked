@@ -16,7 +16,7 @@ import {
 import { useMyPMAuth } from '@/service/pmAuth/auth/getMyPMAuth';
 import { projectActiveNavState } from '@/features/project/auth/store/myProject/ProjectNavTabStateStore';
 import ProjectConfig from '@/features/projectConfig/auth/contents/ProjectConfig';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/ui/error/FieldQueryBoundary';
 import CrewsSkeleton from '@/features/projectCrews/auth/contents/CrewsSkeleton';
 import { NoticeSkeleton } from '@/features/projectNotice/auth/contents/NoticeSkeleton';
 import ProjectConfigSkeleton from '@/features/projectConfig/auth/contents/ProjectConfigSkeleton';

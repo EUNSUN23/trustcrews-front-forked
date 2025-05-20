@@ -1,11 +1,11 @@
 import { NextRequest } from 'next/server';
-import authApi from '@/app/api/_interceptor/authApi';
+import authFetch from '@/utils/interceptor/auth/authFetch';
 import { JSONReplaceBigInt } from '@/shared/utils/jsonUtils';
-import { routeResponse } from '@/app/api/_interceptor/routeResponse';
+import { routeResponse } from '@/utils/serverApi/routeResponse';
 
 export async function POST(req: NextRequest) {
   const data = await req.json();
-  const res = await authApi(`/api/project`, {
+  const res = await authFetch(`/api/project`, {
     method: 'POST',
     body: JSONReplaceBigInt(data),
   });

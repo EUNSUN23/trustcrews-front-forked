@@ -9,13 +9,13 @@ import { crewIdState } from '@/features/projectCrews/auth/store/CrewIdStateStore
 import { useRecoilValue } from 'recoil';
 import CrewOutButton from '@/features/projectCrews/auth/contents/crewManage/CrewOutButton';
 import CrewFwButton from '@/features/projectCrews/auth/contents/crewManage/CrewFWButton';
-import { useAuthState } from '@/features/user/contexts/AuthStateContext';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 import { TechStack } from '@/types/data/techStack';
 import ProjectCrewRoleBadge from '@/components/projectCrew/auth/ProjectCrewRoleBadge';
+import { authStateStore } from '@/store/AuthStateStore';
 
 const CrewProfile = () => {
-  const { userId: currentUserId } = useAuthState();
+  const { userId: currentUserId } = useRecoilValue(authStateStore);
   const crewId = useRecoilValue(crewIdState);
   const {
     data: { data: crewInfo },

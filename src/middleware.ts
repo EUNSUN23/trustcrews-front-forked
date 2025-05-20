@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import corsMiddleware from '@/corsMiddleware';
-import { COOKIE } from '@/app/api/_interceptor/utils/cookieUtils';
+import { COOKIE } from '@/constants/cookie';
 
 const isAuthorizedRequest = (request: NextRequest) => {
   const authRouteMatcher = new RegExp(

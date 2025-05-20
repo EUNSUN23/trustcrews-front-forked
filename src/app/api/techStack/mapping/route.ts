@@ -1,9 +1,9 @@
 import { NextRequest } from 'next/server';
-import publicApi from '@/app/api/_interceptor/publicApi';
-import { routeResponse } from '@/app/api/_interceptor/routeResponse';
+import publicFetch from '@/utils/interceptor/public/publicFetch';
+import { routeResponse } from '@/utils/serverApi/routeResponse';
 
 export async function GET(req: NextRequest) {
-  const res = await publicApi('/api/techStackMapping');
+  const res = await publicFetch('/api/techStackMapping');
 
   return routeResponse(req, res);
 }

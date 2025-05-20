@@ -8,7 +8,7 @@ import Button from '@/shared/ui/Button';
 import { useSetRecoilState } from 'recoil';
 import { projectActiveNavState } from '@/features/project/auth/store/myProject/ProjectNavTabStateStore';
 import { PROJECT_MENU } from '@/features/project/auth/constants/myProject/projectMenu';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/ui/error/FieldQueryBoundary';
 
 const {
   CREWS: { value: PROJECT_CREWS },

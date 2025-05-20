@@ -1,10 +1,10 @@
-import publicApi from '@/app/api/_interceptor/publicApi';
+import publicFetch from '@/utils/interceptor/public/publicFetch';
 import { NextRequest } from 'next/server';
-import { routeResponse } from '@/app/api/_interceptor/routeResponse';
+import { routeResponse } from '@/utils/serverApi/routeResponse';
 
 export async function POST(req: NextRequest) {
   const signUpRequest = await req.json();
-  const res = await publicApi('/api/signUp', {
+  const res = await publicFetch('/api/signUp', {
     method: 'POST',
     body: JSON.stringify(signUpRequest),
   });

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { COOKIE } from '@/app/api/_interceptor/utils/cookieUtils';
 import { HttpStatusCode } from 'axios';
+import { COOKIE } from '@/constants/cookie';
 
 const allowedOrigins = [process.env.NEXT_PUBLIC_URL];
 
@@ -28,7 +28,6 @@ const corsMiddleware = (request: NextRequest) => {
     return NextResponse.next({
       status: HttpStatusCode.Unauthorized,
       statusText: 'Unauthorized',
-      headers: { 'X-Error-Instruction': 'MESSAGE' },
     });
   }
 

@@ -2,7 +2,7 @@ import { useRecoilState } from 'recoil';
 import MultiPositionSelect from '@/components/position/public/MultiPositionSelect';
 import { postConfigFormFieldSelector } from '@/features/projectConfig/auth/store/PostConfigFormStateStore';
 import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/ui/error/FieldQueryBoundary';
 import { Field, Label } from '@headlessui/react';
 
 const PostConfigPositionsControl = () => {

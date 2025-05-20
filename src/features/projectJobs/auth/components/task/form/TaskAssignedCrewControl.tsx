@@ -7,7 +7,7 @@ import {
 import { Field, Label } from '@headlessui/react';
 import { projectIdState } from '@/features/project/auth/store/myProject/ProjectIdStateStore';
 import ProjectCrewSelect from '@/components/projectCrew/auth/ProjectCrewSelect';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/ui/error/FieldQueryBoundary';
 import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
 
 type TaskAssignedCrewProps = {

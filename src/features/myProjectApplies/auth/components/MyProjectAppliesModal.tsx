@@ -7,7 +7,7 @@ import MyProjectAppliesDetail from '../contents/MyProjectAppliesDetail';
 import useModalPortalElement from '@/shared/hooks/useModalPortalElement';
 import { myProjectAppliesModalStateStore } from '@/features/myProjectApplies/auth/store/MyProjectAppliesModalStateStore';
 import MyProjectAppliesDetailSkeleton from '@/features/myProjectApplies/auth/contents/MyProjectAppliesDetailSkeleton';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/ui/error/FieldQueryBoundary';
 
 const MyProjectAppliesModal = () => {
   const [{ isOpen }, setIsOpen] = useRecoilState(

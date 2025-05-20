@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { DEFAULT_SEARCH_POST_PARAM } from '@/app/InitialPostsDataProvider';
+import { DEFAULT_SEARCH_POST_PARAM } from '@/providers/data/InitialPostsDataProvider';
 import {
   getPostList,
   PostInfoSummary,

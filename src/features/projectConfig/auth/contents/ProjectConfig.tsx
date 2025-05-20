@@ -7,7 +7,7 @@ import PMAuthSkeleton from '@/features/projectConfig/auth/contents/pmAuth/PMAuth
 import PostConfigFormSkeleton from '@/features/projectConfig/auth/contents/post/PostConfigFormSkeleton';
 import ConfigSummary from '@/features/projectConfig/auth/layouts/ConfigSummary';
 import ConfigContainer from '@/features/projectConfig/auth/layouts/ConfigContainer';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/ui/error/FieldQueryBoundary';
 
 const ProjectConfig = () => {
   return (

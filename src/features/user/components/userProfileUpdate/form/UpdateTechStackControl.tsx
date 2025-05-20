@@ -2,7 +2,7 @@ import TechStackSelect from '@/components/techStack/public/TechStackSelect';
 import { useRecoilState } from 'recoil';
 import { userInfoFormFieldSelector } from '@/features/user/store/UserInfoFormStateStore';
 import { Field, Label } from '@headlessui/react';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/ui/error/FieldQueryBoundary';
 import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
 
 const UpdateTechStackControl = () => {
