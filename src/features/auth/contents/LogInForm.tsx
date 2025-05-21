@@ -11,14 +11,10 @@ import useSnackbar from '@/shared/hooks/useSnackbar';
 import { SIMPLE_USER_INFO_QUERY_KEY } from '@/service/user/auth/getSimpleUserInfo';
 import { MY_PROJECTS_QUERY_KEY } from '@/features/project/auth/service/myProjects/getMyProjects';
 import { MY_PROJECT_APPLIES_QUERY_KEY } from '@/features/myProjectApplies/auth/service/getMyProjectApplies';
-import { useSetRecoilState } from 'recoil';
-import { authStateStore } from '@/store/AuthStateStore';
 
 const LoginForm = () => {
-  const setAuthState = useSetRecoilState(authStateStore);
-
-  const router = useRouter();
   const { setErrorSnackbar, setInfoSnackbar } = useSnackbar();
+  const router = useRouter();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,7 +22,7 @@ const LoginForm = () => {
   const queryClient = useQueryClient();
   const { mutate: login } = useLogin({
     onSuccess: async (res) => {
-      const { message, data } = res;
+      const { message } = res;
 
       const invalidateUserInfo = queryClient.invalidateQueries({
         queryKey: [SIMPLE_USER_INFO_QUERY_KEY],
@@ -67,6 +63,10 @@ const LoginForm = () => {
     if (event.key === 'Enter') loginWithValidation();
   };
 
+  const handleClickLoginButton = () => {
+    loginWithValidation();
+  };
+
   return (
     <div className='w-[380px] mobile:w-[300px] space-y-5 mobile:space-y-4'>
       <Input
@@ -88,7 +88,7 @@ const LoginForm = () => {
         onKeyUp={handleKeyDown}
       />
       <br />
-      <FormButton aria-label='로그인 버튼' onClick={loginWithValidation}>
+      <FormButton aria-label='로그인 버튼' onClick={handleClickLoginButton}>
         로그인
       </FormButton>
     </div>
