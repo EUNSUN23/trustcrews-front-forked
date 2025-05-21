@@ -30,7 +30,6 @@ const ProjectPage = ({
     setCurrentProjectId(projectId);
   }, [setCurrentProjectId, projectId]);
 
-  // todo - isLoading state로 관리
   if (currentProjectId === DEFAULT_PROJECT_ID) return <ProjectSkeleton />;
 
   return (
