@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import logo from '../../public/images/logo.png';
 import Link from 'next/link';
-import UserMenuSkeleton from '@/contents/user/auth/UserMenuSkeleton';
+import UserMenuSkeleton from '@/features/user/contents/userMenu/UserMenuSkeleton';
 import { IoCreateOutline } from '@react-icons/all-files/io5/IoCreateOutline';
 import dynamic from 'next/dynamic';
 import FieldQueryBoundary from '@/ui/error/FieldQueryBoundary';
@@ -11,10 +11,13 @@ import { AuthState, authStateStore } from '@/store/AuthStateStore';
 import useSyncAuthState from '@/hooks/useSyncAuthState';
 import { useRecoilValue } from 'recoil';
 
-const UserMenu = dynamic(() => import('@/contents/user/auth/UserMenu'), {
-  ssr: false,
-  loading: () => <UserMenuSkeleton />,
-});
+const UserMenu = dynamic(
+  () => import('@/features/user/contents/userMenu/UserMenu'),
+  {
+    ssr: false,
+    loading: () => <UserMenuSkeleton />,
+  },
+);
 
 type HeaderProps = {
   serverAuthState: AuthState;
