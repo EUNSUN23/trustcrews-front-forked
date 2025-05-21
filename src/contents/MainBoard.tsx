@@ -8,7 +8,7 @@ import CardListSkeleton from '@/shared/ui/skeleton/CardListSkeleton';
 import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 import MyProjects from '@/features/project/auth/contents/myProjects/MyProjects';
 import Posts from '@/features/post/public/contents/posts/Posts';
-import MAIN_BOARD_TABS from '@/constants/data/mainBoardTabs';
+import MAIN_BOARD_TABS from '@/constants/display/mainBoardTabs';
 import FieldQueryBoundary from '@/ui/error/FieldQueryBoundary';
 import PostsSkeleton from '@/features/post/public/contents/posts/PostsSkeleton';
 import { AuthState, authStateStore } from '@/store/AuthStateStore';

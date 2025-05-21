@@ -1,6 +1,6 @@
 import { publicFetchWrapper } from '@/utils/interceptor/public/publicFetchWrapper';
 import { reqPLogger, resPLogger } from '@/utils/interceptor/logger';
-import BACKEND_URL from '@/constants/serverApi/backendUrl';
+import BACKEND_URL from '@/constants/api/backendUrl';
 import { getResponseErrorMessage } from '@/utils/interceptor/getResponseErrorMessage';
 
 const publicFetch = publicFetchWrapper({

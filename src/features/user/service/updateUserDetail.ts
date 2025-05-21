@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { USER_DETAIL_INFO_QUERY_KEY } from '@/features/user/service/getUserDetailInfo';
 import { ResponseBody } from '@/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
-import NEXT_PUBLIC_URL from '@/constants/clientApi/nextPublicUrl';
+import NEXT_PUBLIC_URL from '@/constants/api/nextPublicUrl';
 import { POST_LIST_QUERY_KEY } from '@/features/post/public/service/getPostList';
 
 const nicknameRegex: RegExp = /^[a-zA-Z0-9]{6,10}$/;

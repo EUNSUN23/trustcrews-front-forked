@@ -3,7 +3,7 @@ import {
   REQUEST_ERROR_MESSAGE,
   SERVER_ERROR_MESSAGE,
   UNAUTHORIZED_MESSAGE,
-} from '@/constants/clientApi/defaultHttpErrorMessage';
+} from '@/constants/api/defaultHttpErrorMessage';
 
 export const getDefaultHttpErrorMessage = (httpStatus: number) => {
   const httpStatusStr = httpStatus.toString();

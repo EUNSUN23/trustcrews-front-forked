@@ -12,7 +12,7 @@ import { selectItemComparator } from '@/shared/utils/selectItemComparator';
 import { AiFillCaretDown } from '@react-icons/all-files/ai/AiFillCaretDown';
 import { clsx } from 'clsx';
 import Avatar from '@/shared/ui/Avatar';
-import { DEFAULT_CREW_OPTION } from '@/constants/data/defaultSelectOptions';
+import { DEFAULT_CREW_OPTION } from '@/constants/display/defaultSelectOptions';
 
 const selectButtonTextClass = ({
   defaultSelected,

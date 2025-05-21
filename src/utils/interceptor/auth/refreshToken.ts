@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import { reqLogger, resLogger } from '@/utils/interceptor/logger';
-import BACKEND_URL from '@/constants/serverApi/backendUrl';
+import BACKEND_URL from '@/constants/api/backendUrl';
 import { getRefreshTokenFromHeader } from '@/utils/interceptor/getRefreshTokenFromHeader';
 import { getCookieValue } from '@/utils/cookieUtils';
 import { COOKIE } from '@/constants/cookie';

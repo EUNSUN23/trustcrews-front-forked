@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import MAIN_BOARD_TABS from '@/constants/data/mainBoardTabs';
+import MAIN_BOARD_TABS from '@/constants/display/mainBoardTabs';
 
 const {
   BM_TAB001: { code: PROJECT_POSTS_TAB },
