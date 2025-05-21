@@ -1,5 +1,5 @@
-import Guide from '@/contents/Guide';
-import MainBoard from '@/contents/MainBoard';
+import Guide from '@/features/guide/contents/Guide';
+import MainBoard from '@/widgets/MainBoard';
 import InitialPostsDataProvider from '@/providers/data/InitialPostsDataProvider';
 import ServerAuthStateProvider from '@/providers/ServerAuthStateProvider';
 

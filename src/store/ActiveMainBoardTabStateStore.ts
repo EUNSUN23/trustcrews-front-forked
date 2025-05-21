@@ -1,11 +1,11 @@
 import { atom } from 'recoil';
-import MAIN_BOARD_TABS from '@/constants/display/mainBoardTabs';
 
-const {
-  BM_TAB001: { code: PROJECT_POSTS_TAB },
-} = MAIN_BOARD_TABS;
+export const MAIN_BOARD_TABS = {
+  BM_TAB001: { desc: '프로젝트 모집', code: 'BM_TAB001' },
+  BM_TAB002: { desc: '프로젝트 관리', code: 'BM_TAB002' },
+} as const;
 
 export const activeMainBoardTabStore = atom<string>({
   key: 'activeMainBoardTabStore',
-  default: PROJECT_POSTS_TAB,
+  default: MAIN_BOARD_TABS.BM_TAB001.code,
 });

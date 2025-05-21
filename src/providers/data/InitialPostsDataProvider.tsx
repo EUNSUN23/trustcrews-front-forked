@@ -8,7 +8,7 @@ import {
   getPostList,
   POST_LIST_QUERY_KEY,
   SearchPostParams,
-} from '@/features/post/public/service/getPostList';
+} from '@/features/posts/api/list/getPostList';
 
 export const DEFAULT_SEARCH_POST_PARAM: SearchPostParams = {
   techStacks: [],

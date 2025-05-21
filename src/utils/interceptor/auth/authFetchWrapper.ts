@@ -1,6 +1,6 @@
 import 'server-only';
 import returnFetch, { ReturnFetchDefaultOptions } from 'return-fetch';
-import { commonRequestHeaders } from '@/utils/serverApi/request';
+import { createRequestHeaders } from '@/utils/interceptor/createRequestHeaders';
 import { getCookieValue } from '@/utils/cookieUtils';
 import { COOKIE } from '@/constants/cookie';
 import { createErrorResponse } from '@/utils/interceptor/createErrorResponse';
@@ -19,7 +19,7 @@ export const authFetchWrapper = (args?: ReturnFetchDefaultOptions) => {
   ): Promise<Response> => {
     const userId = getCookieValue(COOKIE.USER_ID);
     if (!revalidatingUsers.has(userId)) {
-      if (requestInit) requestInit.headers = commonRequestHeaders(requestInit);
+      if (requestInit) requestInit.headers = createRequestHeaders(requestInit);
 
       try {
         return await fetch(url, { ...requestInit });
@@ -48,7 +48,7 @@ export const authFetchWrapper = (args?: ReturnFetchDefaultOptions) => {
             response = await createErrorResponse(error);
           } else {
             if (requestInit)
-              requestInit.headers = commonRequestHeaders(requestInit);
+              requestInit.headers = createRequestHeaders(requestInit);
 
             try {
               response = await fetch(url, { ...requestInit });

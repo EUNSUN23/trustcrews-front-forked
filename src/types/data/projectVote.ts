@@ -1,6 +1,6 @@
-import { VOTE_OPTIONS } from '@/constants/data/projectVote/voteOptions';
-import { VOTE_STATUS } from '@/constants/data/projectVote/voteStatus';
-import { FW_VOTE_REASONS } from '@/constants/data/projectVote/fwVoteReasons';
+import { VOTE_OPTIONS } from '@/entities/projectVote/constants/voteOptions';
+import { VOTE_STATUS } from '@/entities/projectVote/constants/voteStatus';
+import { FW_VOTE_REASONS } from '@/entities/projectVote/constants/fwVoteReasons';
 
 export type VoteOptionCode = keyof typeof VOTE_OPTIONS;
 export type VoteStatusType =

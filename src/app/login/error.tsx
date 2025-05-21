@@ -1,6 +1,6 @@
 'use client';
 
-import ErrorPageDisplay from '@/ui/error/ErrorPageDisplay';
+import ErrorPageDisplay from '@/components/error/ErrorPageDisplay';
 
 const LoginErrorPage = ({
   error,

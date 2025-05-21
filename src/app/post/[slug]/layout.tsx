@@ -2,8 +2,7 @@ import { Metadata } from 'next';
 import {
   getPostDetail,
   PostDetailData,
-} from '@/service/post/public/getPostDetail';
-import ConfirmModal from '@/ui/ConfirmModal';
+} from '@/entities/post/api/getPostDetail';
 import { ReactNode } from 'react';
 import Nav from '@/shared/ui/Nav';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
@@ -34,7 +33,6 @@ export default function PostDetailLayout({ children }: PostDetailLayoutProps) {
         <Nav to='/' />
       </nav>
       {children}
-      <ConfirmModal />
     </div>
   );
 }

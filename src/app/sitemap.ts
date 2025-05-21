@@ -3,7 +3,7 @@ import { DEFAULT_SEARCH_POST_PARAM } from '@/providers/data/InitialPostsDataProv
 import {
   getPostList,
   PostInfoSummary,
-} from '@/features/post/public/service/getPostList';
+} from '@/features/posts/api/list/getPostList';
 import { PageResponseBody } from '@/types/responseBody';
 
 const DOMAIN = process.env.NEXT_PUBLIC_URL;

@@ -1,4 +1,4 @@
-import Skeleton from '@/shared/ui/Skeleton';
+import Skeleton from '@/shared/ui/skeleton/Skeleton';
 
 const CardListSkeleton = ({ itemCount = 8 }: { itemCount: number }) => {
   const items = new Array(itemCount).fill(null);

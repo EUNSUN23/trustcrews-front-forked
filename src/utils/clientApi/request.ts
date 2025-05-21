@@ -1,5 +1,5 @@
 import { HTTP_METHOD } from 'next/dist/server/web/http';
-import handleResponse from '@/utils/clientApi/handleResponse';
+import response from '@/utils/clientApi/response';
 import { JSONReplaceBigInt } from '@/shared/utils/jsonUtils';
 import NEXT_PUBLIC_URL from '@/constants/api/nextPublicUrl';
 
@@ -19,5 +19,5 @@ export const request = async (
   if (method !== 'GET' && data) requestInit.body = JSONReplaceBigInt(data);
 
   const res = await fetch(`${NEXT_PUBLIC_URL}${url}`, requestInit);
-  return await handleResponse(res);
+  return await response(res);
 };

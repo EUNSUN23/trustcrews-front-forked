@@ -1,21 +1,17 @@
 'use client';
 
-import { Suspense, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import {
   DEFAULT_PROJECT_ID,
   projectIdState,
-} from '@/features/project/auth/store/myProject/ProjectIdStateStore';
+} from '@/entities/project/store/ProjectIdStateStore';
 import dynamic from 'next/dynamic';
-import ProjectContentsSkeleton from '@/features/project/auth/contents/myProject/ProjectContentsSkeleton';
-import ProjectSkeleton from '@/features/project/auth/components/myProject/ProjectSkeleton';
-import ProjectInfoSkeleton from '@/features/project/auth/contents/myProject/ProjectInfoSkeleton';
-import ProjectNavTab from '@/features/project/auth/components/myProject/ProjectNavTab';
-import ProjectInfo from '@/features/project/auth/contents/myProject/ProjectInfo';
+import ProjectDetailSkeleton from '@/widgets/projectDetail/ProjectDetailSkeleton';
 
-const ProjectContents = dynamic(
-  () => import('@/features/project/auth/contents/myProject/ProjectContents'),
-  { ssr: false, loading: () => <ProjectContentsSkeleton /> },
+const ProjectDetail = dynamic(
+  () => import('@/widgets/projectDetail/ProjectDetail'),
+  { ssr: false, loading: () => <ProjectDetailSkeleton /> },
 );
 
 const ProjectPage = ({
@@ -30,17 +26,9 @@ const ProjectPage = ({
     setCurrentProjectId(projectId);
   }, [setCurrentProjectId, projectId]);
 
-  if (currentProjectId === DEFAULT_PROJECT_ID) return <ProjectSkeleton />;
+  if (currentProjectId === DEFAULT_PROJECT_ID) return <ProjectDetailSkeleton />;
 
-  return (
-    <>
-      <Suspense fallback={<ProjectInfoSkeleton />}>
-        <ProjectInfo />
-      </Suspense>
-      <ProjectNavTab />
-      <ProjectContents />
-    </>
-  );
+  return <ProjectDetail />;
 };
 
 export default ProjectPage;
