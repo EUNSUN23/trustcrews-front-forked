@@ -9,6 +9,8 @@ import { useApplyProject } from '@/service/applyProject/auth/applyProject';
 import { confirmModalStateStore } from '@/store/ConfirmModalStateStore';
 import { PostDetailData } from '@/service/post/public/getPostDetail';
 import { projectApplyPositionState } from '@/features/post/public/store/ApplyPositionStateStore';
+import { DEFAULT_POSITION_OPTION } from '@/constants/display/defaultSelectOptions';
+import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 const ApplyProject = ({ postInfo }: { postInfo: PostDetailData }) => {
   const resetModalState = useResetRecoilState(confirmModalStateStore);
@@ -38,7 +40,7 @@ const ApplyProject = ({ postInfo }: { postInfo: PostDetailData }) => {
   const setModalState = useSetRecoilState(confirmModalStateStore);
 
   const handleClickConfirmButton = () => {
-    if (recruitPosition === 0n) {
+    if (recruitPosition === DEFAULT_POSITION_OPTION.value) {
       setInfoSnackbar('포지션을 선택해 주세요.');
       return;
     }
@@ -50,7 +52,7 @@ const ApplyProject = ({ postInfo }: { postInfo: PostDetailData }) => {
       onClickConfirmHandler: () =>
         joinProject({
           projectId: postInfo.projectId,
-          positionId: recruitPosition,
+          positionId: numStrToBigInt(recruitPosition),
         }),
     });
   };

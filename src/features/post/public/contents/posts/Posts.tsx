@@ -11,7 +11,6 @@ import {
 import { usePostList } from '@/features/post/public/service/getPostList';
 import CommonPagination from '@/shared/ui/CommonPagination';
 import PostCard from '@/features/post/public/components/posts/PostCard';
-import { bigIntToString } from '@/shared/utils/stringUtils';
 import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
 import TechStackFilter from '@/features/post/public/contents/postFilter/TechStackFilter';
 import PositionFilter from '@/features/post/public/contents/postFilter/PositionFilter';
@@ -28,7 +27,7 @@ const Posts = () => {
     },
   } = usePostList({
     techStacks: selectedTechStacks,
-    position: bigIntToString(selectedPosition),
+    position: selectedPosition,
     keyword: searchValue,
     page: pageNumber,
   });

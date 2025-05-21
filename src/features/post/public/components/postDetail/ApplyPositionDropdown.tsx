@@ -11,8 +11,8 @@ import {
 } from '@headlessui/react';
 import { selectItemComparator } from '@/shared/utils/selectItemComparator';
 import { clsx } from 'clsx';
-import { bigIntToString, numStrToBigInt } from '@/shared/utils/stringUtils';
-import { DEFAULT_POSITION_OPTION } from '@/constants/data/defaultSelectOptions';
+import { bigIntToString } from '@/shared/utils/stringUtils';
+import { DEFAULT_POSITION_OPTION } from '@/constants/display/defaultSelectOptions';
 import { PostDetailData } from '@/service/post/public/getPostDetail';
 import { projectApplyPositionState } from '@/features/post/public/store/ApplyPositionStateStore';
 
@@ -29,10 +29,7 @@ const ApplyPositionDropdown = ({
   );
 
   const positionItems = [
-    {
-      ...DEFAULT_POSITION_OPTION,
-      value: bigIntToString(DEFAULT_POSITION_OPTION.value),
-    },
+    DEFAULT_POSITION_OPTION,
     ...applyPositions.map(({ position: { positionName, positionId } }) => ({
       name: positionName,
       value: bigIntToString(positionId),
@@ -47,9 +44,7 @@ const ApplyPositionDropdown = ({
     <Listbox
       aria-label='모집 포지션'
       value={selectedPosition}
-      onChange={(item) =>
-        setProjectApplyPosition({ ...item, value: numStrToBigInt(item.value) })
-      }
+      onChange={(item) => setProjectApplyPosition(item)}
       by={selectItemComparator}
     >
       <div

@@ -12,8 +12,8 @@ import {
 import { selectedPositionState } from '@/features/post/public/store/PostSearchStateStore';
 import { selectItemComparator } from '@/shared/utils/selectItemComparator';
 import { clsx } from 'clsx';
-import { bigIntToString, numStrToBigInt } from '@/shared/utils/stringUtils';
-import { DEFAULT_POSITION_OPTION } from '@/constants/data/defaultSelectOptions';
+import { bigIntToString } from '@/shared/utils/stringUtils';
+import { DEFAULT_POSITION_OPTION } from '@/constants/display/defaultSelectOptions';
 import { usePositionList } from '@/service/position/public/getPositionList';
 
 const PositionFilter = () => {
@@ -29,28 +29,27 @@ const PositionFilter = () => {
 
   const { dropdownRef, openDropdown, setOpenDropdown } = useDropdownState();
 
+  const handleClickPositionDropdownButton = () => {
+    setOpenDropdown((prev) => !prev);
+  };
+
+  const handleChangePosition = (item: { name: string; value: string }) => {
+    startTransition(() => setSelectedPosition(item));
+  };
+
   const { data: positions } = usePositionList();
 
   const positionItems = [
-    {
-      ...DEFAULT_POSITION_OPTION,
-      value: bigIntToString(DEFAULT_POSITION_OPTION.value),
-    },
+    DEFAULT_POSITION_OPTION,
     ...positions.data.map(({ positionId, positionName }) => ({
       name: positionName,
       value: bigIntToString(positionId),
     })),
   ];
 
-  const selected = positionItems.find(
-    (item) => item.value === bigIntToString(selectedPosition.value),
-  )!;
-
-  const handleChangePosition = (item: { name: string; value: string }) => {
-    startTransition(() =>
-      setSelectedPosition({ ...item, value: numStrToBigInt(item.value) }),
-    );
-  };
+  const selected =
+    positionItems.find((item) => item.value === selectedPosition.value) ||
+    DEFAULT_POSITION_OPTION;
 
   return (
     <Listbox
@@ -62,7 +61,7 @@ const PositionFilter = () => {
       <div
         ref={dropdownRef}
         className='relative z-10 self-center'
-        onClick={() => setOpenDropdown(!openDropdown)}
+        onClick={handleClickPositionDropdownButton}
       >
         <ListboxButton className='px-4 flex justify-between w-[150px] h-[40px] mobile:w-[130px] mobile:h-[35px] items-center border-2 rounded-3xl cursor-pointer'>
           <span className='text-base text-grey800 mobile:text-sm'>
