@@ -6,7 +6,7 @@ import UserTrustScoreSkeleton from '@/features/userProfile/components/UserTrustS
 import UserProjectHistorySkeleton from '@/features/userProfile/contents/UserProjectHistorySkeleton';
 
 const MyProjectHistory = dynamic(
-  () => import('@/features/user/contents/userProjectHistory/MyProjectHistory'),
+  () => import('@/features/userProfile/contents/UserProjectHistory'),
   { ssr: false, loading: () => <UserProjectHistorySkeleton /> },
 );
 

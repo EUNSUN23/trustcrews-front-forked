@@ -4,7 +4,7 @@ import { useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import CommonPagination from '@/shared/ui/CommonPagination';
 import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
-import { useMyProjects } from '@/features/myProjects/service/getMyProjects';
+import { useMyProjects } from '@/features/myProjects/api/getMyProjects';
 
 const MyProjects = () => {
   const [pageNumber, setPageNumber] = useState(0);

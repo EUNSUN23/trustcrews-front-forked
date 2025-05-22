@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { MY_PROJECTS_QUERY_KEY } from '@/features/myProjects/service/getMyProjects';
+import { MY_PROJECTS_QUERY_KEY } from '@/features/myProjects/api/getMyProjects';
 import {
   CreatePostInput,
   CreatePostRes,
