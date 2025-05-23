@@ -10,7 +10,7 @@ import { loginInputSchema, useLogin } from '@/features/auth/login/api/logIn';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { SIMPLE_USER_INFO_QUERY_KEY } from '@/features/auth/userMenu/api/getSimpleUserInfo';
 import { MY_PROJECTS_QUERY_KEY } from '@/features/myProjects/api/getMyProjects';
-import { MY_PROJECT_APPLIES_QUERY_KEY } from '@/entities/projectApply/api/getMyProjectApplies';
+import { MY_PROJECT_APPLIES_QUERY_KEY } from '@/features/myProjectApplies/api/getMyProjectApplies';
 
 const LoginForm = () => {
   const { setErrorSnackbar, setInfoSnackbar } = useSnackbar();

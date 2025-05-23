@@ -1,7 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { ReactNode, Suspense } from 'react';
 import { ErrorBoundaryPropsWithRender } from 'react-error-boundary/dist/declarations/src/types';
-import { HttpError } from '@/utils/error/HttpError';
+import { HttpError } from '@/lib/error/HttpError';
 import { HttpStatusCode } from 'axios';
 import { useResetRecoilState } from 'recoil';
 import { authStateStore } from '@/store/AuthStateStore';

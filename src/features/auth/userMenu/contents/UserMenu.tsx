@@ -13,7 +13,7 @@ import {
 } from '@headlessui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useLogout } from '@/entities/user/api/logout';
+import { useLogout } from '@/features/auth/logout/api/logout';
 import { useResetRecoilState } from 'recoil';
 import { activeMainBoardTabStore } from '@/store/ActiveMainBoardTabStateStore';
 import useSnackbar from '@/shared/hooks/useSnackbar';

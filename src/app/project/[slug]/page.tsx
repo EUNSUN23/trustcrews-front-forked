@@ -5,12 +5,12 @@ import { useRecoilState } from 'recoil';
 import {
   DEFAULT_PROJECT_ID,
   projectIdState,
-} from '@/entities/project/store/ProjectIdStateStore';
+} from '@/store/projectDetail/ProjectIdStateStore';
 import dynamic from 'next/dynamic';
-import ProjectDetailSkeleton from '@/widgets/projectDetail/ProjectDetailSkeleton';
+import ProjectDetailSkeleton from '@/features/projectDetail/ProjectDetailSkeleton';
 
 const ProjectDetail = dynamic(
-  () => import('@/widgets/projectDetail/ProjectDetail'),
+  () => import('@/features/projectDetail/ProjectDetail'),
   { ssr: false, loading: () => <ProjectDetailSkeleton /> },
 );
 

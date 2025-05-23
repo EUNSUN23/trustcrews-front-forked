@@ -1,8 +1,8 @@
 import { format } from 'date-fns';
 import Link from 'next/link';
-import TechStackImage from '@/entities/techStack/components/TechStackImage';
+import TechStackImage from '@/features/techStack/components/TechStackImage';
 import { FaPlusCircle } from '@react-icons/all-files/fa/FaPlusCircle';
-import { ProjectInfoSummary } from '@/entities/project/api/getProjectInfoSummary';
+import { ProjectInfoSummary } from '@/features/projectDetail/projectInfo/api/getProjectInfoSummary';
 
 interface ProjectCardProps {
   projectPost: ProjectInfoSummary;

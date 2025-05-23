@@ -4,12 +4,12 @@ import {
   CreatePostInput,
   CreatePostRes,
   useCreatePost,
-} from '@/entities/post/api/createPost';
+} from '@/features/launch/api/createPost';
 import {
   CreateProjectInput,
   CreateProjectRes,
   useCreateProject,
-} from '@/entities/project/api/createProject';
+} from '@/features/launch/api/createProject';
 
 export const useLaunch = ({
   onSuccess,

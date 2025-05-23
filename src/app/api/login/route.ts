@@ -1,12 +1,12 @@
-import publicFetch from '@/utils/interceptor/public/publicFetch';
+import publicFetch from '@/lib/interceptor/public/publicFetch';
 import { NextRequest } from 'next/server';
 import { cookies } from 'next/headers';
-import { routeResponse } from '@/utils/serverApi/routeResponse';
-import { getRefreshTokenFromHeader } from '@/utils/interceptor/getRefreshTokenFromHeader';
+import { routeResponse } from '@/lib/serverApi/routeResponse';
+import { getRefreshTokenFromHeader } from '@/lib/interceptor/getRefreshTokenFromHeader';
 import { COOKIE } from '@/constants/cookie';
 import { HttpStatusCode } from 'axios';
-import { createErrorResponse } from '@/utils/interceptor/createErrorResponse';
-import { HttpError } from '@/utils/error/HttpError';
+import { createErrorResponse } from '@/lib/interceptor/createErrorResponse';
+import { HttpError } from '@/lib/error/HttpError';
 
 export async function POST(req: NextRequest) {
   const loginRequest = await req.json();

@@ -1,6 +1,6 @@
-import PositionSelect from '@/entities/position/components/PositionSelect';
+import PositionSelect from '@/features/position/components/PositionSelect';
 import { useRecoilState } from 'recoil';
-import { signUpFormFieldSelector } from '@/features/auth/signUp/store/SignUpFormStateStore';
+import { signUpFormFieldSelector } from '@/store/signup/SignUpFormStateStore';
 
 const SignUpPositionControl = () => {
   const [positionId, setPositionId] = useRecoilState(

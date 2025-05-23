@@ -7,10 +7,10 @@ import {
   postSearchValue,
   selectedPositionState,
   selectedTechStackState,
-} from '@/features/posts/store/filter/PostSearchStateStore';
-import { usePostList } from '@/features/posts/api/list/getPostList';
+} from '@/store/posts/PostSearchStateStore';
+import { usePostList } from '@/features/posts/api/getPostList';
 import CommonPagination from '@/shared/ui/CommonPagination';
-import PostCard from '@/features/posts/components/list/PostCard';
+import PostCard from '@/features/posts/components/PostCard';
 import { ITEM_COUNT_PER_PAGE, PAGE_RANGE } from '@/constants/pagination';
 import TechStackFilter from '@/features/posts/contents/filter/TechStackFilter';
 import PositionFilter from '@/features/posts/contents/filter/PositionFilter';

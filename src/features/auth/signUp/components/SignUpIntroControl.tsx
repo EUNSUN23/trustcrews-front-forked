@@ -1,6 +1,6 @@
 import TextArea from '@/shared/ui/TextArea';
 import { useRecoilState } from 'recoil';
-import { signUpFormFieldSelector } from '@/features/auth/signUp/store/SignUpFormStateStore';
+import { signUpFormFieldSelector } from '@/store/signup/SignUpFormStateStore';
 
 const SignUpIntroControl = () => {
   const [intro, setIntro] = useRecoilState(signUpFormFieldSelector('intro'));

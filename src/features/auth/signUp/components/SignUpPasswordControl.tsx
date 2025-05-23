@@ -1,5 +1,5 @@
 import Input from '@/shared/ui/Input';
-import { signUpFormFieldSelector } from '@/features/auth/signUp/store/SignUpFormStateStore';
+import { signUpFormFieldSelector } from '@/store/signup/SignUpFormStateStore';
 import { useRecoilState } from 'recoil';
 
 const SignUpPasswordControl = () => {

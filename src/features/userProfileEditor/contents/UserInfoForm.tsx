@@ -2,7 +2,7 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 import {
   userInfoFormLoadingSelector,
   userInfoFormStateStore,
-} from '@/features/userProfileEditor/store/UserInfoFormStateStore';
+} from '@/store/useProfileEditor/UserInfoFormStateStore';
 import { useUserDetailInfo } from '@/features/userProfile/api/getUserDetailInfo';
 import { useEffect } from 'react';
 import Input from '@/shared/ui/Input';

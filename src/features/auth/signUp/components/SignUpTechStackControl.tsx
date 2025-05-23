@@ -1,5 +1,5 @@
-import TechStackSelect from '@/entities/techStack/components/TechStackSelect';
-import { signUpFormFieldSelector } from '@/features/auth/signUp/store/SignUpFormStateStore';
+import TechStackSelect from '@/features/techStack/components/TechStackSelect';
+import { signUpFormFieldSelector } from '@/store/signup/SignUpFormStateStore';
 import { useRecoilState } from 'recoil';
 import { Field, Label } from '@headlessui/react';
 import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';

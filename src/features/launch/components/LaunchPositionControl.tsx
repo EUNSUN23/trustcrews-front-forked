@@ -1,8 +1,8 @@
 import { useRecoilState } from 'recoil';
 import Row from '@/shared/ui/Row';
-import { postFormFieldSelector } from '@/features/launch/store/PostFormStateStore';
+import { postFormFieldSelector } from '@/store/launch/PostFormStateStore';
 import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
-import MultiPositionSelect from '@/entities/position/components/MultiPositionSelect';
+import MultiPositionSelect from '@/features/position/components/MultiPositionSelect';
 import { Field, Label } from '@headlessui/react';
 import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
 

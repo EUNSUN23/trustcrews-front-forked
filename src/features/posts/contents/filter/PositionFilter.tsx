@@ -9,12 +9,12 @@ import {
   ListboxOptions,
   Transition,
 } from '@headlessui/react';
-import { selectedPositionState } from '@/features/posts/store/filter/PostSearchStateStore';
+import { selectedPositionState } from '@/store/posts/PostSearchStateStore';
 import { selectItemComparator } from '@/shared/utils/selectItemComparator';
 import { clsx } from 'clsx';
 import { bigIntToString } from '@/shared/utils/stringUtils';
-import { usePositionList } from '@/entities/position/api/getPositionList';
-import { DEFAULT_POSITION_OPTION } from '@/entities/position/constants/defaultPositionOption';
+import { usePositionList } from '@/features/position/api/getPositionList';
+import { DEFAULT_POSITION_OPTION } from '@/features/position/constants/defaultPositionOption';
 
 const PositionFilter = () => {
   const [_, startTransition] = useTransition();

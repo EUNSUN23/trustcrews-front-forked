@@ -1,6 +1,6 @@
 'use client';
 
-import PostDetail from '@/features/postDetail/contents/PostDetail';
+import PostDetail from '@/features/postDetail/PostDetail';
 
 const PostPage = ({
   params: { slug: postId },

@@ -1,5 +1,5 @@
-import publicFetch from '@/utils/interceptor/public/publicFetch';
-import { routeResponse } from '@/utils/serverApi/routeResponse';
+import publicFetch from '@/lib/interceptor/public/publicFetch';
+import { routeResponse } from '@/lib/serverApi/routeResponse';
 import { NextRequest } from 'next/server';
 
 export async function GET(req: NextRequest) {

@@ -1,5 +1,5 @@
-import authFetch from '@/utils/interceptor/auth/authFetch';
-import { routeResponse } from '@/utils/serverApi/routeResponse';
+import authFetch from '@/lib/interceptor/auth/authFetch';
+import { routeResponse } from '@/lib/serverApi/routeResponse';
 import { NextRequest } from 'next/server';
 
 export async function GET(req: NextRequest) {

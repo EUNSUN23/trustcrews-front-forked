@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Snackbar from '@/shared/ui/Snackbar';
 import StaticOptionDataProvider from '@/providers/data/StaticOptionDataProvider';
-import Header from '@/widgets/Header';
+import Header from '@/layouts/Header';
 import { ReactNode } from 'react';
 import RootProvider from '@/providers/RootProvider';
 import ServerAuthStateProvider from '@/providers/ServerAuthStateProvider';

@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server';
-import authFetch from '@/utils/interceptor/auth/authFetch';
-import { routeResponse } from '@/utils/serverApi/routeResponse';
+import authFetch from '@/lib/interceptor/auth/authFetch';
+import { routeResponse } from '@/lib/serverApi/routeResponse';
 import { JSONReplaceBigInt } from '@/shared/utils/jsonUtils';
 
 export async function POST(req: NextRequest) {

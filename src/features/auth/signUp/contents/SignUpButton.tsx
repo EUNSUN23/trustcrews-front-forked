@@ -7,7 +7,7 @@ import {
 import { ZodError } from 'zod';
 import { useRouter } from 'next/navigation';
 import useSnackbar from '@/shared/hooks/useSnackbar';
-import { signUpFormStateStore } from '@/features/auth/signUp/store/SignUpFormStateStore';
+import { signUpFormStateStore } from '@/store/signup/SignUpFormStateStore';
 import { useRecoilValue } from 'recoil';
 
 const SignUpButton = () => {

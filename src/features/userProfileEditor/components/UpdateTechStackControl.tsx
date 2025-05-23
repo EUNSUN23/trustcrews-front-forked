@@ -1,6 +1,6 @@
-import TechStackSelect from '@/entities/techStack/components/TechStackSelect';
+import TechStackSelect from '@/features/techStack/components/TechStackSelect';
 import { useRecoilState } from 'recoil';
-import { userInfoFormFieldSelector } from '@/features/userProfileEditor/store/UserInfoFormStateStore';
+import { userInfoFormFieldSelector } from '@/store/useProfileEditor/UserInfoFormStateStore';
 import { Field, Label } from '@headlessui/react';
 import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
 import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';

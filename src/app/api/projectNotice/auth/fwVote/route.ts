@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
-import authFetch from '@/utils/interceptor/auth/authFetch';
+import authFetch from '@/lib/interceptor/auth/authFetch';
 import { JSONReplaceBigInt } from '@/shared/utils/jsonUtils';
-import { routeResponse } from '@/utils/serverApi/routeResponse';
+import { routeResponse } from '@/lib/serverApi/routeResponse';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);

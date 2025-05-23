@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 import { useRecoilState } from 'recoil';
-import TechStackImage from '@/entities/techStack/components/TechStackImage';
-import { selectedTechStackState } from '@/features/posts/store/filter/PostSearchStateStore';
-import { TechStackCategory } from '@/entities/techStack/api/getTechStackCategories';
-import { TechStackMapping } from '@/entities/techStack/api/getTechStackMappings';
+import TechStackImage from '@/features/techStack/components/TechStackImage';
+import { selectedTechStackState } from '@/store/posts/PostSearchStateStore';
+import { TechStackCategory } from '@/features/techStack/api/getTechStackCategories';
+import { TechStackMapping } from '@/features/techStack/api/getTechStackMappings';
 
 interface TechStackDropdownListProps {
   categories: TechStackCategory[];

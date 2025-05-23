@@ -2,7 +2,7 @@ import TextArea from '@/shared/ui/TextArea';
 import { useRecoilState } from 'recoil';
 import RowWide from '@/shared/ui/RowWide';
 import { ChangeEvent } from 'react';
-import { postFormFieldSelector } from '@/features/launch/store/PostFormStateStore';
+import { postFormFieldSelector } from '@/store/launch/PostFormStateStore';
 
 const LaunchPostContentControl = () => {
   const [content, setContent] = useRecoilState(

@@ -1,14 +1,14 @@
 import Button from '@/shared/ui/Button';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
-import { projectFormStateStore } from '@/features/launch/store/ProjectFormStateStore';
-import { postFormStateStore } from '@/features/launch/store/PostFormStateStore';
+import { projectFormStateStore } from '@/store/launch/ProjectFormStateStore';
+import { postFormStateStore } from '@/store/launch/PostFormStateStore';
 import { ZodError } from 'zod';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useLaunch } from '@/features/launch/api/launch';
 import { useRouter } from 'next/navigation';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
-import { createPostInputSchema } from '@/entities/post/api/createPost';
-import { createProjectInputSchema } from '@/entities/project/api/createProject';
+import { createPostInputSchema } from '@/features/launch/api/createPost';
+import { createProjectInputSchema } from '@/features/launch/api/createProject';
 
 const LaunchButton = () => {
   const router = useRouter();

@@ -1,4 +1,4 @@
-import PostDetailSkeleton from '@/features/postDetail/contents/PostDetailSkeleton';
+import PostDetailSkeleton from '@/features/postDetail/PostDetailSkeleton';
 
 const PostDetailPageLoading = () => {
   return <PostDetailSkeleton />;

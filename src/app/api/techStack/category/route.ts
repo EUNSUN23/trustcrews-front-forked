@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server';
-import publicFetch from '@/utils/interceptor/public/publicFetch';
-import { routeResponse } from '@/utils/serverApi/routeResponse';
+import publicFetch from '@/lib/interceptor/public/publicFetch';
+import { routeResponse } from '@/lib/serverApi/routeResponse';
 
 export async function GET(req: NextRequest) {
   const res = await publicFetch('/api/techStackCategory');

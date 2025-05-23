@@ -7,8 +7,8 @@ import {
 } from '@/features/userProfileEditor/api/updateUserDetail';
 import { ZodError } from 'zod';
 import { useRecoilValue } from 'recoil';
-import { userInfoFormStateStore } from '@/features/userProfileEditor/store/UserInfoFormStateStore';
-import { userProfileImgFormStateStore } from '@/features/userProfileEditor/store/UserProfileImgFormStateStore';
+import { userInfoFormStateStore } from '@/store/useProfileEditor/UserInfoFormStateStore';
+import { userProfileImgFormStateStore } from '@/store/useProfileEditor/UserProfileImgFormStateStore';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
 
 const UserUpdateButton = () => {

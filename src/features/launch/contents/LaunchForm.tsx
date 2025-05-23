@@ -11,8 +11,8 @@ import LaunchProjectDateControl from '@/features/launch/components/LaunchProject
 import LaunchTechStackControl from '@/features/launch/components/LaunchTechStackControl';
 import LaunchContactControl from '@/features/launch/components/LaunchContactControl';
 import LaunchPostContentControl from '@/features/launch/components/LaunchPostContentControl';
-import { postFormStateStore } from '@/features/launch/store/PostFormStateStore';
-import { projectFormStateStore } from '@/features/launch/store/ProjectFormStateStore';
+import { postFormStateStore } from '@/store/launch/PostFormStateStore';
+import { projectFormStateStore } from '@/store/launch/ProjectFormStateStore';
 import LaunchButton from '@/features/launch/contents/LaunchButton';
 
 const LaunchForm = () => {

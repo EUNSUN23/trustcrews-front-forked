@@ -2,7 +2,7 @@ import { ChangeEvent, useRef } from 'react';
 import { useRecoilState } from 'recoil';
 import Avatar from '@/shared/ui/Avatar';
 import Button from '@/shared/ui/Button';
-import { userProfileImgFormStateStore } from '@/features/userProfileEditor/store/UserProfileImgFormStateStore';
+import { userProfileImgFormStateStore } from '@/store/useProfileEditor/UserProfileImgFormStateStore';
 import { useUserDetailInfo } from '@/features/userProfile/api/getUserDetailInfo';
 
 const UserProfileImgForm = () => {

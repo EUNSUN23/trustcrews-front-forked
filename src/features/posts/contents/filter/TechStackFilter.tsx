@@ -10,12 +10,12 @@ import {
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
 import TechStackDropdownList from '@/features/posts/components/filter/TechStackDropdownList';
-import { selectedTechStackState } from '@/features/posts/store/filter/PostSearchStateStore';
-import { useTechCategories } from '@/entities/techStack/api/getTechStackCategories';
+import { selectedTechStackState } from '@/store/posts/PostSearchStateStore';
+import { useTechCategories } from '@/features/techStack/api/getTechStackCategories';
 import {
   TechStackMapping,
   useTechStackMappings,
-} from '@/entities/techStack/api/getTechStackMappings';
+} from '@/features/techStack/api/getTechStackMappings';
 
 const getSelectedTechStackText = (selectedTechStacks: TechStackMapping[]) => {
   if (selectedTechStacks.length > 0) {

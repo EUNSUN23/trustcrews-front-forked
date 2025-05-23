@@ -1,6 +1,6 @@
-import publicFetch from '@/utils/interceptor/public/publicFetch';
+import publicFetch from '@/lib/interceptor/public/publicFetch';
 import { NextRequest } from 'next/server';
-import { routeResponse } from '@/utils/serverApi/routeResponse';
+import { routeResponse } from '@/lib/serverApi/routeResponse';
 
 export async function POST(req: NextRequest) {
   const signUpRequest = await req.json();

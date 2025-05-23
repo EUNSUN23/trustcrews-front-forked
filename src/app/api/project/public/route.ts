@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server';
-import { routeResponse } from '@/utils/serverApi/routeResponse';
-import publicFetch from '@/utils/interceptor/public/publicFetch';
+import { routeResponse } from '@/lib/serverApi/routeResponse';
+import publicFetch from '@/lib/interceptor/public/publicFetch';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);

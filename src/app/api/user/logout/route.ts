@@ -1,6 +1,6 @@
-import authFetch from '@/utils/interceptor/auth/authFetch';
+import authFetch from '@/lib/interceptor/auth/authFetch';
 import { NextRequest } from 'next/server';
-import { routeResponse } from '@/utils/serverApi/routeResponse';
+import { routeResponse } from '@/lib/serverApi/routeResponse';
 import { deleteCookieValue } from '@/utils/cookieUtils';
 import { COOKIE } from '@/constants/cookie';
 
