@@ -1,4 +1,4 @@
-import { ResponseBody } from '@/types/responseBody';
+import { ResponseBody } from '@/shared/types/responseBody';
 import { request } from '@/lib/clientApi/request';
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
 import { TechStack } from '@/types/data/techStack';

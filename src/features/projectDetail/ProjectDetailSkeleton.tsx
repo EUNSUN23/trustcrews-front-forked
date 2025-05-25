@@ -9,7 +9,7 @@ import ProjectJobSkeleton from '@/features/projectDetail/job/contents/ProjectJob
 import ProjectCrewsSkeleton from '@/features/projectDetail/crew/crews/contents/ProjectCrewsSkeleton';
 import { ProjectNoticeSkeleton } from '@/features/projectDetail/notice/contents/ProjectNoticeSkeleton';
 import ProjectConfigSkeleton from '@/features/projectDetail/config/contents/ProjectConfigSkeleton';
-import { ApplicationError } from '@/lib/error/ApplicationError';
+import { ApplicationError } from '@/shared/utils/ApplicationError';
 import { ReactNode } from 'react';
 
 const {

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Button from '@/shared/ui/Button';
-import { HttpError } from '@/lib/error/HttpError';
+import { HttpError } from '@/shared/utils/HttpError';
 import { HttpStatusCode } from 'axios';
 import { useResetRecoilState } from 'recoil';
 import { authStateStore } from '@/store/AuthStateStore';

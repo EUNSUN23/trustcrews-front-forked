@@ -1,4 +1,4 @@
-import { Logger } from '@/lib/Logger';
+import { Logger } from '@/shared/utils/Logger';
 
 export const reqLogger = new Logger('BACK_REQ');
 export const resLogger = new Logger('BACK_RES');

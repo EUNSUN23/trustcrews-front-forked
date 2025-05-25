@@ -2,7 +2,7 @@ import TechStackSelect from '@/features/techStack/components/TechStackSelect';
 import { signUpFormFieldSelector } from '@/store/signup/SignUpFormStateStore';
 import { useRecoilState } from 'recoil';
 import { Field, Label } from '@headlessui/react';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/lib/error/FieldQueryBoundary';
 import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
 
 const SignUpTechStackControl = () => {

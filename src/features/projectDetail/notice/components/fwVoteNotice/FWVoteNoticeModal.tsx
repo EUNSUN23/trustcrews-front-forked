@@ -5,7 +5,7 @@ import FWVoteNoticeDetail from '@/features/projectDetail/notice/contents/fwVoteN
 import { fwNoticeModalState } from '@/store/projectDetail/notice/fwVoteNotice/FWVoteNoticeModalStateStore';
 import useModalPortalElement from '@/shared/hooks/useModalPortalElement';
 import FWVoteNoticeDetailSkeleton from '@/features/projectDetail/notice/contents/fwVoteNotice/FWVoteNoticeDetailSkeleton';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/lib/error/FieldQueryBoundary';
 
 const FWVoteNoticeModal = () => {
   const { isOpen, title } = useRecoilValue(fwNoticeModalState);

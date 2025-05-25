@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { SIMPLE_USER_INFO_QUERY_KEY } from '@/features/auth/userMenu/api/getSimpleUserInfo';
 import { z } from 'zod';
 import { USER_DETAIL_INFO_QUERY_KEY } from '@/features/userProfile/api/getUserDetailInfo';
-import { ResponseBody } from '@/types/responseBody';
+import { ResponseBody } from '@/shared/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
 import NEXT_PUBLIC_URL from '@/constants/api/nextPublicUrl';
 import { POST_LIST_QUERY_KEY } from '@/features/posts/api/getPostList';

@@ -1,6 +1,6 @@
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { ResponseBody } from '@/types/responseBody';
+import { ResponseBody } from '@/shared/types/responseBody';
 
 export interface SimpleUserInfo {
   nickname: string;

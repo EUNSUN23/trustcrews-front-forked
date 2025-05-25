@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
 import { request } from '@/lib/clientApi/request';
 import { PROJECT_INFO_SUMMARY_QUERY_KEY } from '@/features/projectDetail/projectInfo/api/getProjectInfoSummary';
-import { ResponseBody } from '@/types/responseBody';
+import { ResponseBody } from '@/shared/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
 import { PROJECT_CONFIG_QUERY_KEY } from '@/features/projectDetail/config/api/project/getProjectConfig';
 

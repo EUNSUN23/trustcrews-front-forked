@@ -1,7 +1,7 @@
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { bigIntToString } from '@/shared/utils/stringUtils';
-import { ResponseBody } from '@/types/responseBody';
+import { ResponseBody } from '@/shared/types/responseBody';
 import { Position } from '@/types/data/position';
 
 export type PostDetailData = {

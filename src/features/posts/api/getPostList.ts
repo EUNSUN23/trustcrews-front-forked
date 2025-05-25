@@ -2,7 +2,7 @@ import { isEqual } from 'lodash';
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ProjectInfoSummary } from '@/features/projectDetail/projectInfo/api/getProjectInfoSummary';
-import { PageResponseBody } from '@/types/responseBody';
+import { PageResponseBody } from '@/shared/types/responseBody';
 import { TrustGrade } from '@/types/data/trustGrade';
 import { Position } from '@/types/data/position';
 import { TechStackMapping } from '@/features/techStack/api/getTechStackMappings';

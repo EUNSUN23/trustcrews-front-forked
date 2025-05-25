@@ -11,7 +11,7 @@ import CardListSkeleton from '@/shared/ui/skeleton/CardListSkeleton';
 import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 import MyProjects from '@/features/myProjects/contents/MyProjects';
 import Posts from '@/features/posts/contents/Posts';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/lib/error/FieldQueryBoundary';
 import PostsSkeleton from '@/features/posts/contents/PostsSkeleton';
 import { AuthState, authStateStore } from '@/store/AuthStateStore';
 import useSyncAuthState from '@/hooks/useSyncAuthState';

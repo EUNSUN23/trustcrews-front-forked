@@ -1,7 +1,7 @@
 import authFetch from '@/lib/interceptor/auth/authFetch';
 import { NextRequest } from 'next/server';
 import { routeResponse } from '@/lib/serverApi/routeResponse';
-import { deleteCookieValue } from '@/lib/auth/cookieUtils';
+import { deleteCookieValue } from '@/lib/cookieUtils';
 import { COOKIE } from '@/constants/cookie';
 
 export async function POST(req: NextRequest) {

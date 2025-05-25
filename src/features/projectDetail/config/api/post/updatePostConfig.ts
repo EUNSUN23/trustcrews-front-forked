@@ -2,7 +2,7 @@ import { request } from '@/lib/clientApi/request';
 import { z } from 'zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { POST_DETAIL_QUERY_KEY } from '@/features/postDetail/postInfo/api/getPostDetail';
-import { ResponseBody } from '@/types/responseBody';
+import { ResponseBody } from '@/shared/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
 import { POST_CONFIG_QUERY_KEY } from '@/features/projectDetail/config/api/post/getPostConfig';
 

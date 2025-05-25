@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 import Row from '@/shared/ui/Row';
 import { projectFormFieldSelector } from '@/store/launch/ProjectFormStateStore';
 import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/lib/error/FieldQueryBoundary';
 import { Field, Label } from '@headlessui/react';
 
 const LaunchTechStackControl = () => {

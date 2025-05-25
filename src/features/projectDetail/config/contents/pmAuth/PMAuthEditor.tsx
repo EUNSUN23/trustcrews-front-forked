@@ -15,8 +15,7 @@ import {
   useUpdatePMAuthConfig,
 } from '@/features/projectDetail/config/api/pmAuth/updatePMAuthConfig';
 import PMAuthSelector from '@/features/pmAuth/components/PMAuthSelector';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
-
+import FieldQueryBoundary from '@/lib/error/FieldQueryBoundary';
 import { ProjectCrew } from '@/types/data/projectDetail/crew/projectCrew';
 
 type CrewAuthRowProps = {

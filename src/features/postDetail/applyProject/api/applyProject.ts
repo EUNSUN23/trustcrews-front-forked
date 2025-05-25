@@ -1,6 +1,6 @@
 import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { ResponseBody } from '@/types/responseBody';
+import { ResponseBody } from '@/shared/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
 import { MY_PROJECT_APPLIES_QUERY_KEY } from '@/features/myProjectApplies/api/getMyProjectApplies';
 

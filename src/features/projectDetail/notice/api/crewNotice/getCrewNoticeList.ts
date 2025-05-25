@@ -3,7 +3,7 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 import { NOTICE_TYPES } from '@/constants/data/projectDetail/notice/noticeTypes';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
-import { PageResponseBody } from '@/types/responseBody';
+import { PageResponseBody } from '@/shared/types/responseBody';
 
 export type CrewNoticeData = {
   noticeId: bigint;

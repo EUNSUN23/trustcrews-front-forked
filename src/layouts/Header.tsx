@@ -6,7 +6,7 @@ import Link from 'next/link';
 import UserMenuSkeleton from '@/features/auth/userMenu/contents/UserMenuSkeleton';
 import { IoCreateOutline } from '@react-icons/all-files/io5/IoCreateOutline';
 import dynamic from 'next/dynamic';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/lib/error/FieldQueryBoundary';
 import { AuthState, authStateStore } from '@/store/AuthStateStore';
 import useSyncAuthState from '@/hooks/useSyncAuthState';
 import { useRecoilValue } from 'recoil';

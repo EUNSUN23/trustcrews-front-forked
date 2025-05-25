@@ -1,4 +1,4 @@
-import { HttpError } from '@/lib/error/HttpError';
+import { HttpError } from '@/shared/utils/HttpError';
 
 const response = async (res: Response) => {
   if (res.ok) {

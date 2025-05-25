@@ -5,7 +5,7 @@ import RCVoteNoticeDetail from '@/features/projectDetail/notice/contents/rcVoteN
 import { rcVoteNoticeModalState } from '@/store/projectDetail/notice/rcVoteNotice/RCVoteNoticeModalStateStore';
 import useModalPortalElement from '@/shared/hooks/useModalPortalElement';
 import RCVoteNoticeDetailSkeleton from '@/features/projectDetail/notice/contents/rcVoteNotice/RCVoteNoticeDetailSkeleton';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/lib/error/FieldQueryBoundary';
 
 const RCVoteNoticeModal = () => {
   const resetRCVoteNoticeModalState = useResetRecoilState(

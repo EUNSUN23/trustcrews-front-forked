@@ -4,7 +4,7 @@ import { TASK_STATUS } from '@/constants/data/projectDetail/job/task/taskStatus'
 import { TaskStatus } from '@/types/data/projectDetail/job/task';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
-import { PageResponseBody } from '@/types/responseBody';
+import { PageResponseBody } from '@/shared/types/responseBody';
 
 export type TasksReqParam = {
   projectId: bigint;

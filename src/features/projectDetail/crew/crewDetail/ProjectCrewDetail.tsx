@@ -10,7 +10,7 @@ import {
   PROJECT_MENU,
   projectActiveNavState,
 } from '@/store/projectDetail/ProjectNavTabStateStore';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/lib/error/FieldQueryBoundary';
 
 const {
   CREWS: { value: PROJECT_CREWS },

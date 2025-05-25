@@ -4,7 +4,7 @@ import { NOTICE_TYPES } from '@/constants/data/projectDetail/notice/noticeTypes'
 import { VoteStatusType } from '@/types/data/projectDetail/projectVote/projectVote';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
-import { PageResponseBody } from '@/types/responseBody';
+import { PageResponseBody } from '@/shared/types/responseBody';
 
 export type RCVoteNoticeData = {
   noticeId: bigint;

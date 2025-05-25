@@ -1,7 +1,7 @@
 import { request } from '@/lib/clientApi/request';
 import { useMutation } from '@tanstack/react-query';
 import { z } from 'zod';
-import { ResponseBody } from '@/types/responseBody';
+import { ResponseBody } from '@/shared/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
 
 export const createCrewFWVoteInputSchema = z.object({

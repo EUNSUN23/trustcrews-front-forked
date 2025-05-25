@@ -22,8 +22,8 @@ import { ProjectNotice } from '@/features/projectDetail/notice/contents/ProjectN
 import { ProjectNoticeSkeleton } from '@/features/projectDetail/notice/contents/ProjectNoticeSkeleton';
 import ProjectConfig from '@/features/projectDetail/config/contents/ProjectConfig';
 import ProjectConfigSkeleton from '@/features/projectDetail/config/contents/ProjectConfigSkeleton';
-import { ApplicationError } from '@/lib/error/ApplicationError';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import { ApplicationError } from '@/shared/utils/ApplicationError';
+import FieldQueryBoundary from '@/lib/error/FieldQueryBoundary';
 import ProjectDetailSkeleton from '@/features/projectDetail/ProjectDetailSkeleton';
 
 const {

@@ -1,7 +1,7 @@
 import { request } from '@/lib/clientApi/request';
 import { ProjectAuthMap } from '@/types/data/projectDetail/projectAuth';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { PageResponseBody } from '@/types/responseBody';
+import { PageResponseBody } from '@/shared/types/responseBody';
 
 export const getPMAuthList = async (): Promise<
   PageResponseBody<ProjectAuthMap[]>

@@ -6,7 +6,7 @@ import { getRefreshTokenFromHeader } from '@/lib/interceptor/getRefreshTokenFrom
 import { COOKIE } from '@/constants/cookie';
 import { HttpStatusCode } from 'axios';
 import { createErrorResponse } from '@/lib/interceptor/createErrorResponse';
-import { HttpError } from '@/lib/error/HttpError';
+import { HttpError } from '@/shared/utils/HttpError';
 
 export async function POST(req: NextRequest) {
   const loginRequest = await req.json();

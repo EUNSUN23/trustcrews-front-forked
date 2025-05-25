@@ -2,7 +2,7 @@ import PositionSelect from '@/features/position/components/PositionSelect';
 import { userInfoFormFieldSelector } from '@/store/useProfileEditor/UserInfoFormStateStore';
 import { useRecoilState } from 'recoil';
 import { Field, Label } from '@headlessui/react';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
+import FieldQueryBoundary from '@/lib/error/FieldQueryBoundary';
 import SelectSkeleton from '@/shared/ui/skeleton/SelectSkeleton';
 
 const UpdatePositionControl = () => {

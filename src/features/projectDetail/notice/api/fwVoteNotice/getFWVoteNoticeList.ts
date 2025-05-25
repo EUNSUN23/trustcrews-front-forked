@@ -4,7 +4,7 @@ import { NOTICE_TYPES } from '@/constants/data/projectDetail/notice/noticeTypes'
 import { ProjectAuthMap } from '@/types/data/projectDetail/projectAuth';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
-import { PageResponseBody } from '@/types/responseBody';
+import { PageResponseBody } from '@/shared/types/responseBody';
 import { VoteStatusType } from '@/types/data/projectDetail/projectVote/projectVote';
 
 export type FWVoteNoticeData = {

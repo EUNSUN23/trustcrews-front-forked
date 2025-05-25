@@ -1,7 +1,7 @@
 import { request } from '@/lib/clientApi/request';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { TASKS_QUERY_KEY } from '@/features/projectDetail/job/api/task/getTaskList';
-import { ResponseBody } from '@/types/responseBody';
+import { ResponseBody } from '@/shared/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
 
 export type TaskDeleteReqData = {

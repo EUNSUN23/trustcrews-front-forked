@@ -1,5 +1,5 @@
 import { Position } from '@/types/data/position';
-import { ResponseBody } from '@/types/responseBody';
+import { ResponseBody } from '@/shared/types/responseBody';
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { bigIntToString } from '@/shared/utils/stringUtils';

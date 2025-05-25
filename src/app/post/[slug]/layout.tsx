@@ -6,7 +6,7 @@ import {
 import { ReactNode } from 'react';
 import Nav from '@/shared/ui/Nav';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
-import { ResponseBody } from '@/types/responseBody';
+import { ResponseBody } from '@/shared/types/responseBody';
 
 export async function generateMetadata({
   params: { slug: postId },

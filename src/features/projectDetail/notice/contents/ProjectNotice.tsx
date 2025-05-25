@@ -8,8 +8,8 @@ import { useRecoilValue } from 'recoil';
 import { activeNoticeTabStateStore } from '@/store/projectDetail/notice/ActiveNoticeTabStateStore';
 import { NOTICE_TABS } from '@/constants/data/projectDetail/notice/noticeTabs';
 import ContentsLoader from '@/shared/ui/ContentsLoader';
-import FieldQueryBoundary from '@/components/error/FieldQueryBoundary';
-import { ApplicationError } from '@/lib/error/ApplicationError';
+import FieldQueryBoundary from '@/lib/error/FieldQueryBoundary';
+import { ApplicationError } from '@/shared/utils/ApplicationError';
 
 const {
   NTAB001: { code: RCVOTE_NOTICE_TAB },

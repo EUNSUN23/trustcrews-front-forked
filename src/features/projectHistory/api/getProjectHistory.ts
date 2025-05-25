@@ -1,7 +1,7 @@
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { bigIntToString } from '@/shared/utils/stringUtils';
-import { PageResponseBody } from '@/types/responseBody';
+import { PageResponseBody } from '@/shared/types/responseBody';
 import { ProjectHistoryData } from '@/types/data/projectHistory/projectHistory';
 
 export const getProjectHistory = async (

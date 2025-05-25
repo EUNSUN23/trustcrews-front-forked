@@ -1,6 +1,6 @@
 import { request } from '@/lib/clientApi/request';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { ResponseBody } from '@/types/responseBody';
+import { ResponseBody } from '@/shared/types/responseBody';
 import { TrustGradeName } from '@/types/data/trustGrade';
 import { Position } from '@/types/data/position';
 import { TechStack } from '@/types/data/techStack';
