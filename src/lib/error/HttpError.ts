@@ -1,4 +1,4 @@
-import { getDefaultHttpErrorMessage } from '@/utils/getDefaultHttpErrorMessage';
+import { getDefaultHttpErrorMessage } from '@/shared/utils/getDefaultHttpErrorMessage';
 
 export class HttpError extends Error {
   status: number;

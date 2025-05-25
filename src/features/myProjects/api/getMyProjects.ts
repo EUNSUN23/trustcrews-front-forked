@@ -3,7 +3,7 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 import { ITEM_COUNT_PER_PAGE } from '@/constants/pagination';
 import { ProjectInfoSummary } from '@/features/projectDetail/projectInfo/api/getProjectInfoSummary';
 import { PageResponseBody } from '@/types/responseBody';
-import sortByStartDate from '@/utils/sortByStartDate';
+import sortByStartDate from '@/shared/utils/sortByStartDate';
 
 export const getMyProjects = async (
   pageIndex: number,

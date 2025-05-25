@@ -1,5 +1,5 @@
 import { HttpError } from '@/lib/error/HttpError';
-import { getDefaultHttpErrorMessage } from '@/utils/getDefaultHttpErrorMessage';
+import { getDefaultHttpErrorMessage } from '@/shared/utils/getDefaultHttpErrorMessage';
 import { HttpStatusCode } from 'axios';
 
 export const createErrorResponse = async (error: unknown) => {
