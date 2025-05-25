@@ -3,7 +3,7 @@ import { refreshToken } from '@/lib/interceptor/auth/refreshToken';
 import { reqLogger, resLogger } from '@/lib/interceptor/interceptorLogger';
 import { authFetchWrapper } from '@/lib/interceptor/auth/authFetchWrapper';
 import BACKEND_URL from '@/constants/api/backendUrl';
-import { getCookieValue } from '@/utils/cookieUtils';
+import { getCookieValue } from '@/lib/auth/cookieUtils';
 import { COOKIE } from '@/constants/cookie';
 import { getResponseErrorMessage } from '@/lib/interceptor/getResponseErrorMessage';
 import { HttpError } from '@/lib/error/HttpError';

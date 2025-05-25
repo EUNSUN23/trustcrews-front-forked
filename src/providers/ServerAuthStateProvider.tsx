@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { AuthState } from '@/store/AuthStateStore';
-import { isAuthorized } from '@/utils/auth/isAuthorized';
-import { getCookieValue } from '@/utils/cookieUtils';
+import { isAuthorized } from '@/lib/auth/isAuthorized';
+import { getCookieValue } from '@/lib/auth/cookieUtils';
 import { COOKIE } from '@/constants/cookie';
 
 type ServerAuthStateProviderProps = {
