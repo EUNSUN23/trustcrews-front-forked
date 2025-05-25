@@ -13,7 +13,6 @@ import Avatar from '@/shared/ui/Avatar';
 import Badge from '@/shared/ui/Badge';
 import PMAuthBadge from '@/features/pmAuth/components/PMAuthBadge';
 import { numStrToBigInt } from '@/shared/utils/stringUtils';
-
 import { ProjectCrew } from '@/types/data/projectDetail/crew/projectCrew';
 
 const {

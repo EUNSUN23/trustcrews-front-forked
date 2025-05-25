@@ -22,7 +22,7 @@ interface ProjectCrewUserDetail {
   technologyStacks: TechStack[];
 }
 
-type ProjectCrewProfileInfo = {
+export type ProjectCrewProfileInfo = {
   crewId: bigint;
   projectId: bigint;
   projectCount: number;

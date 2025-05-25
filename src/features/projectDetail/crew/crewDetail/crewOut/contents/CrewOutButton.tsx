@@ -7,7 +7,7 @@ import {
   LeaveProjectInput,
   useLeaveProject,
 } from '@/features/projectDetail/crew/crewDetail/crewOut/api/leaveProject';
-import { ProjectCrewProfileInfo } from '@/features/projectDetail/crew/crews/types';
+import { ProjectCrewProfileInfo } from '@/features/projectDetail/crew/crewDetail/crewProfile/api/getCrewDetail';
 
 type CrewOutButtonProps = {
   crewInfo: ProjectCrewProfileInfo;

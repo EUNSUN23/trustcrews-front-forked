@@ -1,4 +1,4 @@
-import { HttpError } from '@/lib/error/HttpError';
+import { HttpError } from '@/shared/utils/HttpError';
 import { getDefaultHttpErrorMessage } from '@/shared/utils/getDefaultHttpErrorMessage';
 import { HttpStatusCode } from 'axios';
 

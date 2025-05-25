@@ -7,7 +7,7 @@ import {
 } from '@/store/projectDetail/crew/crewDetail/crewFW/CrewFWModalStateStore';
 import { bigIntToString } from '@/shared/utils/stringUtils';
 import { projectManageAuthStateStore } from '@/store/projectDetail/config/pmAuth/ProjectManageAuthStateStore';
-import { ProjectCrewProfileInfo } from '@/features/projectDetail/crew/crews/types';
+import { ProjectCrewProfileInfo } from '@/features/projectDetail/crew/crewDetail/crewProfile/api/getCrewDetail';
 
 const { title: DEFALUT_TITLE } = DEFAULT_FW_MODAL_STATE;
 
