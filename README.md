@@ -1,4 +1,4 @@
-```
+
 <br/>
 
 # TRUSTCREWS 소개
@@ -28,9 +28,6 @@ JavaScript, TypeScript, React (Hook), Next.js 14, Tanstack-Query, Recoil, Tailwi
 1. 서비스 주요 기능 구현 - 2023.11 ~ 2024.10
 2. 프로젝트 구조 리팩토링 - 2025.04 ~ 2025.05.25
 3. Sentry 로그 도입 - 2025.06 ~ (예정)
-
-
-
 
 <br/>
 
