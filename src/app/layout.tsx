@@ -5,7 +5,7 @@ import StaticOptionDataProvider from '@/providers/data/StaticOptionDataProvider'
 import Header from '@/layouts/Header';
 import { ReactNode } from 'react';
 import RootProvider from '@/providers/RootProvider';
-import ServerAuthStateProvider from '@/providers/ServerAuthStateProvider';
+import AuthStateProvider from '@/providers/AuthStateProvider';
 
 export const metadata: Metadata = {
   title: 'TRUSTCREWS | 책임감 있는 사이드 프로젝트 팀, 팀원을 구하는 방법',
@@ -19,9 +19,9 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
       <body className='w-full'>
         <RootProvider>
           <div className='responsiveContainer'>
-            <ServerAuthStateProvider>
+            <AuthStateProvider>
               {(authState) => <Header serverAuthState={authState} />}
-            </ServerAuthStateProvider>
+            </AuthStateProvider>
             <StaticOptionDataProvider>{children}</StaticOptionDataProvider>
           </div>
           <div id='modal' className='absolute top-0 w-full'></div>

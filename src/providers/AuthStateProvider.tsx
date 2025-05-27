@@ -8,9 +8,7 @@ type ServerAuthStateProviderProps = {
   children: (authState: AuthState) => ReactNode;
 };
 
-const ServerAuthStateProvider = ({
-  children,
-}: ServerAuthStateProviderProps) => {
+const AuthStateProvider = ({ children }: ServerAuthStateProviderProps) => {
   const serverAuthState: AuthState = {
     isAuthorized: isAuthorized(),
     userId: getCookieValue(COOKIE.USER_ID),
@@ -19,4 +17,4 @@ const ServerAuthStateProvider = ({
   return <>{children(serverAuthState)}</>;
 };
 
-export default ServerAuthStateProvider;
+export default AuthStateProvider;

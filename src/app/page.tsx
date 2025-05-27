@@ -1,7 +1,7 @@
 import Guide from '@/features/guide/contents/Guide';
 import MainBoard from '@/layouts/MainBoard';
 import InitialPostsDataProvider from '@/providers/data/InitialPostsDataProvider';
-import ServerAuthStateProvider from '@/providers/ServerAuthStateProvider';
+import AuthStateProvider from '@/providers/AuthStateProvider';
 
 const RootPage = () => {
   return (
@@ -11,9 +11,9 @@ const RootPage = () => {
       </aside>
       <main className='mt-10 mobile:mt-2'>
         <InitialPostsDataProvider>
-          <ServerAuthStateProvider>
+          <AuthStateProvider>
             {(authState) => <MainBoard serverAuthState={authState} />}
-          </ServerAuthStateProvider>
+          </AuthStateProvider>
         </InitialPostsDataProvider>
       </main>
     </>
