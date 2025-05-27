@@ -1,16 +1,16 @@
 class RevalidatingUsers {
-  private revalidations: Set<string> = new Set<string>();
+  private users: Set<string> = new Set<string>();
 
   public add(userId: string) {
-    this.revalidations.add(userId);
+    this.users.add(userId);
   }
 
   public has(userId: string) {
-    return this.revalidations.has(userId);
+    return this.users.has(userId);
   }
 
   public delete(userId: string) {
-    this.revalidations.delete(userId);
+    this.users.delete(userId);
   }
 }
 
