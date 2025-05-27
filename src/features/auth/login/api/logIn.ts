@@ -3,6 +3,8 @@ import { z } from 'zod';
 import { request } from '@/lib/clientApi/request';
 import { ResponseBody } from '@/shared/types/responseBody';
 import { ApiResult } from '@/shared/types/apiResult';
+import { HttpError } from '@/shared/utils/HttpError';
+import { HttpStatusCode } from 'axios';
 
 export const loginInputSchema = z.object({
   email: z.string().min(1, { message: '이메일을 입력해주세요.' }),
@@ -33,6 +35,13 @@ export const useLogin = ({
     },
     onError: (error) => {
       onError?.(error);
+    },
+    throwOnError: (error) => {
+      return (
+        error instanceof HttpError &&
+        (error.status === HttpStatusCode.ServiceUnavailable ||
+          error.status === HttpStatusCode.InternalServerError)
+      );
     },
   });
 };

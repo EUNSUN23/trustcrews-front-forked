@@ -5,6 +5,8 @@ import {
 } from '@tanstack/react-query';
 import { ReactNode } from 'react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { HttpError } from '@/shared/utils/HttpError';
+import { HttpStatusCode } from 'axios';
 
 const makeQueryClient = () => {
   return new QueryClient({
@@ -13,6 +15,16 @@ const makeQueryClient = () => {
         staleTime: 60 * 1000 * 5,
         refetchOnWindowFocus: false,
         retry: 2,
+      },
+      mutations: {
+        throwOnError: (error) => {
+          return (
+            error instanceof HttpError &&
+            (error.status === HttpStatusCode.ServiceUnavailable ||
+              error.status === HttpStatusCode.InternalServerError ||
+              error.status === HttpStatusCode.Unauthorized)
+          );
+        },
       },
     },
   });
