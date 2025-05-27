@@ -48,7 +48,7 @@ const authFetch = authFetchWrapper({
         // todo - sentry log 추가
         resLogger.i(`${requestInit.method} ${response.status}:  ${url}`);
         return response;
-      } else if (response.status === 401) {
+      } else if (response.status === HttpStatusCode.Unauthorized) {
         const userId = getCookieValue(COOKIE.USER_ID);
         const retryOriginalRequest = new Promise<Response>(
           (resolve, reject) => {
