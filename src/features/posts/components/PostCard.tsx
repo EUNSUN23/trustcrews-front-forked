@@ -153,7 +153,11 @@ const PostCard = ({ postInfo }: { postInfo: PostInfoSummary }) => {
             <section>
               <h4 className='sr-only'>게시글 작성자</h4>
               <article className='flex items-center'>
-                <Avatar size='xxs' alt='게시글 작성자' src={profileImgSrc} />
+                <Avatar
+                  size='xxs'
+                  alt='게시글 작성자 아바타 이미지'
+                  src={profileImgSrc || ''}
+                />
                 <div className='flex items-center ml-2 text-sm'>
                   <p className='leading-none self-end'>{nickname}</p>
                   <TrustGradeBadge

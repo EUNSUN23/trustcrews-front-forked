@@ -38,7 +38,7 @@ const UserProfileImgForm = () => {
   return (
     <>
       <div className='w-full h-fit text-center'>
-        <Avatar size='lg' src={imageSrc} alt='사용자 프로필 이미지' />
+        <Avatar size='lg' src={imageSrc || ''} alt='사용자 아바타 이미지' />
       </div>
       <div className='text-center space-x-2'>
         <input

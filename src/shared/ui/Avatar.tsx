@@ -1,7 +1,6 @@
 'use client';
 
-import Image, { StaticImageData } from 'next/image';
-import { HTMLAttributes } from 'react';
+import Image, { ImageProps } from 'next/image';
 import { cva, VariantProps } from 'class-variance-authority';
 import cn from '@/shared/styles/cn';
 import calcImageSizes from '@/lib/calcImageSizes';
@@ -22,14 +21,11 @@ const AvatarVariants = cva(
   },
 );
 
-interface ImageProps
-  extends HTMLAttributes<HTMLImageElement>,
-    VariantProps<typeof AvatarVariants> {
-  src?: StaticImageData | string | null;
+interface AvatarProps extends ImageProps, VariantProps<typeof AvatarVariants> {
   alt: string;
 }
 
-const Avatar = ({ src, size, alt, ...props }: ImageProps) => {
+const Avatar = ({ src, size, alt, ...props }: AvatarProps) => {
   let expectedSize;
   switch (size) {
     case 'xxs':
@@ -67,7 +63,8 @@ const Avatar = ({ src, size, alt, ...props }: ImageProps) => {
             style={{
               objectFit: 'cover',
             }}
-            className='rounded-full'
+            className={cn('rounded-full', props.className)}
+            loading={props.loading}
           />
         </div>
       ) : (

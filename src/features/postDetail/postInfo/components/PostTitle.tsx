@@ -15,7 +15,11 @@ const PostTitle = ({ postInfo }: PostTitleProps) => {
       </h1>
       <article className='flex gap-3 items-center'>
         <div className='flex items-center gap-2'>
-          <Avatar size='xxs' alt={user.nickName} src={user.userProfileImgSrc} />
+          <Avatar
+            size='xxs'
+            alt='게시글 작성자 아바타 이미지'
+            src={user.userProfileImgSrc || ''}
+          />
           <div className='text-lg mobile:text-base'>
             <span className='sr-only'>작성자: </span>
             {user.nickName}

@@ -64,7 +64,7 @@ const PMAuthEditor = ({ crew }: CrewAuthRowProps) => {
         <div className=' flex items-center'>
           <div className='h-11 w-11 flex-shrink-0 mobile:hidden'>
             <Avatar
-              alt='크루 프로필 이미지'
+              alt='크루 아바타 이미지'
               size='xs'
               src={user.profileImgSrc}
             />

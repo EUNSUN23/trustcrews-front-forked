@@ -91,7 +91,11 @@ const RCVoteNoticeDetail = () => {
     <section className='alertModal_contents'>
       <section className='tablet:max-w-[400px] mx-auto pt-5 flex-col items-center border-b border-grey300 '>
         <div>
-          <Avatar src={profileImgSrc} alt='사용자 아바타' size='sm' />
+          <Avatar
+            src={profileImgSrc || ''}
+            alt='크루 아바타 이미지'
+            size='sm'
+          />
         </div>
         <h3 className='my-1 text-[1.2rem] text-greyDarkBlue font-medium'>
           {nickname}

@@ -78,7 +78,7 @@ const FWVoteNoticeDetail = () => {
     <section className='alertModal_contents'>
       <section className='tablet:max-w-[400px] mx-auto pt-5 flex-col items-center'>
         <div>
-          <Avatar src={crewProfileImgSrc} alt='프로필 이미지' size='md' />
+          <Avatar src={crewProfileImgSrc} alt='크루 아바타 이미지' size='md' />
         </div>
         <h3 className='my-1 text-[1.4rem] text-greyDarkBlue font-medium'>
           {crewNickname}
