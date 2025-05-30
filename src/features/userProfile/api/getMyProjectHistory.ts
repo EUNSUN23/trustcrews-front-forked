@@ -8,7 +8,7 @@ export const getMyProjectHistory = async (
 ): Promise<PageResponseBody<ProjectHistoryData[]>> => {
   return await request(
     'GET',
-    `/api/projectHistory/auth?pageNumber=${pageNumber}`,
+    `/api/projectHistory/auth/me?pageNumber=${pageNumber}`,
   );
 };
 
