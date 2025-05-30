@@ -61,7 +61,7 @@ const Avatar = ({ src, size, alt, ...props }: ImageProps) => {
             src={src}
             alt={alt}
             fill
-            sizes={expectedSize}
+            // sizes={expectedSize}
             style={{
               objectFit: 'cover',
             }}

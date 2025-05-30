@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import calcImageSizes from '@/lib/calcImageSizes';
 
 interface TechStackImageProps {
   stackName: string;
@@ -14,10 +13,10 @@ const TechStackImage = ({ stackName }: TechStackImageProps) => {
     <div className='relative inline-block pc:w-[32px] pc:h-[32px] tablet:w-[28px] tablet:h-[28px] mobile:w-[24px] mobile:h-[24px]'>
       <Image
         aria-hidden={true}
-        src={`${process.env.NEXT_PUBLIC_URL}/images/tech/${fileName}.svg`}
+        src={`/images/tech/${fileName}.svg`}
         alt={stackName}
         fill
-        sizes={calcImageSizes('24px', '28px', '32px')}
+        // sizes={calcImageSizes('24px', '28px', '32px')}
       />
     </div>
   );

@@ -169,7 +169,7 @@ const TechStackDropdownList = ({
                 className='flex items-center gap-1 ml-2 cursor-pointer'
               >
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_URL}/images/initialize.svg`}
+                  src={`/images/initialize.svg`}
                   alt='initialize'
                   width={15}
                   height={15}
