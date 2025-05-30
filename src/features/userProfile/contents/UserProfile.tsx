@@ -19,9 +19,9 @@ const UserProfile = () => {
       <div className='w-full h-fit text-center my-6 mobile:my-4'>
         <Avatar
           size='md'
-          src={profileImgSrc}
-          alt='사용자 프로필 이미지'
-          className='mt-1 mb-2 '
+          src={profileImgSrc || ''}
+          alt='사용자 아바타 이미지'
+          className='mt-1 mb-2'
         />
         <div className='max-w-[300px] mx-auto space-y-1 mb-2'>
           <p className='text-xl mobile:text-lg'>{nickname}</p>

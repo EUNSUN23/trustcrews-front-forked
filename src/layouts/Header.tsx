@@ -39,7 +39,7 @@ const Header = ({ serverAuthState }: HeaderProps) => {
           >
             <Image
               src={logo}
-              alt='trustcrew 로고'
+              alt='trustcrew 대표 이미지'
               aria-hidden='true'
               sizes={calcImageSizes('120px', '150px', '200px')}
               fill

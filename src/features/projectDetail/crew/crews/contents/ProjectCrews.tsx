@@ -63,7 +63,7 @@ const ProjectCrews = () => {
                       <Avatar
                         size='xs'
                         src={profileImgSrc}
-                        alt={`${nickname}의 프로필 이미지`}
+                        alt='크루 아바타 이미지'
                       />
                       <p className='tablet:text-[1.2rem] mobile:text-sm font-semibold leading-5 text-gray-900'>
                         {nickname}

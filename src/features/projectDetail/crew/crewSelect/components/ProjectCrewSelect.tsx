@@ -125,9 +125,9 @@ const ProjectCrewSelect = ({
                               src={
                                 crewProfileImgSrcList.find(
                                   (v) => v.crewId === value,
-                                )!.profileImgSrc
+                                )?.profileImgSrc || ''
                               }
-                              alt={`${name}의 프로필 이미지`}
+                              alt={'크루 아바타 이미지'}
                               size='xxs'
                             />
                           )}

@@ -52,7 +52,12 @@ const UserMenu = () => {
   return (
     <div className='flex items-center mx-2 space-x-2'>
       <div aria-hidden='true' className='flex items-stretch space-x-2'>
-        <Avatar size='xxs' alt='사용자 이미지' src={profileImgSrc} />
+        <Avatar
+          size='xxs'
+          src={profileImgSrc}
+          alt='사용자 아바타 이미지'
+          loading='eager'
+        />
         {isDesktop && (
           <span className='text-grey90 leading-loose'>{nickname}</span>
         )}
