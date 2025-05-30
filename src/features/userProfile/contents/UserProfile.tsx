@@ -21,7 +21,6 @@ const UserProfile = () => {
           size='md'
           src={profileImgSrc || ''}
           alt='사용자 아바타 이미지'
-          loading='eager'
           className='mt-1 mb-2'
         />
         <div className='max-w-[300px] mx-auto space-y-1 mb-2'>
