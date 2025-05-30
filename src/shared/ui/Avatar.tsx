@@ -62,7 +62,9 @@ const Avatar = ({ src, size, alt, ...props }: ImageProps) => {
             alt={alt}
             fill
             sizes={expectedSize}
-            objectFit='cover'
+            style={{
+              objectFit: 'cover',
+            }}
             className='rounded-full'
           />
         </div>

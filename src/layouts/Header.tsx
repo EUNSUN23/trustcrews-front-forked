@@ -10,6 +10,7 @@ import FieldQueryBoundary from '@/lib/error/FieldQueryBoundary';
 import { AuthState, authStateStore } from '@/store/AuthStateStore';
 import useSyncAuthState from '@/hooks/useSyncAuthState';
 import { useRecoilValue } from 'recoil';
+import calcImageSizes from '@/lib/calcImageSizes';
 
 const UserMenu = dynamic(
   () => import('@/features/auth/userMenu/contents/UserMenu'),
@@ -40,6 +41,7 @@ const Header = ({ serverAuthState }: HeaderProps) => {
               src={logo}
               alt='trustcrew 로고'
               aria-hidden='true'
+              sizes={calcImageSizes('120px', '150px', '200px')}
               fill
               style={{
                 objectFit: 'cover',

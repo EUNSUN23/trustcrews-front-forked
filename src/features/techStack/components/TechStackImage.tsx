@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import calcImageSizes from '@/lib/calcImageSizes';
 
 interface TechStackImageProps {
   stackName: string;
@@ -16,7 +17,7 @@ const TechStackImage = ({ stackName }: TechStackImageProps) => {
         src={`${process.env.NEXT_PUBLIC_URL}/images/tech/${fileName}.svg`}
         alt={stackName}
         fill
-        sizes={'(max-width: 767px) 24px, (max-width: 1179px) 28px, 32px'}
+        sizes={calcImageSizes('24px', '28px', '32px')}
       />
     </div>
   );

@@ -153,7 +153,7 @@ const TechStackDropdownList = ({
                         {techStackName}
                       </span>
                       <Image
-                        src={`${process.env.NEXT_PUBLIC_URL}/images/delete.svg`}
+                        src='/images/delete.svg'
                         alt={techStackName}
                         width={18}
                         height={18}
