@@ -4,6 +4,8 @@ import Image, { StaticImageData } from 'next/image';
 import { HTMLAttributes } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 import cn from '@/shared/styles/cn';
+import calcImageSizes from '@/lib/calcImageSizes';
+import { ApplicationError } from '@/shared/utils/ApplicationError';
 
 const AvatarVariants = cva(
   `relative inline-block rounded-full ring-2 ring-white`,
@@ -31,22 +33,22 @@ const Avatar = ({ src, size, alt, ...props }: ImageProps) => {
   let expectedSize;
   switch (size) {
     case 'xxs':
-      expectedSize = '24px';
+      expectedSize = calcImageSizes('24px', '24px', '24px');
       break;
     case 'xs':
-      expectedSize = '(min-width: 1280px) 40px, 32px';
+      expectedSize = calcImageSizes('32px', '32px', '40px');
       break;
     case 'sm':
-      expectedSize = '(min-width: 1280px) 64px, 40px';
+      expectedSize = calcImageSizes('40px', '40px', '64px');
       break;
     case 'md':
-      expectedSize = '(min-width: 1280px) 96px, 64px';
+      expectedSize = calcImageSizes('64px', '64px', '96px');
       break;
     case 'lg':
-      expectedSize = '(min-width: 1280px) 160px, 112px';
+      expectedSize = calcImageSizes('112px', '112px', '160px');
       break;
     default:
-      throw new Error(`Unknown Avatar Size: ${size}`);
+      throw new ApplicationError(`Unknown Avatar Size: ${size}`);
   }
 
   return (
