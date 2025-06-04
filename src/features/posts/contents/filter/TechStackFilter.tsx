@@ -1,21 +1,15 @@
 'use client';
 
-import {
-  MouseEvent as ReactMouseEvent,
-  useEffect,
-  useRef,
-  useState,
-  useTransition,
-} from 'react';
+import { MouseEvent, MouseEvent as ReactMouseEvent, useEffect } from 'react';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { BsChevronDown } from '@react-icons/all-files/bs/BsChevronDown';
-import TechStackDropdownList from '@/features/posts/components/filter/TechStackDropdownList';
-import { selectedTechStackState } from '@/store/posts/PostSearchStateStore';
-import { useTechCategories } from '@/features/techStack/api/getTechStackCategories';
-import {
-  TechStackMapping,
-  useTechStackMappings,
-} from '@/features/techStack/api/getTechStackMappings';
+import { TechStackMapping } from '@/features/techStack/api/getTechStackMappings';
+import useDropdownState from '@/shared/hooks/useDropdownState';
+import { selectedTechStackState } from '@/store/posts/filter/TechStackFilterStateStore';
+import TechStackTab from '@/features/posts/components/filter/TechStackTab';
+import TechStackTabPanel from '@/features/posts/components/filter/TechStackTabPanel';
+import TechStackFilterResult from '@/features/posts/components/filter/TechStackFilterResult';
+import TechStackResetButton from '@/features/posts/components/filter/TechStackResetButton';
 
 const getSelectedTechStackText = (selectedTechStacks: TechStackMapping[]) => {
   if (selectedTechStacks.length > 0) {
@@ -25,25 +19,10 @@ const getSelectedTechStackText = (selectedTechStacks: TechStackMapping[]) => {
 };
 
 const TechStackFilter = () => {
-  const [_, startTransition] = useTransition();
+  const { dropdownRef, openDropdown, setOpenDropdown } =
+    useDropdownState<HTMLButtonElement>();
+
   const resetSelectedTechStacks = useResetRecoilState(selectedTechStackState);
-  const selectedTechStacks = useRecoilValue(selectedTechStackState);
-  const [openDropdown, setOpenDropdown] = useState(false);
-  const dropdownRef = useRef<HTMLButtonElement | null>(null);
-
-  const handleDocumentClick = (e: MouseEvent) => {
-    if (
-      dropdownRef.current &&
-      !dropdownRef.current.contains(e.target as Node)
-    ) {
-      setOpenDropdown(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('click', handleDocumentClick);
-    return () => document.removeEventListener('click', handleDocumentClick);
-  }, []);
 
   useEffect(() => {
     resetSelectedTechStacks();
@@ -51,11 +30,14 @@ const TechStackFilter = () => {
 
   const handleClickTechStackButton = (e: ReactMouseEvent<HTMLElement>) => {
     e.preventDefault();
-    startTransition(() => setOpenDropdown((prev) => !prev));
+    setOpenDropdown((prev) => !prev);
   };
 
-  const { data: categoryResponse } = useTechCategories();
-  const { data: techStackResponse } = useTechStackMappings();
+  const selectedTechStacks = useRecoilValue(selectedTechStackState);
+
+  const handleClickPanelPadding = (e: MouseEvent) => {
+    e.stopPropagation();
+  };
 
   return (
     <button
@@ -76,10 +58,17 @@ const TechStackFilter = () => {
         <BsChevronDown className='w-4 h-4 text-grey800' />
       </div>
       {openDropdown && (
-        <TechStackDropdownList
-          categories={categoryResponse.data}
-          items={techStackResponse.data}
-        />
+        <div
+          className='absolute top-12 py-3 px-5 flex flex-col w-[700px] mobile:w-[340px] border-2 rounded-3xl bg-white'
+          onClick={handleClickPanelPadding}
+        >
+          <TechStackTab />
+          <TechStackTabPanel />
+          <div aria-live='polite' className='flex mt-6 flex-wrap gap-y-1'>
+            <TechStackFilterResult />
+            <TechStackResetButton />
+          </div>
+        </div>
       )}
     </button>
   );
