@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
-const useDropdownState = () => {
+const useDropdownState = <T extends HTMLElement>() => {
   const [openDropdown, setOpenDropdown] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const dropdownRef = useRef<T | null>(null);
 
   const handleDocumentClick = (e: MouseEvent) => {
     if (

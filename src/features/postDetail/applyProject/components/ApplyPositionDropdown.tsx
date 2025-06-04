@@ -23,7 +23,8 @@ type ApplyPositionDropdownProps = {
 const ApplyPositionDropdown = ({
   applyPositions,
 }: ApplyPositionDropdownProps) => {
-  const { dropdownRef, openDropdown, setOpenDropdown } = useDropdownState();
+  const { dropdownRef, openDropdown, setOpenDropdown } =
+    useDropdownState<HTMLDivElement>();
   const [projectApplyPosition, setProjectApplyPosition] = useRecoilState(
     projectApplyPositionState,
   );
