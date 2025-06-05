@@ -1,9 +1,9 @@
 'use client';
 
-import { useMediaQuery } from 'react-responsive';
 import TaskCardMenu from '@/features/projectDetail/job/components/task/card/TaskCardMenu';
 import { TaskItem } from '@/features/projectDetail/job/api/task/getTaskList';
 import TaskStatusBadge from '@/features/projectDetail/job/components/task/TaskStatusBadge';
+import useDesktopMediaQuery from '@/hooks/mediaQuery/useDesktopMediaQuery';
 
 type TaskCardProps = {
   item: TaskItem;
@@ -20,7 +20,7 @@ const TaskCard = ({ item }: TaskCardProps) => {
     assignedUser,
   } = item;
 
-  const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
+  const isDesktop = useDesktopMediaQuery();
 
   const contentDetailArr = todo.split('&');
 

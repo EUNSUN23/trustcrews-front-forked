@@ -2,7 +2,7 @@
 
 import { MdModeEdit } from '@react-icons/all-files/md/MdModeEdit';
 import { FaCheck } from '@react-icons/all-files/fa/FaCheck';
-import { useMediaQuery } from 'react-responsive';
+import useMobileMediaQuery from '@/hooks/mediaQuery/useMobileMediaQuery';
 
 type TaskContentEditFinishButtonProps = {
   onClick: () => void;
@@ -15,7 +15,7 @@ const TaskTodoEditFinishButton = ({
   mode,
   disabled,
 }: TaskContentEditFinishButtonProps) => {
-  const isMobile = useMediaQuery({ maxWidth: 700 });
+  const isMobile = useMobileMediaQuery();
   const iconSize = isMobile ? 18 : 23;
 
   return (

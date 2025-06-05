@@ -1,7 +1,6 @@
 'use client';
 
 import { Fragment } from 'react';
-import { useMediaQuery } from 'react-responsive';
 import Avatar from '@/shared/ui/Avatar';
 import { FaChevronDown } from '@react-icons/all-files/fa/FaChevronDown';
 import {
@@ -19,9 +18,10 @@ import { activeMainBoardTabStore } from '@/store/ActiveMainBoardTabStateStore';
 import useSnackbar from '@/shared/hooks/useSnackbar';
 import { useSimpleUserInfo } from '@/features/auth/userMenu/api/getSimpleUserInfo';
 import { clsx } from 'clsx';
+import useDesktopMediaQuery from '@/hooks/mediaQuery/useDesktopMediaQuery';
 
 const UserMenu = () => {
-  const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
+  const isDesktop = useDesktopMediaQuery();
 
   const router = useRouter();
   const resetActiveBoardTab = useResetRecoilState(activeMainBoardTabStore);
