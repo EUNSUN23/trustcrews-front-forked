@@ -1,15 +1,15 @@
 import { FaPlus } from '@react-icons/all-files/fa/FaPlus';
 import ButtonSkeleton from '@/shared/ui/skeleton/ButtonSkeleton';
 import Skeleton from '@/shared/ui/skeleton/Skeleton';
-import { useMediaQuery } from 'react-responsive';
 import SquareSkeleton from '@/shared/ui/skeleton/SquareSkeleton';
 import BadgeStyleSkeleton from '@/shared/ui/skeleton/BadgeStyleSkeleton';
 import TasksSkeleton from '@/features/projectDetail/job/components/task/TasksSkeleton';
+import useMobileMediaQuery from '@/hooks/mediaQuery/useMobileMediaQuery';
 
 const ProjectJobSkeleton = () => {
-  const mobile = useMediaQuery({ maxWidth: 700 });
+  const isMobile = useMobileMediaQuery();
 
-  const milestoneCount = mobile ? 1 : 3;
+  const milestoneCount = isMobile ? 1 : 3;
 
   return (
     <section className='w-full flex flex-col items-start'>

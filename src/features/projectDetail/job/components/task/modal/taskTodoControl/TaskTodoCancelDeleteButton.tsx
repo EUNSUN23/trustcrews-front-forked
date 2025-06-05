@@ -2,8 +2,8 @@
 
 import { RiDeleteBin6Line } from '@react-icons/all-files/ri/RiDeleteBin6Line';
 import { ImCancelCircle } from '@react-icons/all-files/im/ImCancelCircle';
-import { useMediaQuery } from 'react-responsive';
 import { HTMLAttributes } from 'react';
+import useMobileMediaQuery from '@/hooks/mediaQuery/useMobileMediaQuery';
 
 interface TaskContentCancelDeleteButtonProps
   extends HTMLAttributes<HTMLButtonElement> {
@@ -17,7 +17,7 @@ const TaskTodoCancelDeleteButton = ({
   disabled,
   ...props
 }: TaskContentCancelDeleteButtonProps) => {
-  const isMobile = useMediaQuery({ maxWidth: 700 });
+  const isMobile = useMobileMediaQuery();
   const iconSize = isMobile ? 18 : 23;
   return (
     <button

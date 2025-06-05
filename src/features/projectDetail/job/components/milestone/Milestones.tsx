@@ -5,7 +5,6 @@ import { useRecoilValue } from 'recoil';
 import { activeMilestoneStateStore } from '@/store/projectDetail/job/milestone/ActiveMilestoneStateStore';
 import { useEffect, useRef, useState } from 'react';
 import SwiperCore from 'swiper';
-import { useMediaQuery } from 'react-responsive';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -13,6 +12,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Grid, Navigation, Pagination } from 'swiper/modules';
 import MilestoneCard from '@/features/projectDetail/job/components/milestone/card/MilestoneCard';
+import useMobileMediaQuery from '@/hooks/mediaQuery/useMobileMediaQuery';
 
 type MilestonesProps = {
   data: MilestoneInfo[];
@@ -33,10 +33,11 @@ const Milestones = ({ data, totalCounts }: MilestonesProps) => {
     swiperRef.current?.slideToLoop(activeMilestoneIndex);
   }, [activeMilestoneIndex]);
 
-  const mobile = useMediaQuery({ maxWidth: 700 });
+  const isMobile = useMobileMediaQuery();
+
   useEffect(() => {
-    if (mobile) setSlidePerView(1);
-  }, [mobile]);
+    if (isMobile) setSlidePerView(1);
+  }, [isMobile]);
 
   if (totalCounts === 0)
     return (
