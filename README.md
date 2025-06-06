@@ -1,4 +1,3 @@
-
 <br/>
 
 # TRUSTCREWS 소개
@@ -25,14 +24,6 @@ JavaScript, TypeScript, React (Hook), Next.js 14, Tanstack-Query, Recoil, Tailwi
 
 <br/>
 
-### 작업 내용
-
-1. 서비스 주요 기능 구현 - 2023.11 ~ 2024.10
-2. 프로젝트 구조 리팩토링 - 2025.04 ~ 2025.05.25
-3. Sentry 로그 도입 - 2025.06 ~ (예정)
-
-<br/>
-
 ## 프로젝트 구조
 
 ```text
@@ -55,15 +46,6 @@ src
 - **`lib`** : 프로젝트 라이브러리 소스 <br/>
 - **`constants`**, **`hooks`**, **`store`**, **`types`**, **`providers`** : 프로젝트에서 사용하는 constant, hook, store,  type, provider <br/>
 - **`features`** : 애플리케이션 핵심 기능 <br/>
-  
-  ```text
-  src/features/myProjects/
-  ├── components
-  └── contents
-  ```
-  
-  - **`components`** : 뷰를 구성하는 **시각적 요소 중심의 단순한 컴포넌트**
-  - **`contents`** : UI를 조합해 특정 동작이나 API 호출 등을 하는 등 **기능 수행 중심의 컴포넌트** <br/><br/>
 - **`corsmiddleware.ts`** : 라우트핸들러 요청 미들웨어
 - **`middleware.ts`** : 앱라우터 요청 미들웨어
 
@@ -95,6 +77,4 @@ npm i
 ```
 npm run dev
 ```
-
-
 
