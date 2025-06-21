@@ -22,10 +22,10 @@ const StaticOptionDataProvider = ({ children }: { children: ReactNode }) => {
 
   const dehydratedState = dehydrate(queryClient, {
     shouldDehydrateQuery: (query) =>
-      query.queryKey[0] === positionQueryOptions().queryKey ||
-      query.queryKey[0] === techCategoryQueryOptions().queryKey ||
-      query.queryKey[0] === techStackMappingsQueryOptions().queryKey ||
-      query.queryKey[0] === techListQueryOptions().queryKey,
+      query.queryKey[0] === positionQueryOptions().queryKey[0] ||
+      query.queryKey[0] === techCategoryQueryOptions().queryKey[0] ||
+      query.queryKey[0] === techStackMappingsQueryOptions().queryKey[0] ||
+      query.queryKey[0] === techListQueryOptions().queryKey[0],
     shouldRedactErrors: () => {
       return false;
     },
